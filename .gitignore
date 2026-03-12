@@ -2,3 +2,4 @@
 .claude/
 *.jsonl
 generate_docs.py
+__pycache__/
