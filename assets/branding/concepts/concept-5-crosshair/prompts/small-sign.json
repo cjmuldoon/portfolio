@@ -1,0 +1,9 @@
+{
+  "prompt": "A photorealistic close-up photograph showing two items: (1) a brushed brass circular door plaque approximately 15cm diameter, with a precision-engraved minimalist logo — the letters 'LK' in thin monospace font centered inside a thin circle with small crosshair lines extending at 12, 3, 6, and 9 o'clock positions, small corner registration marks, and a dashed outer ring, with 'DESIGN AND BUILD' in ultra-thin spaced monospace capitals below — the plaque is mounted on a rich dark timber door with visible wood grain; (2) a sleek matte black powder-coated metal A-frame sidewalk sign standing on polished concrete, featuring the same crosshair logo in gold (#C9A96E) on the black panel. Shot with 50mm macro lens, warm directional lighting casting soft shadows, shallow depth of field. Rich cinematic colour grading, deep blacks, warm brushed gold highlights #C9A96E. Premium architectural signage aesthetic, precision engineering meets luxury.",
+  "negative_prompt": "cheap, cartoon, blurry, distorted text, misspelled, bright colours, cluttered, plastic, neon, flat lighting",
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "jpg",
+    "aspect_ratio": "16:9"
+  }
+}

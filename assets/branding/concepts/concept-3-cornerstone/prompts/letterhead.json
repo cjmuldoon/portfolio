@@ -1,0 +1,9 @@
+{
+  "prompt": "Photorealistic luxury stationery photography. An A4 letterhead on premium cream (#F5F0EB) paper stock, laying on a dark walnut desk surface, shot from overhead. At the top of the letterhead is the cornerstone logo mark — a solid dark charcoal (#2C2C2C) parallelogram-shaped block with one corner chamfered at 45 degrees, used as a distinctive header element. The letters LK are rendered in gold (#C9A96E) within the solid parallelogram shape, appearing carved/inset. A thin gold line along the bottom edge of the shape. Below the mark reads DESIGN AND BUILD in refined small charcoal capitals with generous letter-spacing. The parallelogram shape serves as a bold geometric header device on the cream paper. A gold pen and dark leather desk accessories nearby. Shot on 50mm lens, soft natural light from window, cinematic, premium construction company branding, Adelaide.",
+  "negative_prompt": "cheap, cartoon, blurry, distorted text, misspelled, bright neon, cluttered, plastic, low quality, amateur, watermark, stock photo, illustration, 3D render, wrinkled paper",
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "jpg",
+    "aspect_ratio": "16:9"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "prompt": "Photorealistic overhead photograph of A4 letterhead on a dark walnut desk surface. The letterhead is printed on premium cream/off-white uncoated paper. Across the top of the page two parallel horizontal gold lines run from edge to edge with small perpendicular tick marks at each endpoint. Between the two horizontal lines sit the letters LK in clean geometric sans-serif medium weight. A thin dashed vertical centreline passes through the centre of the LK. Below the lower horizontal line the words DESIGN AND BUILD appear in thin tracked capitals. All printed elements in warm gold #C9A96E. The body area below is clean and open with minimal placeholder text in dark grey. The landscape-format elevation lines logo works as a distinctive letterhead header. Shot from directly overhead, 50mm lens, soft natural window light from one side, cinematic colour grading, professional stationery photography, gold pen and dark leather desk accessories at edges of frame.",
+  "negative_prompt": "cheap, cartoon, blurry, distorted text, misspelled, bright, cluttered, white background, low quality, illustration, 3D render, colourful, busy",
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "jpg",
+    "aspect_ratio": "16:9"
+  }
+}

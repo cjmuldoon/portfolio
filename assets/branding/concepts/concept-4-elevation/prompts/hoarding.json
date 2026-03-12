@@ -1,0 +1,9 @@
+{
+  "prompt": "Photorealistic Adelaide construction site hoarding stretching across multiple panels. Two continuous parallel horizontal gold lines run across the entire length of the hoarding with small perpendicular tick marks at the endpoints of both lines. At the centre of the hoarding between the two horizontal lines sit the large letters LK in clean geometric sans-serif medium weight. A thin dashed vertical centreline passes through the centre of the LK. Below the lower horizontal line the words DESIGN AND BUILD appear in thin tracked capitals. All graphics in warm gold #C9A96E on dark charcoal/black hoarding panels. The wide landscape format of the elevation lines logo spans multiple panels seamlessly. 24mm wide angle lens, Adelaide urban streetscape, pedestrians walking past, overcast sky, cinematic colour grading, professional architectural documentation photography.",
+  "negative_prompt": "cheap, cartoon, blurry, distorted text, misspelled, bright, cluttered, colourful, busy graphics, low quality, illustration, 3D render, garish",
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "jpg",
+    "aspect_ratio": "16:9"
+  }
+}

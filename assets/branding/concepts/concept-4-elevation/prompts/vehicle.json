@@ -1,0 +1,9 @@
+{
+  "prompt": "Photorealistic matte black Mercedes Sprinter van parked at an Adelaide construction site. The elevation lines logo spans the full length of the side panel in landscape format — two long parallel horizontal gold lines running the length of the van body with small perpendicular tick marks at each endpoint, the large letters LK in clean geometric sans-serif medium weight centred between the two horizontal lines, a thin dashed vertical centreline through the composition centre, and DESIGN AND BUILD in thin tracked capitals below the lower horizontal line. All graphics in warm gold #C9A96E on the matte black van body. The wide horizontal format of the logo perfectly suits the long van panel. 35mm f/4 lens, construction scaffolding and site hoarding in background, overcast Adelaide sky, cinematic colour grading, professional commercial vehicle photography.",
+  "negative_prompt": "cheap, cartoon, blurry, distorted text, misspelled, bright, cluttered, white van, glossy, low quality, illustration, 3D render, busy livery",
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "jpg",
+    "aspect_ratio": "16:9"
+  }
+}

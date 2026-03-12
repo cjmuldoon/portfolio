@@ -1,0 +1,9 @@
+{
+  "prompt": "Photorealistic photography of a matte black Mercedes Sprinter van with premium vehicle wrap branding parked at an Adelaide construction site. The side panel features a large bold LK lettermark formed from structural steel I-beam cross-section shapes, where the vertical stroke of the L and K are shared as a connected ligature resembling a structural joint, with a thin horizontal gold datum line running through the junction point, no enclosing shape around the mark, rendered in metallic gold #C9A96E vinyl. Below the mark DESIGN AND BUILD appears in clean light sans-serif lettering in gold. The van is parked on a construction site with building framework visible in the background. Shot on 35mm f/4 lens, overcast Adelaide daylight, cinematic colour grading, matte black vehicle contrasting with gold branding, professional fleet vehicle photography, premium construction company identity.",
+  "negative_prompt": "cheap, cartoon, blurry, distorted text, misspelled, bright, cluttered, neon, shiny gloss vehicle, low quality, amateur, watermark, busy text",
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "jpg",
+    "aspect_ratio": "16:9"
+  }
+}

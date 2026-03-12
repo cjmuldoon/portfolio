@@ -1,0 +1,9 @@
+{
+  "prompt": "Photorealistic photograph of a matte black Mercedes Sprinter van with professional vehicle wrap displaying the LK Design and Build logo on the side panel. The logo shows the letters 'LK' in thin precise monospace sans-serif font centred inside a subtle square frame, with fine 4x4 blueprint grid lines visible behind the letterforms at low opacity, small architectural dimension arrows along one edge of the square frame, and 'DESIGN AND BUILD' in thin widely-tracked capitals below the frame. All graphics in gold hex colour #C9A96E on the matte black body. The van is parked at an Adelaide construction site with scaffolding and a partially built residential home in the background. Shot on 35mm f/4 lens, overcast natural light, cinematic colour grading with muted tones and warm gold accents, professional commercial photography.",
+  "negative_prompt": "cheap, cartoon, blurry, distorted text, misspelled, bright colours, cluttered, shiny chrome, low quality, deformed letters, comic style, toy car",
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "jpg",
+    "aspect_ratio": "16:9"
+  }
+}

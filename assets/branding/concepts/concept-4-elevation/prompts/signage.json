@@ -1,0 +1,9 @@
+{
+  "prompt": "Photorealistic architectural building signage on a dark charcoal facade at evening blue hour in Adelaide. The logo consists of two long horizontal illuminated gold LED strip lights mounted parallel on the wall, one upper line and one lower line, with small perpendicular tick marks at each endpoint of both lines. Between the two horizontal LED lines sit the letters LK in large backlit brushed gold channel letters, clean geometric sans-serif typeface medium weight. A faint thin dashed vertical centreline runs through the centre of the composition. Below the lower horizontal LED line, the words DESIGN AND BUILD appear in thin tracked capital letters in warm gold #C9A96E. The entire logo is landscape/wide format with the horizontal lines extending wider than the text. Warm gold glow #C9A96E against the dark facade, subtle uplighting, 85mm f/1.8 shallow depth of field, cinematic colour grading, professional architectural photography, Adelaide CBD street context with soft bokeh city lights in background.",
+  "negative_prompt": "cheap, cartoon, blurry, distorted text, misspelled, bright, cluttered, neon, plastic, daytime, overexposed, low quality, illustration, 3D render",
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "jpg",
+    "aspect_ratio": "16:9"
+  }
+}

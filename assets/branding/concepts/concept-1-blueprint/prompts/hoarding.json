@@ -1,0 +1,9 @@
+{
+  "prompt": "Photorealistic wide-angle photograph of construction site hoarding panels lining an Adelaide suburban street. The hoarding is composed of large matte black panels displaying the LK Design and Build logo: the letters 'LK' in thin precise monospace sans-serif font centred inside a subtle square frame, with fine 4x4 blueprint grid lines visible behind the letterforms at low opacity, small architectural dimension arrows along one edge of the square frame, and 'DESIGN AND BUILD' in thin widely-tracked capitals below the frame. All graphics in gold hex colour #C9A96E on matte black. The street has mature eucalyptus trees, Adelaide suburban houses in the background, a footpath with pedestrians walking past. Shot on 24mm wide-angle lens, natural daylight with warm afternoon sun, cinematic colour grading with warm tones, architectural photography style.",
+  "negative_prompt": "cheap, cartoon, blurry, distorted text, misspelled, bright colours, cluttered, low quality, deformed letters, comic style, neon, graffiti",
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "jpg",
+    "aspect_ratio": "16:9"
+  }
+}

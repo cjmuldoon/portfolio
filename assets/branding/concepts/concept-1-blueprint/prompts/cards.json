@@ -1,0 +1,9 @@
+{
+  "prompt": "Photorealistic overhead photograph of premium 600gsm matte black business cards with gold foil stamping, arranged artfully on a dark natural slate surface. The business cards display the LK Design and Build logo: the letters 'LK' in thin precise monospace sans-serif font centred inside a subtle square frame, with fine 4x4 blueprint grid lines visible behind the letterforms at low opacity, small architectural dimension arrows along one edge of the square frame, and 'DESIGN AND BUILD' in thin widely-tracked capitals below the frame. All foil details in warm gold hex colour #C9A96E. Some cards show the front logo, others show the reverse with contact details in gold monospace type. Shot on 50mm macro lens at f/2.8, soft directional studio lighting with subtle gold reflections on the foil, cinematic colour grading, dark moody atmosphere, premium luxury feel.",
+  "negative_prompt": "cheap, cartoon, blurry, distorted text, misspelled, bright colours, cluttered, glossy, low quality, deformed letters, comic style, plastic",
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "jpg",
+    "aspect_ratio": "16:9"
+  }
+}

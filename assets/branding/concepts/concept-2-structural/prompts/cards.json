@@ -1,0 +1,9 @@
+{
+  "prompt": "Photorealistic macro photography of premium thick matte black business cards arranged on a dark slate surface. The cards feature a debossed gold foil LK lettermark formed from structural steel I-beam cross-section shapes, where the vertical stroke of the L becomes the vertical of the K creating a connected ligature resembling a structural joint, with a thin horizontal gold datum line through the junction point, no enclosing shape around the mark. Below the mark DESIGN AND BUILD is debossed in clean light sans-serif in gold foil #C9A96E. The cards are thick duplex stock with soft-touch matte black finish, gold foil catching the light with subtle reflections. Shot on 50mm macro lens at f/2.8, shallow depth of field, cinematic warm lighting from the side, dark moody atmosphere, premium tactile stationery photography, Adelaide construction design company branding.",
+  "negative_prompt": "cheap, cartoon, blurry, distorted text, misspelled, bright, cluttered, thin cards, glossy, low quality, amateur, watermark, plastic",
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "jpg",
+    "aspect_ratio": "16:9"
+  }
+}

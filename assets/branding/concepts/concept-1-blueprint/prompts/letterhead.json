@@ -1,0 +1,9 @@
+{
+  "prompt": "Photorealistic overhead flat-lay photograph of A4 letterhead stationery on a dark walnut desk surface. The cream white paper features the LK Design and Build logo at the top: the letters 'LK' in thin precise monospace sans-serif font centred inside a subtle square frame, with fine 4x4 blueprint grid lines visible behind the letterforms at low opacity, small architectural dimension arrows along one edge of the square frame, and 'DESIGN AND BUILD' in thin widely-tracked capitals below the frame. Logo and accent details in gold hex colour #C9A96E. Body text in monospace typeface. Props include a stainless steel architectural ruler, a sharp mechanical pencil, and a second sheet partially visible underneath. Shot on 50mm lens overhead, soft warm studio lighting, cinematic colour grading with warm neutral tones, premium stationery photography, Adelaide design studio setting.",
+  "negative_prompt": "cheap, cartoon, blurry, distorted text, misspelled, bright colours, cluttered, glossy, low quality, deformed letters, comic style, messy desk, crumpled paper",
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "jpg",
+    "aspect_ratio": "16:9"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "prompt": "Photorealistic close-up photography of two branded signs for a construction design company. First, a brushed stainless steel door plaque mounted on a dark charcoal rendered wall next to a frameless glass office door, featuring bold letters L and K formed from structural I-beam cross-section shapes sharing a vertical stroke as a connected ligature resembling a structural joint, with a thin horizontal gold datum line through the junction, no enclosing shape, and DESIGN AND BUILD in light sans-serif below, all etched and filled with gold #C9A96E. Second, in the foreground on the pavement, a black powder-coated folding metal A-frame sign displaying the same structural LK mark in gold with DESIGN AND BUILD below. Shot on 50mm lens, natural daylight, cinematic colour grading, warm gold against dark surfaces, Adelaide office precinct, premium construction company branding, sharp focus on signage details, professional commercial photography.",
+  "negative_prompt": "cheap, cartoon, blurry, distorted text, misspelled, bright, cluttered, neon, plastic, low quality, amateur, watermark, busy background",
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "jpg",
+    "aspect_ratio": "16:9"
+  }
+}

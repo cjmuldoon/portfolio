@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <!-- Inset/carved effect for letters -->
+    <filter id="carved" x="-5%" y="-5%" width="110%" height="110%">
+      <feOffset in="SourceAlpha" dx="1" dy="1" result="offset-light"/>
+      <feFlood flood-color="#1a1a1a" flood-opacity="0.6" result="dark"/>
+      <feComposite in="dark" in2="offset-light" operator="in" result="shadow-dark"/>
+      <feOffset in="SourceAlpha" dx="-1" dy="-1" result="offset-dark"/>
+      <feFlood flood-color="#4a4a4a" flood-opacity="0.4" result="light"/>
+      <feComposite in="light" in2="offset-dark" operator="in" result="shadow-light"/>
+      <feMerge>
+        <feMergeNode in="shadow-dark"/>
+        <feMergeNode in="shadow-light"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <!-- Subtle stone texture gradient -->
+    <linearGradient id="stoneGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#333333"/>
+      <stop offset="50%" stop-color="#2C2C2C"/>
+      <stop offset="100%" stop-color="#262626"/>
+    </linearGradient>
+    <!-- Gold gradient for underline -->
+    <linearGradient id="goldLine" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#B8943E"/>
+      <stop offset="50%" stop-color="#C9A96E"/>
+      <stop offset="100%" stop-color="#D4B87A"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Parallelogram / chamfered cornerstone block -->
+  <!-- Shape: rectangle with top-right corner chamfered at 45 degrees -->
+  <polygon
+    points="230,170 530,170 570,210 570,370 230,370"
+    fill="url(#stoneGrad)"
+    stroke="#3a3a3a"
+    stroke-width="1"
+  />
+
+  <!-- Thin gold line along the bottom edge of the stone -->
+  <line x1="230" y1="370" x2="570" y2="370" stroke="url(#goldLine)" stroke-width="3"/>
+
+  <!-- LK letters — carved/inset into stone -->
+  <g filter="url(#carved)">
+    <!-- L -->
+    <text
+      x="340" y="310"
+      font-family="'Playfair Display', 'Georgia', 'Times New Roman', serif"
+      font-weight="700"
+      font-size="110"
+      fill="#C9A96E"
+      text-anchor="end"
+      letter-spacing="2"
+    >L</text>
+    <!-- K -->
+    <text
+      x="355" y="310"
+      font-family="'Playfair Display', 'Georgia', 'Times New Roman', serif"
+      font-weight="700"
+      font-size="110"
+      fill="#C9A96E"
+      text-anchor="start"
+      letter-spacing="2"
+    >K</text>
+  </g>
+
+  <!-- DESIGN AND BUILD — refined small caps below the stone -->
+  <text
+    x="400" y="420"
+    font-family="'Helvetica Neue', 'Arial', 'Futura', sans-serif"
+    font-weight="300"
+    font-size="22"
+    fill="#2C2C2C"
+    text-anchor="middle"
+    letter-spacing="8"
+    font-variant="small-caps"
+  >DESIGN AND BUILD</text>
+</svg>

@@ -1,0 +1,9 @@
+{
+  "prompt": "Photorealistic photograph showing two elements: a brushed brass door plaque and office nameplate mounted on a dark stained timber door, and a black A-frame sidewalk sign on the pavement beside the entrance. Both display the LK Design and Build logo: the letters 'LK' in thin precise monospace sans-serif font centred inside a subtle square frame, with fine 4x4 blueprint grid lines visible behind the letterforms at low opacity, small architectural dimension arrows along one edge of the square frame, and 'DESIGN AND BUILD' in thin widely-tracked capitals below the frame. The door plaque is brushed brass with engraved gold #C9A96E details, the A-frame sign is matte black with the logo rendered in gold #C9A96E. Close-up shot on 50mm macro lens with warm directional lighting, shallow depth of field, cinematic colour grading, Adelaide office building entrance context.",
+  "negative_prompt": "cheap, cartoon, blurry, distorted text, misspelled, bright colours, cluttered, plastic, low quality, deformed letters, comic style, neon",
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "jpg",
+    "aspect_ratio": "16:9"
+  }
+}

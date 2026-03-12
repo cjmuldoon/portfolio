@@ -1,0 +1,9 @@
+{
+  "prompt": "Photorealistic overhead photograph of oversized landscape-format business cards on a dark textured surface. The cards are matte black with the elevation lines logo in gold foil — two parallel horizontal lines with small perpendicular tick marks at each endpoint, the letters LK in clean geometric sans-serif medium weight centred between the two lines, a thin dashed vertical centreline through the centre of the composition, and DESIGN AND BUILD in thin tracked capitals below the lower line. All foil elements in warm gold #C9A96E. The landscape card format echoes the horizontal emphasis of the logo. Multiple cards scattered and stacked showing front face, on a dark slate or concrete surface. 50mm macro f/2.8, shallow depth of field, soft directional studio lighting, cinematic colour grading, professional product photography, Adelaide design studio context.",
+  "negative_prompt": "cheap, cartoon, blurry, distorted text, misspelled, bright, cluttered, portrait format cards, glossy, low quality, illustration, 3D render, colourful",
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "jpg",
+    "aspect_ratio": "16:9"
+  }
+}

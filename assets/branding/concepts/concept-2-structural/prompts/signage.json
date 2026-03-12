@@ -1,0 +1,9 @@
+{
+  "prompt": "Photorealistic architectural photography of illuminated building signage mounted on a dark polished concrete facade at dusk. The sign features bold letters L and K formed from structural steel I-beam cross-section shapes, where the vertical stroke of the L becomes the vertical stroke of the K, creating a connected ligature that resembles a structural steel joint. A single thin horizontal gold line runs through the junction point of the two letters like a datum or floor plate line. There is no enclosing shape around the lettermark — it stands open and bold against the facade. Below the LK mark the words DESIGN AND BUILD appear in clean light sans-serif lettering. The letterforms are cut from brushed stainless steel with warm LED backlighting in gold #C9A96E casting a soft halo glow onto the concrete. Evening blue hour sky visible above. Shot on 85mm f/1.8 lens with shallow depth of field, cinematic colour grading, warm gold tones contrasting with cool concrete, Adelaide South Australia commercial building context, premium construction company branding, professional architectural signage photography.",
+  "negative_prompt": "cheap, cartoon, blurry, distorted text, misspelled, bright, cluttered, neon, plastic, low quality, amateur, watermark, stock photo feel",
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "jpg",
+    "aspect_ratio": "16:9"
+  }
+}

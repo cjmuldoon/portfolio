@@ -1,0 +1,9 @@
+{
+  "prompt": "Photorealistic close-up of two small signs for a construction company. First: a brushed brass rectangular nameplate with the elevation lines logo precision-etched into the metal surface — two parallel horizontal lines with small perpendicular tick marks at each endpoint, the letters LK in clean geometric sans-serif between the lines, a faint dashed vertical centreline through the centre, and DESIGN AND BUILD in thin tracked capitals below the lower line, all etched into warm gold #C9A96E brass, mounted on a dark stained timber door frame with visible wood grain. Second: a slim modern matte black A-frame pavement sign with the same elevation lines logo in gold #C9A96E — two horizontal lines with tick marks, LK between them, dashed centreline, DESIGN AND BUILD below — landscape format logo on the A-frame panel. Shot with 50mm macro lens, shallow depth of field, soft natural daylight, Adelaide residential streetscape background, cinematic colour grading, professional product photography.",
+  "negative_prompt": "cheap, cartoon, blurry, distorted text, misspelled, bright, cluttered, plastic, low quality, illustration, 3D render, garish",
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "jpg",
+    "aspect_ratio": "16:9"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "prompt": "Photorealistic close-up product photography. A polished dark granite desk nameplate and small door plaque featuring the LK cornerstone logo mark. The mark is a solid dark charcoal (#2C2C2C) parallelogram-shaped block with one corner chamfered at 45 degrees, carved into polished black granite. The letters LK are deeply carved and filled with gold (#C9A96E) paint, with a thin gold line along the bottom edge of the parallelogram shape. Below reads DESIGN AND BUILD in refined small capitals with generous spacing. Also visible: a small A-frame easel-style sign in dark stained timber displaying the same cornerstone mark. Sitting on a polished dark timber reception desk. Close-up shot on 50mm lens, warm interior lighting, premium construction office, Adelaide. Cinematic, elegant, photorealistic.",
+  "negative_prompt": "cheap, cartoon, blurry, distorted text, misspelled, bright neon, cluttered, plastic, low quality, amateur, watermark, stock photo, illustration, 3D render",
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "jpg",
+    "aspect_ratio": "16:9"
+  }
+}

@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400&amp;display=swap');
+      .letter { font-family: 'IBM Plex Mono', 'Courier New', monospace; font-weight: 300; font-size: 168px; fill: #C9A96E; }
+      .tagline { font-family: 'IBM Plex Mono', 'Courier New', monospace; font-weight: 400; font-size: 22px; fill: #C9A96E; letter-spacing: 0.35em; }
+      .grid-line { stroke: #C9A96E; stroke-width: 0.5; opacity: 0.12; }
+      .frame { stroke: #C9A96E; stroke-width: 1.5; fill: none; opacity: 0.6; }
+      .dim-line { stroke: #C9A96E; stroke-width: 0.7; opacity: 0.4; }
+      .dim-arrow { fill: #C9A96E; opacity: 0.4; }
+      .dim-text { font-family: 'IBM Plex Mono', 'Courier New', monospace; font-weight: 300; font-size: 9px; fill: #C9A96E; opacity: 0.4; }
+    </style>
+  </defs>
+
+  <!-- Square frame centered -->
+  <rect x="248" y="108" width="304" height="304" class="frame"/>
+
+  <!-- 4x4 grid lines inside the frame — vertical -->
+  <line x1="324" y1="108" x2="324" y2="412" class="grid-line"/>
+  <line x1="400" y1="108" x2="400" y2="412" class="grid-line"/>
+  <line x1="476" y1="108" x2="476" y2="412" class="grid-line"/>
+
+  <!-- 4x4 grid lines inside the frame — horizontal -->
+  <line x1="248" y1="184" x2="552" y2="184" class="grid-line"/>
+  <line x1="248" y1="260" x2="552" y2="260" class="grid-line"/>
+  <line x1="248" y1="336" x2="552" y2="336" class="grid-line"/>
+
+  <!-- LK letterforms centered in the frame -->
+  <text x="400" y="305" text-anchor="middle" class="letter">LK</text>
+
+  <!-- Dimension arrows along the bottom edge of the frame -->
+  <!-- Left tick -->
+  <line x1="248" y1="426" x2="248" y2="438" class="dim-line"/>
+  <!-- Right tick -->
+  <line x1="552" y1="426" x2="552" y2="438" class="dim-line"/>
+  <!-- Horizontal dimension line -->
+  <line x1="248" y1="432" x2="552" y2="432" class="dim-line"/>
+  <!-- Left arrowhead -->
+  <polygon points="248,432 254,429 254,435" class="dim-arrow"/>
+  <!-- Right arrowhead -->
+  <polygon points="552,432 546,429 546,435" class="dim-arrow"/>
+  <!-- Dimension label -->
+  <text x="400" y="429" text-anchor="middle" class="dim-text">304</text>
+
+  <!-- Right edge dimension -->
+  <line x1="566" y1="108" x2="578" y2="108" class="dim-line"/>
+  <line x1="566" y1="412" x2="578" y2="412" class="dim-line"/>
+  <line x1="572" y1="108" x2="572" y2="412" class="dim-line"/>
+  <polygon points="572,108 569,114 575,114" class="dim-arrow"/>
+  <polygon points="572,412 569,406 575,406" class="dim-arrow"/>
+  <text x="572" y="264" text-anchor="middle" class="dim-text" transform="rotate(-90,572,264)">304</text>
+
+  <!-- DESIGN AND BUILD tagline -->
+  <text x="400" y="480" text-anchor="middle" class="tagline">DESIGN AND BUILD</text>
+</svg>

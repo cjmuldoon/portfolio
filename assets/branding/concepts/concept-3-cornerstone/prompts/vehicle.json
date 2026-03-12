@@ -1,0 +1,9 @@
+{
+  "prompt": "Photorealistic commercial vehicle photography. A matte black Mercedes Sprinter van parked at a premium Adelaide construction site. On the side panel is the LK cornerstone logo — a solid dark charcoal (#2C2C2C) parallelogram-shaped block graphic with one corner chamfered at 45 degrees, the letters LK in gold (#C9A96E) appearing carved/inset within the solid shape, a thin gold line along the bottom edge of the parallelogram. Below the shape reads DESIGN AND BUILD in refined small capitals with generous letter-spacing. The solid parallelogram shape is clearly visible as a distinctive graphic element against the matte black van body. Modern building under construction in background. Shot on 35mm f/4 lens, overcast Adelaide light, cinematic, professional fleet branding, premium construction company.",
+  "negative_prompt": "cheap, cartoon, blurry, distorted text, misspelled, bright neon, cluttered, plastic, low quality, amateur, watermark, stock photo, illustration, 3D render, dirty vehicle",
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "jpg",
+    "aspect_ratio": "16:9"
+  }
+}

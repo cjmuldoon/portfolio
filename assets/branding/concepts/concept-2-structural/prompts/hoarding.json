@@ -1,0 +1,9 @@
+{
+  "prompt": "Photorealistic wide-angle photography of construction site hoarding panels along an Adelaide suburban street. The hoarding consists of large flat black panels featuring an oversized bold LK lettermark formed from structural steel I-beam cross-section shapes, where the vertical stroke of the L and K are shared as a connected ligature resembling a structural joint, with a thin horizontal gold datum line running through the junction, no enclosing shape, rendered in gold #C9A96E. Below the mark DESIGN AND BUILD appears in clean light sans-serif in gold. The hoarding stretches along the street with residential houses and eucalyptus trees visible beyond, construction cranes in the background. Shot on 24mm wide-angle lens, Adelaide afternoon light, cinematic colour grading, black panels contrasting with gold branding, professional construction site photography, urban Adelaide South Australia context.",
+  "negative_prompt": "cheap, cartoon, blurry, distorted text, misspelled, bright, cluttered, neon, low quality, amateur, watermark, graffiti, damaged panels",
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "jpg",
+    "aspect_ratio": "16:9"
+  }
+}

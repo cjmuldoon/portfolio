@@ -1,0 +1,9 @@
+{
+  "prompt": "Photorealistic luxury stationery photography. Premium thick business cards on a dark surface, shot from overhead. The cards are printed on heavy dark charcoal (#2C2C2C) stock. The cornerstone logo is embossed on the card — a solid parallelogram-shaped block with one corner chamfered at 45 degrees, filled with gold foil (#C9A96E). The letters LK are debossed/carved into the gold foil parallelogram shape, revealing the dark card beneath. A thin gold foil line runs along the bottom edge of the shape. Below reads DESIGN AND BUILD in refined small gold foil capitals with generous letter-spacing. Multiple cards artfully scattered on dark slate surface, edge gilding visible in gold. Shot on 50mm macro f/2.8, soft directional lighting, premium print finishing, Adelaide construction company branding, cinematic, photorealistic.",
+  "negative_prompt": "cheap, cartoon, blurry, distorted text, misspelled, bright neon, cluttered, plastic, low quality, amateur, watermark, stock photo, illustration, 3D render, thin cards",
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "jpg",
+    "aspect_ratio": "16:9"
+  }
+}

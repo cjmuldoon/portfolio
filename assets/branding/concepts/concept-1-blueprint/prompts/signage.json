@@ -1,0 +1,9 @@
+{
+  "prompt": "Photorealistic photograph of illuminated building signage on a dark polished concrete facade at evening blue hour. The sign displays the LK Design and Build logo: the letters 'LK' in thin precise monospace sans-serif font centred inside a subtle square frame, with fine 4x4 blueprint grid lines visible behind the letterforms at low opacity, small architectural dimension arrows along the bottom edge of the square frame, and 'DESIGN AND BUILD' in thin widely-tracked capitals below the frame. The sign is backlit with warm gold light in hex colour #C9A96E, casting a soft glow onto the concrete wall. The building is a modern commercial office in Adelaide, South Australia. Shot on 85mm f/1.8 lens with shallow depth of field, cinematic colour grading with deep teal shadows and warm gold highlights, evening ambient light with subtle reflections on the concrete surface.",
+  "negative_prompt": "cheap, cartoon, blurry, distorted text, misspelled, bright colours, cluttered, neon, plastic, low quality, deformed letters, comic style",
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "jpg",
+    "aspect_ratio": "16:9"
+  }
+}

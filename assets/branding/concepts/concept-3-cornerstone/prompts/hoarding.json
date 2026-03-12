@@ -1,0 +1,9 @@
+{
+  "prompt": "Photorealistic construction site photography. Adelaide CBD construction hoarding panels in dark charcoal (#2C2C2C) colour, stretching along a city street. The large cornerstone logo dominates the hoarding — a solid parallelogram-shaped block with one corner chamfered at 45 degrees, rendered in a slightly lighter tone against the dark panels. The letters LK are displayed in gold (#C9A96E) within the solid parallelogram shape, appearing carved/inset. A thin gold line along the bottom edge of the shape. Below reads DESIGN AND BUILD in refined small capitals with generous letter-spacing. The solid geometric shape commands presence at large scale. Adelaide streetscape visible, pedestrians walking past for scale. Shot on 24mm wide angle lens, overcast light, cinematic, premium construction company, urban environment.",
+  "negative_prompt": "cheap, cartoon, blurry, distorted text, misspelled, bright neon, cluttered, plastic, low quality, amateur, watermark, stock photo, illustration, 3D render, graffiti, dirty",
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "jpg",
+    "aspect_ratio": "16:9"
+  }
+}

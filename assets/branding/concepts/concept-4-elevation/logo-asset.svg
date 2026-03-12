@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <style>
+      .lk-text {
+        font-family: 'Futura', 'Century Gothic', 'Avenir', sans-serif;
+        font-weight: 500;
+        font-size: 120px;
+        fill: #C9A96E;
+        letter-spacing: 0.15em;
+      }
+      .subtitle-text {
+        font-family: 'Futura', 'Century Gothic', 'Avenir', sans-serif;
+        font-weight: 300;
+        font-size: 18px;
+        fill: #C9A96E;
+        letter-spacing: 0.35em;
+      }
+      .elevation-line {
+        stroke: #C9A96E;
+        stroke-width: 2;
+        fill: none;
+      }
+      .tick-mark {
+        stroke: #C9A96E;
+        stroke-width: 1.5;
+        fill: none;
+      }
+      .centreline {
+        stroke: #C9A96E;
+        stroke-width: 0.75;
+        stroke-dasharray: 12, 6, 3, 6;
+        fill: none;
+        opacity: 0.5;
+      }
+    </style>
+  </defs>
+
+  <!-- Dashed vertical centreline -->
+  <line x1="400" y1="170" x2="400" y2="430" class="centreline"/>
+
+  <!-- Upper datum/height line -->
+  <line x1="130" y1="225" x2="670" y2="225" class="elevation-line"/>
+  <!-- Upper line tick marks -->
+  <line x1="130" y1="217" x2="130" y2="233" class="tick-mark"/>
+  <line x1="670" y1="217" x2="670" y2="233" class="tick-mark"/>
+
+  <!-- Lower ground line -->
+  <line x1="130" y1="355" x2="670" y2="355" class="elevation-line"/>
+  <!-- Lower line tick marks -->
+  <line x1="130" y1="347" x2="130" y2="363" class="tick-mark"/>
+  <line x1="670" y1="347" x2="670" y2="363" class="tick-mark"/>
+
+  <!-- LK letters centred between the two lines -->
+  <text x="400" y="320" text-anchor="middle" class="lk-text">LK</text>
+
+  <!-- DESIGN AND BUILD below the ground line -->
+  <text x="400" y="395" text-anchor="middle" class="subtitle-text">DESIGN AND BUILD</text>
+</svg>

@@ -1,0 +1,9 @@
+{
+  "prompt": "Photorealistic overhead photography of an A4 letterhead lying on a dark walnut desk surface. The letterhead is printed on premium cream textured paper stock. At the top-left corner sits the bold LK lettermark formed from structural steel I-beam cross-section shapes, where the vertical stroke of the L becomes the vertical of the K creating a connected ligature resembling a structural joint, with a thin horizontal gold datum line through the junction, no enclosing shape, printed in gold #C9A96E. A gold horizontal line extends from the mark across the full width of the page as a header divider. Below is a clean body text area with placeholder text in dark grey. Architectural props surround the letterhead: a metal ruler, mechanical pencil, and rolled drawings. Shot from directly overhead on 50mm lens, soft natural window light, cinematic warm colour grading, premium stationery photography, Adelaide construction design company branding.",
+  "negative_prompt": "cheap, cartoon, blurry, distorted text, misspelled, bright, cluttered, white paper, glossy, low quality, amateur, watermark, messy desk",
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "jpg",
+    "aspect_ratio": "16:9"
+  }
+}
