@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;500&amp;display=swap');
+    </style>
+  </defs>
+
+  <!-- Outer rectangle frame -->
+  <rect x="200" y="120" width="400" height="360" rx="0" ry="0"
+        fill="none" stroke="#C9A96E" stroke-width="3"/>
+  <!-- Inner rectangle frame (double-line border) -->
+  <rect x="208" y="128" width="384" height="344" rx="0" ry="0"
+        fill="none" stroke="#C9A96E" stroke-width="1"/>
+
+  <!-- Corner registration marks - top left -->
+  <line x1="185" y1="120" x2="200" y2="120" stroke="#C9A96E" stroke-width="1.5"/>
+  <line x1="200" y1="105" x2="200" y2="120" stroke="#C9A96E" stroke-width="1.5"/>
+  <!-- Corner registration marks - top right -->
+  <line x1="600" y1="120" x2="615" y2="120" stroke="#C9A96E" stroke-width="1.5"/>
+  <line x1="600" y1="105" x2="600" y2="120" stroke="#C9A96E" stroke-width="1.5"/>
+  <!-- Corner registration marks - bottom left -->
+  <line x1="185" y1="480" x2="200" y2="480" stroke="#C9A96E" stroke-width="1.5"/>
+  <line x1="200" y1="480" x2="200" y2="495" stroke="#C9A96E" stroke-width="1.5"/>
+  <!-- Corner registration marks - bottom right -->
+  <line x1="600" y1="480" x2="615" y2="480" stroke="#C9A96E" stroke-width="1.5"/>
+  <line x1="600" y1="480" x2="600" y2="495" stroke="#C9A96E" stroke-width="1.5"/>
+
+  <!-- LK text - centered upper portion -->
+  <text x="400" y="310" text-anchor="middle"
+        font-family="'IBM Plex Mono', monospace" font-weight="500"
+        font-size="120" fill="#C9A96E" letter-spacing="12">LK</text>
+
+  <!-- Horizontal divider line -->
+  <line x1="240" y1="345" x2="560" y2="345" stroke="#C9A96E" stroke-width="1.5"/>
+
+  <!-- DESIGN AND BUILD text -->
+  <text x="400" y="390" text-anchor="middle"
+        font-family="'IBM Plex Mono', monospace" font-weight="300"
+        font-size="22" fill="#C9A96E" letter-spacing="6">DESIGN AND BUILD</text>
+
+  <!-- Technical annotation: DWG-001 top right -->
+  <text x="608" y="114" text-anchor="start"
+        font-family="'IBM Plex Mono', monospace" font-weight="300"
+        font-size="9" fill="#C9A96E">DWG-001</text>
+
+  <!-- Technical annotation: scale indicator bottom left -->
+  <text x="192" y="502" text-anchor="end"
+        font-family="'IBM Plex Mono', monospace" font-weight="300"
+        font-size="9" fill="#C9A96E">1:100</text>
+
+  <!-- Small revision note bottom right -->
+  <text x="608" y="502" text-anchor="start"
+        font-family="'IBM Plex Mono', monospace" font-weight="300"
+        font-size="9" fill="#C9A96E">REV.A</text>
+</svg>

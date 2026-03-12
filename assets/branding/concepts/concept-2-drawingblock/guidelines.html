@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LK Design and Build — Drawing Block Brand Guidelines</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@200;300;400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --charcoal: #2C2C2C;
+    --gold: #C9A96E;
+    --cream: #F5F0EB;
+    --deep-black: #0A0F1A;
+    --white: #FFFFFF;
+    --gold-dim: rgba(201, 169, 110, 0.15);
+    --gold-line: rgba(201, 169, 110, 0.25);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--deep-black);
+    color: var(--cream);
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    font-size: 15px;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(10, 15, 26, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--gold-line);
+    padding: 0 48px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 56px;
+  }
+  nav .nav-brand {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 500; font-size: 13px; letter-spacing: 4px;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+  nav ul { list-style: none; display: flex; gap: 32px; }
+  nav ul li a {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+    color: rgba(245, 240, 235, 0.5); text-decoration: none;
+    transition: color 0.3s;
+  }
+  nav ul li a:hover { color: var(--gold); }
+
+  /* ── LAYOUT ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 32px; }
+
+  section {
+    padding: 100px 0 80px;
+    border-bottom: 1px solid var(--gold-line);
+  }
+  section:first-of-type { padding-top: 140px; }
+
+  .section-number {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px; font-weight: 400; letter-spacing: 4px;
+    color: var(--gold); opacity: 0.6;
+    margin-bottom: 8px; display: block;
+  }
+
+  h1 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 200; font-size: 42px; letter-spacing: 8px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  h2 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 300; font-size: 24px; letter-spacing: 4px;
+    color: var(--cream);
+    text-transform: uppercase;
+    margin-bottom: 32px;
+  }
+  h3 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 400; font-size: 14px; letter-spacing: 3px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  p { margin-bottom: 20px; color: rgba(245, 240, 235, 0.7); }
+  .lead { font-size: 17px; line-height: 1.8; color: rgba(245, 240, 235, 0.6); }
+
+  .divider {
+    width: 60px; height: 1px;
+    background: var(--gold); opacity: 0.4;
+    margin: 40px 0;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    border-bottom: 1px solid var(--gold-line);
+    position: relative;
+  }
+  .hero svg { width: 320px; height: auto; margin-bottom: 48px; }
+  .hero h1 { font-size: 14px; letter-spacing: 12px; margin-bottom: 8px; }
+  .hero .subtitle {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300; font-size: 13px; letter-spacing: 2px;
+    color: rgba(245, 240, 235, 0.35);
+    text-transform: uppercase;
+  }
+  .hero .version {
+    position: absolute; bottom: 40px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px; letter-spacing: 3px;
+    color: rgba(201, 169, 110, 0.3);
+    text-transform: uppercase;
+  }
+
+  /* ── LOGO DISPLAY ── */
+  .logo-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+    margin: 32px 0;
+  }
+  .logo-box {
+    aspect-ratio: 4/3;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 4px; border: 1px solid var(--gold-line);
+    position: relative;
+  }
+  .logo-box svg { width: 60%; height: auto; }
+  .logo-box .label {
+    position: absolute; bottom: 12px; left: 16px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px; letter-spacing: 2px;
+    text-transform: uppercase; opacity: 0.5;
+  }
+  .logo-box.dark { background: var(--deep-black); }
+  .logo-box.dark .label { color: var(--cream); }
+  .logo-box.light { background: var(--cream); }
+  .logo-box.light .label { color: var(--charcoal); }
+
+  /* ── SIZE & CLEARSPACE ── */
+  .size-specs {
+    display: flex; gap: 48px; align-items: flex-end;
+    margin: 32px 0;
+    flex-wrap: wrap;
+  }
+  .size-spec {
+    text-align: center;
+  }
+  .size-spec .icon-box {
+    border: 1px dashed var(--gold-line);
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 12px; margin-bottom: 12px;
+    border-radius: 2px;
+  }
+  .size-spec .icon-box svg { display: block; }
+  .size-spec span {
+    display: block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px; letter-spacing: 1px;
+    color: rgba(245, 240, 235, 0.5);
+  }
+
+  .clearspace-demo {
+    display: inline-block;
+    position: relative;
+    margin: 32px 0;
+    border: 1px dashed rgba(201, 169, 110, 0.3);
+    padding: 60px;
+  }
+  .clearspace-demo svg { width: 240px; height: auto; display: block; }
+  .clearspace-label {
+    position: absolute;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px; color: var(--gold); opacity: 0.6;
+    letter-spacing: 1px;
+  }
+  .clearspace-label.top { top: 8px; left: 50%; transform: translateX(-50%); }
+  .clearspace-label.right { right: 8px; top: 50%; transform: translateY(-50%) rotate(90deg); }
+  .clearspace-label.bottom { bottom: 8px; left: 50%; transform: translateX(-50%); }
+  .clearspace-label.left { left: 8px; top: 50%; transform: translateY(-50%) rotate(-90deg); }
+
+  /* ── COLOUR PALETTE ── */
+  .palette {
+    display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px;
+    margin: 32px 0;
+  }
+  .swatch {
+    border-radius: 4px; overflow: hidden;
+    border: 1px solid var(--gold-line);
+  }
+  .swatch .colour-block {
+    height: 100px;
+  }
+  .swatch .colour-info {
+    padding: 14px 16px;
+    background: rgba(10, 15, 26, 0.8);
+  }
+  .swatch .colour-name {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px; font-weight: 500; letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--cream);
+    margin-bottom: 8px;
+  }
+  .swatch .colour-val {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px; letter-spacing: 1px;
+    color: rgba(245, 240, 235, 0.45);
+    line-height: 1.8;
+  }
+
+  /* ── TYPOGRAPHY ── */
+  .type-specimen {
+    margin: 32px 0;
+    padding: 40px;
+    border: 1px solid var(--gold-line);
+    border-radius: 4px;
+  }
+  .type-specimen.mono {
+    font-family: 'IBM Plex Mono', monospace;
+  }
+  .type-specimen.sans {
+    font-family: 'Inter', sans-serif;
+  }
+  .type-specimen .type-name {
+    font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold); opacity: 0.7;
+    margin-bottom: 20px;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+  .type-specimen .type-sample-large {
+    font-size: 36px; font-weight: 300;
+    color: var(--cream);
+    margin-bottom: 12px;
+    letter-spacing: 2px;
+  }
+  .type-specimen .type-sample-body {
+    font-size: 15px; font-weight: 400;
+    color: rgba(245, 240, 235, 0.6);
+    line-height: 1.7;
+  }
+  .type-specimen .type-usage {
+    margin-top: 20px; padding-top: 16px;
+    border-top: 1px solid var(--gold-line);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px; letter-spacing: 2px;
+    color: rgba(201, 169, 110, 0.5);
+    text-transform: uppercase;
+  }
+
+  /* ── BRAND VOICE ── */
+  .voice-cards {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+    margin: 32px 0;
+  }
+  .voice-card {
+    padding: 32px 24px;
+    border: 1px solid var(--gold-line);
+    border-radius: 4px;
+  }
+  .voice-card h4 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px; font-weight: 500; letter-spacing: 2px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .voice-card p {
+    font-size: 13px; line-height: 1.7;
+    color: rgba(245, 240, 235, 0.55);
+    margin-bottom: 0;
+  }
+
+  /* ── MISUSE ── */
+  .misuse-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
+    margin: 32px 0;
+  }
+  .misuse-item {
+    padding: 28px 24px;
+    border: 1px solid rgba(180, 60, 60, 0.25);
+    border-radius: 4px;
+    background: rgba(180, 60, 60, 0.04);
+    position: relative;
+  }
+  .misuse-item::before {
+    content: "\2715";
+    position: absolute; top: 12px; right: 16px;
+    font-size: 16px; color: rgba(180, 60, 60, 0.5);
+  }
+  .misuse-item p {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px; letter-spacing: 1px;
+    color: rgba(245, 240, 235, 0.5);
+    margin-bottom: 0;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 48px 0;
+    text-align: center;
+  }
+  footer p {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px; letter-spacing: 3px;
+    color: rgba(201, 169, 110, 0.25);
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 768px) {
+    .logo-grid, .palette, .voice-cards, .misuse-grid {
+      grid-template-columns: 1fr;
+    }
+    .palette { grid-template-columns: repeat(2, 1fr); }
+    nav ul { display: none; }
+    .hero h1 { font-size: 12px; letter-spacing: 8px; }
+    h2 { font-size: 18px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">LK Brand Guidelines</div>
+  <ul>
+    <li><a href="#logo">Logo</a></li>
+    <li><a href="#colour">Colour</a></li>
+    <li><a href="#typography">Typography</a></li>
+    <li><a href="#voice">Voice</a></li>
+    <li><a href="#misuse">Misuse</a></li>
+  </ul>
+</nav>
+
+<!-- ════════════════════════════════════════ HERO ════════════════════════════════════════ -->
+<section class="hero">
+  <!-- Drawing Block logo — gold on dark (hero) -->
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+    <rect x="200" y="120" width="400" height="360" rx="0" ry="0" fill="none" stroke="#C9A96E" stroke-width="3"/>
+    <rect x="208" y="128" width="384" height="344" rx="0" ry="0" fill="none" stroke="#C9A96E" stroke-width="1"/>
+    <line x1="185" y1="120" x2="200" y2="120" stroke="#C9A96E" stroke-width="1.5"/>
+    <line x1="200" y1="105" x2="200" y2="120" stroke="#C9A96E" stroke-width="1.5"/>
+    <line x1="600" y1="120" x2="615" y2="120" stroke="#C9A96E" stroke-width="1.5"/>
+    <line x1="600" y1="105" x2="600" y2="120" stroke="#C9A96E" stroke-width="1.5"/>
+    <line x1="185" y1="480" x2="200" y2="480" stroke="#C9A96E" stroke-width="1.5"/>
+    <line x1="200" y1="480" x2="200" y2="495" stroke="#C9A96E" stroke-width="1.5"/>
+    <line x1="600" y1="480" x2="615" y2="480" stroke="#C9A96E" stroke-width="1.5"/>
+    <line x1="600" y1="480" x2="600" y2="495" stroke="#C9A96E" stroke-width="1.5"/>
+    <text x="400" y="310" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-weight="500" font-size="120" fill="#C9A96E" letter-spacing="12">LK</text>
+    <line x1="240" y1="345" x2="560" y2="345" stroke="#C9A96E" stroke-width="1.5"/>
+    <text x="400" y="390" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-weight="300" font-size="22" fill="#C9A96E" letter-spacing="6">DESIGN AND BUILD</text>
+    <text x="608" y="114" text-anchor="start" font-family="'IBM Plex Mono', monospace" font-weight="300" font-size="9" fill="#C9A96E">DWG-001</text>
+    <text x="192" y="502" text-anchor="end" font-family="'IBM Plex Mono', monospace" font-weight="300" font-size="9" fill="#C9A96E">1:100</text>
+    <text x="608" y="502" text-anchor="start" font-family="'IBM Plex Mono', monospace" font-weight="300" font-size="9" fill="#C9A96E">REV.A</text>
+  </svg>
+  <h1>Brand Guidelines</h1>
+  <p class="subtitle">Drawing Block Identity System</p>
+  <p class="version">Version 1.0 &mdash; March 2026</p>
+</section>
+
+<!-- ════════════════════════════════════════ LOGO ════════════════════════════════════════ -->
+<section id="logo">
+  <div class="container">
+    <span class="section-number">01</span>
+    <h2>Logo</h2>
+    <p class="lead">The LK Drawing Block mark reinterprets the architectural title block as a brand identity. A double-line rectangular frame houses the monospace "LK" monogram above a divider line, with "DESIGN AND BUILD" beneath. Corner registration marks and technical annotations (DWG-001, 1:100, REV.A) reinforce the language of construction documentation and precision drafting.</p>
+
+    <div class="divider"></div>
+
+    <h3>On dark background</h3>
+    <div class="logo-grid">
+      <!-- Gold on dark — primary -->
+      <div class="logo-box dark">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+          <rect x="200" y="120" width="400" height="360" fill="none" stroke="#C9A96E" stroke-width="3"/>
+          <rect x="208" y="128" width="384" height="344" fill="none" stroke="#C9A96E" stroke-width="1"/>
+          <line x1="185" y1="120" x2="200" y2="120" stroke="#C9A96E" stroke-width="1.5"/>
+          <line x1="200" y1="105" x2="200" y2="120" stroke="#C9A96E" stroke-width="1.5"/>
+          <line x1="600" y1="120" x2="615" y2="120" stroke="#C9A96E" stroke-width="1.5"/>
+          <line x1="600" y1="105" x2="600" y2="120" stroke="#C9A96E" stroke-width="1.5"/>
+          <line x1="185" y1="480" x2="200" y2="480" stroke="#C9A96E" stroke-width="1.5"/>
+          <line x1="200" y1="480" x2="200" y2="495" stroke="#C9A96E" stroke-width="1.5"/>
+          <line x1="600" y1="480" x2="615" y2="480" stroke="#C9A96E" stroke-width="1.5"/>
+          <line x1="600" y1="480" x2="600" y2="495" stroke="#C9A96E" stroke-width="1.5"/>
+          <text x="400" y="310" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-weight="500" font-size="120" fill="#C9A96E" letter-spacing="12">LK</text>
+          <line x1="240" y1="345" x2="560" y2="345" stroke="#C9A96E" stroke-width="1.5"/>
+          <text x="400" y="390" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-weight="300" font-size="22" fill="#C9A96E" letter-spacing="6">DESIGN AND BUILD</text>
+          <text x="608" y="114" text-anchor="start" font-family="'IBM Plex Mono', monospace" font-weight="300" font-size="9" fill="#C9A96E">DWG-001</text>
+          <text x="192" y="502" text-anchor="end" font-family="'IBM Plex Mono', monospace" font-weight="300" font-size="9" fill="#C9A96E">1:100</text>
+          <text x="608" y="502" text-anchor="start" font-family="'IBM Plex Mono', monospace" font-weight="300" font-size="9" fill="#C9A96E">REV.A</text>
+        </svg>
+        <span class="label">Gold on dark &mdash; primary</span>
+      </div>
+      <!-- Cream on charcoal -->
+      <div class="logo-box dark" style="background: var(--charcoal);">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+          <rect x="200" y="120" width="400" height="360" fill="none" stroke="#F5F0EB" stroke-width="3"/>
+          <rect x="208" y="128" width="384" height="344" fill="none" stroke="#F5F0EB" stroke-width="1"/>
+          <line x1="185" y1="120" x2="200" y2="120" stroke="#F5F0EB" stroke-width="1.5"/>
+          <line x1="200" y1="105" x2="200" y2="120" stroke="#F5F0EB" stroke-width="1.5"/>
+          <line x1="600" y1="120" x2="615" y2="120" stroke="#F5F0EB" stroke-width="1.5"/>
+          <line x1="600" y1="105" x2="600" y2="120" stroke="#F5F0EB" stroke-width="1.5"/>
+          <line x1="185" y1="480" x2="200" y2="480" stroke="#F5F0EB" stroke-width="1.5"/>
+          <line x1="200" y1="480" x2="200" y2="495" stroke="#F5F0EB" stroke-width="1.5"/>
+          <line x1="600" y1="480" x2="615" y2="480" stroke="#F5F0EB" stroke-width="1.5"/>
+          <line x1="600" y1="480" x2="600" y2="495" stroke="#F5F0EB" stroke-width="1.5"/>
+          <text x="400" y="310" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-weight="500" font-size="120" fill="#F5F0EB" letter-spacing="12">LK</text>
+          <line x1="240" y1="345" x2="560" y2="345" stroke="#F5F0EB" stroke-width="1.5"/>
+          <text x="400" y="390" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-weight="300" font-size="22" fill="#F5F0EB" letter-spacing="6">DESIGN AND BUILD</text>
+          <text x="608" y="114" text-anchor="start" font-family="'IBM Plex Mono', monospace" font-weight="300" font-size="9" fill="#F5F0EB">DWG-001</text>
+          <text x="192" y="502" text-anchor="end" font-family="'IBM Plex Mono', monospace" font-weight="300" font-size="9" fill="#F5F0EB">1:100</text>
+          <text x="608" y="502" text-anchor="start" font-family="'IBM Plex Mono', monospace" font-weight="300" font-size="9" fill="#F5F0EB">REV.A</text>
+        </svg>
+        <span class="label">Cream on charcoal</span>
+      </div>
+    </div>
+
+    <h3>On light background</h3>
+    <div class="logo-grid">
+      <!-- Charcoal on cream -->
+      <div class="logo-box light">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+          <rect x="200" y="120" width="400" height="360" fill="none" stroke="#2C2C2C" stroke-width="3"/>
+          <rect x="208" y="128" width="384" height="344" fill="none" stroke="#2C2C2C" stroke-width="1"/>
+          <line x1="185" y1="120" x2="200" y2="120" stroke="#2C2C2C" stroke-width="1.5"/>
+          <line x1="200" y1="105" x2="200" y2="120" stroke="#2C2C2C" stroke-width="1.5"/>
+          <line x1="600" y1="120" x2="615" y2="120" stroke="#2C2C2C" stroke-width="1.5"/>
+          <line x1="600" y1="105" x2="600" y2="120" stroke="#2C2C2C" stroke-width="1.5"/>
+          <line x1="185" y1="480" x2="200" y2="480" stroke="#2C2C2C" stroke-width="1.5"/>
+          <line x1="200" y1="480" x2="200" y2="495" stroke="#2C2C2C" stroke-width="1.5"/>
+          <line x1="600" y1="480" x2="615" y2="480" stroke="#2C2C2C" stroke-width="1.5"/>
+          <line x1="600" y1="480" x2="600" y2="495" stroke="#2C2C2C" stroke-width="1.5"/>
+          <text x="400" y="310" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-weight="500" font-size="120" fill="#2C2C2C" letter-spacing="12">LK</text>
+          <line x1="240" y1="345" x2="560" y2="345" stroke="#2C2C2C" stroke-width="1.5"/>
+          <text x="400" y="390" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-weight="300" font-size="22" fill="#2C2C2C" letter-spacing="6">DESIGN AND BUILD</text>
+          <text x="608" y="114" text-anchor="start" font-family="'IBM Plex Mono', monospace" font-weight="300" font-size="9" fill="#2C2C2C">DWG-001</text>
+          <text x="192" y="502" text-anchor="end" font-family="'IBM Plex Mono', monospace" font-weight="300" font-size="9" fill="#2C2C2C">1:100</text>
+          <text x="608" y="502" text-anchor="start" font-family="'IBM Plex Mono', monospace" font-weight="300" font-size="9" fill="#2C2C2C">REV.A</text>
+        </svg>
+        <span class="label">Charcoal on cream</span>
+      </div>
+      <!-- Gold on white -->
+      <div class="logo-box light" style="background: #FFFFFF;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+          <rect x="200" y="120" width="400" height="360" fill="none" stroke="#C9A96E" stroke-width="3"/>
+          <rect x="208" y="128" width="384" height="344" fill="none" stroke="#C9A96E" stroke-width="1"/>
+          <line x1="185" y1="120" x2="200" y2="120" stroke="#C9A96E" stroke-width="1.5"/>
+          <line x1="200" y1="105" x2="200" y2="120" stroke="#C9A96E" stroke-width="1.5"/>
+          <line x1="600" y1="120" x2="615" y2="120" stroke="#C9A96E" stroke-width="1.5"/>
+          <line x1="600" y1="105" x2="600" y2="120" stroke="#C9A96E" stroke-width="1.5"/>
+          <line x1="185" y1="480" x2="200" y2="480" stroke="#C9A96E" stroke-width="1.5"/>
+          <line x1="200" y1="480" x2="200" y2="495" stroke="#C9A96E" stroke-width="1.5"/>
+          <line x1="600" y1="480" x2="615" y2="480" stroke="#C9A96E" stroke-width="1.5"/>
+          <line x1="600" y1="480" x2="600" y2="495" stroke="#C9A96E" stroke-width="1.5"/>
+          <text x="400" y="310" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-weight="500" font-size="120" fill="#C9A96E" letter-spacing="12">LK</text>
+          <line x1="240" y1="345" x2="560" y2="345" stroke="#C9A96E" stroke-width="1.5"/>
+          <text x="400" y="390" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-weight="300" font-size="22" fill="#C9A96E" letter-spacing="6">DESIGN AND BUILD</text>
+          <text x="608" y="114" text-anchor="start" font-family="'IBM Plex Mono', monospace" font-weight="300" font-size="9" fill="#C9A96E">DWG-001</text>
+          <text x="192" y="502" text-anchor="end" font-family="'IBM Plex Mono', monospace" font-weight="300" font-size="9" fill="#C9A96E">1:100</text>
+          <text x="608" y="502" text-anchor="start" font-family="'IBM Plex Mono', monospace" font-weight="300" font-size="9" fill="#C9A96E">REV.A</text>
+        </svg>
+        <span class="label">Gold on white</span>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Minimum Size -->
+    <h3>Minimum Size</h3>
+    <p>To preserve legibility of the double-line frame, registration marks, and technical annotations, the logo must never be reproduced below these minimum sizes.</p>
+    <div class="size-specs">
+      <div class="size-spec">
+        <div class="icon-box">
+          <svg width="48" height="36" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="200" y="120" width="400" height="360" fill="none" stroke="#C9A96E" stroke-width="6"/>
+            <rect x="208" y="128" width="384" height="344" fill="none" stroke="#C9A96E" stroke-width="3"/>
+            <text x="400" y="320" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-weight="500" font-size="180" fill="#C9A96E" letter-spacing="12">LK</text>
+          </svg>
+        </div>
+        <span>48px wide &mdash; Icon mark minimum</span>
+      </div>
+      <div class="size-spec">
+        <div class="icon-box">
+          <svg width="140" height="105" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="200" y="120" width="400" height="360" fill="none" stroke="#C9A96E" stroke-width="3"/>
+            <rect x="208" y="128" width="384" height="344" fill="none" stroke="#C9A96E" stroke-width="1"/>
+            <line x1="185" y1="120" x2="200" y2="120" stroke="#C9A96E" stroke-width="1.5"/>
+            <line x1="200" y1="105" x2="200" y2="120" stroke="#C9A96E" stroke-width="1.5"/>
+            <line x1="600" y1="120" x2="615" y2="120" stroke="#C9A96E" stroke-width="1.5"/>
+            <line x1="600" y1="105" x2="600" y2="120" stroke="#C9A96E" stroke-width="1.5"/>
+            <line x1="185" y1="480" x2="200" y2="480" stroke="#C9A96E" stroke-width="1.5"/>
+            <line x1="200" y1="480" x2="200" y2="495" stroke="#C9A96E" stroke-width="1.5"/>
+            <line x1="600" y1="480" x2="615" y2="480" stroke="#C9A96E" stroke-width="1.5"/>
+            <line x1="600" y1="480" x2="600" y2="495" stroke="#C9A96E" stroke-width="1.5"/>
+            <text x="400" y="310" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-weight="500" font-size="120" fill="#C9A96E" letter-spacing="12">LK</text>
+            <line x1="240" y1="345" x2="560" y2="345" stroke="#C9A96E" stroke-width="1.5"/>
+            <text x="400" y="390" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-weight="300" font-size="22" fill="#C9A96E" letter-spacing="6">DESIGN AND BUILD</text>
+            <text x="608" y="114" text-anchor="start" font-family="'IBM Plex Mono', monospace" font-weight="300" font-size="9" fill="#C9A96E">DWG-001</text>
+            <text x="192" y="502" text-anchor="end" font-family="'IBM Plex Mono', monospace" font-weight="300" font-size="9" fill="#C9A96E">1:100</text>
+            <text x="608" y="502" text-anchor="start" font-family="'IBM Plex Mono', monospace" font-weight="300" font-size="9" fill="#C9A96E">REV.A</text>
+          </svg>
+        </div>
+        <span>140px wide &mdash; Full logo minimum</span>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Clear Space -->
+    <h3>Clear Space</h3>
+    <p>Maintain a minimum clear space equal to 1x the height of the LK monogram on all sides of the rectangular frame. No other graphic elements, text, or visual clutter should encroach on this zone. The registration marks and annotations are considered part of the logo footprint.</p>
+    <div class="clearspace-demo">
+      <span class="clearspace-label top">1x</span>
+      <span class="clearspace-label right">1x</span>
+      <span class="clearspace-label bottom">1x</span>
+      <span class="clearspace-label left">1x</span>
+      <svg width="240" height="180" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="200" y="120" width="400" height="360" fill="none" stroke="#C9A96E" stroke-width="3"/>
+        <rect x="208" y="128" width="384" height="344" fill="none" stroke="#C9A96E" stroke-width="1"/>
+        <line x1="185" y1="120" x2="200" y2="120" stroke="#C9A96E" stroke-width="1.5"/>
+        <line x1="200" y1="105" x2="200" y2="120" stroke="#C9A96E" stroke-width="1.5"/>
+        <line x1="600" y1="120" x2="615" y2="120" stroke="#C9A96E" stroke-width="1.5"/>
+        <line x1="600" y1="105" x2="600" y2="120" stroke="#C9A96E" stroke-width="1.5"/>
+        <line x1="185" y1="480" x2="200" y2="480" stroke="#C9A96E" stroke-width="1.5"/>
+        <line x1="200" y1="480" x2="200" y2="495" stroke="#C9A96E" stroke-width="1.5"/>
+        <line x1="600" y1="480" x2="615" y2="480" stroke="#C9A96E" stroke-width="1.5"/>
+        <line x1="600" y1="480" x2="600" y2="495" stroke="#C9A96E" stroke-width="1.5"/>
+        <text x="400" y="310" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-weight="500" font-size="120" fill="#C9A96E" letter-spacing="12">LK</text>
+        <line x1="240" y1="345" x2="560" y2="345" stroke="#C9A96E" stroke-width="1.5"/>
+        <text x="400" y="390" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-weight="300" font-size="22" fill="#C9A96E" letter-spacing="6">DESIGN AND BUILD</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════ COLOUR ════════════════════════════════════════ -->
+<section id="colour">
+  <div class="container">
+    <span class="section-number">02</span>
+    <h2>Colour Palette</h2>
+    <p class="lead">A restrained palette that balances warmth with authority. Gold carries the brand identity; charcoal and deep black provide grounding; cream and white offer breathing room in layouts.</p>
+
+    <div class="palette">
+      <div class="swatch">
+        <div class="colour-block" style="background: #2C2C2C;"></div>
+        <div class="colour-info">
+          <div class="colour-name">Charcoal</div>
+          <div class="colour-val">
+            #2C2C2C<br>
+            RGB 44, 44, 44<br>
+            CMYK 0, 0, 0, 83
+          </div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="colour-block" style="background: #C9A96E;"></div>
+        <div class="colour-info">
+          <div class="colour-name">Gold</div>
+          <div class="colour-val">
+            #C9A96E<br>
+            RGB 201, 169, 110<br>
+            CMYK 0, 16, 45, 21
+          </div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="colour-block" style="background: #F5F0EB;"></div>
+        <div class="colour-info">
+          <div class="colour-name">Cream</div>
+          <div class="colour-val">
+            #F5F0EB<br>
+            RGB 245, 240, 235<br>
+            CMYK 0, 2, 4, 4
+          </div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="colour-block" style="background: #0A0F1A;"></div>
+        <div class="colour-info">
+          <div class="colour-name">Deep Black</div>
+          <div class="colour-val">
+            #0A0F1A<br>
+            RGB 10, 15, 26<br>
+            CMYK 62, 42, 0, 90
+          </div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="colour-block" style="background: #FFFFFF; border-bottom: 1px solid rgba(201,169,110,0.15);"></div>
+        <div class="colour-info">
+          <div class="colour-name">White</div>
+          <div class="colour-val">
+            #FFFFFF<br>
+            RGB 255, 255, 255<br>
+            CMYK 0, 0, 0, 0
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════ TYPOGRAPHY ════════════════════════════════════════ -->
+<section id="typography">
+  <div class="container">
+    <span class="section-number">03</span>
+    <h2>Typography</h2>
+    <p class="lead">Two typefaces form the typographic system. IBM Plex Mono carries the technical, precision voice of the brand and appears within the title block itself. Inter provides clean, readable body copy for extended text and UI elements.</p>
+
+    <div class="type-specimen mono">
+      <div class="type-name">IBM Plex Mono</div>
+      <div class="type-sample-large">ABCDEFGHIJKLM</div>
+      <div class="type-sample-large">nopqrstuvwxyz</div>
+      <div class="type-sample-large">0123456789</div>
+      <div class="type-sample-body" style="margin-top: 20px;">
+        Precision is not merely a standard — it is the foundation of everything we design and build. Every line, every measurement, every detail is deliberate.
+      </div>
+      <div class="type-usage">Use for: Logo, headings, captions, technical labels, navigation, monograms, drawing annotations</div>
+    </div>
+
+    <div class="type-specimen sans">
+      <div class="type-name">Inter</div>
+      <div class="type-sample-large" style="font-weight: 400;">ABCDEFGHIJKLM</div>
+      <div class="type-sample-large" style="font-weight: 400;">nopqrstuvwxyz</div>
+      <div class="type-sample-large" style="font-weight: 400;">0123456789</div>
+      <div class="type-sample-body" style="margin-top: 20px;">
+        We bring clarity to complexity. Our approach balances aesthetic ambition with structural integrity, delivering spaces that perform as beautifully as they look.
+      </div>
+      <div class="type-usage">Use for: Body copy, paragraphs, UI text, forms, long-form content</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════ VOICE ════════════════════════════════════════ -->
+<section id="voice">
+  <div class="container">
+    <span class="section-number">04</span>
+    <h2>Brand Voice</h2>
+    <p class="lead">The LK brand voice strikes a balance between professional authority and genuine approachability. We speak with the confidence of expertise without alienating our audience.</p>
+
+    <div class="voice-cards">
+      <div class="voice-card">
+        <h4>Premium</h4>
+        <p>We communicate quality through restraint. Our language is refined, never ostentatious. Every word earns its place, just as every design element earns its position.</p>
+      </div>
+      <div class="voice-card">
+        <h4>Precise</h4>
+        <p>Technical accuracy is non-negotiable. We use specific language, real measurements, and concrete details. Vague claims are replaced with demonstrable facts.</p>
+      </div>
+      <div class="voice-card">
+        <h4>Confident</h4>
+        <p>We state what we do clearly and directly. No hedging, no over-promising. The work speaks, and our words match its quality — nothing more, nothing less.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════ MISUSE ════════════════════════════════════════ -->
+<section id="misuse" style="border-bottom: none;">
+  <div class="container">
+    <span class="section-number">05</span>
+    <h2>Logo Misuse</h2>
+    <p class="lead">To protect the integrity of the LK Drawing Block identity, the following modifications are strictly prohibited. The logo must always appear exactly as specified in these guidelines.</p>
+
+    <div class="misuse-grid">
+      <div class="misuse-item">
+        <p>Do not stretch, squash, or distort the logo proportions. The rectangular frame must always maintain its original aspect ratio.</p>
+      </div>
+      <div class="misuse-item">
+        <p>Do not rotate the logo. The title block must always appear level and upright, as it would on an architectural drawing.</p>
+      </div>
+      <div class="misuse-item">
+        <p>Do not recolour the logo outside the approved palette. No gradients, no rainbow effects, no unapproved tints.</p>
+      </div>
+      <div class="misuse-item">
+        <p>Do not add drop shadows, glows, bevels, outlines, 3D effects, or any other visual treatments to the logo.</p>
+      </div>
+      <div class="misuse-item">
+        <p>Do not place the logo on busy photographs or patterned backgrounds that reduce legibility of the fine frame lines and annotations.</p>
+      </div>
+      <div class="misuse-item">
+        <p>Do not alter the spacing between the LK monogram, divider line, "DESIGN AND BUILD" tagline, or the technical annotations (DWG-001, 1:100, REV.A).</p>
+      </div>
+      <div class="misuse-item">
+        <p>Do not remove the corner registration marks or technical annotations. These elements are integral to the Drawing Block concept.</p>
+      </div>
+      <div class="misuse-item">
+        <p>Do not round the corners of the rectangular frame or convert it to any other shape. The sharp right angles are a defining characteristic.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>LK Design and Build &mdash; Drawing Block Brand Guidelines v1.0 &mdash; Confidential</p>
+</footer>
+
+</body>
+</html>

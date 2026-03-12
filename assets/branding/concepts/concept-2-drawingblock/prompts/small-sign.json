@@ -1,0 +1,9 @@
+{
+  "prompt": "Close-up product photograph of two branded sign items for a construction company. First: a brushed brass rectangular nameplate mounted beside a dark stained timber office door. The brass plate is etched with a rectangular double-line border frame containing 'LK' in monospace typeface medium weight centred in the upper portion, a thin horizontal divider line below, and 'DESIGN AND BUILD' in lighter monospace below the divider. Small corner registration marks at each corner of the rectangle. Tiny 'DWG-001' annotation outside the top-right corner. The etching is filled with dark patina against polished brass. Second: a black powder-coated steel A-frame sandwich board sign on the ground nearby, featuring the same rectangular drawing-block logo in gold vinyl — the double-line rectangular frame, LK above divider, DESIGN AND BUILD below, corner marks, technical annotations. The overall logo design resembles an architectural drawing title block. Warm interior lighting spilling from doorway, 50mm macro lens, f/2.8, shallow depth of field, photorealistic.",
+  "negative_prompt": "cheap, cartoon, blurry, distorted text, misspelled, bright colours, cluttered",
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "jpg",
+    "aspect_ratio": "16:9"
+  }
+}

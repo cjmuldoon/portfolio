@@ -1,0 +1,9 @@
+{
+  "prompt": "Professional commercial vehicle wrap photograph. A matte black Mercedes Sprinter van parked at an active construction site. On the side panel, a large rectangular logo rendered in gold vinyl that resembles a technical specification plate riveted to the vehicle. The logo consists of a rectangular double-line border frame, with 'LK' in monospace typeface medium weight centred in the upper portion inside the frame, a thin horizontal divider line below the LK, and 'DESIGN AND BUILD' in lighter weight monospace text below the divider. Small corner registration marks extend from each corner of the rectangle. A tiny 'DWG-001' annotation sits outside the top-right corner. The gold vinyl logo looks like an architectural drawing title block affixed to the van panel. A subtle gold pinstripe accent line runs along the lower body of the van. Construction scaffolding and building framework visible in background. Overcast sky. Shot on 35mm lens at f/4, photorealistic, editorial quality.",
+  "negative_prompt": "cheap, cartoon, blurry, distorted text, misspelled, bright colours, cluttered",
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "jpg",
+    "aspect_ratio": "16:9"
+  }
+}

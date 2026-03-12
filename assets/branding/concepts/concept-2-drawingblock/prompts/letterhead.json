@@ -1,0 +1,9 @@
+{
+  "prompt": "Overhead flat-lay photograph of A4 letterhead stationery on a dark architect's desk. The letterhead is printed on premium cream-coloured uncoated paper. At the top centre of the page is the rectangular drawing-block logo: a rectangular double-line border frame containing 'LK' in monospace typeface medium weight centred in the upper area, a thin horizontal divider line below, and 'DESIGN AND BUILD' in lighter monospace below the divider. Small corner registration marks at each corner of the rectangle. A tiny 'DWG-001' annotation outside the top-right corner. All logo elements printed in gold ink. Thin gold border lines run as header and footer rules across the page width. The body area shows placeholder text set in monospace typeface style. Props surrounding the letterhead include a mechanical drafting pencil, a triangular scale ruler, and architectural drawings partially visible. Dark timber desk surface. Shot overhead on 50mm lens at f/4, natural window light, photorealistic, design studio photography.",
+  "negative_prompt": "cheap, cartoon, blurry, distorted text, misspelled, bright colours, cluttered",
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "jpg",
+    "aspect_ratio": "16:9"
+  }
+}

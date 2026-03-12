@@ -1,0 +1,9 @@
+{
+  "prompt": "Wide-angle photograph of construction site hoarding panels along an Adelaide street. The hoarding consists of large matte black panels. Centred prominently on the panels is a large rectangular logo resembling an architectural drawing title block. The logo features a rectangular double-line border frame, with 'LK' in monospace typeface medium weight centred in the upper portion inside the frame, a thin horizontal divider line below the LK, and 'DESIGN AND BUILD' in lighter weight monospace text below the divider. Small corner registration marks extend from each corner of the rectangle. A tiny 'DWG-001' annotation outside the top-right corner. Below the main logo on the hoarding, small monospace text displays project details and technical information in neat columns. The gold logo and text contrast sharply against the matte black panels. Adelaide urban streetscape visible, pedestrians walking past, overcast sky. Shot on 24mm wide-angle lens, photorealistic, architectural documentation style.",
+  "negative_prompt": "cheap, cartoon, blurry, distorted text, misspelled, bright colours, cluttered",
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "jpg",
+    "aspect_ratio": "16:9"
+  }
+}

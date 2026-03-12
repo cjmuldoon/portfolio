@@ -1,0 +1,9 @@
+{
+  "prompt": "Dramatic exterior building signage photograph at evening dusk. A large rectangular logo sign mounted on a dark polished concrete facade. The sign is constructed from brushed stainless steel with a matte black face. It features a precise rectangular double-line border frame, inside which the letters 'LK' appear in a monospace typeface at medium weight, centred in the upper portion. Below the LK, a thin horizontal divider line spans the width of the frame, and beneath that divider the words 'DESIGN AND BUILD' appear in a lighter weight monospace typeface. Small corner registration marks extend beyond each corner of the rectangle. Tiny technical annotations reading 'DWG-001' appear outside the top-right corner of the frame. The entire logo is backlit, with the gold-toned elements glowing warmly against the dark concrete wall. The double-line border, letters, divider, and text all emit a warm golden illumination. The overall design resembles an architectural drawing title block or technical specification plate. Professional commercial building exterior, twilight sky with deep blue gradient. Shot on 85mm lens at f/1.8, shallow depth of field, cinematic colour grading, photorealistic.",
+  "negative_prompt": "cheap, cartoon, blurry, distorted text, misspelled, bright colours, cluttered",
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "jpg",
+    "aspect_ratio": "16:9"
+  }
+}
