@@ -1,0 +1,17 @@
+{
+  "prompt": "A seamless tileable dark architectural blueprint background texture. Deep navy blue (#0a0f1a) base with precisely drawn technical grid lines in lighter blue (#1a2a4a). The grid shows architectural construction details: faint floor plan outlines, structural beam notations, dimension lines with measurement arrows, section markers, and engineering annotations scattered across the surface. Drawn in thin white and cyan lines (opacity 15-25%) creating a subtle technical drawing feel. No specific building — just abstract architectural elements, hatching patterns, and technical notation marks arranged in a seamless repeating pattern. Photographed flat, perfectly even lighting, no shadows, no perspective distortion. Shot with 50mm macro lens, f/8, ISO 100, perfectly flat studio lighting. The overall effect should be a subtle, atmospheric background texture — not busy or overwhelming, but clearly suggesting technical precision and architectural drafting.",
+  "negative_prompt": "bright, colorful, busy, cluttered, 3D, perspective, shadows, realistic buildings, photographs, people, furniture, noisy, grainy, blurry",
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "jpg",
+    "aspect_ratio": "1:1"
+  },
+  "settings": {
+    "resolution": "2048x2048",
+    "style": "technical illustration, architectural drawing",
+    "lighting": "perfectly even, flat",
+    "camera_angle": "top-down, flat",
+    "depth_of_field": "infinite",
+    "quality": "high detail, clean lines"
+  }
+}

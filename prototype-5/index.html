@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LK Design and Build | Where Vision Meets Craftsmanship</title>
+<meta name="description" content="LK Design and Build - Premium Adelaide home renovation, interior design and building company. Where vision meets craftsmanship.">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        black: '#000000',
+        dark: '#111111',
+        darker: '#0a0a0a',
+        darkgrey: '#1a1a1a',
+        silver: '#C0C0C0',
+        platinum: '#E5E4E2',
+        gold: '#C9A96E',
+      },
+      fontFamily: {
+        italiana: ['Italiana', 'serif'],
+        inter: ['Inter', 'sans-serif'],
+      },
+    },
+  },
+}
+</script>
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; background: #000; color: #C0C0C0; overflow-x: hidden; cursor: default; }
+
+  /* Custom cursor glow */
+  .cursor-glow {
+    position: fixed;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(192,192,192,0.04) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.3s;
+  }
+
+  /* Ken Burns hero */
+  .ken-burns-container { position: relative; width: 100%; height: 100vh; overflow: hidden; }
+  .ken-burns-slide {
+    position: absolute; inset: 0;
+    background-size: cover; background-position: center;
+    opacity: 0;
+    animation: kenburns 28s ease-in-out infinite;
+  }
+  .ken-burns-slide:nth-child(1) { animation-delay: 0s; }
+  .ken-burns-slide:nth-child(2) { animation-delay: 7s; }
+  .ken-burns-slide:nth-child(3) { animation-delay: 14s; }
+  .ken-burns-slide:nth-child(4) { animation-delay: 21s; }
+
+  @keyframes kenburns {
+    0%   { opacity: 0; transform: scale(1); }
+    5%   { opacity: 1; }
+    25%  { opacity: 1; transform: scale(1.08); }
+    30%  { opacity: 0; transform: scale(1.1); }
+    100% { opacity: 0; transform: scale(1); }
+  }
+
+  /* Light leak overlay */
+  .light-leak {
+    background: linear-gradient(135deg, rgba(201,169,110,0.08) 0%, transparent 40%, transparent 60%, rgba(192,192,192,0.05) 100%);
+  }
+
+  /* Text reveal animation */
+  .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1); }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.15s; }
+  .reveal-delay-2 { transition-delay: 0.3s; }
+  .reveal-delay-3 { transition-delay: 0.45s; }
+  .reveal-delay-4 { transition-delay: 0.6s; }
+
+  /* Clip reveal */
+  .clip-reveal { clip-path: inset(0 0 100% 0); transition: clip-path 1s cubic-bezier(0.16, 1, 0.3, 1); }
+  .clip-reveal.visible { clip-path: inset(0 0 0 0); }
+
+  /* Line grow */
+  .line-grow { width: 0; transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
+  .line-grow.visible { width: 100%; }
+
+  /* Section divider */
+  .section-divider { height: 1px; background: linear-gradient(90deg, transparent, #C0C0C0 20%, #C0C0C0 80%, transparent); opacity: 0.2; }
+
+  /* Horizontal scroll projects */
+  .projects-scroll {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .projects-scroll::-webkit-scrollbar { display: none; }
+  .project-card {
+    flex: 0 0 85vw;
+    max-width: 900px;
+    scroll-snap-align: start;
+    margin-right: 2vw;
+  }
+  @media (min-width: 768px) {
+    .project-card { flex: 0 0 55vw; max-width: 900px; }
+  }
+  @media (min-width: 1280px) {
+    .project-card { flex: 0 0 40vw; }
+  }
+
+  .project-card img {
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .project-card:hover img {
+    transform: scale(1.03);
+  }
+
+  /* Number counter */
+  .stat-number { font-variant-numeric: tabular-nums; }
+
+  /* Nav */
+  .nav-blur { backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); background: rgba(0,0,0,0.7); }
+  .nav-link { position: relative; }
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: #C9A96E;
+    transition: width 0.3s ease;
+  }
+  .nav-link:hover::after { width: 100%; }
+
+  /* Mobile menu */
+  .mobile-menu {
+    transform: translateX(100%);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .mobile-menu.open { transform: translateX(0); }
+
+  /* Form inputs */
+  .form-input {
+    background: transparent;
+    border: 1px solid rgba(192,192,192,0.15);
+    color: #E5E4E2;
+    transition: border-color 0.3s;
+  }
+  .form-input:focus {
+    outline: none;
+    border-color: #C9A96E;
+  }
+  .form-input::placeholder { color: rgba(192,192,192,0.35); }
+
+  /* Watermark */
+  .watermark {
+    font-size: clamp(20rem, 40vw, 45rem);
+    line-height: 0.8;
+    opacity: 0.03;
+    user-select: none;
+    pointer-events: none;
+  }
+
+  /* Image overlay */
+  .img-overlay {
+    background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.5) 100%);
+  }
+
+  /* Gold button */
+  .btn-gold {
+    border: 1px solid #C9A96E;
+    color: #C9A96E;
+    transition: all 0.4s;
+    letter-spacing: 0.15em;
+  }
+  .btn-gold:hover {
+    background: #C9A96E;
+    color: #000;
+  }
+
+  /* Silver button */
+  .btn-silver {
+    border: 1px solid rgba(192,192,192,0.3);
+    color: #C0C0C0;
+    transition: all 0.4s;
+    letter-spacing: 0.1em;
+  }
+  .btn-silver:hover {
+    border-color: #C0C0C0;
+    color: #E5E4E2;
+  }
+
+  /* Scroll indicator */
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.4; transform: translateY(0); }
+    50% { opacity: 1; transform: translateY(6px); }
+  }
+  .scroll-indicator { animation: scrollPulse 2s ease-in-out infinite; }
+</style>
+</head>
+<body>
+
+<!-- Cursor Glow -->
+<div class="cursor-glow" id="cursorGlow"></div>
+
+<!-- Navigation -->
+<nav class="fixed top-0 left-0 right-0 z-50 nav-blur" id="navbar">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    <div class="flex items-center justify-between h-20">
+      <!-- Logo SVG -->
+      <a href="#hero" class="flex-shrink-0">
+        <svg viewBox="0 0 200 60" class="h-10 w-auto" xmlns="http://www.w3.org/2000/svg">
+          <text x="0" y="38" font-family="Italiana, serif" font-size="42" font-weight="400" fill="#E5E4E2" letter-spacing="4">LK</text>
+          <text x="0" y="55" font-family="Inter, sans-serif" font-size="8.5" font-weight="200" fill="#C0C0C0" letter-spacing="5.5">DESIGN AND BUILD</text>
+        </svg>
+      </a>
+
+      <!-- Desktop Nav -->
+      <div class="hidden md:flex items-center space-x-10">
+        <a href="#about" class="nav-link text-silver text-xs font-light tracking-[0.2em] uppercase hover:text-platinum transition-colors">About</a>
+        <a href="#services" class="nav-link text-silver text-xs font-light tracking-[0.2em] uppercase hover:text-platinum transition-colors">Services</a>
+        <a href="#projects" class="nav-link text-silver text-xs font-light tracking-[0.2em] uppercase hover:text-platinum transition-colors">Projects</a>
+        <a href="#contact" class="nav-link text-silver text-xs font-light tracking-[0.2em] uppercase hover:text-platinum transition-colors">Contact</a>
+        <a href="#contact" class="btn-gold px-6 py-2.5 text-xs uppercase tracking-[0.15em]">Book Consult</a>
+      </div>
+
+      <!-- Mobile Hamburger -->
+      <button class="md:hidden relative z-50 w-8 h-8 flex flex-col justify-center items-center" id="menuToggle" aria-label="Toggle menu">
+        <span class="block w-6 h-px bg-platinum transition-all duration-300" id="menuLine1"></span>
+        <span class="block w-6 h-px bg-platinum mt-1.5 transition-all duration-300" id="menuLine2"></span>
+        <span class="block w-4 h-px bg-platinum mt-1.5 transition-all duration-300 ml-auto" id="menuLine3"></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu fixed inset-0 z-40 bg-black flex flex-col items-center justify-center" id="mobileMenu">
+  <div class="flex flex-col items-center space-y-8">
+    <a href="#about" class="mobile-nav-link text-platinum text-2xl font-italiana tracking-[0.15em] uppercase">About</a>
+    <a href="#services" class="mobile-nav-link text-platinum text-2xl font-italiana tracking-[0.15em] uppercase">Services</a>
+    <a href="#projects" class="mobile-nav-link text-platinum text-2xl font-italiana tracking-[0.15em] uppercase">Projects</a>
+    <a href="#contact" class="mobile-nav-link text-platinum text-2xl font-italiana tracking-[0.15em] uppercase">Contact</a>
+    <div class="pt-6">
+      <a href="#contact" class="btn-gold px-8 py-3 text-sm uppercase tracking-[0.15em] mobile-nav-link">Book Consult</a>
+    </div>
+    <div class="pt-8 flex items-center space-x-6">
+      <a href="tel:0481742026" class="text-silver text-sm font-light">0481 742 026</a>
+      <span class="text-silver/30">|</span>
+      <a href="https://www.instagram.com/primedesignbuilt/" target="_blank" class="text-silver text-sm font-light hover:text-gold transition-colors">Instagram</a>
+    </div>
+  </div>
+</div>
+
+<!-- Hero Section -->
+<section id="hero" class="ken-burns-container relative">
+  <!-- Background slides -->
+  <div class="ken-burns-slide" style="background-image: url('../assets/images/hero-1.jpg');"></div>
+  <div class="ken-burns-slide" style="background-image: url('../assets/images/hero-2.jpg');"></div>
+  <div class="ken-burns-slide" style="background-image: url('../assets/images/hero-3.jpg');"></div>
+  <div class="ken-burns-slide" style="background-image: url('../assets/images/hero-4.jpg');"></div>
+
+  <!-- Dark overlay -->
+  <div class="absolute inset-0 bg-black/50 z-10"></div>
+  <div class="absolute inset-0 light-leak z-10"></div>
+
+  <!-- Watermark -->
+  <div class="absolute inset-0 flex items-center justify-center z-10">
+    <span class="watermark font-italiana text-white">LK</span>
+  </div>
+
+  <!-- Hero Content -->
+  <div class="absolute inset-0 flex flex-col items-center justify-center z-20 px-6 text-center">
+    <p class="text-silver text-xs tracking-[0.4em] uppercase font-light mb-6 reveal">Adelaide's Premier Design Studio</p>
+    <h1 class="font-italiana text-white text-5xl md:text-7xl lg:text-8xl tracking-wide reveal reveal-delay-1">Where Vision Meets</h1>
+    <h1 class="font-italiana text-white text-5xl md:text-7xl lg:text-8xl tracking-wide reveal reveal-delay-2">Craftsmanship</h1>
+    <div class="mt-10 flex flex-col sm:flex-row items-center gap-4 reveal reveal-delay-3">
+      <a href="#projects" class="btn-silver px-10 py-3.5 text-xs uppercase tracking-[0.2em]">View Portfolio</a>
+      <a href="#contact" class="btn-gold px-10 py-3.5 text-xs uppercase tracking-[0.2em]">Free Consultation</a>
+    </div>
+    <p class="mt-4 text-silver/50 text-xs tracking-wider reveal reveal-delay-4">Valued at $350 — Complimentary for a limited time</p>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 scroll-indicator">
+    <svg width="20" height="30" viewBox="0 0 20 30" fill="none" class="text-silver/50">
+      <rect x="1" y="1" width="18" height="28" rx="9" stroke="currentColor" stroke-width="1"/>
+      <circle cx="10" cy="10" r="2" fill="currentColor"/>
+    </svg>
+  </div>
+</section>
+
+<!-- Section Divider -->
+<div class="section-divider"></div>
+
+<!-- About Section -->
+<section id="about" class="bg-dark py-28 md:py-40 relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    <div class="grid md:grid-cols-2 gap-16 md:gap-24 items-center">
+      <div>
+        <p class="text-gold text-xs tracking-[0.3em] uppercase font-light mb-6 reveal">Our Philosophy</p>
+        <h2 class="font-italiana text-white text-4xl md:text-5xl lg:text-6xl leading-tight reveal reveal-delay-1">Design Without<br>Compromise</h2>
+        <div class="w-16 h-px bg-silver/30 mt-8 mb-8 reveal reveal-delay-2"></div>
+        <p class="text-silver/80 font-light leading-relaxed text-sm md:text-base reveal reveal-delay-2">
+          At LK Design and Build, we believe exceptional spaces are born from the intersection of bold vision and meticulous craftsmanship. Led by Lyda, our Adelaide-based studio brings a refined aesthetic sensibility to every project we undertake.
+        </p>
+        <p class="text-silver/80 font-light leading-relaxed text-sm md:text-base mt-6 reveal reveal-delay-3">
+          From intimate interior transformations to complete architectural builds, we approach each commission as a unique narrative — one that reflects the lives, aspirations, and individuality of those who inhabit it.
+        </p>
+        <a href="#contact" class="inline-block mt-10 btn-silver px-8 py-3 text-xs uppercase tracking-[0.2em] reveal reveal-delay-4">Start Your Journey</a>
+      </div>
+      <div class="relative reveal reveal-delay-2">
+        <div class="aspect-[3/4] overflow-hidden">
+          <img src="../assets/images/hero-2.jpg" alt="LK Design and Build Interior" class="w-full h-full object-cover" loading="lazy">
+          <div class="absolute inset-0 light-leak"></div>
+        </div>
+        <div class="absolute -bottom-6 -left-6 w-32 h-32 border border-silver/10"></div>
+        <div class="absolute -top-6 -right-6 w-32 h-32 border border-silver/10"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section Divider -->
+<div class="section-divider"></div>
+
+<!-- Services Section -->
+<section id="services" class="bg-black py-28 md:py-40 relative">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    <div class="text-center mb-20">
+      <p class="text-gold text-xs tracking-[0.3em] uppercase font-light mb-6 reveal">What We Do</p>
+      <h2 class="font-italiana text-white text-4xl md:text-5xl lg:text-6xl reveal reveal-delay-1">Our Expertise</h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-silver/10">
+      <!-- Interior Design -->
+      <div class="bg-black p-10 md:p-12 group reveal">
+        <div class="text-gold/60 text-5xl font-italiana mb-6 group-hover:text-gold transition-colors duration-500">01</div>
+        <h3 class="font-italiana text-white text-2xl mb-4">Interior<br>Design</h3>
+        <p class="text-silver/60 text-sm font-light leading-relaxed">Curated interiors that balance beauty with function. Every material, finish, and detail considered with intention.</p>
+      </div>
+
+      <!-- Renovations -->
+      <div class="bg-black p-10 md:p-12 group reveal reveal-delay-1">
+        <div class="text-gold/60 text-5xl font-italiana mb-6 group-hover:text-gold transition-colors duration-500">02</div>
+        <h3 class="font-italiana text-white text-2xl mb-4">Renovations</h3>
+        <p class="text-silver/60 text-sm font-light leading-relaxed">Thoughtful transformations that honour the character of existing spaces while elevating them to contemporary standards.</p>
+      </div>
+
+      <!-- Additions -->
+      <div class="bg-black p-10 md:p-12 group reveal reveal-delay-2">
+        <div class="text-gold/60 text-5xl font-italiana mb-6 group-hover:text-gold transition-colors duration-500">03</div>
+        <h3 class="font-italiana text-white text-2xl mb-4">Additions</h3>
+        <p class="text-silver/60 text-sm font-light leading-relaxed">Seamless extensions that feel as though they were always part of the original architecture. Space reimagined.</p>
+      </div>
+
+      <!-- New Builds -->
+      <div class="bg-black p-10 md:p-12 group reveal reveal-delay-3">
+        <div class="text-gold/60 text-5xl font-italiana mb-6 group-hover:text-gold transition-colors duration-500">04</div>
+        <h3 class="font-italiana text-white text-2xl mb-4">New<br>Builds</h3>
+        <p class="text-silver/60 text-sm font-light leading-relaxed">From concept to completion. Ground-up residences designed and built to the highest standard of quality and craft.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section Divider -->
+<div class="section-divider"></div>
+
+<!-- Projects Section -->
+<section id="projects" class="bg-darker py-28 md:py-40 relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12 mb-16">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between">
+      <div>
+        <p class="text-gold text-xs tracking-[0.3em] uppercase font-light mb-6 reveal">Selected Work</p>
+        <h2 class="font-italiana text-white text-4xl md:text-5xl lg:text-6xl reveal reveal-delay-1">Portfolio</h2>
+      </div>
+      <p class="text-silver/50 text-sm font-light mt-4 md:mt-0 reveal reveal-delay-2">Scroll to explore &rarr;</p>
+    </div>
+  </div>
+
+  <!-- Horizontal scroll -->
+  <div class="projects-scroll pl-6 lg:pl-12 pb-8 reveal">
+    <!-- Broadview -->
+    <div class="project-card">
+      <div class="aspect-[4/3] overflow-hidden relative">
+        <img src="../assets/images/project-broadview.jpg" alt="Broadview Project" class="w-full h-full object-cover" loading="lazy">
+        <div class="img-overlay absolute inset-0"></div>
+        <div class="absolute bottom-0 left-0 p-8">
+          <p class="text-gold/80 text-xs tracking-[0.3em] uppercase mb-2">Renovation</p>
+          <h3 class="font-italiana text-white text-3xl md:text-4xl">Broadview</h3>
+        </div>
+      </div>
+    </div>
+
+    <!-- Semaphore -->
+    <div class="project-card">
+      <div class="aspect-[4/3] overflow-hidden relative">
+        <img src="../assets/images/project-semaphore.jpg" alt="Semaphore Project" class="w-full h-full object-cover" loading="lazy">
+        <div class="img-overlay absolute inset-0"></div>
+        <div class="absolute bottom-0 left-0 p-8">
+          <p class="text-gold/80 text-xs tracking-[0.3em] uppercase mb-2">Coastal Living</p>
+          <h3 class="font-italiana text-white text-3xl md:text-4xl">Semaphore</h3>
+        </div>
+      </div>
+    </div>
+
+    <!-- OSR Fit Out -->
+    <div class="project-card">
+      <div class="aspect-[4/3] overflow-hidden relative">
+        <img src="../assets/images/project-osr.jpg" alt="OSR Fit Out" class="w-full h-full object-cover" loading="lazy">
+        <div class="img-overlay absolute inset-0"></div>
+        <div class="absolute bottom-0 left-0 p-8">
+          <p class="text-gold/80 text-xs tracking-[0.3em] uppercase mb-2">Commercial</p>
+          <h3 class="font-italiana text-white text-3xl md:text-4xl">OSR Fit Out</h3>
+        </div>
+      </div>
+    </div>
+
+    <!-- Unley -->
+    <div class="project-card">
+      <div class="aspect-[4/3] overflow-hidden relative">
+        <img src="../assets/images/project-unley.jpg" alt="Unley Project" class="w-full h-full object-cover" loading="lazy">
+        <div class="img-overlay absolute inset-0"></div>
+        <div class="absolute bottom-0 left-0 p-8">
+          <p class="text-gold/80 text-xs tracking-[0.3em] uppercase mb-2">Interior Design</p>
+          <h3 class="font-italiana text-white text-3xl md:text-4xl">Unley</h3>
+        </div>
+      </div>
+    </div>
+
+    <!-- Semaphore 2 -->
+    <div class="project-card">
+      <div class="aspect-[4/3] overflow-hidden relative">
+        <img src="../assets/images/project-semaphore2.jpg" alt="Semaphore Project Detail" class="w-full h-full object-cover" loading="lazy">
+        <div class="img-overlay absolute inset-0"></div>
+        <div class="absolute bottom-0 left-0 p-8">
+          <p class="text-gold/80 text-xs tracking-[0.3em] uppercase mb-2">Addition</p>
+          <h3 class="font-italiana text-white text-3xl md:text-4xl">Semaphore II</h3>
+        </div>
+      </div>
+    </div>
+
+    <!-- Semaphore 3 -->
+    <div class="project-card">
+      <div class="aspect-[4/3] overflow-hidden relative">
+        <img src="../assets/images/project-semaphore3.jpg" alt="Semaphore Project Detail" class="w-full h-full object-cover" loading="lazy">
+        <div class="img-overlay absolute inset-0"></div>
+        <div class="absolute bottom-0 left-0 p-8">
+          <p class="text-gold/80 text-xs tracking-[0.3em] uppercase mb-2">Living Spaces</p>
+          <h3 class="font-italiana text-white text-3xl md:text-4xl">Semaphore III</h3>
+        </div>
+      </div>
+    </div>
+
+    <!-- Spacer at end -->
+    <div class="flex-shrink-0 w-6 lg:w-12"></div>
+  </div>
+</section>
+
+<!-- Section Divider -->
+<div class="section-divider"></div>
+
+<!-- Stats Section -->
+<section class="bg-dark py-28 md:py-36 relative">
+  <div class="max-w-6xl mx-auto px-6 lg:px-12">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-12 md:gap-8 text-center">
+      <div class="reveal">
+        <div class="stat-number font-italiana text-white text-5xl md:text-6xl lg:text-7xl" data-target="50" data-suffix="+">0</div>
+        <div class="w-8 h-px bg-gold/40 mx-auto mt-4 mb-4"></div>
+        <p class="text-silver/60 text-xs tracking-[0.2em] uppercase font-light">Projects Delivered</p>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <div class="stat-number font-italiana text-white text-5xl md:text-6xl lg:text-7xl" data-target="15" data-suffix="">0</div>
+        <div class="w-8 h-px bg-gold/40 mx-auto mt-4 mb-4"></div>
+        <p class="text-silver/60 text-xs tracking-[0.2em] uppercase font-light">Years Experience</p>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <div class="stat-number font-italiana text-white text-5xl md:text-6xl lg:text-7xl" data-target="100" data-suffix="%">0</div>
+        <div class="w-8 h-px bg-gold/40 mx-auto mt-4 mb-4"></div>
+        <p class="text-silver/60 text-xs tracking-[0.2em] uppercase font-light">Client Satisfaction</p>
+      </div>
+      <div class="reveal reveal-delay-3">
+        <div class="stat-number font-italiana text-white text-5xl md:text-6xl lg:text-7xl" data-target="350" data-prefix="$" data-suffix="">0</div>
+        <div class="w-8 h-px bg-gold/40 mx-auto mt-4 mb-4"></div>
+        <p class="text-silver/60 text-xs tracking-[0.2em] uppercase font-light">Free Consult Value</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section Divider -->
+<div class="section-divider"></div>
+
+<!-- Contact Section -->
+<section id="contact" class="bg-black py-28 md:py-40 relative">
+  <div class="max-w-4xl mx-auto px-6 lg:px-12">
+    <div class="text-center mb-16">
+      <p class="text-gold text-xs tracking-[0.3em] uppercase font-light mb-6 reveal">Get In Touch</p>
+      <h2 class="font-italiana text-white text-4xl md:text-5xl lg:text-6xl reveal reveal-delay-1">Begin Your<br>Transformation</h2>
+      <p class="text-silver/60 text-sm font-light mt-6 max-w-lg mx-auto reveal reveal-delay-2">Book your complimentary design consultation, valued at $350. Let us bring your vision to life.</p>
+    </div>
+
+    <form class="space-y-6 max-w-2xl mx-auto reveal reveal-delay-2" onsubmit="event.preventDefault();">
+      <div class="grid md:grid-cols-2 gap-6">
+        <input type="text" placeholder="Your Name" class="form-input w-full px-5 py-4 text-sm font-light tracking-wide" required>
+        <input type="email" placeholder="Email Address" class="form-input w-full px-5 py-4 text-sm font-light tracking-wide" required>
+      </div>
+      <input type="tel" placeholder="Phone Number" class="form-input w-full px-5 py-4 text-sm font-light tracking-wide">
+      <select class="form-input w-full px-5 py-4 text-sm font-light tracking-wide appearance-none">
+        <option value="" disabled selected style="color: rgba(192,192,192,0.35);">Project Type</option>
+        <option value="interior">Interior Design</option>
+        <option value="renovation">Renovation</option>
+        <option value="addition">Addition</option>
+        <option value="new-build">New Build</option>
+      </select>
+      <textarea placeholder="Tell us about your project..." rows="4" class="form-input w-full px-5 py-4 text-sm font-light tracking-wide resize-none"></textarea>
+      <div class="text-center pt-4">
+        <button type="submit" class="btn-gold px-14 py-4 text-xs uppercase tracking-[0.2em] w-full md:w-auto">Book Free Consultation</button>
+      </div>
+    </form>
+
+    <!-- Contact details -->
+    <div class="mt-20 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 text-center reveal reveal-delay-3">
+      <a href="tel:0481742026" class="text-silver/70 text-sm font-light hover:text-platinum transition-colors tracking-wider">0481 742 026</a>
+      <span class="hidden md:block text-silver/20">|</span>
+      <a href="mailto:hello@lkdesignandbuild.com.au" class="text-silver/70 text-sm font-light hover:text-platinum transition-colors tracking-wider">hello@lkdesignandbuild.com.au</a>
+      <span class="hidden md:block text-silver/20">|</span>
+      <span class="text-silver/70 text-sm font-light tracking-wider">Adelaide, South Australia</span>
+    </div>
+  </div>
+</section>
+
+<!-- Section Divider -->
+<div class="section-divider"></div>
+
+<!-- Footer -->
+<footer class="bg-black py-16 relative">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+      <!-- Footer Logo -->
+      <a href="#hero">
+        <svg viewBox="0 0 200 60" class="h-8 w-auto opacity-50 hover:opacity-80 transition-opacity" xmlns="http://www.w3.org/2000/svg">
+          <text x="0" y="38" font-family="Italiana, serif" font-size="42" font-weight="400" fill="#C0C0C0" letter-spacing="4">LK</text>
+          <text x="0" y="55" font-family="Inter, sans-serif" font-size="8.5" font-weight="200" fill="#C0C0C0" letter-spacing="5.5">DESIGN AND BUILD</text>
+        </svg>
+      </a>
+
+      <!-- Footer links -->
+      <div class="flex items-center gap-8">
+        <a href="https://www.instagram.com/primedesignbuilt/" target="_blank" rel="noopener" class="text-silver/40 text-xs tracking-[0.2em] uppercase hover:text-silver transition-colors">Instagram</a>
+        <a href="mailto:hello@lkdesignandbuild.com.au" class="text-silver/40 text-xs tracking-[0.2em] uppercase hover:text-silver transition-colors">Email</a>
+        <a href="tel:0481742026" class="text-silver/40 text-xs tracking-[0.2em] uppercase hover:text-silver transition-colors">Call</a>
+      </div>
+    </div>
+
+    <div class="mt-12 pt-8 border-t border-silver/5 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-silver/25 text-xs font-light tracking-wider">&copy; 2026 LK Design and Build. All rights reserved.</p>
+      <p class="text-silver/25 text-xs font-light tracking-wider">Adelaide, South Australia</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Cursor glow
+const glow = document.getElementById('cursorGlow');
+let glowVisible = false;
+document.addEventListener('mousemove', (e) => {
+  if (!glowVisible) { glow.style.opacity = '1'; glowVisible = true; }
+  glow.style.left = e.clientX + 'px';
+  glow.style.top = e.clientY + 'px';
+});
+document.addEventListener('mouseleave', () => { glow.style.opacity = '0'; glowVisible = false; });
+
+// Mobile menu
+const menuToggle = document.getElementById('menuToggle');
+const mobileMenu = document.getElementById('mobileMenu');
+const menuLine1 = document.getElementById('menuLine1');
+const menuLine2 = document.getElementById('menuLine2');
+const menuLine3 = document.getElementById('menuLine3');
+let menuOpen = false;
+
+menuToggle.addEventListener('click', () => {
+  menuOpen = !menuOpen;
+  mobileMenu.classList.toggle('open');
+  if (menuOpen) {
+    menuLine1.style.transform = 'rotate(45deg) translate(3px, 3px)';
+    menuLine2.style.opacity = '0';
+    menuLine3.style.transform = 'rotate(-45deg) translate(3px, -3px)';
+    menuLine3.style.width = '1.5rem';
+    document.body.style.overflow = 'hidden';
+  } else {
+    menuLine1.style.transform = '';
+    menuLine2.style.opacity = '1';
+    menuLine3.style.transform = '';
+    menuLine3.style.width = '1rem';
+    document.body.style.overflow = '';
+  }
+});
+
+document.querySelectorAll('.mobile-nav-link').forEach(link => {
+  link.addEventListener('click', () => {
+    menuOpen = false;
+    mobileMenu.classList.remove('open');
+    menuLine1.style.transform = '';
+    menuLine2.style.opacity = '1';
+    menuLine3.style.transform = '';
+    menuLine3.style.width = '1rem';
+    document.body.style.overflow = '';
+  });
+});
+
+// Intersection Observer for reveal animations
+const observerOptions = { threshold: 0.15, rootMargin: '0px 0px -50px 0px' };
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('.reveal, .clip-reveal, .line-grow').forEach(el => observer.observe(el));
+
+// Stat counter animation
+const statObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const target = parseInt(el.dataset.target);
+      const prefix = el.dataset.prefix || '';
+      const suffix = el.dataset.suffix || '';
+      let current = 0;
+      const increment = target / 60;
+      const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+          current = target;
+          clearInterval(timer);
+        }
+        el.textContent = prefix + Math.round(current) + suffix;
+      }, 25);
+      statObserver.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('.stat-number').forEach(el => statObserver.observe(el));
+
+// Navbar background on scroll
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 80) {
+    navbar.style.borderBottom = '1px solid rgba(192,192,192,0.05)';
+  } else {
+    navbar.style.borderBottom = 'none';
+  }
+});
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+
+</body>
+</html>

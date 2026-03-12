@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LK Design and Build | Where Vision Takes Form | Adelaide Home Renovations</title>
+<meta name="description" content="LK Design and Build - Premium Adelaide home renovation, interior design, additions and new builds. Where Vision Takes Form.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        charcoal: '#2C2C2C',
+        'deep-black': '#1A1A1A',
+        gold: '#C9A96E',
+        'gold-light': '#D4B87A',
+        'gold-dark': '#B8944F',
+        cream: '#E8E4DF',
+      },
+      fontFamily: {
+        display: ['Playfair Display', 'serif'],
+        body: ['Jost', 'sans-serif'],
+      },
+    },
+  },
+}
+</script>
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; scrollbar-width: thin; scrollbar-color: #C9A96E #1A1A1A; }
+  body { font-family: 'Jost', sans-serif; background: #1A1A1A; color: #E8E4DF; overflow-x: hidden; }
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: #1A1A1A; }
+  ::-webkit-scrollbar-thumb { background: #C9A96E; border-radius: 3px; }
+  ::selection { background: #C9A96E; color: #1A1A1A; }
+
+  /* Ken Burns */
+  @keyframes kenBurns1 {
+    0% { transform: scale(1) translate(0, 0); }
+    50% { transform: scale(1.12) translate(-1.5%, -1%); }
+    100% { transform: scale(1) translate(0, 0); }
+  }
+  @keyframes kenBurns2 {
+    0% { transform: scale(1.05) translate(-1%, 0); }
+    50% { transform: scale(1.15) translate(1%, -1.5%); }
+    100% { transform: scale(1.05) translate(-1%, 0); }
+  }
+  .ken-burns-1 { animation: kenBurns1 18s ease-in-out infinite; }
+  .ken-burns-2 { animation: kenBurns2 20s ease-in-out infinite; }
+
+  /* Hero shimmer */
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+  .hero-shimmer {
+    background: linear-gradient(105deg, transparent 40%, rgba(201,169,110,0.03) 45%, rgba(201,169,110,0.06) 50%, rgba(201,169,110,0.03) 55%, transparent 60%);
+    background-size: 200% 100%;
+    animation: shimmer 8s ease-in-out infinite;
+  }
+
+  /* Gold particles */
+  @keyframes particleFloat1 { 0%,100% { transform: translate(0,0) scale(1); opacity: 0.3; } 25% { transform: translate(15px,-25px) scale(1.2); opacity: 0.6; } 50% { transform: translate(-10px,-50px) scale(0.8); opacity: 0.4; } 75% { transform: translate(20px,-30px) scale(1.1); opacity: 0.5; } }
+  @keyframes particleFloat2 { 0%,100% { transform: translate(0,0) scale(0.8); opacity: 0.2; } 33% { transform: translate(-20px,-35px) scale(1.3); opacity: 0.5; } 66% { transform: translate(10px,-60px) scale(0.9); opacity: 0.3; } }
+  @keyframes particleFloat3 { 0%,100% { transform: translate(0,0) scale(1.1); opacity: 0.4; } 50% { transform: translate(25px,-45px) scale(0.7); opacity: 0.2; } }
+
+  .particle {
+    position: absolute;
+    width: 3px; height: 3px;
+    background: #C9A96E;
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .particle:nth-child(odd) { animation: particleFloat1 12s ease-in-out infinite; }
+  .particle:nth-child(even) { animation: particleFloat2 15s ease-in-out infinite; }
+  .particle:nth-child(3n) { animation: particleFloat3 18s ease-in-out infinite; }
+
+  /* Scroll indicator */
+  @keyframes scrollBounce {
+    0%, 100% { transform: translateY(0); opacity: 1; }
+    50% { transform: translateY(10px); opacity: 0.4; }
+  }
+  .scroll-indicator { animation: scrollBounce 2s ease-in-out infinite; }
+
+  /* Curtain reveal */
+  .curtain-wrap { position: relative; overflow: hidden; }
+  .curtain-overlay {
+    position: absolute; inset: 0;
+    background: #2C2C2C;
+    z-index: 2;
+    transform-origin: left center;
+    transition: transform 1.4s cubic-bezier(0.77, 0, 0.175, 1);
+  }
+  .curtain-wrap.revealed .curtain-overlay { transform: translateX(101%); }
+
+  /* Fade-in on scroll */
+  .fade-up {
+    opacity: 0; transform: translateY(40px);
+    transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+  }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+  .fade-up.delay-1 { transition-delay: 0.15s; }
+  .fade-up.delay-2 { transition-delay: 0.3s; }
+  .fade-up.delay-3 { transition-delay: 0.45s; }
+  .fade-up.delay-4 { transition-delay: 0.6s; }
+
+  /* Letterbox project */
+  .letterbox {
+    aspect-ratio: 21/9;
+    position: relative; overflow: hidden;
+  }
+  @media (max-width: 768px) { .letterbox { aspect-ratio: 16/9; } }
+
+  /* Side nav dots */
+  .side-nav { position: fixed; right: 24px; top: 50%; transform: translateY(-50%); z-index: 50; }
+  .side-nav a {
+    display: block; width: 10px; height: 10px;
+    border: 1.5px solid #C9A96E; border-radius: 50%;
+    margin: 14px 0; transition: all 0.4s ease;
+    position: relative;
+  }
+  .side-nav a::after {
+    content: attr(data-label);
+    position: absolute; right: 22px; top: 50%; transform: translateY(-50%);
+    font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 300;
+    color: #C9A96E; white-space: nowrap;
+    opacity: 0; transition: opacity 0.3s ease; pointer-events: none;
+    letter-spacing: 1px; text-transform: uppercase;
+  }
+  .side-nav a:hover::after { opacity: 1; }
+  .side-nav a.active { background: #C9A96E; transform: scale(1.3); }
+  @media (max-width: 768px) { .side-nav { right: 12px; } .side-nav a { width: 7px; height: 7px; margin: 10px 0; } .side-nav a::after { display: none; } }
+
+  /* Counter animation */
+  .counter { font-variant-numeric: tabular-nums; }
+
+  /* Nav */
+  .nav-blur { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+
+  /* Form inputs */
+  .form-input {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(201,169,110,0.2);
+    transition: all 0.4s ease;
+    font-family: 'Jost', sans-serif;
+  }
+  .form-input:focus {
+    outline: none;
+    border-color: #C9A96E;
+    background: rgba(201,169,110,0.05);
+    box-shadow: 0 0 20px rgba(201,169,110,0.08);
+  }
+
+  /* Mobile menu */
+  .mobile-menu {
+    transform: translateX(100%);
+    transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+  }
+  .mobile-menu.open { transform: translateX(0); }
+
+  /* Gradient dividers */
+  .gradient-divider {
+    height: 120px;
+    background: linear-gradient(to bottom, #2C2C2C, #1A1A1A);
+  }
+  .gradient-divider-reverse {
+    height: 120px;
+    background: linear-gradient(to bottom, #1A1A1A, #2C2C2C);
+  }
+
+  /* Gold line animation */
+  @keyframes goldLineExpand {
+    from { width: 0; }
+    to { width: 80px; }
+  }
+  .gold-line.visible { animation: goldLineExpand 1s ease-out forwards; }
+
+  /* Service card hover */
+  .service-card {
+    transition: all 0.5s ease;
+    border: 1px solid rgba(201,169,110,0.08);
+  }
+  .service-card:hover {
+    border-color: rgba(201,169,110,0.3);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  }
+</style>
+</head>
+<body>
+
+<!-- GOLD PARTICLES (global) -->
+<div id="particles" class="fixed inset-0 pointer-events-none z-0" aria-hidden="true"></div>
+
+<!-- NAVIGATION -->
+<nav id="mainNav" class="fixed top-0 left-0 w-full z-50 transition-all duration-700">
+  <div class="max-w-7xl mx-auto px-6 md:px-10 flex items-center justify-between h-20">
+    <!-- Logo SVG -->
+    <a href="#hero" class="relative z-50">
+      <svg viewBox="0 0 200 60" width="140" height="42" xmlns="http://www.w3.org/2000/svg">
+        <text x="10" y="34" font-family="Playfair Display, serif" font-size="36" font-weight="600" fill="#C9A96E">LK</text>
+        <line x1="10" y1="42" x2="62" y2="42" stroke="#C9A96E" stroke-width="0.7"/>
+        <text x="10" y="55" font-family="Jost, sans-serif" font-size="9" font-weight="200" fill="#E8E4DF" letter-spacing="3.5">DESIGN AND BUILD</text>
+      </svg>
+    </a>
+    <!-- Desktop Nav -->
+    <div class="hidden md:flex items-center gap-10">
+      <a href="#about" class="font-body text-sm font-light tracking-widest uppercase text-cream/70 hover:text-gold transition-colors duration-300">About</a>
+      <a href="#services" class="font-body text-sm font-light tracking-widest uppercase text-cream/70 hover:text-gold transition-colors duration-300">Services</a>
+      <a href="#projects" class="font-body text-sm font-light tracking-widest uppercase text-cream/70 hover:text-gold transition-colors duration-300">Projects</a>
+      <a href="#testimonial" class="font-body text-sm font-light tracking-widest uppercase text-cream/70 hover:text-gold transition-colors duration-300">Testimonials</a>
+      <a href="#contact" class="ml-4 px-6 py-2.5 border border-gold/40 text-gold text-sm font-light tracking-widest uppercase hover:bg-gold hover:text-deep-black transition-all duration-500">Contact</a>
+    </div>
+    <!-- Mobile Burger -->
+    <button id="menuBtn" class="md:hidden relative z-50 w-8 h-8 flex flex-col justify-center items-center gap-1.5" aria-label="Menu">
+      <span class="burger-line w-6 h-px bg-cream transition-all duration-300"></span>
+      <span class="burger-line w-6 h-px bg-cream transition-all duration-300"></span>
+      <span class="burger-line w-4 h-px bg-cream transition-all duration-300 self-end"></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div id="mobileMenu" class="mobile-menu fixed inset-0 z-40 bg-deep-black/98 flex flex-col items-center justify-center gap-8">
+  <a href="#about" class="mobile-link font-display text-2xl text-cream/80 hover:text-gold transition-colors">About</a>
+  <a href="#services" class="mobile-link font-display text-2xl text-cream/80 hover:text-gold transition-colors">Services</a>
+  <a href="#projects" class="mobile-link font-display text-2xl text-cream/80 hover:text-gold transition-colors">Projects</a>
+  <a href="#testimonial" class="mobile-link font-display text-2xl text-cream/80 hover:text-gold transition-colors">Testimonials</a>
+  <a href="#contact" class="mobile-link font-display text-2xl text-gold">Contact</a>
+  <div class="mt-8 text-center">
+    <a href="tel:0481742026" class="block text-cream/50 font-body text-sm tracking-wider mb-2">0481 742 026</a>
+    <a href="mailto:hello@lkdesignandbuild.com.au" class="block text-cream/50 font-body text-sm tracking-wider">hello@lkdesignandbuild.com.au</a>
+  </div>
+</div>
+
+<!-- SIDE NAVIGATION DOTS -->
+<div class="side-nav hidden md:block">
+  <a href="#hero" data-section="hero" data-label="Home" class="active"></a>
+  <a href="#about" data-section="about" data-label="About"></a>
+  <a href="#services" data-section="services" data-label="Services"></a>
+  <a href="#projects" data-section="projects" data-label="Projects"></a>
+  <a href="#testimonial" data-section="testimonial" data-label="Words"></a>
+  <a href="#stats" data-section="stats" data-label="Numbers"></a>
+  <a href="#contact" data-section="contact" data-label="Contact"></a>
+</div>
+
+<!-- ============================================================ -->
+<!-- HERO -->
+<!-- ============================================================ -->
+<section id="hero" class="relative h-screen bg-charcoal overflow-hidden">
+  <!-- Hero image -->
+  <div class="absolute inset-0">
+    <img src="../assets/images/hero-1.jpg" alt="Luxury interior design by LK Design and Build" class="w-full h-full object-cover ken-burns-1 opacity-40">
+  </div>
+  <!-- Shimmer overlay -->
+  <div class="hero-shimmer absolute inset-0 z-10"></div>
+  <!-- Dark vignette -->
+  <div class="absolute inset-0 z-10 bg-gradient-to-t from-deep-black via-transparent to-deep-black/60"></div>
+  <!-- Content -->
+  <div class="relative z-20 h-full flex flex-col items-center justify-center text-center px-6">
+    <div class="fade-up">
+      <h1 class="font-display text-5xl md:text-7xl lg:text-8xl font-medium text-cream leading-tight tracking-tight">
+        Where Vision<br><span class="text-gold italic">Takes Form</span>
+      </h1>
+    </div>
+    <div class="fade-up delay-1 mt-6">
+      <div class="gold-line h-px bg-gold mx-auto" style="width:80px"></div>
+    </div>
+    <div class="fade-up delay-2 mt-8">
+      <p class="font-body text-base md:text-lg font-light text-cream/60 tracking-wider max-w-xl">
+        Premium home renovation &amp; interior design — Adelaide
+      </p>
+    </div>
+    <div class="fade-up delay-3 mt-12">
+      <a href="#contact" class="inline-block px-10 py-4 border border-gold/50 text-gold font-body text-sm font-light tracking-[0.25em] uppercase hover:bg-gold hover:text-deep-black transition-all duration-500">
+        Book Your Free Consultation
+      </a>
+    </div>
+  </div>
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 scroll-indicator">
+    <svg width="20" height="30" viewBox="0 0 20 30" fill="none" class="opacity-40">
+      <rect x="1" y="1" width="18" height="28" rx="9" stroke="#C9A96E" stroke-width="1"/>
+      <circle cx="10" cy="10" r="2" fill="#C9A96E">
+        <animate attributeName="cy" values="10;18;10" dur="2s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite"/>
+      </circle>
+    </svg>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- ABOUT -->
+<!-- ============================================================ -->
+<div class="gradient-divider-reverse"></div>
+<section id="about" class="bg-charcoal py-24 md:py-32 relative">
+  <div class="max-w-6xl mx-auto px-6 md:px-10">
+    <div class="grid md:grid-cols-2 gap-16 md:gap-24 items-center">
+      <div>
+        <p class="fade-up font-body text-xs font-light tracking-[0.3em] uppercase text-gold mb-6">About LK Design and Build</p>
+        <h2 class="fade-up delay-1 font-display text-4xl md:text-5xl text-cream leading-snug">
+          Crafting spaces that <span class="italic text-gold">inspire</span>
+        </h2>
+        <div class="fade-up delay-2 w-16 h-px bg-gold/40 mt-8 mb-8"></div>
+        <p class="fade-up delay-2 font-body text-base font-light text-cream/60 leading-relaxed mb-6">
+          At LK Design and Build, we believe your home should be a reflection of who you are. Led by Lyda, our Adelaide-based studio brings together interior design expertise and construction craftsmanship to deliver spaces that are as functional as they are beautiful.
+        </p>
+        <p class="fade-up delay-3 font-body text-base font-light text-cream/60 leading-relaxed">
+          From concept to completion, we manage every detail. Whether it's a contemporary renovation, a sensitive heritage restoration, or a complete new build, we approach every project with the same uncompromising commitment to quality and design integrity.
+        </p>
+      </div>
+      <div class="fade-up delay-2 relative">
+        <div class="curtain-wrap rounded-sm overflow-hidden">
+          <div class="curtain-overlay"></div>
+          <img src="../assets/images/hero-2.jpg" alt="Interior design detail" class="w-full h-[500px] object-cover ken-burns-2">
+        </div>
+        <div class="absolute -bottom-6 -left-6 w-32 h-32 border border-gold/10"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SERVICES -->
+<!-- ============================================================ -->
+<div class="gradient-divider" style="background: linear-gradient(to bottom, #2C2C2C, #1A1A1A);"></div>
+<section id="services" class="bg-deep-black py-24 md:py-32 relative">
+  <div class="max-w-6xl mx-auto px-6 md:px-10">
+    <div class="text-center mb-20">
+      <p class="fade-up font-body text-xs font-light tracking-[0.3em] uppercase text-gold mb-6">What We Do</p>
+      <h2 class="fade-up delay-1 font-display text-4xl md:text-5xl text-cream">Our Services</h2>
+      <div class="fade-up delay-2 w-16 h-px bg-gold/40 mt-8 mx-auto"></div>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <!-- Interior Design -->
+      <div class="fade-up service-card bg-charcoal/50 p-8 md:p-10 rounded-sm">
+        <div class="w-10 h-10 mb-6 flex items-center justify-center">
+          <svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#C9A96E" stroke-width="1">
+            <rect x="4" y="8" width="32" height="24" rx="1"/>
+            <line x1="4" y1="20" x2="36" y2="20"/>
+            <line x1="20" y1="8" x2="20" y2="32"/>
+            <circle cx="12" cy="14" r="2"/>
+          </svg>
+        </div>
+        <h3 class="font-display text-xl text-cream mb-3">Interior Design</h3>
+        <p class="font-body text-sm font-light text-cream/50 leading-relaxed">Bespoke interiors that balance aesthetics with the way you actually live. Material palettes, spatial planning, and curated finishes.</p>
+      </div>
+      <!-- Renovations -->
+      <div class="fade-up delay-1 service-card bg-charcoal/50 p-8 md:p-10 rounded-sm">
+        <div class="w-10 h-10 mb-6 flex items-center justify-center">
+          <svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#C9A96E" stroke-width="1">
+            <path d="M8 32 L20 8 L32 32 Z"/>
+            <line x1="12" y1="24" x2="28" y2="24"/>
+            <line x1="14" y1="28" x2="26" y2="28"/>
+          </svg>
+        </div>
+        <h3 class="font-display text-xl text-cream mb-3">Renovations</h3>
+        <p class="font-body text-sm font-light text-cream/50 leading-relaxed">Transforming existing homes with considered design and expert construction. Kitchens, bathrooms, living spaces, and full-home renovations.</p>
+      </div>
+      <!-- Additions -->
+      <div class="fade-up delay-2 service-card bg-charcoal/50 p-8 md:p-10 rounded-sm">
+        <div class="w-10 h-10 mb-6 flex items-center justify-center">
+          <svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#C9A96E" stroke-width="1">
+            <rect x="4" y="14" width="18" height="18" rx="1"/>
+            <rect x="18" y="8" width="18" height="24" rx="1" stroke-dasharray="3 2"/>
+            <line x1="24" y1="16" x2="30" y2="16"/>
+            <line x1="27" y1="13" x2="27" y2="19"/>
+          </svg>
+        </div>
+        <h3 class="font-display text-xl text-cream mb-3">Additions</h3>
+        <p class="font-body text-sm font-light text-cream/50 leading-relaxed">Seamless extensions that feel like they were always part of your home. Second storeys, rear extensions, and studio additions.</p>
+      </div>
+      <!-- New Builds -->
+      <div class="fade-up delay-3 service-card bg-charcoal/50 p-8 md:p-10 rounded-sm">
+        <div class="w-10 h-10 mb-6 flex items-center justify-center">
+          <svg viewBox="0 0 40 40" width="40" height="40" fill="none" stroke="#C9A96E" stroke-width="1">
+            <path d="M20 4 L36 16 L36 36 L4 36 L4 16 Z"/>
+            <rect x="15" y="22" width="10" height="14"/>
+            <line x1="20" y1="22" x2="20" y2="36"/>
+          </svg>
+        </div>
+        <h3 class="font-display text-xl text-cream mb-3">New Builds</h3>
+        <p class="font-body text-sm font-light text-cream/50 leading-relaxed">From the ground up, designed and built as one seamless process. Your vision, our expertise, a home without compromise.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- PROJECTS -->
+<!-- ============================================================ -->
+<div class="gradient-divider-reverse" style="background: linear-gradient(to bottom, #1A1A1A, #2C2C2C);"></div>
+<section id="projects" class="bg-charcoal relative">
+  <div class="text-center py-24 md:py-32 px-6">
+    <p class="fade-up font-body text-xs font-light tracking-[0.3em] uppercase text-gold mb-6">Selected Work</p>
+    <h2 class="fade-up delay-1 font-display text-4xl md:text-5xl text-cream">Our Projects</h2>
+    <div class="fade-up delay-2 w-16 h-px bg-gold/40 mt-8 mx-auto"></div>
+  </div>
+
+  <!-- Project: Broadview -->
+  <div class="project-section min-h-screen flex flex-col justify-center py-12 md:py-20 px-6 md:px-10 bg-deep-black">
+    <div class="max-w-7xl mx-auto w-full">
+      <div class="fade-up mb-8">
+        <p class="font-body text-xs font-light tracking-[0.3em] uppercase text-gold/60 mb-2">01</p>
+        <h3 class="font-display text-3xl md:text-4xl text-cream">Broadview</h3>
+        <p class="font-body text-sm font-light text-cream/40 mt-2 max-w-md">A complete home renovation bringing contemporary warmth to a classic Adelaide character home.</p>
+      </div>
+      <div class="fade-up delay-1 curtain-wrap">
+        <div class="curtain-overlay"></div>
+        <div class="letterbox bg-deep-black flex items-center justify-center">
+          <img src="../assets/images/project-broadview.jpg" alt="Broadview renovation by LK Design and Build" class="w-full h-full object-cover ken-burns-1">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Gradient between projects -->
+  <div class="h-1 bg-gradient-to-r from-transparent via-gold/10 to-transparent"></div>
+
+  <!-- Project: Semaphore -->
+  <div class="project-section min-h-screen flex flex-col justify-center py-12 md:py-20 px-6 md:px-10 bg-charcoal">
+    <div class="max-w-7xl mx-auto w-full">
+      <div class="fade-up mb-8 md:text-right">
+        <p class="font-body text-xs font-light tracking-[0.3em] uppercase text-gold/60 mb-2">02</p>
+        <h3 class="font-display text-3xl md:text-4xl text-cream">Semaphore</h3>
+        <p class="font-body text-sm font-light text-cream/40 mt-2 max-w-md md:ml-auto">Coastal sophistication meets practical family living in this stunning seaside transformation.</p>
+      </div>
+      <div class="fade-up delay-1 curtain-wrap">
+        <div class="curtain-overlay"></div>
+        <div class="letterbox bg-deep-black flex items-center justify-center">
+          <img src="../assets/images/project-semaphore.jpg" alt="Semaphore project by LK Design and Build" class="w-full h-full object-cover ken-burns-2">
+        </div>
+      </div>
+      <!-- Secondary images -->
+      <div class="grid grid-cols-2 gap-4 mt-4">
+        <div class="fade-up delay-2 curtain-wrap">
+          <div class="curtain-overlay"></div>
+          <div class="aspect-video overflow-hidden">
+            <img src="../assets/images/project-semaphore2.jpg" alt="Semaphore detail" class="w-full h-full object-cover ken-burns-1">
+          </div>
+        </div>
+        <div class="fade-up delay-3 curtain-wrap">
+          <div class="curtain-overlay"></div>
+          <div class="aspect-video overflow-hidden">
+            <img src="../assets/images/project-semaphore3.jpg" alt="Semaphore detail" class="w-full h-full object-cover ken-burns-2">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="h-1 bg-gradient-to-r from-transparent via-gold/10 to-transparent"></div>
+
+  <!-- Project: OSR Fit Out -->
+  <div class="project-section min-h-screen flex flex-col justify-center py-12 md:py-20 px-6 md:px-10 bg-deep-black">
+    <div class="max-w-7xl mx-auto w-full">
+      <div class="fade-up mb-8">
+        <p class="font-body text-xs font-light tracking-[0.3em] uppercase text-gold/60 mb-2">03</p>
+        <h3 class="font-display text-3xl md:text-4xl text-cream">OSR Fit Out</h3>
+        <p class="font-body text-sm font-light text-cream/40 mt-2 max-w-md">A precision commercial fit-out delivering workplace design that performs as beautifully as it looks.</p>
+      </div>
+      <div class="fade-up delay-1 curtain-wrap">
+        <div class="curtain-overlay"></div>
+        <div class="letterbox bg-deep-black flex items-center justify-center">
+          <img src="../assets/images/project-osr.jpg" alt="OSR commercial fit out by LK Design and Build" class="w-full h-full object-cover ken-burns-1">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="h-1 bg-gradient-to-r from-transparent via-gold/10 to-transparent"></div>
+
+  <!-- Project: Unley -->
+  <div class="project-section min-h-screen flex flex-col justify-center py-12 md:py-20 px-6 md:px-10 bg-charcoal">
+    <div class="max-w-7xl mx-auto w-full">
+      <div class="fade-up mb-8 md:text-right">
+        <p class="font-body text-xs font-light tracking-[0.3em] uppercase text-gold/60 mb-2">04</p>
+        <h3 class="font-display text-3xl md:text-4xl text-cream">Unley</h3>
+        <p class="font-body text-sm font-light text-cream/40 mt-2 max-w-md md:ml-auto">Refined elegance in Adelaide's inner south. A considered renovation honouring the home's original character.</p>
+      </div>
+      <div class="fade-up delay-1 curtain-wrap">
+        <div class="curtain-overlay"></div>
+        <div class="letterbox bg-deep-black flex items-center justify-center">
+          <img src="../assets/images/project-unley.jpg" alt="Unley renovation by LK Design and Build" class="w-full h-full object-cover ken-burns-2">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="h-1 bg-gradient-to-r from-transparent via-gold/10 to-transparent"></div>
+
+  <!-- Project: Everard Park -->
+  <div class="project-section min-h-screen flex flex-col justify-center py-12 md:py-20 px-6 md:px-10 bg-deep-black">
+    <div class="max-w-7xl mx-auto w-full">
+      <div class="fade-up mb-8">
+        <p class="font-body text-xs font-light tracking-[0.3em] uppercase text-gold/60 mb-2">05</p>
+        <h3 class="font-display text-3xl md:text-4xl text-cream">Everard Park</h3>
+        <p class="font-body text-sm font-light text-cream/40 mt-2 max-w-md">A complete reimagining of space, light, and flow. Modern living at its most considered.</p>
+      </div>
+      <div class="fade-up delay-1 curtain-wrap">
+        <div class="curtain-overlay"></div>
+        <div class="letterbox bg-deep-black flex items-center justify-center">
+          <img src="../assets/images/hero-3.jpg" alt="Everard Park project by LK Design and Build" class="w-full h-full object-cover ken-burns-1">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- TESTIMONIAL -->
+<!-- ============================================================ -->
+<div class="gradient-divider" style="background: linear-gradient(to bottom, #1A1A1A, #2C2C2C);"></div>
+<section id="testimonial" class="bg-charcoal py-32 md:py-44 relative overflow-hidden">
+  <!-- Decorative quotes -->
+  <div class="absolute top-12 left-8 md:left-16 text-gold/5 font-display text-[200px] md:text-[300px] leading-none select-none" aria-hidden="true">&ldquo;</div>
+  <div class="max-w-5xl mx-auto px-6 md:px-10 text-center relative z-10">
+    <div class="fade-up">
+      <blockquote class="font-display text-3xl md:text-5xl lg:text-[48px] italic text-gold leading-snug md:leading-snug">
+        &ldquo;Lyda transformed our home beyond anything we imagined. Every detail was considered, every finish perfect. We didn&rsquo;t just get a renovation &mdash; we got the home we always dreamed of.&rdquo;
+      </blockquote>
+    </div>
+    <div class="fade-up delay-1 mt-10">
+      <div class="w-12 h-px bg-gold/30 mx-auto mb-6"></div>
+      <p class="font-body text-sm font-light tracking-[0.2em] uppercase text-cream/40">Sarah &amp; James, Broadview</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- STATS -->
+<!-- ============================================================ -->
+<div class="gradient-divider" style="background: linear-gradient(to bottom, #2C2C2C, #1A1A1A);"></div>
+<section id="stats" class="bg-deep-black py-24 md:py-32 relative">
+  <div class="max-w-6xl mx-auto px-6 md:px-10">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
+      <div class="fade-up text-center">
+        <p class="counter font-display text-5xl md:text-6xl text-gold" data-target="15" data-suffix="+">0</p>
+        <p class="font-body text-xs font-light tracking-[0.2em] uppercase text-cream/40 mt-4">Years Experience</p>
+      </div>
+      <div class="fade-up delay-1 text-center">
+        <p class="counter font-display text-5xl md:text-6xl text-gold" data-target="120" data-suffix="+">0</p>
+        <p class="font-body text-xs font-light tracking-[0.2em] uppercase text-cream/40 mt-4">Projects Completed</p>
+      </div>
+      <div class="fade-up delay-2 text-center">
+        <p class="counter font-display text-5xl md:text-6xl text-gold" data-target="350" data-prefix="$" data-suffix="">0</p>
+        <p class="font-body text-xs font-light tracking-[0.2em] uppercase text-cream/40 mt-4">Free Consultation Value</p>
+      </div>
+      <div class="fade-up delay-3 text-center">
+        <p class="counter font-display text-5xl md:text-6xl text-gold" data-target="100" data-suffix="%">0</p>
+        <p class="font-body text-xs font-light tracking-[0.2em] uppercase text-cream/40 mt-4">Client Satisfaction</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- CONSULTATION CTA -->
+<!-- ============================================================ -->
+<section class="relative py-32 md:py-44 overflow-hidden">
+  <div class="absolute inset-0">
+    <img src="../assets/images/hero-4.jpg" alt="Luxury interior" class="w-full h-full object-cover ken-burns-2 opacity-20">
+  </div>
+  <div class="absolute inset-0 bg-deep-black/80"></div>
+  <div class="relative z-10 max-w-3xl mx-auto px-6 md:px-10 text-center">
+    <div class="fade-up">
+      <p class="font-body text-xs font-light tracking-[0.3em] uppercase text-gold mb-6">Complimentary Consultation</p>
+      <h2 class="font-display text-4xl md:text-5xl lg:text-6xl text-cream leading-snug">
+        Your vision deserves a <span class="italic text-gold">conversation</span>
+      </h2>
+    </div>
+    <div class="fade-up delay-1 mt-6">
+      <p class="font-body text-base font-light text-cream/50 leading-relaxed max-w-lg mx-auto">
+        Book a free consultation valued at $350. We'll discuss your project, explore possibilities, and outline a path from vision to reality.
+      </p>
+    </div>
+    <div class="fade-up delay-2 mt-10">
+      <a href="#contact" class="inline-block px-12 py-4 bg-gold text-deep-black font-body text-sm font-medium tracking-[0.2em] uppercase hover:bg-gold-light transition-all duration-500">
+        Book Now
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- CONTACT -->
+<!-- ============================================================ -->
+<div class="gradient-divider" style="background: linear-gradient(to bottom, #1A1A1A, #2C2C2C);"></div>
+<section id="contact" class="bg-charcoal py-24 md:py-32 relative">
+  <div class="max-w-6xl mx-auto px-6 md:px-10">
+    <div class="grid md:grid-cols-2 gap-16 md:gap-24">
+      <!-- Info -->
+      <div>
+        <p class="fade-up font-body text-xs font-light tracking-[0.3em] uppercase text-gold mb-6">Get In Touch</p>
+        <h2 class="fade-up delay-1 font-display text-4xl md:text-5xl text-cream leading-snug">Let's start your project</h2>
+        <div class="fade-up delay-2 w-16 h-px bg-gold/40 mt-8 mb-10"></div>
+        <div class="fade-up delay-2 space-y-6">
+          <div>
+            <p class="font-body text-xs font-light tracking-[0.2em] uppercase text-cream/30 mb-1">Phone</p>
+            <a href="tel:0481742026" class="font-body text-lg font-light text-cream hover:text-gold transition-colors">0481 742 026</a>
+          </div>
+          <div>
+            <p class="font-body text-xs font-light tracking-[0.2em] uppercase text-cream/30 mb-1">Email</p>
+            <a href="mailto:hello@lkdesignandbuild.com.au" class="font-body text-lg font-light text-cream hover:text-gold transition-colors">hello@lkdesignandbuild.com.au</a>
+          </div>
+          <div>
+            <p class="font-body text-xs font-light tracking-[0.2em] uppercase text-cream/30 mb-1">Location</p>
+            <p class="font-body text-lg font-light text-cream/60">Adelaide, South Australia</p>
+          </div>
+          <div>
+            <p class="font-body text-xs font-light tracking-[0.2em] uppercase text-cream/30 mb-1">Follow</p>
+            <a href="https://www.instagram.com/primedesignbuilt/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 font-body text-lg font-light text-cream hover:text-gold transition-colors">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5"/>
+                <circle cx="12" cy="12" r="5"/>
+                <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/>
+              </svg>
+              Instagram
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- Form -->
+      <div class="fade-up delay-1">
+        <form id="contactForm" class="space-y-6" onsubmit="handleSubmit(event)">
+          <div>
+            <label for="name" class="block font-body text-xs font-light tracking-[0.2em] uppercase text-cream/30 mb-2">Name</label>
+            <input type="text" id="name" name="name" required class="form-input w-full px-4 py-3 text-cream font-light rounded-none">
+          </div>
+          <div>
+            <label for="email" class="block font-body text-xs font-light tracking-[0.2em] uppercase text-cream/30 mb-2">Email</label>
+            <input type="email" id="email" name="email" required class="form-input w-full px-4 py-3 text-cream font-light rounded-none">
+          </div>
+          <div>
+            <label for="phone" class="block font-body text-xs font-light tracking-[0.2em] uppercase text-cream/30 mb-2">Phone</label>
+            <input type="tel" id="phone" name="phone" class="form-input w-full px-4 py-3 text-cream font-light rounded-none">
+          </div>
+          <div>
+            <label for="service" class="block font-body text-xs font-light tracking-[0.2em] uppercase text-cream/30 mb-2">Service</label>
+            <select id="service" name="service" class="form-input w-full px-4 py-3 text-cream font-light rounded-none bg-transparent appearance-none" style="background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2212%22 height=%228%22><path fill=%22%23C9A96E%22 d=%22M6 8L0 0h12z%22/></svg>'); background-repeat: no-repeat; background-position: right 16px center; background-size: 10px;">
+              <option value="" style="background:#2C2C2C">Select a service...</option>
+              <option value="interior-design" style="background:#2C2C2C">Interior Design</option>
+              <option value="renovation" style="background:#2C2C2C">Renovation</option>
+              <option value="addition" style="background:#2C2C2C">Addition</option>
+              <option value="new-build" style="background:#2C2C2C">New Build</option>
+            </select>
+          </div>
+          <div>
+            <label for="message" class="block font-body text-xs font-light tracking-[0.2em] uppercase text-cream/30 mb-2">Tell us about your project</label>
+            <textarea id="message" name="message" rows="5" class="form-input w-full px-4 py-3 text-cream font-light rounded-none resize-none"></textarea>
+          </div>
+          <button type="submit" class="w-full py-4 bg-gold text-deep-black font-body text-sm font-medium tracking-[0.2em] uppercase hover:bg-gold-light transition-all duration-500">
+            Send Enquiry
+          </button>
+          <p class="text-center font-body text-xs font-light text-cream/20 mt-4">Free consultation valued at $350</p>
+        </form>
+        <div id="formSuccess" class="hidden text-center py-16">
+          <div class="w-16 h-16 border border-gold rounded-full flex items-center justify-center mx-auto mb-6">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C9A96E" stroke-width="2" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <h3 class="font-display text-2xl text-cream mb-3">Thank you</h3>
+          <p class="font-body text-sm font-light text-cream/50">We'll be in touch within 24 hours to arrange your consultation.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- FOOTER -->
+<!-- ============================================================ -->
+<footer class="bg-deep-black border-t border-white/5 py-16">
+  <div class="max-w-6xl mx-auto px-6 md:px-10">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+      <!-- Logo -->
+      <a href="#hero">
+        <svg viewBox="0 0 200 60" width="120" height="36" xmlns="http://www.w3.org/2000/svg">
+          <text x="10" y="34" font-family="Playfair Display, serif" font-size="36" font-weight="600" fill="#C9A96E">LK</text>
+          <line x1="10" y1="42" x2="62" y2="42" stroke="#C9A96E" stroke-width="0.7"/>
+          <text x="10" y="55" font-family="Jost, sans-serif" font-size="9" font-weight="200" fill="#E8E4DF" letter-spacing="3.5">DESIGN AND BUILD</text>
+        </svg>
+      </a>
+      <div class="flex items-center gap-8">
+        <a href="tel:0481742026" class="font-body text-sm font-light text-cream/30 hover:text-gold transition-colors">0481 742 026</a>
+        <a href="mailto:hello@lkdesignandbuild.com.au" class="font-body text-sm font-light text-cream/30 hover:text-gold transition-colors">hello@lkdesignandbuild.com.au</a>
+        <a href="https://www.instagram.com/primedesignbuilt/" target="_blank" rel="noopener noreferrer" class="text-cream/30 hover:text-gold transition-colors">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5"/>
+            <circle cx="12" cy="12" r="5"/>
+            <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <div class="mt-10 pt-8 border-t border-white/5 text-center">
+      <p class="font-body text-xs font-light text-cream/15 tracking-wider">&copy; 2026 LK Design and Build. All rights reserved. Adelaide, South Australia.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================ -->
+<!-- JAVASCRIPT -->
+<!-- ============================================================ -->
+<script>
+(function() {
+  'use strict';
+
+  // ── Gold Particles ──
+  const particleContainer = document.getElementById('particles');
+  const particleCount = 30;
+  for (let i = 0; i < particleCount; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.style.left = Math.random() * 100 + '%';
+    p.style.top = Math.random() * 100 + '%';
+    p.style.width = (Math.random() * 3 + 1) + 'px';
+    p.style.height = p.style.width;
+    p.style.opacity = Math.random() * 0.3 + 0.1;
+    p.style.animationDelay = (Math.random() * 10) + 's';
+    p.style.animationDuration = (Math.random() * 10 + 10) + 's';
+    particleContainer.appendChild(p);
+  }
+
+  // ── Nav background on scroll ──
+  const nav = document.getElementById('mainNav');
+  let lastScroll = 0;
+  function updateNav() {
+    const scrollY = window.scrollY;
+    if (scrollY > 80) {
+      nav.classList.add('bg-deep-black/90', 'nav-blur', 'shadow-lg');
+    } else {
+      nav.classList.remove('bg-deep-black/90', 'nav-blur', 'shadow-lg');
+    }
+    lastScroll = scrollY;
+  }
+
+  // ── Mobile menu ──
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  let menuOpen = false;
+  menuBtn.addEventListener('click', function() {
+    menuOpen = !menuOpen;
+    mobileMenu.classList.toggle('open', menuOpen);
+    const lines = menuBtn.querySelectorAll('.burger-line');
+    if (menuOpen) {
+      lines[0].style.transform = 'translateY(4px) rotate(45deg)';
+      lines[1].style.opacity = '0';
+      lines[2].style.transform = 'translateY(-4px) rotate(-45deg)';
+      lines[2].style.width = '24px';
+    } else {
+      lines[0].style.transform = '';
+      lines[1].style.opacity = '1';
+      lines[2].style.transform = '';
+      lines[2].style.width = '';
+    }
+  });
+  document.querySelectorAll('.mobile-link').forEach(function(link) {
+    link.addEventListener('click', function() {
+      menuOpen = false;
+      mobileMenu.classList.remove('open');
+      const lines = menuBtn.querySelectorAll('.burger-line');
+      lines[0].style.transform = '';
+      lines[1].style.opacity = '1';
+      lines[2].style.transform = '';
+      lines[2].style.width = '';
+    });
+  });
+
+  // ── Intersection Observer: fade-in + curtain reveal ──
+  const fadeObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        fadeObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+
+  document.querySelectorAll('.fade-up').forEach(function(el) {
+    fadeObserver.observe(el);
+  });
+
+  const curtainObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        curtainObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.curtain-wrap').forEach(function(el) {
+    curtainObserver.observe(el);
+  });
+
+  // ── Side nav active state ──
+  const sections = document.querySelectorAll('section[id]');
+  const sideNavLinks = document.querySelectorAll('.side-nav a');
+
+  function updateSideNav() {
+    let current = '';
+    sections.forEach(function(section) {
+      const top = section.offsetTop - 200;
+      if (window.scrollY >= top) {
+        current = section.getAttribute('id');
+      }
+    });
+    sideNavLinks.forEach(function(link) {
+      link.classList.toggle('active', link.getAttribute('data-section') === current);
+    });
+  }
+
+  // ── Animated counters ──
+  const counters = document.querySelectorAll('.counter');
+  let countersDone = false;
+
+  const counterObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting && !countersDone) {
+        countersDone = true;
+        counters.forEach(function(counter) {
+          const target = parseInt(counter.dataset.target);
+          const prefix = counter.dataset.prefix || '';
+          const suffix = counter.dataset.suffix || '';
+          const duration = 2000;
+          const step = target / (duration / 16);
+          let current = 0;
+
+          function updateCounter() {
+            current += step;
+            if (current >= target) {
+              counter.textContent = prefix + target + suffix;
+              return;
+            }
+            counter.textContent = prefix + Math.floor(current) + suffix;
+            requestAnimationFrame(updateCounter);
+          }
+          updateCounter();
+        });
+      }
+    });
+  }, { threshold: 0.3 });
+
+  const statsSection = document.getElementById('stats');
+  if (statsSection) counterObserver.observe(statsSection);
+
+  // ── Scroll events (throttled) ──
+  let ticking = false;
+  window.addEventListener('scroll', function() {
+    if (!ticking) {
+      requestAnimationFrame(function() {
+        updateNav();
+        updateSideNav();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+
+  // ── Initial calls ──
+  updateNav();
+  updateSideNav();
+
+  // ── Trigger hero animations immediately ──
+  setTimeout(function() {
+    document.querySelectorAll('#hero .fade-up').forEach(function(el) {
+      el.classList.add('visible');
+    });
+  }, 300);
+
+})();
+
+// ── Form submission ──
+function handleSubmit(e) {
+  e.preventDefault();
+  document.getElementById('contactForm').classList.add('hidden');
+  document.getElementById('formSuccess').classList.remove('hidden');
+}
+</script>
+</body>
+</html>

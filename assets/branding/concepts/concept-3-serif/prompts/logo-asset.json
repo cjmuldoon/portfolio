@@ -1,0 +1,17 @@
+{
+  "prompt": "A flat vector-style logo design on a perfectly clean pure white (#FFFFFF) background. Large stacked letters L and K in a refined high-contrast serif typeface like Didot or Bodoni, very large and commanding with dramatic thick-thin stroke contrast, elegant hairline serifs and bold vertical strokes. The letters are stacked vertically, rendered in charcoal (#2C2C2C). A thin horizontal gold (#C9A96E) rule line separates the LK from the text below. Below the gold rule, DESIGN AND BUILD appears in small widely-spaced sans-serif letters in charcoal, creating elegant contrast with the large serifs above. The entire logo is perfectly centered with generous white space around it. Crisp, clean, flat graphic design with no shadows or effects. Looks like a brand asset exported from Adobe Illustrator. Refined, editorial, high-fashion typography.",
+  "negative_prompt": "shadows, gradients, 3D, paper, texture, photography, realistic, mockup, angled, tilted, perspective, noise, grain, blurry, low quality, watermark, border, frame, sans-serif for main letters, casual, playful",
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "png",
+    "aspect_ratio": "1:1"
+  },
+  "settings": {
+    "resolution": "2048x2048",
+    "style": "flat vector graphic design, editorial typography",
+    "lighting": "none - flat design",
+    "camera_angle": "straight on, centered",
+    "depth_of_field": "none",
+    "quality": "ultra high, crisp typographic detail"
+  }
+}

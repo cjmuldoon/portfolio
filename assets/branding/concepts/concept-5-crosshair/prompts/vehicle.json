@@ -1,0 +1,9 @@
+{
+  "prompt": "A photorealistic photograph of a matte black Mercedes Sprinter work van with a premium vehicle wrap design. The wrap features a minimalist technical engineering-style logo on the side panel: the letters 'LK' in thin monospace font centered inside a thin gold circle with small crosshair lines extending from the circle, with 'DESIGN AND BUILD' in thin spaced monospace capitals below. The gold (#C9A96E) logo and text contrast against the matte black body. Thin gold pinstripe accent lines run along the lower body panel. The rear quarter panel shows a website URL and phone number in small monospace gold text. The van is parked on dark asphalt outside a modern building construction site. Overcast day, even lighting, slight reflections on the van surface. Shot with 35mm f/4, full vehicle in frame, three-quarter front angle. Professional commercial vehicle photography, cinematic grade.",
+  "negative_prompt": "cheap, cartoon, toy car, bright colours, messy wrap, distorted text, misspelled, blurry, low quality, white van",
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "jpg",
+    "aspect_ratio": "16:9"
+  }
+}

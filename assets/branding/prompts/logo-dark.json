@@ -1,0 +1,17 @@
+{
+  "prompt": "Premium brand logo presentation for 'LK Design and Build', a luxury home renovation company. The logo is displayed on a rich matte black background. Features an elegant geometric monogram of letters 'L' and 'K' in bright white and gold (#C9A96E), designed with clean architectural lines suggesting precision and craftsmanship. Below the monogram, 'LK DESIGN AND BUILD' appears in crisp white uppercase letters with generous letter-spacing in a modern sans-serif typeface. A thin gold horizontal line separates the monogram from the text. The entire composition is centered and minimal. Photographed as a brand identity flat lay on premium black textured paper, 50mm lens, f/4.0, ISO 100, controlled studio lighting with subtle rim lighting on the edges of the card creating a premium feel. Subtle paper grain texture visible. Do not include any extra shapes, patterns, or decorative elements beyond the logo itself.",
+  "negative_prompt": "blurry, low resolution, pixelated, busy background, cluttered, cheap looking, clip art, cartoon, 3D render, neon colors, watermark, multiple logos, text errors, misspelling, ornate, baroque",
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "png",
+    "aspect_ratio": "1:1"
+  },
+  "settings": {
+    "resolution": "2048x2048",
+    "style": "photorealistic, luxury brand identity",
+    "lighting": "controlled studio lighting with subtle rim light",
+    "camera_angle": "top-down flat lay",
+    "depth_of_field": "moderate",
+    "quality": "ultra high detail"
+  }
+}

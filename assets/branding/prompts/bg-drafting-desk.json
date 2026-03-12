@@ -1,0 +1,17 @@
+{
+  "prompt": "A moody overhead photograph of an architect's drafting desk showing architectural blueprints and technical drawings spread across a dark surface. Visible elements include: rolled and unrolled blueprint sheets with floor plans in white/cyan lines on dark blue paper, a precision metal ruler, a mechanical pencil, a brass compass, and architectural scale ruler. The blueprints show a residential home renovation floor plan with room labels, dimension lines, and structural notation. Warm directional lighting from upper left creates dramatic shadows and highlights the metallic tools. The colour palette is dominated by deep navy blues of the blueprint paper, warm brass/gold tones of the tools (#C9A96E), and touches of white from the technical line work. Shot with 35mm lens, f/2.8, ISO 200, shallow depth of field with the nearest blueprint edge softly out of focus. Rich, cinematic colour grading with deep blacks and warm gold highlights.",
+  "negative_prompt": "bright, flat lighting, messy, cluttered with non-relevant items, digital screen, computer, cartoon, blurry, low resolution",
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "jpg",
+    "aspect_ratio": "16:9"
+  },
+  "settings": {
+    "resolution": "2048x1152",
+    "style": "photorealistic still life, architectural photography",
+    "lighting": "warm directional, upper-left, dramatic shadows",
+    "camera_angle": "overhead, slight angle",
+    "depth_of_field": "shallow",
+    "quality": "ultra high detail, cinematic"
+  }
+}

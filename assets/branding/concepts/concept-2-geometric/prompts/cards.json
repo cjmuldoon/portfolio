@@ -1,0 +1,17 @@
+{
+  "prompt": "Two premium business cards arranged on a dark marble surface with gold veining. The front card displays geometric L and K letterforms made from precise straight lines sharing a single vertical stroke, rendered in charcoal with a thin gold foil accent line. The angular, architectural letterforms have sharp 90-degree and 45-degree angles. Below, LK DESIGN AND BUILD in widely-spaced thin sans-serif. The name Lyda appears in clean type, with phone number 0481 742 026, email and Adelaide address details. The back card beside it shows just the geometric LK monogram in gold foil on a charcoal (#2C2C2C) background. Both cards are 600gsm cotton stock with soft matte texture, thick luxurious edges visible. Gold foil details catch the light. Sophisticated product photography, shallow depth of field.",
+  "negative_prompt": "cheap paper, thin cards, glossy plastic, blurry text, cluttered design, bright colors, neon, pile of cards, messy arrangement, low quality, cartoon, ornate, decorative",
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "jpg",
+    "aspect_ratio": "4:3"
+  },
+  "settings": {
+    "resolution": "2048x1536",
+    "style": "luxury product photography",
+    "lighting": "soft studio lighting with subtle reflections on foil",
+    "camera_angle": "overhead slightly angled, 30 degrees",
+    "depth_of_field": "shallow, front card sharp",
+    "quality": "high-end product photography, tactile detail"
+  }
+}

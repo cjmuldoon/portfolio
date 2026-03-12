@@ -1,0 +1,9 @@
+{
+  "prompt": "A photorealistic close-up photograph of sleek illuminated building signage mounted on a dark charcoal concrete facade of a modern architectural office. The sign features a minimalist technical/engineering logo: the letters 'LK' in thin monospace font centered inside a thin gold circle with small crosshair lines extending from the circle at 12, 3, 6, and 9 o'clock positions, small corner registration marks near the circle. Below the circle logo reads 'DESIGN AND BUILD' in ultra-thin spaced monospace capitals. The sign is backlit with warm gold (#C9A96E) LED edge lighting creating a subtle halo glow against the dark wall. The aesthetic is precision engineering meets luxury — like a high-end surveying or architectural firm. Evening/dusk ambient lighting, the sign glows warmly. Shot with 85mm f/1.8, shallow depth of field, the wall texture softly blurred. Rich cinematic colour grading, deep blacks, warm gold highlights.",
+  "negative_prompt": "cheap, plastic, bright colours, cartoon, blurry, distorted text, extra letters, misspelled, cluttered, daylight, flat lighting",
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "jpg",
+    "aspect_ratio": "16:9"
+  }
+}

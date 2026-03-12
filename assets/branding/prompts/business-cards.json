@@ -1,0 +1,17 @@
+{
+  "prompt": "Luxury business card mockup for 'LK Design and Build', a premium home renovation company. Two business cards arranged in an overlapping layout on a polished dark marble surface. The front card shows: the LK monogram in gold foil (#C9A96E) at top, 'LK DESIGN AND BUILD' in charcoal text below, then 'Lyda' as the name, '0481 742 026' phone, 'hello@lkdesignandbuild.com.au' email, and 'Adelaide, South Australia' location — all in refined small sans-serif type. The back card (partially visible underneath) shows the LK monogram centered on a deep charcoal (#2C2C2C) background with gold foil finish. The cards are 90x55mm standard size, printed on 600gsm cotton stock with a soft-touch matte laminate finish. Gold foil stamping catches the light. Shot with 85mm macro lens, f/2.8, ISO 100, soft directional studio lighting from upper left creating subtle shadows. The marble surface shows natural veining. Slight shallow depth of field with the near edge of the front card slightly soft.",
+  "negative_prompt": "blurry, cheap paper, glossy, plastic, generic template, clip art, bright colors, neon, busy design, cluttered, multiple cards scattered, watermark",
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "jpg",
+    "aspect_ratio": "4:3"
+  },
+  "settings": {
+    "resolution": "2048x1536",
+    "style": "photorealistic product photography, luxury stationery",
+    "lighting": "soft directional studio lighting from upper left",
+    "camera_angle": "slightly elevated angle, 30 degrees",
+    "depth_of_field": "shallow",
+    "quality": "ultra high detail, gold foil texture visible"
+  }
+}

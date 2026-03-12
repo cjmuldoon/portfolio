@@ -1,0 +1,17 @@
+{
+  "prompt": "Premium horizontal brand logo layout for 'LK Design and Build', a luxury home renovation and interior design company. The logo is displayed horizontally on a clean white background: on the left, an elegant geometric monogram of 'L' and 'K' intertwined with architectural precision in charcoal (#2C2C2C), separated by a thin vertical gold (#C9A96E) line, and on the right 'LK DESIGN AND BUILD' stacked in two lines of refined uppercase sans-serif text. The whole composition is horizontal/landscape oriented. Photographed as a brand identity presentation printed on premium white textured stock, 50mm lens, f/4.0, ISO 100, soft even studio lighting. Clean, minimal, no extra decorative elements. Subtle paper texture visible.",
+  "negative_prompt": "blurry, low resolution, busy, cluttered, cheap, clip art, cartoon, 3D, neon, watermark, vertical layout, multiple logos, text errors",
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "png",
+    "aspect_ratio": "16:9"
+  },
+  "settings": {
+    "resolution": "2048x1152",
+    "style": "photorealistic brand identity",
+    "lighting": "soft even studio lighting",
+    "camera_angle": "top-down flat lay",
+    "depth_of_field": "moderate",
+    "quality": "ultra high detail"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "prompt": "Two premium business cards arranged on a dark marble surface with gold veining. The front card displays a circular badge emblem with a thin outer ring and thicker inner ring forming a double-circle seal, a bold LK monogram centered inside, DESIGN AND BUILD curving along the bottom arc, ADELAIDE along the top arc. The badge is rendered with gold foil stamping for the rings and charcoal for the letters. The name Lyda appears below in clean type, with phone number 0481 742 026, email and Adelaide address details. The back card beside it shows just the circular badge emblem in gold foil centered on a charcoal (#2C2C2C) background. Both cards are 600gsm cotton stock with soft matte texture, thick luxurious edges visible. Gold foil catches the light. Sophisticated product photography, shallow depth of field.",
+  "negative_prompt": "cheap paper, thin cards, glossy plastic, blurry text, cluttered design, bright colors, neon, pile of cards, messy arrangement, low quality, cartoon, wax seal, aged",
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "jpg",
+    "aspect_ratio": "4:3"
+  },
+  "settings": {
+    "resolution": "2048x1536",
+    "style": "luxury product photography",
+    "lighting": "soft studio lighting with subtle reflections on foil",
+    "camera_angle": "overhead slightly angled, 30 degrees",
+    "depth_of_field": "shallow, front card sharp",
+    "quality": "high-end product photography, tactile detail"
+  }
+}

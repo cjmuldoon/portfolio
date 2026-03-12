@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prime Design & Built | Adelaide Bathroom & Kitchen Renovations</title>
+  <meta name="description" content="Not your typical Adelaide bathroom & kitchen renovation company. Design, renovations, additions & new builds by Prime Design & Built.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400;1,9..40,500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream: '#FAF7F2',
+            beige: '#F0E6D6',
+            'beige-dark': '#E0D2BC',
+            terracotta: '#C4653A',
+            orange: '#ec6e00',
+            olive: '#5B7553',
+            'olive-light': '#7A9B70',
+            navy: '#1a1e36',
+            'navy-light': '#2a2f4a',
+            'warm-white': '#FFFCF7',
+          },
+          fontFamily: {
+            display: ['Playfair Display', 'serif'],
+            body: ['DM Sans', 'sans-serif'],
+            script: ['Caveat', 'cursive'],
+          },
+          borderRadius: {
+            '4xl': '2rem',
+            '5xl': '2.5rem',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: #1a1e36;
+      background: #FAF7F2;
+      overflow-x: hidden;
+    }
+
+    /* Organic blob shapes */
+    .blob-1 {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(ellipse at 30% 40%, rgba(236,110,0,0.06) 0%, rgba(196,101,58,0.03) 50%, transparent 70%);
+      border-radius: 60% 40% 55% 45% / 50% 60% 40% 50%;
+      animation: blobFloat 20s ease-in-out infinite;
+      pointer-events: none;
+    }
+    .blob-2 {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(ellipse at 60% 50%, rgba(91,117,83,0.06) 0%, rgba(91,117,83,0.02) 50%, transparent 70%);
+      border-radius: 45% 55% 50% 50% / 55% 45% 55% 45%;
+      animation: blobFloat 25s ease-in-out infinite reverse;
+      pointer-events: none;
+    }
+    .blob-3 {
+      position: absolute;
+      width: 250px;
+      height: 250px;
+      background: radial-gradient(ellipse at 40% 60%, rgba(240,230,214,0.5) 0%, rgba(240,230,214,0.2) 50%, transparent 70%);
+      border-radius: 50% 50% 45% 55% / 60% 40% 60% 40%;
+      animation: blobFloat 18s ease-in-out infinite;
+      pointer-events: none;
+    }
+    @keyframes blobFloat {
+      0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+      25% { transform: translate(20px, -15px) rotate(5deg) scale(1.05); }
+      50% { transform: translate(-10px, 20px) rotate(-3deg) scale(0.95); }
+      75% { transform: translate(15px, 10px) rotate(4deg) scale(1.02); }
+    }
+
+    /* Floating decorative elements */
+    .float-circle {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      animation: floatUp 15s ease-in-out infinite;
+    }
+    @keyframes floatUp {
+      0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.4; }
+      50% { transform: translateY(-25px) rotate(180deg); opacity: 0.7; }
+    }
+
+    /* Leaf decoration */
+    .leaf-shape {
+      position: absolute;
+      width: 30px;
+      height: 50px;
+      background: rgba(91,117,83,0.08);
+      border-radius: 50% 0 50% 0;
+      pointer-events: none;
+      animation: leafSway 12s ease-in-out infinite;
+    }
+    @keyframes leafSway {
+      0%, 100% { transform: rotate(-10deg) scale(1); }
+      50% { transform: rotate(15deg) scale(1.1); }
+    }
+
+    /* Dot pattern background */
+    .dot-pattern {
+      background-image: radial-gradient(circle, rgba(26,30,54,0.04) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+
+    /* Organic dot pattern */
+    .organic-dots {
+      background-image: radial-gradient(circle, rgba(196,101,58,0.07) 1.5px, transparent 1.5px);
+      background-size: 32px 32px;
+    }
+
+    /* Smooth reveal animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-50px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal-left.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(50px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal-right.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .reveal-scale {
+      opacity: 0;
+      transform: scale(0.9);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal-scale.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* Stagger children */
+    .stagger-children .reveal:nth-child(1) { transition-delay: 0s; }
+    .stagger-children .reveal:nth-child(2) { transition-delay: 0.1s; }
+    .stagger-children .reveal:nth-child(3) { transition-delay: 0.2s; }
+    .stagger-children .reveal:nth-child(4) { transition-delay: 0.3s; }
+    .stagger-children .reveal:nth-child(5) { transition-delay: 0.4s; }
+    .stagger-children .reveal:nth-child(6) { transition-delay: 0.5s; }
+
+    /* Warm gradient button */
+    .btn-warm {
+      background: linear-gradient(135deg, #ec6e00 0%, #C4653A 100%);
+      color: white;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(236,110,0,0.25);
+    }
+    .btn-warm:hover {
+      box-shadow: 0 6px 25px rgba(236,110,0,0.4);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline-warm {
+      border: 2px solid #ec6e00;
+      color: #ec6e00;
+      transition: all 0.3s ease;
+    }
+    .btn-outline-warm:hover {
+      background: #ec6e00;
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    /* Carousel drag */
+    .carousel-track {
+      cursor: grab;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .carousel-track::-webkit-scrollbar { display: none; }
+    .carousel-track.dragging {
+      cursor: grabbing;
+      scroll-behavior: auto;
+    }
+    .carousel-track:not(.dragging) {
+      scroll-behavior: smooth;
+    }
+
+    /* Project card hover */
+    .project-card {
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+    }
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 50px rgba(26,30,54,0.12);
+    }
+    .project-card:hover .project-overlay {
+      opacity: 1;
+    }
+    .project-card:hover img {
+      transform: scale(1.05);
+    }
+
+    /* Service card hover */
+    .service-card {
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+    }
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 15px 40px rgba(26,30,54,0.08);
+    }
+
+    /* Process line */
+    .process-line {
+      position: absolute;
+      left: 24px;
+      top: 60px;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, #ec6e00, #C4653A, #5B7553);
+    }
+    @media (min-width: 768px) {
+      .process-line {
+        left: 50%;
+        top: 0;
+        bottom: 0;
+        transform: translateX(-50%);
+      }
+    }
+
+    /* Quote marks */
+    .quote-mark {
+      font-family: 'Playfair Display', serif;
+      font-size: 8rem;
+      line-height: 1;
+      color: rgba(236,110,0,0.12);
+      position: absolute;
+    }
+
+    /* Mobile menu */
+    .mobile-menu {
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .mobile-menu.open {
+      transform: translateX(0);
+    }
+
+    /* Nav background on scroll */
+    .nav-scrolled {
+      background: rgba(250,247,242,0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 2px 20px rgba(26,30,54,0.06);
+    }
+
+    /* Hero image mask */
+    .hero-image-container {
+      position: relative;
+    }
+    .hero-image-container::before {
+      content: '';
+      position: absolute;
+      inset: -20px;
+      background: radial-gradient(ellipse at 70% 30%, rgba(236,110,0,0.08) 0%, transparent 60%);
+      border-radius: 3rem;
+      z-index: -1;
+    }
+
+    /* Warm section divider */
+    .section-divider {
+      height: 4px;
+      width: 60px;
+      background: linear-gradient(90deg, #ec6e00, #C4653A);
+      border-radius: 2px;
+    }
+
+    /* Image shine effect on hover */
+    .img-shine {
+      position: relative;
+      overflow: hidden;
+    }
+    .img-shine::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+      transition: left 0.6s ease;
+    }
+    .img-shine:hover::after {
+      left: 100%;
+    }
+
+    /* Counter animation */
+    .counter-num {
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* Custom scrollbar for the page */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #FAF7F2; }
+    ::-webkit-scrollbar-thumb { background: #d4c5b0; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #C4653A; }
+
+    /* Hamburger animation */
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: #1a1e36;
+      transition: all 0.3s ease;
+      border-radius: 2px;
+    }
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    /* Prevent layout shift for images */
+    img { display: block; }
+  </style>
+</head>
+<body class="bg-cream text-navy antialiased">
+
+  <!-- ======== NAVIGATION ======== -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 py-4 flex items-center justify-between">
+      <!-- Logo -->
+      <a href="#hero" class="relative z-50 flex items-center gap-3">
+        <img src="../assets/images/logo.svg" alt="Prime Design & Built" class="h-10 sm:h-12 w-auto">
+      </a>
+
+      <!-- Desktop Nav -->
+      <div class="hidden lg:flex items-center gap-8">
+        <a href="#story" class="text-sm font-medium text-navy/70 hover:text-orange transition-colors duration-300">Our Story</a>
+        <a href="#services" class="text-sm font-medium text-navy/70 hover:text-orange transition-colors duration-300">Services</a>
+        <a href="#projects" class="text-sm font-medium text-navy/70 hover:text-orange transition-colors duration-300">Projects</a>
+        <a href="#process" class="text-sm font-medium text-navy/70 hover:text-orange transition-colors duration-300">How We Work</a>
+        <a href="#contact" class="btn-warm rounded-full px-7 py-3 text-sm font-semibold inline-flex items-center gap-2">
+          Free Consultation
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger -->
+      <button id="menuBtn" class="hamburger lg:hidden relative z-50 flex flex-col gap-1.5 p-2" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="mobile-menu fixed inset-0 bg-cream z-40 flex flex-col items-center justify-center gap-8 lg:hidden">
+      <a href="#story" class="text-2xl font-display font-semibold text-navy hover:text-orange transition-colors" onclick="closeMobileMenu()">Our Story</a>
+      <a href="#services" class="text-2xl font-display font-semibold text-navy hover:text-orange transition-colors" onclick="closeMobileMenu()">Services</a>
+      <a href="#projects" class="text-2xl font-display font-semibold text-navy hover:text-orange transition-colors" onclick="closeMobileMenu()">Projects</a>
+      <a href="#process" class="text-2xl font-display font-semibold text-navy hover:text-orange transition-colors" onclick="closeMobileMenu()">How We Work</a>
+      <a href="#contact" class="btn-warm rounded-full px-10 py-4 text-lg font-semibold mt-4" onclick="closeMobileMenu()">Free Consultation</a>
+      <div class="mt-6 text-center">
+        <a href="tel:0481742026" class="text-navy/60 font-medium">0481 742 026</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ======== HERO ======== -->
+  <section id="hero" class="relative min-h-screen flex items-center pt-24 pb-16 overflow-hidden">
+    <!-- Decorative blobs -->
+    <div class="blob-1 -top-20 -right-40 opacity-60"></div>
+    <div class="blob-2 bottom-20 -left-20 opacity-40"></div>
+    <div class="leaf-shape top-32 right-20 hidden lg:block" style="animation-delay: -3s;"></div>
+    <div class="float-circle w-4 h-4 bg-orange/10 top-40 left-[15%] hidden md:block"></div>
+    <div class="float-circle w-6 h-6 bg-olive/10 bottom-32 right-[25%] hidden md:block" style="animation-delay: -5s;"></div>
+    <div class="float-circle w-3 h-3 bg-terracotta/10 top-[60%] left-[8%] hidden md:block" style="animation-delay: -8s;"></div>
+
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 w-full">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <!-- Text side -->
+        <div class="order-2 lg:order-1">
+          <div class="reveal" style="transition-delay: 0.1s;">
+            <span class="font-script text-2xl sm:text-3xl text-terracotta">Welcome home to</span>
+          </div>
+          <h1 class="reveal font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] mt-2 mb-6" style="transition-delay: 0.2s;">
+            Spaces that feel like
+            <span class="italic text-orange">you</span>
+          </h1>
+          <p class="reveal text-lg sm:text-xl text-navy/65 leading-relaxed max-w-lg mb-4" style="transition-delay: 0.3s;">
+            Not your typical Adelaide bathroom & kitchen renovation company. We design and build beautiful, liveable spaces that tell your story.
+          </p>
+          <p class="reveal font-script text-xl text-olive mb-8" style="transition-delay: 0.35s;">
+            ~ crafted with care, built to last ~
+          </p>
+          <div class="reveal flex flex-wrap gap-4" style="transition-delay: 0.4s;">
+            <a href="#contact" class="btn-warm rounded-full px-8 py-4 text-base font-semibold inline-flex items-center gap-2">
+              Book Free Consultation
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </a>
+            <a href="#projects" class="btn-outline-warm rounded-full px-8 py-4 text-base font-semibold">
+              View Our Work
+            </a>
+          </div>
+          <!-- Trust signals -->
+          <div class="reveal flex flex-wrap items-center gap-6 mt-10 pt-8 border-t border-beige-dark/40" style="transition-delay: 0.5s;">
+            <div class="flex items-center gap-2">
+              <div class="w-10 h-10 rounded-full bg-olive/10 flex items-center justify-center">
+                <svg class="w-5 h-5 text-olive" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              </div>
+              <span class="text-sm text-navy/60 font-medium">Licensed Builder</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <div class="w-10 h-10 rounded-full bg-orange/10 flex items-center justify-center">
+                <svg class="w-5 h-5 text-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </div>
+              <span class="text-sm text-navy/60 font-medium">On-time delivery</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <div class="w-10 h-10 rounded-full bg-terracotta/10 flex items-center justify-center">
+                <svg class="w-5 h-5 text-terracotta" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+              </div>
+              <span class="text-sm text-navy/60 font-medium">Adelaide locals</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Image side -->
+        <div class="order-1 lg:order-2 reveal-right hero-image-container" style="transition-delay: 0.3s;">
+          <div class="relative">
+            <img src="../assets/images/hero-1.jpg" alt="Beautiful Adelaide bathroom renovation by Prime Design & Built" class="w-full h-[400px] sm:h-[500px] lg:h-[600px] object-cover rounded-3xl lg:rounded-[2.5rem] shadow-2xl">
+            <!-- Floating badge -->
+            <div class="absolute -bottom-4 -left-4 sm:bottom-6 sm:-left-6 bg-white rounded-2xl p-4 sm:p-5 shadow-xl border border-beige/50 max-w-[200px]">
+              <p class="font-script text-lg text-terracotta">Valued at $350</p>
+              <p class="text-sm font-semibold text-navy mt-0.5">Free Design Consultation</p>
+            </div>
+            <!-- Small accent image -->
+            <div class="hidden lg:block absolute -right-8 top-16 w-36 h-48 rounded-2xl overflow-hidden shadow-lg border-4 border-cream">
+              <img src="../assets/images/hero-2.jpg" alt="Kitchen renovation detail" class="w-full h-full object-cover">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== STORY / ABOUT ======== -->
+  <section id="story" class="relative py-20 sm:py-28 overflow-hidden">
+    <div class="blob-3 top-10 right-10"></div>
+    <div class="leaf-shape bottom-20 left-[10%] hidden md:block" style="animation-delay: -6s; transform: rotate(45deg);"></div>
+
+    <div class="max-w-7xl mx-auto px-5 sm:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <!-- Images grid -->
+        <div class="reveal-left relative">
+          <div class="grid grid-cols-2 gap-4">
+            <div class="space-y-4">
+              <img src="../assets/images/hero-3.jpg" alt="Prime Design team at work" class="w-full h-48 sm:h-56 object-cover rounded-2xl">
+              <img src="../assets/images/project-broadview.jpg" alt="Broadview renovation project" class="w-full h-36 sm:h-44 object-cover rounded-2xl">
+            </div>
+            <div class="pt-8 space-y-4">
+              <img src="../assets/images/hero-4.jpg" alt="Finished kitchen space" class="w-full h-36 sm:h-44 object-cover rounded-2xl">
+              <img src="../assets/images/project-unley.jpg" alt="Unley renovation project" class="w-full h-48 sm:h-56 object-cover rounded-2xl">
+            </div>
+          </div>
+          <!-- Floating stat -->
+          <div class="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-navy text-white rounded-2xl px-6 py-4 shadow-xl flex items-center gap-4">
+            <span class="text-3xl font-display font-bold text-orange counter-num" data-target="100">0</span>
+            <span class="text-sm text-white/70 leading-snug">Happy Adelaide<br>homeowners</span>
+          </div>
+        </div>
+
+        <!-- Text -->
+        <div>
+          <div class="reveal">
+            <span class="font-script text-2xl text-terracotta">Our Story</span>
+            <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold mt-2 mb-6 leading-tight">
+              We believe your home should feel like a
+              <span class="italic text-orange">warm hug</span>
+            </h2>
+          </div>
+          <div class="reveal" style="transition-delay: 0.15s;">
+            <p class="text-lg text-navy/65 leading-relaxed mb-5">
+              Prime Design & Built started with a simple idea: renovations should be exciting, not stressful. We're a team of designers and builders who genuinely love what we do -- and it shows in every space we create.
+            </p>
+            <p class="text-lg text-navy/65 leading-relaxed mb-5">
+              Based right here in Adelaide, we understand the unique character of South Australian homes. From heritage cottages in Unley to coastal retreats in Semaphore, we bring warmth, craftsmanship, and a personal touch to every project.
+            </p>
+            <p class="font-script text-xl text-olive mb-8">
+              "We don't just renovate homes -- we transform how people live in them."
+            </p>
+          </div>
+          <div class="reveal flex flex-wrap gap-8" style="transition-delay: 0.3s;">
+            <div>
+              <span class="text-3xl font-display font-bold text-orange counter-num" data-target="10">0</span><span class="text-3xl font-display font-bold text-orange">+</span>
+              <p class="text-sm text-navy/50 mt-1">Years Experience</p>
+            </div>
+            <div>
+              <span class="text-3xl font-display font-bold text-orange counter-num" data-target="150">0</span><span class="text-3xl font-display font-bold text-orange">+</span>
+              <p class="text-sm text-navy/50 mt-1">Projects Completed</p>
+            </div>
+            <div>
+              <span class="text-3xl font-display font-bold text-orange">5</span><span class="text-3xl font-display font-bold text-terracotta">/5</span>
+              <p class="text-sm text-navy/50 mt-1">Client Rating</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== SERVICES ======== -->
+  <section id="services" class="relative py-20 sm:py-28 overflow-hidden dot-pattern">
+    <div class="blob-1 -bottom-32 -left-32 opacity-40"></div>
+    <div class="float-circle w-5 h-5 bg-olive/10 top-20 right-[20%] hidden md:block" style="animation-delay: -2s;"></div>
+
+    <div class="max-w-7xl mx-auto px-5 sm:px-8">
+      <!-- Section header -->
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="reveal font-script text-2xl text-terracotta">What We Do</span>
+        <h2 class="reveal font-display text-3xl sm:text-4xl lg:text-5xl font-bold mt-2 mb-5 leading-tight" style="transition-delay: 0.1s;">
+          From <span class="italic text-orange">dream</span> to done
+        </h2>
+        <p class="reveal text-lg text-navy/60 leading-relaxed" style="transition-delay: 0.2s;">
+          Whether it's a fresh bathroom, a kitchen that brings everyone together, or a whole new floor -- we've got you covered.
+        </p>
+      </div>
+
+      <!-- Service cards -->
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 stagger-children">
+        <!-- Design -->
+        <div class="reveal service-card bg-white rounded-3xl p-7 shadow-sm border border-beige/60 relative overflow-hidden group">
+          <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-orange/5 to-transparent rounded-bl-full"></div>
+          <div class="w-14 h-14 rounded-2xl bg-orange/10 flex items-center justify-center mb-5 group-hover:bg-orange/20 transition-colors">
+            <svg class="w-7 h-7 text-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg>
+          </div>
+          <h3 class="font-display text-xl font-semibold mb-3">Design</h3>
+          <p class="text-navy/55 leading-relaxed text-sm">Thoughtful designs that reflect how you actually live. We listen first, then create spaces that feel truly yours.</p>
+          <div class="mt-5 flex items-center gap-1 text-orange font-medium text-sm group-hover:gap-2 transition-all">
+            Learn more
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+
+        <!-- Renovations -->
+        <div class="reveal service-card bg-white rounded-3xl p-7 shadow-sm border border-beige/60 relative overflow-hidden group">
+          <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-terracotta/5 to-transparent rounded-bl-full"></div>
+          <div class="w-14 h-14 rounded-2xl bg-terracotta/10 flex items-center justify-center mb-5 group-hover:bg-terracotta/20 transition-colors">
+            <svg class="w-7 h-7 text-terracotta" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+          </div>
+          <h3 class="font-display text-xl font-semibold mb-3">Renovations</h3>
+          <p class="text-navy/55 leading-relaxed text-sm">Bathrooms and kitchens that make your heart sing. Quality craftsmanship meets inspired design, every single time.</p>
+          <div class="mt-5 flex items-center gap-1 text-terracotta font-medium text-sm group-hover:gap-2 transition-all">
+            Learn more
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+
+        <!-- Additions -->
+        <div class="reveal service-card bg-white rounded-3xl p-7 shadow-sm border border-beige/60 relative overflow-hidden group">
+          <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-olive/5 to-transparent rounded-bl-full"></div>
+          <div class="w-14 h-14 rounded-2xl bg-olive/10 flex items-center justify-center mb-5 group-hover:bg-olive/20 transition-colors">
+            <svg class="w-7 h-7 text-olive" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+          </div>
+          <h3 class="font-display text-xl font-semibold mb-3">Additions</h3>
+          <p class="text-navy/55 leading-relaxed text-sm">Growing family? We seamlessly extend your home with additions that look like they were always meant to be there.</p>
+          <div class="mt-5 flex items-center gap-1 text-olive font-medium text-sm group-hover:gap-2 transition-all">
+            Learn more
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+
+        <!-- New Builds -->
+        <div class="reveal service-card bg-white rounded-3xl p-7 shadow-sm border border-beige/60 relative overflow-hidden group">
+          <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-navy/5 to-transparent rounded-bl-full"></div>
+          <div class="w-14 h-14 rounded-2xl bg-navy/10 flex items-center justify-center mb-5 group-hover:bg-navy/15 transition-colors">
+            <svg class="w-7 h-7 text-navy" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/></svg>
+          </div>
+          <h3 class="font-display text-xl font-semibold mb-3">New Builds</h3>
+          <p class="text-navy/55 leading-relaxed text-sm">Start from scratch with a home designed around your life. From concept to keys, we're with you every step.</p>
+          <div class="mt-5 flex items-center gap-1 text-navy font-medium text-sm group-hover:gap-2 transition-all">
+            Learn more
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== PROJECTS SHOWCASE ======== -->
+  <section id="projects" class="relative py-20 sm:py-28 overflow-hidden">
+    <div class="blob-2 top-0 right-0 opacity-30"></div>
+    <div class="leaf-shape top-16 left-[5%] hidden md:block" style="animation-delay: -4s; transform: rotate(-30deg);"></div>
+
+    <div class="max-w-7xl mx-auto px-5 sm:px-8">
+      <!-- Section header -->
+      <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-12">
+        <div>
+          <span class="reveal font-script text-2xl text-terracotta">Our Work</span>
+          <h2 class="reveal font-display text-3xl sm:text-4xl lg:text-5xl font-bold mt-2 leading-tight" style="transition-delay: 0.1s;">
+            Projects we're <span class="italic text-orange">proud of</span>
+          </h2>
+        </div>
+        <div class="reveal flex gap-3" style="transition-delay: 0.2s;">
+          <button id="carouselPrev" class="w-12 h-12 rounded-full border-2 border-beige-dark hover:border-orange hover:bg-orange/5 flex items-center justify-center transition-all">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+          </button>
+          <button id="carouselNext" class="w-12 h-12 rounded-full border-2 border-beige-dark hover:border-orange hover:bg-orange/5 flex items-center justify-center transition-all">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Carousel -->
+    <div class="reveal-scale" style="transition-delay: 0.2s;">
+      <div id="projectCarousel" class="carousel-track flex gap-6 overflow-x-auto px-5 sm:px-8 pb-4">
+        <!-- Spacer for alignment on large screens -->
+        <div class="flex-shrink-0 w-0 lg:w-[calc((100vw-1280px)/2)]"></div>
+
+        <!-- Broadview -->
+        <div class="project-card flex-shrink-0 w-[320px] sm:w-[380px] rounded-3xl overflow-hidden bg-white shadow-sm border border-beige/50 img-shine">
+          <div class="relative h-64 sm:h-72 overflow-hidden">
+            <img src="../assets/images/project-broadview.jpg" alt="Broadview bathroom renovation" class="w-full h-full object-cover transition-transform duration-700">
+            <div class="project-overlay absolute inset-0 bg-gradient-to-t from-navy/60 via-navy/10 to-transparent opacity-0 transition-opacity duration-500 flex items-end p-6">
+              <span class="text-white font-medium text-sm">View Project</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <span class="text-xs font-semibold uppercase tracking-wider text-orange">Bathroom Renovation</span>
+            <h3 class="font-display text-xl font-semibold mt-2">Broadview</h3>
+            <p class="text-navy/50 text-sm mt-2">A complete bathroom transformation bringing modern warmth to a classic Adelaide home.</p>
+          </div>
+        </div>
+
+        <!-- Semaphore -->
+        <div class="project-card flex-shrink-0 w-[320px] sm:w-[380px] rounded-3xl overflow-hidden bg-white shadow-sm border border-beige/50 img-shine">
+          <div class="relative h-64 sm:h-72 overflow-hidden">
+            <img src="../assets/images/project-semaphore.jpg" alt="Semaphore home renovation" class="w-full h-full object-cover transition-transform duration-700">
+            <div class="project-overlay absolute inset-0 bg-gradient-to-t from-navy/60 via-navy/10 to-transparent opacity-0 transition-opacity duration-500 flex items-end p-6">
+              <span class="text-white font-medium text-sm">View Project</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <span class="text-xs font-semibold uppercase tracking-wider text-terracotta">Full Renovation</span>
+            <h3 class="font-display text-xl font-semibold mt-2">Semaphore</h3>
+            <p class="text-navy/50 text-sm mt-2">Coastal charm meets contemporary design in this stunning Semaphore home transformation.</p>
+          </div>
+        </div>
+
+        <!-- OSR Fit Out -->
+        <div class="project-card flex-shrink-0 w-[320px] sm:w-[380px] rounded-3xl overflow-hidden bg-white shadow-sm border border-beige/50 img-shine">
+          <div class="relative h-64 sm:h-72 overflow-hidden">
+            <img src="../assets/images/project-osr.jpg" alt="OSR commercial fit out" class="w-full h-full object-cover transition-transform duration-700">
+            <div class="project-overlay absolute inset-0 bg-gradient-to-t from-navy/60 via-navy/10 to-transparent opacity-0 transition-opacity duration-500 flex items-end p-6">
+              <span class="text-white font-medium text-sm">View Project</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <span class="text-xs font-semibold uppercase tracking-wider text-olive">Commercial Fit Out</span>
+            <h3 class="font-display text-xl font-semibold mt-2">OSR Fit Out</h3>
+            <p class="text-navy/50 text-sm mt-2">A professional commercial space designed for functionality without compromising on style.</p>
+          </div>
+        </div>
+
+        <!-- Unley -->
+        <div class="project-card flex-shrink-0 w-[320px] sm:w-[380px] rounded-3xl overflow-hidden bg-white shadow-sm border border-beige/50 img-shine">
+          <div class="relative h-64 sm:h-72 overflow-hidden">
+            <img src="../assets/images/project-unley.jpg" alt="Unley kitchen renovation" class="w-full h-full object-cover transition-transform duration-700">
+            <div class="project-overlay absolute inset-0 bg-gradient-to-t from-navy/60 via-navy/10 to-transparent opacity-0 transition-opacity duration-500 flex items-end p-6">
+              <span class="text-white font-medium text-sm">View Project</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <span class="text-xs font-semibold uppercase tracking-wider text-orange">Kitchen Renovation</span>
+            <h3 class="font-display text-xl font-semibold mt-2">Unley</h3>
+            <p class="text-navy/50 text-sm mt-2">A heritage home kitchen brought to life with modern amenities and timeless character.</p>
+          </div>
+        </div>
+
+        <!-- Semaphore 2 -->
+        <div class="project-card flex-shrink-0 w-[320px] sm:w-[380px] rounded-3xl overflow-hidden bg-white shadow-sm border border-beige/50 img-shine">
+          <div class="relative h-64 sm:h-72 overflow-hidden">
+            <img src="../assets/images/project-semaphore2.jpg" alt="Semaphore renovation details" class="w-full h-full object-cover transition-transform duration-700">
+            <div class="project-overlay absolute inset-0 bg-gradient-to-t from-navy/60 via-navy/10 to-transparent opacity-0 transition-opacity duration-500 flex items-end p-6">
+              <span class="text-white font-medium text-sm">View Project</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <span class="text-xs font-semibold uppercase tracking-wider text-terracotta">Bathroom & Laundry</span>
+            <h3 class="font-display text-xl font-semibold mt-2">Everard Park</h3>
+            <p class="text-navy/50 text-sm mt-2">Elegant bathroom and laundry spaces designed for everyday luxury and ease.</p>
+          </div>
+        </div>
+
+        <!-- Semaphore 3 -->
+        <div class="project-card flex-shrink-0 w-[320px] sm:w-[380px] rounded-3xl overflow-hidden bg-white shadow-sm border border-beige/50 img-shine">
+          <div class="relative h-64 sm:h-72 overflow-hidden">
+            <img src="../assets/images/project-semaphore3.jpg" alt="Semaphore renovation details" class="w-full h-full object-cover transition-transform duration-700">
+            <div class="project-overlay absolute inset-0 bg-gradient-to-t from-navy/60 via-navy/10 to-transparent opacity-0 transition-opacity duration-500 flex items-end p-6">
+              <span class="text-white font-medium text-sm">View Project</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <span class="text-xs font-semibold uppercase tracking-wider text-olive">Addition</span>
+            <h3 class="font-display text-xl font-semibold mt-2">Semaphore Extension</h3>
+            <p class="text-navy/50 text-sm mt-2">A seamless home extension that doubled the living space while preserving the coastal character.</p>
+          </div>
+        </div>
+
+        <!-- End spacer -->
+        <div class="flex-shrink-0 w-4"></div>
+      </div>
+    </div>
+
+    <!-- CTA under projects -->
+    <div class="reveal max-w-7xl mx-auto px-5 sm:px-8 mt-12 text-center" style="transition-delay: 0.3s;">
+      <a href="https://www.instagram.com/primedesignbuilt/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 text-navy/60 hover:text-orange transition-colors font-medium">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        See more on Instagram
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- ======== TESTIMONIAL ======== -->
+  <section class="relative py-20 sm:py-28 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8">
+      <div class="reveal bg-beige rounded-[2rem] sm:rounded-[3rem] p-8 sm:p-12 lg:p-16 relative overflow-hidden organic-dots">
+        <div class="blob-1 -top-20 -right-20 opacity-30"></div>
+        <span class="quote-mark top-4 left-6 sm:top-6 sm:left-10">"</span>
+
+        <div class="relative max-w-3xl mx-auto text-center pt-8">
+          <p class="font-display text-xl sm:text-2xl lg:text-3xl italic leading-relaxed text-navy/80 mb-8">
+            Working with Prime Design & Built was an absolute dream. They listened to what we wanted, brought incredible ideas to the table, and delivered a space that exceeded every expectation. Our kitchen is now the heart of our home.
+          </p>
+          <div class="flex items-center justify-center gap-3">
+            <div class="w-12 h-12 rounded-full bg-olive/20 flex items-center justify-center">
+              <span class="font-display font-bold text-olive text-lg">S</span>
+            </div>
+            <div class="text-left">
+              <p class="font-semibold text-navy">Sarah & James</p>
+              <p class="text-sm text-navy/50">Broadview Kitchen Renovation</p>
+            </div>
+          </div>
+
+          <!-- Star rating -->
+          <div class="flex items-center justify-center gap-1 mt-5">
+            <svg class="w-5 h-5 text-orange" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-orange" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-orange" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-orange" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-orange" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== PROCESS / HOW WE WORK ======== -->
+  <section id="process" class="relative py-20 sm:py-28 overflow-hidden">
+    <div class="blob-3 -top-20 left-10 opacity-40"></div>
+    <div class="float-circle w-4 h-4 bg-terracotta/10 bottom-40 right-[10%] hidden md:block" style="animation-delay: -7s;"></div>
+
+    <div class="max-w-7xl mx-auto px-5 sm:px-8">
+      <!-- Section header -->
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="reveal font-script text-2xl text-terracotta">How We Work</span>
+        <h2 class="reveal font-display text-3xl sm:text-4xl lg:text-5xl font-bold mt-2 mb-5 leading-tight" style="transition-delay: 0.1s;">
+          Your journey to a <span class="italic text-orange">beautiful home</span>
+        </h2>
+        <p class="reveal text-lg text-navy/60 leading-relaxed" style="transition-delay: 0.2s;">
+          We've made the renovation process simple, transparent, and -- dare we say -- enjoyable.
+        </p>
+      </div>
+
+      <!-- Process steps -->
+      <div class="relative max-w-4xl mx-auto">
+        <!-- Connecting line (mobile) -->
+        <div class="process-line md:hidden"></div>
+
+        <!-- Desktop connecting line -->
+        <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 -translate-x-1/2 bg-gradient-to-b from-orange via-terracotta to-olive"></div>
+
+        <!-- Step 1 -->
+        <div class="reveal relative flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-12 mb-12 md:mb-16 pl-16 md:pl-0">
+          <div class="md:w-1/2 md:text-right md:pr-12">
+            <h3 class="font-display text-xl font-semibold mb-2">Free Consultation</h3>
+            <p class="text-navy/55 leading-relaxed">We come to you, listen to your vision, assess your space, and share honest advice. No pressure, no obligations -- just genuine conversation about possibilities.</p>
+          </div>
+          <div class="absolute left-2 md:left-1/2 md:-translate-x-1/2 w-12 h-12 rounded-full bg-orange text-white flex items-center justify-center font-display font-bold text-lg shadow-lg shadow-orange/25 z-10">1</div>
+          <div class="md:w-1/2 md:pl-12 hidden md:flex items-center">
+            <div class="w-16 h-16 rounded-2xl bg-orange/10 flex items-center justify-center">
+              <svg class="w-8 h-8 text-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="reveal relative flex flex-col md:flex-row-reverse items-start md:items-center gap-6 md:gap-12 mb-12 md:mb-16 pl-16 md:pl-0" style="transition-delay: 0.1s;">
+          <div class="md:w-1/2 md:text-left md:pl-12">
+            <h3 class="font-display text-xl font-semibold mb-2">Design & Planning</h3>
+            <p class="text-navy/55 leading-relaxed">Our design team creates detailed plans, mood boards, and 3D renders so you can see your new space before a single tile is laid. We refine until you love it.</p>
+          </div>
+          <div class="absolute left-2 md:left-1/2 md:-translate-x-1/2 w-12 h-12 rounded-full bg-terracotta text-white flex items-center justify-center font-display font-bold text-lg shadow-lg shadow-terracotta/25 z-10">2</div>
+          <div class="md:w-1/2 md:pr-12 hidden md:flex items-center justify-end">
+            <div class="w-16 h-16 rounded-2xl bg-terracotta/10 flex items-center justify-center">
+              <svg class="w-8 h-8 text-terracotta" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="reveal relative flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-12 mb-12 md:mb-16 pl-16 md:pl-0" style="transition-delay: 0.2s;">
+          <div class="md:w-1/2 md:text-right md:pr-12">
+            <h3 class="font-display text-xl font-semibold mb-2">Build & Craft</h3>
+            <p class="text-navy/55 leading-relaxed">Our skilled team brings the design to life with meticulous attention to detail. We keep you updated every step of the way -- no surprises, just excitement.</p>
+          </div>
+          <div class="absolute left-2 md:left-1/2 md:-translate-x-1/2 w-12 h-12 rounded-full bg-olive text-white flex items-center justify-center font-display font-bold text-lg shadow-lg shadow-olive/25 z-10">3</div>
+          <div class="md:w-1/2 md:pl-12 hidden md:flex items-center">
+            <div class="w-16 h-16 rounded-2xl bg-olive/10 flex items-center justify-center">
+              <svg class="w-8 h-8 text-olive" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="reveal relative flex flex-col md:flex-row-reverse items-start md:items-center gap-6 md:gap-12 pl-16 md:pl-0" style="transition-delay: 0.3s;">
+          <div class="md:w-1/2 md:text-left md:pl-12">
+            <h3 class="font-display text-xl font-semibold mb-2">Reveal & Enjoy</h3>
+            <p class="text-navy/55 leading-relaxed">The big reveal! We do a thorough walkthrough together, ensure every detail is perfect, and hand over your beautiful new space. Then it's time to enjoy it.</p>
+          </div>
+          <div class="absolute left-2 md:left-1/2 md:-translate-x-1/2 w-12 h-12 rounded-full bg-navy text-white flex items-center justify-center font-display font-bold text-lg shadow-lg shadow-navy/25 z-10">4</div>
+          <div class="md:w-1/2 md:pr-12 hidden md:flex items-center justify-end">
+            <div class="w-16 h-16 rounded-2xl bg-navy/10 flex items-center justify-center">
+              <svg class="w-8 h-8 text-navy" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA after process -->
+      <div class="reveal text-center mt-16" style="transition-delay: 0.4s;">
+        <a href="#contact" class="btn-warm rounded-full px-10 py-4 text-base font-semibold inline-flex items-center gap-2">
+          Start Your Journey
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== CONTACT ======== -->
+  <section id="contact" class="relative py-20 sm:py-28 overflow-hidden">
+    <div class="blob-1 top-0 -right-20 opacity-30"></div>
+    <div class="blob-2 bottom-0 -left-32 opacity-30"></div>
+
+    <div class="max-w-7xl mx-auto px-5 sm:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16">
+        <!-- Left: Info -->
+        <div>
+          <span class="reveal font-script text-2xl text-terracotta">Get in Touch</span>
+          <h2 class="reveal font-display text-3xl sm:text-4xl lg:text-5xl font-bold mt-2 mb-5 leading-tight" style="transition-delay: 0.1s;">
+            Let's create something <span class="italic text-orange">beautiful</span> together
+          </h2>
+          <p class="reveal text-lg text-navy/60 leading-relaxed mb-8" style="transition-delay: 0.2s;">
+            Book your free design consultation today -- valued at $350. We'll come to you, listen to your ideas, and show you what's possible.
+          </p>
+
+          <!-- Contact details -->
+          <div class="reveal space-y-5" style="transition-delay: 0.3s;">
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-2xl bg-orange/10 flex items-center justify-center flex-shrink-0">
+                <svg class="w-6 h-6 text-orange" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+              </div>
+              <div>
+                <p class="text-sm text-navy/50">Give us a call</p>
+                <a href="tel:0481742026" class="font-semibold text-navy hover:text-orange transition-colors">0481 742 026</a>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-2xl bg-terracotta/10 flex items-center justify-center flex-shrink-0">
+                <svg class="w-6 h-6 text-terracotta" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              </div>
+              <div>
+                <p class="text-sm text-navy/50">Send us an email</p>
+                <a href="mailto:hello@primedesignandbuilt.com.au" class="font-semibold text-navy hover:text-orange transition-colors">hello@primedesignandbuilt.com.au</a>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-2xl bg-olive/10 flex items-center justify-center flex-shrink-0">
+                <svg class="w-6 h-6 text-olive" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+              </div>
+              <div>
+                <p class="text-sm text-navy/50">Follow our journey</p>
+                <a href="https://www.instagram.com/primedesignbuilt/" target="_blank" rel="noopener noreferrer" class="font-semibold text-navy hover:text-orange transition-colors">@primedesignbuilt</a>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-2xl bg-navy/10 flex items-center justify-center flex-shrink-0">
+                <svg class="w-6 h-6 text-navy" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              </div>
+              <div>
+                <p class="text-sm text-navy/50">Based in</p>
+                <span class="font-semibold text-navy">Adelaide, South Australia</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Lyda card -->
+          <div class="reveal mt-10 bg-beige rounded-2xl p-6 flex items-center gap-5" style="transition-delay: 0.4s;">
+            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-orange to-terracotta flex items-center justify-center flex-shrink-0">
+              <span class="font-display font-bold text-white text-xl">L</span>
+            </div>
+            <div>
+              <p class="font-script text-lg text-terracotta">Your first point of contact</p>
+              <p class="font-display font-semibold text-lg">Lyda</p>
+              <p class="text-sm text-navy/50">Ready to chat about your project</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Contact Form -->
+        <div class="reveal-right">
+          <div class="bg-white rounded-3xl p-7 sm:p-10 shadow-sm border border-beige/60">
+            <h3 class="font-display text-2xl font-semibold mb-2">Book Your Free Consultation</h3>
+            <p class="text-navy/50 mb-7 text-sm">Fill in your details and we'll be in touch within 24 hours.</p>
+
+            <form id="contactForm" class="space-y-5" onsubmit="handleFormSubmit(event)">
+              <div class="grid sm:grid-cols-2 gap-5">
+                <div>
+                  <label for="firstName" class="block text-sm font-medium text-navy/70 mb-1.5">First Name</label>
+                  <input type="text" id="firstName" name="firstName" required class="w-full px-4 py-3 rounded-xl border border-beige-dark/60 bg-cream/50 focus:border-orange focus:ring-2 focus:ring-orange/20 outline-none transition-all text-sm" placeholder="Your first name">
+                </div>
+                <div>
+                  <label for="lastName" class="block text-sm font-medium text-navy/70 mb-1.5">Last Name</label>
+                  <input type="text" id="lastName" name="lastName" required class="w-full px-4 py-3 rounded-xl border border-beige-dark/60 bg-cream/50 focus:border-orange focus:ring-2 focus:ring-orange/20 outline-none transition-all text-sm" placeholder="Your last name">
+                </div>
+              </div>
+              <div>
+                <label for="email" class="block text-sm font-medium text-navy/70 mb-1.5">Email</label>
+                <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-xl border border-beige-dark/60 bg-cream/50 focus:border-orange focus:ring-2 focus:ring-orange/20 outline-none transition-all text-sm" placeholder="you@example.com">
+              </div>
+              <div>
+                <label for="phone" class="block text-sm font-medium text-navy/70 mb-1.5">Phone</label>
+                <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 rounded-xl border border-beige-dark/60 bg-cream/50 focus:border-orange focus:ring-2 focus:ring-orange/20 outline-none transition-all text-sm" placeholder="0400 000 000">
+              </div>
+              <div>
+                <label for="projectType" class="block text-sm font-medium text-navy/70 mb-1.5">What are you looking for?</label>
+                <select id="projectType" name="projectType" class="w-full px-4 py-3 rounded-xl border border-beige-dark/60 bg-cream/50 focus:border-orange focus:ring-2 focus:ring-orange/20 outline-none transition-all text-sm appearance-none" style="background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%231a1e36%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M6%209l6%206%206-6%22%2F%3E%3C%2Fsvg%3E'); background-repeat: no-repeat; background-position: right 12px center; background-size: 18px;">
+                  <option value="">Select a service...</option>
+                  <option value="bathroom">Bathroom Renovation</option>
+                  <option value="kitchen">Kitchen Renovation</option>
+                  <option value="addition">Home Addition</option>
+                  <option value="new-build">New Build</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div>
+                <label for="message" class="block text-sm font-medium text-navy/70 mb-1.5">Tell us about your project</label>
+                <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 rounded-xl border border-beige-dark/60 bg-cream/50 focus:border-orange focus:ring-2 focus:ring-orange/20 outline-none transition-all text-sm resize-none" placeholder="What are you dreaming of? We'd love to hear..."></textarea>
+              </div>
+              <button type="submit" class="w-full btn-warm rounded-full py-4 text-base font-semibold flex items-center justify-center gap-2">
+                Book My Free Consultation
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+              </button>
+              <p class="text-xs text-navy/40 text-center mt-3">No spam, ever. Your details are safe with us.</p>
+            </form>
+
+            <!-- Success message (hidden by default) -->
+            <div id="formSuccess" class="hidden text-center py-10">
+              <div class="w-16 h-16 rounded-full bg-olive/10 flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-olive" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              </div>
+              <h3 class="font-display text-2xl font-semibold mb-2">Thank you!</h3>
+              <p class="text-navy/60">We'll be in touch within 24 hours to arrange your free consultation.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== FOOTER ======== -->
+  <footer class="bg-navy-light text-white relative overflow-hidden">
+    <!-- Decorative top border -->
+    <div class="h-1 w-full bg-gradient-to-r from-orange via-terracotta to-olive"></div>
+
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 py-16">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
+        <!-- Brand -->
+        <div class="sm:col-span-2 lg:col-span-1">
+          <img src="../assets/images/logo.svg" alt="Prime Design & Built" class="h-10 w-auto brightness-0 invert mb-5">
+          <p class="text-white/50 leading-relaxed text-sm mb-5">Not your typical Adelaide bathroom & kitchen renovation company. Crafted with care, built to last.</p>
+          <a href="https://www.instagram.com/primedesignbuilt/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-white/50 hover:text-orange transition-colors text-sm">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            @primedesignbuilt
+          </a>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h4 class="font-semibold text-sm uppercase tracking-wider mb-5 text-white/70">Explore</h4>
+          <ul class="space-y-3">
+            <li><a href="#story" class="text-white/45 hover:text-orange transition-colors text-sm">Our Story</a></li>
+            <li><a href="#services" class="text-white/45 hover:text-orange transition-colors text-sm">Services</a></li>
+            <li><a href="#projects" class="text-white/45 hover:text-orange transition-colors text-sm">Projects</a></li>
+            <li><a href="#process" class="text-white/45 hover:text-orange transition-colors text-sm">How We Work</a></li>
+            <li><a href="#contact" class="text-white/45 hover:text-orange transition-colors text-sm">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Services -->
+        <div>
+          <h4 class="font-semibold text-sm uppercase tracking-wider mb-5 text-white/70">Services</h4>
+          <ul class="space-y-3">
+            <li><span class="text-white/45 text-sm">Design</span></li>
+            <li><span class="text-white/45 text-sm">Bathroom Renovations</span></li>
+            <li><span class="text-white/45 text-sm">Kitchen Renovations</span></li>
+            <li><span class="text-white/45 text-sm">Home Additions</span></li>
+            <li><span class="text-white/45 text-sm">New Builds</span></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div>
+          <h4 class="font-semibold text-sm uppercase tracking-wider mb-5 text-white/70">Contact</h4>
+          <ul class="space-y-3">
+            <li>
+              <a href="tel:0481742026" class="text-white/45 hover:text-orange transition-colors text-sm flex items-center gap-2">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                0481 742 026
+              </a>
+            </li>
+            <li>
+              <a href="mailto:hello@primedesignandbuilt.com.au" class="text-white/45 hover:text-orange transition-colors text-sm flex items-center gap-2">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                hello@primedesignandbuilt.com.au
+              </a>
+            </li>
+            <li>
+              <span class="text-white/45 text-sm flex items-center gap-2">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                Adelaide, South Australia
+              </span>
+            </li>
+          </ul>
+          <a href="#contact" class="mt-5 inline-block btn-warm rounded-full px-6 py-2.5 text-sm font-semibold">Free Consultation</a>
+        </div>
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="mt-14 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p class="text-white/30 text-xs">&copy; 2026 Prime Design & Built. All rights reserved.</p>
+        <p class="text-white/20 text-xs">Adelaide's warmest renovation team</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======== JAVASCRIPT ======== -->
+  <script>
+    // ---- Mobile Menu ----
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    let menuOpen = false;
+
+    menuBtn.addEventListener('click', () => {
+      menuOpen = !menuOpen;
+      menuBtn.classList.toggle('active', menuOpen);
+      mobileMenu.classList.toggle('open', menuOpen);
+      document.body.style.overflow = menuOpen ? 'hidden' : '';
+    });
+
+    function closeMobileMenu() {
+      menuOpen = false;
+      menuBtn.classList.remove('active');
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    // ---- Navbar scroll effect ----
+    const navbar = document.getElementById('navbar');
+    let lastScroll = 0;
+
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.pageYOffset;
+      if (currentScroll > 50) {
+        navbar.classList.add('nav-scrolled');
+      } else {
+        navbar.classList.remove('nav-scrolled');
+      }
+      lastScroll = currentScroll;
+    }, { passive: true });
+
+    // ---- Intersection Observer for reveal animations ----
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px 0px -80px 0px',
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => {
+      observer.observe(el);
+    });
+
+    // ---- Counter animation ----
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const target = parseInt(entry.target.getAttribute('data-target'));
+          animateCounter(entry.target, target);
+          counterObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.counter-num[data-target]').forEach(el => {
+      counterObserver.observe(el);
+    });
+
+    function animateCounter(el, target) {
+      let current = 0;
+      const duration = 2000;
+      const step = target / (duration / 16);
+
+      function update() {
+        current += step;
+        if (current >= target) {
+          el.textContent = target;
+          return;
+        }
+        el.textContent = Math.floor(current);
+        requestAnimationFrame(update);
+      }
+      requestAnimationFrame(update);
+    }
+
+    // ---- Project Carousel (drag to scroll) ----
+    const carousel = document.getElementById('projectCarousel');
+    const prevBtn = document.getElementById('carouselPrev');
+    const nextBtn = document.getElementById('carouselNext');
+    let isDragging = false;
+    let startX, scrollLeft;
+
+    carousel.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      carousel.classList.add('dragging');
+      startX = e.pageX - carousel.offsetLeft;
+      scrollLeft = carousel.scrollLeft;
+    });
+
+    carousel.addEventListener('mouseleave', () => {
+      isDragging = false;
+      carousel.classList.remove('dragging');
+    });
+
+    carousel.addEventListener('mouseup', () => {
+      isDragging = false;
+      carousel.classList.remove('dragging');
+    });
+
+    carousel.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      e.preventDefault();
+      const x = e.pageX - carousel.offsetLeft;
+      const walk = (x - startX) * 1.5;
+      carousel.scrollLeft = scrollLeft - walk;
+    });
+
+    // Touch support
+    carousel.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].pageX - carousel.offsetLeft;
+      scrollLeft = carousel.scrollLeft;
+    }, { passive: true });
+
+    carousel.addEventListener('touchmove', (e) => {
+      const x = e.touches[0].pageX - carousel.offsetLeft;
+      const walk = (x - startX) * 1.5;
+      carousel.scrollLeft = scrollLeft - walk;
+    }, { passive: true });
+
+    // Arrow buttons
+    const cardWidth = 400;
+    prevBtn.addEventListener('click', () => {
+      carousel.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+    });
+    nextBtn.addEventListener('click', () => {
+      carousel.scrollBy({ left: cardWidth, behavior: 'smooth' });
+    });
+
+    // ---- Form submission ----
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      const form = document.getElementById('contactForm');
+      const success = document.getElementById('formSuccess');
+
+      // Simple validation visual feedback
+      const inputs = form.querySelectorAll('input[required], select[required]');
+      let valid = true;
+      inputs.forEach(input => {
+        if (!input.value.trim()) {
+          input.style.borderColor = '#C4653A';
+          valid = false;
+        } else {
+          input.style.borderColor = '';
+        }
+      });
+
+      if (!valid) return;
+
+      // Show success state
+      form.style.display = 'none';
+      success.classList.remove('hidden');
+    }
+
+    // ---- Smooth scroll for anchor links ----
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          const offset = 80;
+          const position = target.getBoundingClientRect().top + window.pageYOffset - offset;
+          window.scrollTo({ top: position, behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

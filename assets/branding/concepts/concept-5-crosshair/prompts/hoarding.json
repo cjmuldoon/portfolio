@@ -1,0 +1,9 @@
+{
+  "prompt": "A photorealistic photograph of construction site hoarding panels along a suburban street in Adelaide, Australia. The hoarding is made of premium quality printed metal panels, 2.4 metres tall. The design is predominantly matte black with a large minimalist technical logo centered: the letters 'LK' in thin monospace font inside a thin gold circle with crosshair lines extending from the circle, and 'DESIGN AND BUILD' in spaced monospace capitals below. A thin gold (#C9A96E) horizontal line runs across the full width at the lower third. Below the line, small monospace text reads project details and contact information. The overall look is sleek, dark, and premium — like an architectural exhibition rather than typical construction hoarding. Trees visible above the hoarding, footpath in front. Overcast Australian daylight, even lighting. Shot with 24mm f/5.6, wide angle showing several panels. Professional architectural photography, clean composition.",
+  "negative_prompt": "cheap, damaged, graffiti, bright colours, cartoon, blurry, cluttered, messy construction, ugly, distorted text, misspelled",
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "jpg",
+    "aspect_ratio": "16:9"
+  }
+}

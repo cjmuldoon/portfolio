@@ -1,0 +1,17 @@
+{
+  "prompt": "A premium building fascia sign on a modern charcoal rendered building facade at dusk golden hour. The sign features a large circular badge emblem in brushed metal: a thin outer ring and thicker inner ring forming a double-circle seal. Inside the circle, a bold LK monogram is centered. Along the bottom arc, DESIGN AND BUILD curves following the circle. Along the top arc, ADELAIDE curves around the top. The circular badge is mounted as a single brushed metal piece with gold accent details. Below the badge, smaller brushed metal text reads 0481 742 026 and lkdesignandbuild.com.au. LED backlighting creates a warm glow behind the circular emblem. Golden hour light catches the metal. Modern commercial building exterior, architectural photography.",
+  "negative_prompt": "cheap signage, vinyl banner, pixelated, low quality, daytime flat lighting, ugly building, run-down, dirty, cluttered, cartoon, illustration, wax seal",
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "jpg",
+    "aspect_ratio": "16:9"
+  },
+  "settings": {
+    "resolution": "2048x1152",
+    "style": "architectural photography",
+    "lighting": "golden hour dusk with LED backlighting",
+    "camera_angle": "slight low angle looking up at signage",
+    "depth_of_field": "shallow, sign in sharp focus",
+    "quality": "professional architectural photo, high detail"
+  }
+}

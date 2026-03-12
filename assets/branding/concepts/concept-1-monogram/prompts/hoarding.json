@@ -1,0 +1,17 @@
+{
+  "prompt": "Construction site hoarding panels at a residential renovation site in an Adelaide suburb. Clean white hoarding panels feature the LK branding: a large elegant intertwined L and K monogram with flowing calligraphic connections in gold (#C9A96E), the letters interleaved and overlapping like a luxury fashion house emblem. Below the monogram, DESIGN AND BUILD in refined charcoal small caps. The phone number 0481 742 026 and lkdesignandbuild.com.au appear in charcoal text on the hoarding. The branding is repeated across multiple panels for visibility. The hoarding looks clean and premium, standing out from typical construction signage. Adelaide suburban setting with neat houses visible nearby, clear blue sky above, a residential street in the foreground. Professional architectural photography.",
+  "negative_prompt": "dirty hoarding, graffiti, torn panels, ugly construction site, rubbish, mud, overcast sky, industrial area, cheap printing, faded colors, nighttime, cartoon, low quality",
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "jpg",
+    "aspect_ratio": "16:9"
+  },
+  "settings": {
+    "resolution": "2048x1152",
+    "style": "architectural photography",
+    "lighting": "bright daylight, blue sky",
+    "camera_angle": "eye level, slight angle along hoarding run",
+    "depth_of_field": "medium, hoarding sharp",
+    "quality": "professional construction site photography"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "prompt": "Professional luxury brand logo design for 'LK Design and Build', a premium home renovation and interior design company based in Adelaide, Australia. The logo features elegant intertwined letters 'L' and 'K' forming a sophisticated monogram, rendered in deep charcoal (#2C2C2C) on a clean white background. The monogram sits above the full company name 'LK DESIGN AND BUILD' in refined, widely-spaced sans-serif uppercase lettering. The design incorporates a subtle golden accent line (#C9A96E) as an underline beneath the company name. Shot as a high-resolution brand identity presentation on premium matte white card stock, photographed with a 50mm macro lens, f/4.0, ISO 100, soft diffused studio lighting creating gentle shadow beneath the card. Do not add any extra decorative elements, patterns, or backgrounds. Clean, minimal, premium. The card shows very subtle paper texture with micro-fiber grain visible at this magnification.",
+  "negative_prompt": "blurry, low resolution, pixelated, busy background, cluttered, cheap looking, clip art, cartoon, 3D render, neon colors, gradients on logo, watermark, multiple logos, text errors, misspelling",
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "png",
+    "aspect_ratio": "1:1"
+  },
+  "settings": {
+    "resolution": "2048x2048",
+    "style": "photorealistic product photography, brand identity presentation",
+    "lighting": "soft diffused studio lighting, even illumination",
+    "camera_angle": "top-down flat lay",
+    "depth_of_field": "moderate depth of field",
+    "quality": "ultra high detail, sharp text rendering"
+  }
+}

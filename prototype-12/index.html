@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LK Design and Build | Design with purpose, build with pride</title>
+<meta name="description" content="LK Design and Build — Premium Adelaide home renovation and interior design. Interior Design, Renovations, Additions & New Builds.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        charcoal: '#2C2C2C',
+        gold: '#C9A96E',
+        'gold-light': '#D4BA88',
+        'warm-grey': '#F2F0ED',
+        'warm-grey-dark': '#E8E5E0',
+      },
+      fontFamily: {
+        display: ['"Playfair Display"', 'Georgia', 'serif'],
+        body: ['"Source Sans 3"', 'system-ui', 'sans-serif'],
+      },
+    },
+  },
+}
+</script>
+<style>
+  /* Base */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+  body { font-family: 'Source Sans 3', system-ui, sans-serif; color: #2C2C2C; overflow-x: hidden; }
+
+  /* Selection */
+  ::selection { background: #C9A96E; color: #fff; }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: #F2F0ED; }
+  ::-webkit-scrollbar-thumb { background: #C9A96E; border-radius: 3px; }
+
+  /* Chapter Numbers */
+  .chapter-num {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(100px, 12vw, 160px);
+    font-weight: 400;
+    line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 1.5px #C9A96E;
+    opacity: 0.35;
+    user-select: none;
+    transition: opacity 0.8s ease;
+  }
+  .chapter-num.visible { opacity: 0.5; }
+
+  /* Dark section chapter numbers */
+  .dark-section .chapter-num {
+    -webkit-text-stroke-color: rgba(201, 169, 110, 0.5);
+    opacity: 0.25;
+  }
+  .dark-section .chapter-num.visible { opacity: 0.4; }
+
+  /* Gold line dividers */
+  .gold-line {
+    width: 60px;
+    height: 1px;
+    background: #C9A96E;
+  }
+  .gold-line-long {
+    width: 120px;
+    height: 1px;
+    background: #C9A96E;
+  }
+
+  /* Timeline */
+  .timeline-track {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: rgba(201, 169, 110, 0.2);
+    transform: translateX(-50%);
+  }
+  .timeline-fill {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 2px;
+    height: 0;
+    background: #C9A96E;
+    transform: translateX(-50%);
+    transition: height 0.1s linear;
+  }
+  .timeline-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid #C9A96E;
+    background: #fff;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    transition: background 0.5s ease, box-shadow 0.5s ease;
+  }
+  .timeline-dot.filled {
+    background: #C9A96E;
+    box-shadow: 0 0 0 4px rgba(201, 169, 110, 0.2);
+  }
+
+  @media (max-width: 768px) {
+    .timeline-track, .timeline-fill {
+      left: 24px;
+    }
+    .timeline-dot {
+      left: 24px;
+    }
+  }
+
+  /* Staggered grid */
+  .stagger-offset { transform: translateY(80px); }
+  @media (max-width: 768px) { .stagger-offset { transform: translateY(0); } }
+
+  /* Animations */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .fade-in {
+    opacity: 0;
+    transition: opacity 1s ease;
+  }
+  .fade-in.visible { opacity: 1; }
+
+  .cascade-left {
+    opacity: 0;
+    transform: translateX(-40px) translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .cascade-left.visible {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+  }
+  .cascade-right {
+    opacity: 0;
+    transform: translateX(40px) translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .cascade-right.visible {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+  }
+
+  /* For stagger-offset cards, need to keep the Y offset */
+  @media (min-width: 769px) {
+    .cascade-right.stagger-offset.visible {
+      transform: translateX(0) translateY(80px);
+    }
+  }
+
+  /* Counter animation */
+  .counter-num {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(100px, 12vw, 160px);
+    font-weight: 400;
+    line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 1.5px #C9A96E;
+    user-select: none;
+  }
+
+  /* Hamburger */
+  .hamburger-line {
+    display: block;
+    width: 28px;
+    height: 1.5px;
+    background: #2C2C2C;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center;
+  }
+  .menu-open .hamburger-line { background: #fff; }
+  .menu-open .hamburger-line:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+  .menu-open .hamburger-line:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .menu-open .hamburger-line:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+  /* Nav overlay */
+  .nav-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(44, 44, 44, 0.98);
+    z-index: 40;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .nav-overlay.open { opacity: 1; pointer-events: all; }
+  .nav-overlay a {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 5vw, 48px);
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 12px 0;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease, transform 0.4s ease, color 0.3s ease;
+  }
+  .nav-overlay.open a {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .nav-overlay a:hover { color: #C9A96E; }
+
+  /* Project card hover */
+  .project-card {
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .project-card img {
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .project-card:hover img {
+    transform: scale(1.05);
+  }
+  .project-card .card-overlay {
+    transition: opacity 0.5s ease;
+  }
+  .project-card:hover .card-overlay {
+    opacity: 1 !important;
+  }
+
+  /* Form inputs */
+  .form-input {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(201, 169, 110, 0.3);
+    padding: 12px 0;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 16px;
+    color: #2C2C2C;
+    width: 100%;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+  .form-input:focus { border-bottom-color: #C9A96E; }
+  .form-input::placeholder { color: #999; font-weight: 300; }
+  textarea.form-input { resize: vertical; min-height: 100px; }
+
+  /* Top nav background on scroll */
+  .nav-bar {
+    transition: background 0.4s ease, box-shadow 0.4s ease;
+  }
+  .nav-bar.scrolled {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 1px 0 rgba(201, 169, 110, 0.15);
+  }
+  .nav-bar.scrolled .hamburger-line { background: #2C2C2C; }
+
+  /* Hero image crossfade */
+  .hero-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 1.5s ease;
+    background-size: cover;
+    background-position: center;
+  }
+  .hero-slide.active { opacity: 1; }
+
+  /* CTA button */
+  .btn-gold {
+    display: inline-block;
+    border: 1px solid #C9A96E;
+    color: #C9A96E;
+    padding: 14px 36px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.4s ease;
+    cursor: pointer;
+    background: transparent;
+  }
+  .btn-gold:hover {
+    background: #C9A96E;
+    color: #fff;
+  }
+  .btn-gold-solid {
+    display: inline-block;
+    background: #C9A96E;
+    color: #fff;
+    padding: 14px 36px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.4s ease;
+    cursor: pointer;
+    border: 1px solid #C9A96E;
+  }
+  .btn-gold-solid:hover {
+    background: #b8944f;
+    border-color: #b8944f;
+  }
+
+  /* White variant */
+  .btn-white {
+    display: inline-block;
+    border: 1px solid rgba(255,255,255,0.6);
+    color: #fff;
+    padding: 14px 36px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.4s ease;
+    cursor: pointer;
+    background: transparent;
+  }
+  .btn-white:hover {
+    background: #fff;
+    color: #2C2C2C;
+  }
+
+  /* Service card */
+  .service-card {
+    border: 1px solid rgba(201, 169, 110, 0.15);
+    padding: 40px 32px;
+    transition: border-color 0.4s ease, box-shadow 0.4s ease;
+  }
+  .service-card:hover {
+    border-color: #C9A96E;
+    box-shadow: 0 8px 32px rgba(201, 169, 110, 0.08);
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================ -->
+<!-- NAVIGATION BAR -->
+<!-- ============================================ -->
+<nav class="nav-bar fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 py-5" id="navbar">
+  <!-- Logo SVG -->
+  <a href="#hero" class="relative z-50">
+    <svg width="140" height="48" viewBox="0 0 140 48" xmlns="http://www.w3.org/2000/svg">
+      <text x="0" y="28" font-family="'Playfair Display', Georgia, serif" font-size="32" font-weight="500" fill="#2C2C2C" id="logo-text">LK</text>
+      <line x1="0" y1="34" x2="42" y2="34" stroke="#C9A96E" stroke-width="0.75"/>
+      <text x="0" y="46" font-family="'Source Sans 3', sans-serif" font-size="8.5" font-weight="500" letter-spacing="2.5" fill="#2C2C2C" id="logo-subtext" style="font-variant: small-caps;">DESIGN AND BUILD</text>
+    </svg>
+  </a>
+
+  <!-- Desktop nav links -->
+  <div class="hidden lg:flex items-center gap-10">
+    <a href="#about" class="font-body text-xs tracking-[2px] uppercase text-charcoal hover:text-gold transition-colors">About</a>
+    <a href="#services" class="font-body text-xs tracking-[2px] uppercase text-charcoal hover:text-gold transition-colors">Services</a>
+    <a href="#projects" class="font-body text-xs tracking-[2px] uppercase text-charcoal hover:text-gold transition-colors">Projects</a>
+    <a href="#process" class="font-body text-xs tracking-[2px] uppercase text-charcoal hover:text-gold transition-colors">Process</a>
+    <a href="#contact" class="font-body text-xs tracking-[2px] uppercase text-charcoal hover:text-gold transition-colors">Contact</a>
+    <a href="#contact" class="btn-gold text-xs !py-3 !px-6">Book Consultation</a>
+  </div>
+
+  <!-- Hamburger button -->
+  <button class="relative z-50 flex flex-col gap-[7px] p-2 lg:hidden" id="hamburger" aria-label="Menu">
+    <span class="hamburger-line"></span>
+    <span class="hamburger-line"></span>
+    <span class="hamburger-line"></span>
+  </button>
+</nav>
+
+<!-- Full-screen nav overlay -->
+<div class="nav-overlay" id="navOverlay">
+  <div class="text-center">
+    <a href="#hero" style="transition-delay: 0.1s">Home</a>
+    <a href="#about" style="transition-delay: 0.15s">About</a>
+    <a href="#services" style="transition-delay: 0.2s">Services</a>
+    <a href="#projects" style="transition-delay: 0.25s">Projects</a>
+    <a href="#process" style="transition-delay: 0.3s">Process</a>
+    <a href="#contact" style="transition-delay: 0.35s">Contact</a>
+    <div class="mt-8" style="transition-delay: 0.4s">
+      <a href="tel:0481742026" class="block text-gold text-lg font-body" style="font-size: 18px; font-family: 'Source Sans 3', sans-serif;">0481 742 026</a>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- HERO SECTION -->
+<!-- ============================================ -->
+<section id="hero" class="relative min-h-screen flex flex-col">
+  <!-- Top 60%: Image -->
+  <div class="relative w-full" style="height: 60vh; min-height: 400px;">
+    <div class="hero-slide active" style="background-image: url('../assets/images/hero-1.jpg');" id="slide-0"></div>
+    <div class="hero-slide" style="background-image: url('../assets/images/hero-2.jpg');" id="slide-1"></div>
+    <div class="hero-slide" style="background-image: url('../assets/images/hero-3.jpg');" id="slide-2"></div>
+    <div class="hero-slide" style="background-image: url('../assets/images/hero-4.jpg');" id="slide-3"></div>
+    <!-- Charcoal gradient overlay at bottom edge -->
+    <div class="absolute bottom-0 left-0 right-0 h-40" style="background: linear-gradient(to top, rgba(44,44,44,0.4) 0%, transparent 100%);"></div>
+    <!-- Slide indicators -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3 z-10">
+      <button class="w-8 h-[2px] bg-white/80 slide-ind active-ind transition-all" data-slide="0"></button>
+      <button class="w-8 h-[2px] bg-white/40 slide-ind transition-all" data-slide="1"></button>
+      <button class="w-8 h-[2px] bg-white/40 slide-ind transition-all" data-slide="2"></button>
+      <button class="w-8 h-[2px] bg-white/40 slide-ind transition-all" data-slide="3"></button>
+    </div>
+  </div>
+
+  <!-- Bottom 40%: White content -->
+  <div class="flex-1 bg-white flex items-center" style="min-height: 40vh;">
+    <div class="w-full max-w-4xl mx-auto px-6 md:px-12 py-12 md:py-16">
+      <div class="gold-line mb-8 fade-up"></div>
+      <p class="font-display text-gold text-lg md:text-xl italic mb-6 fade-up" style="transition-delay: 0.15s">Design with purpose, build with pride</p>
+      <h1 class="font-display text-3xl md:text-4xl lg:text-5xl text-charcoal leading-tight mb-6 fade-up" style="transition-delay: 0.3s">
+        Creating spaces that<br class="hidden md:block"> elevate how you live.
+      </h1>
+      <p class="font-body text-base md:text-lg text-charcoal/70 max-w-xl leading-relaxed mb-10 fade-up" style="transition-delay: 0.45s">
+        LK Design and Build transforms Adelaide homes through considered interior design, thoughtful renovations, and quality craftsmanship. Every project begins with listening.
+      </p>
+      <div class="flex flex-wrap gap-4 fade-up" style="transition-delay: 0.6s">
+        <a href="#projects" class="btn-gold">View Our Work</a>
+        <a href="#contact" class="btn-gold-solid">Free Consultation</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- CHAPTER 01: ABOUT -->
+<!-- ============================================ -->
+<section id="about" class="bg-warm-grey py-24 md:py-32 relative overflow-hidden">
+  <div class="max-w-6xl mx-auto px-6 md:px-12">
+    <div class="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
+      <!-- Left: Chapter + content -->
+      <div>
+        <div class="chapter-num mb-4" data-counter="1">01</div>
+        <h2 class="font-display text-3xl md:text-4xl text-charcoal mb-2 fade-up">Our Story</h2>
+        <div class="gold-line mb-8 fade-up" style="transition-delay: 0.1s"></div>
+        <p class="font-body text-charcoal/70 leading-relaxed mb-6 fade-up" style="transition-delay: 0.2s">
+          LK Design and Build was founded on a simple belief: that great design should be accessible, and quality construction should be the standard, not the exception.
+        </p>
+        <p class="font-body text-charcoal/70 leading-relaxed mb-6 fade-up" style="transition-delay: 0.3s">
+          Led by Lyda, our team brings together interior design expertise with hands-on building knowledge. This dual perspective means every design decision is grounded in buildability, and every construction choice is guided by design intent.
+        </p>
+        <p class="font-body text-charcoal/70 leading-relaxed mb-8 fade-up" style="transition-delay: 0.4s">
+          From initial concept through to final handover, we manage every detail. Our clients across Adelaide trust us to deliver spaces that are not only beautiful, but purposefully designed for how they actually live.
+        </p>
+        <a href="#contact" class="btn-gold fade-up" style="transition-delay: 0.5s">Start a Conversation</a>
+      </div>
+      <!-- Right: Image -->
+      <div class="fade-up" style="transition-delay: 0.3s">
+        <div class="relative">
+          <img src="../assets/images/hero-3.jpg" alt="LK Design and Build interior" class="w-full aspect-[4/5] object-cover">
+          <div class="absolute -bottom-4 -left-4 w-24 h-24 border border-gold/30"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- CHAPTER 02: SERVICES -->
+<!-- ============================================ -->
+<section id="services" class="dark-section bg-charcoal py-24 md:py-32 relative overflow-hidden">
+  <div class="max-w-6xl mx-auto px-6 md:px-12">
+    <div class="text-center mb-16 md:mb-20">
+      <div class="chapter-num mb-4" data-counter="2">02</div>
+      <h2 class="font-display text-3xl md:text-4xl text-white mb-3 fade-up">What We Do</h2>
+      <div class="gold-line mx-auto mb-6 fade-up" style="transition-delay: 0.1s"></div>
+      <p class="font-body text-white/60 max-w-lg mx-auto leading-relaxed fade-up" style="transition-delay: 0.2s">
+        From concept to completion, our integrated approach ensures design vision and build quality work in harmony.
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <!-- Interior Design -->
+      <div class="service-card border-white/10 hover:border-gold/50 fade-up" style="transition-delay: 0.1s">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" class="mb-6">
+          <rect x="4" y="8" width="28" height="20" rx="1" stroke="#C9A96E" stroke-width="1"/>
+          <line x1="4" y1="28" x2="14" y2="34" stroke="#C9A96E" stroke-width="1"/>
+          <line x1="32" y1="28" x2="22" y2="34" stroke="#C9A96E" stroke-width="1"/>
+          <circle cx="18" cy="18" r="4" stroke="#C9A96E" stroke-width="1"/>
+        </svg>
+        <h3 class="font-display text-lg text-white mb-3">Interior Design</h3>
+        <p class="font-body text-white/50 text-sm leading-relaxed">Thoughtful spatial planning, material selection, and styling that reflects your lifestyle and personality.</p>
+      </div>
+      <!-- Renovations -->
+      <div class="service-card border-white/10 hover:border-gold/50 fade-up" style="transition-delay: 0.2s">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" class="mb-6">
+          <path d="M18 4L32 16V32H4V16L18 4Z" stroke="#C9A96E" stroke-width="1"/>
+          <rect x="14" y="22" width="8" height="10" stroke="#C9A96E" stroke-width="1"/>
+          <line x1="8" y1="14" x2="12" y2="14" stroke="#C9A96E" stroke-width="1"/>
+        </svg>
+        <h3 class="font-display text-lg text-white mb-3">Renovations</h3>
+        <p class="font-body text-white/50 text-sm leading-relaxed">Transforming existing spaces with considered design and quality craftsmanship that respects your home's character.</p>
+      </div>
+      <!-- Additions -->
+      <div class="service-card border-white/10 hover:border-gold/50 fade-up" style="transition-delay: 0.3s">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" class="mb-6">
+          <rect x="4" y="12" width="16" height="20" stroke="#C9A96E" stroke-width="1"/>
+          <rect x="20" y="18" width="12" height="14" stroke="#C9A96E" stroke-width="1" stroke-dasharray="3 2"/>
+          <line x1="26" y1="22" x2="26" y2="28" stroke="#C9A96E" stroke-width="1"/>
+          <line x1="23" y1="25" x2="29" y2="25" stroke="#C9A96E" stroke-width="1"/>
+          <path d="M12 4L20 12H4L12 4Z" stroke="#C9A96E" stroke-width="1"/>
+        </svg>
+        <h3 class="font-display text-lg text-white mb-3">Additions</h3>
+        <p class="font-body text-white/50 text-sm leading-relaxed">Seamless extensions that expand your living space while maintaining architectural cohesion with your existing home.</p>
+      </div>
+      <!-- New Builds -->
+      <div class="service-card border-white/10 hover:border-gold/50 fade-up" style="transition-delay: 0.4s">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" class="mb-6">
+          <rect x="6" y="14" width="24" height="18" stroke="#C9A96E" stroke-width="1"/>
+          <path d="M2 14L18 4L34 14" stroke="#C9A96E" stroke-width="1"/>
+          <rect x="12" y="20" width="5" height="5" stroke="#C9A96E" stroke-width="1"/>
+          <rect x="20" y="20" width="5" height="5" stroke="#C9A96E" stroke-width="1"/>
+          <rect x="15" y="27" width="6" height="5" stroke="#C9A96E" stroke-width="1"/>
+        </svg>
+        <h3 class="font-display text-lg text-white mb-3">New Builds</h3>
+        <p class="font-body text-white/50 text-sm leading-relaxed">Complete design and construction of new homes, crafted from the ground up to your exact vision and specifications.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- CHAPTER 03: PROJECTS -->
+<!-- ============================================ -->
+<section id="projects" class="bg-white py-24 md:py-32 relative overflow-hidden">
+  <div class="max-w-6xl mx-auto px-6 md:px-12">
+    <div class="mb-16 md:mb-20">
+      <div class="chapter-num mb-4" data-counter="3">03</div>
+      <h2 class="font-display text-3xl md:text-4xl text-charcoal mb-3 fade-up">Selected Work</h2>
+      <div class="gold-line mb-6 fade-up" style="transition-delay: 0.1s"></div>
+      <p class="font-body text-charcoal/70 max-w-lg leading-relaxed fade-up" style="transition-delay: 0.2s">
+        Each project tells a story of collaboration — from the initial design brief through to the final reveal.
+      </p>
+    </div>
+
+    <!-- Staggered two-column grid -->
+    <div class="grid md:grid-cols-2 gap-8 md:gap-10">
+      <!-- Broadview -->
+      <div class="project-card cascade-left" style="transition-delay: 0s">
+        <div class="relative overflow-hidden">
+          <img src="../assets/images/project-broadview.jpg" alt="Broadview Renovation" class="w-full aspect-[4/3] object-cover">
+          <div class="card-overlay absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/20 to-transparent opacity-0 flex items-end p-8">
+            <div>
+              <p class="font-body text-gold text-xs tracking-[2px] uppercase mb-2">Renovation</p>
+              <h3 class="font-display text-2xl text-white">Broadview</h3>
+            </div>
+          </div>
+        </div>
+        <div class="pt-5">
+          <p class="font-body text-xs tracking-[2px] uppercase text-gold mb-1">Renovation</p>
+          <h3 class="font-display text-xl text-charcoal">Broadview</h3>
+        </div>
+      </div>
+
+      <!-- Semaphore -->
+      <div class="project-card stagger-offset cascade-right" style="transition-delay: 0.15s">
+        <div class="relative overflow-hidden">
+          <img src="../assets/images/project-semaphore.jpg" alt="Semaphore Interior" class="w-full aspect-[4/3] object-cover">
+          <div class="card-overlay absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/20 to-transparent opacity-0 flex items-end p-8">
+            <div>
+              <p class="font-body text-gold text-xs tracking-[2px] uppercase mb-2">Interior Design</p>
+              <h3 class="font-display text-2xl text-white">Semaphore</h3>
+            </div>
+          </div>
+        </div>
+        <div class="pt-5">
+          <p class="font-body text-xs tracking-[2px] uppercase text-gold mb-1">Interior Design</p>
+          <h3 class="font-display text-xl text-charcoal">Semaphore</h3>
+        </div>
+      </div>
+
+      <!-- OSR Fit Out -->
+      <div class="project-card cascade-left" style="transition-delay: 0.3s">
+        <div class="relative overflow-hidden">
+          <img src="../assets/images/project-osr.jpg" alt="OSR Commercial Fit Out" class="w-full aspect-[4/3] object-cover">
+          <div class="card-overlay absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/20 to-transparent opacity-0 flex items-end p-8">
+            <div>
+              <p class="font-body text-gold text-xs tracking-[2px] uppercase mb-2">Commercial Fit Out</p>
+              <h3 class="font-display text-2xl text-white">OSR Fit Out</h3>
+            </div>
+          </div>
+        </div>
+        <div class="pt-5">
+          <p class="font-body text-xs tracking-[2px] uppercase text-gold mb-1">Commercial Fit Out</p>
+          <h3 class="font-display text-xl text-charcoal">OSR Fit Out</h3>
+        </div>
+      </div>
+
+      <!-- Unley -->
+      <div class="project-card stagger-offset cascade-right" style="transition-delay: 0.45s">
+        <div class="relative overflow-hidden">
+          <img src="../assets/images/project-unley.jpg" alt="Unley Renovation" class="w-full aspect-[4/3] object-cover">
+          <div class="card-overlay absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/20 to-transparent opacity-0 flex items-end p-8">
+            <div>
+              <p class="font-body text-gold text-xs tracking-[2px] uppercase mb-2">Renovation</p>
+              <h3 class="font-display text-2xl text-white">Unley</h3>
+            </div>
+          </div>
+        </div>
+        <div class="pt-5">
+          <p class="font-body text-xs tracking-[2px] uppercase text-gold mb-1">Renovation</p>
+          <h3 class="font-display text-xl text-charcoal">Unley</h3>
+        </div>
+      </div>
+
+      <!-- Everard Park -->
+      <div class="project-card cascade-left" style="transition-delay: 0.6s">
+        <div class="relative overflow-hidden">
+          <img src="../assets/images/project-semaphore2.jpg" alt="Everard Park Project" class="w-full aspect-[4/3] object-cover">
+          <div class="card-overlay absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/20 to-transparent opacity-0 flex items-end p-8">
+            <div>
+              <p class="font-body text-gold text-xs tracking-[2px] uppercase mb-2">Addition</p>
+              <h3 class="font-display text-2xl text-white">Everard Park</h3>
+            </div>
+          </div>
+        </div>
+        <div class="pt-5">
+          <p class="font-body text-xs tracking-[2px] uppercase text-gold mb-1">Addition</p>
+          <h3 class="font-display text-xl text-charcoal">Everard Park</h3>
+        </div>
+      </div>
+
+      <!-- Semaphore (additional) -->
+      <div class="project-card stagger-offset cascade-right" style="transition-delay: 0.75s">
+        <div class="relative overflow-hidden">
+          <img src="../assets/images/project-semaphore3.jpg" alt="Semaphore Kitchen" class="w-full aspect-[4/3] object-cover">
+          <div class="card-overlay absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/20 to-transparent opacity-0 flex items-end p-8">
+            <div>
+              <p class="font-body text-gold text-xs tracking-[2px] uppercase mb-2">Kitchen Design</p>
+              <h3 class="font-display text-2xl text-white">Semaphore Kitchen</h3>
+            </div>
+          </div>
+        </div>
+        <div class="pt-5">
+          <p class="font-body text-xs tracking-[2px] uppercase text-gold mb-1">Kitchen Design</p>
+          <h3 class="font-display text-xl text-charcoal">Semaphore Kitchen</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- FEATURE BAND: Consultation CTA -->
+<!-- ============================================ -->
+<section class="bg-charcoal py-20 md:py-28 relative overflow-hidden">
+  <div class="absolute top-0 left-0 right-0 h-px bg-gold/20"></div>
+  <div class="absolute bottom-0 left-0 right-0 h-px bg-gold/20"></div>
+  <div class="max-w-4xl mx-auto px-6 md:px-12 text-center">
+    <p class="font-body text-gold text-xs tracking-[3px] uppercase mb-6 fade-up">Complimentary Consultation</p>
+    <h2 class="font-display text-3xl md:text-4xl lg:text-5xl text-white leading-tight mb-6 fade-up" style="transition-delay: 0.15s">
+      Your vision deserves a <em class="text-gold">considered</em> approach
+    </h2>
+    <p class="font-body text-white/60 max-w-lg mx-auto leading-relaxed mb-10 fade-up" style="transition-delay: 0.3s">
+      Book your free design consultation, valued at $350. We will discuss your goals, explore possibilities, and outline a clear path forward.
+    </p>
+    <a href="#contact" class="btn-white fade-up" style="transition-delay: 0.45s">Book Your Free Consultation</a>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- CHAPTER 04: PROCESS -->
+<!-- ============================================ -->
+<section id="process" class="bg-warm-grey py-24 md:py-32 relative overflow-hidden">
+  <div class="max-w-6xl mx-auto px-6 md:px-12">
+    <div class="text-center mb-16 md:mb-24">
+      <div class="chapter-num mb-4" data-counter="4">04</div>
+      <h2 class="font-display text-3xl md:text-4xl text-charcoal mb-3 fade-up">Our Process</h2>
+      <div class="gold-line mx-auto mb-6 fade-up" style="transition-delay: 0.1s"></div>
+      <p class="font-body text-charcoal/70 max-w-lg mx-auto leading-relaxed fade-up" style="transition-delay: 0.2s">
+        A clear, collaborative journey from first conversation to final handover. No surprises, just purposeful progress.
+      </p>
+    </div>
+
+    <!-- Timeline -->
+    <div class="relative max-w-3xl mx-auto" id="timeline">
+      <div class="timeline-track"></div>
+      <div class="timeline-fill" id="timelineFill"></div>
+
+      <!-- Step 1: Discover -->
+      <div class="timeline-step relative pb-20 md:pb-28 fade-up" data-step="0">
+        <div class="timeline-dot" style="top: 0;" data-dot="0"></div>
+        <div class="md:grid md:grid-cols-2 md:gap-16">
+          <div class="md:text-right md:pr-12 pl-14 md:pl-0 pt-0">
+            <p class="font-body text-gold text-xs tracking-[2px] uppercase mb-2">Step 01</p>
+            <h3 class="font-display text-xl md:text-2xl text-charcoal mb-3">Discover</h3>
+            <p class="font-body text-charcoal/60 text-sm leading-relaxed">We begin with a conversation. Understanding your lifestyle, aspirations, and the practical needs that will shape every decision. This is where listening becomes design intelligence.</p>
+          </div>
+          <div class="hidden md:block"></div>
+        </div>
+      </div>
+
+      <!-- Step 2: Design -->
+      <div class="timeline-step relative pb-20 md:pb-28 fade-up" style="transition-delay: 0.1s" data-step="1">
+        <div class="timeline-dot" style="top: 0;" data-dot="1"></div>
+        <div class="md:grid md:grid-cols-2 md:gap-16">
+          <div class="hidden md:block"></div>
+          <div class="md:pl-12 pl-14 pt-0">
+            <p class="font-body text-gold text-xs tracking-[2px] uppercase mb-2">Step 02</p>
+            <h3 class="font-display text-xl md:text-2xl text-charcoal mb-3">Design</h3>
+            <p class="font-body text-charcoal/60 text-sm leading-relaxed">Concepts take shape through spatial planning, material palettes, and 3D visualisations. We refine together until every element feels right and every detail serves a purpose.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3: Refine -->
+      <div class="timeline-step relative pb-20 md:pb-28 fade-up" style="transition-delay: 0.2s" data-step="2">
+        <div class="timeline-dot" style="top: 0;" data-dot="2"></div>
+        <div class="md:grid md:grid-cols-2 md:gap-16">
+          <div class="md:text-right md:pr-12 pl-14 md:pl-0 pt-0">
+            <p class="font-body text-gold text-xs tracking-[2px] uppercase mb-2">Step 03</p>
+            <h3 class="font-display text-xl md:text-2xl text-charcoal mb-3">Refine</h3>
+            <p class="font-body text-charcoal/60 text-sm leading-relaxed">Detailed documentation, material specifications, and comprehensive pricing. Full transparency on costs, timelines, and scope so you move forward with complete confidence.</p>
+          </div>
+          <div class="hidden md:block"></div>
+        </div>
+      </div>
+
+      <!-- Step 4: Build -->
+      <div class="timeline-step relative pb-20 md:pb-28 fade-up" style="transition-delay: 0.3s" data-step="3">
+        <div class="timeline-dot" style="top: 0;" data-dot="3"></div>
+        <div class="md:grid md:grid-cols-2 md:gap-16">
+          <div class="hidden md:block"></div>
+          <div class="md:pl-12 pl-14 pt-0">
+            <p class="font-body text-gold text-xs tracking-[2px] uppercase mb-2">Step 04</p>
+            <h3 class="font-display text-xl md:text-2xl text-charcoal mb-3">Build</h3>
+            <p class="font-body text-charcoal/60 text-sm leading-relaxed">Quality construction managed with care. Regular updates, site cleanliness, and respect for your home. Our integrated team ensures the design intent carries through every stage of the build.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 5: Deliver -->
+      <div class="timeline-step relative fade-up" style="transition-delay: 0.4s" data-step="4">
+        <div class="timeline-dot" style="top: 0;" data-dot="4"></div>
+        <div class="md:grid md:grid-cols-2 md:gap-16">
+          <div class="md:text-right md:pr-12 pl-14 md:pl-0 pt-0">
+            <p class="font-body text-gold text-xs tracking-[2px] uppercase mb-2">Step 05</p>
+            <h3 class="font-display text-xl md:text-2xl text-charcoal mb-3">Deliver</h3>
+            <p class="font-body text-charcoal/60 text-sm leading-relaxed">The final reveal. A space that exceeds expectations, with styling guidance and aftercare support. This is not just a handover — it is the beginning of how you will live in your new space.</p>
+          </div>
+          <div class="hidden md:block"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- CHAPTER 05: CONTACT / DESIGN BRIEF -->
+<!-- ============================================ -->
+<section id="contact" class="bg-white py-24 md:py-32 relative overflow-hidden">
+  <div class="max-w-6xl mx-auto px-6 md:px-12">
+    <div class="grid lg:grid-cols-2 gap-16 md:gap-20">
+      <!-- Left: Contact info -->
+      <div>
+        <div class="chapter-num mb-4" data-counter="5">05</div>
+        <h2 class="font-display text-3xl md:text-4xl text-charcoal mb-3 fade-up">Start Your Project</h2>
+        <div class="gold-line mb-8 fade-up" style="transition-delay: 0.1s"></div>
+        <p class="font-body text-charcoal/70 leading-relaxed mb-10 fade-up" style="transition-delay: 0.2s">
+          Every great project begins with a conversation. Share your vision and we will arrange your complimentary design consultation, valued at $350.
+        </p>
+
+        <div class="space-y-6 fade-up" style="transition-delay: 0.3s">
+          <div class="flex items-start gap-4">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" class="mt-1 flex-shrink-0">
+              <path d="M10 2C6.13 2 3 5.13 3 9C3 14.25 10 19 10 19C10 19 17 14.25 17 9C17 5.13 13.87 2 10 2ZM10 11.5C8.62 11.5 7.5 10.38 7.5 9C7.5 7.62 8.62 6.5 10 6.5C11.38 6.5 12.5 7.62 12.5 9C12.5 10.38 11.38 11.5 10 11.5Z" fill="#C9A96E"/>
+            </svg>
+            <div>
+              <p class="font-body text-xs tracking-[2px] uppercase text-gold mb-1">Location</p>
+              <p class="font-body text-charcoal/70">Adelaide, South Australia</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" class="mt-1 flex-shrink-0">
+              <path d="M16.5 11.5C15.8 11.5 15.1 11.4 14.4 11.2C14.1 11.1 13.7 11.2 13.5 11.4L12.2 13.1C10.4 12.2 8.1 10 7.2 8.1L8.9 6.8C9.1 6.6 9.2 6.2 9.1 5.9C8.9 5.2 8.8 4.5 8.8 3.8C8.8 3.4 8.4 3 8 3H4.8C4.4 3 3.5 3.2 3.5 3.8C3.5 11.2 9.1 16.8 16.5 16.8C17.1 16.8 17.3 15.9 17.3 15.5V12.3C17.3 11.9 16.9 11.5 16.5 11.5Z" fill="#C9A96E"/>
+            </svg>
+            <div>
+              <p class="font-body text-xs tracking-[2px] uppercase text-gold mb-1">Phone</p>
+              <a href="tel:0481742026" class="font-body text-charcoal/70 hover:text-gold transition-colors">0481 742 026</a>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" class="mt-1 flex-shrink-0">
+              <path d="M16 4H4C3.45 4 3 4.45 3 5V15C3 15.55 3.45 16 4 16H16C16.55 16 17 15.55 17 15V5C17 4.45 16.55 4 16 4ZM16 7L10 11L4 7V5L10 9L16 5V7Z" fill="#C9A96E"/>
+            </svg>
+            <div>
+              <p class="font-body text-xs tracking-[2px] uppercase text-gold mb-1">Email</p>
+              <a href="mailto:hello@lkdesignandbuild.com.au" class="font-body text-charcoal/70 hover:text-gold transition-colors">hello@lkdesignandbuild.com.au</a>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" class="mt-1 flex-shrink-0">
+              <rect x="3" y="3" width="14" height="14" rx="4" stroke="#C9A96E" stroke-width="1.5" fill="none"/>
+              <circle cx="10" cy="10" r="3.5" stroke="#C9A96E" stroke-width="1.5" fill="none"/>
+              <circle cx="14.5" cy="5.5" r="1" fill="#C9A96E"/>
+            </svg>
+            <div>
+              <p class="font-body text-xs tracking-[2px] uppercase text-gold mb-1">Instagram</p>
+              <a href="https://www.instagram.com/primedesignbuilt/" target="_blank" rel="noopener" class="font-body text-charcoal/70 hover:text-gold transition-colors">@primedesignbuilt</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Design Brief Form -->
+      <div class="fade-up" style="transition-delay: 0.3s">
+        <div class="border border-gold/20 p-8 md:p-10 relative">
+          <!-- Form header styled like a document -->
+          <div class="border-b border-gold/20 pb-6 mb-8">
+            <p class="font-body text-xs tracking-[3px] uppercase text-gold mb-1">Design Brief</p>
+            <p class="font-display text-xl text-charcoal">Project Enquiry</p>
+          </div>
+
+          <form action="#" method="POST" class="space-y-6" id="contactForm">
+            <div class="grid sm:grid-cols-2 gap-6">
+              <div>
+                <label class="font-body text-xs tracking-[1px] uppercase text-charcoal/50 block mb-2">Name</label>
+                <input type="text" name="name" class="form-input" placeholder="Your full name" required>
+              </div>
+              <div>
+                <label class="font-body text-xs tracking-[1px] uppercase text-charcoal/50 block mb-2">Phone</label>
+                <input type="tel" name="phone" class="form-input" placeholder="Contact number">
+              </div>
+            </div>
+            <div>
+              <label class="font-body text-xs tracking-[1px] uppercase text-charcoal/50 block mb-2">Email</label>
+              <input type="email" name="email" class="form-input" placeholder="your@email.com" required>
+            </div>
+            <div>
+              <label class="font-body text-xs tracking-[1px] uppercase text-charcoal/50 block mb-2">Project Type</label>
+              <select name="project_type" class="form-input" style="cursor: pointer;">
+                <option value="" disabled selected>Select a service</option>
+                <option value="interior-design">Interior Design</option>
+                <option value="renovation">Renovation</option>
+                <option value="addition">Addition</option>
+                <option value="new-build">New Build</option>
+                <option value="not-sure">Not sure yet</option>
+              </select>
+            </div>
+            <div>
+              <label class="font-body text-xs tracking-[1px] uppercase text-charcoal/50 block mb-2">Project Description</label>
+              <textarea name="message" class="form-input" placeholder="Tell us about your vision, timeline, and any specific requirements..." rows="4"></textarea>
+            </div>
+            <div class="pt-4">
+              <button type="submit" class="btn-gold-solid w-full sm:w-auto">Submit Design Brief</button>
+              <p class="font-body text-xs text-charcoal/40 mt-4">Free consultation valued at $350. We respond within one business day.</p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- FOOTER -->
+<!-- ============================================ -->
+<footer class="bg-charcoal py-16 relative">
+  <div class="absolute top-0 left-0 right-0 h-px bg-gold/20"></div>
+  <div class="max-w-6xl mx-auto px-6 md:px-12">
+    <div class="grid md:grid-cols-3 gap-12 mb-12">
+      <!-- Logo -->
+      <div>
+        <svg width="120" height="44" viewBox="0 0 140 48" xmlns="http://www.w3.org/2000/svg" class="mb-6">
+          <text x="0" y="28" font-family="'Playfair Display', Georgia, serif" font-size="32" font-weight="500" fill="#fff">LK</text>
+          <line x1="0" y1="34" x2="42" y2="34" stroke="#C9A96E" stroke-width="0.75"/>
+          <text x="0" y="46" font-family="'Source Sans 3', sans-serif" font-size="8.5" font-weight="500" letter-spacing="2.5" fill="#fff" style="font-variant: small-caps;">DESIGN AND BUILD</text>
+        </svg>
+        <p class="font-body text-white/40 text-sm leading-relaxed max-w-xs">Design with purpose, build with pride. Premium home renovation and interior design in Adelaide.</p>
+      </div>
+      <!-- Quick links -->
+      <div>
+        <p class="font-body text-xs tracking-[2px] uppercase text-gold mb-4">Navigation</p>
+        <div class="space-y-3">
+          <a href="#about" class="block font-body text-white/60 hover:text-gold transition-colors text-sm">About</a>
+          <a href="#services" class="block font-body text-white/60 hover:text-gold transition-colors text-sm">Services</a>
+          <a href="#projects" class="block font-body text-white/60 hover:text-gold transition-colors text-sm">Projects</a>
+          <a href="#process" class="block font-body text-white/60 hover:text-gold transition-colors text-sm">Process</a>
+          <a href="#contact" class="block font-body text-white/60 hover:text-gold transition-colors text-sm">Contact</a>
+        </div>
+      </div>
+      <!-- Contact -->
+      <div>
+        <p class="font-body text-xs tracking-[2px] uppercase text-gold mb-4">Get in Touch</p>
+        <div class="space-y-3">
+          <a href="tel:0481742026" class="block font-body text-white/60 hover:text-gold transition-colors text-sm">0481 742 026</a>
+          <a href="mailto:hello@lkdesignandbuild.com.au" class="block font-body text-white/60 hover:text-gold transition-colors text-sm">hello@lkdesignandbuild.com.au</a>
+          <a href="https://www.instagram.com/primedesignbuilt/" target="_blank" rel="noopener" class="block font-body text-white/60 hover:text-gold transition-colors text-sm">Instagram</a>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-white/10 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+      <p class="font-body text-white/30 text-xs">&copy; 2026 LK Design and Build. All rights reserved.</p>
+      <p class="font-body text-white/30 text-xs">Adelaide, South Australia</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================ -->
+<!-- JAVASCRIPT -->
+<!-- ============================================ -->
+<script>
+(function() {
+  'use strict';
+
+  // ---- HAMBURGER MENU ----
+  const hamburger = document.getElementById('hamburger');
+  const navOverlay = document.getElementById('navOverlay');
+  const navbar = document.getElementById('navbar');
+  let menuOpen = false;
+
+  hamburger.addEventListener('click', () => {
+    menuOpen = !menuOpen;
+    hamburger.classList.toggle('menu-open', menuOpen);
+    navOverlay.classList.toggle('open', menuOpen);
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
+    // Update logo colors when menu is open
+    const logoText = document.getElementById('logo-text');
+    const logoSubtext = document.getElementById('logo-subtext');
+    if (menuOpen) {
+      logoText.setAttribute('fill', '#fff');
+      logoSubtext.setAttribute('fill', '#fff');
+    } else {
+      logoText.setAttribute('fill', '#2C2C2C');
+      logoSubtext.setAttribute('fill', '#2C2C2C');
+    }
+  });
+
+  // Close menu on link click
+  navOverlay.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      menuOpen = false;
+      hamburger.classList.remove('menu-open');
+      navOverlay.classList.remove('open');
+      document.body.style.overflow = '';
+      document.getElementById('logo-text').setAttribute('fill', '#2C2C2C');
+      document.getElementById('logo-subtext').setAttribute('fill', '#2C2C2C');
+    });
+  });
+
+  // ---- NAV SCROLL EFFECT ----
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+
+  // ---- HERO SLIDESHOW ----
+  const slides = document.querySelectorAll('.hero-slide');
+  const indicators = document.querySelectorAll('.slide-ind');
+  let currentSlide = 0;
+  let slideInterval;
+
+  function goToSlide(index) {
+    slides[currentSlide].classList.remove('active');
+    indicators[currentSlide].classList.remove('active-ind');
+    indicators[currentSlide].style.background = 'rgba(255,255,255,0.4)';
+    currentSlide = index;
+    slides[currentSlide].classList.add('active');
+    indicators[currentSlide].classList.add('active-ind');
+    indicators[currentSlide].style.background = 'rgba(255,255,255,0.8)';
+  }
+
+  function nextSlide() {
+    goToSlide((currentSlide + 1) % slides.length);
+  }
+
+  function startSlideshow() {
+    slideInterval = setInterval(nextSlide, 5000);
+  }
+
+  indicators.forEach(ind => {
+    ind.addEventListener('click', () => {
+      clearInterval(slideInterval);
+      goToSlide(parseInt(ind.dataset.slide));
+      startSlideshow();
+    });
+  });
+
+  startSlideshow();
+
+  // ---- INTERSECTION OBSERVER: Fade-up / Fade-in / Cascade ----
+  const animationObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        animationObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.fade-up, .fade-in, .cascade-left, .cascade-right, .chapter-num').forEach(el => {
+    animationObserver.observe(el);
+  });
+
+  // ---- CHAPTER NUMBER COUNTER ANIMATION ----
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const target = parseInt(el.dataset.counter);
+        let current = 0;
+        const duration = 1200;
+        const startTime = performance.now();
+
+        function animateCounter(now) {
+          const elapsed = now - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          // Ease out cubic
+          const eased = 1 - Math.pow(1 - progress, 3);
+          current = Math.round(eased * target);
+          el.textContent = String(current).padStart(2, '0');
+          if (progress < 1) {
+            requestAnimationFrame(animateCounter);
+          }
+        }
+
+        el.textContent = '00';
+        requestAnimationFrame(animateCounter);
+        counterObserver.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  document.querySelectorAll('[data-counter]').forEach(el => {
+    counterObserver.observe(el);
+  });
+
+  // ---- TIMELINE SCROLL ANIMATION ----
+  const timeline = document.getElementById('timeline');
+  const timelineFill = document.getElementById('timelineFill');
+  const timelineDots = document.querySelectorAll('.timeline-dot');
+
+  function updateTimeline() {
+    if (!timeline) return;
+    const rect = timeline.getBoundingClientRect();
+    const timelineTop = rect.top;
+    const timelineHeight = rect.height;
+    const viewportCenter = window.innerHeight * 0.6;
+
+    // Calculate how far we've scrolled through the timeline
+    const scrollProgress = (viewportCenter - timelineTop) / timelineHeight;
+    const clampedProgress = Math.max(0, Math.min(1, scrollProgress));
+
+    // Set the fill height
+    timelineFill.style.height = (clampedProgress * timelineHeight) + 'px';
+
+    // Fill dots when the line reaches them
+    timelineDots.forEach((dot) => {
+      const dotRect = dot.getBoundingClientRect();
+      const dotCenter = dotRect.top + dotRect.height / 2;
+      if (dotCenter < viewportCenter) {
+        dot.classList.add('filled');
+      } else {
+        dot.classList.remove('filled');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', updateTimeline, { passive: true });
+  updateTimeline();
+
+  // ---- SMOOTH SCROLL FOR ANCHOR LINKS ----
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        const offset = 80;
+        const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    });
+  });
+
+  // ---- FORM SUBMISSION ----
+  const contactForm = document.getElementById('contactForm');
+  contactForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const btn = this.querySelector('button[type="submit"]');
+    const originalText = btn.textContent;
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+
+    setTimeout(() => {
+      btn.textContent = 'Brief Submitted';
+      btn.style.background = '#2C2C2C';
+      btn.style.borderColor = '#2C2C2C';
+      setTimeout(() => {
+        btn.textContent = originalText;
+        btn.style.background = '';
+        btn.style.borderColor = '';
+        btn.disabled = false;
+        contactForm.reset();
+      }, 3000);
+    }, 1500);
+  });
+
+})();
+</script>
+</body>
+</html>

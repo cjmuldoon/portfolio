@@ -1,0 +1,17 @@
+{
+  "prompt": "A white Toyota HiLux ute with a sophisticated partial vehicle wrap featuring an elegant intertwined L and K monogram with flowing calligraphic connections. The monogram is rendered in gold (#C9A96E) on the front doors, large and prominent, with the letters interleaved and overlapping like a luxury fashion house emblem. Below the monogram on the door, DESIGN AND BUILD appears in refined small caps in charcoal (#2C2C2C). The rear quarter panel shows contact details: 0481 742 026 and lkdesignandbuild.com.au in charcoal text. A thin gold pinstripe runs along the body line. The wrap uses a charcoal, white, and gold color scheme, clean and premium. The ute is parked on an Adelaide suburban street with eucalyptus trees and neat houses in the background. Bright daylight, professional vehicle photography.",
+  "negative_prompt": "full wrap, busy graphics, neon colors, cheap vinyl, bubbles in wrap, dirty vehicle, ugly background, industrial area, nighttime, cartoon, illustration, low quality",
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "jpg",
+    "aspect_ratio": "16:9"
+  },
+  "settings": {
+    "resolution": "2048x1152",
+    "style": "commercial vehicle photography",
+    "lighting": "bright natural daylight",
+    "camera_angle": "three-quarter front view, eye level",
+    "depth_of_field": "medium, vehicle sharp, background slightly soft",
+    "quality": "professional automotive photography"
+  }
+}

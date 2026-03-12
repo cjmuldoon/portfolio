@@ -1,0 +1,17 @@
+{
+  "prompt": "Professional building signage mockup for 'LK Design and Build', a premium home renovation company in Adelaide, Australia. A sleek, modern fascia sign mounted on a contemporary charcoal-gray rendered building facade. The sign features brushed gold aluminum letters spelling 'LK' as a large monogram with 'DESIGN AND BUILD' below in smaller brushed stainless steel letters, all mounted on a matte black rectangular backing panel with subtle LED backlighting creating a warm glow around the letters. The building has modern architectural details — clean lines, large glass windows showing a stylish showroom interior with pendant lighting visible inside. Photographed at dusk/golden hour with the sign's backlighting becoming prominent against the darkening sky. Shot with 35mm lens, f/2.8, ISO 400, natural golden hour light mixed with the warm artificial LED glow from the sign. Some street-level landscaping with ornamental grasses visible. The render of the building wall shows subtle texture. A slight warm color temperature overall.",
+  "negative_prompt": "blurry, low resolution, cheap sign, plastic, generic, cartoon, daytime harsh light, empty street, ugly building, run down, old fashioned, neon sign",
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "jpg",
+    "aspect_ratio": "16:9"
+  },
+  "settings": {
+    "resolution": "2048x1152",
+    "style": "photorealistic architectural photography",
+    "lighting": "golden hour with LED accent lighting",
+    "camera_angle": "slightly low angle looking up at signage",
+    "depth_of_field": "moderate, sign sharp with soft background",
+    "quality": "high detail, cinematic color grading"
+  }
+}

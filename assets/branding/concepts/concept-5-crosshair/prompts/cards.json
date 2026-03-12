@@ -1,0 +1,9 @@
+{
+  "prompt": "A photorealistic overhead photograph of premium business cards arranged on a dark slate surface. The cards are thick 600gsm matte black stock with gold foil stamping. The front card shows a minimalist technical logo: the letters 'LK' in thin monospace font centered inside a thin gold circle with small crosshair lines extending from the circle at cardinal points, with 'DESIGN AND BUILD' in ultra-thin spaced monospace capitals below. The reverse card visible beneath shows contact details in gold foil monospace text: name, phone, email, address — all in precise left-aligned columns like a technical specification sheet. A thin gold border runs 3mm inside the card edge. The cards are stacked at slight angles showing depth. Warm directional lighting from upper left creates subtle shadows and catches the gold foil texture. Shot with 50mm macro f/2.8, shallow depth of field. Dark moody product photography, cinematic colour grading.",
+  "negative_prompt": "cheap, white cards, bright colours, cartoon, blurry, cluttered, plastic, glossy, distorted text, misspelled",
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "jpg",
+    "aspect_ratio": "16:9"
+  }
+}

@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prime Design & Built | Adelaide Bathroom & Kitchen Renovations</title>
+  <meta name="description" content="Not your typical Adelaide bathroom & kitchen renovation company. Premium design, renovations, additions and new builds by Prime Design & Built.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              orange: '#ec6e00',
+              'orange-hover': '#d46200',
+              navy: '#1a1e36',
+              body: '#54626F',
+              light: '#f8f8f8',
+              border: '#e8e8e8',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            display: ['Playfair Display', 'Georgia', 'serif'],
+          },
+          letterSpacing: {
+            widest: '0.2em',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* ── Base & Reset ── */
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      color: #54626F;
+      background: #ffffff;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #f8f8f8; }
+    ::-webkit-scrollbar-thumb { background: #c0c0c0; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #999; }
+
+    /* ── Header ── */
+    .header-scrolled {
+      background: rgba(255,255,255,0.97) !important;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 1px 0 rgba(0,0,0,0.06);
+    }
+    .header-scrolled .nav-link { color: #1a1e36 !important; }
+    .header-scrolled .logo-light { display: none; }
+    .header-scrolled .logo-dark { display: block; }
+
+    /* ── Hero ── */
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 1.6s cubic-bezier(0.4, 0, 0.2, 1);
+      will-change: opacity;
+    }
+    .hero-slide.active { opacity: 1; }
+    .hero-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.05);
+      transition: transform 8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .hero-slide.active img { transform: scale(1); }
+
+    .hero-progress-bar {
+      height: 2px;
+      background: rgba(255,255,255,0.3);
+      overflow: hidden;
+    }
+    .hero-progress-fill {
+      height: 100%;
+      background: #ec6e00;
+      width: 0%;
+      transition: width 0.1s linear;
+    }
+
+    /* ── Intersection Observer Animations ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                  transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-40px);
+      transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                  transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .reveal-left.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(40px);
+      transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                  transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .reveal-right.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .reveal-scale {
+      opacity: 0;
+      transform: scale(0.95);
+      transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                  transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .reveal-scale.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* Stagger children */
+    .stagger-children .reveal:nth-child(1) { transition-delay: 0s; }
+    .stagger-children .reveal:nth-child(2) { transition-delay: 0.12s; }
+    .stagger-children .reveal:nth-child(3) { transition-delay: 0.24s; }
+    .stagger-children .reveal:nth-child(4) { transition-delay: 0.36s; }
+    .stagger-children .reveal:nth-child(5) { transition-delay: 0.48s; }
+    .stagger-children .reveal:nth-child(6) { transition-delay: 0.6s; }
+
+    /* ── Project Cards ── */
+    .project-card {
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+    }
+    .project-card img {
+      transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+                  filter 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+      filter: grayscale(70%);
+    }
+    .project-card:hover img {
+      transform: scale(1.08);
+      filter: grayscale(0%);
+    }
+    .project-card .project-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(26,30,54,0.85) 0%, rgba(26,30,54,0.1) 50%, transparent 100%);
+      opacity: 0;
+      transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      align-items: flex-end;
+      padding: 2rem;
+    }
+    .project-card:hover .project-overlay { opacity: 1; }
+    .project-card .project-info {
+      transform: translateY(20px);
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .project-card:hover .project-info { transform: translateY(0); }
+
+    /* ── Service Card ── */
+    .service-card {
+      border: 1px solid #e8e8e8;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .service-card:hover {
+      border-color: #ec6e00;
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px -15px rgba(26,30,54,0.1);
+    }
+    .service-card .service-number {
+      transition: color 0.4s ease;
+    }
+    .service-card:hover .service-number {
+      color: #ec6e00;
+    }
+
+    /* ── CTA Button ── */
+    .btn-cta {
+      background: #ec6e00;
+      color: #fff;
+      padding: 16px 36px;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-cta::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.1);
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+    }
+    .btn-cta:hover::after { transform: translateX(0); }
+    .btn-cta:hover {
+      background: #d46200;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 30px -8px rgba(236,110,0,0.4);
+    }
+
+    .btn-outline {
+      border: 1px solid #1a1e36;
+      color: #1a1e36;
+      padding: 14px 34px;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .btn-outline:hover {
+      background: #1a1e36;
+      color: #fff;
+    }
+
+    /* ── Form ── */
+    .form-input {
+      width: 100%;
+      padding: 14px 0;
+      border: none;
+      border-bottom: 1px solid #e8e8e8;
+      background: transparent;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9375rem;
+      color: #1a1e36;
+      transition: border-color 0.3s ease;
+      outline: none;
+    }
+    .form-input:focus {
+      border-bottom-color: #ec6e00;
+    }
+    .form-input::placeholder {
+      color: #a0a8b0;
+      font-weight: 300;
+    }
+
+    /* ── Mobile Menu ── */
+    .mobile-menu {
+      position: fixed;
+      inset: 0;
+      background: #1a1e36;
+      z-index: 60;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transform: translateX(100%);
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .mobile-menu.open { transform: translateX(0); }
+    .mobile-menu a {
+      color: #fff;
+      font-size: 1.75rem;
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      padding: 0.75rem 0;
+      opacity: 0;
+      transform: translateX(30px);
+      transition: all 0.4s ease;
+    }
+    .mobile-menu.open a {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .mobile-menu.open a:nth-child(1) { transition-delay: 0.1s; }
+    .mobile-menu.open a:nth-child(2) { transition-delay: 0.15s; }
+    .mobile-menu.open a:nth-child(3) { transition-delay: 0.2s; }
+    .mobile-menu.open a:nth-child(4) { transition-delay: 0.25s; }
+    .mobile-menu.open a:nth-child(5) { transition-delay: 0.3s; }
+    .mobile-menu.open a:nth-child(6) { transition-delay: 0.35s; }
+
+    /* ── Parallax ── */
+    .parallax-section {
+      background-attachment: fixed;
+      background-position: center;
+      background-size: cover;
+    }
+    @supports (-webkit-touch-callout: none) {
+      .parallax-section { background-attachment: scroll; }
+    }
+
+    /* ── Divider ── */
+    .accent-line {
+      width: 48px;
+      height: 2px;
+      background: #ec6e00;
+    }
+
+    /* ── Counter ── */
+    .stat-number {
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* ── Marquee ── */
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .marquee-track {
+      display: flex;
+      animation: marquee 30s linear infinite;
+      width: max-content;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+
+    /* ── Consultation Badge ── */
+    .consultation-badge {
+      background: #ec6e00;
+      color: #fff;
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      display: inline-block;
+    }
+
+    /* ── Misc ── */
+    .text-balance { text-wrap: balance; }
+    .line-clamp-3 {
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ════════════════════════════════════════════════════════════════
+       HEADER / NAVIGATION
+       ════════════════════════════════════════════════════════════════ -->
+  <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
+    <div class="max-w-[1400px] mx-auto px-6 lg:px-12 flex items-center justify-between h-20 lg:h-24">
+
+      <!-- Logo -->
+      <a href="#" class="relative z-50 flex items-center gap-3">
+        <img src="../assets/images/logo.svg" alt="Prime Design & Built" class="h-10 lg:h-12 logo-dark hidden">
+        <img src="../assets/images/logo.svg" alt="Prime Design & Built" class="h-10 lg:h-12 logo-light">
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden lg:flex items-center gap-10">
+        <a href="#about" class="nav-link text-white text-[0.8125rem] font-medium tracking-[0.08em] uppercase hover:text-brand-orange transition-colors duration-300">About</a>
+        <a href="#services" class="nav-link text-white text-[0.8125rem] font-medium tracking-[0.08em] uppercase hover:text-brand-orange transition-colors duration-300">Services</a>
+        <a href="#projects" class="nav-link text-white text-[0.8125rem] font-medium tracking-[0.08em] uppercase hover:text-brand-orange transition-colors duration-300">Projects</a>
+        <a href="#contact" class="nav-link text-white text-[0.8125rem] font-medium tracking-[0.08em] uppercase hover:text-brand-orange transition-colors duration-300">Contact</a>
+        <a href="#contact" class="btn-cta ml-4">Free Consultation</a>
+      </nav>
+
+      <!-- Hamburger -->
+      <button id="menuToggle" class="lg:hidden relative z-50 w-8 h-8 flex flex-col justify-center items-center gap-1.5" aria-label="Toggle menu">
+        <span class="hamburger-line w-6 h-[1.5px] bg-white transition-all duration-300 origin-center"></span>
+        <span class="hamburger-line w-6 h-[1.5px] bg-white transition-all duration-300 origin-center"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="mobile-menu">
+    <a href="#about" class="mobile-nav-link">About</a>
+    <a href="#services" class="mobile-nav-link">Services</a>
+    <a href="#projects" class="mobile-nav-link">Projects</a>
+    <a href="#contact" class="mobile-nav-link">Contact</a>
+    <a href="tel:0481742026" class="mobile-nav-link">0481 742 026</a>
+    <a href="#contact" class="btn-cta mt-8 text-base">Free Consultation</a>
+  </div>
+
+
+  <!-- ════════════════════════════════════════════════════════════════
+       HERO SECTION
+       ════════════════════════════════════════════════════════════════ -->
+  <section id="hero" class="relative h-screen min-h-[700px] overflow-hidden bg-brand-navy">
+    <!-- Slides -->
+    <div id="heroSlider" class="absolute inset-0">
+      <div class="hero-slide active">
+        <img src="../assets/images/hero-1.jpg" alt="Premium bathroom renovation Adelaide">
+      </div>
+      <div class="hero-slide">
+        <img src="../assets/images/hero-2.jpg" alt="Luxury kitchen design Adelaide">
+      </div>
+      <div class="hero-slide">
+        <img src="../assets/images/hero-3.jpg" alt="Home additions Adelaide">
+      </div>
+      <div class="hero-slide">
+        <img src="../assets/images/hero-4.jpg" alt="New home builds Adelaide">
+      </div>
+    </div>
+
+    <!-- Overlay -->
+    <div class="absolute inset-0 bg-gradient-to-b from-brand-navy/50 via-brand-navy/30 to-brand-navy/70"></div>
+
+    <!-- Content -->
+    <div class="relative z-10 h-full flex flex-col justify-end pb-20 lg:pb-28 px-6 lg:px-12 max-w-[1400px] mx-auto">
+      <div class="max-w-3xl">
+        <div class="consultation-badge mb-8">Free consultation valued at $350</div>
+        <h1 class="text-4xl sm:text-5xl lg:text-7xl xl:text-8xl font-extralight text-white leading-[1.05] tracking-tight mb-6">
+          Not your typical<br>
+          <span class="font-display italic font-normal">renovation</span><br>
+          company<span class="text-brand-orange">.</span>
+        </h1>
+        <p class="text-white/70 text-lg lg:text-xl font-light max-w-xl mb-10 leading-relaxed">
+          Adelaide's premium bathroom, kitchen &amp; home renovation studio. Where vision meets craftsmanship.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="#contact" class="btn-cta">Request Free Consultation</a>
+          <a href="#projects" class="btn-outline border-white/40 text-white hover:bg-white hover:text-brand-navy">View Projects</a>
+        </div>
+      </div>
+
+      <!-- Slide Indicators -->
+      <div class="absolute bottom-8 right-6 lg:right-12 flex items-center gap-3">
+        <span id="slideCounter" class="text-white/50 text-sm font-light tracking-wider">01 / 04</span>
+        <div class="hero-progress-bar w-20">
+          <div id="heroProgress" class="hero-progress-fill"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 hidden lg:flex flex-col items-center gap-2">
+      <span class="text-white/40 text-[0.6875rem] tracking-[0.2em] uppercase">Scroll</span>
+      <div class="w-[1px] h-8 bg-white/20 relative overflow-hidden">
+        <div class="w-full h-full bg-white/60 animate-pulse origin-top"></div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════════
+       MARQUEE STRIP
+       ════════════════════════════════════════════════════════════════ -->
+  <section class="py-6 border-b border-brand-border overflow-hidden bg-white">
+    <div class="marquee-track">
+      <span class="flex items-center gap-12 px-6 text-[0.8125rem] tracking-[0.2em] uppercase text-brand-body/40 font-medium whitespace-nowrap">
+        <span>Bathrooms</span><span class="text-brand-orange">&#x2022;</span>
+        <span>Kitchens</span><span class="text-brand-orange">&#x2022;</span>
+        <span>Additions</span><span class="text-brand-orange">&#x2022;</span>
+        <span>New Builds</span><span class="text-brand-orange">&#x2022;</span>
+        <span>Design</span><span class="text-brand-orange">&#x2022;</span>
+        <span>Renovations</span><span class="text-brand-orange">&#x2022;</span>
+        <span>Bathrooms</span><span class="text-brand-orange">&#x2022;</span>
+        <span>Kitchens</span><span class="text-brand-orange">&#x2022;</span>
+        <span>Additions</span><span class="text-brand-orange">&#x2022;</span>
+        <span>New Builds</span><span class="text-brand-orange">&#x2022;</span>
+        <span>Design</span><span class="text-brand-orange">&#x2022;</span>
+        <span>Renovations</span><span class="text-brand-orange">&#x2022;</span>
+      </span>
+      <span class="flex items-center gap-12 px-6 text-[0.8125rem] tracking-[0.2em] uppercase text-brand-body/40 font-medium whitespace-nowrap">
+        <span>Bathrooms</span><span class="text-brand-orange">&#x2022;</span>
+        <span>Kitchens</span><span class="text-brand-orange">&#x2022;</span>
+        <span>Additions</span><span class="text-brand-orange">&#x2022;</span>
+        <span>New Builds</span><span class="text-brand-orange">&#x2022;</span>
+        <span>Design</span><span class="text-brand-orange">&#x2022;</span>
+        <span>Renovations</span><span class="text-brand-orange">&#x2022;</span>
+        <span>Bathrooms</span><span class="text-brand-orange">&#x2022;</span>
+        <span>Kitchens</span><span class="text-brand-orange">&#x2022;</span>
+        <span>Additions</span><span class="text-brand-orange">&#x2022;</span>
+        <span>New Builds</span><span class="text-brand-orange">&#x2022;</span>
+        <span>Design</span><span class="text-brand-orange">&#x2022;</span>
+        <span>Renovations</span><span class="text-brand-orange">&#x2022;</span>
+      </span>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════════
+       ABOUT SECTION
+       ════════════════════════════════════════════════════════════════ -->
+  <section id="about" class="py-28 lg:py-40 bg-white">
+    <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
+      <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+
+        <!-- Left: Image -->
+        <div class="reveal-left relative">
+          <div class="aspect-[4/5] overflow-hidden">
+            <img src="../assets/images/hero-2.jpg" alt="Prime Design & Built craftsmanship" class="w-full h-full object-cover">
+          </div>
+          <!-- Floating stat -->
+          <div class="absolute -bottom-6 -right-4 lg:-right-8 bg-brand-navy text-white p-8 lg:p-10">
+            <span class="block text-4xl lg:text-5xl font-extralight stat-number">15<span class="text-brand-orange">+</span></span>
+            <span class="text-[0.75rem] tracking-[0.15em] uppercase text-white/60 mt-1 block">Years Experience</span>
+          </div>
+        </div>
+
+        <!-- Right: Content -->
+        <div class="reveal-right">
+          <span class="text-[0.75rem] tracking-[0.2em] uppercase text-brand-orange font-semibold">About Us</span>
+          <h2 class="text-3xl lg:text-5xl font-extralight text-brand-navy mt-4 mb-2 leading-tight">
+            Designing spaces<br>
+            <span class="font-display italic">worth living in</span><span class="text-brand-orange">.</span>
+          </h2>
+          <div class="accent-line mt-6 mb-8"></div>
+          <p class="text-brand-body leading-relaxed mb-6 text-[1.0625rem]">
+            Prime Design &amp; Built is an Adelaide-based renovation studio that brings an architect's eye and a builder's precision to every project. We don't just renovate spaces &mdash; we reimagine them.
+          </p>
+          <p class="text-brand-body leading-relaxed mb-10 text-[1.0625rem]">
+            From initial concept through to the final reveal, our integrated design-and-build approach ensures a seamless experience. Every detail is considered, every finish is intentional, and every result is exceptional.
+          </p>
+
+          <!-- Stats Row -->
+          <div class="grid grid-cols-3 gap-8 border-t border-brand-border pt-8">
+            <div>
+              <span class="block text-3xl lg:text-4xl font-extralight text-brand-navy stat-number">200<span class="text-brand-orange">+</span></span>
+              <span class="text-[0.6875rem] tracking-[0.12em] uppercase text-brand-body/60 mt-1 block">Projects Completed</span>
+            </div>
+            <div>
+              <span class="block text-3xl lg:text-4xl font-extralight text-brand-navy stat-number">100<span class="text-brand-orange">%</span></span>
+              <span class="text-[0.6875rem] tracking-[0.12em] uppercase text-brand-body/60 mt-1 block">Client Satisfaction</span>
+            </div>
+            <div>
+              <span class="block text-3xl lg:text-4xl font-extralight text-brand-navy stat-number">5<span class="text-brand-orange">&#9733;</span></span>
+              <span class="text-[0.6875rem] tracking-[0.12em] uppercase text-brand-body/60 mt-1 block">Google Rating</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════════
+       SERVICES SECTION
+       ════════════════════════════════════════════════════════════════ -->
+  <section id="services" class="py-28 lg:py-40 bg-brand-light">
+    <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
+
+      <!-- Section Header -->
+      <div class="text-center max-w-2xl mx-auto mb-20 reveal">
+        <span class="text-[0.75rem] tracking-[0.2em] uppercase text-brand-orange font-semibold">What We Do</span>
+        <h2 class="text-3xl lg:text-5xl font-extralight text-brand-navy mt-4 leading-tight">
+          End-to-end <span class="font-display italic">design</span><br>and build<span class="text-brand-orange">.</span>
+        </h2>
+        <div class="accent-line mx-auto mt-6 mb-6"></div>
+        <p class="text-brand-body leading-relaxed">
+          From concept to completion, we handle every aspect of your renovation with meticulous attention to detail.
+        </p>
+      </div>
+
+      <!-- Service Cards -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 stagger-children">
+
+        <div class="service-card bg-white p-8 lg:p-10 reveal">
+          <span class="service-number text-5xl font-extralight text-brand-border block mb-6">01</span>
+          <h3 class="text-xl font-medium text-brand-navy mb-3 tracking-tight">Design</h3>
+          <p class="text-brand-body text-[0.9375rem] leading-relaxed">Bespoke architectural design that captures your vision and maximises your space's potential.</p>
+        </div>
+
+        <div class="service-card bg-white p-8 lg:p-10 reveal">
+          <span class="service-number text-5xl font-extralight text-brand-border block mb-6">02</span>
+          <h3 class="text-xl font-medium text-brand-navy mb-3 tracking-tight">Renovations</h3>
+          <p class="text-brand-body text-[0.9375rem] leading-relaxed">Complete bathroom and kitchen transformations with premium materials and expert craftsmanship.</p>
+        </div>
+
+        <div class="service-card bg-white p-8 lg:p-10 reveal">
+          <span class="service-number text-5xl font-extralight text-brand-border block mb-6">03</span>
+          <h3 class="text-xl font-medium text-brand-navy mb-3 tracking-tight">Additions</h3>
+          <p class="text-brand-body text-[0.9375rem] leading-relaxed">Seamless home extensions that blend with your existing architecture while adding functional living areas.</p>
+        </div>
+
+        <div class="service-card bg-white p-8 lg:p-10 reveal">
+          <span class="service-number text-5xl font-extralight text-brand-border block mb-6">04</span>
+          <h3 class="text-xl font-medium text-brand-navy mb-3 tracking-tight">New Builds</h3>
+          <p class="text-brand-body text-[0.9375rem] leading-relaxed">Ground-up construction delivering architecturally designed homes built to the highest standards.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════════
+       PARALLAX CTA STRIP
+       ════════════════════════════════════════════════════════════════ -->
+  <section class="parallax-section relative py-28 lg:py-36" style="background-image: url('../assets/images/hero-3.jpg');">
+    <div class="absolute inset-0 bg-brand-navy/80"></div>
+    <div class="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-12 text-center">
+      <div class="reveal">
+        <span class="text-[0.75rem] tracking-[0.2em] uppercase text-brand-orange font-semibold">Start Your Project</span>
+        <h2 class="text-3xl lg:text-5xl xl:text-6xl font-extralight text-white mt-4 mb-8 leading-tight text-balance">
+          Ready to create something<br class="hidden lg:block"> <span class="font-display italic">extraordinary</span><span class="text-brand-orange">?</span>
+        </h2>
+        <p class="text-white/60 max-w-xl mx-auto mb-10 text-lg leading-relaxed">
+          Book your complimentary design consultation, valued at $350, and let's explore the possibilities together.
+        </p>
+        <a href="#contact" class="btn-cta inline-block">Request Free Consultation</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════════
+       PROJECTS / PORTFOLIO SECTION
+       ════════════════════════════════════════════════════════════════ -->
+  <section id="projects" class="py-28 lg:py-40 bg-white">
+    <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
+
+      <!-- Section Header -->
+      <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-16 gap-6">
+        <div class="reveal-left">
+          <span class="text-[0.75rem] tracking-[0.2em] uppercase text-brand-orange font-semibold">Selected Work</span>
+          <h2 class="text-3xl lg:text-5xl font-extralight text-brand-navy mt-4 leading-tight">
+            Our <span class="font-display italic">projects</span><span class="text-brand-orange">.</span>
+          </h2>
+        </div>
+        <div class="reveal-right">
+          <a href="https://www.instagram.com/primedesignbuilt/" target="_blank" rel="noopener" class="btn-outline inline-block text-[0.75rem]">View All on Instagram &rarr;</a>
+        </div>
+      </div>
+
+      <!-- Project Grid -->
+      <div class="grid md:grid-cols-2 gap-6 stagger-children">
+
+        <!-- Project: Broadview (Large) -->
+        <div class="project-card aspect-[4/3] md:row-span-2 md:aspect-auto reveal">
+          <img src="../assets/images/project-broadview.jpg" alt="Broadview Renovation" class="w-full h-full object-cover">
+          <div class="project-overlay">
+            <div class="project-info">
+              <span class="text-brand-orange text-[0.6875rem] tracking-[0.15em] uppercase font-semibold">Bathroom Renovation</span>
+              <h3 class="text-white text-2xl lg:text-3xl font-light mt-1">Broadview</h3>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project: Semaphore -->
+        <div class="project-card aspect-[4/3] reveal">
+          <img src="../assets/images/project-semaphore.jpg" alt="Semaphore Renovation" class="w-full h-full object-cover">
+          <div class="project-overlay">
+            <div class="project-info">
+              <span class="text-brand-orange text-[0.6875rem] tracking-[0.15em] uppercase font-semibold">Kitchen &amp; Bath</span>
+              <h3 class="text-white text-2xl lg:text-3xl font-light mt-1">Semaphore</h3>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project: OSR Fit Out -->
+        <div class="project-card aspect-[4/3] reveal">
+          <img src="../assets/images/project-osr.jpg" alt="OSR Fit Out" class="w-full h-full object-cover">
+          <div class="project-overlay">
+            <div class="project-info">
+              <span class="text-brand-orange text-[0.6875rem] tracking-[0.15em] uppercase font-semibold">Commercial Fit Out</span>
+              <h3 class="text-white text-2xl lg:text-3xl font-light mt-1">OSR Fit Out</h3>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project: Unley -->
+        <div class="project-card aspect-[4/3] reveal">
+          <img src="../assets/images/project-unley.jpg" alt="Unley Renovation" class="w-full h-full object-cover">
+          <div class="project-overlay">
+            <div class="project-info">
+              <span class="text-brand-orange text-[0.6875rem] tracking-[0.15em] uppercase font-semibold">Full Renovation</span>
+              <h3 class="text-white text-2xl lg:text-3xl font-light mt-1">Unley</h3>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project: Semaphore 2 -->
+        <div class="project-card aspect-[4/3] reveal">
+          <img src="../assets/images/project-semaphore2.jpg" alt="Semaphore Project Phase 2" class="w-full h-full object-cover">
+          <div class="project-overlay">
+            <div class="project-info">
+              <span class="text-brand-orange text-[0.6875rem] tracking-[0.15em] uppercase font-semibold">Bathroom Design</span>
+              <h3 class="text-white text-2xl lg:text-3xl font-light mt-1">Semaphore II</h3>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project: Everard Park -->
+        <div class="project-card aspect-[4/3] reveal">
+          <img src="../assets/images/project-semaphore3.jpg" alt="Everard Park Renovation" class="w-full h-full object-cover">
+          <div class="project-overlay">
+            <div class="project-info">
+              <span class="text-brand-orange text-[0.6875rem] tracking-[0.15em] uppercase font-semibold">Home Addition</span>
+              <h3 class="text-white text-2xl lg:text-3xl font-light mt-1">Everard Park</h3>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════════
+       PROCESS SECTION
+       ════════════════════════════════════════════════════════════════ -->
+  <section class="py-28 lg:py-40 bg-brand-light">
+    <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
+
+      <div class="text-center max-w-2xl mx-auto mb-20 reveal">
+        <span class="text-[0.75rem] tracking-[0.2em] uppercase text-brand-orange font-semibold">Our Process</span>
+        <h2 class="text-3xl lg:text-5xl font-extralight text-brand-navy mt-4 leading-tight">
+          Simple, <span class="font-display italic">seamless</span><br>and stress-free<span class="text-brand-orange">.</span>
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-12 lg:gap-16 stagger-children">
+        <div class="text-center reveal">
+          <div class="w-16 h-16 rounded-full border border-brand-border flex items-center justify-center mx-auto mb-6">
+            <span class="text-brand-orange font-light text-xl">01</span>
+          </div>
+          <h3 class="text-lg font-medium text-brand-navy mb-3">Consultation</h3>
+          <p class="text-brand-body text-[0.9375rem] leading-relaxed">We begin with a complimentary in-home consultation to understand your vision, lifestyle and budget.</p>
+        </div>
+        <div class="text-center reveal">
+          <div class="w-16 h-16 rounded-full border border-brand-border flex items-center justify-center mx-auto mb-6">
+            <span class="text-brand-orange font-light text-xl">02</span>
+          </div>
+          <h3 class="text-lg font-medium text-brand-navy mb-3">Design &amp; Plan</h3>
+          <p class="text-brand-body text-[0.9375rem] leading-relaxed">Our design team creates detailed plans and 3D renders, refining every detail until it's perfect.</p>
+        </div>
+        <div class="text-center reveal">
+          <div class="w-16 h-16 rounded-full border border-brand-border flex items-center justify-center mx-auto mb-6">
+            <span class="text-brand-orange font-light text-xl">03</span>
+          </div>
+          <h3 class="text-lg font-medium text-brand-navy mb-3">Build &amp; Deliver</h3>
+          <p class="text-brand-body text-[0.9375rem] leading-relaxed">Our skilled tradespeople bring the design to life with precision, keeping you informed every step of the way.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════════
+       CONTACT SECTION
+       ════════════════════════════════════════════════════════════════ -->
+  <section id="contact" class="py-28 lg:py-40 bg-white">
+    <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
+      <div class="grid lg:grid-cols-2 gap-16 lg:gap-24">
+
+        <!-- Left: Info -->
+        <div class="reveal-left">
+          <span class="text-[0.75rem] tracking-[0.2em] uppercase text-brand-orange font-semibold">Get in Touch</span>
+          <h2 class="text-3xl lg:text-5xl font-extralight text-brand-navy mt-4 mb-2 leading-tight">
+            Let's start your<br>
+            <span class="font-display italic">next project</span><span class="text-brand-orange">.</span>
+          </h2>
+          <div class="accent-line mt-6 mb-8"></div>
+          <p class="text-brand-body leading-relaxed mb-10 text-[1.0625rem]">
+            Book your complimentary design consultation, valued at $350. We'll visit your home, discuss your vision, and provide expert guidance on bringing it to life.
+          </p>
+
+          <div class="space-y-6">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-full bg-brand-light flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-4 h-4 text-brand-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+              </div>
+              <div>
+                <span class="text-[0.6875rem] tracking-[0.12em] uppercase text-brand-body/60 block">Phone</span>
+                <a href="tel:0481742026" class="text-brand-navy font-medium hover:text-brand-orange transition-colors">0481 742 026</a>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-full bg-brand-light flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-4 h-4 text-brand-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              </div>
+              <div>
+                <span class="text-[0.6875rem] tracking-[0.12em] uppercase text-brand-body/60 block">Email</span>
+                <a href="mailto:hello@primedesignandbuilt.com.au" class="text-brand-navy font-medium hover:text-brand-orange transition-colors">hello@primedesignandbuilt.com.au</a>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-full bg-brand-light flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-4 h-4 text-brand-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              </div>
+              <div>
+                <span class="text-[0.6875rem] tracking-[0.12em] uppercase text-brand-body/60 block">Location</span>
+                <span class="text-brand-navy font-medium">Adelaide, South Australia</span>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-full bg-brand-light flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-4 h-4 text-brand-navy" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+              </div>
+              <div>
+                <span class="text-[0.6875rem] tracking-[0.12em] uppercase text-brand-body/60 block">Instagram</span>
+                <a href="https://www.instagram.com/primedesignbuilt/" target="_blank" rel="noopener" class="text-brand-navy font-medium hover:text-brand-orange transition-colors">@primedesignbuilt</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Form -->
+        <div class="reveal-right">
+          <div class="bg-brand-light p-8 lg:p-12">
+            <h3 class="text-xl font-medium text-brand-navy mb-1">Request Your Free Consultation</h3>
+            <p class="text-brand-body text-sm mb-8">Valued at $350 &mdash; no obligation, no pressure.</p>
+
+            <form id="contactForm" class="space-y-6" onsubmit="handleSubmit(event)">
+              <div class="grid sm:grid-cols-2 gap-6">
+                <div>
+                  <label class="text-[0.6875rem] tracking-[0.12em] uppercase text-brand-body/60 block mb-1">First Name *</label>
+                  <input type="text" name="firstName" required class="form-input bg-transparent" placeholder="Your first name">
+                </div>
+                <div>
+                  <label class="text-[0.6875rem] tracking-[0.12em] uppercase text-brand-body/60 block mb-1">Last Name *</label>
+                  <input type="text" name="lastName" required class="form-input bg-transparent" placeholder="Your last name">
+                </div>
+              </div>
+              <div>
+                <label class="text-[0.6875rem] tracking-[0.12em] uppercase text-brand-body/60 block mb-1">Email *</label>
+                <input type="email" name="email" required class="form-input bg-transparent" placeholder="your@email.com">
+              </div>
+              <div>
+                <label class="text-[0.6875rem] tracking-[0.12em] uppercase text-brand-body/60 block mb-1">Phone</label>
+                <input type="tel" name="phone" class="form-input bg-transparent" placeholder="0400 000 000">
+              </div>
+              <div>
+                <label class="text-[0.6875rem] tracking-[0.12em] uppercase text-brand-body/60 block mb-1">Project Type</label>
+                <select name="projectType" class="form-input bg-transparent cursor-pointer appearance-none">
+                  <option value="" class="text-brand-body/40">Select a service...</option>
+                  <option value="bathroom">Bathroom Renovation</option>
+                  <option value="kitchen">Kitchen Renovation</option>
+                  <option value="addition">Home Addition</option>
+                  <option value="new-build">New Build</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div>
+                <label class="text-[0.6875rem] tracking-[0.12em] uppercase text-brand-body/60 block mb-1">Tell Us About Your Project</label>
+                <textarea name="message" rows="4" class="form-input bg-transparent resize-none" placeholder="Describe your vision..."></textarea>
+              </div>
+              <button type="submit" class="btn-cta w-full text-center">Request Free Consultation</button>
+              <p class="text-[0.75rem] text-brand-body/40 text-center">We'll be in touch within 24 hours.</p>
+            </form>
+
+            <!-- Success Message (hidden by default) -->
+            <div id="formSuccess" class="hidden text-center py-12">
+              <div class="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              </div>
+              <h3 class="text-xl font-medium text-brand-navy mb-2">Thank You!</h3>
+              <p class="text-brand-body">We've received your request. Lyda will be in touch within 24 hours to arrange your complimentary consultation.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════════
+       FOOTER
+       ════════════════════════════════════════════════════════════════ -->
+  <footer class="bg-brand-navy text-white">
+    <!-- Top border accent -->
+    <div class="h-1 bg-brand-orange"></div>
+
+    <div class="max-w-[1400px] mx-auto px-6 lg:px-12 py-16 lg:py-20">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+
+        <!-- Col 1: Brand -->
+        <div class="lg:col-span-2">
+          <img src="../assets/images/logo.svg" alt="Prime Design & Built" class="h-10 mb-6 brightness-0 invert">
+          <p class="text-white/50 max-w-sm leading-relaxed text-[0.9375rem] mb-6">
+            Not your typical Adelaide bathroom &amp; kitchen renovation company. Premium design, expert craftsmanship, exceptional results.
+          </p>
+          <div class="flex gap-4">
+            <a href="https://www.instagram.com/primedesignbuilt/" target="_blank" rel="noopener" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:border-brand-orange hover:bg-brand-orange transition-all duration-300">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Col 2: Quick Links -->
+        <div>
+          <h4 class="text-[0.75rem] tracking-[0.15em] uppercase text-white/40 font-semibold mb-6">Quick Links</h4>
+          <ul class="space-y-3">
+            <li><a href="#about" class="text-white/60 hover:text-brand-orange transition-colors text-[0.9375rem]">About</a></li>
+            <li><a href="#services" class="text-white/60 hover:text-brand-orange transition-colors text-[0.9375rem]">Services</a></li>
+            <li><a href="#projects" class="text-white/60 hover:text-brand-orange transition-colors text-[0.9375rem]">Projects</a></li>
+            <li><a href="#contact" class="text-white/60 hover:text-brand-orange transition-colors text-[0.9375rem]">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Contact -->
+        <div>
+          <h4 class="text-[0.75rem] tracking-[0.15em] uppercase text-white/40 font-semibold mb-6">Contact</h4>
+          <ul class="space-y-3">
+            <li><a href="tel:0481742026" class="text-white/60 hover:text-brand-orange transition-colors text-[0.9375rem]">0481 742 026</a></li>
+            <li><a href="mailto:hello@primedesignandbuilt.com.au" class="text-white/60 hover:text-brand-orange transition-colors text-[0.9375rem] break-all">hello@primedesignandbuilt.com.au</a></li>
+            <li><span class="text-white/60 text-[0.9375rem]">Adelaide, South Australia</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="border-t border-white/10 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-white/30 text-sm">&copy; 2026 Prime Design &amp; Built. All rights reserved.</p>
+        <p class="text-white/30 text-sm">Adelaide's premium renovation studio.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ════════════════════════════════════════════════════════════════
+       JAVASCRIPT
+       ════════════════════════════════════════════════════════════════ -->
+  <script>
+    // ── Header scroll effect ──
+    const header = document.getElementById('header');
+    let lastScroll = 0;
+
+    function updateHeader() {
+      const scrollY = window.scrollY;
+      if (scrollY > 80) {
+        header.classList.add('header-scrolled');
+      } else {
+        header.classList.remove('header-scrolled');
+      }
+      lastScroll = scrollY;
+    }
+    window.addEventListener('scroll', updateHeader, { passive: true });
+    updateHeader();
+
+
+    // ── Hero Slider ──
+    const slides = document.querySelectorAll('.hero-slide');
+    const slideCounter = document.getElementById('slideCounter');
+    const heroProgress = document.getElementById('heroProgress');
+    let currentSlide = 0;
+    const slideDuration = 6000;
+    let slideStartTime = Date.now();
+
+    function nextSlide() {
+      slides[currentSlide].classList.remove('active');
+      currentSlide = (currentSlide + 1) % slides.length;
+      slides[currentSlide].classList.add('active');
+      slideCounter.textContent = `0${currentSlide + 1} / 0${slides.length}`;
+      slideStartTime = Date.now();
+    }
+
+    function updateProgress() {
+      const elapsed = Date.now() - slideStartTime;
+      const progress = Math.min((elapsed / slideDuration) * 100, 100);
+      heroProgress.style.width = progress + '%';
+      requestAnimationFrame(updateProgress);
+    }
+
+    setInterval(nextSlide, slideDuration);
+    requestAnimationFrame(updateProgress);
+
+
+    // ── Intersection Observer for reveal animations ──
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px 0px -60px 0px',
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => {
+      observer.observe(el);
+    });
+
+
+    // ── Mobile Menu ──
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const hamburgerLines = document.querySelectorAll('.hamburger-line');
+    let menuOpen = false;
+
+    menuToggle.addEventListener('click', () => {
+      menuOpen = !menuOpen;
+      mobileMenu.classList.toggle('open');
+      document.body.style.overflow = menuOpen ? 'hidden' : '';
+
+      // Animate hamburger to X
+      if (menuOpen) {
+        hamburgerLines[0].style.transform = 'rotate(45deg) translateY(3px)';
+        hamburgerLines[1].style.transform = 'rotate(-45deg) translateY(-3px)';
+      } else {
+        hamburgerLines[0].style.transform = '';
+        hamburgerLines[1].style.transform = '';
+      }
+    });
+
+    // Close menu on link click
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        menuOpen = false;
+        mobileMenu.classList.remove('open');
+        document.body.style.overflow = '';
+        hamburgerLines[0].style.transform = '';
+        hamburgerLines[1].style.transform = '';
+      });
+    });
+
+
+    // ── Smooth scroll for anchor links ──
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href === '#') return;
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (target) {
+          const offset = 80;
+          const top = target.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      });
+    });
+
+
+    // ── Contact Form Handler ──
+    function handleSubmit(e) {
+      e.preventDefault();
+      const form = document.getElementById('contactForm');
+      const success = document.getElementById('formSuccess');
+
+      // Simple animation: hide form, show success
+      form.style.opacity = '0';
+      form.style.transform = 'translateY(-10px)';
+      form.style.transition = 'all 0.3s ease';
+
+      setTimeout(() => {
+        form.classList.add('hidden');
+        success.classList.remove('hidden');
+        success.style.opacity = '0';
+        success.style.transform = 'translateY(10px)';
+        success.style.transition = 'all 0.4s ease';
+
+        requestAnimationFrame(() => {
+          success.style.opacity = '1';
+          success.style.transform = 'translateY(0)';
+        });
+      }, 300);
+    }
+
+
+    // ── Parallax on scroll (subtle) ──
+    const parallaxSections = document.querySelectorAll('.parallax-section');
+    window.addEventListener('scroll', () => {
+      parallaxSections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        const speed = 0.3;
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          const yPos = (rect.top - window.innerHeight) * speed;
+          section.style.backgroundPositionY = yPos + 'px';
+        }
+      });
+    }, { passive: true });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LK Design and Build | Precision by Design | Adelaide Home Renovations</title>
+<meta name="description" content="LK Design and Build — Premium Adelaide home renovation, interior design, additions and new builds. Precision by design.">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@100;200;300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        navy: '#0a0f1a',
+        charcoal: '#111827',
+        deepblack: '#080c14',
+        grid: '#1a2a4a',
+        gold: '#C9A96E',
+        cyan: '#3dd8e0',
+        slate: '#8896a8',
+        blueprint: 'rgba(61,216,224,0.15)',
+      },
+      fontFamily: {
+        mono: ['IBM Plex Mono', 'JetBrains Mono', 'monospace'],
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+      },
+    }
+  }
+}
+</script>
+<style>
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background: #0a0f1a; color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #0a0f1a; }
+::-webkit-scrollbar-thumb { background: #C9A96E; }
+
+/* Blueprint Grid Overlay */
+.blueprint-grid {
+  background-image:
+    linear-gradient(rgba(61,216,224,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(61,216,224,0.06) 1px, transparent 1px);
+  background-size: 60px 60px;
+  background-position: -1px -1px;
+}
+.blueprint-grid-dense {
+  background-image:
+    linear-gradient(rgba(61,216,224,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(61,216,224,0.04) 1px, transparent 1px),
+    linear-gradient(rgba(61,216,224,0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(61,216,224,0.08) 1px, transparent 1px);
+  background-size: 15px 15px, 15px 15px, 60px 60px, 60px 60px;
+}
+
+/* Animated grid movement */
+.grid-animate {
+  background-image:
+    linear-gradient(rgba(61,216,224,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(61,216,224,0.05) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: gridShift 20s linear infinite;
+}
+@keyframes gridShift {
+  0% { background-position: 0 0; }
+  100% { background-position: 60px 60px; }
+}
+
+/* Dashed line animation */
+.dash-animate {
+  stroke-dasharray: 8 4;
+  animation: dashMove 1.5s linear infinite;
+}
+@keyframes dashMove {
+  to { stroke-dashoffset: -24; }
+}
+
+/* Typing cursor */
+.cursor-blink::after {
+  content: '|';
+  color: #3dd8e0;
+  animation: blink 1s step-end infinite;
+  margin-left: 2px;
+}
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* Scan line effect */
+.scan-line::before {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(61,216,224,0.3), transparent);
+  animation: scanDown 4s linear infinite;
+  z-index: 1;
+}
+@keyframes scanDown {
+  0% { top: 0; }
+  100% { top: 100%; }
+}
+
+/* Hero letter reveal */
+.letter-reveal span {
+  opacity: 0;
+  transform: translateY(10px);
+  display: inline-block;
+  animation: letterIn 0.4s forwards;
+}
+@keyframes letterIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Fade up on scroll */
+.reveal-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Draw line animation */
+.draw-line {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  transition: stroke-dashoffset 1.5s ease;
+}
+.draw-line.visible {
+  stroke-dashoffset: 0;
+}
+
+/* Registration marks */
+.reg-mark-tl::before, .reg-mark-tl::after,
+.reg-mark-tr::before, .reg-mark-tr::after,
+.reg-mark-bl::before, .reg-mark-bl::after,
+.reg-mark-br::before, .reg-mark-br::after {
+  content: '';
+  position: absolute;
+  background: #C9A96E;
+}
+.reg-mark-tl::before { top: 0; left: 20px; width: 1px; height: 20px; }
+.reg-mark-tl::after { top: 20px; left: 0; width: 20px; height: 1px; }
+.reg-mark-tr::before { top: 0; right: 20px; width: 1px; height: 20px; }
+.reg-mark-tr::after { top: 20px; right: 0; width: 20px; height: 1px; }
+.reg-mark-bl::before { bottom: 0; left: 20px; width: 1px; height: 20px; }
+.reg-mark-bl::after { bottom: 20px; left: 0; width: 20px; height: 1px; }
+.reg-mark-br::before { bottom: 0; right: 20px; width: 1px; height: 20px; }
+.reg-mark-br::after { bottom: 20px; right: 0; width: 20px; height: 1px; }
+
+/* Service card hover */
+.svc-card {
+  border: 1px dashed #1a2a4a;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.svc-card:hover {
+  border-color: #C9A96E;
+  box-shadow: 0 0 30px rgba(201,169,110,0.08);
+}
+
+/* Project overlay */
+.project-card .project-overlay {
+  background: rgba(61,216,224,0.0);
+  transition: background 0.4s;
+}
+.project-card:hover .project-overlay {
+  background: rgba(61,216,224,0.12);
+}
+
+/* CTA dashed callout */
+.cta-callout {
+  border: 1px dashed #C9A96E;
+  position: relative;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+.cta-callout:hover {
+  background: rgba(201,169,110,0.1);
+  box-shadow: 0 0 20px rgba(201,169,110,0.15);
+}
+.cta-callout::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -30px;
+  width: 30px;
+  height: 1px;
+  border-top: 1px dashed #C9A96E;
+}
+
+/* Crosshair cursor */
+.crosshair-hover:hover { cursor: crosshair; }
+
+/* Scroll progress */
+#scroll-progress {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 3px;
+  height: 0%;
+  background: linear-gradient(180deg, #C9A96E, #3dd8e0);
+  z-index: 9999;
+  transition: height 0.1s;
+}
+
+/* Counter animation */
+.count-up {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Mobile menu */
+.mobile-menu {
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+}
+.mobile-menu.open {
+  transform: translateX(0);
+}
+
+/* Annotation marker */
+.anno-marker {
+  width: 8px;
+  height: 8px;
+  border: 1px solid #3dd8e0;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+}
+.anno-marker::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  width: 20px;
+  height: 1px;
+  background: #3dd8e0;
+}
+
+/* Nav link hover effect */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #C9A96E;
+  transition: width 0.3s;
+}
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Process connector */
+.process-connector {
+  border-top: 1px dashed #1a2a4a;
+  position: relative;
+}
+.process-connector::after {
+  content: '';
+  position: absolute;
+  right: -4px;
+  top: -4px;
+  width: 0;
+  height: 0;
+  border-left: 6px solid #1a2a4a;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+}
+
+/* Form field */
+.form-field {
+  background: transparent;
+  border: none;
+  border-bottom: 1px dashed #1a2a4a;
+  color: #fff;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.875rem;
+  padding: 0.75rem 0;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.3s;
+}
+.form-field:focus {
+  border-bottom-color: #C9A96E;
+}
+.form-field::placeholder {
+  color: #4a5568;
+  font-family: 'IBM Plex Mono', monospace;
+}
+textarea.form-field {
+  resize: none;
+  min-height: 80px;
+}
+
+/* Flicker subtle */
+@keyframes flicker {
+  0%, 95%, 100% { opacity: 1; }
+  96% { opacity: 0.8; }
+  97% { opacity: 1; }
+  98% { opacity: 0.6; }
+}
+</style>
+</head>
+<body class="relative">
+
+<!-- Scroll Progress -->
+<div id="scroll-progress"></div>
+
+<!-- Navigation -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" style="background: rgba(10,15,26,0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);">
+  <div class="max-w-7xl mx-auto px-6 flex items-center justify-between h-16 lg:h-20">
+    <!-- Logo -->
+    <a href="#hero" class="flex items-center gap-3 group">
+      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Crosshair marks -->
+        <line x1="24" y1="0" x2="24" y2="6" stroke="#C9A96E" stroke-width="0.5"/>
+        <line x1="24" y1="42" x2="24" y2="48" stroke="#C9A96E" stroke-width="0.5"/>
+        <line x1="0" y1="24" x2="6" y2="24" stroke="#C9A96E" stroke-width="0.5"/>
+        <line x1="42" y1="24" x2="48" y2="24" stroke="#C9A96E" stroke-width="0.5"/>
+        <circle cx="24" cy="24" r="20" stroke="#C9A96E" stroke-width="0.5" fill="none"/>
+        <circle cx="24" cy="24" r="22" stroke="#C9A96E" stroke-width="0.3" stroke-dasharray="2 2" fill="none"/>
+        <!-- LK Letters -->
+        <text x="24" y="24" text-anchor="middle" dominant-baseline="central" font-family="IBM Plex Mono, monospace" font-weight="600" font-size="16" fill="#C9A96E" letter-spacing="2">LK</text>
+      </svg>
+      <div class="hidden sm:block">
+        <div class="font-mono text-[10px] tracking-[0.3em] text-gold uppercase leading-none">Design and Build</div>
+      </div>
+    </a>
+
+    <!-- Desktop Nav -->
+    <div class="hidden lg:flex items-center gap-8">
+      <a href="#about" class="nav-link font-mono text-xs tracking-widest text-slate hover:text-gold transition-colors uppercase">About</a>
+      <a href="#services" class="nav-link font-mono text-xs tracking-widest text-slate hover:text-gold transition-colors uppercase">Services</a>
+      <a href="#projects" class="nav-link font-mono text-xs tracking-widest text-slate hover:text-gold transition-colors uppercase">Projects</a>
+      <a href="#process" class="nav-link font-mono text-xs tracking-widest text-slate hover:text-gold transition-colors uppercase">Process</a>
+      <a href="#contact" class="cta-callout font-mono text-xs tracking-widest text-gold px-5 py-2.5 uppercase ml-4">Consult</a>
+    </div>
+
+    <!-- Mobile hamburger -->
+    <button id="menu-toggle" class="lg:hidden flex flex-col gap-1.5 p-2 group" aria-label="Menu">
+      <span class="w-6 h-px bg-gold transition-all duration-300 group-[.active]:rotate-45 group-[.active]:translate-y-[3.5px]"></span>
+      <span class="w-6 h-px bg-gold transition-all duration-300 group-[.active]:opacity-0"></span>
+      <span class="w-6 h-px bg-gold transition-all duration-300 group-[.active]:-rotate-45 group-[.active]:-translate-y-[3.5px]"></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Menu Overlay -->
+<div id="mobile-menu" class="mobile-menu fixed inset-0 z-40 bg-navy/98 flex flex-col items-center justify-center gap-8" style="backdrop-filter: blur(20px);">
+  <div class="font-mono text-[10px] text-cyan tracking-widest mb-4">> NAVIGATION_INDEX</div>
+  <a href="#about" class="mobile-nav-link font-mono text-lg tracking-[0.3em] text-slate hover:text-gold transition-colors uppercase">01 — About</a>
+  <a href="#services" class="mobile-nav-link font-mono text-lg tracking-[0.3em] text-slate hover:text-gold transition-colors uppercase">02 — Services</a>
+  <a href="#projects" class="mobile-nav-link font-mono text-lg tracking-[0.3em] text-slate hover:text-gold transition-colors uppercase">03 — Projects</a>
+  <a href="#process" class="mobile-nav-link font-mono text-lg tracking-[0.3em] text-slate hover:text-gold transition-colors uppercase">04 — Process</a>
+  <a href="#contact" class="mobile-nav-link font-mono text-lg tracking-[0.3em] text-gold uppercase">05 — Contact</a>
+  <div class="mt-8 font-mono text-[10px] text-grid tracking-widest">LK DESIGN AND BUILD — ADELAIDE SA</div>
+</div>
+
+<!-- ============================================ -->
+<!-- HERO SECTION -->
+<!-- ============================================ -->
+<section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+  <!-- Background image -->
+  <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('../assets/images/backgrounds/cad-wireframe.jpg'); opacity: 0.12;"></div>
+  <!-- Dark overlay -->
+  <div class="absolute inset-0 bg-navy/70"></div>
+  <!-- Animated grid -->
+  <div class="absolute inset-0 grid-animate pointer-events-none"></div>
+  <!-- Dense grid -->
+  <div class="absolute inset-0 blueprint-grid-dense pointer-events-none"></div>
+
+  <!-- Registration marks -->
+  <div class="absolute top-6 left-6 reg-mark-tl w-0 h-0"></div>
+  <div class="absolute top-6 right-6 reg-mark-tr w-0 h-0"></div>
+  <div class="absolute bottom-6 left-6 reg-mark-bl w-0 h-0"></div>
+  <div class="absolute bottom-6 right-6 reg-mark-br w-0 h-0"></div>
+
+  <!-- Technical annotations -->
+  <div class="absolute top-24 left-6 lg:left-12 font-mono text-[10px] text-cyan/40 tracking-widest">
+    <div>34.9285°S, 138.6007°E</div>
+    <div class="mt-1">ADELAIDE, SA 5000</div>
+  </div>
+  <div class="absolute top-24 right-6 lg:right-12 font-mono text-[10px] text-cyan/40 tracking-widest text-right">
+    <div>SCALE 1:1</div>
+    <div class="mt-1">REV 03</div>
+  </div>
+  <div class="absolute bottom-24 left-6 lg:left-12 font-mono text-[10px] text-cyan/40 tracking-widest">
+    <div>DWG: LK-HERO-001</div>
+    <div class="mt-1">STATUS: ACTIVE</div>
+  </div>
+  <div class="absolute bottom-24 right-6 lg:right-12 font-mono text-[10px] text-cyan/40 tracking-widest text-right">
+    <div>DATUM: AHD</div>
+    <div class="mt-1">PROJ: LK-2024</div>
+  </div>
+
+  <!-- Center content -->
+  <div class="relative z-10 text-center px-6 max-w-5xl mx-auto">
+    <!-- Inline SVG Logo -->
+    <div class="mb-10 flex justify-center">
+      <svg width="140" height="100" viewBox="0 0 140 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="opacity-90">
+        <!-- Outer crosshair circle -->
+        <circle cx="70" cy="40" r="34" stroke="#C9A96E" stroke-width="0.5" fill="none"/>
+        <circle cx="70" cy="40" r="36" stroke="#C9A96E" stroke-width="0.3" stroke-dasharray="3 2" fill="none"/>
+        <!-- Crosshairs -->
+        <line x1="70" y1="0" x2="70" y2="10" stroke="#C9A96E" stroke-width="0.5"/>
+        <line x1="70" y1="70" x2="70" y2="80" stroke="#C9A96E" stroke-width="0.5"/>
+        <line x1="30" y1="40" x2="40" y2="40" stroke="#C9A96E" stroke-width="0.5"/>
+        <line x1="100" y1="40" x2="110" y2="40" stroke="#C9A96E" stroke-width="0.5"/>
+        <!-- Corner ticks -->
+        <line x1="44" y1="12" x2="48" y2="12" stroke="#C9A96E" stroke-width="0.3"/>
+        <line x1="44" y1="12" x2="44" y2="16" stroke="#C9A96E" stroke-width="0.3"/>
+        <line x1="96" y1="12" x2="92" y2="12" stroke="#C9A96E" stroke-width="0.3"/>
+        <line x1="96" y1="12" x2="96" y2="16" stroke="#C9A96E" stroke-width="0.3"/>
+        <line x1="44" y1="68" x2="48" y2="68" stroke="#C9A96E" stroke-width="0.3"/>
+        <line x1="44" y1="68" x2="44" y2="64" stroke="#C9A96E" stroke-width="0.3"/>
+        <line x1="96" y1="68" x2="92" y2="68" stroke="#C9A96E" stroke-width="0.3"/>
+        <line x1="96" y1="68" x2="96" y2="64" stroke="#C9A96E" stroke-width="0.3"/>
+        <!-- LK text — dominant-baseline centers vertically in circle -->
+        <text x="70" y="40" text-anchor="middle" dominant-baseline="central" font-family="IBM Plex Mono, monospace" font-weight="500" font-size="30" fill="#C9A96E" letter-spacing="6">LK</text>
+        <!-- Subtitle -->
+        <text x="70" y="90" text-anchor="middle" dominant-baseline="central" font-family="IBM Plex Mono, monospace" font-weight="200" font-size="7" fill="#C9A96E" letter-spacing="4">DESIGN AND BUILD</text>
+      </svg>
+    </div>
+
+    <!-- Headline -->
+    <h1 id="hero-headline" class="letter-reveal font-mono text-2xl sm:text-5xl md:text-6xl lg:text-7xl font-light tracking-[0.08em] sm:tracking-[0.15em] text-white mb-6 leading-tight whitespace-nowrap">
+      PRECISION BY DESIGN
+    </h1>
+
+    <div class="font-mono text-sm sm:text-base text-slate tracking-[0.2em] mb-3">LK Design and Build — Adelaide</div>
+    <div class="font-mono text-[11px] text-cyan/50 tracking-widest mb-12">RESIDENTIAL ARCHITECTURE &amp; INTERIOR DESIGN</div>
+
+    <!-- CTA -->
+    <div class="flex justify-center">
+      <a href="#contact" class="cta-callout inline-flex items-center gap-3 font-mono text-xs tracking-[0.2em] text-gold px-8 py-4 uppercase crosshair-hover">
+        <span class="w-1.5 h-1.5 bg-gold rounded-full"></span>
+        Book Free Consultation
+        <span class="font-mono text-[10px] text-cyan/50">[$350 VALUE]</span>
+      </a>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
+      <div class="font-mono text-[9px] text-grid tracking-widest">SCROLL</div>
+      <svg width="16" height="24" viewBox="0 0 16 24" fill="none">
+        <rect x="0.5" y="0.5" width="15" height="23" rx="7.5" stroke="#1a2a4a" stroke-width="1"/>
+        <circle cx="8" cy="8" r="2" fill="#C9A96E" class="animate-bounce"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- ABOUT SECTION -->
+<!-- ============================================ -->
+<section id="about" class="relative py-24 lg:py-32 overflow-hidden">
+  <!-- Blueprint grid bg -->
+  <div class="absolute inset-0 blueprint-grid pointer-events-none"></div>
+
+  <!-- Section label -->
+  <div class="absolute top-8 left-6 lg:left-12 font-mono text-[10px] text-cyan/40 tracking-widest">SEC-01 // ABOUT</div>
+
+  <div class="relative max-w-7xl mx-auto px-6">
+    <div class="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
+      <!-- Image side -->
+      <div class="w-full lg:w-[45%] reveal-up">
+        <div class="relative">
+          <!-- Technical frame -->
+          <div class="absolute -top-3 -left-3 w-8 h-8 border-t border-l border-gold/40"></div>
+          <div class="absolute -top-3 -right-3 w-8 h-8 border-t border-r border-gold/40"></div>
+          <div class="absolute -bottom-3 -left-3 w-8 h-8 border-b border-l border-gold/40"></div>
+          <div class="absolute -bottom-3 -right-3 w-8 h-8 border-b border-r border-gold/40"></div>
+          <img src="../assets/images/backgrounds/drafting-desk.jpg" alt="Architect's drafting desk with blueprints" class="w-full aspect-[4/5] object-cover" loading="lazy">
+          <!-- Overlay annotations -->
+          <div class="absolute bottom-4 left-4 font-mono text-[9px] text-cyan/60 tracking-widest bg-navy/80 px-2 py-1">FIG 1.0 — DESIGN METHODOLOGY</div>
+        </div>
+      </div>
+
+      <!-- Text side -->
+      <div class="w-full lg:w-[55%]">
+        <div class="reveal-up">
+          <!-- Technical badges -->
+          <div class="flex flex-wrap gap-4 mb-8">
+            <span class="font-mono text-[10px] text-cyan/60 tracking-widest border border-grid px-3 py-1">EST. ADELAIDE</span>
+            <span class="font-mono text-[10px] text-cyan/60 tracking-widest border border-grid px-3 py-1">LICENSED BUILDER</span>
+            <span class="font-mono text-[10px] text-cyan/60 tracking-widest border border-grid px-3 py-1">ADELAIDE SA</span>
+          </div>
+
+          <div class="font-mono text-[11px] text-gold tracking-[0.3em] uppercase mb-4">// About LK Design and Build</div>
+          <h2 class="font-mono text-2xl sm:text-3xl lg:text-4xl font-light tracking-wide text-white mb-8 leading-snug">
+            Where engineering<br>precision meets<br>
+            <span class="text-gold">design intuition</span>
+          </h2>
+        </div>
+
+        <div class="reveal-up space-y-5 text-slate leading-relaxed text-[15px]">
+          <p>
+            <span class="anno-marker mr-3"></span>
+            LK Design and Build is a premium Adelaide-based practice specialising in residential renovations, additions, new builds and bespoke interior design. Led by Lyda, every project is approached with the rigour of an engineer and the eye of a designer.
+          </p>
+          <p>
+            <span class="anno-marker mr-3"></span>
+            We believe your home should be a precise expression of how you live — not a compromise. From initial concept through to final handover, our integrated design-and-build approach eliminates the gaps between vision and execution.
+          </p>
+          <p>
+            <span class="anno-marker mr-3"></span>
+            Every detail is considered. Every material is intentional. Every space is calibrated to your life. This is what precision by design means.
+          </p>
+        </div>
+
+        <div class="reveal-up mt-10 flex items-center gap-6">
+          <a href="#projects" class="cta-callout inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.2em] text-gold px-6 py-3 uppercase crosshair-hover">
+            View Projects
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8m-3-3 3 3-3 3" stroke="#C9A96E" stroke-width="0.8"/></svg>
+          </a>
+          <span class="font-mono text-[10px] text-grid tracking-widest">REF: LK-ABT-001</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- SERVICES SECTION -->
+<!-- ============================================ -->
+<section id="services" class="relative py-24 lg:py-32 bg-charcoal overflow-hidden">
+  <div class="absolute inset-0 blueprint-grid pointer-events-none opacity-50"></div>
+
+  <!-- Section label -->
+  <div class="absolute top-8 left-6 lg:left-12 font-mono text-[10px] text-cyan/40 tracking-widest">SEC-02 // SERVICES</div>
+  <div class="absolute top-8 right-6 lg:right-12 font-mono text-[10px] text-cyan/40 tracking-widest">SPEC SHEET</div>
+
+  <div class="relative max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16 reveal-up">
+      <div class="font-mono text-[11px] text-gold tracking-[0.3em] uppercase mb-4">// Service Specifications</div>
+      <h2 class="font-mono text-2xl sm:text-3xl lg:text-4xl font-light tracking-wide text-white">
+        What we <span class="text-gold">build</span>
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <!-- SVC-01 -->
+      <div class="svc-card bg-navy/60 p-6 reveal-up crosshair-hover group">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="w-2 h-2 rounded-full bg-cyan/60"></span>
+          <span class="w-2 h-2 rounded-full bg-gold/40"></span>
+          <span class="w-2 h-2 rounded-full bg-grid"></span>
+          <span class="ml-auto font-mono text-[9px] text-grid tracking-widest">SVC-01</span>
+        </div>
+        <div class="mb-5">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" class="text-cyan/40 group-hover:text-gold transition-colors">
+            <rect x="4" y="8" width="32" height="24" rx="1" stroke="currentColor" stroke-width="0.8" stroke-dasharray="2 1"/>
+            <line x1="4" y1="14" x2="36" y2="14" stroke="currentColor" stroke-width="0.5"/>
+            <rect x="8" y="18" width="10" height="6" stroke="currentColor" stroke-width="0.5"/>
+            <rect x="22" y="18" width="10" height="6" stroke="currentColor" stroke-width="0.5"/>
+            <line x1="8" y1="28" x2="32" y2="28" stroke="currentColor" stroke-width="0.3" stroke-dasharray="2 2"/>
+          </svg>
+        </div>
+        <h3 class="font-mono text-sm tracking-widest text-white mb-3 uppercase">Interior Design</h3>
+        <p class="text-slate text-sm leading-relaxed">Bespoke interior concepts calibrated to your lifestyle. Material palettes, spatial planning, and detailed specifications.</p>
+        <div class="mt-4 pt-4 border-t border-grid/30 font-mono text-[9px] text-grid tracking-widest">TYPE: DESIGN</div>
+      </div>
+
+      <!-- SVC-02 -->
+      <div class="svc-card bg-navy/60 p-6 reveal-up crosshair-hover group" style="transition-delay:0.1s">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="w-2 h-2 rounded-full bg-cyan/60"></span>
+          <span class="w-2 h-2 rounded-full bg-gold/40"></span>
+          <span class="w-2 h-2 rounded-full bg-grid"></span>
+          <span class="ml-auto font-mono text-[9px] text-grid tracking-widest">SVC-02</span>
+        </div>
+        <div class="mb-5">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" class="text-cyan/40 group-hover:text-gold transition-colors">
+            <path d="M8 32 L8 12 L20 6 L32 12 L32 32" stroke="currentColor" stroke-width="0.8" stroke-dasharray="2 1"/>
+            <line x1="8" y1="32" x2="32" y2="32" stroke="currentColor" stroke-width="0.8"/>
+            <rect x="15" y="22" width="10" height="10" stroke="currentColor" stroke-width="0.5"/>
+            <line x1="20" y1="22" x2="20" y2="32" stroke="currentColor" stroke-width="0.3"/>
+            <circle cx="20" cy="6" r="1.5" stroke="currentColor" stroke-width="0.5" fill="none"/>
+          </svg>
+        </div>
+        <h3 class="font-mono text-sm tracking-widest text-white mb-3 uppercase">Renovations</h3>
+        <p class="text-slate text-sm leading-relaxed">Precision renovations that transform existing spaces. Structural upgrades, modernisation, and complete reimagining.</p>
+        <div class="mt-4 pt-4 border-t border-grid/30 font-mono text-[9px] text-grid tracking-widest">TYPE: BUILD</div>
+      </div>
+
+      <!-- SVC-03 -->
+      <div class="svc-card bg-navy/60 p-6 reveal-up crosshair-hover group" style="transition-delay:0.2s">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="w-2 h-2 rounded-full bg-cyan/60"></span>
+          <span class="w-2 h-2 rounded-full bg-gold/40"></span>
+          <span class="w-2 h-2 rounded-full bg-grid"></span>
+          <span class="ml-auto font-mono text-[9px] text-grid tracking-widest">SVC-03</span>
+        </div>
+        <div class="mb-5">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" class="text-cyan/40 group-hover:text-gold transition-colors">
+            <rect x="4" y="16" width="18" height="18" stroke="currentColor" stroke-width="0.8" stroke-dasharray="2 1"/>
+            <rect x="18" y="8" width="18" height="18" stroke="currentColor" stroke-width="0.8"/>
+            <path d="M22 26 L36 26" stroke="currentColor" stroke-width="0.3" stroke-dasharray="2 2"/>
+            <line x1="22" y1="8" x2="22" y2="26" stroke="currentColor" stroke-width="0.3" stroke-dasharray="2 2"/>
+            <text x="30" y="20" font-size="6" fill="currentColor" font-family="IBM Plex Mono">+</text>
+          </svg>
+        </div>
+        <h3 class="font-mono text-sm tracking-widest text-white mb-3 uppercase">Additions</h3>
+        <p class="text-slate text-sm leading-relaxed">Seamless extensions that expand your living space. Second storeys, rear extensions, and integrated additions.</p>
+        <div class="mt-4 pt-4 border-t border-grid/30 font-mono text-[9px] text-grid tracking-widest">TYPE: BUILD+</div>
+      </div>
+
+      <!-- SVC-04 -->
+      <div class="svc-card bg-navy/60 p-6 reveal-up crosshair-hover group" style="transition-delay:0.3s">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="w-2 h-2 rounded-full bg-cyan/60"></span>
+          <span class="w-2 h-2 rounded-full bg-gold/40"></span>
+          <span class="w-2 h-2 rounded-full bg-grid"></span>
+          <span class="ml-auto font-mono text-[9px] text-grid tracking-widest">SVC-04</span>
+        </div>
+        <div class="mb-5">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" class="text-cyan/40 group-hover:text-gold transition-colors">
+            <rect x="6" y="14" width="28" height="20" stroke="currentColor" stroke-width="0.8"/>
+            <path d="M6 14 L20 4 L34 14" stroke="currentColor" stroke-width="0.8"/>
+            <rect x="14" y="24" width="6" height="10" stroke="currentColor" stroke-width="0.5"/>
+            <rect x="24" y="18" width="6" height="5" stroke="currentColor" stroke-width="0.5"/>
+            <circle cx="20" cy="8" r="1" fill="currentColor"/>
+            <line x1="2" y1="34" x2="38" y2="34" stroke="currentColor" stroke-width="0.5"/>
+          </svg>
+        </div>
+        <h3 class="font-mono text-sm tracking-widest text-white mb-3 uppercase">New Builds</h3>
+        <p class="text-slate text-sm leading-relaxed">Ground-up custom homes designed and built to your exact specifications. Complete architectural service from concept to keys.</p>
+        <div class="mt-4 pt-4 border-t border-grid/30 font-mono text-[9px] text-grid tracking-widest">TYPE: NEW</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- PROJECTS SECTION -->
+<!-- ============================================ -->
+<section id="projects" class="relative py-24 lg:py-32 overflow-hidden">
+  <div class="absolute inset-0 blueprint-grid pointer-events-none"></div>
+  <div class="absolute inset-0 bg-cover bg-center opacity-[0.03]" style="background-image: url('../assets/images/backgrounds/blueprint-grid.jpg');"></div>
+
+  <!-- Section label -->
+  <div class="absolute top-8 left-6 lg:left-12 font-mono text-[10px] text-cyan/40 tracking-widest">SEC-03 // PROJECTS</div>
+  <div class="absolute top-8 right-6 lg:right-12 font-mono text-[10px] text-cyan/40 tracking-widest">SHEET INDEX</div>
+
+  <div class="relative max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16 reveal-up">
+      <div class="font-mono text-[11px] text-gold tracking-[0.3em] uppercase mb-4">// Project Archive</div>
+      <h2 class="font-mono text-2xl sm:text-3xl lg:text-4xl font-light tracking-wide text-white">
+        Selected <span class="text-gold">works</span>
+      </h2>
+      <div class="font-mono text-[10px] text-grid tracking-widest mt-3">SCALE: NTS &nbsp;&bull;&nbsp; DATE: 2024 &nbsp;&bull;&nbsp; REV: CURRENT</div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- DWG-001 Broadview -->
+      <div class="project-card reveal-up group relative crosshair-hover">
+        <div class="relative overflow-hidden border border-grid/30">
+          <div class="absolute top-0 left-0 right-0 z-10 flex items-center justify-between px-3 py-2 bg-navy/80">
+            <span class="font-mono text-[9px] text-cyan/60 tracking-widest">DWG-001</span>
+            <span class="font-mono text-[9px] text-grid tracking-widest">RENOVATION</span>
+          </div>
+          <img src="../assets/images/project-broadview.jpg" alt="Broadview renovation project" class="w-full aspect-[4/3] object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+          <div class="project-overlay absolute inset-0 pointer-events-none"></div>
+          <!-- Gold border frame -->
+          <div class="absolute inset-2 border border-gold/0 group-hover:border-gold/30 transition-all duration-500 pointer-events-none"></div>
+        </div>
+        <div class="mt-3 flex items-center justify-between">
+          <h3 class="font-mono text-sm tracking-widest text-white uppercase">Broadview</h3>
+          <span class="font-mono text-[9px] text-grid">REV A</span>
+        </div>
+      </div>
+
+      <!-- DWG-002 Semaphore -->
+      <div class="project-card reveal-up group relative crosshair-hover" style="transition-delay:0.1s">
+        <div class="relative overflow-hidden border border-grid/30">
+          <div class="absolute top-0 left-0 right-0 z-10 flex items-center justify-between px-3 py-2 bg-navy/80">
+            <span class="font-mono text-[9px] text-cyan/60 tracking-widest">DWG-002</span>
+            <span class="font-mono text-[9px] text-grid tracking-widest">ADDITION</span>
+          </div>
+          <img src="../assets/images/project-semaphore.jpg" alt="Semaphore project" class="w-full aspect-[4/3] object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+          <div class="project-overlay absolute inset-0 pointer-events-none"></div>
+          <div class="absolute inset-2 border border-gold/0 group-hover:border-gold/30 transition-all duration-500 pointer-events-none"></div>
+        </div>
+        <div class="mt-3 flex items-center justify-between">
+          <h3 class="font-mono text-sm tracking-widest text-white uppercase">Semaphore</h3>
+          <span class="font-mono text-[9px] text-grid">REV B</span>
+        </div>
+      </div>
+
+      <!-- DWG-003 OSR Fit Out -->
+      <div class="project-card reveal-up group relative crosshair-hover" style="transition-delay:0.2s">
+        <div class="relative overflow-hidden border border-grid/30">
+          <div class="absolute top-0 left-0 right-0 z-10 flex items-center justify-between px-3 py-2 bg-navy/80">
+            <span class="font-mono text-[9px] text-cyan/60 tracking-widest">DWG-003</span>
+            <span class="font-mono text-[9px] text-grid tracking-widest">FIT OUT</span>
+          </div>
+          <img src="../assets/images/project-osr.jpg" alt="OSR commercial fit out" class="w-full aspect-[4/3] object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+          <div class="project-overlay absolute inset-0 pointer-events-none"></div>
+          <div class="absolute inset-2 border border-gold/0 group-hover:border-gold/30 transition-all duration-500 pointer-events-none"></div>
+        </div>
+        <div class="mt-3 flex items-center justify-between">
+          <h3 class="font-mono text-sm tracking-widest text-white uppercase">OSR Fit Out</h3>
+          <span class="font-mono text-[9px] text-grid">REV A</span>
+        </div>
+      </div>
+
+      <!-- DWG-004 Unley -->
+      <div class="project-card reveal-up group relative crosshair-hover" style="transition-delay:0.1s">
+        <div class="relative overflow-hidden border border-grid/30">
+          <div class="absolute top-0 left-0 right-0 z-10 flex items-center justify-between px-3 py-2 bg-navy/80">
+            <span class="font-mono text-[9px] text-cyan/60 tracking-widest">DWG-004</span>
+            <span class="font-mono text-[9px] text-grid tracking-widest">RENOVATION</span>
+          </div>
+          <img src="../assets/images/project-unley.jpg" alt="Unley renovation" class="w-full aspect-[4/3] object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+          <div class="project-overlay absolute inset-0 pointer-events-none"></div>
+          <div class="absolute inset-2 border border-gold/0 group-hover:border-gold/30 transition-all duration-500 pointer-events-none"></div>
+        </div>
+        <div class="mt-3 flex items-center justify-between">
+          <h3 class="font-mono text-sm tracking-widest text-white uppercase">Unley</h3>
+          <span class="font-mono text-[9px] text-grid">REV C</span>
+        </div>
+      </div>
+
+      <!-- DWG-005 Everard Park -->
+      <div class="project-card reveal-up group relative crosshair-hover" style="transition-delay:0.2s">
+        <div class="relative overflow-hidden border border-grid/30">
+          <div class="absolute top-0 left-0 right-0 z-10 flex items-center justify-between px-3 py-2 bg-navy/80">
+            <span class="font-mono text-[9px] text-cyan/60 tracking-widest">DWG-005</span>
+            <span class="font-mono text-[9px] text-grid tracking-widest">NEW BUILD</span>
+          </div>
+          <img src="../assets/images/project-semaphore2.jpg" alt="Everard Park new build" class="w-full aspect-[4/3] object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+          <div class="project-overlay absolute inset-0 pointer-events-none"></div>
+          <div class="absolute inset-2 border border-gold/0 group-hover:border-gold/30 transition-all duration-500 pointer-events-none"></div>
+        </div>
+        <div class="mt-3 flex items-center justify-between">
+          <h3 class="font-mono text-sm tracking-widest text-white uppercase">Everard Park</h3>
+          <span class="font-mono text-[9px] text-grid">REV A</span>
+        </div>
+      </div>
+
+      <!-- DWG-006 Semaphore II -->
+      <div class="project-card reveal-up group relative crosshair-hover" style="transition-delay:0.3s">
+        <div class="relative overflow-hidden border border-grid/30">
+          <div class="absolute top-0 left-0 right-0 z-10 flex items-center justify-between px-3 py-2 bg-navy/80">
+            <span class="font-mono text-[9px] text-cyan/60 tracking-widest">DWG-006</span>
+            <span class="font-mono text-[9px] text-grid tracking-widest">INTERIOR</span>
+          </div>
+          <img src="../assets/images/project-semaphore3.jpg" alt="Semaphore interior design" class="w-full aspect-[4/3] object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+          <div class="project-overlay absolute inset-0 pointer-events-none"></div>
+          <div class="absolute inset-2 border border-gold/0 group-hover:border-gold/30 transition-all duration-500 pointer-events-none"></div>
+        </div>
+        <div class="mt-3 flex items-center justify-between">
+          <h3 class="font-mono text-sm tracking-widest text-white uppercase">Semaphore II</h3>
+          <span class="font-mono text-[9px] text-grid">REV B</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- STATS SECTION -->
+<!-- ============================================ -->
+<section id="stats" class="relative py-20 lg:py-28 bg-charcoal overflow-hidden scan-line">
+  <div class="absolute inset-0 blueprint-grid-dense pointer-events-none opacity-40"></div>
+
+  <!-- Section label -->
+  <div class="absolute top-8 left-6 lg:left-12 font-mono text-[10px] text-cyan/40 tracking-widest">SEC-04 // METRICS</div>
+  <div class="absolute top-8 right-6 lg:right-12 font-mono text-[10px] text-cyan/40 tracking-widest">DASHBOARD</div>
+
+  <div class="relative max-w-6xl mx-auto px-6">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+      <!-- Metric 1 -->
+      <div class="text-center reveal-up">
+        <div class="font-mono text-[10px] text-gold tracking-[0.3em] uppercase mb-3">Projects_Completed:</div>
+        <div class="font-mono text-4xl sm:text-5xl lg:text-6xl font-light text-cyan count-up cursor-blink" data-target="50">0</div>
+        <div class="font-mono text-[9px] text-grid tracking-widest mt-2">UNIT: COUNT</div>
+      </div>
+      <!-- Metric 2 -->
+      <div class="text-center reveal-up" style="transition-delay:0.1s">
+        <div class="font-mono text-[10px] text-gold tracking-[0.3em] uppercase mb-3">Years_Experience:</div>
+        <div class="font-mono text-4xl sm:text-5xl lg:text-6xl font-light text-cyan count-up cursor-blink" data-target="15">0</div>
+        <div class="font-mono text-[9px] text-grid tracking-widest mt-2">UNIT: YRS</div>
+      </div>
+      <!-- Metric 3 -->
+      <div class="text-center reveal-up" style="transition-delay:0.2s">
+        <div class="font-mono text-[10px] text-gold tracking-[0.3em] uppercase mb-3">Client_Satisfaction:</div>
+        <div class="font-mono text-4xl sm:text-5xl lg:text-6xl font-light text-cyan count-up cursor-blink" data-target="100" data-suffix="%">0</div>
+        <div class="font-mono text-[9px] text-grid tracking-widest mt-2">UNIT: PCT</div>
+      </div>
+      <!-- Metric 4 -->
+      <div class="text-center reveal-up" style="transition-delay:0.3s">
+        <div class="font-mono text-[10px] text-gold tracking-[0.3em] uppercase mb-3">Consult_Value:</div>
+        <div class="font-mono text-4xl sm:text-5xl lg:text-6xl font-light text-cyan count-up cursor-blink" data-target="350" data-prefix="$">0</div>
+        <div class="font-mono text-[9px] text-grid tracking-widest mt-2">UNIT: AUD — FREE</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- PROCESS SECTION -->
+<!-- ============================================ -->
+<section id="process" class="relative py-24 lg:py-32 overflow-hidden">
+  <div class="absolute inset-0 blueprint-grid pointer-events-none"></div>
+
+  <!-- Section label -->
+  <div class="absolute top-8 left-6 lg:left-12 font-mono text-[10px] text-cyan/40 tracking-widest">SEC-05 // PROCESS</div>
+  <div class="absolute top-8 right-6 lg:right-12 font-mono text-[10px] text-cyan/40 tracking-widest">WORKFLOW</div>
+
+  <div class="relative max-w-6xl mx-auto px-6">
+    <div class="text-center mb-16 reveal-up">
+      <div class="font-mono text-[11px] text-gold tracking-[0.3em] uppercase mb-4">// Project Workflow</div>
+      <h2 class="font-mono text-2xl sm:text-3xl lg:text-4xl font-light tracking-wide text-white">
+        How we <span class="text-gold">deliver</span>
+      </h2>
+    </div>
+
+    <!-- Process flowchart -->
+    <div class="relative">
+      <!-- Desktop horizontal connector line -->
+      <div class="hidden lg:block absolute top-[52px] left-[10%] right-[10%] h-px border-t border-dashed border-grid"></div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-4">
+        <!-- Step 1: INIT -->
+        <div class="reveal-up text-center relative">
+          <div class="relative inline-flex flex-col items-center">
+            <div class="w-[104px] h-[104px] rounded-full border border-dashed border-grid flex items-center justify-center relative group">
+              <div class="absolute inset-1 rounded-full border border-gold/20"></div>
+              <span class="font-mono text-2xl text-gold font-light">01</span>
+            </div>
+            <!-- Vertical connector on mobile -->
+            <div class="lg:hidden w-px h-8 border-l border-dashed border-grid mt-2"></div>
+          </div>
+          <h3 class="font-mono text-xs tracking-[0.2em] text-white uppercase mt-4 mb-2">Init</h3>
+          <p class="text-slate text-sm leading-relaxed max-w-[200px] mx-auto">Free consultation to understand your vision, site, and goals.</p>
+          <div class="font-mono text-[9px] text-cyan/40 tracking-widest mt-3">PHASE: DISCOVERY</div>
+        </div>
+
+        <!-- Step 2: DESIGN -->
+        <div class="reveal-up text-center relative" style="transition-delay:0.1s">
+          <div class="relative inline-flex flex-col items-center">
+            <div class="w-[104px] h-[104px] rounded-full border border-dashed border-grid flex items-center justify-center relative">
+              <div class="absolute inset-1 rounded-full border border-gold/20"></div>
+              <span class="font-mono text-2xl text-gold font-light">02</span>
+            </div>
+            <div class="lg:hidden w-px h-8 border-l border-dashed border-grid mt-2"></div>
+          </div>
+          <h3 class="font-mono text-xs tracking-[0.2em] text-white uppercase mt-4 mb-2">Design</h3>
+          <p class="text-slate text-sm leading-relaxed max-w-[200px] mx-auto">Concept development, 3D renders, material selection, and detailed plans.</p>
+          <div class="font-mono text-[9px] text-cyan/40 tracking-widest mt-3">PHASE: CONCEPT</div>
+        </div>
+
+        <!-- Step 3: APPROVE -->
+        <div class="reveal-up text-center relative" style="transition-delay:0.2s">
+          <div class="relative inline-flex flex-col items-center">
+            <div class="w-[104px] h-[104px] rounded-full border border-dashed border-grid flex items-center justify-center relative">
+              <div class="absolute inset-1 rounded-full border border-gold/20"></div>
+              <span class="font-mono text-2xl text-gold font-light">03</span>
+            </div>
+            <div class="lg:hidden w-px h-8 border-l border-dashed border-grid mt-2"></div>
+          </div>
+          <h3 class="font-mono text-xs tracking-[0.2em] text-white uppercase mt-4 mb-2">Approve</h3>
+          <p class="text-slate text-sm leading-relaxed max-w-[200px] mx-auto">Council approvals, engineering sign-off, and final scope agreement.</p>
+          <div class="font-mono text-[9px] text-cyan/40 tracking-widest mt-3">PHASE: APPROVAL</div>
+        </div>
+
+        <!-- Step 4: BUILD -->
+        <div class="reveal-up text-center relative" style="transition-delay:0.3s">
+          <div class="relative inline-flex flex-col items-center">
+            <div class="w-[104px] h-[104px] rounded-full border border-dashed border-grid flex items-center justify-center relative">
+              <div class="absolute inset-1 rounded-full border border-gold/20"></div>
+              <span class="font-mono text-2xl text-gold font-light">04</span>
+            </div>
+            <div class="lg:hidden w-px h-8 border-l border-dashed border-grid mt-2"></div>
+          </div>
+          <h3 class="font-mono text-xs tracking-[0.2em] text-white uppercase mt-4 mb-2">Build</h3>
+          <p class="text-slate text-sm leading-relaxed max-w-[200px] mx-auto">Precision construction with regular updates and quality checkpoints.</p>
+          <div class="font-mono text-[9px] text-cyan/40 tracking-widest mt-3">PHASE: EXECUTION</div>
+        </div>
+
+        <!-- Step 5: DELIVER -->
+        <div class="reveal-up text-center relative" style="transition-delay:0.4s">
+          <div class="relative inline-flex flex-col items-center">
+            <div class="w-[104px] h-[104px] rounded-full border border-dashed border-gold/40 flex items-center justify-center relative">
+              <div class="absolute inset-1 rounded-full border border-gold/30"></div>
+              <span class="font-mono text-2xl text-gold font-light">05</span>
+            </div>
+          </div>
+          <h3 class="font-mono text-xs tracking-[0.2em] text-white uppercase mt-4 mb-2">Deliver</h3>
+          <p class="text-slate text-sm leading-relaxed max-w-[200px] mx-auto">Final walkthrough, handover documentation, and aftercare support.</p>
+          <div class="font-mono text-[9px] text-cyan/40 tracking-widest mt-3">PHASE: COMPLETE</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- CTA BANNER -->
+<!-- ============================================ -->
+<section class="relative py-20 bg-charcoal overflow-hidden">
+  <div class="absolute inset-0 bg-cover bg-center opacity-[0.08]" style="background-image: url('../assets/images/hero-2.jpg');"></div>
+  <div class="absolute inset-0 blueprint-grid-dense pointer-events-none opacity-30"></div>
+
+  <div class="relative max-w-4xl mx-auto px-6 text-center reveal-up">
+    <div class="font-mono text-[10px] text-cyan/50 tracking-widest mb-6">> INITIATE_CONSULTATION</div>
+    <h2 class="font-mono text-2xl sm:text-3xl lg:text-4xl font-light tracking-wide text-white mb-4">
+      Ready to start your <span class="text-gold">project</span>?
+    </h2>
+    <p class="text-slate text-base max-w-2xl mx-auto mb-8 leading-relaxed">
+      Book a free design consultation valued at $350. We will visit your home, discuss your vision, and outline a clear path forward.
+    </p>
+    <a href="#contact" class="cta-callout inline-flex items-center gap-3 font-mono text-xs tracking-[0.2em] text-gold px-8 py-4 uppercase crosshair-hover">
+      <span class="w-1.5 h-1.5 bg-gold rounded-full"></span>
+      Book Your Free Consultation
+    </a>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- CONTACT SECTION -->
+<!-- ============================================ -->
+<section id="contact" class="relative py-24 lg:py-32 overflow-hidden" style="background: #080c14;">
+  <div class="absolute inset-0 blueprint-grid pointer-events-none opacity-30"></div>
+
+  <!-- Registration marks -->
+  <div class="absolute top-6 left-6 reg-mark-tl w-0 h-0"></div>
+  <div class="absolute top-6 right-6 reg-mark-tr w-0 h-0"></div>
+
+  <!-- Section label -->
+  <div class="absolute top-8 left-6 lg:left-12 font-mono text-[10px] text-cyan/40 tracking-widest">SEC-06 // CONTACT</div>
+  <div class="absolute top-8 right-6 lg:right-12 font-mono text-[10px] text-cyan/40 tracking-widest">TERMINAL</div>
+
+  <div class="relative max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16 reveal-up">
+      <div class="font-mono text-[11px] text-gold tracking-[0.3em] uppercase mb-4">// Get in Touch</div>
+      <h2 class="font-mono text-2xl sm:text-3xl lg:text-4xl font-light tracking-wide text-white">
+        Start your <span class="text-gold">project</span>
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+      <!-- Form side -->
+      <div class="reveal-up">
+        <div class="border border-grid/30 bg-navy/40 p-6 sm:p-8">
+          <!-- Terminal header -->
+          <div class="flex items-center gap-2 mb-6 pb-4 border-b border-grid/20">
+            <span class="w-2.5 h-2.5 rounded-full bg-red-500/60"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-yellow-500/60"></span>
+            <span class="w-2.5 h-2.5 rounded-full bg-green-500/60"></span>
+            <span class="ml-3 font-mono text-[10px] text-cyan/50 tracking-widest">> INITIATE_PROJECT_CONSULTATION</span>
+          </div>
+
+          <form id="contact-form" class="space-y-6">
+            <div>
+              <label class="font-mono text-[10px] text-grid tracking-widest uppercase block mb-2">name_:</label>
+              <input type="text" class="form-field" placeholder="Enter your full name" required>
+            </div>
+            <div>
+              <label class="font-mono text-[10px] text-grid tracking-widest uppercase block mb-2">email_:</label>
+              <input type="email" class="form-field" placeholder="your@email.com" required>
+            </div>
+            <div>
+              <label class="font-mono text-[10px] text-grid tracking-widest uppercase block mb-2">phone_:</label>
+              <input type="tel" class="form-field" placeholder="04XX XXX XXX">
+            </div>
+            <div>
+              <label class="font-mono text-[10px] text-grid tracking-widest uppercase block mb-2">project_type_:</label>
+              <select class="form-field bg-transparent" style="border-bottom: 1px dashed #1a2a4a;">
+                <option value="" class="bg-navy">Select service type</option>
+                <option value="interior" class="bg-navy">Interior Design</option>
+                <option value="renovation" class="bg-navy">Renovation</option>
+                <option value="addition" class="bg-navy">Addition</option>
+                <option value="new-build" class="bg-navy">New Build</option>
+              </select>
+            </div>
+            <div>
+              <label class="font-mono text-[10px] text-grid tracking-widest uppercase block mb-2">message_:</label>
+              <textarea class="form-field" placeholder="Describe your project vision..." rows="4"></textarea>
+            </div>
+            <button type="submit" class="w-full cta-callout font-mono text-xs tracking-[0.2em] text-gold px-6 py-4 uppercase crosshair-hover text-center hover:bg-gold/10 transition-colors">
+              SUBMIT_REQUEST
+            </button>
+            <div class="font-mono text-[9px] text-grid/40 tracking-widest text-center">FREE CONSULTATION VALUED AT $350</div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Spec sheet side -->
+      <div class="reveal-up" style="transition-delay:0.15s">
+        <div class="border border-grid/30 bg-navy/40 p-6 sm:p-8">
+          <div class="font-mono text-[10px] text-cyan/50 tracking-widest mb-6 pb-4 border-b border-grid/20">TECHNICAL SPEC SHEET — CONTACT</div>
+
+          <div class="space-y-6">
+            <div>
+              <div class="font-mono text-[10px] text-gold tracking-[0.2em] uppercase mb-1">principal_:</div>
+              <div class="font-mono text-sm text-white">Lyda</div>
+            </div>
+            <div>
+              <div class="font-mono text-[10px] text-gold tracking-[0.2em] uppercase mb-1">phone_:</div>
+              <a href="tel:0481742026" class="font-mono text-sm text-white hover:text-cyan transition-colors">0481 742 026</a>
+            </div>
+            <div>
+              <div class="font-mono text-[10px] text-gold tracking-[0.2em] uppercase mb-1">email_:</div>
+              <a href="mailto:hello@lkdesignandbuild.com.au" class="font-mono text-sm text-white hover:text-cyan transition-colors break-all">hello@lkdesignandbuild.com.au</a>
+            </div>
+            <div>
+              <div class="font-mono text-[10px] text-gold tracking-[0.2em] uppercase mb-1">coordinates_:</div>
+              <div class="font-mono text-sm text-white">34.9285°S, 138.6007°E</div>
+              <div class="font-mono text-[10px] text-grid mt-1">Adelaide, South Australia</div>
+            </div>
+            <div>
+              <div class="font-mono text-[10px] text-gold tracking-[0.2em] uppercase mb-1">social_:</div>
+              <a href="https://www.instagram.com/primedesignbuilt/" target="_blank" rel="noopener noreferrer" class="font-mono text-sm text-white hover:text-cyan transition-colors inline-flex items-center gap-2">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <rect x="2" y="2" width="20" height="20" rx="5"/>
+                  <circle cx="12" cy="12" r="5"/>
+                  <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/>
+                </svg>
+                @primedesignbuilt
+              </a>
+            </div>
+            <div>
+              <div class="font-mono text-[10px] text-gold tracking-[0.2em] uppercase mb-1">consultation_:</div>
+              <div class="font-mono text-sm text-white">Complimentary — valued at $350</div>
+              <div class="font-mono text-[10px] text-grid mt-1">On-site visit included</div>
+            </div>
+          </div>
+
+          <!-- Decorative technical info -->
+          <div class="mt-8 pt-6 border-t border-grid/20">
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <div class="font-mono text-[9px] text-grid tracking-widest">STATUS</div>
+                <div class="font-mono text-[11px] text-cyan flex items-center gap-2 mt-1">
+                  <span class="w-1.5 h-1.5 rounded-full bg-cyan animate-pulse"></span>
+                  ACCEPTING PROJECTS
+                </div>
+              </div>
+              <div>
+                <div class="font-mono text-[9px] text-grid tracking-widest">RESPONSE</div>
+                <div class="font-mono text-[11px] text-white mt-1">&lt; 24 HOURS</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- FOOTER -->
+<!-- ============================================ -->
+<footer class="relative py-12 overflow-hidden" style="background: #060a12;">
+  <div class="absolute inset-0 blueprint-grid pointer-events-none opacity-20"></div>
+
+  <!-- Registration marks -->
+  <div class="absolute bottom-4 left-4 reg-mark-bl w-0 h-0"></div>
+  <div class="absolute bottom-4 right-4 reg-mark-br w-0 h-0"></div>
+
+  <div class="relative max-w-7xl mx-auto px-6">
+    <div class="flex flex-col lg:flex-row items-center justify-between gap-6">
+      <!-- Logo -->
+      <div class="flex items-center gap-3">
+        <svg width="36" height="36" viewBox="0 0 48 48" fill="none">
+          <circle cx="24" cy="24" r="20" stroke="#C9A96E" stroke-width="0.5" fill="none"/>
+          <line x1="24" y1="2" x2="24" y2="8" stroke="#C9A96E" stroke-width="0.5"/>
+          <line x1="24" y1="40" x2="24" y2="46" stroke="#C9A96E" stroke-width="0.5"/>
+          <line x1="2" y1="24" x2="8" y2="24" stroke="#C9A96E" stroke-width="0.5"/>
+          <line x1="40" y1="24" x2="46" y2="24" stroke="#C9A96E" stroke-width="0.5"/>
+          <text x="24" y="24" text-anchor="middle" dominant-baseline="central" font-family="IBM Plex Mono, monospace" font-weight="600" font-size="16" fill="#C9A96E" letter-spacing="2">LK</text>
+        </svg>
+        <span class="font-mono text-[10px] tracking-[0.3em] text-gold uppercase">Design and Build</span>
+      </div>
+
+      <!-- Center text -->
+      <div class="text-center">
+        <div class="font-mono text-[10px] text-grid tracking-[0.3em] uppercase">Built in Adelaide</div>
+      </div>
+
+      <!-- Copyright -->
+      <div class="font-mono text-[10px] text-grid tracking-widest">
+        &copy; 2024 LK Design and Build. All rights reserved.
+      </div>
+    </div>
+
+    <!-- Bottom annotations -->
+    <div class="mt-8 pt-6 border-t border-grid/15 flex flex-wrap justify-center gap-x-8 gap-y-2">
+      <span class="font-mono text-[9px] text-grid/40 tracking-widest">34.9285°S, 138.6007°E</span>
+      <span class="font-mono text-[9px] text-grid/40 tracking-widest">DWG: LK-SITE-V10</span>
+      <span class="font-mono text-[9px] text-grid/40 tracking-widest">REV: 03</span>
+      <span class="font-mono text-[9px] text-grid/40 tracking-widest">SCALE: RESPONSIVE</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================ -->
+<!-- JAVASCRIPT -->
+<!-- ============================================ -->
+<script>
+(function() {
+  'use strict';
+
+  // ---- Hero letter-by-letter reveal ----
+  const headline = document.getElementById('hero-headline');
+  if (headline) {
+    const text = headline.textContent.trim();
+    headline.innerHTML = '';
+    let delay = 0;
+    for (let i = 0; i < text.length; i++) {
+      const span = document.createElement('span');
+      if (text[i] === ' ') {
+        span.innerHTML = '&nbsp;';
+        span.style.animationDelay = delay + 'ms';
+      } else {
+        span.textContent = text[i];
+        span.style.animationDelay = delay + 'ms';
+      }
+      headline.appendChild(span);
+      delay += 60;
+    }
+  }
+
+  // ---- Scroll progress indicator ----
+  const scrollBar = document.getElementById('scroll-progress');
+  function updateScroll() {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    scrollBar.style.height = pct + '%';
+  }
+  window.addEventListener('scroll', updateScroll, { passive: true });
+
+  // ---- Mobile menu ----
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  menuToggle.addEventListener('click', function() {
+    this.classList.toggle('active');
+    mobileMenu.classList.toggle('open');
+    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+  });
+  document.querySelectorAll('.mobile-nav-link').forEach(link => {
+    link.addEventListener('click', function() {
+      menuToggle.classList.remove('active');
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
+  // ---- Intersection Observer for reveals ----
+  const revealEls = document.querySelectorAll('.reveal-up');
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  revealEls.forEach(el => revealObs.observe(el));
+
+  // ---- Counter animation ----
+  const counters = document.querySelectorAll('.count-up');
+  const counterObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const target = parseInt(el.dataset.target);
+        const prefix = el.dataset.prefix || '';
+        const suffix = el.dataset.suffix || '';
+        let current = 0;
+        const increment = Math.max(1, Math.floor(target / 60));
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= target) {
+            current = target;
+            clearInterval(timer);
+          }
+          el.textContent = prefix + current + suffix;
+        }, 25);
+        counterObs.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+  counters.forEach(el => counterObs.observe(el));
+
+  // ---- Navbar background on scroll ----
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 80) {
+      navbar.style.borderBottom = '1px solid rgba(26,42,74,0.5)';
+    } else {
+      navbar.style.borderBottom = 'none';
+    }
+  }, { passive: true });
+
+  // ---- Smooth scroll for anchor links ----
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        const offset = 80;
+        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top: top, behavior: 'smooth' });
+      }
+    });
+  });
+
+  // ---- Form submit handler (prevent default, show feedback) ----
+  const form = document.getElementById('contact-form');
+  if (form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const btn = this.querySelector('button[type="submit"]');
+      const original = btn.textContent;
+      btn.textContent = '> REQUEST_SUBMITTED';
+      btn.style.borderColor = '#3dd8e0';
+      btn.style.color = '#3dd8e0';
+      setTimeout(() => {
+        btn.textContent = original;
+        btn.style.borderColor = '';
+        btn.style.color = '';
+        this.reset();
+      }, 3000);
+    });
+  }
+
+})();
+</script>
+</body>
+</html>

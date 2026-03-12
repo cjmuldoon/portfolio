@@ -1,0 +1,31 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="600" fill="transparent"/>
+
+  <!-- Outer crosshair circle -->
+  <circle cx="400" cy="240" r="170" stroke="#C9A96E" stroke-width="2" fill="none"/>
+  <circle cx="400" cy="240" r="180" stroke="#C9A96E" stroke-width="1" stroke-dasharray="8 5" fill="none"/>
+
+  <!-- Crosshairs -->
+  <line x1="400" y1="40" x2="400" y2="80" stroke="#C9A96E" stroke-width="2"/>
+  <line x1="400" y1="400" x2="400" y2="440" stroke="#C9A96E" stroke-width="2"/>
+  <line x1="200" y1="240" x2="240" y2="240" stroke="#C9A96E" stroke-width="2"/>
+  <line x1="560" y1="240" x2="600" y2="240" stroke="#C9A96E" stroke-width="2"/>
+
+  <!-- Corner registration ticks -->
+  <line x1="260" y1="100" x2="275" y2="100" stroke="#C9A96E" stroke-width="1.2"/>
+  <line x1="260" y1="100" x2="260" y2="115" stroke="#C9A96E" stroke-width="1.2"/>
+  <line x1="540" y1="100" x2="525" y2="100" stroke="#C9A96E" stroke-width="1.2"/>
+  <line x1="540" y1="100" x2="540" y2="115" stroke="#C9A96E" stroke-width="1.2"/>
+  <line x1="260" y1="380" x2="275" y2="380" stroke="#C9A96E" stroke-width="1.2"/>
+  <line x1="260" y1="380" x2="260" y2="365" stroke="#C9A96E" stroke-width="1.2"/>
+  <line x1="540" y1="380" x2="525" y2="380" stroke="#C9A96E" stroke-width="1.2"/>
+  <line x1="540" y1="380" x2="540" y2="365" stroke="#C9A96E" stroke-width="1.2"/>
+
+  <!-- LK text — centered in circle -->
+  <text x="400" y="240" text-anchor="middle" dominant-baseline="central" font-family="IBM Plex Mono, Courier New, monospace" font-weight="500" font-size="150" fill="#C9A96E" letter-spacing="20">LK</text>
+
+  <!-- Subtitle line -->
+  <line x1="280" y1="470" x2="520" y2="470" stroke="#C9A96E" stroke-width="0.5" opacity="0.4"/>
+  <text x="400" y="500" text-anchor="middle" dominant-baseline="central" font-family="IBM Plex Mono, Courier New, monospace" font-weight="200" font-size="28" fill="#C9A96E" letter-spacing="16">DESIGN AND BUILD</text>
+  <line x1="280" y1="530" x2="520" y2="530" stroke="#C9A96E" stroke-width="0.5" opacity="0.4"/>
+</svg>

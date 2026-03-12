@@ -1,0 +1,17 @@
+{
+  "prompt": "A dramatic wide-angle photograph of an architectural model or CAD wireframe rendering of a modern luxury home, displayed on a dark background. The home is shown as a translucent wireframe/blueprint 3D model with glowing edges in gold (#C9A96E) and white lines on a deep charcoal (#1a1a1a) background. The wireframe reveals the internal structure — walls, roof trusses, floor joists, window frames — all visible as luminous line work. Some areas show filled surfaces in semi-transparent dark blue, while structural elements glow brighter. The effect is like a holographic architectural projection or a premium CAD rendering. Small technical annotations and dimension markers float near key structural points. Shot as if this is a high-end architectural presentation render, cinematic lighting with subtle rim glow on the wireframe edges. 35mm lens perspective, slight low angle looking up at the home model. Deep black vignette around edges.",
+  "negative_prompt": "cartoon, cheap, pixelated, blurry, bright daylight, realistic house photo, people, furniture, cluttered, noisy",
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "jpg",
+    "aspect_ratio": "16:9"
+  },
+  "settings": {
+    "resolution": "2048x1152",
+    "style": "architectural visualization, wireframe render, technical art",
+    "lighting": "cinematic, dark background with luminous wireframe edges",
+    "camera_angle": "slight low angle, 3/4 perspective",
+    "depth_of_field": "moderate, wireframe sharp",
+    "quality": "ultra high detail, clean lines"
+  }
+}

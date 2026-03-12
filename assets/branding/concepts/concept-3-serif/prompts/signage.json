@@ -1,0 +1,17 @@
+{
+  "prompt": "A premium building fascia sign on a modern charcoal rendered building facade at dusk golden hour. The sign features large brushed metal letters L and K in a high-contrast serif typeface like Didot or Bodoni, with dramatic thick-thin strokes and elegant hairline serifs, stacked vertically and mounted prominently. A thin gold horizontal bar separates the LK from DESIGN AND BUILD below in small widely-spaced sans-serif letters. Beneath that, smaller text reads 0481 742 026 and lkdesignandbuild.com.au. All letters are mounted with standoff pins creating subtle LED backlighting against the dark facade. Golden hour light catches the brushed metal serif letterforms beautifully. Modern commercial building exterior, architectural photography.",
+  "negative_prompt": "cheap signage, vinyl banner, pixelated, low quality, daytime flat lighting, ugly building, run-down, dirty, cluttered, cartoon, illustration, sans-serif main letters",
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "jpg",
+    "aspect_ratio": "16:9"
+  },
+  "settings": {
+    "resolution": "2048x1152",
+    "style": "architectural photography",
+    "lighting": "golden hour dusk with LED backlighting",
+    "camera_angle": "slight low angle looking up at signage",
+    "depth_of_field": "shallow, sign in sharp focus",
+    "quality": "professional architectural photo, high detail"
+  }
+}

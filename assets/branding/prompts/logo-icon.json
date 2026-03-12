@@ -1,0 +1,17 @@
+{
+  "prompt": "A premium standalone brand icon mark for 'LK Design and Build', a high-end home renovation and architecture firm. The icon is a refined geometric monogram combining the letters 'L' and 'K' into a single elegant mark, designed with architectural precision. The mark uses intersecting clean lines forming an abstract house/roof shape subtly integrated into the letterforms. Rendered in deep charcoal (#2C2C2C) with a single gold (#C9A96E) accent detail. Presented on a clean pure white background as a brand identity element. Photographed with macro lens 100mm, f/5.6, ISO 100, perfectly even studio lighting. The mark is printed on thick premium card stock with a very subtle debossed/letterpress impression visible in the paper. Extreme close-up showing the tactile quality of the embossed printing.",
+  "negative_prompt": "blurry, low resolution, complex, busy, cluttered, text, full company name, cheap, clip art, cartoon, 3D, neon, watermark, multiple versions, ornate",
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "png",
+    "aspect_ratio": "1:1"
+  },
+  "settings": {
+    "resolution": "2048x2048",
+    "style": "photorealistic macro photography, brand identity",
+    "lighting": "even studio lighting",
+    "camera_angle": "top-down macro close-up",
+    "depth_of_field": "shallow",
+    "quality": "ultra high detail, sharp"
+  }
+}

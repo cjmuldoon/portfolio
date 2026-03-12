@@ -1,0 +1,17 @@
+{
+  "prompt": "A white Toyota HiLux ute with a sophisticated partial vehicle wrap featuring a circular badge emblem on the front doors. The badge has a thin outer ring and thicker inner ring forming a double-circle seal, with a bold LK monogram centered inside. DESIGN AND BUILD curves along the bottom arc, ADELAIDE along the top arc. The badge is rendered in charcoal (#2C2C2C) and gold (#C9A96E) on the white door. The rear quarter panel shows 0481 742 026 and lkdesignandbuild.com.au in charcoal text. The wrap uses a charcoal, white, and gold color scheme, classic and authoritative. The ute is parked on an Adelaide suburban street with eucalyptus trees and neat houses. Bright daylight, professional vehicle photography.",
+  "negative_prompt": "full wrap, busy graphics, neon colors, cheap vinyl, bubbles in wrap, dirty vehicle, ugly background, industrial area, nighttime, cartoon, illustration, low quality, wax seal",
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "jpg",
+    "aspect_ratio": "16:9"
+  },
+  "settings": {
+    "resolution": "2048x1152",
+    "style": "commercial vehicle photography",
+    "lighting": "bright natural daylight",
+    "camera_angle": "three-quarter front view, eye level",
+    "depth_of_field": "medium, vehicle sharp, background slightly soft",
+    "quality": "professional automotive photography"
+  }
+}

@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prime Design & Built | Crafted with Intention</title>
+  <meta name="description" content="Adelaide's trusted home renovation experts. Design, renovations, additions and new builds crafted with intention.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Libre+Franklin:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            limestone: '#F5F0EB',
+            navy: '#1a1e36',
+            orange: '#ec6e00',
+            concrete: '#9A9590',
+            sandstone: '#D4C5B2',
+          },
+          fontFamily: {
+            serif: ['"DM Serif Display"', 'Georgia', 'serif'],
+            sans: ['"Libre Franklin"', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Libre Franklin', sans-serif; background-color: #F5F0EB; color: #1a1e36; }
+
+    /* Grain texture overlay */
+    .grain-overlay {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 256px 256px;
+    }
+
+    /* Serif headings */
+    .font-serif { font-family: 'DM Serif Display', Georgia, serif; }
+
+    /* Hero ember glow */
+    .ember-glow {
+      background: radial-gradient(ellipse 600px 400px at 50% 60%, rgba(236, 110, 0, 0.25) 0%, transparent 70%);
+    }
+
+    /* Material texture strips */
+    .texture-timber {
+      background: linear-gradient(90deg, #8B6914 0%, #A0783C 25%, #7A5C1E 50%, #9E7A3F 75%, #8B6914 100%);
+    }
+    .texture-concrete {
+      background: linear-gradient(90deg, #9A9590 0%, #B0ABA6 30%, #8A8580 60%, #A5A09B 100%);
+    }
+    .texture-stone {
+      background: linear-gradient(90deg, #D4C5B2 0%, #C2B39F 35%, #D9CCBB 65%, #C8B9A5 100%);
+    }
+    .texture-slate {
+      background: linear-gradient(90deg, #4A4E5A 0%, #5C606C 30%, #3E424E 60%, #545862 100%);
+    }
+    .texture-terracotta {
+      background: linear-gradient(90deg, #C2693D 0%, #D47A4E 30%, #B85E34 60%, #CA7045 100%);
+    }
+
+    /* Scroll reveal animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px) scale(1.02);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1.0);
+    }
+
+    /* Parallax helper */
+    .parallax-bg {
+      will-change: transform;
+    }
+
+    /* Mobile menu */
+    .mobile-menu {
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .mobile-menu.open {
+      transform: translateX(0);
+    }
+
+    /* Masonry layout */
+    .masonry-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 20px;
+    }
+    .masonry-grid .tile-large { grid-column: span 7; }
+    .masonry-grid .tile-medium { grid-column: span 5; }
+    .masonry-grid .tile-wide { grid-column: span 8; }
+    .masonry-grid .tile-narrow { grid-column: span 4; }
+
+    @media (max-width: 768px) {
+      .masonry-grid { grid-template-columns: 1fr; }
+      .masonry-grid .tile-large,
+      .masonry-grid .tile-medium,
+      .masonry-grid .tile-wide,
+      .masonry-grid .tile-narrow { grid-column: span 1; }
+    }
+
+    /* Project card hover */
+    .project-card {
+      overflow: hidden;
+      border-radius: 8px;
+      position: relative;
+    }
+    .project-card img {
+      transition: transform 0.6s ease, filter 0.6s ease;
+    }
+    .project-card:hover img {
+      transform: scale(1.05);
+    }
+    .project-card .card-overlay {
+      transition: opacity 0.4s ease;
+    }
+    .project-card:hover .card-overlay {
+      opacity: 1;
+    }
+
+    /* CTA button warm shadow */
+    .btn-cta {
+      background-color: #ec6e00;
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(236, 110, 0, 0.35);
+      transition: all 0.3s ease;
+    }
+    .btn-cta:hover {
+      background-color: #d46200;
+      box-shadow: 0 6px 28px rgba(236, 110, 0, 0.5);
+      transform: translateY(-1px);
+    }
+
+    /* Contact textured bg */
+    .contact-texture {
+      background-color: #1a1e36;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #F5F0EB; }
+    ::-webkit-scrollbar-thumb { background: #9A9590; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #7A7570; }
+
+    /* Nav scroll state */
+    .nav-scrolled {
+      background-color: rgba(245, 240, 235, 0.95);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 1px 12px rgba(26, 30, 54, 0.08);
+    }
+    .nav-scrolled .nav-link { color: rgba(26,30,54,0.8) !important; }
+    .nav-scrolled .nav-link:hover { color: #ec6e00 !important; }
+    .nav-scrolled .hamburger-line { background: #1a1e36 !important; }
+  </style>
+</head>
+<body class="antialiased overflow-x-hidden">
+
+  <!-- Grain overlay -->
+  <div class="grain-overlay" aria-hidden="true"></div>
+
+  <!-- Navigation -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between h-20">
+      <!-- Logo -->
+      <a href="#hero" class="relative z-50 flex-shrink-0">
+        <img src="../assets/images/logo.svg" alt="Prime Design & Built" class="h-10 w-auto">
+      </a>
+
+      <!-- Desktop nav -->
+      <div class="hidden md:flex items-center gap-10">
+        <a href="#about" class="nav-link text-sm font-medium tracking-wide text-white/85 hover:text-orange transition-colors">About</a>
+        <a href="#services" class="nav-link text-sm font-medium tracking-wide text-white/85 hover:text-orange transition-colors">Services</a>
+        <a href="#projects" class="nav-link text-sm font-medium tracking-wide text-white/85 hover:text-orange transition-colors">Projects</a>
+        <a href="#contact" class="btn-cta px-6 py-2.5 rounded-lg text-sm font-semibold tracking-wide">Get in Touch</a>
+      </div>
+
+      <!-- Hamburger -->
+      <button id="menuToggle" class="md:hidden relative z-50 w-10 h-10 flex flex-col items-center justify-center gap-1.5" aria-label="Toggle menu">
+        <span class="hamburger-line w-6 h-0.5 bg-white transition-all duration-300 origin-center"></span>
+        <span class="hamburger-line w-6 h-0.5 bg-white transition-all duration-300"></span>
+        <span class="hamburger-line w-6 h-0.5 bg-white transition-all duration-300 origin-center"></span>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="mobile-menu fixed inset-0 bg-limestone z-40 flex flex-col items-center justify-center gap-8">
+      <a href="#about" class="mobile-link text-2xl font-serif text-navy">About</a>
+      <a href="#services" class="mobile-link text-2xl font-serif text-navy">Services</a>
+      <a href="#projects" class="mobile-link text-2xl font-serif text-navy">Projects</a>
+      <a href="#contact" class="mobile-link btn-cta px-8 py-3 rounded-lg text-lg font-semibold mt-4">Get in Touch</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <!-- Hero background images (slideshow) -->
+    <div class="absolute inset-0">
+      <div id="heroSlides" class="relative w-full h-full">
+        <div class="hero-slide absolute inset-0 opacity-100 transition-opacity duration-[1500ms]">
+          <img src="../assets/images/hero-1.jpg" alt="Renovation project" class="w-full h-full object-cover">
+        </div>
+        <div class="hero-slide absolute inset-0 opacity-0 transition-opacity duration-[1500ms]">
+          <img src="../assets/images/hero-2.jpg" alt="Design detail" class="w-full h-full object-cover">
+        </div>
+        <div class="hero-slide absolute inset-0 opacity-0 transition-opacity duration-[1500ms]">
+          <img src="../assets/images/hero-3.jpg" alt="Built project" class="w-full h-full object-cover">
+        </div>
+        <div class="hero-slide absolute inset-0 opacity-0 transition-opacity duration-[1500ms]">
+          <img src="../assets/images/hero-4.jpg" alt="Finished interior" class="w-full h-full object-cover">
+        </div>
+      </div>
+      <!-- Warm overlay -->
+      <div class="absolute inset-0 bg-gradient-to-b from-navy/50 via-navy/30 to-navy/60"></div>
+    </div>
+
+    <!-- Ember glow -->
+    <div class="ember-glow absolute inset-0 z-10"></div>
+
+    <!-- Hero content -->
+    <div class="relative z-20 text-center px-6 max-w-4xl mx-auto">
+      <p class="text-sandstone text-sm md:text-base tracking-[0.3em] uppercase mb-6 font-medium reveal">Prime Design & Built</p>
+      <h1 class="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-white leading-[1.05] mb-8 reveal" style="transition-delay: 0.15s">
+        Crafted with<br>Intention
+      </h1>
+      <p class="text-limestone/80 text-lg md:text-xl max-w-xl mx-auto mb-10 font-light leading-relaxed reveal" style="transition-delay: 0.3s">
+        Thoughtful design and expert craftsmanship for Adelaide homes that stand the test of time.
+      </p>
+      <div class="reveal" style="transition-delay: 0.45s">
+        <a href="#contact" class="btn-cta inline-block px-10 py-4 rounded-lg text-base font-semibold tracking-wide">
+          Book Your Free Consultation
+        </a>
+        <p class="text-limestone/50 text-sm mt-4">Valued at $350 &mdash; complimentary for a limited time</p>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2">
+      <span class="text-limestone/40 text-xs tracking-widest uppercase">Scroll</span>
+      <div class="w-px h-10 bg-gradient-to-b from-limestone/40 to-transparent"></div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-24 md:py-32 lg:py-40">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="grid md:grid-cols-2 gap-16 lg:gap-24 items-center">
+        <div class="reveal">
+          <p class="text-orange text-sm tracking-[0.25em] uppercase font-semibold mb-4">Our Approach</p>
+          <h2 class="font-serif text-4xl md:text-5xl lg:text-[3.5rem] text-navy leading-[1.1] mb-8">
+            Where design meets honest craftsmanship
+          </h2>
+          <div class="space-y-5 text-navy/70 leading-relaxed">
+            <p>
+              At Prime Design & Built, we believe every home tells a story. Led by Lyda, our Adelaide-based team brings together considered design and meticulous build quality to create spaces that feel unmistakably yours.
+            </p>
+            <p>
+              From initial concept through to final handover, we manage every detail with transparency, care, and a commitment to doing things right. No shortcuts. No compromises. Just thoughtful renovation and construction that respects both the home and the people who live in it.
+            </p>
+          </div>
+          <div class="mt-10 flex items-center gap-6">
+            <div class="text-center">
+              <span class="font-serif text-3xl text-orange">15+</span>
+              <p class="text-xs text-navy/50 mt-1 tracking-wide uppercase">Years Experience</p>
+            </div>
+            <div class="w-px h-12 bg-sandstone"></div>
+            <div class="text-center">
+              <span class="font-serif text-3xl text-orange">100%</span>
+              <p class="text-xs text-navy/50 mt-1 tracking-wide uppercase">Owner Managed</p>
+            </div>
+            <div class="w-px h-12 bg-sandstone"></div>
+            <div class="text-center">
+              <span class="font-serif text-3xl text-orange">Adelaide</span>
+              <p class="text-xs text-navy/50 mt-1 tracking-wide uppercase">Based & Proud</p>
+            </div>
+          </div>
+        </div>
+        <div class="reveal" style="transition-delay: 0.2s">
+          <div class="relative">
+            <img src="../assets/images/hero-2.jpg" alt="Design process at Prime Design & Built" class="w-full rounded-lg shadow-2xl shadow-navy/10 object-cover aspect-[4/5]">
+            <div class="absolute -bottom-6 -left-6 bg-navy text-limestone p-6 rounded-lg shadow-xl max-w-[240px]">
+              <p class="font-serif text-lg italic leading-snug">"Every detail considered, every finish intentional."</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pull Quote -->
+  <div class="py-16 md:py-24 overflow-hidden">
+    <div class="max-w-5xl mx-auto px-6 lg:px-10 text-center reveal">
+      <blockquote class="font-serif italic text-3xl sm:text-4xl md:text-5xl text-navy/80 leading-snug">
+        "We don't just build homes &mdash; we craft spaces where life unfolds beautifully."
+      </blockquote>
+      <div class="w-16 h-0.5 bg-orange mx-auto mt-8"></div>
+    </div>
+  </div>
+
+  <!-- Services Section -->
+  <section id="services" class="py-24 md:py-32 lg:py-40 relative">
+    <!-- Parallax texture element -->
+    <div class="parallax-bg absolute top-20 right-0 w-64 h-64 rounded-full opacity-[0.04]" style="background: radial-gradient(circle, #ec6e00, transparent 70%);" data-parallax="0.3"></div>
+
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="text-center mb-20 reveal">
+        <p class="text-orange text-sm tracking-[0.25em] uppercase font-semibold mb-4">What We Do</p>
+        <h2 class="font-serif text-4xl md:text-5xl lg:text-[3.5rem] text-navy leading-tight">
+          End-to-end expertise
+        </h2>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+        <!-- Design -->
+        <div class="reveal group bg-white/50 rounded-xl p-8 hover:bg-white hover:shadow-xl hover:shadow-navy/5 transition-all duration-500" style="transition-delay: 0.05s">
+          <div class="w-12 h-12 rounded-lg bg-orange/10 flex items-center justify-center mb-6 group-hover:bg-orange/20 transition-colors">
+            <svg class="w-6 h-6 text-orange" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10"/></svg>
+          </div>
+          <h3 class="font-serif text-xl text-navy mb-3">Design</h3>
+          <p class="text-navy/60 text-sm leading-relaxed">Considered layouts and material selections that balance beauty with how you actually live.</p>
+        </div>
+        <!-- Renovations -->
+        <div class="reveal group bg-white/50 rounded-xl p-8 hover:bg-white hover:shadow-xl hover:shadow-navy/5 transition-all duration-500" style="transition-delay: 0.15s">
+          <div class="w-12 h-12 rounded-lg bg-orange/10 flex items-center justify-center mb-6 group-hover:bg-orange/20 transition-colors">
+            <svg class="w-6 h-6 text-orange" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 21v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21m0 0h4.5V3.545M12.75 21h7.5V10.75M2.25 21h1.5m18 0h-18M2.25 9l4.5-1.636M18.75 3l-1.5.545m0 6.205 3 1m1.5.5-1.5-.5M6.75 7.364V3h-3v18m3-13.636 10.5-3.819"/></svg>
+          </div>
+          <h3 class="font-serif text-xl text-navy mb-3">Renovations</h3>
+          <p class="text-navy/60 text-sm leading-relaxed">Transforming existing homes with precision upgrades that respect character while adding modern function.</p>
+        </div>
+        <!-- Additions -->
+        <div class="reveal group bg-white/50 rounded-xl p-8 hover:bg-white hover:shadow-xl hover:shadow-navy/5 transition-all duration-500" style="transition-delay: 0.25s">
+          <div class="w-12 h-12 rounded-lg bg-orange/10 flex items-center justify-center mb-6 group-hover:bg-orange/20 transition-colors">
+            <svg class="w-6 h-6 text-orange" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 16.875h3.375m0 0h3.375m-3.375 0V13.5m0 3.375v3.375M6 10.5h2.25a2.25 2.25 0 0 0 2.25-2.25V6a2.25 2.25 0 0 0-2.25-2.25H6A2.25 2.25 0 0 0 3.75 6v2.25A2.25 2.25 0 0 0 6 10.5Zm0 9.75h2.25A2.25 2.25 0 0 0 10.5 18v-2.25a2.25 2.25 0 0 0-2.25-2.25H6a2.25 2.25 0 0 0-2.25 2.25V18A2.25 2.25 0 0 0 6 20.25Zm9.75-9.75H18a2.25 2.25 0 0 0 2.25-2.25V6A2.25 2.25 0 0 0 18 3.75h-2.25A2.25 2.25 0 0 0 13.5 6v2.25a2.25 2.25 0 0 0 2.25 2.25Z"/></svg>
+          </div>
+          <h3 class="font-serif text-xl text-navy mb-3">Additions</h3>
+          <p class="text-navy/60 text-sm leading-relaxed">Expanding your footprint with seamless extensions that feel like they were always part of the plan.</p>
+        </div>
+        <!-- New Builds -->
+        <div class="reveal group bg-white/50 rounded-xl p-8 hover:bg-white hover:shadow-xl hover:shadow-navy/5 transition-all duration-500" style="transition-delay: 0.35s">
+          <div class="w-12 h-12 rounded-lg bg-orange/10 flex items-center justify-center mb-6 group-hover:bg-orange/20 transition-colors">
+            <svg class="w-6 h-6 text-orange" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/></svg>
+          </div>
+          <h3 class="font-serif text-xl text-navy mb-3">New Builds</h3>
+          <p class="text-navy/60 text-sm leading-relaxed">Ground-up construction with full design integration, built to your vision from foundation to finishes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="py-24 md:py-32 lg:py-40">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="text-center mb-20 reveal">
+        <p class="text-orange text-sm tracking-[0.25em] uppercase font-semibold mb-4">Selected Work</p>
+        <h2 class="font-serif text-4xl md:text-5xl lg:text-[3.5rem] text-navy leading-tight">
+          Projects that speak<br class="hidden sm:block"> for themselves
+        </h2>
+      </div>
+
+      <!-- Masonry Grid -->
+      <div class="masonry-grid">
+        <!-- Broadview - Large -->
+        <div class="tile-large reveal">
+          <div class="project-card group cursor-pointer">
+            <div class="texture-timber h-1.5 rounded-t-lg"></div>
+            <div class="relative overflow-hidden rounded-b-lg">
+              <img src="../assets/images/project-broadview.jpg" alt="Broadview Renovation" class="w-full aspect-[4/3] object-cover">
+              <div class="card-overlay absolute inset-0 bg-gradient-to-t from-navy/80 via-navy/20 to-transparent opacity-0 flex items-end p-6 md:p-8">
+                <div>
+                  <h3 class="font-serif text-2xl text-white mb-1">Broadview</h3>
+                  <p class="text-limestone/70 text-sm">Full Home Renovation</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Semaphore - Medium -->
+        <div class="tile-medium reveal" style="transition-delay: 0.15s">
+          <div class="project-card group cursor-pointer">
+            <div class="texture-stone h-1.5 rounded-t-lg"></div>
+            <div class="relative overflow-hidden rounded-b-lg">
+              <img src="../assets/images/project-semaphore.jpg" alt="Semaphore Project" class="w-full aspect-[3/4] object-cover">
+              <div class="card-overlay absolute inset-0 bg-gradient-to-t from-navy/80 via-navy/20 to-transparent opacity-0 flex items-end p-6 md:p-8">
+                <div>
+                  <h3 class="font-serif text-2xl text-white mb-1">Semaphore</h3>
+                  <p class="text-limestone/70 text-sm">Coastal Renovation</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pull Quote Row -->
+        <div class="tile-narrow flex items-center reveal" style="transition-delay: 0.1s">
+          <blockquote class="font-serif italic text-2xl md:text-3xl text-navy/60 leading-snug px-4">
+            "Materials chosen with purpose, details executed with precision."
+          </blockquote>
+        </div>
+
+        <!-- OSR Fit Out - Wide -->
+        <div class="tile-wide reveal" style="transition-delay: 0.2s">
+          <div class="project-card group cursor-pointer">
+            <div class="texture-slate h-1.5 rounded-t-lg"></div>
+            <div class="relative overflow-hidden rounded-b-lg">
+              <img src="../assets/images/project-osr.jpg" alt="OSR Fit Out" class="w-full aspect-[16/9] object-cover">
+              <div class="card-overlay absolute inset-0 bg-gradient-to-t from-navy/80 via-navy/20 to-transparent opacity-0 flex items-end p-6 md:p-8">
+                <div>
+                  <h3 class="font-serif text-2xl text-white mb-1">OSR Fit Out</h3>
+                  <p class="text-limestone/70 text-sm">Commercial Interior</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Unley - Medium -->
+        <div class="tile-medium reveal" style="transition-delay: 0.1s">
+          <div class="project-card group cursor-pointer">
+            <div class="texture-concrete h-1.5 rounded-t-lg"></div>
+            <div class="relative overflow-hidden rounded-b-lg">
+              <img src="../assets/images/project-unley.jpg" alt="Unley Project" class="w-full aspect-[3/4] object-cover">
+              <div class="card-overlay absolute inset-0 bg-gradient-to-t from-navy/80 via-navy/20 to-transparent opacity-0 flex items-end p-6 md:p-8">
+                <div>
+                  <h3 class="font-serif text-2xl text-white mb-1">Unley</h3>
+                  <p class="text-limestone/70 text-sm">Character Home Update</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Semaphore 2 - Large -->
+        <div class="tile-large reveal" style="transition-delay: 0.2s">
+          <div class="project-card group cursor-pointer">
+            <div class="texture-terracotta h-1.5 rounded-t-lg"></div>
+            <div class="relative overflow-hidden rounded-b-lg">
+              <img src="../assets/images/project-semaphore2.jpg" alt="Semaphore Project Detail" class="w-full aspect-[4/3] object-cover">
+              <div class="card-overlay absolute inset-0 bg-gradient-to-t from-navy/80 via-navy/20 to-transparent opacity-0 flex items-end p-6 md:p-8">
+                <div>
+                  <h3 class="font-serif text-2xl text-white mb-1">Semaphore</h3>
+                  <p class="text-limestone/70 text-sm">Kitchen & Living</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Everard Park - Narrow -->
+        <div class="tile-narrow reveal" style="transition-delay: 0.15s">
+          <div class="project-card group cursor-pointer">
+            <div class="texture-stone h-1.5 rounded-t-lg"></div>
+            <div class="relative overflow-hidden rounded-b-lg">
+              <img src="../assets/images/project-semaphore3.jpg" alt="Everard Park Project" class="w-full aspect-[3/4] object-cover">
+              <div class="card-overlay absolute inset-0 bg-gradient-to-t from-navy/80 via-navy/20 to-transparent opacity-0 flex items-end p-6 md:p-8">
+                <div>
+                  <h3 class="font-serif text-2xl text-white mb-1">Everard Park</h3>
+                  <p class="text-limestone/70 text-sm">Modern Addition</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Final pull quote -->
+        <div class="tile-wide flex items-center justify-center py-12 reveal" style="transition-delay: 0.1s">
+          <blockquote class="font-serif italic text-2xl md:text-3xl text-navy/60 leading-snug text-center max-w-lg">
+            "Homes that age gracefully, built with materials that tell their own story."
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="py-24 md:py-32 bg-white/40">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="text-center mb-20 reveal">
+        <p class="text-orange text-sm tracking-[0.25em] uppercase font-semibold mb-4">How We Work</p>
+        <h2 class="font-serif text-4xl md:text-5xl text-navy leading-tight">
+          A process built on trust
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-4 gap-8 lg:gap-12">
+        <div class="text-center reveal" style="transition-delay: 0.05s">
+          <div class="w-14 h-14 rounded-full bg-orange/10 flex items-center justify-center mx-auto mb-5">
+            <span class="font-serif text-xl text-orange">01</span>
+          </div>
+          <h3 class="font-serif text-lg text-navy mb-2">Consult</h3>
+          <p class="text-navy/60 text-sm leading-relaxed">We listen to your vision, understand your lifestyle, and assess what your home needs.</p>
+        </div>
+        <div class="text-center reveal" style="transition-delay: 0.15s">
+          <div class="w-14 h-14 rounded-full bg-orange/10 flex items-center justify-center mx-auto mb-5">
+            <span class="font-serif text-xl text-orange">02</span>
+          </div>
+          <h3 class="font-serif text-lg text-navy mb-2">Design</h3>
+          <p class="text-navy/60 text-sm leading-relaxed">Concepts take shape through considered layouts, material palettes, and detailed plans.</p>
+        </div>
+        <div class="text-center reveal" style="transition-delay: 0.25s">
+          <div class="w-14 h-14 rounded-full bg-orange/10 flex items-center justify-center mx-auto mb-5">
+            <span class="font-serif text-xl text-orange">03</span>
+          </div>
+          <h3 class="font-serif text-lg text-navy mb-2">Build</h3>
+          <p class="text-navy/60 text-sm leading-relaxed">Expert tradespeople bring the design to life with meticulous attention to every joint and finish.</p>
+        </div>
+        <div class="text-center reveal" style="transition-delay: 0.35s">
+          <div class="w-14 h-14 rounded-full bg-orange/10 flex items-center justify-center mx-auto mb-5">
+            <span class="font-serif text-xl text-orange">04</span>
+          </div>
+          <h3 class="font-serif text-lg text-navy mb-2">Handover</h3>
+          <p class="text-navy/60 text-sm leading-relaxed">A thorough walkthrough ensures everything meets our shared standard of excellence.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="py-24 md:py-32 relative overflow-hidden">
+    <div class="parallax-bg absolute -top-20 -left-20 w-96 h-96 rounded-full opacity-[0.06]" style="background: radial-gradient(circle, #ec6e00, transparent 60%);" data-parallax="0.3"></div>
+    <div class="max-w-4xl mx-auto px-6 lg:px-10 text-center reveal">
+      <h2 class="font-serif text-4xl md:text-5xl text-navy leading-tight mb-6">
+        Ready to start your project?
+      </h2>
+      <p class="text-navy/60 text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
+        Book a complimentary consultation valued at $350. We'll discuss your vision, assess feasibility, and outline next steps &mdash; no obligation.
+      </p>
+      <a href="#contact" class="btn-cta inline-block px-12 py-4 rounded-lg text-lg font-semibold tracking-wide">
+        Book Free Consultation
+      </a>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact-texture py-24 md:py-32 lg:py-40">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="grid lg:grid-cols-2 gap-16 lg:gap-24">
+        <!-- Contact Info -->
+        <div class="reveal">
+          <p class="text-orange text-sm tracking-[0.25em] uppercase font-semibold mb-4">Get in Touch</p>
+          <h2 class="font-serif text-4xl md:text-5xl text-limestone leading-tight mb-8">
+            Let's talk about your home
+          </h2>
+          <p class="text-limestone/60 leading-relaxed mb-12 max-w-md">
+            Whether you have a clear vision or just a feeling that your home could be more, we'd love to hear from you.
+          </p>
+
+          <div class="space-y-8">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-5 h-5 text-orange" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"/></svg>
+              </div>
+              <div>
+                <p class="text-limestone/40 text-sm mb-1">Contact</p>
+                <p class="text-limestone font-medium">Lyda</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-5 h-5 text-orange" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"/></svg>
+              </div>
+              <div>
+                <p class="text-limestone/40 text-sm mb-1">Phone</p>
+                <a href="tel:0481742026" class="text-limestone font-medium hover:text-orange transition-colors">0481 742 026</a>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-5 h-5 text-orange" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"/></svg>
+              </div>
+              <div>
+                <p class="text-limestone/40 text-sm mb-1">Email</p>
+                <a href="mailto:hello@primedesignandbuilt.com.au" class="text-limestone font-medium hover:text-orange transition-colors">hello@primedesignandbuilt.com.au</a>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-5 h-5 text-orange" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069ZM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0Zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324ZM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881Z"/></svg>
+              </div>
+              <div>
+                <p class="text-limestone/40 text-sm mb-1">Instagram</p>
+                <a href="https://www.instagram.com/primedesignbuilt/" target="_blank" rel="noopener noreferrer" class="text-limestone font-medium hover:text-orange transition-colors">@primedesignbuilt</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="reveal" style="transition-delay: 0.2s">
+          <form id="contactForm" class="bg-white/[0.03] backdrop-blur-sm border border-white/10 rounded-xl p-8 md:p-10">
+            <div class="space-y-6">
+              <div>
+                <label for="name" class="block text-limestone/50 text-sm mb-2">Full Name</label>
+                <input type="text" id="name" name="name" required
+                  class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-limestone placeholder:text-limestone/25 focus:outline-none focus:border-orange/50 focus:ring-1 focus:ring-orange/30 transition-colors">
+              </div>
+              <div>
+                <label for="email" class="block text-limestone/50 text-sm mb-2">Email Address</label>
+                <input type="email" id="email" name="email" required
+                  class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-limestone placeholder:text-limestone/25 focus:outline-none focus:border-orange/50 focus:ring-1 focus:ring-orange/30 transition-colors">
+              </div>
+              <div>
+                <label for="phone" class="block text-limestone/50 text-sm mb-2">Phone Number</label>
+                <input type="tel" id="phone" name="phone"
+                  class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-limestone placeholder:text-limestone/25 focus:outline-none focus:border-orange/50 focus:ring-1 focus:ring-orange/30 transition-colors">
+              </div>
+              <div>
+                <label for="service" class="block text-limestone/50 text-sm mb-2">Service Interest</label>
+                <select id="service" name="service"
+                  class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-limestone focus:outline-none focus:border-orange/50 focus:ring-1 focus:ring-orange/30 transition-colors appearance-none"
+                  style="background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%239A9590' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E&quot;); background-position: right 12px center; background-repeat: no-repeat; background-size: 20px;">
+                  <option value="" class="bg-navy">Select a service...</option>
+                  <option value="design" class="bg-navy">Design</option>
+                  <option value="renovation" class="bg-navy">Renovation</option>
+                  <option value="addition" class="bg-navy">Addition</option>
+                  <option value="new-build" class="bg-navy">New Build</option>
+                  <option value="not-sure" class="bg-navy">Not sure yet</option>
+                </select>
+              </div>
+              <div>
+                <label for="message" class="block text-limestone/50 text-sm mb-2">Tell Us About Your Project</label>
+                <textarea id="message" name="message" rows="4"
+                  class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-limestone placeholder:text-limestone/25 focus:outline-none focus:border-orange/50 focus:ring-1 focus:ring-orange/30 transition-colors resize-none"></textarea>
+              </div>
+              <button type="submit" class="btn-cta w-full py-4 rounded-lg text-base font-semibold tracking-wide">
+                Request Free Consultation
+              </button>
+              <p class="text-limestone/30 text-xs text-center">Free consultation valued at $350. No obligation.</p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-navy border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-12">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <img src="../assets/images/logo.svg" alt="Prime Design & Built" class="h-8 w-auto brightness-0 invert opacity-60">
+          <span class="text-limestone/40 text-sm">Crafted with Intention</span>
+        </div>
+        <div class="flex items-center gap-8">
+          <a href="#about" class="text-limestone/40 text-sm hover:text-orange transition-colors">About</a>
+          <a href="#services" class="text-limestone/40 text-sm hover:text-orange transition-colors">Services</a>
+          <a href="#projects" class="text-limestone/40 text-sm hover:text-orange transition-colors">Projects</a>
+          <a href="#contact" class="text-limestone/40 text-sm hover:text-orange transition-colors">Contact</a>
+        </div>
+        <p class="text-limestone/25 text-xs">&copy; 2026 Prime Design & Built. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // ===== Scroll Reveal =====
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    // Trigger hero reveals immediately
+    document.addEventListener('DOMContentLoaded', () => {
+      const heroReveals = document.querySelectorAll('#hero .reveal');
+      setTimeout(() => {
+        heroReveals.forEach(el => el.classList.add('visible'));
+      }, 300);
+    });
+
+    // ===== Hero Slideshow =====
+    const slides = document.querySelectorAll('.hero-slide');
+    let currentSlide = 0;
+    setInterval(() => {
+      slides[currentSlide].style.opacity = '0';
+      currentSlide = (currentSlide + 1) % slides.length;
+      slides[currentSlide].style.opacity = '1';
+    }, 5000);
+
+    // ===== Navbar Scroll =====
+    const navbar = document.getElementById('navbar');
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.scrollY;
+      if (currentScroll > 80) {
+        navbar.classList.add('nav-scrolled');
+      } else {
+        navbar.classList.remove('nav-scrolled');
+      }
+      lastScroll = currentScroll;
+    }, { passive: true });
+
+    // ===== Mobile Menu =====
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const hamburgerLines = menuToggle.querySelectorAll('.hamburger-line');
+    let menuOpen = false;
+
+    menuToggle.addEventListener('click', () => {
+      menuOpen = !menuOpen;
+      mobileMenu.classList.toggle('open', menuOpen);
+      document.body.style.overflow = menuOpen ? 'hidden' : '';
+
+      if (menuOpen) {
+        hamburgerLines[0].style.transform = 'rotate(45deg) translate(4px, 4px)';
+        hamburgerLines[1].style.opacity = '0';
+        hamburgerLines[2].style.transform = 'rotate(-45deg) translate(4px, -4px)';
+      } else {
+        hamburgerLines[0].style.transform = '';
+        hamburgerLines[1].style.opacity = '';
+        hamburgerLines[2].style.transform = '';
+      }
+    });
+
+    // Close mobile menu on link click
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => {
+        menuOpen = false;
+        mobileMenu.classList.remove('open');
+        document.body.style.overflow = '';
+        hamburgerLines[0].style.transform = '';
+        hamburgerLines[1].style.opacity = '';
+        hamburgerLines[2].style.transform = '';
+      });
+    });
+
+    // ===== Parallax =====
+    const parallaxElements = document.querySelectorAll('[data-parallax]');
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      parallaxElements.forEach(el => {
+        const speed = parseFloat(el.dataset.parallax) || 0.3;
+        el.style.transform = `translateY(${scrollY * speed}px)`;
+      });
+    }, { passive: true });
+
+    // ===== Contact Form =====
+    document.getElementById('contactForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const btn = e.target.querySelector('button[type="submit"]');
+      const originalText = btn.textContent;
+      btn.textContent = 'Thank you! We\'ll be in touch.';
+      btn.disabled = true;
+      btn.style.opacity = '0.7';
+      setTimeout(() => {
+        btn.textContent = originalText;
+        btn.disabled = false;
+        btn.style.opacity = '';
+        e.target.reset();
+      }, 4000);
+    });
+  </script>
+</body>
+</html>

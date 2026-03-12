@@ -1,0 +1,17 @@
+{
+  "prompt": "A flat vector-style logo design on a perfectly clean pure white (#FFFFFF) background. Ultra-minimal design: just the letters L and K in a thin elegant sans-serif typeface like Futura Light or Montserrat Thin, very large, with delicate hairline-weight strokes. A tiny gold (#C9A96E) square dot sits precisely between the L and K as a subtle accent mark. The letters are rendered in charcoal (#2C2C2C). Below in very small micro-sized text, widely spaced, DESIGN AND BUILD appears in the same thin sans-serif in charcoal. Maximum white space surrounds the design, extreme simplicity and restraint. The entire logo is perfectly centered. Crisp, clean, flat graphic design with no shadows or effects. Looks like a brand asset exported from Adobe Illustrator. Ultra-minimal, contemporary, refined.",
+  "negative_prompt": "shadows, gradients, 3D, paper, texture, photography, realistic, mockup, angled, tilted, perspective, noise, grain, blurry, low quality, watermark, border, frame, bold, heavy, decorative, ornate, busy, cluttered",
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "png",
+    "aspect_ratio": "1:1"
+  },
+  "settings": {
+    "resolution": "2048x2048",
+    "style": "flat vector graphic design, ultra-minimal",
+    "lighting": "none - flat design",
+    "camera_angle": "straight on, centered",
+    "depth_of_field": "none",
+    "quality": "ultra high, crisp thin letterforms"
+  }
+}

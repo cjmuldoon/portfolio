@@ -1,0 +1,17 @@
+{
+  "prompt": "A flat vector-style logo design on a perfectly clean pure white (#FFFFFF) background. A circular badge seal design with a thin outer ring and a thicker inner ring forming a double-circle border in charcoal (#2C2C2C). Inside the circle, a clean bold LK monogram is centered, the letters rendered in charcoal with confident weight. Along the bottom arc of the circle, the words DESIGN AND BUILD curve following the circular path. Along the top arc, the word ADELAIDE curves following the circle. The circular text is in charcoal. The rings and circular border elements include gold (#C9A96E) accents. The entire badge logo is perfectly centered with generous white space around it. Crisp, clean, flat graphic design with no shadows or effects. Looks like a brand asset exported from Adobe Illustrator. Classic seal badge emblem style.",
+  "negative_prompt": "shadows, gradients, 3D, paper, texture, photography, realistic, mockup, angled, tilted, perspective, noise, grain, blurry, low quality, watermark, border, frame, wax seal, stamp, aged, vintage distress",
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "png",
+    "aspect_ratio": "1:1"
+  },
+  "settings": {
+    "resolution": "2048x2048",
+    "style": "flat vector graphic design, badge emblem",
+    "lighting": "none - flat design",
+    "camera_angle": "straight on, centered",
+    "depth_of_field": "none",
+    "quality": "ultra high, crisp edges, perfect circles"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "prompt": "Ultra-luxury embossed gold foil logo presentation for 'LK Design and Build'. The LK monogram is rendered in genuine gold foil stamping with a deep emboss/deboss effect on heavy 700gsm black cotton paper stock. The gold foil catches directional light creating brilliant reflections and shadows in the embossed letterforms. Below the monogram, 'DESIGN AND BUILD' appears in smaller blind emboss (no foil, just pressed into the black paper creating shadow-only text). Extreme macro close-up photography showing the tactile depth of the embossing and the metallic shimmer of the gold foil. Shot with 100mm macro lens, f/3.5, ISO 100, single directional light source from upper-right creating dramatic shadows in the embossed areas. The black paper has a subtle soft-touch texture visible at this magnification.",
+  "negative_prompt": "blurry, flat, cheap, printed, digital, screen, cartoon, bright colors, white background, multiple items, text errors",
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "png",
+    "aspect_ratio": "1:1"
+  },
+  "settings": {
+    "resolution": "2048x2048",
+    "style": "photorealistic macro product photography",
+    "lighting": "single directional light, upper-right",
+    "camera_angle": "macro close-up, slight angle",
+    "depth_of_field": "very shallow",
+    "quality": "ultra high detail, gold foil texture"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "prompt": "A premium building fascia sign on a modern charcoal rendered building facade at dusk golden hour. The sign features brushed gold metal letters forming an elegant intertwined L and K monogram with flowing calligraphic connections, the letters interleaved and overlapping like a luxury fashion house emblem. Below the monogram, brushed metal letters read DESIGN AND BUILD in refined small caps. Beneath that, smaller brushed metal text reads 0481 742 026 and lkdesignandbuild.com.au. The letters are mounted with standoff pins creating subtle LED backlighting that casts a warm glow against the dark facade. Golden hour light illuminates the scene from the side, catching the brushed metal surfaces. Modern commercial building exterior, architectural photography, professional signage.",
+  "negative_prompt": "cheap signage, vinyl banner, pixelated, low quality, daytime flat lighting, ugly building, run-down, dirty, cluttered, cartoon, illustration",
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "jpg",
+    "aspect_ratio": "16:9"
+  },
+  "settings": {
+    "resolution": "2048x1152",
+    "style": "architectural photography",
+    "lighting": "golden hour dusk with LED backlighting",
+    "camera_angle": "slight low angle looking up at signage",
+    "depth_of_field": "shallow, sign in sharp focus",
+    "quality": "professional architectural photo, high detail"
+  }
+}

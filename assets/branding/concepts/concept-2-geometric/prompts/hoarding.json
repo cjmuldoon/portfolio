@@ -1,0 +1,17 @@
+{
+  "prompt": "Construction site hoarding panels at a residential renovation site in an Adelaide suburb. Clean white hoarding panels feature geometric L and K letterforms made from precise straight lines sharing a single vertical stroke, rendered large in charcoal (#2C2C2C) with a thin gold (#C9A96E) accent line. The angular architectural letterforms have sharp clean angles. Below, LK DESIGN AND BUILD in widely-spaced thin sans-serif. The phone number 0481 742 026 and lkdesignandbuild.com.au appear in charcoal text. The branding is repeated across multiple panels. The hoarding looks clean, modern, and premium. Adelaide suburban setting with neat houses nearby, clear blue sky above, residential street in the foreground. Professional architectural photography.",
+  "negative_prompt": "dirty hoarding, graffiti, torn panels, ugly construction site, rubbish, mud, overcast sky, industrial area, cheap printing, faded colors, nighttime, cartoon, low quality, ornate",
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "jpg",
+    "aspect_ratio": "16:9"
+  },
+  "settings": {
+    "resolution": "2048x1152",
+    "style": "architectural photography",
+    "lighting": "bright daylight, blue sky",
+    "camera_angle": "eye level, slight angle along hoarding run",
+    "depth_of_field": "medium, hoarding sharp",
+    "quality": "professional construction site photography"
+  }
+}

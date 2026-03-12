@@ -1,0 +1,17 @@
+{
+  "prompt": "A flat vector-style logo design on a perfectly clean pure white (#FFFFFF) background. The letters L and K are formed from precise geometric straight lines suggesting architectural blueprints and building construction. The L and K share a single vertical line where they meet, creating an efficient and clever connected letterform. All strokes are uniform weight, perfectly straight, with sharp 90-degree and 45-degree angles only. The letterforms are rendered in charcoal (#2C2C2C) with a single thin gold (#C9A96E) accent line integrated into the design. Below, the text LK DESIGN AND BUILD is set in a widely-spaced thin sans-serif typeface in charcoal, with very generous letter-spacing. The entire logo is perfectly centered with generous white space around it. Crisp, clean, flat graphic design with no shadows or effects. Looks like a brand asset exported from Adobe Illustrator. Minimal, modern, architectural.",
+  "negative_prompt": "shadows, gradients, 3D, paper, texture, photography, realistic, mockup, angled, tilted, perspective, noise, grain, blurry, low quality, watermark, border, frame, curves, organic shapes, decorative, ornate",
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "png",
+    "aspect_ratio": "1:1"
+  },
+  "settings": {
+    "resolution": "2048x2048",
+    "style": "flat vector graphic design, architectural minimal",
+    "lighting": "none - flat design",
+    "camera_angle": "straight on, centered",
+    "depth_of_field": "none",
+    "quality": "ultra high, crisp geometric edges"
+  }
+}

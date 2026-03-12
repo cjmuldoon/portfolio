@@ -1,0 +1,17 @@
+{
+  "prompt": "A flat vector-style logo design on a perfectly clean pure white (#FFFFFF) background. An elegant intertwined monogram of the letters L and K with flowing calligraphic connections, the two letters interleaved and overlapping like a luxury fashion house emblem reminiscent of Chanel or Louis Vuitton monograms. The monogram is rendered in rich gold (#C9A96E) with fine calligraphic strokes and graceful curves where the letters connect and weave through each other. Below the monogram, the words DESIGN AND BUILD are set in refined small caps in charcoal (#2C2C2C), evenly spaced with generous letter-spacing. The entire logo is perfectly centered with generous white space around it. Crisp, clean, flat graphic design with no shadows or effects. Looks like a brand asset exported from Adobe Illustrator. Sharp vector edges, professional logo design, brand identity.",
+  "negative_prompt": "shadows, gradients, 3D, paper, texture, photography, realistic, mockup, angled, tilted, perspective, noise, grain, blurry, low quality, watermark, border, frame, background pattern, rough edges, hand-drawn sketch, pencil",
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "png",
+    "aspect_ratio": "1:1"
+  },
+  "settings": {
+    "resolution": "2048x2048",
+    "style": "flat vector graphic design",
+    "lighting": "none - flat design",
+    "camera_angle": "straight on, centered",
+    "depth_of_field": "none",
+    "quality": "ultra high, crisp edges"
+  }
+}

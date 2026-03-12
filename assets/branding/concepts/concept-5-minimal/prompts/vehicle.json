@@ -1,0 +1,17 @@
+{
+  "prompt": "A white Toyota HiLux ute with a sophisticated partial vehicle wrap featuring ultra-minimal branding. Large letters L and K in a thin elegant sans-serif typeface like Futura Light with delicate slim strokes appear on the front doors in charcoal (#2C2C2C), with a tiny gold (#C9A96E) square dot between the L and K. Below in very small widely-spaced thin text, DESIGN AND BUILD. The rear quarter panel shows 0481 742 026 and lkdesignandbuild.com.au in charcoal. The wrap is extremely restrained and minimal, using a charcoal, white, and gold color scheme with maximum white space on the white vehicle. The ute is parked on an Adelaide suburban street with eucalyptus trees and neat houses. Bright daylight, professional vehicle photography.",
+  "negative_prompt": "full wrap, busy graphics, neon colors, cheap vinyl, bubbles in wrap, dirty vehicle, ugly background, industrial area, nighttime, cartoon, illustration, low quality, bold heavy text, ornate, decorative",
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "jpg",
+    "aspect_ratio": "16:9"
+  },
+  "settings": {
+    "resolution": "2048x1152",
+    "style": "commercial vehicle photography",
+    "lighting": "bright natural daylight",
+    "camera_angle": "three-quarter front view, eye level",
+    "depth_of_field": "medium, vehicle sharp, background slightly soft",
+    "quality": "professional automotive photography"
+  }
+}
