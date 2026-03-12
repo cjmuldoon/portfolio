@@ -2,4 +2,5 @@
 .claude/
 *.jsonl
 generate_docs.py
+generate_logo_docs.py
 __pycache__/
