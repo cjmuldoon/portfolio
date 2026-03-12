@@ -1140,10 +1140,29 @@ body::before {
     </div>
 
     <!-- Brand Guidelines Link -->
-    <div style="text-align:center; margin: 24px 0 8px;">
-      <a id="guidelines-link" href="" target="_blank" style="display:inline-flex; align-items:center; gap:8px; font-size:0.85rem; font-weight:600; color:var(--gold); text-decoration:none; padding:12px 24px; background:rgba(201,169,110,0.08); border:1px solid rgba(201,169,110,0.2); border-radius:10px; transition:all 0.25s;">
+    <!-- Documents & Downloads -->
+    <div class="section-header" style="margin-top:32px;">
+      <h2>Documents & Downloads</h2>
+      <span class="line"></span>
+      <span class="count">4 files</span>
+    </div>
+
+    <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap:14px; margin-bottom:24px;">
+      <a id="guidelines-link" href="" target="_blank" style="display:flex; align-items:center; gap:10px; font-size:0.82rem; font-weight:600; color:var(--gold); text-decoration:none; padding:14px 18px; background:rgba(201,169,110,0.06); border:1px solid rgba(201,169,110,0.15); border-radius:10px; transition:all 0.25s;">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-        View Brand Guidelines
+        Brand Guidelines
+      </a>
+      <a id="letterhead-link" href="" download style="display:flex; align-items:center; gap:10px; font-size:0.82rem; font-weight:600; color:var(--gold); text-decoration:none; padding:14px 18px; background:rgba(201,169,110,0.06); border:1px solid rgba(201,169,110,0.15); border-radius:10px; transition:all 0.25s;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Letterhead (.docx)
+      </a>
+      <a id="quote-link" href="" download style="display:flex; align-items:center; gap:10px; font-size:0.82rem; font-weight:600; color:var(--gold); text-decoration:none; padding:14px 18px; background:rgba(201,169,110,0.06); border:1px solid rgba(201,169,110,0.15); border-radius:10px; transition:all 0.25s;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Quote Template (.docx)
+      </a>
+      <a id="signature-link" href="" target="_blank" style="display:flex; align-items:center; gap:10px; font-size:0.82rem; font-weight:600; color:var(--gold); text-decoration:none; padding:14px 18px; background:rgba(201,169,110,0.06); border:1px solid rgba(201,169,110,0.15); border-radius:10px; transition:all 0.25s;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7"/></svg>
+        Email Signature
       </a>
     </div>
 
@@ -1394,9 +1413,11 @@ function selectConcept(index) {
     }, 150);
   });
 
-  // Update brand guidelines link
-  const guidelinesLink = document.getElementById('guidelines-link');
-  guidelinesLink.href = baseDir + '/guidelines.html';
+  // Update document links
+  document.getElementById('guidelines-link').href = baseDir + '/guidelines.html';
+  document.getElementById('letterhead-link').href = baseDir + '/letterhead.docx';
+  document.getElementById('quote-link').href = baseDir + '/quote-template.docx';
+  document.getElementById('signature-link').href = baseDir + '/email-signature.html';
 }
 
 // Add transition styles for smooth image swaps
