@@ -1150,12 +1150,21 @@
 
       let heroReady = false, infraReady = false;
 
-      heroVideo.addEventListener('loadedmetadata', () => { heroReady = true; });
-      infraVideo.addEventListener('loadedmetadata', () => { infraReady = true; });
+      // Fetch entire video as blob so all frames are seekable
+      function loadVideoBlob(video, src) {
+        return fetch(src)
+          .then(r => r.blob())
+          .then(blob => {
+            video.src = URL.createObjectURL(blob);
+            return new Promise(resolve => {
+              video.addEventListener('loadedmetadata', () => resolve(), { once: true });
+              video.load();
+            });
+          });
+      }
 
-      // Force load
-      heroVideo.load();
-      infraVideo.load();
+      loadVideoBlob(heroVideo, heroVideo.src).then(() => { heroReady = true; });
+      loadVideoBlob(infraVideo, infraVideo.src).then(() => { infraReady = true; });
 
       if (prefersReducedMotion || isMobile) {
         heroOverlay.classList.add('visible');
