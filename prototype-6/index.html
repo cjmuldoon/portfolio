@@ -483,15 +483,19 @@
       height: 100vh;
       overflow: hidden;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
+      padding-top: 96px;
+      padding-bottom: 30px;
       background: #2C2C2C;
     }
     .infographic-video-wrap {
       position: relative;
       width: 85%;
       max-width: 1200px;
-      aspect-ratio: 16/9;
+      flex: 1;
+      min-height: 0;
       overflow: hidden;
       border: 1px solid rgba(201,169,110,0.25);
     }
@@ -715,7 +719,7 @@
   <section id="showcase" class="video-infographic-section">
     <div class="infographic-sticky" id="infraSticky">
       <!-- Section heading above the video -->
-      <div class="absolute top-0 left-0 right-0 z-10 pt-10 pb-6 text-center" id="infraHeading">
+      <div class="z-10 pb-6 text-center flex-shrink-0" id="infraHeading">
         <p class="text-gold text-xs font-sans font-medium tracking-wide-custom uppercase mb-3">Featured Project</p>
         <h2 class="heading-serif text-3xl md:text-4xl text-cream mb-4">The Details</h2>
         <div class="gold-rule mx-auto mb-3"></div>
