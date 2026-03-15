@@ -1,0 +1,12 @@
+{
+  "prompt": "Photorealistic overhead photograph of premium 650gsm business cards with a unique blueprint-inspired design, displayed on a dark concrete surface. The cards are standard rectangular format (90mm x 55mm). The card background is deep charcoal black with an extremely subtle dark grey blueprint grid pattern embossed across the entire card surface — barely visible fine grid lines creating architectural texture. The LK logo is centred: thin monospace 'LK' letters inside a fine square frame, rendered in warm gold hot foil stamping (hex #C9A96E), with the grid lines of the logo aligning with the background grid texture. Below reads 'DESIGN AND BUILD' in thin tracked monospace uppercase gold. The reverse card shows contact details in gold centred on the card, exactly reading: 'Lyda Kieng' (name, slightly bolder weight), 'Designer | Project Manager' (title with pipe separator), '0481 742 026' (phone number), 'Po Box 583 Prospect East SA 5082' (postal address), 'lyda@lkdesignandbuild.com.au' (email). The same subtle embossed grid texture is visible on the back. Four cards arranged with architectural precision, two showing front and two showing back. Shot on 50mm macro lens at f/3.5, even studio lighting, tack sharp focus, product photography, dark premium atmosphere. Match the dark premium card aesthetic and gold foil quality visible in the reference image.",
+  "negative_prompt": "cheap, cartoon, blurry, distorted text, misspelled, bright colours, cluttered, glossy, low quality, deformed, white background, rounded corners, colourful, busy, too many decorations, wrong text, placeholder text",
+  "image_input": [
+    "https://cjmuldoon.github.io/primeredesign/assets/branding/concepts/concept-1-blueprint/cards.jpg"
+  ],
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "jpg",
+    "aspect_ratio": "16:9"
+  }
+}
