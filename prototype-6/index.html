@@ -1150,32 +1150,47 @@
 
       let heroReady = false, infraReady = false;
 
-      // Fetch entire video as blob so all frames are seekable
-      function loadVideoBlob(video, src) {
-        return fetch(src)
-          .then(r => r.blob())
-          .then(blob => {
-            video.src = URL.createObjectURL(blob);
-            return new Promise(resolve => {
-              video.addEventListener('loadedmetadata', () => resolve(), { once: true });
-              video.load();
-            });
-          });
-      }
-
-      loadVideoBlob(heroVideo, heroVideo.src).then(() => { heroReady = true; });
-      loadVideoBlob(infraVideo, infraVideo.src).then(() => { infraReady = true; });
+      // Capture original URLs before any manipulation
+      const heroSrc = heroVideo.getAttribute('src');
+      const infraSrc = infraVideo.getAttribute('src');
 
       if (prefersReducedMotion || isMobile) {
         heroOverlay.classList.add('visible');
-        // On mobile, just show poster frame
         heroVideo.currentTime = 0;
         infraVideo.currentTime = 0;
         return;
       }
 
+      // Fetch entire video as blob so all frames are seekable.
+      // Must complete before we can scrub.
+      function loadVideoBlob(video, src) {
+        return fetch(src)
+          .then(function(r) { return r.blob(); })
+          .then(function(blob) {
+            return new Promise(function(resolve) {
+              video.addEventListener('loadedmetadata', function() {
+                // Also wait for enough data to seek
+                if (video.readyState >= 2) { resolve(); return; }
+                video.addEventListener('canplay', function() { resolve(); }, { once: true });
+              }, { once: true });
+              video.src = URL.createObjectURL(blob);
+              video.load();
+            });
+          });
+      }
+
+      loadVideoBlob(heroVideo, heroSrc).then(function() {
+        heroReady = true;
+        // Kick a tick to render initial frame
+        if (!ticking) { ticking = true; requestAnimationFrame(tick); }
+      });
+      loadVideoBlob(infraVideo, infraSrc).then(function() {
+        infraReady = true;
+        if (!ticking) { ticking = true; requestAnimationFrame(tick); }
+      });
+
       // Show overlay immediately
-      setTimeout(() => {
+      setTimeout(function() {
         heroOverlay.classList.add('visible');
         scrollHint.classList.add('visible');
       }, 300);
@@ -1186,8 +1201,8 @@
       let ticking = false;
 
       function getSectionProgress(section) {
-        const rect = section.getBoundingClientRect();
-        const scrollHeight = section.offsetHeight - window.innerHeight;
+        var rect = section.getBoundingClientRect();
+        var scrollHeight = section.offsetHeight - window.innerHeight;
         if (scrollHeight <= 0) return 0;
         return Math.max(0, Math.min(1, -rect.top / scrollHeight));
       }
@@ -1198,11 +1213,13 @@
         currentHeroP += (targetHeroP - currentHeroP) * LERP;
         if (Math.abs(targetHeroP - currentHeroP) < 0.0001) currentHeroP = targetHeroP;
 
-        if (heroReady && heroVideo.duration) {
-          heroVideo.currentTime = currentHeroP * heroVideo.duration;
+        if (heroReady && heroVideo.duration && isFinite(heroVideo.duration)) {
+          // Map full scroll range to full video duration
+          var heroTime = currentHeroP * heroVideo.duration;
+          heroVideo.currentTime = Math.min(heroTime, heroVideo.duration - 0.01);
         }
 
-        // Hero overlay: visible at start, fades after p > 0.15
+        // Hero overlay: visible at start, fades after p > 0.05
         if (currentHeroP < 0.05) {
           heroOverlay.style.opacity = '';
         } else if (currentHeroP < 0.25) {
@@ -1213,7 +1230,7 @@
           scrollHint.style.opacity = 0;
         }
 
-        // Dim overlay reduces as user scrolls (reveal video)
+        // Dim overlay reduces as user scrolls
         heroDim.style.opacity = Math.max(0, 0.3 - currentHeroP * 0.4);
 
         // Deco frame
@@ -1227,23 +1244,28 @@
         currentInfraP += (targetInfraP - currentInfraP) * LERP;
         if (Math.abs(targetInfraP - currentInfraP) < 0.0001) currentInfraP = targetInfraP;
 
-        if (infraReady && infraVideo.duration) {
-          infraVideo.currentTime = currentInfraP * infraVideo.duration;
+        if (infraReady && infraVideo.duration && isFinite(infraVideo.duration)) {
+          // Reach the end of the video by 55% scroll progress,
+          // then hold the final frame for the remaining 45%.
+          // This means infographics appear early and stay visible.
+          var videoP = Math.min(1, currentInfraP / 0.55);
+          var infraTime = videoP * infraVideo.duration;
+          infraVideo.currentTime = Math.min(infraTime, infraVideo.duration - 0.01);
         }
 
-        // Label fades in after 30%
-        infraLabel.classList.toggle('visible', currentInfraP > 0.3);
+        // Label fades in after 15% (infographics becoming visible)
+        infraLabel.classList.toggle('visible', currentInfraP > 0.15);
 
         // Progress bar
         infraProgress.style.width = (currentInfraP * 100) + '%';
 
         // ── Page-level scroll progress ──
-        const pageP = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+        var pageP = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
         scrollProgressBar.style.width = (pageP * 100) + '%';
 
         // Continue animating if not settled
-        const heroSettled = Math.abs(targetHeroP - currentHeroP) < 0.00005;
-        const infraSettled = Math.abs(targetInfraP - currentInfraP) < 0.00005;
+        var heroSettled = Math.abs(targetHeroP - currentHeroP) < 0.00005;
+        var infraSettled = Math.abs(targetInfraP - currentInfraP) < 0.00005;
         if (!heroSettled || !infraSettled) {
           requestAnimationFrame(tick);
         } else {
@@ -1251,12 +1273,12 @@
         }
       }
 
-      window.addEventListener('scroll', () => {
+      window.addEventListener('scroll', function() {
         if (!ticking) { ticking = true; requestAnimationFrame(tick); }
       }, { passive: true });
 
       // Initial frame
-      requestAnimationFrame(() => {
+      requestAnimationFrame(function() {
         currentHeroP = getSectionProgress(heroSection);
         currentInfraP = getSectionProgress(infraSection);
         tick();
