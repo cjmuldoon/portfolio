@@ -1,754 +1,997 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LK Design and Build | Semaphore Master Suite</title>
-<meta name="description" content="LK Design and Build - Scroll-driven showcase of the Semaphore master bedroom and bathroom renovation. Premium Adelaide home design.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-/* ── Reset & Base ── */
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html { font-size: 16px; }
-body {
-  font-family: 'Inter', sans-serif;
-  color: #2C2C2C;
-  background: #F5F0EB;
-  overflow-x: hidden;
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LK Design and Build | Crafting Exceptional Spaces | Adelaide</title>
+  <meta name="description" content="LK Design and Build - Premium home renovation, interior design and building company in Adelaide. Studio Animated variant with scroll-driven project showcase.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            charcoal: '#2C2C2C',
+            gold: '#C9A96E',
+            cream: '#F5F0EB',
+            'gold-light': '#D4BA85',
+            'charcoal-light': '#3A3A3A',
+          },
+          fontFamily: {
+            serif: ['Cormorant Garamond', 'Georgia', 'serif'],
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    /* Base */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { font-size: 16px; }
+    body { font-family: 'Inter', sans-serif; color: #2C2C2C; background: #F5F0EB; overflow-x: hidden; }
 
-/* ── Scrollbar ── */
-::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: #F5F0EB; }
-::-webkit-scrollbar-thumb { background: #C9A96E; border-radius: 4px; }
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #F5F0EB; }
+    ::-webkit-scrollbar-thumb { background: #C9A96E; border-radius: 4px; }
 
-/* ── Typography ── */
-.heading-serif { font-family: 'Cormorant Garamond', serif; font-weight: 400; letter-spacing: 0.02em; line-height: 1.15; }
-.heading-serif-light { font-family: 'Cormorant Garamond', serif; font-weight: 300; letter-spacing: 0.03em; line-height: 1.15; }
-.small-caps { font-variant: small-caps; letter-spacing: 0.15em; }
-.tracking-wide { letter-spacing: 0.2em; }
+    /* Typography */
+    .heading-serif { font-family: 'Cormorant Garamond', serif; font-weight: 400; letter-spacing: 0.02em; line-height: 1.15; }
+    .heading-serif-light { font-family: 'Cormorant Garamond', serif; font-weight: 300; letter-spacing: 0.03em; line-height: 1.15; }
+    .small-caps { font-variant: small-caps; letter-spacing: 0.15em; }
+    .tracking-wide-custom { letter-spacing: 0.2em; }
 
-/* ── Gold Rules ── */
-.gold-rule { height: 1px; background: #C9A96E; width: 60px; }
-.gold-rule-wide { height: 1px; background: #C9A96E; width: 100%; opacity: 0.3; }
+    /* Gold rule */
+    .gold-rule { height: 1px; background: #C9A96E; width: 60px; }
+    .gold-rule-wide { height: 1px; background: #C9A96E; width: 100%; opacity: 0.3; }
 
-/* ── Custom Cursor (desktop) ── */
-@media (hover: hover) and (pointer: fine) {
-  body { cursor: none; }
-  .cursor-dot {
-    position: fixed;
-    width: 6px;
-    height: 6px;
-    background: #C9A96E;
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 10000;
-    transform: translate(-50%, -50%);
-    transition: transform 0.05s;
-  }
-  .cursor-ring {
-    position: fixed;
-    width: 36px;
-    height: 36px;
-    border: 1px solid rgba(201,169,110,0.5);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 10000;
-    transform: translate(-50%, -50%);
-    transition: transform 0.15s ease-out, width 0.2s, height 0.2s;
-  }
-}
+    /* Navigation */
+    .nav-link { position: relative; }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: #C9A96E;
+      transition: width 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+    .nav-link:hover::after { width: 100%; }
 
-/* ── Film Grain ── */
-.film-grain {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  pointer-events: none;
-  z-index: 9998;
-  opacity: 0.015;
-}
+    /* Buttons */
+    .btn-primary {
+      display: inline-block;
+      padding: 14px 40px;
+      border: 1px solid #C9A96E;
+      color: #2C2C2C;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      text-decoration: none;
+    }
+    .btn-primary:hover { background: #C9A96E; color: #fff; }
+    .btn-primary-filled {
+      display: inline-block;
+      padding: 14px 40px;
+      border: 1px solid #C9A96E;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      background: #C9A96E;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      text-decoration: none;
+    }
+    .btn-primary-filled:hover { background: #b8944f; border-color: #b8944f; }
+    .btn-dark {
+      display: inline-block;
+      padding: 14px 40px;
+      border: 1px solid #C9A96E;
+      color: #F5F0EB;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      background: #2C2C2C;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      text-decoration: none;
+    }
+    .btn-dark:hover { background: #C9A96E; color: #fff; border-color: #C9A96E; }
 
-/* ── Scroll Viewport ── */
-.scroll-container {
-  height: 500vh;
-  position: relative;
-}
-.sticky-viewport {
-  position: sticky;
-  top: 0;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-}
+    /* Hero */
+    .hero-frame {
+      position: absolute;
+      top: 40px; left: 40px; right: 40px; bottom: 40px;
+      border: 1px solid rgba(201, 169, 110, 0.4);
+      pointer-events: none;
+      z-index: 2;
+    }
+    @media (max-width: 768px) {
+      .hero-frame { top: 20px; left: 20px; right: 20px; bottom: 20px; }
+    }
 
-/* ── Image Layers ── */
-.img-layer {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  will-change: transform, opacity;
-  opacity: 0;
-}
-.img-layer.active { opacity: 1; }
+    /* Portfolio */
+    .portfolio-item { position: relative; overflow: hidden; }
+    .portfolio-item img { transition: transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1); }
+    .portfolio-item:hover img { transform: scale(1.05); }
+    .portfolio-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(201, 169, 110, 0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.5s ease;
+    }
+    .portfolio-item:hover .portfolio-overlay { background: rgba(201, 169, 110, 0.25); }
+    .portfolio-overlay-content {
+      opacity: 0;
+      transform: translateY(15px);
+      transition: all 0.4s ease 0.1s;
+      text-align: center;
+    }
+    .portfolio-item:hover .portfolio-overlay-content { opacity: 1; transform: translateY(0); }
 
-/* ── Decorative Frame ── */
-.deco-frame {
-  position: absolute;
-  top: 30px; left: 30px;
-  right: 30px; bottom: 30px;
-  border: 1px solid rgba(201,169,110,0.25);
-  pointer-events: none;
-  z-index: 5;
-  opacity: 0;
-  transition: opacity 0.8s;
-}
-.deco-frame.visible { opacity: 1; }
+    /* Lightbox */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: rgba(0, 0, 0, 0.92);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+    .lightbox.active { opacity: 1; pointer-events: all; }
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 85vh;
+      object-fit: contain;
+      border: 1px solid rgba(201, 169, 110, 0.3);
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 30px;
+      right: 40px;
+      color: #C9A96E;
+      font-size: 1.5rem;
+      cursor: pointer;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(201, 169, 110, 0.3);
+      transition: background 0.3s ease;
+      background: transparent;
+    }
+    .lightbox-close:hover { background: rgba(201, 169, 110, 0.15); }
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #C9A96E;
+      font-size: 2rem;
+      cursor: pointer;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(201, 169, 110, 0.3);
+      transition: background 0.3s ease;
+      background: transparent;
+    }
+    .lightbox-nav:hover { background: rgba(201, 169, 110, 0.15); }
+    .lightbox-prev { left: 30px; }
+    .lightbox-next { right: 30px; }
+    .lightbox-caption {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #F5F0EB;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      letter-spacing: 0.1em;
+    }
 
-/* ── Hero Overlay ── */
-.hero-overlay {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  z-index: 6;
-  text-align: center;
-  color: #fff;
-  pointer-events: none;
-}
-.hero-overlay .hero-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 300;
-  font-size: clamp(2.5rem, 6vw, 5rem);
-  letter-spacing: 0.06em;
-  text-shadow: 0 2px 30px rgba(0,0,0,0.4);
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.8s, transform 0.8s;
-}
-.hero-overlay .hero-subtitle {
-  font-family: 'Inter', sans-serif;
-  font-weight: 300;
-  font-size: clamp(0.7rem, 1.2vw, 0.9rem);
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  margin-top: 16px;
-  text-shadow: 0 1px 15px rgba(0,0,0,0.4);
-  opacity: 0;
-  transform: translateY(12px);
-  transition: opacity 0.8s 0.2s, transform 0.8s 0.2s;
-}
-.hero-overlay .hero-rule {
-  width: 60px;
-  height: 1px;
-  background: #C9A96E;
-  margin-top: 24px;
-  opacity: 0;
-  transform: scaleX(0);
-  transition: opacity 0.6s 0.4s, transform 0.6s 0.4s;
-}
-.hero-overlay.visible .hero-title,
-.hero-overlay.visible .hero-subtitle { opacity: 1; transform: translateY(0); }
-.hero-overlay.visible .hero-rule { opacity: 1; transform: scaleX(1); }
+    /* Animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .fade-in-left {
+      opacity: 0;
+      transform: translateX(-40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .fade-in-left.visible { opacity: 1; transform: translateX(0); }
+    .fade-in-right {
+      opacity: 0;
+      transform: translateX(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .fade-in-right.visible { opacity: 1; transform: translateX(0); }
 
-/* ── Scroll Hint ── */
-.scroll-hint {
-  position: absolute;
-  bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 6;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  opacity: 0;
-  transition: opacity 0.6s 0.8s;
-  pointer-events: none;
-}
-.scroll-hint.visible { opacity: 0.7; }
-.scroll-hint span {
-  font-size: 0.6rem;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: #fff;
-  text-shadow: 0 1px 8px rgba(0,0,0,0.5);
-}
-.scroll-hint .scroll-line {
-  width: 1px;
-  height: 40px;
-  background: rgba(201,169,110,0.6);
-  animation: scrollPulse 2s ease-in-out infinite;
-}
-@keyframes scrollPulse {
-  0%, 100% { transform: scaleY(1); opacity: 0.6; }
-  50% { transform: scaleY(0.5); opacity: 1; }
-}
+    /* Process timeline */
+    .timeline-line {
+      position: absolute;
+      left: 24px;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: #C9A96E;
+      opacity: 0.3;
+    }
+    @media (min-width: 768px) {
+      .timeline-line { left: 50%; transform: translateX(-50%); }
+    }
+    .timeline-dot {
+      width: 12px;
+      height: 12px;
+      background: #C9A96E;
+      border-radius: 50%;
+      position: absolute;
+      left: 19px;
+      top: 4px;
+    }
+    @media (min-width: 768px) {
+      .timeline-dot { left: 50%; transform: translateX(-50%); }
+    }
 
-/* ── Infographic Callouts ── */
-.callout-layer {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  z-index: 7;
-  pointer-events: none;
-}
-.callout-layer svg {
-  width: 100%;
-  height: 100%;
-}
-.callout-line {
-  stroke: #C9A96E;
-  stroke-width: 1.5;
-  fill: none;
-  stroke-dasharray: 500;
-  stroke-dashoffset: 500;
-  transition: stroke-dashoffset 0.8s ease-out;
-}
-.callout-dot {
-  fill: #C9A96E;
-  transform: scale(0);
-  transition: transform 0.4s ease-out;
-}
-.callout-label {
-  font-family: 'Inter', sans-serif;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  fill: #fff;
-  opacity: 0;
-  transition: opacity 0.5s ease-out;
-}
-.callout-sublabel {
-  font-family: 'Inter', sans-serif;
-  font-size: 8px;
-  font-weight: 300;
-  letter-spacing: 0.1em;
-  fill: #C9A96E;
-  opacity: 0;
-  transition: opacity 0.5s ease-out;
-}
-.callout-group.visible .callout-line { stroke-dashoffset: 0; }
-.callout-group.visible .callout-dot { transform: scale(1); }
-.callout-group.visible .callout-label,
-.callout-group.visible .callout-sublabel { opacity: 1; }
+    /* Mobile menu */
+    .mobile-menu {
+      position: fixed;
+      inset: 0;
+      background: #2C2C2C;
+      z-index: 90;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+    .mobile-menu.active { opacity: 1; pointer-events: all; }
+    .mobile-menu a {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      color: #F5F0EB;
+      text-decoration: none;
+      padding: 12px 0;
+      transition: color 0.3s ease;
+    }
+    .mobile-menu a:hover { color: #C9A96E; }
 
-/* Stagger delays for callout groups */
-.callout-group:nth-child(2) .callout-line { transition-delay: 0.15s; }
-.callout-group:nth-child(2) .callout-dot { transition-delay: 0.25s; }
-.callout-group:nth-child(2) .callout-label,
-.callout-group:nth-child(2) .callout-sublabel { transition-delay: 0.35s; }
-.callout-group:nth-child(3) .callout-line { transition-delay: 0.3s; }
-.callout-group:nth-child(3) .callout-dot { transition-delay: 0.4s; }
-.callout-group:nth-child(3) .callout-label,
-.callout-group:nth-child(3) .callout-sublabel { transition-delay: 0.5s; }
-.callout-group:nth-child(4) .callout-line { transition-delay: 0.45s; }
-.callout-group:nth-child(4) .callout-dot { transition-delay: 0.55s; }
-.callout-group:nth-child(4) .callout-label,
-.callout-group:nth-child(4) .callout-sublabel { transition-delay: 0.65s; }
-.callout-group:nth-child(5) .callout-line { transition-delay: 0.6s; }
-.callout-group:nth-child(5) .callout-dot { transition-delay: 0.7s; }
-.callout-group:nth-child(5) .callout-label,
-.callout-group:nth-child(5) .callout-sublabel { transition-delay: 0.8s; }
-.callout-group:nth-child(6) .callout-line { transition-delay: 0.75s; }
-.callout-group:nth-child(6) .callout-dot { transition-delay: 0.85s; }
-.callout-group:nth-child(6) .callout-label,
-.callout-group:nth-child(6) .callout-sublabel { transition-delay: 0.95s; }
+    /* Hamburger */
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: #F5F0EB;
+      margin: 6px 0;
+      transition: all 0.3s ease;
+    }
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
-/* ── Progress Bar ── */
-.scroll-progress {
-  position: fixed;
-  top: 0; left: 0;
-  height: 2px;
-  background: #C9A96E;
-  z-index: 9999;
-  width: 0;
-  transition: none;
-}
+    /* Nav scroll */
+    .nav-scrolled { background: rgba(44, 44, 44, 0.97) !important; backdrop-filter: blur(10px); }
+    .nav-scrolled .nav-link { color: #F5F0EB !important; }
+    .nav-scrolled .nav-link:hover { color: #C9A96E !important; }
+    .nav-scrolled .btn-primary { color: #F5F0EB !important; border-color: #C9A96E !important; }
+    .nav-scrolled .btn-primary:hover { background: #C9A96E !important; color: #fff !important; }
+    .nav-scrolled .hamburger span { background: #F5F0EB !important; }
 
-/* ── Sections Below ── */
-.section-below {
-  position: relative;
-  z-index: 10;
-  background: #F5F0EB;
-}
-.btn-primary {
-  display: inline-block;
-  padding: 14px 40px;
-  border: 1px solid #C9A96E;
-  color: #2C2C2C;
-  font-family: 'Inter', sans-serif;
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  background: transparent;
-  cursor: pointer;
-  transition: all 0.4s ease;
-  text-decoration: none;
-}
-.btn-primary:hover { background: #C9A96E; color: #fff; }
+    /* Form */
+    .form-input {
+      width: 100%;
+      padding: 14px 0;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid rgba(201, 169, 110, 0.3);
+      color: #2C2C2C;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875rem;
+      letter-spacing: 0.05em;
+      outline: none;
+      transition: border-color 0.3s ease;
+    }
+    .form-input:focus { border-bottom-color: #C9A96E; }
+    .form-input::placeholder { color: #999; }
+    .form-input-dark { color: #F5F0EB; border-bottom-color: rgba(201, 169, 110, 0.2); }
+    .form-input-dark:focus { border-bottom-color: #C9A96E; }
+    .form-input-dark::placeholder { color: rgba(245, 240, 235, 0.4); }
+    textarea.form-input { resize: vertical; min-height: 100px; }
 
-/* ── Footer ── */
-footer {
-  background: #2C2C2C;
-  color: rgba(245,240,235,0.6);
-  padding: 60px 40px 40px;
-}
-footer a { color: #C9A96E; text-decoration: none; }
-footer a:hover { color: #D4BA85; }
+    /* Service card */
+    .service-card {
+      padding: 48px 36px;
+      border: 1px solid rgba(201, 169, 110, 0.15);
+      transition: all 0.5s ease;
+      background: transparent;
+    }
+    .service-card:hover {
+      border-color: rgba(201, 169, 110, 0.5);
+      background: rgba(201, 169, 110, 0.03);
+    }
 
-/* ── Fade In Animation ── */
-.fade-in {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
-.fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+    /* Section padding */
+    .section-padding { padding: 120px 0; }
+    @media (max-width: 768px) { .section-padding { padding: 80px 0; } }
 
-/* ── Mobile ── */
-@media (max-width: 767px) {
-  .scroll-container { height: auto; }
-  .sticky-viewport { position: relative; height: auto; }
-  .img-layer {
-    position: relative;
-    opacity: 1 !important;
-    transform: none !important;
-    width: 100%;
-    height: auto;
-    aspect-ratio: 16/10;
-  }
-  .deco-frame { display: none; }
-  .callout-layer { display: none; }
-  .hero-overlay {
-    position: relative;
-    padding: 80px 20px 40px;
-    background: #2C2C2C;
-    color: #F5F0EB;
-  }
-  .hero-overlay .hero-title,
-  .hero-overlay .hero-subtitle { opacity: 1; transform: none; }
-  .hero-overlay .hero-rule { opacity: 1; transform: scaleX(1); }
-  .scroll-hint { display: none; }
-  .mobile-callouts {
-    display: block !important;
-    padding: 32px 20px;
-    background: #2C2C2C;
-  }
-  .mobile-callout-item {
-    display: flex;
-    align-items: baseline;
-    gap: 12px;
-    padding: 10px 0;
-    border-bottom: 1px solid rgba(201,169,110,0.15);
-  }
-  .mobile-callout-item:last-child { border-bottom: none; }
-  .mobile-callout-item .mc-dot {
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: #C9A96E;
-    flex-shrink: 0;
-    margin-top: 6px;
-  }
-  .mobile-callout-item .mc-title {
-    color: #F5F0EB;
-    font-size: 0.8rem;
-    font-weight: 400;
-    letter-spacing: 0.05em;
-  }
-  .mobile-callout-item .mc-spec {
-    color: #C9A96E;
-    font-size: 0.65rem;
-    font-weight: 300;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-top: 2px;
-  }
-}
-@media (min-width: 768px) {
-  .mobile-callouts { display: none !important; }
-}
+    /* Stagger children */
+    .stagger-children > *:nth-child(1) { transition-delay: 0s; }
+    .stagger-children > *:nth-child(2) { transition-delay: 0.15s; }
+    .stagger-children > *:nth-child(3) { transition-delay: 0.3s; }
+    .stagger-children > *:nth-child(4) { transition-delay: 0.45s; }
 
-/* ── Reduced Motion ── */
-@media (prefers-reduced-motion: reduce) {
-  .scroll-container { height: auto; }
-  .sticky-viewport { position: relative; height: auto; }
-  .img-layer {
-    position: relative;
-    opacity: 1 !important;
-    transform: none !important;
-    width: 100%;
-    height: auto;
-  }
-  .callout-layer { display: none; }
-  .hero-overlay .hero-title,
-  .hero-overlay .hero-subtitle { opacity: 1; transform: none; transition: none; }
-  .hero-overlay .hero-rule { opacity: 1; transform: scaleX(1); transition: none; }
-  .scroll-hint { display: none; }
-  .fade-in { opacity: 1; transform: none; transition: none; }
-}
-</style>
+    /* ═══════════════════════════════════════ */
+    /* SCROLL ANIMATION SECTION STYLES       */
+    /* ═══════════════════════════════════════ */
+    .scroll-container {
+      height: 500vh;
+      position: relative;
+    }
+    .sticky-viewport {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .img-layer {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      will-change: transform, opacity;
+      opacity: 0;
+    }
+    .img-layer.active { opacity: 1; }
+
+    /* Decorative frame for animation viewport */
+    .anim-deco-frame {
+      position: absolute;
+      top: 30px; left: 30px;
+      right: 30px; bottom: 30px;
+      border: 1px solid rgba(201,169,110,0.25);
+      pointer-events: none;
+      z-index: 5;
+      opacity: 0;
+      transition: opacity 0.8s;
+    }
+    .anim-deco-frame.visible { opacity: 1; }
+
+    /* Animation hero overlay */
+    .anim-hero-overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 6;
+      text-align: center;
+      color: #fff;
+      pointer-events: none;
+    }
+    .anim-hero-overlay .anim-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      letter-spacing: 0.06em;
+      text-shadow: 0 2px 30px rgba(0,0,0,0.4);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s, transform 0.8s;
+    }
+    .anim-hero-overlay .anim-subtitle {
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      font-size: clamp(0.7rem, 1.2vw, 0.9rem);
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      margin-top: 16px;
+      text-shadow: 0 1px 15px rgba(0,0,0,0.4);
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.8s 0.2s, transform 0.8s 0.2s;
+    }
+    .anim-hero-overlay .anim-rule {
+      width: 60px;
+      height: 1px;
+      background: #C9A96E;
+      margin-top: 24px;
+      opacity: 0;
+      transform: scaleX(0);
+      transition: opacity 0.6s 0.4s, transform 0.6s 0.4s;
+    }
+    .anim-hero-overlay.visible .anim-title,
+    .anim-hero-overlay.visible .anim-subtitle { opacity: 1; transform: translateY(0); }
+    .anim-hero-overlay.visible .anim-rule { opacity: 1; transform: scaleX(1); }
+
+    /* Scroll hint */
+    .scroll-hint {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 6;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      opacity: 0;
+      transition: opacity 0.6s 0.8s;
+      pointer-events: none;
+    }
+    .scroll-hint.visible { opacity: 0.7; }
+    .scroll-hint span {
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #fff;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.5);
+    }
+    .scroll-hint .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: rgba(201,169,110,0.6);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+    @keyframes scrollPulse {
+      0%, 100% { transform: scaleY(1); opacity: 0.6; }
+      50% { transform: scaleY(0.5); opacity: 1; }
+    }
+
+    /* Infographic callouts */
+    .callout-layer {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 7;
+      pointer-events: none;
+    }
+    .callout-layer svg { width: 100%; height: 100%; }
+    .callout-line {
+      stroke: #C9A96E;
+      stroke-width: 1.5;
+      fill: none;
+      stroke-dasharray: 500;
+      stroke-dashoffset: 500;
+      transition: stroke-dashoffset 0.8s ease-out;
+    }
+    .callout-dot {
+      fill: #C9A96E;
+      transform: scale(0);
+      transition: transform 0.4s ease-out;
+    }
+    .callout-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      fill: #fff;
+      opacity: 0;
+      transition: opacity 0.5s ease-out;
+    }
+    .callout-sublabel {
+      font-family: 'Inter', sans-serif;
+      font-size: 8px;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      fill: #C9A96E;
+      opacity: 0;
+      transition: opacity 0.5s ease-out;
+    }
+    .callout-group.visible .callout-line { stroke-dashoffset: 0; }
+    .callout-group.visible .callout-dot { transform: scale(1); }
+    .callout-group.visible .callout-label,
+    .callout-group.visible .callout-sublabel { opacity: 1; }
+
+    /* Staggered callout delays */
+    .callout-group:nth-child(2) .callout-line { transition-delay: 0.15s; }
+    .callout-group:nth-child(2) .callout-dot { transition-delay: 0.25s; }
+    .callout-group:nth-child(2) .callout-label, .callout-group:nth-child(2) .callout-sublabel { transition-delay: 0.35s; }
+    .callout-group:nth-child(3) .callout-line { transition-delay: 0.3s; }
+    .callout-group:nth-child(3) .callout-dot { transition-delay: 0.4s; }
+    .callout-group:nth-child(3) .callout-label, .callout-group:nth-child(3) .callout-sublabel { transition-delay: 0.5s; }
+    .callout-group:nth-child(4) .callout-line { transition-delay: 0.45s; }
+    .callout-group:nth-child(4) .callout-dot { transition-delay: 0.55s; }
+    .callout-group:nth-child(4) .callout-label, .callout-group:nth-child(4) .callout-sublabel { transition-delay: 0.65s; }
+    .callout-group:nth-child(5) .callout-line { transition-delay: 0.6s; }
+    .callout-group:nth-child(5) .callout-dot { transition-delay: 0.7s; }
+    .callout-group:nth-child(5) .callout-label, .callout-group:nth-child(5) .callout-sublabel { transition-delay: 0.8s; }
+    .callout-group:nth-child(6) .callout-line { transition-delay: 0.75s; }
+    .callout-group:nth-child(6) .callout-dot { transition-delay: 0.85s; }
+    .callout-group:nth-child(6) .callout-label, .callout-group:nth-child(6) .callout-sublabel { transition-delay: 0.95s; }
+
+    /* Scroll progress bar */
+    .scroll-progress {
+      position: fixed;
+      top: 0; left: 0;
+      height: 2px;
+      background: #C9A96E;
+      z-index: 9999;
+      width: 0;
+      transition: none;
+    }
+
+    /* Mobile animation overrides */
+    @media (max-width: 767px) {
+      .scroll-container { height: auto; }
+      .sticky-viewport { position: relative; height: auto; }
+      .img-layer {
+        position: relative;
+        opacity: 1 !important;
+        transform: none !important;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16/10;
+      }
+      .anim-deco-frame { display: none; }
+      .callout-layer { display: none; }
+      .anim-hero-overlay {
+        position: relative;
+        padding: 60px 20px 40px;
+        background: #2C2C2C;
+        color: #F5F0EB;
+      }
+      .anim-hero-overlay .anim-title,
+      .anim-hero-overlay .anim-subtitle { opacity: 1; transform: none; }
+      .anim-hero-overlay .anim-rule { opacity: 1; transform: scaleX(1); }
+      .scroll-hint { display: none; }
+      .mobile-callouts { display: block !important; }
+    }
+    @media (min-width: 768px) {
+      .mobile-callouts { display: none !important; }
+    }
+    .mobile-callouts {
+      padding: 24px 20px;
+      background: #2C2C2C;
+    }
+    .mobile-callout-item {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(201,169,110,0.15);
+    }
+    .mobile-callout-item:last-child { border-bottom: none; }
+    .mc-dot { width: 5px; height: 5px; border-radius: 50%; background: #C9A96E; flex-shrink: 0; margin-top: 6px; }
+    .mc-title { color: #F5F0EB; font-size: 0.8rem; font-weight: 400; letter-spacing: 0.05em; }
+    .mc-spec { color: #C9A96E; font-size: 0.65rem; font-weight: 300; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 2px; }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .scroll-container { height: auto; }
+      .sticky-viewport { position: relative; height: auto; }
+      .img-layer { position: relative; opacity: 1 !important; transform: none !important; width: 100%; height: auto; }
+      .callout-layer { display: none; }
+      .anim-hero-overlay .anim-title,
+      .anim-hero-overlay .anim-subtitle { opacity: 1; transform: none; transition: none; }
+      .anim-hero-overlay .anim-rule { opacity: 1; transform: scaleX(1); transition: none; }
+      .scroll-hint { display: none; }
+      .fade-in, .fade-in-left, .fade-in-right { opacity: 1; transform: none; transition: none; }
+    }
+  </style>
 </head>
 <body>
 
-<!-- Film Grain -->
-<svg class="film-grain" xmlns="http://www.w3.org/2000/svg">
-  <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="4" stitchTiles="stitch"/></filter>
-  <rect width="100%" height="100%" filter="url(#grain)"/>
-</svg>
-
-<!-- Custom Cursor -->
-<div class="cursor-dot" id="cursorDot"></div>
-<div class="cursor-ring" id="cursorRing"></div>
-
-<!-- Scroll Progress -->
-<div class="scroll-progress" id="scrollProgress"></div>
-
-<!-- ════════════════════════════════════════ -->
-<!-- SCROLL-DRIVEN ANIMATION SECTION        -->
-<!-- ════════════════════════════════════════ -->
-<div class="scroll-container" id="scrollContainer">
-  <div class="sticky-viewport" id="stickyViewport">
-
-    <!-- Image Layers (01 → 02 → 03: bathroom detail → vanity → bedroom wide) -->
-    <img class="img-layer active" id="img1"
-         src="../assets/images/semaphore_anim01_hd.jpg"
-         alt="Semaphore master bathroom — vanity wall with subway tiles and brass fixtures"
-         loading="eager">
-    <img class="img-layer" id="img2"
-         src="../assets/images/semaphore_anim02_hd.jpg"
-         alt="Semaphore bathroom — floating vanity with vessel basins, arch mirrors and subway tile wall"
-         loading="eager">
-    <img class="img-layer" id="img3"
-         src="../assets/images/semaphore_anim03_hd.jpg"
-         alt="Semaphore master bedroom — wide view with ceiling fan, sheer curtains and pendant lights"
-         loading="eager">
-
-    <!-- Cream Overlay for hero reveal -->
-    <div id="creamOverlay" style="position:absolute;top:0;left:0;width:100%;height:100%;background:#F5F0EB;z-index:3;pointer-events:none;"></div>
-
-    <!-- Decorative Frame -->
-    <div class="deco-frame" id="decoFrame"></div>
-
-    <!-- Hero Overlay -->
-    <div class="hero-overlay" id="heroOverlay">
-      <div class="hero-title">Semaphore</div>
-      <div class="hero-subtitle">Master Suite Renovation</div>
-      <div class="hero-rule"></div>
-    </div>
-
-    <!-- Scroll Hint -->
-    <div class="scroll-hint" id="scrollHint">
-      <span>Scroll to explore</span>
-      <div class="scroll-line"></div>
-    </div>
-
-    <!-- ── Callout Layer: Image 02 (Vanity — GGB-style technical) ── -->
-    <div class="callout-layer" id="callouts02" style="opacity:0;">
-      <svg viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
-        <defs>
-          <filter id="textshadow02"><feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#000" flood-opacity="0.5"/></filter>
-        </defs>
-
-        <!-- Title card (top-left, like GGB "GOLDEN GATE BRIDGE, 1937") -->
-        <g class="callout-group" data-index="0">
-          <rect class="callout-line" x="50" y="40" width="340" height="50" fill="none" stroke="#fff" stroke-width="1.5" stroke-dasharray="400" stroke-dashoffset="400"/>
-          <text class="callout-label" x="65" y="62" font-size="15" letter-spacing="0.12em" fill="#fff" filter="url(#textshadow02)">SEMAPHORE ENSUITE, 2024</text>
-          <text class="callout-sublabel" x="65" y="80" font-size="9" fill="rgba(255,255,255,0.6)">DESIGN + BUILD BY LK</text>
-        </g>
-
-        <!-- Stacked bond tile pattern — sketched diagram top-right -->
-        <g class="callout-group" data-index="1">
-          <circle class="callout-dot" cx="350" cy="380" r="4"/>
-          <line class="callout-line" x1="350" y1="380" x2="100" y2="280"/>
-          <!-- Mini tile pattern diagram -->
-          <rect x="60" y="130" width="30" height="70" fill="none" stroke="#fff" stroke-width="0.8" opacity="0.8"/>
-          <rect x="95" y="130" width="30" height="70" fill="none" stroke="#fff" stroke-width="0.8" opacity="0.8"/>
-          <rect x="130" y="130" width="30" height="70" fill="none" stroke="#fff" stroke-width="0.8" opacity="0.8"/>
-          <rect x="60" y="205" width="30" height="70" fill="none" stroke="#fff" stroke-width="0.8" opacity="0.8"/>
-          <rect x="95" y="205" width="30" height="70" fill="none" stroke="#fff" stroke-width="0.8" opacity="0.8"/>
-          <rect x="130" y="205" width="30" height="70" fill="none" stroke="#fff" stroke-width="0.8" opacity="0.8"/>
-          <!-- Dimension line -->
-          <line x1="55" y1="130" x2="55" y2="275" stroke="#C9A96E" stroke-width="0.8"/>
-          <line x1="50" y1="130" x2="60" y2="130" stroke="#C9A96E" stroke-width="0.8"/>
-          <line x1="50" y1="275" x2="60" y2="275" stroke="#C9A96E" stroke-width="0.8"/>
-          <text class="callout-sublabel" x="48" y="206" text-anchor="end" font-size="8" transform="rotate(-90,48,206)">300mm</text>
-          <text class="callout-label" x="60" y="122" font-size="11" fill="#fff" filter="url(#textshadow02)">STACKED BOND</text>
-          <text class="callout-sublabel" x="60" y="295" font-size="8">GLOSS WHITE CERAMIC</text>
-          <text class="callout-sublabel" x="60" y="308" font-size="8">75 x 300mm SUBWAY</text>
-        </g>
-
-        <!-- Vessel basin cross-section — right side -->
-        <g class="callout-group" data-index="2">
-          <circle class="callout-dot" cx="870" cy="550" r="4"/>
-          <line class="callout-line" x1="870" y1="550" x2="1050" y2="450"/>
-          <!-- Basin profile sketch -->
-          <path d="M1050,370 Q1050,340 1080,340 L1160,340 Q1190,340 1190,370 L1190,400 Q1190,420 1170,425 L1070,425 Q1050,420 1050,400 Z" fill="none" stroke="#fff" stroke-width="1" opacity="0.8"/>
-          <!-- Waste pipe -->
-          <line x1="1120" y1="425" x2="1120" y2="460" stroke="#fff" stroke-width="1" opacity="0.6"/>
-          <circle cx="1120" cy="465" r="5" fill="none" stroke="#fff" stroke-width="0.8" opacity="0.6"/>
-          <!-- Dimension -->
-          <line x1="1045" y1="340" x2="1045" y2="425" stroke="#C9A96E" stroke-width="0.8"/>
-          <line x1="1040" y1="340" x2="1050" y2="340" stroke="#C9A96E" stroke-width="0.8"/>
-          <line x1="1040" y1="425" x2="1050" y2="425" stroke="#C9A96E" stroke-width="0.8"/>
-          <text class="callout-sublabel" x="1038" y="386" text-anchor="end" font-size="8" transform="rotate(-90,1038,386)">145mm</text>
-          <text class="callout-label" x="1050" y="332" font-size="11" fill="#fff" filter="url(#textshadow02)">VESSEL BASIN</text>
-          <text class="callout-sublabel" x="1050" y="480" font-size="8">MATTE WHITE CERAMIC</text>
-          <text class="callout-sublabel" x="1050" y="493" font-size="8">ABOVE-COUNTER MOUNT</text>
-        </g>
-
-        <!-- Floating vanity mounting detail — bottom left -->
-        <g class="callout-group" data-index="3">
-          <circle class="callout-dot" cx="700" cy="640" r="4"/>
-          <line class="callout-line" x1="700" y1="640" x2="560" y2="720"/>
-          <!-- Wall bracket sketch -->
-          <rect x="500" y="740" width="180" height="55" fill="none" stroke="#fff" stroke-width="1" opacity="0.8"/>
-          <line x1="500" y1="740" x2="480" y2="740" stroke="#fff" stroke-width="2" opacity="0.6"/>
-          <line x1="480" y1="720" x2="480" y2="800" stroke="#fff" stroke-width="2" opacity="0.6"/>
-          <!-- Bracket detail -->
-          <line x1="480" y1="750" x2="500" y2="750" stroke="#C9A96E" stroke-width="1"/>
-          <line x1="480" y1="770" x2="500" y2="770" stroke="#C9A96E" stroke-width="1"/>
-          <circle cx="490" cy="750" r="2" fill="#C9A96E"/>
-          <circle cx="490" cy="770" r="2" fill="#C9A96E"/>
-          <!-- Dimension -->
-          <line x1="500" y1="800" x2="680" y2="800" stroke="#C9A96E" stroke-width="0.8"/>
-          <line x1="500" y1="796" x2="500" y2="804" stroke="#C9A96E" stroke-width="0.8"/>
-          <line x1="680" y1="796" x2="680" y2="804" stroke="#C9A96E" stroke-width="0.8"/>
-          <text class="callout-sublabel" x="590" y="815" text-anchor="middle" font-size="8">1200mm</text>
-          <text class="callout-label" x="500" y="732" font-size="11" fill="#fff" filter="url(#textshadow02)">FLOATING VANITY</text>
-          <text class="callout-sublabel" x="500" y="835" font-size="8">SOLID OAK, CONCEALED WALL BRACKET</text>
-        </g>
-
-        <!-- Brass tapware detail — upper middle -->
-        <g class="callout-group" data-index="4">
-          <circle class="callout-dot" cx="780" cy="410" r="4"/>
-          <line class="callout-line" x1="780" y1="410" x2="1400" y2="300"/>
-          <!-- Spout profile sketch -->
-          <line x1="1400" y1="230" x2="1400" y2="270" stroke="#fff" stroke-width="1.5" opacity="0.8"/>
-          <path d="M1400,230 Q1400,210 1420,210 L1470,210 Q1480,210 1480,220" fill="none" stroke="#fff" stroke-width="1.5" opacity="0.8"/>
-          <circle cx="1480" cy="224" r="3" fill="none" stroke="#fff" stroke-width="1" opacity="0.6"/>
-          <!-- Handle -->
-          <line x1="1390" y1="240" x2="1370" y2="235" stroke="#fff" stroke-width="1.2" opacity="0.8"/>
-          <circle cx="1367" cy="234" r="4" fill="none" stroke="#fff" stroke-width="1" opacity="0.8"/>
-          <text class="callout-label" x="1400" y="200" font-size="11" fill="#fff" filter="url(#textshadow02)">WALL MIXER</text>
-          <text class="callout-sublabel" x="1400" y="285" font-size="8">BRUSHED BRASS FINISH</text>
-          <text class="callout-sublabel" x="1400" y="298" font-size="8">200mm SWIVEL SPOUT</text>
-        </g>
-
-        <!-- Arch mirror profile — upper area -->
-        <g class="callout-group" data-index="5">
-          <circle class="callout-dot" cx="560" cy="270" r="4"/>
-          <line class="callout-line" x1="560" y1="270" x2="1500" y2="550"/>
-          <!-- Arch profile cross-section -->
-          <path d="M1500,580 L1500,680 L1560,680 L1560,580 Q1560,550 1530,550 Q1500,550 1500,580 Z" fill="none" stroke="#fff" stroke-width="1" opacity="0.8"/>
-          <!-- LED strip indicator -->
-          <path d="M1505,585 L1505,675" stroke="#C9A96E" stroke-width="2" stroke-dasharray="3,3"/>
-          <text class="callout-sublabel" x="1510" y="640" font-size="7" fill="#C9A96E" transform="rotate(-90,1510,640)">LED STRIP</text>
-          <!-- Dimension -->
-          <line x1="1495" y1="550" x2="1495" y2="680" stroke="#C9A96E" stroke-width="0.8"/>
-          <line x1="1490" y1="550" x2="1500" y2="550" stroke="#C9A96E" stroke-width="0.8"/>
-          <line x1="1490" y1="680" x2="1500" y2="680" stroke="#C9A96E" stroke-width="0.8"/>
-          <text class="callout-sublabel" x="1488" y="620" text-anchor="end" font-size="8" transform="rotate(-90,1488,620)">900mm</text>
-          <text class="callout-label" x="1500" y="542" font-size="11" fill="#fff" filter="url(#textshadow02)">ARCH-TOP MIRROR</text>
-          <text class="callout-sublabel" x="1500" y="698" font-size="8">CUSTOM PROFILE, LED BACKLIT</text>
-        </g>
-      </svg>
-    </div>
-
-    <!-- ── Callout Layer: Image 03 (Bathroom detail — GGB-style, heavy bathroom focus) ── -->
-    <div class="callout-layer" id="callouts03" style="opacity:0;">
-      <svg viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
-        <defs>
-          <filter id="textshadow03"><feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#000" flood-opacity="0.5"/></filter>
-        </defs>
-
-        <!-- Title card -->
-        <g class="callout-group" data-index="0">
-          <rect class="callout-line" x="50" y="40" width="380" height="50" fill="none" stroke="#fff" stroke-width="1.5" stroke-dasharray="400" stroke-dashoffset="400"/>
-          <text class="callout-label" x="65" y="62" font-size="15" letter-spacing="0.12em" fill="#fff" filter="url(#textshadow03)">ENSUITE DETAIL, SEMAPHORE</text>
-          <text class="callout-sublabel" x="65" y="80" font-size="9" fill="rgba(255,255,255,0.6)">MATERIALS + CONSTRUCTION</text>
-        </g>
-
-        <!-- Shower screen — left side where glass panel is visible -->
-        <g class="callout-group" data-index="1">
-          <circle class="callout-dot" cx="280" cy="500" r="4"/>
-          <line class="callout-line" x1="280" y1="500" x2="100" y2="400"/>
-          <!-- Glass panel cross-section sketch -->
-          <rect x="60" y="320" width="8" height="60" fill="none" stroke="#fff" stroke-width="1" opacity="0.8"/>
-          <line x1="55" y1="320" x2="73" y2="320" stroke="#C9A96E" stroke-width="0.8"/>
-          <line x1="55" y1="380" x2="73" y2="380" stroke="#C9A96E" stroke-width="0.8"/>
-          <line x1="50" y1="320" x2="50" y2="380" stroke="#C9A96E" stroke-width="0.8"/>
-          <text class="callout-sublabel" x="44" y="354" text-anchor="end" font-size="8" transform="rotate(-90,44,354)">10mm</text>
-          <text class="callout-label" x="60" y="312" font-size="11" fill="#fff" filter="url(#textshadow03)">SHOWER SCREEN</text>
-          <text class="callout-sublabel" x="60" y="398" font-size="8">FRAMELESS FIXED PANEL</text>
-          <text class="callout-sublabel" x="60" y="411" font-size="8">10mm CLEAR TOUGHENED</text>
-        </g>
-
-        <!-- Brass shower rail + rose — detail -->
-        <g class="callout-group" data-index="2">
-          <circle class="callout-dot" cx="370" cy="320" r="4"/>
-          <line class="callout-line" x1="370" y1="320" x2="200" y2="600"/>
-          <!-- Shower rose sketch -->
-          <circle cx="200" cy="640" r="20" fill="none" stroke="#fff" stroke-width="1" opacity="0.8"/>
-          <circle cx="200" cy="640" r="12" fill="none" stroke="#fff" stroke-width="0.6" opacity="0.5"/>
-          <!-- Spray dots -->
-          <circle cx="193" cy="633" r="1" fill="#fff" opacity="0.4"/>
-          <circle cx="200" cy="630" r="1" fill="#fff" opacity="0.4"/>
-          <circle cx="207" cy="633" r="1" fill="#fff" opacity="0.4"/>
-          <circle cx="195" cy="640" r="1" fill="#fff" opacity="0.4"/>
-          <circle cx="205" cy="640" r="1" fill="#fff" opacity="0.4"/>
-          <circle cx="193" cy="647" r="1" fill="#fff" opacity="0.4"/>
-          <circle cx="200" cy="650" r="1" fill="#fff" opacity="0.4"/>
-          <circle cx="207" cy="647" r="1" fill="#fff" opacity="0.4"/>
-          <!-- Rail line -->
-          <line x1="200" y1="620" x2="200" y2="580" stroke="#fff" stroke-width="1.2" opacity="0.6"/>
-          <text class="callout-label" x="230" y="630" font-size="11" fill="#fff" filter="url(#textshadow03)">RAIN SHOWER</text>
-          <text class="callout-sublabel" x="230" y="648" font-size="8">250mm HEAD, BRASS FINISH</text>
-          <text class="callout-sublabel" x="230" y="661" font-size="8">CEILING-MOUNTED ARM</text>
-        </g>
-
-        <!-- Tile wall detail — mid photo -->
-        <g class="callout-group" data-index="3">
-          <circle class="callout-dot" cx="600" cy="350" r="4"/>
-          <line class="callout-line" x1="600" y1="350" x2="1500" y2="200"/>
-          <!-- Tile layout plan view -->
-          <rect x="1500" y="120" width="25" height="60" fill="none" stroke="#fff" stroke-width="0.7" opacity="0.7"/>
-          <rect x="1530" y="120" width="25" height="60" fill="none" stroke="#fff" stroke-width="0.7" opacity="0.7"/>
-          <rect x="1560" y="120" width="25" height="60" fill="none" stroke="#fff" stroke-width="0.7" opacity="0.7"/>
-          <rect x="1590" y="120" width="25" height="60" fill="none" stroke="#fff" stroke-width="0.7" opacity="0.7"/>
-          <!-- Grout detail -->
-          <line x1="1500" y1="105" x2="1615" y2="105" stroke="#C9A96E" stroke-width="0.8"/>
-          <line x1="1500" y1="100" x2="1500" y2="110" stroke="#C9A96E" stroke-width="0.8"/>
-          <line x1="1615" y1="100" x2="1615" y2="110" stroke="#C9A96E" stroke-width="0.8"/>
-          <text class="callout-sublabel" x="1558" y="100" text-anchor="middle" font-size="8">FULL WALL HEIGHT</text>
-          <text class="callout-label" x="1500" y="200" font-size="11" fill="#fff" filter="url(#textshadow03)">FEATURE TILE WALL</text>
-          <text class="callout-sublabel" x="1500" y="215" font-size="8">STACKED VERTICAL BOND, FLOOR TO CEILING</text>
-          <text class="callout-sublabel" x="1500" y="228" font-size="8">2mm GROUT LINE, WHITE ON WHITE</text>
-        </g>
-
-        <!-- Vanity — main feature with detailed sketch -->
-        <g class="callout-group" data-index="4">
-          <circle class="callout-dot" cx="850" cy="580" r="4"/>
-          <line class="callout-line" x1="850" y1="580" x2="1350" y2="700"/>
-          <!-- Vanity elevation sketch -->
-          <rect x="1350" y="650" width="160" height="50" fill="none" stroke="#fff" stroke-width="1" opacity="0.8" rx="2"/>
-          <!-- Drawer line -->
-          <line x1="1430" y1="655" x2="1430" y2="695" stroke="#fff" stroke-width="0.6" opacity="0.5"/>
-          <!-- Bracket indicators -->
-          <line x1="1355" y1="650" x2="1355" y2="635" stroke="#C9A96E" stroke-width="1"/>
-          <line x1="1505" y1="650" x2="1505" y2="635" stroke="#C9A96E" stroke-width="1"/>
-          <line x1="1350" y1="635" x2="1360" y2="635" stroke="#C9A96E" stroke-width="1"/>
-          <line x1="1500" y1="635" x2="1510" y2="635" stroke="#C9A96E" stroke-width="1"/>
-          <!-- Wall line -->
-          <line x1="1340" y1="620" x2="1340" y2="720" stroke="#fff" stroke-width="1.5" opacity="0.4"/>
-          <!-- Basin on top -->
-          <path d="M1390,640 Q1390,630 1405,630 L1435,630 Q1450,630 1450,640" fill="none" stroke="#fff" stroke-width="0.8" opacity="0.7"/>
-          <!-- Floor clearance dimension -->
-          <line x1="1520" y1="700" x2="1520" y2="750" stroke="#C9A96E" stroke-width="0.8"/>
-          <line x1="1515" y1="700" x2="1525" y2="700" stroke="#C9A96E" stroke-width="0.8"/>
-          <line x1="1515" y1="750" x2="1525" y2="750" stroke="#C9A96E" stroke-width="0.8"/>
-          <text class="callout-sublabel" x="1530" y="730" font-size="8">400mm CLR</text>
-          <text class="callout-label" x="1350" y="770" font-size="11" fill="#fff" filter="url(#textshadow03)">FLOATING VANITY</text>
-          <text class="callout-sublabel" x="1350" y="785" font-size="8">SOLID OAK, 1200 x 450 x 350mm</text>
-          <text class="callout-sublabel" x="1350" y="798" font-size="8">CONCEALED STEEL WALL BRACKETS</text>
-        </g>
-
-        <!-- Honed concrete floor — bottom -->
-        <g class="callout-group" data-index="5">
-          <circle class="callout-dot" cx="700" cy="900" r="4"/>
-          <line class="callout-line" x1="700" y1="900" x2="1350" y2="900"/>
-          <!-- Floor cross-section -->
-          <rect x="1350" y="870" width="120" height="12" fill="none" stroke="#fff" stroke-width="0.8" opacity="0.7"/>
-          <rect x="1350" y="882" width="120" height="25" fill="none" stroke="#fff" stroke-width="0.8" opacity="0.5"/>
-          <!-- Aggregate dots -->
-          <circle cx="1370" cy="876" r="1.5" fill="#fff" opacity="0.3"/>
-          <circle cx="1390" cy="878" r="1" fill="#fff" opacity="0.3"/>
-          <circle cx="1410" cy="875" r="1.5" fill="#fff" opacity="0.3"/>
-          <circle cx="1430" cy="877" r="1" fill="#fff" opacity="0.3"/>
-          <circle cx="1450" cy="876" r="1.5" fill="#fff" opacity="0.3"/>
-          <text class="callout-sublabel" x="1480" y="878" font-size="7">HONED FINISH</text>
-          <text class="callout-sublabel" x="1480" y="898" font-size="7">SLAB</text>
-          <text class="callout-label" x="1350" y="925" font-size="11" fill="#fff" filter="url(#textshadow03)">POLISHED AGGREGATE</text>
-          <text class="callout-sublabel" x="1350" y="940" font-size="8">HONED CONCRETE, WARM GREY AGGREGATE</text>
-          <text class="callout-sublabel" x="1350" y="953" font-size="8">SEALED MATTE, UNDERFLOOR HEATED</text>
-        </g>
-      </svg>
-    </div>
-
-  </div><!-- /sticky-viewport -->
-</div><!-- /scroll-container -->
-
-<!-- ── Mobile Callouts (hidden on desktop) ── -->
-<div class="mobile-callouts" id="mobileCallouts02" style="display:none;">
-  <div class="mobile-callout-item"><div class="mc-dot"></div><div><div class="mc-title">Stacked Bond Tile</div><div class="mc-spec">Gloss white ceramic, 75 x 300mm subway</div></div></div>
-  <div class="mobile-callout-item"><div class="mc-dot"></div><div><div class="mc-title">Vessel Basins</div><div class="mc-spec">Matte white ceramic, above-counter mount</div></div></div>
-  <div class="mobile-callout-item"><div class="mc-dot"></div><div><div class="mc-title">Floating Oak Vanity</div><div class="mc-spec">Solid oak, 1200mm, concealed wall bracket</div></div></div>
-  <div class="mobile-callout-item"><div class="mc-dot"></div><div><div class="mc-title">Brushed Brass Tapware</div><div class="mc-spec">Wall mixer, 200mm swivel spout</div></div></div>
-  <div class="mobile-callout-item"><div class="mc-dot"></div><div><div class="mc-title">Arch-Top Mirrors</div><div class="mc-spec">Custom profile, 900mm, LED backlit</div></div></div>
-</div>
-
-<div class="mobile-callouts" id="mobileCallouts03" style="display:none;">
-  <div class="mobile-callout-item"><div class="mc-dot"></div><div><div class="mc-title">Frameless Shower Screen</div><div class="mc-spec">10mm clear toughened, fixed panel</div></div></div>
-  <div class="mobile-callout-item"><div class="mc-dot"></div><div><div class="mc-title">Rain Shower</div><div class="mc-spec">250mm head, brushed brass, ceiling-mounted</div></div></div>
-  <div class="mobile-callout-item"><div class="mc-dot"></div><div><div class="mc-title">Feature Tile Wall</div><div class="mc-spec">Stacked vertical bond, floor to ceiling</div></div></div>
-  <div class="mobile-callout-item"><div class="mc-dot"></div><div><div class="mc-title">Floating Vanity</div><div class="mc-spec">Solid oak, 1200 x 450 x 350mm</div></div></div>
-  <div class="mobile-callout-item"><div class="mc-dot"></div><div><div class="mc-title">Polished Aggregate Floor</div><div class="mc-spec">Honed concrete, warm grey, underfloor heated</div></div></div>
-</div>
-
-<!-- ════════════════════════════════════════ -->
-<!-- SECTIONS BELOW ANIMATION               -->
-<!-- ════════════════════════════════════════ -->
-<div class="section-below">
-
-  <!-- Project Summary -->
-  <section style="padding: 120px 40px; max-width: 1200px; margin: 0 auto;">
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;">
-      <div class="fade-in">
-        <div class="small-caps tracking-wide" style="font-size: 0.7rem; color: #C9A96E; margin-bottom: 16px;">Project Overview</div>
-        <h2 class="heading-serif-light" style="font-size: clamp(2rem, 4vw, 3.2rem); margin-bottom: 24px;">Semaphore<br>Master Suite</h2>
-        <div class="gold-rule" style="margin-bottom: 24px;"></div>
-        <p style="font-size: 0.95rem; line-height: 1.8; color: rgba(44,44,44,0.75); font-weight: 300;">
-          A complete transformation of the master bedroom and ensuite bathroom in this
-          coastal Semaphore home. The design balances warmth and sophistication — floating
-          timber vanities, brushed brass fixtures, and a curated material palette that
-          honours the home's beachside character while delivering contemporary luxury.
-        </p>
+  <!-- Navigation -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500" style="background: transparent;">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+      <div class="flex items-center justify-between h-20 lg:h-24">
+        <a href="#hero" class="relative z-50">
+          <svg width="140" height="44" viewBox="0 0 140 44" xmlns="http://www.w3.org/2000/svg">
+            <text x="0" y="28" font-family="Cormorant Garamond, Georgia, serif" font-size="32" font-weight="400" fill="#F5F0EB" letter-spacing="3">LK</text>
+            <line x1="0" y1="33" x2="48" y2="33" stroke="#C9A96E" stroke-width="0.75"/>
+            <text x="0" y="43" font-family="Inter, sans-serif" font-size="7" font-weight="500" fill="#F5F0EB" letter-spacing="3.5" font-variant="small-caps">DESIGN AND BUILD</text>
+          </svg>
+        </a>
+        <div class="hidden lg:flex items-center space-x-10">
+          <a href="#about" class="nav-link text-cream text-xs font-sans font-medium tracking-wide-custom uppercase">About</a>
+          <a href="#services" class="nav-link text-cream text-xs font-sans font-medium tracking-wide-custom uppercase">Services</a>
+          <a href="#showcase" class="nav-link text-cream text-xs font-sans font-medium tracking-wide-custom uppercase">Showcase</a>
+          <a href="#portfolio" class="nav-link text-cream text-xs font-sans font-medium tracking-wide-custom uppercase">Portfolio</a>
+          <a href="#process" class="nav-link text-cream text-xs font-sans font-medium tracking-wide-custom uppercase">Process</a>
+          <a href="#contact" class="nav-link text-cream text-xs font-sans font-medium tracking-wide-custom uppercase">Contact</a>
+          <a href="#contact" class="btn-primary" style="padding: 10px 28px; border-color: rgba(201,169,110,0.6); color: #F5F0EB;">Book Consultation</a>
+        </div>
+        <button id="hamburger-btn" class="hamburger lg:hidden relative z-50 p-2" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
       </div>
-      <div class="fade-in" style="transition-delay: 0.15s;">
-        <div style="border: 1px solid rgba(201,169,110,0.2); padding: 40px;">
-          <div class="small-caps tracking-wide" style="font-size: 0.65rem; color: #C9A96E; margin-bottom: 24px;">Specifications</div>
-          <div style="display: grid; gap: 20px;">
-            <div style="border-bottom: 1px solid rgba(201,169,110,0.12); padding-bottom: 16px;">
-              <div style="font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(44,44,44,0.45); margin-bottom: 4px;">Location</div>
-              <div style="font-size: 0.9rem; font-weight: 400;">Semaphore, South Australia</div>
-            </div>
-            <div style="border-bottom: 1px solid rgba(201,169,110,0.12); padding-bottom: 16px;">
-              <div style="font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(44,44,44,0.45); margin-bottom: 4px;">Scope</div>
-              <div style="font-size: 0.9rem; font-weight: 400;">Master Bedroom + Ensuite Bathroom</div>
-            </div>
-            <div style="border-bottom: 1px solid rgba(201,169,110,0.12); padding-bottom: 16px;">
-              <div style="font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(44,44,44,0.45); margin-bottom: 4px;">Style</div>
-              <div style="font-size: 0.9rem; font-weight: 400;">Coastal Contemporary</div>
-            </div>
-            <div style="border-bottom: 1px solid rgba(201,169,110,0.12); padding-bottom: 16px;">
-              <div style="font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(44,44,44,0.45); margin-bottom: 4px;">Key Materials</div>
-              <div style="font-size: 0.9rem; font-weight: 400;">Solid Oak, Brushed Brass, Honed Concrete</div>
-            </div>
-            <div>
-              <div style="font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(44,44,44,0.45); margin-bottom: 4px;">Duration</div>
-              <div style="font-size: 0.9rem; font-weight: 400;">12 Weeks</div>
+    </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="mobile-menu">
+    <a href="#about" class="mobile-nav-link">About</a>
+    <a href="#services" class="mobile-nav-link">Services</a>
+    <a href="#showcase" class="mobile-nav-link">Showcase</a>
+    <a href="#portfolio" class="mobile-nav-link">Portfolio</a>
+    <a href="#process" class="mobile-nav-link">Process</a>
+    <a href="#contact" class="mobile-nav-link">Contact</a>
+    <div class="mt-8">
+      <a href="#contact" class="btn-primary mobile-nav-link" style="color: #F5F0EB;">Book Consultation</a>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <section id="hero" class="relative h-screen flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0">
+      <img src="../assets/images/hero-1.jpg" alt="LK Design and Build - Premium Adelaide renovation" class="w-full h-full object-cover">
+      <div class="absolute inset-0 bg-charcoal/55"></div>
+    </div>
+    <div class="hero-frame"></div>
+    <div class="relative z-10 text-center px-6 max-w-4xl">
+      <p class="text-gold text-xs font-sans font-medium tracking-wide-custom uppercase mb-6 fade-in">Adelaide's Premier Design Studio</p>
+      <h1 class="heading-serif-light text-5xl md:text-7xl lg:text-8xl text-white mb-8 fade-in" style="transition-delay: 0.2s;">
+        Crafting<br>Exceptional Spaces
+      </h1>
+      <div class="gold-rule mx-auto mb-8 fade-in" style="transition-delay: 0.35s;"></div>
+      <p class="text-cream/80 font-sans text-sm md:text-base font-light max-w-xl mx-auto mb-10 leading-relaxed fade-in" style="transition-delay: 0.45s;">
+        Interior design, renovations, and bespoke builds that transform the way you live.
+      </p>
+      <div class="fade-in" style="transition-delay: 0.6s;">
+        <a href="#portfolio" class="btn-primary" style="color: #F5F0EB; border-color: rgba(201,169,110,0.6);">View Our Work</a>
+      </div>
+    </div>
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 fade-in" style="transition-delay: 0.8s;">
+      <div class="w-px h-12 bg-gold/40 mx-auto mb-2"></div>
+      <p class="text-cream/50 text-[10px] font-sans tracking-wide-custom uppercase">Scroll</p>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="section-padding bg-cream">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+      <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+        <div class="fade-in-left">
+          <p class="text-gold text-xs font-sans font-medium tracking-wide-custom uppercase mb-4">About Us</p>
+          <h2 class="heading-serif text-4xl md:text-5xl lg:text-6xl text-charcoal mb-8">
+            Where Vision<br>Meets Craft
+          </h2>
+          <div class="gold-rule mb-8"></div>
+          <p class="text-charcoal/70 font-sans text-sm leading-[1.9] mb-6">
+            LK Design and Build is an Adelaide-based design and construction studio led by Lyda, specialising in creating spaces that balance beauty with everyday functionality. We bring a considered, detail-driven approach to every project.
+          </p>
+          <p class="text-charcoal/70 font-sans text-sm leading-[1.9] mb-10">
+            From complete home renovations and additions to interior styling and bespoke new builds, we partner with our clients from initial concept through to final handover, ensuring every decision reflects your lifestyle and aspirations.
+          </p>
+          <a href="#contact" class="btn-primary">Start Your Project</a>
+        </div>
+        <div class="fade-in-right">
+          <div class="relative">
+            <img src="../assets/images/hero-2.jpg" alt="LK Design and Build interior" class="w-full aspect-[4/5] object-cover">
+            <div class="absolute -bottom-6 -left-6 w-48 h-48 border border-gold/20 -z-10"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Divider -->
+  <div class="bg-cream px-6 lg:px-12"><div class="max-w-7xl mx-auto"><div class="gold-rule-wide"></div></div></div>
+
+  <!-- Services -->
+  <section id="services" class="section-padding bg-cream">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+      <div class="text-center mb-20 fade-in">
+        <p class="text-gold text-xs font-sans font-medium tracking-wide-custom uppercase mb-4">What We Do</p>
+        <h2 class="heading-serif text-4xl md:text-5xl lg:text-6xl text-charcoal mb-6">Our Services</h2>
+        <div class="gold-rule mx-auto"></div>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 stagger-children">
+        <div class="service-card text-center fade-in">
+          <div class="mb-6">
+            <svg class="w-10 h-10 mx-auto text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1">
+              <path d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/>
+            </svg>
+          </div>
+          <h3 class="heading-serif text-2xl text-charcoal mb-4">Interior Design</h3>
+          <p class="text-charcoal/60 font-sans text-sm leading-relaxed">Thoughtful spatial planning, material selection, and styling that bring cohesion and character to every room.</p>
+        </div>
+        <div class="service-card text-center fade-in">
+          <div class="mb-6">
+            <svg class="w-10 h-10 mx-auto text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1">
+              <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0h4"/>
+            </svg>
+          </div>
+          <h3 class="heading-serif text-2xl text-charcoal mb-4">Renovations</h3>
+          <p class="text-charcoal/60 font-sans text-sm leading-relaxed">Transforming existing homes with precision and care, enhancing both functionality and aesthetic appeal.</p>
+        </div>
+        <div class="service-card text-center fade-in">
+          <div class="mb-6">
+            <svg class="w-10 h-10 mx-auto text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1">
+              <path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+            </svg>
+          </div>
+          <h3 class="heading-serif text-2xl text-charcoal mb-4">Additions</h3>
+          <p class="text-charcoal/60 font-sans text-sm leading-relaxed">Seamless extensions and additions that expand your living space while honouring the existing architecture.</p>
+        </div>
+        <div class="service-card text-center fade-in">
+          <div class="mb-6">
+            <svg class="w-10 h-10 mx-auto text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1">
+              <path d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"/>
+            </svg>
+          </div>
+          <h3 class="heading-serif text-2xl text-charcoal mb-4">New Builds</h3>
+          <p class="text-charcoal/60 font-sans text-sm leading-relaxed">Bespoke homes designed and built from the ground up, tailored entirely to your vision and lifestyle.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- FEATURED PROJECT: SCROLL-DRIVEN SHOWCASE       -->
+  <!-- ═══════════════════════════════════════════════ -->
+
+  <!-- Showcase intro -->
+  <section id="showcase" class="bg-charcoal py-20">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 text-center fade-in">
+      <p class="text-gold text-xs font-sans font-medium tracking-wide-custom uppercase mb-4">Featured Project</p>
+      <h2 class="heading-serif text-4xl md:text-5xl lg:text-6xl text-cream mb-6">Semaphore Master Suite</h2>
+      <div class="gold-rule mx-auto mb-6"></div>
+      <p class="text-cream/60 font-sans text-sm max-w-lg mx-auto">Scroll through this interactive showcase to explore the materials, finishes, and design details of this coastal contemporary renovation.</p>
+    </div>
+  </section>
+
+  <!-- Scroll animation -->
+  <div class="scroll-container" id="scrollContainer">
+    <div class="sticky-viewport" id="stickyViewport">
+      <img class="img-layer active" id="img1"
+           src="../assets/images/semaphore_anim01_hd.jpg"
+           alt="Semaphore master bathroom — vanity wall with subway tiles and brass fixtures"
+           loading="eager">
+      <img class="img-layer" id="img2"
+           src="../assets/images/semaphore_anim02_hd.jpg"
+           alt="Semaphore bathroom — floating vanity with vessel basins, arch mirrors and subway tile wall"
+           loading="eager">
+      <img class="img-layer" id="img3"
+           src="../assets/images/semaphore_anim03_hd.jpg"
+           alt="Semaphore master bedroom — wide view with ceiling fan, sheer curtains and pendant lights"
+           loading="eager">
+
+      <div id="creamOverlay" style="position:absolute;top:0;left:0;width:100%;height:100%;background:#2C2C2C;z-index:3;pointer-events:none;"></div>
+      <div class="anim-deco-frame" id="decoFrame"></div>
+
+      <div class="anim-hero-overlay" id="animHero">
+        <div class="anim-title">Semaphore</div>
+        <div class="anim-subtitle">Master Suite Renovation</div>
+        <div class="anim-rule"></div>
+      </div>
+
+      <div class="scroll-hint" id="scrollHint">
+        <span>Scroll to explore</span>
+        <div class="scroll-line"></div>
+      </div>
+
+      <!-- Callout Layer: Image 02 (Vanity — GGB-style technical) -->
+      <div class="callout-layer" id="callouts02" style="opacity:0;">
+        <svg viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <filter id="ts02"><feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#000" flood-opacity="0.5"/></filter>
+          </defs>
+          <!-- Title card -->
+          <g class="callout-group" data-index="0">
+            <rect class="callout-line" x="50" y="40" width="340" height="50" fill="none" stroke="#fff" stroke-width="1.5" stroke-dasharray="400" stroke-dashoffset="400"/>
+            <text class="callout-label" x="65" y="62" font-size="15" letter-spacing="0.12em" fill="#fff" filter="url(#ts02)">SEMAPHORE ENSUITE, 2024</text>
+            <text class="callout-sublabel" x="65" y="80" font-size="9" fill="rgba(255,255,255,0.6)">DESIGN + BUILD BY LK</text>
+          </g>
+          <!-- Stacked bond tile pattern -->
+          <g class="callout-group" data-index="1">
+            <circle class="callout-dot" cx="350" cy="380" r="4"/>
+            <line class="callout-line" x1="350" y1="380" x2="100" y2="280"/>
+            <rect x="60" y="130" width="30" height="70" fill="none" stroke="#fff" stroke-width="0.8" opacity="0.8"/>
+            <rect x="95" y="130" width="30" height="70" fill="none" stroke="#fff" stroke-width="0.8" opacity="0.8"/>
+            <rect x="130" y="130" width="30" height="70" fill="none" stroke="#fff" stroke-width="0.8" opacity="0.8"/>
+            <rect x="60" y="205" width="30" height="70" fill="none" stroke="#fff" stroke-width="0.8" opacity="0.8"/>
+            <rect x="95" y="205" width="30" height="70" fill="none" stroke="#fff" stroke-width="0.8" opacity="0.8"/>
+            <rect x="130" y="205" width="30" height="70" fill="none" stroke="#fff" stroke-width="0.8" opacity="0.8"/>
+            <line x1="55" y1="130" x2="55" y2="275" stroke="#C9A96E" stroke-width="0.8"/>
+            <line x1="50" y1="130" x2="60" y2="130" stroke="#C9A96E" stroke-width="0.8"/>
+            <line x1="50" y1="275" x2="60" y2="275" stroke="#C9A96E" stroke-width="0.8"/>
+            <text class="callout-sublabel" x="48" y="206" text-anchor="end" font-size="8" transform="rotate(-90,48,206)">300mm</text>
+            <text class="callout-label" x="60" y="122" font-size="11" fill="#fff" filter="url(#ts02)">STACKED BOND</text>
+            <text class="callout-sublabel" x="60" y="295" font-size="8">GLOSS WHITE CERAMIC</text>
+            <text class="callout-sublabel" x="60" y="308" font-size="8">75 x 300mm SUBWAY</text>
+          </g>
+          <!-- Vessel basin cross-section -->
+          <g class="callout-group" data-index="2">
+            <circle class="callout-dot" cx="870" cy="550" r="4"/>
+            <line class="callout-line" x1="870" y1="550" x2="1050" y2="450"/>
+            <path d="M1050,370 Q1050,340 1080,340 L1160,340 Q1190,340 1190,370 L1190,400 Q1190,420 1170,425 L1070,425 Q1050,420 1050,400 Z" fill="none" stroke="#fff" stroke-width="1" opacity="0.8"/>
+            <line x1="1120" y1="425" x2="1120" y2="460" stroke="#fff" stroke-width="1" opacity="0.6"/>
+            <circle cx="1120" cy="465" r="5" fill="none" stroke="#fff" stroke-width="0.8" opacity="0.6"/>
+            <line x1="1045" y1="340" x2="1045" y2="425" stroke="#C9A96E" stroke-width="0.8"/>
+            <line x1="1040" y1="340" x2="1050" y2="340" stroke="#C9A96E" stroke-width="0.8"/>
+            <line x1="1040" y1="425" x2="1050" y2="425" stroke="#C9A96E" stroke-width="0.8"/>
+            <text class="callout-sublabel" x="1038" y="386" text-anchor="end" font-size="8" transform="rotate(-90,1038,386)">145mm</text>
+            <text class="callout-label" x="1050" y="332" font-size="11" fill="#fff" filter="url(#ts02)">VESSEL BASIN</text>
+            <text class="callout-sublabel" x="1050" y="480" font-size="8">MATTE WHITE CERAMIC</text>
+            <text class="callout-sublabel" x="1050" y="493" font-size="8">ABOVE-COUNTER MOUNT</text>
+          </g>
+          <!-- Floating vanity mounting detail -->
+          <g class="callout-group" data-index="3">
+            <circle class="callout-dot" cx="700" cy="640" r="4"/>
+            <line class="callout-line" x1="700" y1="640" x2="560" y2="720"/>
+            <rect x="500" y="740" width="180" height="55" fill="none" stroke="#fff" stroke-width="1" opacity="0.8"/>
+            <line x1="500" y1="740" x2="480" y2="740" stroke="#fff" stroke-width="2" opacity="0.6"/>
+            <line x1="480" y1="720" x2="480" y2="800" stroke="#fff" stroke-width="2" opacity="0.6"/>
+            <circle cx="490" cy="750" r="2" fill="#C9A96E"/>
+            <circle cx="490" cy="770" r="2" fill="#C9A96E"/>
+            <line x1="500" y1="800" x2="680" y2="800" stroke="#C9A96E" stroke-width="0.8"/>
+            <line x1="500" y1="796" x2="500" y2="804" stroke="#C9A96E" stroke-width="0.8"/>
+            <line x1="680" y1="796" x2="680" y2="804" stroke="#C9A96E" stroke-width="0.8"/>
+            <text class="callout-sublabel" x="590" y="815" text-anchor="middle" font-size="8">1200mm</text>
+            <text class="callout-label" x="500" y="732" font-size="11" fill="#fff" filter="url(#ts02)">FLOATING VANITY</text>
+            <text class="callout-sublabel" x="500" y="835" font-size="8">SOLID OAK, CONCEALED WALL BRACKET</text>
+          </g>
+          <!-- Brass tapware detail -->
+          <g class="callout-group" data-index="4">
+            <circle class="callout-dot" cx="780" cy="410" r="4"/>
+            <line class="callout-line" x1="780" y1="410" x2="1400" y2="300"/>
+            <line x1="1400" y1="230" x2="1400" y2="270" stroke="#fff" stroke-width="1.5" opacity="0.8"/>
+            <path d="M1400,230 Q1400,210 1420,210 L1470,210 Q1480,210 1480,220" fill="none" stroke="#fff" stroke-width="1.5" opacity="0.8"/>
+            <circle cx="1480" cy="224" r="3" fill="none" stroke="#fff" stroke-width="1" opacity="0.6"/>
+            <line x1="1390" y1="240" x2="1370" y2="235" stroke="#fff" stroke-width="1.2" opacity="0.8"/>
+            <circle cx="1367" cy="234" r="4" fill="none" stroke="#fff" stroke-width="1" opacity="0.8"/>
+            <text class="callout-label" x="1400" y="200" font-size="11" fill="#fff" filter="url(#ts02)">WALL MIXER</text>
+            <text class="callout-sublabel" x="1400" y="285" font-size="8">BRUSHED BRASS FINISH</text>
+            <text class="callout-sublabel" x="1400" y="298" font-size="8">200mm SWIVEL SPOUT</text>
+          </g>
+          <!-- Arch mirror profile -->
+          <g class="callout-group" data-index="5">
+            <circle class="callout-dot" cx="560" cy="270" r="4"/>
+            <line class="callout-line" x1="560" y1="270" x2="1500" y2="550"/>
+            <path d="M1500,580 L1500,680 L1560,680 L1560,580 Q1560,550 1530,550 Q1500,550 1500,580 Z" fill="none" stroke="#fff" stroke-width="1" opacity="0.8"/>
+            <path d="M1505,585 L1505,675" stroke="#C9A96E" stroke-width="2" stroke-dasharray="3,3"/>
+            <text class="callout-sublabel" x="1510" y="640" font-size="7" fill="#C9A96E" transform="rotate(-90,1510,640)">LED STRIP</text>
+            <line x1="1495" y1="550" x2="1495" y2="680" stroke="#C9A96E" stroke-width="0.8"/>
+            <line x1="1490" y1="550" x2="1500" y2="550" stroke="#C9A96E" stroke-width="0.8"/>
+            <line x1="1490" y1="680" x2="1500" y2="680" stroke="#C9A96E" stroke-width="0.8"/>
+            <text class="callout-sublabel" x="1488" y="620" text-anchor="end" font-size="8" transform="rotate(-90,1488,620)">900mm</text>
+            <text class="callout-label" x="1500" y="542" font-size="11" fill="#fff" filter="url(#ts02)">ARCH-TOP MIRROR</text>
+            <text class="callout-sublabel" x="1500" y="698" font-size="8">CUSTOM PROFILE, LED BACKLIT</text>
+          </g>
+        </svg>
+      </div>
+
+      <!-- Callout Layer: Image 03 (Wide room — bathroom-focused) -->
+      <div class="callout-layer" id="callouts03" style="opacity:0;">
+        <svg viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <filter id="ts03"><feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#000" flood-opacity="0.5"/></filter>
+          </defs>
+          <!-- Title card -->
+          <g class="callout-group" data-index="0">
+            <rect class="callout-line" x="50" y="40" width="380" height="50" fill="none" stroke="#fff" stroke-width="1.5" stroke-dasharray="400" stroke-dashoffset="400"/>
+            <text class="callout-label" x="65" y="62" font-size="15" letter-spacing="0.12em" fill="#fff" filter="url(#ts03)">MASTER SUITE OVERVIEW</text>
+            <text class="callout-sublabel" x="65" y="80" font-size="9" fill="rgba(255,255,255,0.6)">MATERIALS + CONSTRUCTION</text>
+          </g>
+          <!-- Vanity detail -->
+          <g class="callout-group" data-index="1">
+            <circle class="callout-dot" cx="440" cy="620" r="4"/>
+            <line class="callout-line" x1="440" y1="620" x2="200" y2="520"/>
+            <rect x="120" y="440" width="130" height="50" fill="none" stroke="#fff" stroke-width="1" opacity="0.8" rx="2"/>
+            <line x1="185" y1="445" x2="185" y2="485" stroke="#fff" stroke-width="0.6" opacity="0.5"/>
+            <line x1="115" y1="430" x2="115" y2="500" stroke="#fff" stroke-width="1.5" opacity="0.4"/>
+            <text class="callout-label" x="120" y="530" font-size="11" fill="#fff" filter="url(#ts03)">OAK VANITY</text>
+            <text class="callout-sublabel" x="120" y="545" font-size="8">SOLID TIMBER, WALL-MOUNTED</text>
+          </g>
+          <!-- Bead pendants -->
+          <g class="callout-group" data-index="2">
+            <circle class="callout-dot" cx="580" cy="380" r="4"/>
+            <line class="callout-line" x1="580" y1="380" x2="350" y2="280"/>
+            <circle cx="350" cy="230" r="18" fill="none" stroke="#fff" stroke-width="0.8" opacity="0.7"/>
+            <line x1="350" y1="212" x2="350" y2="180" stroke="#fff" stroke-width="0.8" opacity="0.5"/>
+            <line x1="340" y1="248" x2="335" y2="265" stroke="#fff" stroke-width="0.6" opacity="0.5"/>
+            <line x1="350" y1="248" x2="350" y2="268" stroke="#fff" stroke-width="0.6" opacity="0.5"/>
+            <line x1="360" y1="248" x2="365" y2="265" stroke="#fff" stroke-width="0.6" opacity="0.5"/>
+            <text class="callout-label" x="380" y="225" font-size="11" fill="#fff" filter="url(#ts03)">BEAD PENDANT</text>
+            <text class="callout-sublabel" x="380" y="240" font-size="8">HAND-THREADED COASTAL</text>
+          </g>
+          <!-- Aggregate floor -->
+          <g class="callout-group" data-index="3">
+            <circle class="callout-dot" cx="900" cy="920" r="4"/>
+            <line class="callout-line" x1="900" y1="920" x2="1200" y2="880"/>
+            <rect x="1200" y="860" width="120" height="12" fill="none" stroke="#fff" stroke-width="0.8" opacity="0.7"/>
+            <rect x="1200" y="872" width="120" height="20" fill="none" stroke="#fff" stroke-width="0.8" opacity="0.5"/>
+            <circle cx="1220" cy="866" r="1.5" fill="#fff" opacity="0.3"/>
+            <circle cx="1250" cy="868" r="1" fill="#fff" opacity="0.3"/>
+            <circle cx="1280" cy="865" r="1.5" fill="#fff" opacity="0.3"/>
+            <text class="callout-sublabel" x="1330" y="868" font-size="7">HONED</text>
+            <text class="callout-sublabel" x="1330" y="885" font-size="7">SLAB</text>
+            <text class="callout-label" x="1200" y="910" font-size="11" fill="#fff" filter="url(#ts03)">POLISHED AGGREGATE</text>
+            <text class="callout-sublabel" x="1200" y="925" font-size="8">HONED CONCRETE, UNDERFLOOR HEATED</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile callouts -->
+  <div class="mobile-callouts" id="mobileCallouts02" style="display:none;">
+    <div class="mobile-callout-item"><div class="mc-dot"></div><div><div class="mc-title">Stacked Bond Tile</div><div class="mc-spec">Gloss white ceramic, 75 x 300mm subway</div></div></div>
+    <div class="mobile-callout-item"><div class="mc-dot"></div><div><div class="mc-title">Vessel Basins</div><div class="mc-spec">Matte white ceramic, above-counter mount</div></div></div>
+    <div class="mobile-callout-item"><div class="mc-dot"></div><div><div class="mc-title">Floating Oak Vanity</div><div class="mc-spec">Solid oak, 1200mm, concealed wall bracket</div></div></div>
+    <div class="mobile-callout-item"><div class="mc-dot"></div><div><div class="mc-title">Brushed Brass Tapware</div><div class="mc-spec">Wall mixer, 200mm swivel spout</div></div></div>
+    <div class="mobile-callout-item"><div class="mc-dot"></div><div><div class="mc-title">Arch-Top Mirrors</div><div class="mc-spec">Custom profile, 900mm, LED backlit</div></div></div>
+  </div>
+  <div class="mobile-callouts" id="mobileCallouts03" style="display:none;">
+    <div class="mobile-callout-item"><div class="mc-dot"></div><div><div class="mc-title">Oak Vanity</div><div class="mc-spec">Solid timber, wall-mounted</div></div></div>
+    <div class="mobile-callout-item"><div class="mc-dot"></div><div><div class="mc-title">Bead Pendants</div><div class="mc-spec">Hand-threaded coastal detail</div></div></div>
+    <div class="mobile-callout-item"><div class="mc-dot"></div><div><div class="mc-title">Polished Aggregate Floor</div><div class="mc-spec">Honed concrete, underfloor heated</div></div></div>
+  </div>
+
+  <!-- Project details after animation -->
+  <section class="bg-charcoal py-20">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+      <div class="grid lg:grid-cols-2 gap-16 items-start">
+        <div class="fade-in">
+          <p class="text-gold text-xs font-sans font-medium tracking-wide-custom uppercase mb-4">Project Details</p>
+          <h3 class="heading-serif text-3xl md:text-4xl text-cream mb-6">Semaphore<br>Master Suite</h3>
+          <div class="gold-rule mb-6"></div>
+          <p class="text-cream/60 font-sans text-sm leading-[1.9]">
+            A complete transformation of the master bedroom and ensuite bathroom in this
+            coastal Semaphore home. The design balances warmth and sophistication — floating
+            timber vanities, brushed brass fixtures, and a curated material palette that
+            honours the home's beachside character while delivering contemporary luxury.
+          </p>
+        </div>
+        <div class="fade-in" style="transition-delay: 0.15s;">
+          <div style="border: 1px solid rgba(201,169,110,0.2); padding: 40px;">
+            <p class="text-gold text-xs font-sans font-medium tracking-wide-custom uppercase mb-6">Specifications</p>
+            <div class="space-y-5">
+              <div style="border-bottom: 1px solid rgba(201,169,110,0.12); padding-bottom: 14px;">
+                <p class="text-cream/40 text-xs font-sans tracking-wide-custom uppercase mb-1">Location</p>
+                <p class="text-cream font-sans text-sm">Semaphore, South Australia</p>
+              </div>
+              <div style="border-bottom: 1px solid rgba(201,169,110,0.12); padding-bottom: 14px;">
+                <p class="text-cream/40 text-xs font-sans tracking-wide-custom uppercase mb-1">Scope</p>
+                <p class="text-cream font-sans text-sm">Master Bedroom + Ensuite Bathroom</p>
+              </div>
+              <div style="border-bottom: 1px solid rgba(201,169,110,0.12); padding-bottom: 14px;">
+                <p class="text-cream/40 text-xs font-sans tracking-wide-custom uppercase mb-1">Style</p>
+                <p class="text-cream font-sans text-sm">Coastal Contemporary</p>
+              </div>
+              <div style="border-bottom: 1px solid rgba(201,169,110,0.12); padding-bottom: 14px;">
+                <p class="text-cream/40 text-xs font-sans tracking-wide-custom uppercase mb-1">Key Materials</p>
+                <p class="text-cream font-sans text-sm">Solid Oak, Brushed Brass, Honed Concrete</p>
+              </div>
+              <div>
+                <p class="text-cream/40 text-xs font-sans tracking-wide-custom uppercase mb-1">Duration</p>
+                <p class="text-cream font-sans text-sm">12 Weeks</p>
+              </div>
             </div>
           </div>
         </div>
@@ -756,367 +999,561 @@ footer a:hover { color: #D4BA85; }
     </div>
   </section>
 
-  <!-- Responsive grid fix for mobile -->
-  <style>
-    @media (max-width: 767px) {
-      section > div[style*="grid-template-columns: 1fr 1fr"] {
-        grid-template-columns: 1fr !important;
-        gap: 40px !important;
-      }
-    }
-  </style>
+  <!-- Portfolio -->
+  <section id="portfolio" class="section-padding bg-charcoal">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+      <div class="text-center mb-20 fade-in">
+        <p class="text-gold text-xs font-sans font-medium tracking-wide-custom uppercase mb-4">Selected Work</p>
+        <h2 class="heading-serif text-4xl md:text-5xl lg:text-6xl text-cream mb-6">Our Portfolio</h2>
+        <div class="gold-rule mx-auto"></div>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6 lg:gap-8 stagger-children">
+        <div class="portfolio-item cursor-pointer fade-in" onclick="openLightbox(0)">
+          <img src="../assets/images/project-broadview.jpg" alt="Broadview Renovation" class="w-full aspect-[4/3] object-cover">
+          <div class="portfolio-overlay"><div class="portfolio-overlay-content">
+            <p class="text-white text-xs font-sans tracking-wide-custom uppercase mb-2">Renovation</p>
+            <h3 class="heading-serif text-3xl text-white">Broadview</h3>
+          </div></div>
+        </div>
+        <div class="portfolio-item cursor-pointer fade-in" onclick="openLightbox(1)">
+          <img src="../assets/images/project-semaphore.jpg" alt="Semaphore Project" class="w-full aspect-[4/3] object-cover">
+          <div class="portfolio-overlay"><div class="portfolio-overlay-content">
+            <p class="text-white text-xs font-sans tracking-wide-custom uppercase mb-2">Design &amp; Build</p>
+            <h3 class="heading-serif text-3xl text-white">Semaphore</h3>
+          </div></div>
+        </div>
+        <div class="portfolio-item cursor-pointer fade-in" onclick="openLightbox(2)">
+          <img src="../assets/images/project-osr.jpg" alt="OSR Fit Out" class="w-full aspect-[4/3] object-cover">
+          <div class="portfolio-overlay"><div class="portfolio-overlay-content">
+            <p class="text-white text-xs font-sans tracking-wide-custom uppercase mb-2">Commercial Fit Out</p>
+            <h3 class="heading-serif text-3xl text-white">OSR Fit Out</h3>
+          </div></div>
+        </div>
+        <div class="portfolio-item cursor-pointer fade-in" onclick="openLightbox(3)">
+          <img src="../assets/images/project-unley.jpg" alt="Unley Renovation" class="w-full aspect-[4/3] object-cover">
+          <div class="portfolio-overlay"><div class="portfolio-overlay-content">
+            <p class="text-white text-xs font-sans tracking-wide-custom uppercase mb-2">Renovation</p>
+            <h3 class="heading-serif text-3xl text-white">Unley</h3>
+          </div></div>
+        </div>
+        <div class="portfolio-item cursor-pointer fade-in" onclick="openLightbox(4)">
+          <img src="../assets/images/project-semaphore2.jpg" alt="Semaphore Interior" class="w-full aspect-[4/3] object-cover">
+          <div class="portfolio-overlay"><div class="portfolio-overlay-content">
+            <p class="text-white text-xs font-sans tracking-wide-custom uppercase mb-2">Interior Design</p>
+            <h3 class="heading-serif text-3xl text-white">Semaphore II</h3>
+          </div></div>
+        </div>
+        <div class="portfolio-item cursor-pointer fade-in" onclick="openLightbox(5)">
+          <img src="../assets/images/project-semaphore3.jpg" alt="Semaphore Details" class="w-full aspect-[4/3] object-cover">
+          <div class="portfolio-overlay"><div class="portfolio-overlay-content">
+            <p class="text-white text-xs font-sans tracking-wide-custom uppercase mb-2">Design Details</p>
+            <h3 class="heading-serif text-3xl text-white">Semaphore III</h3>
+          </div></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <!-- Divider -->
-  <div style="max-width: 1200px; margin: 0 auto; padding: 0 40px;">
-    <div class="gold-rule-wide"></div>
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+    <button class="lightbox-close" onclick="closeLightbox(event)">&times;</button>
+    <button class="lightbox-nav lightbox-prev" onclick="prevImage(event)">&#8249;</button>
+    <img id="lightbox-img" src="" alt="Portfolio image">
+    <button class="lightbox-nav lightbox-next" onclick="nextImage(event)">&#8250;</button>
+    <p id="lightbox-caption" class="lightbox-caption"></p>
   </div>
 
-  <!-- Contact CTA -->
-  <section style="padding: 120px 40px; text-align: center;">
-    <div class="fade-in" style="max-width: 600px; margin: 0 auto;">
-      <div class="small-caps tracking-wide" style="font-size: 0.7rem; color: #C9A96E; margin-bottom: 16px;">Begin Your Project</div>
-      <h2 class="heading-serif-light" style="font-size: clamp(1.8rem, 3.5vw, 2.8rem); margin-bottom: 24px;">
-        Ready to Transform<br>Your Space?
-      </h2>
-      <div class="gold-rule" style="margin: 0 auto 32px;"></div>
-      <p style="font-size: 0.9rem; line-height: 1.8; color: rgba(44,44,44,0.65); font-weight: 300; margin-bottom: 40px;">
-        Every exceptional home begins with a conversation. Let's discuss your vision
-        and explore how we can bring it to life.
-      </p>
-      <a href="#" class="btn-primary">Get in Touch</a>
+  <!-- Process -->
+  <section id="process" class="section-padding bg-cream">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+      <div class="text-center mb-20 fade-in">
+        <p class="text-gold text-xs font-sans font-medium tracking-wide-custom uppercase mb-4">How We Work</p>
+        <h2 class="heading-serif text-4xl md:text-5xl lg:text-6xl text-charcoal mb-6">Our Process</h2>
+        <div class="gold-rule mx-auto"></div>
+      </div>
+      <div class="relative max-w-3xl mx-auto">
+        <div class="timeline-line"></div>
+        <div class="relative pl-16 md:pl-0 pb-16 fade-in">
+          <div class="timeline-dot"></div>
+          <div class="md:grid md:grid-cols-2 md:gap-16">
+            <div class="md:text-right md:pr-12">
+              <p class="text-gold text-xs font-sans font-medium tracking-wide-custom uppercase mb-2">Step 01</p>
+              <h3 class="heading-serif text-2xl md:text-3xl text-charcoal mb-3">Consultation</h3>
+              <p class="text-charcoal/60 font-sans text-sm leading-relaxed">We begin with a complimentary consultation to understand your vision, lifestyle needs, and budget.</p>
+            </div>
+            <div class="hidden md:block"></div>
+          </div>
+        </div>
+        <div class="relative pl-16 md:pl-0 pb-16 fade-in">
+          <div class="timeline-dot"></div>
+          <div class="md:grid md:grid-cols-2 md:gap-16">
+            <div class="hidden md:block"></div>
+            <div class="md:pl-12">
+              <p class="text-gold text-xs font-sans font-medium tracking-wide-custom uppercase mb-2">Step 02</p>
+              <h3 class="heading-serif text-2xl md:text-3xl text-charcoal mb-3">Design Concept</h3>
+              <p class="text-charcoal/60 font-sans text-sm leading-relaxed">Our design team develops detailed concepts including floor plans, material palettes, and 3D visualisations.</p>
+            </div>
+          </div>
+        </div>
+        <div class="relative pl-16 md:pl-0 pb-16 fade-in">
+          <div class="timeline-dot"></div>
+          <div class="md:grid md:grid-cols-2 md:gap-16">
+            <div class="md:text-right md:pr-12">
+              <p class="text-gold text-xs font-sans font-medium tracking-wide-custom uppercase mb-2">Step 03</p>
+              <h3 class="heading-serif text-2xl md:text-3xl text-charcoal mb-3">Documentation</h3>
+              <p class="text-charcoal/60 font-sans text-sm leading-relaxed">Comprehensive construction documentation, council approvals, and finalised specifications with full transparency.</p>
+            </div>
+            <div class="hidden md:block"></div>
+          </div>
+        </div>
+        <div class="relative pl-16 md:pl-0 pb-16 fade-in">
+          <div class="timeline-dot"></div>
+          <div class="md:grid md:grid-cols-2 md:gap-16">
+            <div class="hidden md:block"></div>
+            <div class="md:pl-12">
+              <p class="text-gold text-xs font-sans font-medium tracking-wide-custom uppercase mb-2">Step 04</p>
+              <h3 class="heading-serif text-2xl md:text-3xl text-charcoal mb-3">Construction</h3>
+              <p class="text-charcoal/60 font-sans text-sm leading-relaxed">Our skilled team brings the design to life with meticulous craftsmanship and regular progress updates.</p>
+            </div>
+          </div>
+        </div>
+        <div class="relative pl-16 md:pl-0 fade-in">
+          <div class="timeline-dot"></div>
+          <div class="md:grid md:grid-cols-2 md:gap-16">
+            <div class="md:text-right md:pr-12">
+              <p class="text-gold text-xs font-sans font-medium tracking-wide-custom uppercase mb-2">Step 05</p>
+              <h3 class="heading-serif text-2xl md:text-3xl text-charcoal mb-3">Handover</h3>
+              <p class="text-charcoal/60 font-sans text-sm leading-relaxed">A thorough quality inspection ensures every detail meets our standards before we hand over your dream space.</p>
+            </div>
+            <div class="hidden md:block"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="relative py-32 overflow-hidden">
+    <div class="absolute inset-0">
+      <img src="../assets/images/hero-3.jpg" alt="Interior design showcase" class="w-full h-full object-cover">
+      <div class="absolute inset-0 bg-charcoal/70"></div>
+    </div>
+    <div class="relative z-10 text-center px-6">
+      <p class="text-gold text-xs font-sans font-medium tracking-wide-custom uppercase mb-4 fade-in">Complimentary Consultation</p>
+      <h2 class="heading-serif text-4xl md:text-5xl lg:text-6xl text-white mb-6 fade-in" style="transition-delay: 0.15s;">Ready to Transform<br>Your Space?</h2>
+      <div class="gold-rule mx-auto mb-6 fade-in" style="transition-delay: 0.25s;"></div>
+      <p class="text-cream/70 font-sans text-sm mb-10 fade-in" style="transition-delay: 0.35s;">Book your free consultation valued at $350 and let's start the conversation.</p>
+      <div class="fade-in" style="transition-delay: 0.45s;">
+        <a href="#contact" class="btn-primary-filled">Book Free Consultation</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section-padding bg-charcoal">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+      <div class="grid lg:grid-cols-2 gap-16 lg:gap-24">
+        <div class="fade-in-left">
+          <p class="text-gold text-xs font-sans font-medium tracking-wide-custom uppercase mb-4">Get In Touch</p>
+          <h2 class="heading-serif text-4xl md:text-5xl text-cream mb-8">Let's Start<br>Something Beautiful</h2>
+          <div class="gold-rule mb-10"></div>
+          <p class="text-cream/60 font-sans text-sm leading-[1.9] mb-12">Whether you have a clear vision or need guidance discovering one, we'd love to hear from you. Book a complimentary consultation valued at $350 and take the first step toward your dream space.</p>
+          <div class="space-y-6 mb-12">
+            <div class="flex items-start space-x-4">
+              <svg class="w-5 h-5 text-gold mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+              <div>
+                <p class="text-cream/40 text-xs font-sans tracking-wide-custom uppercase mb-1">Phone</p>
+                <a href="tel:0481742026" class="text-cream font-sans text-sm hover:text-gold transition-colors">0481 742 026</a>
+              </div>
+            </div>
+            <div class="flex items-start space-x-4">
+              <svg class="w-5 h-5 text-gold mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              <div>
+                <p class="text-cream/40 text-xs font-sans tracking-wide-custom uppercase mb-1">Email</p>
+                <a href="mailto:hello@lkdesignandbuild.com.au" class="text-cream font-sans text-sm hover:text-gold transition-colors">hello@lkdesignandbuild.com.au</a>
+              </div>
+            </div>
+            <div class="flex items-start space-x-4">
+              <svg class="w-5 h-5 text-gold mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              <div>
+                <p class="text-cream/40 text-xs font-sans tracking-wide-custom uppercase mb-1">Location</p>
+                <p class="text-cream font-sans text-sm">Adelaide, South Australia</p>
+              </div>
+            </div>
+          </div>
+          <a href="https://www.instagram.com/primedesignbuilt/" target="_blank" rel="noopener" class="inline-flex items-center space-x-3 text-cream/50 hover:text-gold transition-colors">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            <span class="text-xs font-sans tracking-wide-custom uppercase">Follow Us on Instagram</span>
+          </a>
+        </div>
+        <div class="fade-in-right">
+          <form id="contact-form" class="space-y-8" onsubmit="handleSubmit(event)">
+            <div class="grid sm:grid-cols-2 gap-8">
+              <div>
+                <label class="text-cream/40 text-xs font-sans tracking-wide-custom uppercase block mb-2">Name</label>
+                <input type="text" name="name" required class="form-input form-input-dark" placeholder="Your full name">
+              </div>
+              <div>
+                <label class="text-cream/40 text-xs font-sans tracking-wide-custom uppercase block mb-2">Phone</label>
+                <input type="tel" name="phone" class="form-input form-input-dark" placeholder="Your phone number">
+              </div>
+            </div>
+            <div>
+              <label class="text-cream/40 text-xs font-sans tracking-wide-custom uppercase block mb-2">Email</label>
+              <input type="email" name="email" required class="form-input form-input-dark" placeholder="Your email address">
+            </div>
+            <div>
+              <label class="text-cream/40 text-xs font-sans tracking-wide-custom uppercase block mb-2">Service Interest</label>
+              <select name="service" class="form-input form-input-dark" style="background: transparent; -webkit-appearance: none;">
+                <option value="" style="background: #2C2C2C;">Select a service</option>
+                <option value="interior" style="background: #2C2C2C;">Interior Design</option>
+                <option value="renovation" style="background: #2C2C2C;">Renovation</option>
+                <option value="addition" style="background: #2C2C2C;">Addition</option>
+                <option value="newbuild" style="background: #2C2C2C;">New Build</option>
+                <option value="other" style="background: #2C2C2C;">Other / Not Sure</option>
+              </select>
+            </div>
+            <div>
+              <label class="text-cream/40 text-xs font-sans tracking-wide-custom uppercase block mb-2">Message</label>
+              <textarea name="message" rows="4" class="form-input form-input-dark" placeholder="Tell us about your project..."></textarea>
+            </div>
+            <button type="submit" class="btn-primary-filled w-full sm:w-auto">Send Enquiry</button>
+            <div id="form-success" class="hidden mt-4">
+              <p class="text-gold font-sans text-sm">Thank you for your enquiry. We'll be in touch within 24 hours.</p>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer>
-    <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px;">
-      <div>
-        <div style="font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: #F5F0EB; margin-bottom: 16px; letter-spacing: 0.03em;">LK Design & Build</div>
-        <p style="font-size: 0.8rem; line-height: 1.7;">Crafting exceptional spaces in Adelaide.</p>
-      </div>
-      <div>
-        <div class="small-caps" style="font-size: 0.65rem; color: #C9A96E; margin-bottom: 16px;">Quick Links</div>
-        <div style="display: flex; flex-direction: column; gap: 8px; font-size: 0.8rem;">
-          <a href="#">Projects</a>
-          <a href="#">Services</a>
-          <a href="#">About</a>
-          <a href="#">Contact</a>
+  <footer class="bg-charcoal border-t border-gold/10">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 py-16">
+      <div class="grid md:grid-cols-3 gap-12 items-start">
+        <div>
+          <svg width="120" height="38" viewBox="0 0 140 44" xmlns="http://www.w3.org/2000/svg" class="mb-6">
+            <text x="0" y="28" font-family="Cormorant Garamond, Georgia, serif" font-size="32" font-weight="400" fill="#F5F0EB" letter-spacing="3">LK</text>
+            <line x1="0" y1="33" x2="48" y2="33" stroke="#C9A96E" stroke-width="0.75"/>
+            <text x="0" y="43" font-family="Inter, sans-serif" font-size="7" font-weight="500" fill="#F5F0EB" letter-spacing="3.5" font-variant="small-caps">DESIGN AND BUILD</text>
+          </svg>
+          <p class="text-cream/40 font-sans text-xs leading-relaxed max-w-xs">Crafting exceptional spaces across Adelaide. Interior design, renovations, additions, and bespoke new builds.</p>
+        </div>
+        <div>
+          <p class="text-cream/40 text-xs font-sans tracking-wide-custom uppercase mb-6">Quick Links</p>
+          <div class="space-y-3">
+            <a href="#about" class="block text-cream/70 font-sans text-sm hover:text-gold transition-colors">About</a>
+            <a href="#services" class="block text-cream/70 font-sans text-sm hover:text-gold transition-colors">Services</a>
+            <a href="#portfolio" class="block text-cream/70 font-sans text-sm hover:text-gold transition-colors">Portfolio</a>
+            <a href="#process" class="block text-cream/70 font-sans text-sm hover:text-gold transition-colors">Process</a>
+            <a href="#contact" class="block text-cream/70 font-sans text-sm hover:text-gold transition-colors">Contact</a>
+          </div>
+        </div>
+        <div>
+          <p class="text-cream/40 text-xs font-sans tracking-wide-custom uppercase mb-6">Contact</p>
+          <div class="space-y-3">
+            <a href="tel:0481742026" class="block text-cream/70 font-sans text-sm hover:text-gold transition-colors">0481 742 026</a>
+            <a href="mailto:hello@lkdesignandbuild.com.au" class="block text-cream/70 font-sans text-sm hover:text-gold transition-colors">hello@lkdesignandbuild.com.au</a>
+            <p class="text-cream/70 font-sans text-sm">Adelaide, South Australia</p>
+            <a href="https://www.instagram.com/primedesignbuilt/" target="_blank" rel="noopener" class="inline-flex items-center space-x-2 text-cream/70 hover:text-gold transition-colors mt-2">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+              <span class="text-xs font-sans">Instagram</span>
+            </a>
+          </div>
         </div>
       </div>
-      <div>
-        <div class="small-caps" style="font-size: 0.65rem; color: #C9A96E; margin-bottom: 16px;">Contact</div>
-        <div style="font-size: 0.8rem; line-height: 2;">
-          Adelaide, South Australia<br>
-          <a href="mailto:hello@lkdesignandbuild.com.au">hello@lkdesignandbuild.com.au</a>
-        </div>
+      <div class="gold-rule-wide mt-12 mb-8"></div>
+      <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+        <p class="text-cream/30 font-sans text-xs">&copy; 2026 LK Design and Build. All rights reserved.</p>
+        <p class="text-cream/30 font-sans text-xs">ABN: Coming Soon</p>
       </div>
-    </div>
-    <div style="max-width: 1200px; margin: 40px auto 0; padding-top: 24px; border-top: 1px solid rgba(201,169,110,0.15); text-align: center; font-size: 0.7rem;">
-      &copy; 2025 LK Design and Build. All rights reserved.
     </div>
   </footer>
-  <style>
-    @media (max-width: 767px) {
-      footer > div:first-child { grid-template-columns: 1fr !important; }
+
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <script>
+    // ── Lightbox ──
+    const galleryImages = [
+      { src: '../assets/images/project-broadview.jpg', caption: 'Broadview' },
+      { src: '../assets/images/project-semaphore.jpg', caption: 'Semaphore' },
+      { src: '../assets/images/project-osr.jpg', caption: 'OSR Fit Out' },
+      { src: '../assets/images/project-unley.jpg', caption: 'Unley' },
+      { src: '../assets/images/project-semaphore2.jpg', caption: 'Semaphore II' },
+      { src: '../assets/images/project-semaphore3.jpg', caption: 'Semaphore III' },
+    ];
+    let currentImageIndex = 0;
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+
+    function openLightbox(index) {
+      currentImageIndex = index;
+      lightboxImg.src = galleryImages[index].src;
+      lightboxCaption.textContent = galleryImages[index].caption;
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
     }
-  </style>
-
-</div><!-- /section-below -->
-
-<!-- ════════════════════════════════════════ -->
-<!-- JAVASCRIPT                             -->
-<!-- ════════════════════════════════════════ -->
-<script>
-(function() {
-  'use strict';
-
-  // ── Reduced Motion Check ──
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const isMobile = window.innerWidth < 768;
-  if (prefersReducedMotion || isMobile) {
-    // Show hero immediately
-    document.getElementById('heroOverlay').classList.add('visible');
-    document.getElementById('creamOverlay').style.opacity = '0';
-    // Show all images on mobile
-    if (isMobile) {
-      document.querySelectorAll('.img-layer').forEach(img => img.classList.add('active'));
-      document.querySelectorAll('.mobile-callouts').forEach(el => el.style.display = 'block');
-    }
-    // Fade-in observer for below sections
-    initFadeObserver();
-    return;
-  }
-
-  // ── Config ──
-  const LERP_FACTOR = 0.08;
-  const DWELL_WIDTH = 0.06;
-  const DWELL_PEAK = 2.5;
-  const REMAP_N = 1000;
-  const DWELL_CENTERS = [0.18, 0.50, 0.78];
-
-  // ── DOM Elements ──
-  const container = document.getElementById('scrollContainer');
-  const img1 = document.getElementById('img1');
-  const img2 = document.getElementById('img2');
-  const img3 = document.getElementById('img3');
-  const creamOverlay = document.getElementById('creamOverlay');
-  const decoFrame = document.getElementById('decoFrame');
-  const heroOverlay = document.getElementById('heroOverlay');
-  const scrollHint = document.getElementById('scrollHint');
-  const callouts02 = document.getElementById('callouts02');
-  const callouts03 = document.getElementById('callouts03');
-  const progressBar = document.getElementById('scrollProgress');
-  const cursorDot = document.getElementById('cursorDot');
-  const cursorRing = document.getElementById('cursorRing');
-
-  // ── Build Scroll-Dwell Lookup Table ──
-  function buildRemapLUT() {
-    const density = new Float64Array(REMAP_N);
-    for (let i = 0; i < REMAP_N; i++) {
-      const x = i / (REMAP_N - 1);
-      let d = 1.0;
-      for (const c of DWELL_CENTERS) {
-        const dist = (x - c) / DWELL_WIDTH;
-        d += DWELL_PEAK * Math.exp(-0.5 * dist * dist);
+    function closeLightbox(e) {
+      if (e.target === lightbox || e.target.closest('.lightbox-close')) {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
       }
-      density[i] = d;
     }
-    // Cumulative integral
-    const cumulative = new Float64Array(REMAP_N);
-    cumulative[0] = 0;
-    for (let i = 1; i < REMAP_N; i++) {
-      cumulative[i] = cumulative[i - 1] + (density[i - 1] + density[i]) * 0.5;
+    function nextImage(e) {
+      e.stopPropagation();
+      currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+      lightboxImg.src = galleryImages[currentImageIndex].src;
+      lightboxCaption.textContent = galleryImages[currentImageIndex].caption;
     }
-    // Normalise
-    const total = cumulative[REMAP_N - 1];
-    for (let i = 0; i < REMAP_N; i++) {
-      cumulative[i] /= total;
+    function prevImage(e) {
+      e.stopPropagation();
+      currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
+      lightboxImg.src = galleryImages[currentImageIndex].src;
+      lightboxCaption.textContent = galleryImages[currentImageIndex].caption;
     }
-    return cumulative;
-  }
-
-  const remapLUT = buildRemapLUT();
-
-  function remapProgress(raw) {
-    // Binary search for inverse mapping
-    let lo = 0, hi = REMAP_N - 1;
-    while (lo < hi) {
-      const mid = (lo + hi) >> 1;
-      if (remapLUT[mid] < raw) lo = mid + 1;
-      else hi = mid;
-    }
-    return lo / (REMAP_N - 1);
-  }
-
-  // ── Scroll State ──
-  let currentProgress = 0;
-  let targetProgress = 0;
-  let ticking = false;
-
-  function getScrollProgress() {
-    const rect = container.getBoundingClientRect();
-    const scrollHeight = container.offsetHeight - window.innerHeight;
-    if (scrollHeight <= 0) return 0;
-    const scrolled = -rect.top;
-    return Math.max(0, Math.min(1, scrolled / scrollHeight));
-  }
-
-  // ── Animation Zones ──
-  // Zone boundaries (in remapped progress):
-  // Hero Entry:    0.00 - 0.16
-  // Vanity Focus:  0.16 - 0.40   (crossfade 01→02 at 0.24-0.32)
-  // Dwell & Detail: 0.40 - 0.64
-  // Room Reveal:   0.64 - 0.84   (crossfade 02→03 at 0.68-0.76)
-  // Exit & CTA:    0.84 - 1.00
-
-  function applyFrame(progress) {
-    const p = remapProgress(progress);
-
-    // ── Progress Bar ──
-    progressBar.style.width = (progress * 100) + '%';
-
-    // ── Cream Overlay (hero reveal) ──
-    if (p < 0.08) {
-      const t = p / 0.08;
-      creamOverlay.style.opacity = 1 - t;
-    } else {
-      creamOverlay.style.opacity = 0;
-    }
-
-    // ── Hero Overlay ──
-    if (p < 0.02) {
-      heroOverlay.classList.add('visible');
-      scrollHint.classList.add('visible');
-      decoFrame.classList.add('visible');
-    }
-    if (p > 0.14) {
-      heroOverlay.style.opacity = Math.max(0, 1 - ((p - 0.14) / 0.06));
-      scrollHint.style.opacity = 0;
-    } else {
-      heroOverlay.style.opacity = '';
-    }
-
-    // ── Image 01 Transform (scale 1.15 → 1.0, hero) ──
-    if (p < 0.24) {
-      const scale = 1.15 - 0.15 * Math.min(1, p / 0.24);
-      img1.style.transform = `scale(${scale})`;
-    }
-
-    // ── Crossfade 01 → 02 (p: 0.24 - 0.32) ──
-    if (p < 0.24) {
-      img1.style.opacity = 1;
-      img2.style.opacity = 0;
-    } else if (p < 0.32) {
-      const t = (p - 0.24) / 0.08;
-      img1.style.opacity = 1 - t;
-      img2.style.opacity = t;
-      // Pan effect during crossfade
-      const tx = -t * 3;
-      img1.style.transform = `scale(1.0) translateX(${tx}%)`;
-      img2.style.transform = `scale(1.05) translateX(${(1 - t) * 3}%)`;
-    } else {
-      img1.style.opacity = 0;
-    }
-
-    // ── Image 02 Transform (breathing zoom) ──
-    if (p >= 0.32 && p < 0.68) {
-      const zoneP = (p - 0.32) / 0.36;
-      const scale = 1.05 - 0.05 * zoneP;
-      img2.style.opacity = 1;
-      img2.style.transform = `scale(${scale})`;
-    }
-
-    // ── Callouts 02 (show during image 02 — extended visibility) ──
-    if (p >= 0.34 && p < 0.66) {
-      const fadeIn = Math.min(1, (p - 0.34) / 0.03);
-      const fadeOut = p > 0.62 ? Math.max(0, 1 - (p - 0.62) / 0.04) : 1;
-      callouts02.style.opacity = fadeIn * fadeOut;
-      if (fadeIn > 0.3) {
-        callouts02.querySelectorAll('.callout-group').forEach(g => g.classList.add('visible'));
-      } else {
-        callouts02.querySelectorAll('.callout-group').forEach(g => g.classList.remove('visible'));
-      }
-    } else {
-      callouts02.style.opacity = 0;
-      callouts02.querySelectorAll('.callout-group').forEach(g => g.classList.remove('visible'));
-    }
-
-    // ── Crossfade 02 → 03 (p: 0.68 - 0.76) ──
-    if (p >= 0.68 && p < 0.76) {
-      const t = (p - 0.68) / 0.08;
-      img2.style.opacity = 1 - t;
-      img3.style.opacity = t;
-      // Pan right
-      img2.style.transform = `scale(1.0) translateX(${-t * 3}%)`;
-      img3.style.transform = `scale(1.05) translateX(${(1 - t) * 2}%)`;
-    } else if (p >= 0.76) {
-      img2.style.opacity = 0;
-      img3.style.opacity = 1;
-    }
-
-    // ── Image 03 Transform (slow zoom out) ──
-    if (p >= 0.76) {
-      const zoneP = (p - 0.76) / 0.24;
-      const scale = 1.05 - 0.05 * zoneP;
-      img3.style.transform = `scale(${scale})`;
-    }
-
-    // ── Callouts 03 (show during image 03 — stays visible until end) ──
-    if (p >= 0.76 && p <= 1.0) {
-      const fadeIn = Math.min(1, (p - 0.76) / 0.03);
-      callouts03.style.opacity = fadeIn;
-      if (fadeIn > 0.3) {
-        callouts03.querySelectorAll('.callout-group').forEach(g => g.classList.add('visible'));
-      } else {
-        callouts03.querySelectorAll('.callout-group').forEach(g => g.classList.remove('visible'));
-      }
-    } else {
-      callouts03.style.opacity = 0;
-      callouts03.querySelectorAll('.callout-group').forEach(g => g.classList.remove('visible'));
-    }
-
-    // ── Decorative Frame ──
-    if (p > 0.06 && p < 0.90) {
-      decoFrame.classList.add('visible');
-    } else {
-      decoFrame.classList.remove('visible');
-    }
-  }
-
-  // ── rAF Loop ──
-  function tick() {
-    targetProgress = getScrollProgress();
-    currentProgress += (targetProgress - currentProgress) * LERP_FACTOR;
-
-    // Snap when very close
-    if (Math.abs(targetProgress - currentProgress) < 0.0001) {
-      currentProgress = targetProgress;
-    }
-
-    applyFrame(currentProgress);
-
-    if (Math.abs(targetProgress - currentProgress) > 0.00005) {
-      requestAnimationFrame(tick);
-    } else {
-      ticking = false;
-    }
-  }
-
-  function onScroll() {
-    if (!ticking) {
-      ticking = true;
-      requestAnimationFrame(tick);
-    }
-  }
-
-  window.addEventListener('scroll', onScroll, { passive: true });
-
-  // Initial frame
-  requestAnimationFrame(() => {
-    currentProgress = getScrollProgress();
-    applyFrame(currentProgress);
-    // Trigger hero after small delay
-    setTimeout(() => {
-      heroOverlay.classList.add('visible');
-      scrollHint.classList.add('visible');
-    }, 300);
-  });
-
-  // ── Custom Cursor ──
-  if (window.matchMedia('(hover: hover) and (pointer: fine)').matches && cursorDot && cursorRing) {
-    let cx = 0, cy = 0, rx = 0, ry = 0;
-    document.addEventListener('mousemove', (e) => {
-      cx = e.clientX;
-      cy = e.clientY;
-      cursorDot.style.left = cx + 'px';
-      cursorDot.style.top = cy + 'px';
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('active')) return;
+      if (e.key === 'Escape') { lightbox.classList.remove('active'); document.body.style.overflow = ''; }
+      if (e.key === 'ArrowRight') nextImage(e);
+      if (e.key === 'ArrowLeft') prevImage(e);
     });
-    function cursorLoop() {
-      rx += (cx - rx) * 0.15;
-      ry += (cy - ry) * 0.15;
-      cursorRing.style.left = rx + 'px';
-      cursorRing.style.top = ry + 'px';
-      requestAnimationFrame(cursorLoop);
-    }
-    cursorLoop();
-  }
 
-  // ── Fade-in Observer ──
-  initFadeObserver();
-
-})();
-
-function initFadeObserver() {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
+    // ── Mobile Menu ──
+    const hamburger = document.getElementById('hamburger-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+      document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
     });
-  }, { threshold: 0.15 });
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-}
-</script>
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+    });
 
+    // ── Navbar scroll ──
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 80) navbar.classList.add('nav-scrolled');
+      else navbar.classList.remove('nav-scrolled');
+    }, { passive: true });
+
+    // ── Intersection Observer ──
+    const observerOptions = { threshold: 0.12, rootMargin: '0px 0px -40px 0px' };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+    document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right').forEach(el => observer.observe(el));
+
+    // ── Form ──
+    function handleSubmit(e) {
+      e.preventDefault();
+      const form = e.target;
+      form.style.opacity = '0.5';
+      form.style.pointerEvents = 'none';
+      setTimeout(() => {
+        document.getElementById('form-success').classList.remove('hidden');
+        form.reset();
+        form.style.opacity = '1';
+        form.style.pointerEvents = 'auto';
+      }, 800);
+    }
+
+    // ── Smooth scroll ──
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' });
+        }
+      });
+    });
+
+    // ═══════════════════════════════════════
+    // SCROLL-DRIVEN ANIMATION ENGINE
+    // ═══════════════════════════════════════
+    (function() {
+      'use strict';
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const isMobile = window.innerWidth < 768;
+
+      if (prefersReducedMotion || isMobile) {
+        document.getElementById('animHero').classList.add('visible');
+        document.getElementById('creamOverlay').style.opacity = '0';
+        if (isMobile) {
+          document.querySelectorAll('.img-layer').forEach(img => img.classList.add('active'));
+          document.querySelectorAll('.mobile-callouts').forEach(el => el.style.display = 'block');
+        }
+        return;
+      }
+
+      const LERP_FACTOR = 0.08;
+      const DWELL_WIDTH = 0.06;
+      const DWELL_PEAK = 2.5;
+      const REMAP_N = 1000;
+      const DWELL_CENTERS = [0.18, 0.50, 0.78];
+
+      const container = document.getElementById('scrollContainer');
+      const img1 = document.getElementById('img1');
+      const img2 = document.getElementById('img2');
+      const img3 = document.getElementById('img3');
+      const creamOverlay = document.getElementById('creamOverlay');
+      const decoFrame = document.getElementById('decoFrame');
+      const animHero = document.getElementById('animHero');
+      const scrollHint = document.getElementById('scrollHint');
+      const callouts02 = document.getElementById('callouts02');
+      const callouts03 = document.getElementById('callouts03');
+      const progressBar = document.getElementById('scrollProgress');
+
+      function buildRemapLUT() {
+        const density = new Float64Array(REMAP_N);
+        for (let i = 0; i < REMAP_N; i++) {
+          const x = i / (REMAP_N - 1);
+          let d = 1.0;
+          for (const c of DWELL_CENTERS) {
+            const dist = (x - c) / DWELL_WIDTH;
+            d += DWELL_PEAK * Math.exp(-0.5 * dist * dist);
+          }
+          density[i] = d;
+        }
+        const cumulative = new Float64Array(REMAP_N);
+        cumulative[0] = 0;
+        for (let i = 1; i < REMAP_N; i++) {
+          cumulative[i] = cumulative[i - 1] + (density[i - 1] + density[i]) * 0.5;
+        }
+        const total = cumulative[REMAP_N - 1];
+        for (let i = 0; i < REMAP_N; i++) cumulative[i] /= total;
+        return cumulative;
+      }
+
+      const remapLUT = buildRemapLUT();
+
+      function remapProgress(raw) {
+        let lo = 0, hi = REMAP_N - 1;
+        while (lo < hi) {
+          const mid = (lo + hi) >> 1;
+          if (remapLUT[mid] < raw) lo = mid + 1;
+          else hi = mid;
+        }
+        return lo / (REMAP_N - 1);
+      }
+
+      let currentProgress = 0, targetProgress = 0, ticking = false;
+
+      function getScrollProgress() {
+        const rect = container.getBoundingClientRect();
+        const scrollHeight = container.offsetHeight - window.innerHeight;
+        if (scrollHeight <= 0) return 0;
+        return Math.max(0, Math.min(1, -rect.top / scrollHeight));
+      }
+
+      function applyFrame(progress) {
+        const p = remapProgress(progress);
+        progressBar.style.width = (progress * 100) + '%';
+
+        // Cream overlay (charcoal reveal)
+        if (p < 0.08) creamOverlay.style.opacity = 1 - (p / 0.08);
+        else creamOverlay.style.opacity = 0;
+
+        // Hero overlay
+        if (p < 0.02) { animHero.classList.add('visible'); scrollHint.classList.add('visible'); }
+        if (p > 0.14) {
+          animHero.style.opacity = Math.max(0, 1 - ((p - 0.14) / 0.06));
+          scrollHint.style.opacity = 0;
+        } else { animHero.style.opacity = ''; }
+
+        // Image 01 transform
+        if (p < 0.24) {
+          const scale = 1.15 - 0.15 * Math.min(1, p / 0.24);
+          img1.style.transform = `scale(${scale})`;
+        }
+
+        // Crossfade 01→02
+        if (p < 0.24) { img1.style.opacity = 1; img2.style.opacity = 0; }
+        else if (p < 0.32) {
+          const t = (p - 0.24) / 0.08;
+          img1.style.opacity = 1 - t;
+          img2.style.opacity = t;
+          img1.style.transform = `scale(1.0) translateX(${-t * 3}%)`;
+          img2.style.transform = `scale(1.05) translateX(${(1 - t) * 3}%)`;
+        } else { img1.style.opacity = 0; }
+
+        // Image 02 breathing zoom
+        if (p >= 0.32 && p < 0.68) {
+          const zoneP = (p - 0.32) / 0.36;
+          img2.style.opacity = 1;
+          img2.style.transform = `scale(${1.05 - 0.05 * zoneP})`;
+        }
+
+        // Callouts 02 — extended visibility
+        if (p >= 0.34 && p < 0.66) {
+          const fadeIn = Math.min(1, (p - 0.34) / 0.03);
+          const fadeOut = p > 0.62 ? Math.max(0, 1 - (p - 0.62) / 0.04) : 1;
+          callouts02.style.opacity = fadeIn * fadeOut;
+          callouts02.querySelectorAll('.callout-group').forEach(g => g.classList.toggle('visible', fadeIn > 0.3));
+        } else {
+          callouts02.style.opacity = 0;
+          callouts02.querySelectorAll('.callout-group').forEach(g => g.classList.remove('visible'));
+        }
+
+        // Crossfade 02→03
+        if (p >= 0.68 && p < 0.76) {
+          const t = (p - 0.68) / 0.08;
+          img2.style.opacity = 1 - t;
+          img3.style.opacity = t;
+          img2.style.transform = `scale(1.0) translateX(${-t * 3}%)`;
+          img3.style.transform = `scale(1.05) translateX(${(1 - t) * 2}%)`;
+        } else if (p >= 0.76) { img2.style.opacity = 0; img3.style.opacity = 1; }
+
+        // Image 03 zoom out
+        if (p >= 0.76) {
+          img3.style.transform = `scale(${1.05 - 0.05 * ((p - 0.76) / 0.24)})`;
+        }
+
+        // Callouts 03 — stays visible until end
+        if (p >= 0.76 && p <= 1.0) {
+          const fadeIn = Math.min(1, (p - 0.76) / 0.03);
+          callouts03.style.opacity = fadeIn;
+          callouts03.querySelectorAll('.callout-group').forEach(g => g.classList.toggle('visible', fadeIn > 0.3));
+        } else {
+          callouts03.style.opacity = 0;
+          callouts03.querySelectorAll('.callout-group').forEach(g => g.classList.remove('visible'));
+        }
+
+        // Decorative frame
+        decoFrame.classList.toggle('visible', p > 0.06 && p < 0.90);
+      }
+
+      function tick() {
+        targetProgress = getScrollProgress();
+        currentProgress += (targetProgress - currentProgress) * LERP_FACTOR;
+        if (Math.abs(targetProgress - currentProgress) < 0.0001) currentProgress = targetProgress;
+        applyFrame(currentProgress);
+        if (Math.abs(targetProgress - currentProgress) > 0.00005) requestAnimationFrame(tick);
+        else ticking = false;
+      }
+
+      window.addEventListener('scroll', () => {
+        if (!ticking) { ticking = true; requestAnimationFrame(tick); }
+      }, { passive: true });
+
+      requestAnimationFrame(() => {
+        currentProgress = getScrollProgress();
+        applyFrame(currentProgress);
+        setTimeout(() => { animHero.classList.add('visible'); scrollHint.classList.add('visible'); }, 300);
+      });
+    })();
+  </script>
 </body>
 </html>
