@@ -271,6 +271,12 @@ body::before {
 .pv-coastal .p-shapes::before { content:''; position:absolute; bottom:0; left:0; right:0; height:35px; background:linear-gradient(180deg, transparent, rgba(42,107,138,0.1)); }
 .pv-coastal .p-shapes::after { content:''; position:absolute; right:22px; top:22px; width:45px; height:45px; border:2px solid rgba(42,107,138,0.2); border-radius:50%; }
 
+.pv-refined-anim { background: linear-gradient(135deg, #F5F0EB 0%, #e8e0d6 100%); position:relative; overflow:hidden; }
+.pv-refined-anim .p-label { color: #C9A96E; }
+.pv-refined-anim .p-shapes::before { content:''; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:80px; height:80px; border:1px solid rgba(201,169,110,0.3); border-radius:50%; animation: pulseRing 3s ease-in-out infinite; }
+.pv-refined-anim .p-shapes::after { content:''; position:absolute; bottom:18px; left:18px; right:18px; height:1px; background:linear-gradient(90deg, transparent, #C9A96E, transparent); opacity:0.5; }
+@keyframes pulseRing { 0%,100% { transform:translate(-50%,-50%) scale(1); opacity:0.3; } 50% { transform:translate(-50%,-50%) scale(1.15); opacity:0.6; } }
+
 /* New prototype previews */
 .pv-blueprint { background: #1a1e36; }
 .pv-blueprint .p-label { color: #ec6e00; font-family: monospace; }
@@ -992,15 +998,15 @@ body::before {
       </div>
 
       <div class="proto-card">
-        <div class="proto-preview pv-coastal">
+        <div class="proto-preview pv-refined-anim">
           <div class="p-shapes"></div>
-          <span class="p-label">Coastal Modern</span>
+          <span class="p-label">Studio Animated</span>
         </div>
         <div class="proto-body">
-          <h3>Coastal Modern</h3>
-          <p class="desc">Sandy whites and ocean blues with a relaxed coastal feel. Light, airy, and distinctly Australian.</p>
-          <div class="price-row"><span class="price">$3,200</span><span class="price-note">Design + Development</span></div>
-          <a href="prototype-6/index.html" class="view-btn" target="_blank">View Prototype <span>&rarr;</span></a>
+          <h3>Studio Animated</h3>
+          <p class="desc">Scroll-driven bathroom showcase with infographic overlays. Animated Studio Refined variant featuring the Semaphore master suite.</p>
+          <div class="price-row"><span class="price">$3,800</span><span class="price-note">Design + Development</span></div>
+          <a href="prototype-5/index.html" class="view-btn" target="_blank">View Prototype <span>&rarr;</span></a>
         </div>
       </div>
 

@@ -3,678 +3,963 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LK Design and Build | Where Vision Meets Craftsmanship</title>
-<meta name="description" content="LK Design and Build - Premium Adelaide home renovation, interior design and building company. Where vision meets craftsmanship.">
-<script src="https://cdn.tailwindcss.com"></script>
+<title>LK Design and Build | Semaphore Master Suite</title>
+<meta name="description" content="LK Design and Build - Scroll-driven showcase of the Semaphore master bedroom and bathroom renovation. Premium Adelaide home design.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
-<script>
-tailwind.config = {
-  theme: {
-    extend: {
-      colors: {
-        black: '#000000',
-        dark: '#111111',
-        darker: '#0a0a0a',
-        darkgrey: '#1a1a1a',
-        silver: '#C0C0C0',
-        platinum: '#E5E4E2',
-        gold: '#C9A96E',
-      },
-      fontFamily: {
-        italiana: ['Italiana', 'serif'],
-        inter: ['Inter', 'sans-serif'],
-      },
-    },
-  },
-}
-</script>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body { font-family: 'Inter', sans-serif; background: #000; color: #C0C0C0; overflow-x: hidden; cursor: default; }
+/* ── Reset & Base ── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { font-size: 16px; }
+body {
+  font-family: 'Inter', sans-serif;
+  color: #2C2C2C;
+  background: #F5F0EB;
+  overflow-x: hidden;
+}
 
-  /* Custom cursor glow */
-  .cursor-glow {
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #F5F0EB; }
+::-webkit-scrollbar-thumb { background: #C9A96E; border-radius: 4px; }
+
+/* ── Typography ── */
+.heading-serif { font-family: 'Cormorant Garamond', serif; font-weight: 400; letter-spacing: 0.02em; line-height: 1.15; }
+.heading-serif-light { font-family: 'Cormorant Garamond', serif; font-weight: 300; letter-spacing: 0.03em; line-height: 1.15; }
+.small-caps { font-variant: small-caps; letter-spacing: 0.15em; }
+.tracking-wide { letter-spacing: 0.2em; }
+
+/* ── Gold Rules ── */
+.gold-rule { height: 1px; background: #C9A96E; width: 60px; }
+.gold-rule-wide { height: 1px; background: #C9A96E; width: 100%; opacity: 0.3; }
+
+/* ── Custom Cursor (desktop) ── */
+@media (hover: hover) and (pointer: fine) {
+  body { cursor: none; }
+  .cursor-dot {
     position: fixed;
-    width: 300px;
-    height: 300px;
+    width: 6px;
+    height: 6px;
+    background: #C9A96E;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(192,192,192,0.04) 0%, transparent 70%);
     pointer-events: none;
-    z-index: 9999;
+    z-index: 10000;
     transform: translate(-50%, -50%);
-    transition: opacity 0.3s;
+    transition: transform 0.05s;
   }
-
-  /* Ken Burns hero */
-  .ken-burns-container { position: relative; width: 100%; height: 100vh; overflow: hidden; }
-  .ken-burns-slide {
-    position: absolute; inset: 0;
-    background-size: cover; background-position: center;
-    opacity: 0;
-    animation: kenburns 28s ease-in-out infinite;
-  }
-  .ken-burns-slide:nth-child(1) { animation-delay: 0s; }
-  .ken-burns-slide:nth-child(2) { animation-delay: 7s; }
-  .ken-burns-slide:nth-child(3) { animation-delay: 14s; }
-  .ken-burns-slide:nth-child(4) { animation-delay: 21s; }
-
-  @keyframes kenburns {
-    0%   { opacity: 0; transform: scale(1); }
-    5%   { opacity: 1; }
-    25%  { opacity: 1; transform: scale(1.08); }
-    30%  { opacity: 0; transform: scale(1.1); }
-    100% { opacity: 0; transform: scale(1); }
-  }
-
-  /* Light leak overlay */
-  .light-leak {
-    background: linear-gradient(135deg, rgba(201,169,110,0.08) 0%, transparent 40%, transparent 60%, rgba(192,192,192,0.05) 100%);
-  }
-
-  /* Text reveal animation */
-  .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1); }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
-  .reveal-delay-1 { transition-delay: 0.15s; }
-  .reveal-delay-2 { transition-delay: 0.3s; }
-  .reveal-delay-3 { transition-delay: 0.45s; }
-  .reveal-delay-4 { transition-delay: 0.6s; }
-
-  /* Clip reveal */
-  .clip-reveal { clip-path: inset(0 0 100% 0); transition: clip-path 1s cubic-bezier(0.16, 1, 0.3, 1); }
-  .clip-reveal.visible { clip-path: inset(0 0 0 0); }
-
-  /* Line grow */
-  .line-grow { width: 0; transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
-  .line-grow.visible { width: 100%; }
-
-  /* Section divider */
-  .section-divider { height: 1px; background: linear-gradient(90deg, transparent, #C0C0C0 20%, #C0C0C0 80%, transparent); opacity: 0.2; }
-
-  /* Horizontal scroll projects */
-  .projects-scroll {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-  .projects-scroll::-webkit-scrollbar { display: none; }
-  .project-card {
-    flex: 0 0 85vw;
-    max-width: 900px;
-    scroll-snap-align: start;
-    margin-right: 2vw;
-  }
-  @media (min-width: 768px) {
-    .project-card { flex: 0 0 55vw; max-width: 900px; }
-  }
-  @media (min-width: 1280px) {
-    .project-card { flex: 0 0 40vw; }
-  }
-
-  .project-card img {
-    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .project-card:hover img {
-    transform: scale(1.03);
-  }
-
-  /* Number counter */
-  .stat-number { font-variant-numeric: tabular-nums; }
-
-  /* Nav */
-  .nav-blur { backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); background: rgba(0,0,0,0.7); }
-  .nav-link { position: relative; }
-  .nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 1px;
-    background: #C9A96E;
-    transition: width 0.3s ease;
-  }
-  .nav-link:hover::after { width: 100%; }
-
-  /* Mobile menu */
-  .mobile-menu {
-    transform: translateX(100%);
-    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .mobile-menu.open { transform: translateX(0); }
-
-  /* Form inputs */
-  .form-input {
-    background: transparent;
-    border: 1px solid rgba(192,192,192,0.15);
-    color: #E5E4E2;
-    transition: border-color 0.3s;
-  }
-  .form-input:focus {
-    outline: none;
-    border-color: #C9A96E;
-  }
-  .form-input::placeholder { color: rgba(192,192,192,0.35); }
-
-  /* Watermark */
-  .watermark {
-    font-size: clamp(20rem, 40vw, 45rem);
-    line-height: 0.8;
-    opacity: 0.03;
-    user-select: none;
+  .cursor-ring {
+    position: fixed;
+    width: 36px;
+    height: 36px;
+    border: 1px solid rgba(201,169,110,0.5);
+    border-radius: 50%;
     pointer-events: none;
+    z-index: 10000;
+    transform: translate(-50%, -50%);
+    transition: transform 0.15s ease-out, width 0.2s, height 0.2s;
   }
+}
 
-  /* Image overlay */
-  .img-overlay {
-    background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.5) 100%);
-  }
+/* ── Film Grain ── */
+.film-grain {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.015;
+}
 
-  /* Gold button */
-  .btn-gold {
-    border: 1px solid #C9A96E;
-    color: #C9A96E;
-    transition: all 0.4s;
-    letter-spacing: 0.15em;
+/* ── Scroll Viewport ── */
+.scroll-container {
+  height: 500vh;
+  position: relative;
+}
+.sticky-viewport {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ── Image Layers ── */
+.img-layer {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  will-change: transform, opacity;
+  opacity: 0;
+}
+.img-layer.active { opacity: 1; }
+
+/* ── Decorative Frame ── */
+.deco-frame {
+  position: absolute;
+  top: 30px; left: 30px;
+  right: 30px; bottom: 30px;
+  border: 1px solid rgba(201,169,110,0.25);
+  pointer-events: none;
+  z-index: 5;
+  opacity: 0;
+  transition: opacity 0.8s;
+}
+.deco-frame.visible { opacity: 1; }
+
+/* ── Hero Overlay ── */
+.hero-overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 6;
+  text-align: center;
+  color: #fff;
+  pointer-events: none;
+}
+.hero-overlay .hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  letter-spacing: 0.06em;
+  text-shadow: 0 2px 30px rgba(0,0,0,0.4);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s, transform 0.8s;
+}
+.hero-overlay .hero-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: clamp(0.7rem, 1.2vw, 0.9rem);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-top: 16px;
+  text-shadow: 0 1px 15px rgba(0,0,0,0.4);
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.8s 0.2s, transform 0.8s 0.2s;
+}
+.hero-overlay .hero-rule {
+  width: 60px;
+  height: 1px;
+  background: #C9A96E;
+  margin-top: 24px;
+  opacity: 0;
+  transform: scaleX(0);
+  transition: opacity 0.6s 0.4s, transform 0.6s 0.4s;
+}
+.hero-overlay.visible .hero-title,
+.hero-overlay.visible .hero-subtitle { opacity: 1; transform: translateY(0); }
+.hero-overlay.visible .hero-rule { opacity: 1; transform: scaleX(1); }
+
+/* ── Scroll Hint ── */
+.scroll-hint {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+  transition: opacity 0.6s 0.8s;
+  pointer-events: none;
+}
+.scroll-hint.visible { opacity: 0.7; }
+.scroll-hint span {
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #fff;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.5);
+}
+.scroll-hint .scroll-line {
+  width: 1px;
+  height: 40px;
+  background: rgba(201,169,110,0.6);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse {
+  0%, 100% { transform: scaleY(1); opacity: 0.6; }
+  50% { transform: scaleY(0.5); opacity: 1; }
+}
+
+/* ── Infographic Callouts ── */
+.callout-layer {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 7;
+  pointer-events: none;
+}
+.callout-layer svg {
+  width: 100%;
+  height: 100%;
+}
+.callout-line {
+  stroke: #C9A96E;
+  stroke-width: 1;
+  fill: none;
+  stroke-dasharray: 200;
+  stroke-dashoffset: 200;
+  transition: stroke-dashoffset 0.6s ease-out;
+}
+.callout-dot {
+  fill: #C9A96E;
+  transform: scale(0);
+  transition: transform 0.3s ease-out;
+}
+.callout-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  fill: #fff;
+  opacity: 0;
+  transition: opacity 0.4s ease-out;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.6);
+}
+.callout-sublabel {
+  font-family: 'Inter', sans-serif;
+  font-size: 8px;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  fill: #C9A96E;
+  opacity: 0;
+  transition: opacity 0.4s ease-out;
+}
+.callout-group.visible .callout-line { stroke-dashoffset: 0; }
+.callout-group.visible .callout-dot { transform: scale(1); }
+.callout-group.visible .callout-label,
+.callout-group.visible .callout-sublabel { opacity: 1; }
+
+/* Stagger delays for callout groups */
+.callout-group:nth-child(2) .callout-line { transition-delay: 0.15s; }
+.callout-group:nth-child(2) .callout-dot { transition-delay: 0.25s; }
+.callout-group:nth-child(2) .callout-label,
+.callout-group:nth-child(2) .callout-sublabel { transition-delay: 0.35s; }
+.callout-group:nth-child(3) .callout-line { transition-delay: 0.3s; }
+.callout-group:nth-child(3) .callout-dot { transition-delay: 0.4s; }
+.callout-group:nth-child(3) .callout-label,
+.callout-group:nth-child(3) .callout-sublabel { transition-delay: 0.5s; }
+.callout-group:nth-child(4) .callout-line { transition-delay: 0.45s; }
+.callout-group:nth-child(4) .callout-dot { transition-delay: 0.55s; }
+.callout-group:nth-child(4) .callout-label,
+.callout-group:nth-child(4) .callout-sublabel { transition-delay: 0.65s; }
+.callout-group:nth-child(5) .callout-line { transition-delay: 0.6s; }
+.callout-group:nth-child(5) .callout-dot { transition-delay: 0.7s; }
+.callout-group:nth-child(5) .callout-label,
+.callout-group:nth-child(5) .callout-sublabel { transition-delay: 0.8s; }
+.callout-group:nth-child(6) .callout-line { transition-delay: 0.75s; }
+.callout-group:nth-child(6) .callout-dot { transition-delay: 0.85s; }
+.callout-group:nth-child(6) .callout-label,
+.callout-group:nth-child(6) .callout-sublabel { transition-delay: 0.95s; }
+
+/* ── Progress Bar ── */
+.scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  background: #C9A96E;
+  z-index: 9999;
+  width: 0;
+  transition: none;
+}
+
+/* ── Sections Below ── */
+.section-below {
+  position: relative;
+  z-index: 10;
+  background: #F5F0EB;
+}
+.btn-primary {
+  display: inline-block;
+  padding: 14px 40px;
+  border: 1px solid #C9A96E;
+  color: #2C2C2C;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  text-decoration: none;
+}
+.btn-primary:hover { background: #C9A96E; color: #fff; }
+
+/* ── Footer ── */
+footer {
+  background: #2C2C2C;
+  color: rgba(245,240,235,0.6);
+  padding: 60px 40px 40px;
+}
+footer a { color: #C9A96E; text-decoration: none; }
+footer a:hover { color: #D4BA85; }
+
+/* ── Fade In Animation ── */
+.fade-in {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Mobile ── */
+@media (max-width: 767px) {
+  .scroll-container { height: auto; }
+  .sticky-viewport { position: relative; height: auto; }
+  .img-layer {
+    position: relative;
+    opacity: 1 !important;
+    transform: none !important;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16/10;
   }
-  .btn-gold:hover {
+  .deco-frame { display: none; }
+  .callout-layer { display: none; }
+  .hero-overlay {
+    position: relative;
+    padding: 80px 20px 40px;
+    background: #2C2C2C;
+    color: #F5F0EB;
+  }
+  .hero-overlay .hero-title,
+  .hero-overlay .hero-subtitle { opacity: 1; transform: none; }
+  .hero-overlay .hero-rule { opacity: 1; transform: scaleX(1); }
+  .scroll-hint { display: none; }
+  .mobile-callouts {
+    display: block !important;
+    padding: 32px 20px;
+    background: #2C2C2C;
+  }
+  .mobile-callout-item {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(201,169,110,0.15);
+  }
+  .mobile-callout-item:last-child { border-bottom: none; }
+  .mobile-callout-item .mc-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
     background: #C9A96E;
-    color: #000;
+    flex-shrink: 0;
+    margin-top: 6px;
   }
-
-  /* Silver button */
-  .btn-silver {
-    border: 1px solid rgba(192,192,192,0.3);
-    color: #C0C0C0;
-    transition: all 0.4s;
+  .mobile-callout-item .mc-title {
+    color: #F5F0EB;
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+  }
+  .mobile-callout-item .mc-spec {
+    color: #C9A96E;
+    font-size: 0.65rem;
+    font-weight: 300;
     letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 2px;
   }
-  .btn-silver:hover {
-    border-color: #C0C0C0;
-    color: #E5E4E2;
-  }
+}
+@media (min-width: 768px) {
+  .mobile-callouts { display: none !important; }
+}
 
-  /* Scroll indicator */
-  @keyframes scrollPulse {
-    0%, 100% { opacity: 0.4; transform: translateY(0); }
-    50% { opacity: 1; transform: translateY(6px); }
+/* ── Reduced Motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-container { height: auto; }
+  .sticky-viewport { position: relative; height: auto; }
+  .img-layer {
+    position: relative;
+    opacity: 1 !important;
+    transform: none !important;
+    width: 100%;
+    height: auto;
   }
-  .scroll-indicator { animation: scrollPulse 2s ease-in-out infinite; }
+  .callout-layer { display: none; }
+  .hero-overlay .hero-title,
+  .hero-overlay .hero-subtitle { opacity: 1; transform: none; transition: none; }
+  .hero-overlay .hero-rule { opacity: 1; transform: scaleX(1); transition: none; }
+  .scroll-hint { display: none; }
+  .fade-in { opacity: 1; transform: none; transition: none; }
+}
 </style>
 </head>
 <body>
 
-<!-- Cursor Glow -->
-<div class="cursor-glow" id="cursorGlow"></div>
+<!-- Film Grain -->
+<svg class="film-grain" xmlns="http://www.w3.org/2000/svg">
+  <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="4" stitchTiles="stitch"/></filter>
+  <rect width="100%" height="100%" filter="url(#grain)"/>
+</svg>
 
-<!-- Navigation -->
-<nav class="fixed top-0 left-0 right-0 z-50 nav-blur" id="navbar">
-  <div class="max-w-7xl mx-auto px-6 lg:px-12">
-    <div class="flex items-center justify-between h-20">
-      <!-- Logo SVG -->
-      <a href="#hero" class="flex-shrink-0">
-        <svg viewBox="0 0 200 60" class="h-10 w-auto" xmlns="http://www.w3.org/2000/svg">
-          <text x="0" y="38" font-family="Italiana, serif" font-size="42" font-weight="400" fill="#E5E4E2" letter-spacing="4">LK</text>
-          <text x="0" y="55" font-family="Inter, sans-serif" font-size="8.5" font-weight="200" fill="#C0C0C0" letter-spacing="5.5">DESIGN AND BUILD</text>
-        </svg>
-      </a>
+<!-- Custom Cursor -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
 
-      <!-- Desktop Nav -->
-      <div class="hidden md:flex items-center space-x-10">
-        <a href="#about" class="nav-link text-silver text-xs font-light tracking-[0.2em] uppercase hover:text-platinum transition-colors">About</a>
-        <a href="#services" class="nav-link text-silver text-xs font-light tracking-[0.2em] uppercase hover:text-platinum transition-colors">Services</a>
-        <a href="#projects" class="nav-link text-silver text-xs font-light tracking-[0.2em] uppercase hover:text-platinum transition-colors">Projects</a>
-        <a href="#contact" class="nav-link text-silver text-xs font-light tracking-[0.2em] uppercase hover:text-platinum transition-colors">Contact</a>
-        <a href="#contact" class="btn-gold px-6 py-2.5 text-xs uppercase tracking-[0.15em]">Book Consult</a>
-      </div>
+<!-- Scroll Progress -->
+<div class="scroll-progress" id="scrollProgress"></div>
 
-      <!-- Mobile Hamburger -->
-      <button class="md:hidden relative z-50 w-8 h-8 flex flex-col justify-center items-center" id="menuToggle" aria-label="Toggle menu">
-        <span class="block w-6 h-px bg-platinum transition-all duration-300" id="menuLine1"></span>
-        <span class="block w-6 h-px bg-platinum mt-1.5 transition-all duration-300" id="menuLine2"></span>
-        <span class="block w-4 h-px bg-platinum mt-1.5 transition-all duration-300 ml-auto" id="menuLine3"></span>
-      </button>
+<!-- ════════════════════════════════════════ -->
+<!-- SCROLL-DRIVEN ANIMATION SECTION        -->
+<!-- ════════════════════════════════════════ -->
+<div class="scroll-container" id="scrollContainer">
+  <div class="sticky-viewport" id="stickyViewport">
+
+    <!-- Image Layers -->
+    <img class="img-layer active" id="img1"
+         src="../assets/images/semaphore_animation01.jpg"
+         alt="Semaphore master bathroom — vanity wall with subway tiles and brass fixtures"
+         loading="eager">
+    <img class="img-layer" id="img2"
+         src="../assets/images/semaphore_animation02.png"
+         alt="Semaphore bathroom — close-up of floating vanity with vessel basins and arch mirrors"
+         loading="eager">
+    <img class="img-layer" id="img3"
+         src="../assets/images/semaphore_animation03.png"
+         alt="Semaphore master bedroom — wide view with ceiling fan, sheer curtains and pendant lights"
+         loading="eager">
+
+    <!-- Cream Overlay for hero reveal -->
+    <div id="creamOverlay" style="position:absolute;top:0;left:0;width:100%;height:100%;background:#F5F0EB;z-index:3;pointer-events:none;"></div>
+
+    <!-- Decorative Frame -->
+    <div class="deco-frame" id="decoFrame"></div>
+
+    <!-- Hero Overlay -->
+    <div class="hero-overlay" id="heroOverlay">
+      <div class="hero-title">Semaphore</div>
+      <div class="hero-subtitle">Master Suite Renovation</div>
+      <div class="hero-rule"></div>
     </div>
-  </div>
-</nav>
 
-<!-- Mobile Menu -->
-<div class="mobile-menu fixed inset-0 z-40 bg-black flex flex-col items-center justify-center" id="mobileMenu">
-  <div class="flex flex-col items-center space-y-8">
-    <a href="#about" class="mobile-nav-link text-platinum text-2xl font-italiana tracking-[0.15em] uppercase">About</a>
-    <a href="#services" class="mobile-nav-link text-platinum text-2xl font-italiana tracking-[0.15em] uppercase">Services</a>
-    <a href="#projects" class="mobile-nav-link text-platinum text-2xl font-italiana tracking-[0.15em] uppercase">Projects</a>
-    <a href="#contact" class="mobile-nav-link text-platinum text-2xl font-italiana tracking-[0.15em] uppercase">Contact</a>
-    <div class="pt-6">
-      <a href="#contact" class="btn-gold px-8 py-3 text-sm uppercase tracking-[0.15em] mobile-nav-link">Book Consult</a>
+    <!-- Scroll Hint -->
+    <div class="scroll-hint" id="scrollHint">
+      <span>Scroll to explore</span>
+      <div class="scroll-line"></div>
     </div>
-    <div class="pt-8 flex items-center space-x-6">
-      <a href="tel:0481742026" class="text-silver text-sm font-light">0481 742 026</a>
-      <span class="text-silver/30">|</span>
-      <a href="https://www.instagram.com/primedesignbuilt/" target="_blank" class="text-silver text-sm font-light hover:text-gold transition-colors">Instagram</a>
+
+    <!-- ── Callout Layer: Image 02 (Vanity) ── -->
+    <div class="callout-layer" id="callouts02" style="opacity:0;">
+      <svg viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
+        <!-- Vertical subway tile -->
+        <g class="callout-group" data-index="0">
+          <circle class="callout-dot" cx="320" cy="350" r="4"/>
+          <line class="callout-line" x1="320" y1="350" x2="180" y2="260"/>
+          <text class="callout-label" x="170" y="252" text-anchor="end">Vertical Subway Tile</text>
+          <text class="callout-sublabel" x="170" y="268" text-anchor="end">GLOSS WHITE CERAMIC, STACKED BOND</text>
+        </g>
+        <!-- Floating oak vanity -->
+        <g class="callout-group" data-index="1">
+          <circle class="callout-dot" cx="680" cy="620" r="4"/>
+          <line class="callout-line" x1="680" y1="620" x2="540" y2="540"/>
+          <text class="callout-label" x="530" y="532" text-anchor="end">Floating Oak Vanity</text>
+          <text class="callout-sublabel" x="530" y="548" text-anchor="end">SOLID TIMBER, WALL-MOUNTED</text>
+        </g>
+        <!-- Vessel basins -->
+        <g class="callout-group" data-index="2">
+          <circle class="callout-dot" cx="860" cy="540" r="4"/>
+          <line class="callout-line" x1="860" y1="540" x2="1000" y2="460"/>
+          <text class="callout-label" x="1010" y="452">Vessel Basins</text>
+          <text class="callout-sublabel" x="1010" y="468">MATTE WHITE, ABOVE-COUNTER</text>
+        </g>
+        <!-- Brushed brass tapware -->
+        <g class="callout-group" data-index="3">
+          <circle class="callout-dot" cx="750" cy="430" r="4"/>
+          <line class="callout-line" x1="750" y1="430" x2="900" y2="340"/>
+          <text class="callout-label" x="910" y="332">Brushed Brass Tapware</text>
+          <text class="callout-sublabel" x="910" y="348">WALL-MOUNTED MIXER SET</text>
+        </g>
+        <!-- Arch-top mirrors -->
+        <g class="callout-group" data-index="4">
+          <circle class="callout-dot" cx="560" cy="280" r="4"/>
+          <line class="callout-line" x1="560" y1="280" x2="420" y2="180"/>
+          <text class="callout-label" x="410" y="172" text-anchor="end">Arch-Top Mirrors</text>
+          <text class="callout-sublabel" x="410" y="188" text-anchor="end">CUSTOM PROFILE, LED BACKLIT</text>
+        </g>
+        <!-- Wooden bead pendant -->
+        <g class="callout-group" data-index="5">
+          <circle class="callout-dot" cx="1100" cy="200" r="4"/>
+          <line class="callout-line" x1="1100" y1="200" x2="1260" y2="140"/>
+          <text class="callout-label" x="1270" y="132">Wooden Bead Pendant</text>
+          <text class="callout-sublabel" x="1270" y="148">HAND-THREADED COASTAL DETAIL</text>
+        </g>
+      </svg>
     </div>
-  </div>
+
+    <!-- ── Callout Layer: Image 03 (Wide Room) ── -->
+    <div class="callout-layer" id="callouts03" style="opacity:0;">
+      <svg viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
+        <!-- Ceiling fan -->
+        <g class="callout-group" data-index="0">
+          <circle class="callout-dot" cx="960" cy="140" r="4"/>
+          <line class="callout-line" x1="960" y1="140" x2="1120" y2="80"/>
+          <text class="callout-label" x="1130" y="72">Ceiling Fan</text>
+          <text class="callout-sublabel" x="1130" y="88">WHITE PROFILE, LOW-NOISE DC MOTOR</text>
+        </g>
+        <!-- Sheer curtains -->
+        <g class="callout-group" data-index="1">
+          <circle class="callout-dot" cx="1580" cy="400" r="4"/>
+          <line class="callout-line" x1="1580" y1="400" x2="1700" y2="320"/>
+          <text class="callout-label" x="1710" y="312">Sheer Curtains</text>
+          <text class="callout-sublabel" x="1710" y="328">FLOOR-TO-CEILING, S-FOLD TRACK</text>
+        </g>
+        <!-- Polished aggregate floor -->
+        <g class="callout-group" data-index="2">
+          <circle class="callout-dot" cx="700" cy="880" r="4"/>
+          <line class="callout-line" x1="700" y1="880" x2="540" y2="800"/>
+          <text class="callout-label" x="530" y="792" text-anchor="end">Polished Aggregate Floor</text>
+          <text class="callout-sublabel" x="530" y="808" text-anchor="end">HONED CONCRETE, WARM GREY</text>
+        </g>
+      </svg>
+    </div>
+
+  </div><!-- /sticky-viewport -->
+</div><!-- /scroll-container -->
+
+<!-- ── Mobile Callouts (hidden on desktop) ── -->
+<div class="mobile-callouts" id="mobileCallouts02" style="display:none;">
+  <div class="mobile-callout-item"><div class="mc-dot"></div><div><div class="mc-title">Vertical Subway Tile</div><div class="mc-spec">Gloss white ceramic, stacked bond</div></div></div>
+  <div class="mobile-callout-item"><div class="mc-dot"></div><div><div class="mc-title">Floating Oak Vanity</div><div class="mc-spec">Solid timber, wall-mounted</div></div></div>
+  <div class="mobile-callout-item"><div class="mc-dot"></div><div><div class="mc-title">Vessel Basins</div><div class="mc-spec">Matte white, above-counter</div></div></div>
+  <div class="mobile-callout-item"><div class="mc-dot"></div><div><div class="mc-title">Brushed Brass Tapware</div><div class="mc-spec">Wall-mounted mixer set</div></div></div>
+  <div class="mobile-callout-item"><div class="mc-dot"></div><div><div class="mc-title">Arch-Top Mirrors</div><div class="mc-spec">Custom profile, LED backlit</div></div></div>
+  <div class="mobile-callout-item"><div class="mc-dot"></div><div><div class="mc-title">Wooden Bead Pendant</div><div class="mc-spec">Hand-threaded coastal detail</div></div></div>
 </div>
 
-<!-- Hero Section -->
-<section id="hero" class="ken-burns-container relative">
-  <!-- Background slides -->
-  <div class="ken-burns-slide" style="background-image: url('../assets/images/hero-1.jpg');"></div>
-  <div class="ken-burns-slide" style="background-image: url('../assets/images/hero-2.jpg');"></div>
-  <div class="ken-burns-slide" style="background-image: url('../assets/images/hero-3.jpg');"></div>
-  <div class="ken-burns-slide" style="background-image: url('../assets/images/hero-4.jpg');"></div>
+<div class="mobile-callouts" id="mobileCallouts03" style="display:none;">
+  <div class="mobile-callout-item"><div class="mc-dot"></div><div><div class="mc-title">Ceiling Fan</div><div class="mc-spec">White profile, low-noise DC motor</div></div></div>
+  <div class="mobile-callout-item"><div class="mc-dot"></div><div><div class="mc-title">Sheer Curtains</div><div class="mc-spec">Floor-to-ceiling, S-fold track</div></div></div>
+  <div class="mobile-callout-item"><div class="mc-dot"></div><div><div class="mc-title">Polished Aggregate Floor</div><div class="mc-spec">Honed concrete, warm grey</div></div></div>
+</div>
 
-  <!-- Dark overlay -->
-  <div class="absolute inset-0 bg-black/50 z-10"></div>
-  <div class="absolute inset-0 light-leak z-10"></div>
+<!-- ════════════════════════════════════════ -->
+<!-- SECTIONS BELOW ANIMATION               -->
+<!-- ════════════════════════════════════════ -->
+<div class="section-below">
 
-  <!-- Watermark -->
-  <div class="absolute inset-0 flex items-center justify-center z-10">
-    <span class="watermark font-italiana text-white">LK</span>
-  </div>
-
-  <!-- Hero Content -->
-  <div class="absolute inset-0 flex flex-col items-center justify-center z-20 px-6 text-center">
-    <p class="text-silver text-xs tracking-[0.4em] uppercase font-light mb-6 reveal">Adelaide's Premier Design Studio</p>
-    <h1 class="font-italiana text-white text-5xl md:text-7xl lg:text-8xl tracking-wide reveal reveal-delay-1">Where Vision Meets</h1>
-    <h1 class="font-italiana text-white text-5xl md:text-7xl lg:text-8xl tracking-wide reveal reveal-delay-2">Craftsmanship</h1>
-    <div class="mt-10 flex flex-col sm:flex-row items-center gap-4 reveal reveal-delay-3">
-      <a href="#projects" class="btn-silver px-10 py-3.5 text-xs uppercase tracking-[0.2em]">View Portfolio</a>
-      <a href="#contact" class="btn-gold px-10 py-3.5 text-xs uppercase tracking-[0.2em]">Free Consultation</a>
-    </div>
-    <p class="mt-4 text-silver/50 text-xs tracking-wider reveal reveal-delay-4">Valued at $350 — Complimentary for a limited time</p>
-  </div>
-
-  <!-- Scroll indicator -->
-  <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 scroll-indicator">
-    <svg width="20" height="30" viewBox="0 0 20 30" fill="none" class="text-silver/50">
-      <rect x="1" y="1" width="18" height="28" rx="9" stroke="currentColor" stroke-width="1"/>
-      <circle cx="10" cy="10" r="2" fill="currentColor"/>
-    </svg>
-  </div>
-</section>
-
-<!-- Section Divider -->
-<div class="section-divider"></div>
-
-<!-- About Section -->
-<section id="about" class="bg-dark py-28 md:py-40 relative overflow-hidden">
-  <div class="max-w-7xl mx-auto px-6 lg:px-12">
-    <div class="grid md:grid-cols-2 gap-16 md:gap-24 items-center">
-      <div>
-        <p class="text-gold text-xs tracking-[0.3em] uppercase font-light mb-6 reveal">Our Philosophy</p>
-        <h2 class="font-italiana text-white text-4xl md:text-5xl lg:text-6xl leading-tight reveal reveal-delay-1">Design Without<br>Compromise</h2>
-        <div class="w-16 h-px bg-silver/30 mt-8 mb-8 reveal reveal-delay-2"></div>
-        <p class="text-silver/80 font-light leading-relaxed text-sm md:text-base reveal reveal-delay-2">
-          At LK Design and Build, we believe exceptional spaces are born from the intersection of bold vision and meticulous craftsmanship. Led by Lyda, our Adelaide-based studio brings a refined aesthetic sensibility to every project we undertake.
+  <!-- Project Summary -->
+  <section style="padding: 120px 40px; max-width: 1200px; margin: 0 auto;">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;">
+      <div class="fade-in">
+        <div class="small-caps tracking-wide" style="font-size: 0.7rem; color: #C9A96E; margin-bottom: 16px;">Project Overview</div>
+        <h2 class="heading-serif-light" style="font-size: clamp(2rem, 4vw, 3.2rem); margin-bottom: 24px;">Semaphore<br>Master Suite</h2>
+        <div class="gold-rule" style="margin-bottom: 24px;"></div>
+        <p style="font-size: 0.95rem; line-height: 1.8; color: rgba(44,44,44,0.75); font-weight: 300;">
+          A complete transformation of the master bedroom and ensuite bathroom in this
+          coastal Semaphore home. The design balances warmth and sophistication — floating
+          timber vanities, brushed brass fixtures, and a curated material palette that
+          honours the home's beachside character while delivering contemporary luxury.
         </p>
-        <p class="text-silver/80 font-light leading-relaxed text-sm md:text-base mt-6 reveal reveal-delay-3">
-          From intimate interior transformations to complete architectural builds, we approach each commission as a unique narrative — one that reflects the lives, aspirations, and individuality of those who inhabit it.
-        </p>
-        <a href="#contact" class="inline-block mt-10 btn-silver px-8 py-3 text-xs uppercase tracking-[0.2em] reveal reveal-delay-4">Start Your Journey</a>
       </div>
-      <div class="relative reveal reveal-delay-2">
-        <div class="aspect-[3/4] overflow-hidden">
-          <img src="../assets/images/hero-2.jpg" alt="LK Design and Build Interior" class="w-full h-full object-cover" loading="lazy">
-          <div class="absolute inset-0 light-leak"></div>
+      <div class="fade-in" style="transition-delay: 0.15s;">
+        <div style="border: 1px solid rgba(201,169,110,0.2); padding: 40px;">
+          <div class="small-caps tracking-wide" style="font-size: 0.65rem; color: #C9A96E; margin-bottom: 24px;">Specifications</div>
+          <div style="display: grid; gap: 20px;">
+            <div style="border-bottom: 1px solid rgba(201,169,110,0.12); padding-bottom: 16px;">
+              <div style="font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(44,44,44,0.45); margin-bottom: 4px;">Location</div>
+              <div style="font-size: 0.9rem; font-weight: 400;">Semaphore, South Australia</div>
+            </div>
+            <div style="border-bottom: 1px solid rgba(201,169,110,0.12); padding-bottom: 16px;">
+              <div style="font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(44,44,44,0.45); margin-bottom: 4px;">Scope</div>
+              <div style="font-size: 0.9rem; font-weight: 400;">Master Bedroom + Ensuite Bathroom</div>
+            </div>
+            <div style="border-bottom: 1px solid rgba(201,169,110,0.12); padding-bottom: 16px;">
+              <div style="font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(44,44,44,0.45); margin-bottom: 4px;">Style</div>
+              <div style="font-size: 0.9rem; font-weight: 400;">Coastal Contemporary</div>
+            </div>
+            <div style="border-bottom: 1px solid rgba(201,169,110,0.12); padding-bottom: 16px;">
+              <div style="font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(44,44,44,0.45); margin-bottom: 4px;">Key Materials</div>
+              <div style="font-size: 0.9rem; font-weight: 400;">Solid Oak, Brushed Brass, Honed Concrete</div>
+            </div>
+            <div>
+              <div style="font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(44,44,44,0.45); margin-bottom: 4px;">Duration</div>
+              <div style="font-size: 0.9rem; font-weight: 400;">12 Weeks</div>
+            </div>
+          </div>
         </div>
-        <div class="absolute -bottom-6 -left-6 w-32 h-32 border border-silver/10"></div>
-        <div class="absolute -top-6 -right-6 w-32 h-32 border border-silver/10"></div>
       </div>
     </div>
+  </section>
+
+  <!-- Responsive grid fix for mobile -->
+  <style>
+    @media (max-width: 767px) {
+      section > div[style*="grid-template-columns: 1fr 1fr"] {
+        grid-template-columns: 1fr !important;
+        gap: 40px !important;
+      }
+    }
+  </style>
+
+  <!-- Divider -->
+  <div style="max-width: 1200px; margin: 0 auto; padding: 0 40px;">
+    <div class="gold-rule-wide"></div>
   </div>
-</section>
 
-<!-- Section Divider -->
-<div class="section-divider"></div>
-
-<!-- Services Section -->
-<section id="services" class="bg-black py-28 md:py-40 relative">
-  <div class="max-w-7xl mx-auto px-6 lg:px-12">
-    <div class="text-center mb-20">
-      <p class="text-gold text-xs tracking-[0.3em] uppercase font-light mb-6 reveal">What We Do</p>
-      <h2 class="font-italiana text-white text-4xl md:text-5xl lg:text-6xl reveal reveal-delay-1">Our Expertise</h2>
+  <!-- Contact CTA -->
+  <section style="padding: 120px 40px; text-align: center;">
+    <div class="fade-in" style="max-width: 600px; margin: 0 auto;">
+      <div class="small-caps tracking-wide" style="font-size: 0.7rem; color: #C9A96E; margin-bottom: 16px;">Begin Your Project</div>
+      <h2 class="heading-serif-light" style="font-size: clamp(1.8rem, 3.5vw, 2.8rem); margin-bottom: 24px;">
+        Ready to Transform<br>Your Space?
+      </h2>
+      <div class="gold-rule" style="margin: 0 auto 32px;"></div>
+      <p style="font-size: 0.9rem; line-height: 1.8; color: rgba(44,44,44,0.65); font-weight: 300; margin-bottom: 40px;">
+        Every exceptional home begins with a conversation. Let's discuss your vision
+        and explore how we can bring it to life.
+      </p>
+      <a href="#" class="btn-primary">Get in Touch</a>
     </div>
+  </section>
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-silver/10">
-      <!-- Interior Design -->
-      <div class="bg-black p-10 md:p-12 group reveal">
-        <div class="text-gold/60 text-5xl font-italiana mb-6 group-hover:text-gold transition-colors duration-500">01</div>
-        <h3 class="font-italiana text-white text-2xl mb-4">Interior<br>Design</h3>
-        <p class="text-silver/60 text-sm font-light leading-relaxed">Curated interiors that balance beauty with function. Every material, finish, and detail considered with intention.</p>
-      </div>
-
-      <!-- Renovations -->
-      <div class="bg-black p-10 md:p-12 group reveal reveal-delay-1">
-        <div class="text-gold/60 text-5xl font-italiana mb-6 group-hover:text-gold transition-colors duration-500">02</div>
-        <h3 class="font-italiana text-white text-2xl mb-4">Renovations</h3>
-        <p class="text-silver/60 text-sm font-light leading-relaxed">Thoughtful transformations that honour the character of existing spaces while elevating them to contemporary standards.</p>
-      </div>
-
-      <!-- Additions -->
-      <div class="bg-black p-10 md:p-12 group reveal reveal-delay-2">
-        <div class="text-gold/60 text-5xl font-italiana mb-6 group-hover:text-gold transition-colors duration-500">03</div>
-        <h3 class="font-italiana text-white text-2xl mb-4">Additions</h3>
-        <p class="text-silver/60 text-sm font-light leading-relaxed">Seamless extensions that feel as though they were always part of the original architecture. Space reimagined.</p>
-      </div>
-
-      <!-- New Builds -->
-      <div class="bg-black p-10 md:p-12 group reveal reveal-delay-3">
-        <div class="text-gold/60 text-5xl font-italiana mb-6 group-hover:text-gold transition-colors duration-500">04</div>
-        <h3 class="font-italiana text-white text-2xl mb-4">New<br>Builds</h3>
-        <p class="text-silver/60 text-sm font-light leading-relaxed">From concept to completion. Ground-up residences designed and built to the highest standard of quality and craft.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Section Divider -->
-<div class="section-divider"></div>
-
-<!-- Projects Section -->
-<section id="projects" class="bg-darker py-28 md:py-40 relative overflow-hidden">
-  <div class="max-w-7xl mx-auto px-6 lg:px-12 mb-16">
-    <div class="flex flex-col md:flex-row md:items-end md:justify-between">
+  <!-- Footer -->
+  <footer>
+    <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px;">
       <div>
-        <p class="text-gold text-xs tracking-[0.3em] uppercase font-light mb-6 reveal">Selected Work</p>
-        <h2 class="font-italiana text-white text-4xl md:text-5xl lg:text-6xl reveal reveal-delay-1">Portfolio</h2>
+        <div style="font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: #F5F0EB; margin-bottom: 16px; letter-spacing: 0.03em;">LK Design & Build</div>
+        <p style="font-size: 0.8rem; line-height: 1.7;">Crafting exceptional spaces in Adelaide.</p>
       </div>
-      <p class="text-silver/50 text-sm font-light mt-4 md:mt-0 reveal reveal-delay-2">Scroll to explore &rarr;</p>
-    </div>
-  </div>
-
-  <!-- Horizontal scroll -->
-  <div class="projects-scroll pl-6 lg:pl-12 pb-8 reveal">
-    <!-- Broadview -->
-    <div class="project-card">
-      <div class="aspect-[4/3] overflow-hidden relative">
-        <img src="../assets/images/project-broadview.jpg" alt="Broadview Project" class="w-full h-full object-cover" loading="lazy">
-        <div class="img-overlay absolute inset-0"></div>
-        <div class="absolute bottom-0 left-0 p-8">
-          <p class="text-gold/80 text-xs tracking-[0.3em] uppercase mb-2">Renovation</p>
-          <h3 class="font-italiana text-white text-3xl md:text-4xl">Broadview</h3>
+      <div>
+        <div class="small-caps" style="font-size: 0.65rem; color: #C9A96E; margin-bottom: 16px;">Quick Links</div>
+        <div style="display: flex; flex-direction: column; gap: 8px; font-size: 0.8rem;">
+          <a href="#">Projects</a>
+          <a href="#">Services</a>
+          <a href="#">About</a>
+          <a href="#">Contact</a>
+        </div>
+      </div>
+      <div>
+        <div class="small-caps" style="font-size: 0.65rem; color: #C9A96E; margin-bottom: 16px;">Contact</div>
+        <div style="font-size: 0.8rem; line-height: 2;">
+          Adelaide, South Australia<br>
+          <a href="mailto:hello@lkdesignandbuild.com.au">hello@lkdesignandbuild.com.au</a>
         </div>
       </div>
     </div>
-
-    <!-- Semaphore -->
-    <div class="project-card">
-      <div class="aspect-[4/3] overflow-hidden relative">
-        <img src="../assets/images/project-semaphore.jpg" alt="Semaphore Project" class="w-full h-full object-cover" loading="lazy">
-        <div class="img-overlay absolute inset-0"></div>
-        <div class="absolute bottom-0 left-0 p-8">
-          <p class="text-gold/80 text-xs tracking-[0.3em] uppercase mb-2">Coastal Living</p>
-          <h3 class="font-italiana text-white text-3xl md:text-4xl">Semaphore</h3>
-        </div>
-      </div>
+    <div style="max-width: 1200px; margin: 40px auto 0; padding-top: 24px; border-top: 1px solid rgba(201,169,110,0.15); text-align: center; font-size: 0.7rem;">
+      &copy; 2025 LK Design and Build. All rights reserved.
     </div>
+  </footer>
+  <style>
+    @media (max-width: 767px) {
+      footer > div:first-child { grid-template-columns: 1fr !important; }
+    }
+  </style>
 
-    <!-- OSR Fit Out -->
-    <div class="project-card">
-      <div class="aspect-[4/3] overflow-hidden relative">
-        <img src="../assets/images/project-osr.jpg" alt="OSR Fit Out" class="w-full h-full object-cover" loading="lazy">
-        <div class="img-overlay absolute inset-0"></div>
-        <div class="absolute bottom-0 left-0 p-8">
-          <p class="text-gold/80 text-xs tracking-[0.3em] uppercase mb-2">Commercial</p>
-          <h3 class="font-italiana text-white text-3xl md:text-4xl">OSR Fit Out</h3>
-        </div>
-      </div>
-    </div>
+</div><!-- /section-below -->
 
-    <!-- Unley -->
-    <div class="project-card">
-      <div class="aspect-[4/3] overflow-hidden relative">
-        <img src="../assets/images/project-unley.jpg" alt="Unley Project" class="w-full h-full object-cover" loading="lazy">
-        <div class="img-overlay absolute inset-0"></div>
-        <div class="absolute bottom-0 left-0 p-8">
-          <p class="text-gold/80 text-xs tracking-[0.3em] uppercase mb-2">Interior Design</p>
-          <h3 class="font-italiana text-white text-3xl md:text-4xl">Unley</h3>
-        </div>
-      </div>
-    </div>
-
-    <!-- Semaphore 2 -->
-    <div class="project-card">
-      <div class="aspect-[4/3] overflow-hidden relative">
-        <img src="../assets/images/project-semaphore2.jpg" alt="Semaphore Project Detail" class="w-full h-full object-cover" loading="lazy">
-        <div class="img-overlay absolute inset-0"></div>
-        <div class="absolute bottom-0 left-0 p-8">
-          <p class="text-gold/80 text-xs tracking-[0.3em] uppercase mb-2">Addition</p>
-          <h3 class="font-italiana text-white text-3xl md:text-4xl">Semaphore II</h3>
-        </div>
-      </div>
-    </div>
-
-    <!-- Semaphore 3 -->
-    <div class="project-card">
-      <div class="aspect-[4/3] overflow-hidden relative">
-        <img src="../assets/images/project-semaphore3.jpg" alt="Semaphore Project Detail" class="w-full h-full object-cover" loading="lazy">
-        <div class="img-overlay absolute inset-0"></div>
-        <div class="absolute bottom-0 left-0 p-8">
-          <p class="text-gold/80 text-xs tracking-[0.3em] uppercase mb-2">Living Spaces</p>
-          <h3 class="font-italiana text-white text-3xl md:text-4xl">Semaphore III</h3>
-        </div>
-      </div>
-    </div>
-
-    <!-- Spacer at end -->
-    <div class="flex-shrink-0 w-6 lg:w-12"></div>
-  </div>
-</section>
-
-<!-- Section Divider -->
-<div class="section-divider"></div>
-
-<!-- Stats Section -->
-<section class="bg-dark py-28 md:py-36 relative">
-  <div class="max-w-6xl mx-auto px-6 lg:px-12">
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-12 md:gap-8 text-center">
-      <div class="reveal">
-        <div class="stat-number font-italiana text-white text-5xl md:text-6xl lg:text-7xl" data-target="50" data-suffix="+">0</div>
-        <div class="w-8 h-px bg-gold/40 mx-auto mt-4 mb-4"></div>
-        <p class="text-silver/60 text-xs tracking-[0.2em] uppercase font-light">Projects Delivered</p>
-      </div>
-      <div class="reveal reveal-delay-1">
-        <div class="stat-number font-italiana text-white text-5xl md:text-6xl lg:text-7xl" data-target="15" data-suffix="">0</div>
-        <div class="w-8 h-px bg-gold/40 mx-auto mt-4 mb-4"></div>
-        <p class="text-silver/60 text-xs tracking-[0.2em] uppercase font-light">Years Experience</p>
-      </div>
-      <div class="reveal reveal-delay-2">
-        <div class="stat-number font-italiana text-white text-5xl md:text-6xl lg:text-7xl" data-target="100" data-suffix="%">0</div>
-        <div class="w-8 h-px bg-gold/40 mx-auto mt-4 mb-4"></div>
-        <p class="text-silver/60 text-xs tracking-[0.2em] uppercase font-light">Client Satisfaction</p>
-      </div>
-      <div class="reveal reveal-delay-3">
-        <div class="stat-number font-italiana text-white text-5xl md:text-6xl lg:text-7xl" data-target="350" data-prefix="$" data-suffix="">0</div>
-        <div class="w-8 h-px bg-gold/40 mx-auto mt-4 mb-4"></div>
-        <p class="text-silver/60 text-xs tracking-[0.2em] uppercase font-light">Free Consult Value</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Section Divider -->
-<div class="section-divider"></div>
-
-<!-- Contact Section -->
-<section id="contact" class="bg-black py-28 md:py-40 relative">
-  <div class="max-w-4xl mx-auto px-6 lg:px-12">
-    <div class="text-center mb-16">
-      <p class="text-gold text-xs tracking-[0.3em] uppercase font-light mb-6 reveal">Get In Touch</p>
-      <h2 class="font-italiana text-white text-4xl md:text-5xl lg:text-6xl reveal reveal-delay-1">Begin Your<br>Transformation</h2>
-      <p class="text-silver/60 text-sm font-light mt-6 max-w-lg mx-auto reveal reveal-delay-2">Book your complimentary design consultation, valued at $350. Let us bring your vision to life.</p>
-    </div>
-
-    <form class="space-y-6 max-w-2xl mx-auto reveal reveal-delay-2" onsubmit="event.preventDefault();">
-      <div class="grid md:grid-cols-2 gap-6">
-        <input type="text" placeholder="Your Name" class="form-input w-full px-5 py-4 text-sm font-light tracking-wide" required>
-        <input type="email" placeholder="Email Address" class="form-input w-full px-5 py-4 text-sm font-light tracking-wide" required>
-      </div>
-      <input type="tel" placeholder="Phone Number" class="form-input w-full px-5 py-4 text-sm font-light tracking-wide">
-      <select class="form-input w-full px-5 py-4 text-sm font-light tracking-wide appearance-none">
-        <option value="" disabled selected style="color: rgba(192,192,192,0.35);">Project Type</option>
-        <option value="interior">Interior Design</option>
-        <option value="renovation">Renovation</option>
-        <option value="addition">Addition</option>
-        <option value="new-build">New Build</option>
-      </select>
-      <textarea placeholder="Tell us about your project..." rows="4" class="form-input w-full px-5 py-4 text-sm font-light tracking-wide resize-none"></textarea>
-      <div class="text-center pt-4">
-        <button type="submit" class="btn-gold px-14 py-4 text-xs uppercase tracking-[0.2em] w-full md:w-auto">Book Free Consultation</button>
-      </div>
-    </form>
-
-    <!-- Contact details -->
-    <div class="mt-20 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 text-center reveal reveal-delay-3">
-      <a href="tel:0481742026" class="text-silver/70 text-sm font-light hover:text-platinum transition-colors tracking-wider">0481 742 026</a>
-      <span class="hidden md:block text-silver/20">|</span>
-      <a href="mailto:hello@lkdesignandbuild.com.au" class="text-silver/70 text-sm font-light hover:text-platinum transition-colors tracking-wider">hello@lkdesignandbuild.com.au</a>
-      <span class="hidden md:block text-silver/20">|</span>
-      <span class="text-silver/70 text-sm font-light tracking-wider">Adelaide, South Australia</span>
-    </div>
-  </div>
-</section>
-
-<!-- Section Divider -->
-<div class="section-divider"></div>
-
-<!-- Footer -->
-<footer class="bg-black py-16 relative">
-  <div class="max-w-7xl mx-auto px-6 lg:px-12">
-    <div class="flex flex-col md:flex-row items-center justify-between gap-8">
-      <!-- Footer Logo -->
-      <a href="#hero">
-        <svg viewBox="0 0 200 60" class="h-8 w-auto opacity-50 hover:opacity-80 transition-opacity" xmlns="http://www.w3.org/2000/svg">
-          <text x="0" y="38" font-family="Italiana, serif" font-size="42" font-weight="400" fill="#C0C0C0" letter-spacing="4">LK</text>
-          <text x="0" y="55" font-family="Inter, sans-serif" font-size="8.5" font-weight="200" fill="#C0C0C0" letter-spacing="5.5">DESIGN AND BUILD</text>
-        </svg>
-      </a>
-
-      <!-- Footer links -->
-      <div class="flex items-center gap-8">
-        <a href="https://www.instagram.com/primedesignbuilt/" target="_blank" rel="noopener" class="text-silver/40 text-xs tracking-[0.2em] uppercase hover:text-silver transition-colors">Instagram</a>
-        <a href="mailto:hello@lkdesignandbuild.com.au" class="text-silver/40 text-xs tracking-[0.2em] uppercase hover:text-silver transition-colors">Email</a>
-        <a href="tel:0481742026" class="text-silver/40 text-xs tracking-[0.2em] uppercase hover:text-silver transition-colors">Call</a>
-      </div>
-    </div>
-
-    <div class="mt-12 pt-8 border-t border-silver/5 flex flex-col md:flex-row items-center justify-between gap-4">
-      <p class="text-silver/25 text-xs font-light tracking-wider">&copy; 2026 LK Design and Build. All rights reserved.</p>
-      <p class="text-silver/25 text-xs font-light tracking-wider">Adelaide, South Australia</p>
-    </div>
-  </div>
-</footer>
-
+<!-- ════════════════════════════════════════ -->
+<!-- JAVASCRIPT                             -->
+<!-- ════════════════════════════════════════ -->
 <script>
-// Cursor glow
-const glow = document.getElementById('cursorGlow');
-let glowVisible = false;
-document.addEventListener('mousemove', (e) => {
-  if (!glowVisible) { glow.style.opacity = '1'; glowVisible = true; }
-  glow.style.left = e.clientX + 'px';
-  glow.style.top = e.clientY + 'px';
-});
-document.addEventListener('mouseleave', () => { glow.style.opacity = '0'; glowVisible = false; });
+(function() {
+  'use strict';
 
-// Mobile menu
-const menuToggle = document.getElementById('menuToggle');
-const mobileMenu = document.getElementById('mobileMenu');
-const menuLine1 = document.getElementById('menuLine1');
-const menuLine2 = document.getElementById('menuLine2');
-const menuLine3 = document.getElementById('menuLine3');
-let menuOpen = false;
-
-menuToggle.addEventListener('click', () => {
-  menuOpen = !menuOpen;
-  mobileMenu.classList.toggle('open');
-  if (menuOpen) {
-    menuLine1.style.transform = 'rotate(45deg) translate(3px, 3px)';
-    menuLine2.style.opacity = '0';
-    menuLine3.style.transform = 'rotate(-45deg) translate(3px, -3px)';
-    menuLine3.style.width = '1.5rem';
-    document.body.style.overflow = 'hidden';
-  } else {
-    menuLine1.style.transform = '';
-    menuLine2.style.opacity = '1';
-    menuLine3.style.transform = '';
-    menuLine3.style.width = '1rem';
-    document.body.style.overflow = '';
+  // ── Reduced Motion Check ──
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isMobile = window.innerWidth < 768;
+  if (prefersReducedMotion || isMobile) {
+    // Show hero immediately
+    document.getElementById('heroOverlay').classList.add('visible');
+    document.getElementById('creamOverlay').style.opacity = '0';
+    // Show all images on mobile
+    if (isMobile) {
+      document.querySelectorAll('.img-layer').forEach(img => img.classList.add('active'));
+      document.querySelectorAll('.mobile-callouts').forEach(el => el.style.display = 'block');
+    }
+    // Fade-in observer for below sections
+    initFadeObserver();
+    return;
   }
-});
 
-document.querySelectorAll('.mobile-nav-link').forEach(link => {
-  link.addEventListener('click', () => {
-    menuOpen = false;
-    mobileMenu.classList.remove('open');
-    menuLine1.style.transform = '';
-    menuLine2.style.opacity = '1';
-    menuLine3.style.transform = '';
-    menuLine3.style.width = '1rem';
-    document.body.style.overflow = '';
-  });
-});
+  // ── Config ──
+  const LERP_FACTOR = 0.08;
+  const DWELL_WIDTH = 0.06;
+  const DWELL_PEAK = 2.5;
+  const REMAP_N = 1000;
+  const DWELL_CENTERS = [0.18, 0.50, 0.78];
 
-// Intersection Observer for reveal animations
-const observerOptions = { threshold: 0.15, rootMargin: '0px 0px -50px 0px' };
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
+  // ── DOM Elements ──
+  const container = document.getElementById('scrollContainer');
+  const img1 = document.getElementById('img1');
+  const img2 = document.getElementById('img2');
+  const img3 = document.getElementById('img3');
+  const creamOverlay = document.getElementById('creamOverlay');
+  const decoFrame = document.getElementById('decoFrame');
+  const heroOverlay = document.getElementById('heroOverlay');
+  const scrollHint = document.getElementById('scrollHint');
+  const callouts02 = document.getElementById('callouts02');
+  const callouts03 = document.getElementById('callouts03');
+  const progressBar = document.getElementById('scrollProgress');
+  const cursorDot = document.getElementById('cursorDot');
+  const cursorRing = document.getElementById('cursorRing');
+
+  // ── Build Scroll-Dwell Lookup Table ──
+  function buildRemapLUT() {
+    const density = new Float64Array(REMAP_N);
+    for (let i = 0; i < REMAP_N; i++) {
+      const x = i / (REMAP_N - 1);
+      let d = 1.0;
+      for (const c of DWELL_CENTERS) {
+        const dist = (x - c) / DWELL_WIDTH;
+        d += DWELL_PEAK * Math.exp(-0.5 * dist * dist);
+      }
+      density[i] = d;
     }
-  });
-}, observerOptions);
-
-document.querySelectorAll('.reveal, .clip-reveal, .line-grow').forEach(el => observer.observe(el));
-
-// Stat counter animation
-const statObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const el = entry.target;
-      const target = parseInt(el.dataset.target);
-      const prefix = el.dataset.prefix || '';
-      const suffix = el.dataset.suffix || '';
-      let current = 0;
-      const increment = target / 60;
-      const timer = setInterval(() => {
-        current += increment;
-        if (current >= target) {
-          current = target;
-          clearInterval(timer);
-        }
-        el.textContent = prefix + Math.round(current) + suffix;
-      }, 25);
-      statObserver.unobserve(el);
+    // Cumulative integral
+    const cumulative = new Float64Array(REMAP_N);
+    cumulative[0] = 0;
+    for (let i = 1; i < REMAP_N; i++) {
+      cumulative[i] = cumulative[i - 1] + (density[i - 1] + density[i]) * 0.5;
     }
-  });
-}, { threshold: 0.5 });
-
-document.querySelectorAll('.stat-number').forEach(el => statObserver.observe(el));
-
-// Navbar background on scroll
-const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 80) {
-    navbar.style.borderBottom = '1px solid rgba(192,192,192,0.05)';
-  } else {
-    navbar.style.borderBottom = 'none';
+    // Normalise
+    const total = cumulative[REMAP_N - 1];
+    for (let i = 0; i < REMAP_N; i++) {
+      cumulative[i] /= total;
+    }
+    return cumulative;
   }
-});
 
-// Smooth scroll for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  const remapLUT = buildRemapLUT();
+
+  function remapProgress(raw) {
+    // Binary search for inverse mapping
+    let lo = 0, hi = REMAP_N - 1;
+    while (lo < hi) {
+      const mid = (lo + hi) >> 1;
+      if (remapLUT[mid] < raw) lo = mid + 1;
+      else hi = mid;
     }
+    return lo / (REMAP_N - 1);
+  }
+
+  // ── Scroll State ──
+  let currentProgress = 0;
+  let targetProgress = 0;
+  let ticking = false;
+
+  function getScrollProgress() {
+    const rect = container.getBoundingClientRect();
+    const scrollHeight = container.offsetHeight - window.innerHeight;
+    if (scrollHeight <= 0) return 0;
+    const scrolled = -rect.top;
+    return Math.max(0, Math.min(1, scrolled / scrollHeight));
+  }
+
+  // ── Animation Zones ──
+  // Zone boundaries (in remapped progress):
+  // Hero Entry:    0.00 - 0.16
+  // Vanity Focus:  0.16 - 0.40   (crossfade 01→02 at 0.24-0.32)
+  // Dwell & Detail: 0.40 - 0.64
+  // Room Reveal:   0.64 - 0.84   (crossfade 02→03 at 0.68-0.76)
+  // Exit & CTA:    0.84 - 1.00
+
+  function applyFrame(progress) {
+    const p = remapProgress(progress);
+
+    // ── Progress Bar ──
+    progressBar.style.width = (progress * 100) + '%';
+
+    // ── Cream Overlay (hero reveal) ──
+    if (p < 0.08) {
+      const t = p / 0.08;
+      creamOverlay.style.opacity = 1 - t;
+    } else {
+      creamOverlay.style.opacity = 0;
+    }
+
+    // ── Hero Overlay ──
+    if (p < 0.02) {
+      heroOverlay.classList.add('visible');
+      scrollHint.classList.add('visible');
+      decoFrame.classList.add('visible');
+    }
+    if (p > 0.14) {
+      heroOverlay.style.opacity = Math.max(0, 1 - ((p - 0.14) / 0.06));
+      scrollHint.style.opacity = 0;
+    } else {
+      heroOverlay.style.opacity = '';
+    }
+
+    // ── Image 01 Transform (scale 1.15 → 1.0, hero) ──
+    if (p < 0.24) {
+      const scale = 1.15 - 0.15 * Math.min(1, p / 0.24);
+      img1.style.transform = `scale(${scale})`;
+    }
+
+    // ── Crossfade 01 → 02 (p: 0.24 - 0.32) ──
+    if (p < 0.24) {
+      img1.style.opacity = 1;
+      img2.style.opacity = 0;
+    } else if (p < 0.32) {
+      const t = (p - 0.24) / 0.08;
+      img1.style.opacity = 1 - t;
+      img2.style.opacity = t;
+      // Pan effect during crossfade
+      const tx = -t * 3;
+      img1.style.transform = `scale(1.0) translateX(${tx}%)`;
+      img2.style.transform = `scale(1.05) translateX(${(1 - t) * 3}%)`;
+    } else {
+      img1.style.opacity = 0;
+    }
+
+    // ── Image 02 Transform (breathing zoom) ──
+    if (p >= 0.32 && p < 0.68) {
+      const zoneP = (p - 0.32) / 0.36;
+      const scale = 1.05 - 0.05 * zoneP;
+      img2.style.opacity = 1;
+      img2.style.transform = `scale(${scale})`;
+    }
+
+    // ── Callouts 02 (show during image 02 dwell) ──
+    if (p >= 0.38 && p < 0.62) {
+      const fadeIn = Math.min(1, (p - 0.38) / 0.04);
+      const fadeOut = p > 0.58 ? Math.max(0, 1 - (p - 0.58) / 0.04) : 1;
+      callouts02.style.opacity = fadeIn * fadeOut;
+      if (fadeIn > 0.5) {
+        callouts02.querySelectorAll('.callout-group').forEach(g => g.classList.add('visible'));
+      } else {
+        callouts02.querySelectorAll('.callout-group').forEach(g => g.classList.remove('visible'));
+      }
+    } else {
+      callouts02.style.opacity = 0;
+      callouts02.querySelectorAll('.callout-group').forEach(g => g.classList.remove('visible'));
+    }
+
+    // ── Crossfade 02 → 03 (p: 0.68 - 0.76) ──
+    if (p >= 0.68 && p < 0.76) {
+      const t = (p - 0.68) / 0.08;
+      img2.style.opacity = 1 - t;
+      img3.style.opacity = t;
+      // Pan right
+      img2.style.transform = `scale(1.0) translateX(${-t * 3}%)`;
+      img3.style.transform = `scale(1.05) translateX(${(1 - t) * 2}%)`;
+    } else if (p >= 0.76) {
+      img2.style.opacity = 0;
+      img3.style.opacity = 1;
+    }
+
+    // ── Image 03 Transform (slow zoom out) ──
+    if (p >= 0.76) {
+      const zoneP = (p - 0.76) / 0.24;
+      const scale = 1.05 - 0.05 * zoneP;
+      img3.style.transform = `scale(${scale})`;
+    }
+
+    // ── Callouts 03 (show during image 03 dwell) ──
+    if (p >= 0.78 && p < 0.94) {
+      const fadeIn = Math.min(1, (p - 0.78) / 0.04);
+      const fadeOut = p > 0.90 ? Math.max(0, 1 - (p - 0.90) / 0.04) : 1;
+      callouts03.style.opacity = fadeIn * fadeOut;
+      if (fadeIn > 0.5) {
+        callouts03.querySelectorAll('.callout-group').forEach(g => g.classList.add('visible'));
+      } else {
+        callouts03.querySelectorAll('.callout-group').forEach(g => g.classList.remove('visible'));
+      }
+    } else {
+      callouts03.style.opacity = 0;
+      callouts03.querySelectorAll('.callout-group').forEach(g => g.classList.remove('visible'));
+    }
+
+    // ── Decorative Frame ──
+    if (p > 0.06 && p < 0.90) {
+      decoFrame.classList.add('visible');
+    } else {
+      decoFrame.classList.remove('visible');
+    }
+  }
+
+  // ── rAF Loop ──
+  function tick() {
+    targetProgress = getScrollProgress();
+    currentProgress += (targetProgress - currentProgress) * LERP_FACTOR;
+
+    // Snap when very close
+    if (Math.abs(targetProgress - currentProgress) < 0.0001) {
+      currentProgress = targetProgress;
+    }
+
+    applyFrame(currentProgress);
+
+    if (Math.abs(targetProgress - currentProgress) > 0.00005) {
+      requestAnimationFrame(tick);
+    } else {
+      ticking = false;
+    }
+  }
+
+  function onScroll() {
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(tick);
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // Initial frame
+  requestAnimationFrame(() => {
+    currentProgress = getScrollProgress();
+    applyFrame(currentProgress);
+    // Trigger hero after small delay
+    setTimeout(() => {
+      heroOverlay.classList.add('visible');
+      scrollHint.classList.add('visible');
+    }, 300);
   });
-});
+
+  // ── Custom Cursor ──
+  if (window.matchMedia('(hover: hover) and (pointer: fine)').matches && cursorDot && cursorRing) {
+    let cx = 0, cy = 0, rx = 0, ry = 0;
+    document.addEventListener('mousemove', (e) => {
+      cx = e.clientX;
+      cy = e.clientY;
+      cursorDot.style.left = cx + 'px';
+      cursorDot.style.top = cy + 'px';
+    });
+    function cursorLoop() {
+      rx += (cx - rx) * 0.15;
+      ry += (cy - ry) * 0.15;
+      cursorRing.style.left = rx + 'px';
+      cursorRing.style.top = ry + 'px';
+      requestAnimationFrame(cursorLoop);
+    }
+    cursorLoop();
+  }
+
+  // ── Fade-in Observer ──
+  initFadeObserver();
+
+})();
+
+function initFadeObserver() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+}
 </script>
 
 </body>
