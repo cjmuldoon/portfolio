@@ -1148,57 +1148,75 @@
       const infraLabel = document.getElementById('infraLabel');
       const infraProgress = document.getElementById('infraProgress');
 
-      let heroReady = false, infraReady = false;
-
-      // Capture original URLs before any manipulation
-      const heroSrc = heroVideo.getAttribute('src');
-      const infraSrc = infraVideo.getAttribute('src');
-
       if (prefersReducedMotion || isMobile) {
         heroOverlay.classList.add('visible');
-        heroVideo.currentTime = 0;
-        infraVideo.currentTime = 0;
         return;
       }
 
-      // Fetch entire video as blob so all frames are seekable.
-      // Must complete before we can scrub.
-      function loadVideoBlob(video, src) {
+      // ── Prepare videos for scroll-scrubbing ──
+      // 1. Fetch as blob (ensures all bytes available for seeking)
+      // 2. Prime the decoder (play+pause — required by Chrome/Safari to render seeked frames)
+      let heroReady = false, infraReady = false;
+      const heroSrc = heroVideo.getAttribute('src');
+      const infraSrc = infraVideo.getAttribute('src');
+
+      function prepareVideo(video, src) {
         return fetch(src)
           .then(function(r) { return r.blob(); })
           .then(function(blob) {
-            return new Promise(function(resolve) {
-              video.addEventListener('loadedmetadata', function() {
-                // Also wait for enough data to seek
-                if (video.readyState >= 2) { resolve(); return; }
-                video.addEventListener('canplay', function() { resolve(); }, { once: true });
+            return new Promise(function(resolve, reject) {
+              var blobUrl = URL.createObjectURL(blob);
+              video.addEventListener('error', function() { reject(video.error); }, { once: true });
+              video.addEventListener('canplaythrough', function() {
+                // Prime the decoder: must play briefly then pause
+                // so the browser will render frames on seek
+                video.play().then(function() {
+                  video.pause();
+                  video.currentTime = 0;
+                  resolve();
+                }).catch(function() {
+                  // Autoplay blocked — try muted play
+                  video.muted = true;
+                  video.play().then(function() {
+                    video.pause();
+                    video.currentTime = 0;
+                    resolve();
+                  }).catch(function() {
+                    // Last resort: resolve anyway, seeking may still work
+                    resolve();
+                  });
+                });
               }, { once: true });
-              video.src = URL.createObjectURL(blob);
+              video.src = blobUrl;
               video.load();
             });
           });
       }
 
-      loadVideoBlob(heroVideo, heroSrc).then(function() {
+      prepareVideo(heroVideo, heroSrc).then(function() {
         heroReady = true;
-        // Kick a tick to render initial frame
-        if (!ticking) { ticking = true; requestAnimationFrame(tick); }
+        startTicking();
       });
-      loadVideoBlob(infraVideo, infraSrc).then(function() {
+      prepareVideo(infraVideo, infraSrc).then(function() {
         infraReady = true;
-        if (!ticking) { ticking = true; requestAnimationFrame(tick); }
+        startTicking();
       });
 
-      // Show overlay immediately
+      // Show title overlay immediately
       setTimeout(function() {
         heroOverlay.classList.add('visible');
         scrollHint.classList.add('visible');
       }, 300);
 
-      const LERP = 0.06;
+      const LERP = 0.08;
       let currentHeroP = 0, targetHeroP = 0;
       let currentInfraP = 0, targetInfraP = 0;
       let ticking = false;
+      let lastHeroTime = -1, lastInfraTime = -1;
+
+      function startTicking() {
+        if (!ticking) { ticking = true; requestAnimationFrame(tick); }
+      }
 
       function getSectionProgress(section) {
         var rect = section.getBoundingClientRect();
@@ -1207,19 +1225,28 @@
         return Math.max(0, Math.min(1, -rect.top / scrollHeight));
       }
 
+      function seekVideo(video, time, lastTime) {
+        // Only seek if time actually changed (avoids redundant seeks)
+        var t = Math.max(0, Math.min(time, video.duration - 0.05));
+        if (Math.abs(t - lastTime) > 0.01) {
+          video.currentTime = t;
+          return t;
+        }
+        return lastTime;
+      }
+
       function tick() {
         // ── Hero video scrub ──
         targetHeroP = getSectionProgress(heroSection);
         currentHeroP += (targetHeroP - currentHeroP) * LERP;
         if (Math.abs(targetHeroP - currentHeroP) < 0.0001) currentHeroP = targetHeroP;
 
-        if (heroReady && heroVideo.duration && isFinite(heroVideo.duration)) {
-          // Map full scroll range to full video duration
+        if (heroReady && heroVideo.duration > 0) {
           var heroTime = currentHeroP * heroVideo.duration;
-          heroVideo.currentTime = Math.min(heroTime, heroVideo.duration - 0.01);
+          lastHeroTime = seekVideo(heroVideo, heroTime, lastHeroTime);
         }
 
-        // Hero overlay: visible at start, fades after p > 0.05
+        // Hero overlay fade
         if (currentHeroP < 0.05) {
           heroOverlay.style.opacity = '';
         } else if (currentHeroP < 0.25) {
@@ -1230,13 +1257,8 @@
           scrollHint.style.opacity = 0;
         }
 
-        // Dim overlay reduces as user scrolls
         heroDim.style.opacity = Math.max(0, 0.3 - currentHeroP * 0.4);
-
-        // Deco frame
         heroDecoFrame.classList.toggle('visible', currentHeroP > 0.02 && currentHeroP < 0.92);
-
-        // Progress bar
         heroProgress.style.width = (currentHeroP * 100) + '%';
 
         // ── Infographic video scrub ──
@@ -1244,40 +1266,33 @@
         currentInfraP += (targetInfraP - currentInfraP) * LERP;
         if (Math.abs(targetInfraP - currentInfraP) < 0.0001) currentInfraP = targetInfraP;
 
-        if (infraReady && infraVideo.duration && isFinite(infraVideo.duration)) {
-          // Reach the end of the video by 55% scroll progress,
-          // then hold the final frame for the remaining 45%.
-          // This means infographics appear early and stay visible.
-          var videoP = Math.min(1, currentInfraP / 0.55);
+        if (infraReady && infraVideo.duration > 0) {
+          // Video completes at 50% scroll, then holds final frame
+          var videoP = Math.min(1.0, currentInfraP / 0.50);
           var infraTime = videoP * infraVideo.duration;
-          infraVideo.currentTime = Math.min(infraTime, infraVideo.duration - 0.01);
+          lastInfraTime = seekVideo(infraVideo, infraTime, lastInfraTime);
         }
 
-        // Label fades in after 15% (infographics becoming visible)
         infraLabel.classList.toggle('visible', currentInfraP > 0.15);
-
-        // Progress bar
         infraProgress.style.width = (currentInfraP * 100) + '%';
 
-        // ── Page-level scroll progress ──
+        // Page-level progress
         var pageP = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
         scrollProgressBar.style.width = (pageP * 100) + '%';
 
-        // Continue animating if not settled
-        var heroSettled = Math.abs(targetHeroP - currentHeroP) < 0.00005;
-        var infraSettled = Math.abs(targetInfraP - currentInfraP) < 0.00005;
-        if (!heroSettled || !infraSettled) {
+        // Keep running animation loop while not settled
+        var settled = Math.abs(targetHeroP - currentHeroP) < 0.00005
+                   && Math.abs(targetInfraP - currentInfraP) < 0.00005;
+        if (!settled) {
           requestAnimationFrame(tick);
         } else {
           ticking = false;
         }
       }
 
-      window.addEventListener('scroll', function() {
-        if (!ticking) { ticking = true; requestAnimationFrame(tick); }
-      }, { passive: true });
+      window.addEventListener('scroll', startTicking, { passive: true });
 
-      // Initial frame
+      // Initial render
       requestAnimationFrame(function() {
         currentHeroP = getSectionProgress(heroSection);
         currentInfraP = getSectionProgress(infraSection);
