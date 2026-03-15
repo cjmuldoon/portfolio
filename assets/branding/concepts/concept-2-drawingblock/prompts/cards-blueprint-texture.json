@@ -1,0 +1,12 @@
+{
+  "prompt": "Photorealistic overhead photograph of premium 650gsm business cards with a unique drawing-block-inspired design, displayed on a dark concrete surface. The cards are standard rectangular format (90mm x 55mm). The card background is deep charcoal black with an extremely subtle dark grey technical drawing grid pattern embossed across the entire card surface — barely visible fine grid lines with faint registration marks at intervals creating an architectural drafting sheet texture. The LK logo is centred: 'LK' in IBM Plex Mono inside a double rectangular frame with corner registration marks, a thin horizontal divider below, and 'DESIGN AND BUILD' in tracked uppercase monospace beneath, rendered in warm gold hot foil stamping (hex #C9A96E). Tiny annotations 'DWG-001', 'SCALE 1:100', 'REV.A' near the frame edges in gold. The embossed drawing-block grid texture across the card surface echoes the technical drafting language of the logo. The reverse card shows contact details in gold centred on the card, exactly reading: 'Lyda Kieng' (name, slightly bolder weight), 'Designer | Project Manager' (title with pipe separator), '0481 742 026' (phone number), 'Po Box 583 Prospect East SA 5082' (postal address), 'lyda@lkdesignandbuild.com.au' (email). The same subtle embossed grid texture is visible on the back. Four cards arranged with architectural precision, two showing front and two showing back. Shot on 50mm macro lens at f/3.5, even studio lighting, tack sharp focus, product photography, dark premium atmosphere. Match the dark premium card aesthetic and gold foil quality visible in the reference image.",
+  "negative_prompt": "cheap, cartoon, blurry, distorted text, misspelled, bright colours, cluttered, glossy, low quality, deformed, white background, rounded corners, colourful, busy, too many decorations, wrong text, placeholder text",
+  "image_input": [
+    "https://cjmuldoon.github.io/primeredesign/assets/branding/concepts/concept-2-drawingblock/cards.jpg"
+  ],
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "jpg",
+    "aspect_ratio": "16:9"
+  }
+}

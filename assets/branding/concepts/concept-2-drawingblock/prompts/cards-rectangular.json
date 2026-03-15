@@ -1,0 +1,12 @@
+{
+  "prompt": "Photorealistic overhead photograph of premium 600gsm matte black standard rectangular business cards (90mm x 55mm) with sharp square corners, displayed on a dark walnut timber desk surface. The front card shows the LK Design and Build logo: 'LK' in IBM Plex Mono centred inside a double rectangular frame with small corner registration marks at each corner of the outer frame, a thin horizontal divider below 'LK', and 'DESIGN AND BUILD' in tracked uppercase monospace beneath the divider. Small technical annotations in tiny type near the frame edges reading 'DWG-001', 'SCALE 1:100', and 'REV.A'. All in warm gold foil (hex #C9A96E). The logo is positioned in the upper left third of the card with generous white space. The back card shows contact information aligned right in gold monospace type, exactly reading: 'Lyda Kieng' (name, slightly bolder), 'Designer | Project Manager' (title with pipe separator), '0481 742 026' (phone), 'Po Box 583 Prospect East SA 5082' (address), 'lyda@lkdesignandbuild.com.au' (email), with a small LK double-frame icon mark in the bottom left corner. Five cards arranged in a neat editorial spread, some face up and some face down. Shot with 85mm lens at f/2.0, soft natural window light from the right, very shallow depth of field, warm colour temperature, editorial product photography style, premium tactile feel. Reference the attached image for the dark card aesthetic and gold foil printing quality.",
+  "negative_prompt": "cheap, cartoon, blurry, distorted text, misspelled, bright colours, cluttered, glossy, low quality, deformed letters, rounded corners, square cards, white cards, busy design, wrong text, placeholder text",
+  "image_input": [
+    "https://cjmuldoon.github.io/primeredesign/assets/branding/concepts/concept-2-drawingblock/cards.jpg"
+  ],
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "jpg",
+    "aspect_ratio": "16:9"
+  }
+}

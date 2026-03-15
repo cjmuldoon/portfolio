@@ -1145,6 +1145,33 @@ body::before {
       </div>
     </div>
 
+    <!-- Business Card Options -->
+    <div id="card-options-section">
+      <div class="section-header" style="margin-top:32px;">
+        <h2>Business Card Options</h2>
+        <span class="line"></span>
+        <span class="count">4 styles</span>
+      </div>
+      <div class="app-grid">
+        <div class="app-card">
+          <img id="app-cards-square" src="" alt="Square Format Cards" class="app-card-img" onclick="openLightbox(this.src)">
+          <div class="app-card-body"><h4>Square Format</h4><p style="font-size:0.7rem;color:rgba(245,240,235,0.5);margin:4px 0 0;">Rounded corners, matches existing card shape</p></div>
+        </div>
+        <div class="app-card">
+          <img id="app-cards-rectangular" src="" alt="Rectangular Minimal Cards" class="app-card-img" onclick="openLightbox(this.src)">
+          <div class="app-card-body"><h4>Rectangular Minimal</h4><p style="font-size:0.7rem;color:rgba(245,240,235,0.5);margin:4px 0 0;">Standard 90x55mm, clean editorial layout</p></div>
+        </div>
+        <div class="app-card">
+          <img id="app-cards-blueprint" src="" alt="Blueprint Texture Cards" class="app-card-img" onclick="openLightbox(this.src)">
+          <div class="app-card-body"><h4>Textured Surface</h4><p style="font-size:0.7rem;color:rgba(245,240,235,0.5);margin:4px 0 0;">Embossed pattern across card surface</p></div>
+        </div>
+        <div class="app-card">
+          <img id="app-cards-gold-edge" src="" alt="Gold Edge Cards" class="app-card-img" onclick="openLightbox(this.src)">
+          <div class="app-card-body"><h4>Gold Edge</h4><p style="font-size:0.7rem;color:rgba(245,240,235,0.5);margin:4px 0 0;">Triplex stock with gold painted edges</p></div>
+        </div>
+      </div>
+    </div>
+
     <!-- Brand Guidelines Link -->
     <!-- Documents & Downloads -->
     <div class="section-header" style="margin-top:32px;">
@@ -1425,6 +1452,24 @@ function selectConcept(index) {
       img.src = src;
       img.style.opacity = '1';
     }, 150);
+  });
+
+  // Update business card option images
+  const cardOptionImages = {
+    'app-cards-square': baseDir + '/cards-square.jpg',
+    'app-cards-rectangular': baseDir + '/cards-rectangular.jpg',
+    'app-cards-blueprint': baseDir + '/cards-blueprint-texture.jpg',
+    'app-cards-gold-edge': baseDir + '/cards-gold-edge.jpg'
+  };
+  Object.entries(cardOptionImages).forEach(([id, src]) => {
+    const img = document.getElementById(id);
+    if (img) {
+      img.style.opacity = '0';
+      setTimeout(() => {
+        img.src = src;
+        img.style.opacity = '1';
+      }, 150);
+    }
   });
 
   // Update document links

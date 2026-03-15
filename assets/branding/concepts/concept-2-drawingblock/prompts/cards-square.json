@@ -1,0 +1,12 @@
+{
+  "prompt": "Photorealistic overhead photograph of premium 650gsm matte black square business cards with rounded corners, arranged artfully on a dark natural slate surface with subtle texture. These cards replicate the exact same format as the reference image: SQUARE shape approximately 85mm x 85mm with 6mm corner radius, thick premium card stock, matte black with soft-touch lamination. The front card prominently displays the LK Design and Build logo: the letters 'LK' in precise monospace font (IBM Plex Mono style) centred inside a double rectangular frame outline with small corner registration marks at each corner of the outer frame, with a thin horizontal divider line below 'LK', and 'DESIGN AND BUILD' in tracked uppercase monospace beneath the divider. Small technical annotations appear in tiny type near the frame edges reading 'DWG-001', 'SCALE 1:100', and 'REV.A'. All elements rendered in warm gold foil stamping (hex #C9A96E) on matte black. The reverse card visible nearby shows contact details centred vertically in the same layout as the reference card — gold monospace type reading exactly: 'Lyda Kieng' as the name in slightly larger weight, 'Designer | Project Manager' as title with a pipe separator, then below with spacing: '0481 742 026', 'Po Box 583 Prospect East SA 5082', 'lyda@lkdesignandbuild.com.au'. All text centred on the card. Three or four cards scattered naturally, some overlapping at angles. Shot on 50mm macro lens at f/2.8, soft directional studio lighting from upper left creating warm gold reflections on the foil stamping, shallow depth of field with background cards slightly soft, cinematic colour grading, dark moody atmosphere, premium luxury feel. The cards have a velvety soft-touch matte lamination finish visible in the light.",
+  "negative_prompt": "cheap, cartoon, blurry, distorted text, misspelled words, bright colours, cluttered, glossy plastic finish, low quality, deformed letters, comic style, rectangular cards, sharp corners, white background, busy design, too many cards, text wrapping, curved text, wrong text, placeholder text, lorem ipsum",
+  "image_input": [
+    "https://cjmuldoon.github.io/primeredesign/assets/branding/concepts/concept-2-drawingblock/cards.jpg"
+  ],
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "jpg",
+    "aspect_ratio": "4:5"
+  }
+}
