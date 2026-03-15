@@ -380,7 +380,8 @@
       height: 100vh;
       overflow: hidden;
     }
-    .video-sticky video {
+    .video-sticky video,
+    .video-sticky canvas {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -499,7 +500,8 @@
       overflow: hidden;
       border: 1px solid rgba(201,169,110,0.25);
     }
-    .infographic-video-wrap video {
+    .infographic-video-wrap video,
+    .infographic-video-wrap canvas {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -610,7 +612,8 @@
   <!-- ═══════════════════════════════════════ -->
   <section id="hero" class="video-scroll-hero">
     <div class="video-sticky" id="heroSticky">
-      <video id="heroVideo" src="../assets/images/semaphore-animation01.mp4" muted playsinline preload="auto"></video>
+      <canvas id="heroCanvas"></canvas>
+      <video id="heroVideo" src="../assets/images/semaphore-animation01.mp4" muted playsinline preload="auto" style="display:none;"></video>
       <div class="absolute inset-0 bg-charcoal/30 pointer-events-none" id="heroDim"></div>
       <div class="hero-frame"></div>
       <div class="video-deco-frame" id="heroDecoFrame"></div>
@@ -727,7 +730,8 @@
       </div>
 
       <div class="infographic-video-wrap" id="infraWrap">
-        <video id="infraVideo" src="../assets/images/semaphore-animation02.mp4" muted playsinline preload="auto"></video>
+        <canvas id="infraCanvas"></canvas>
+        <video id="infraVideo" src="../assets/images/semaphore-animation02.mp4" muted playsinline preload="auto" style="display:none;"></video>
 
         <div class="infographic-label" id="infraLabel">
           <p class="text-gold text-xs font-sans font-medium tracking-wide-custom uppercase mb-1">Semaphore Ensuite</p>
@@ -1150,55 +1154,113 @@
 
       if (prefersReducedMotion || isMobile) {
         heroOverlay.classList.add('visible');
+        // On mobile/reduced motion, just show first frame as poster
+        heroVideo.style.display = 'block';
+        document.getElementById('heroCanvas').style.display = 'none';
+        infraVideo.style.display = 'block';
+        document.getElementById('infraCanvas').style.display = 'none';
         return;
       }
 
-      // ── Prepare videos for scroll-scrubbing ──
-      // 1. Fetch as blob (ensures all bytes available for seeking)
-      // 2. Prime the decoder (play+pause — required by Chrome/Safari to render seeked frames)
-      let heroReady = false, infraReady = false;
-      const heroSrc = heroVideo.getAttribute('src');
-      const infraSrc = infraVideo.getAttribute('src');
+      // ═══════════════════════════════════════
+      // CANVAS FRAME EXTRACTION ENGINE
+      // Extract every frame from each video upfront,
+      // store as ImageBitmap array, draw to canvas on scroll.
+      // This gives perfectly smooth scrubbing with no keyframe jumps.
+      // ═══════════════════════════════════════
 
-      function prepareVideo(video, src) {
+      const heroCanvas = document.getElementById('heroCanvas');
+      const heroCtx = heroCanvas.getContext('2d');
+      const infraCanvas = document.getElementById('infraCanvas');
+      const infraCtx = infraCanvas.getContext('2d');
+
+      const EXTRACT_FPS = 24;
+      let heroFrames = [], infraFrames = [];
+      let heroReady = false, infraReady = false;
+
+      function extractFrames(video, fps) {
+        return new Promise(function(resolve) {
+          var frames = [];
+          var duration = video.duration;
+          var totalFrames = Math.ceil(duration * fps);
+          var frameIndex = 0;
+
+          // Prime decoder
+          video.muted = true;
+          video.currentTime = 0;
+
+          function captureFrame() {
+            createImageBitmap(video).then(function(bitmap) {
+              frames.push(bitmap);
+              frameIndex++;
+              if (frameIndex <= totalFrames) {
+                video.currentTime = Math.min(frameIndex / fps, duration - 0.01);
+              } else {
+                resolve(frames);
+              }
+            });
+          }
+
+          video.addEventListener('seeked', captureFrame);
+
+          // Wait for video to be ready, then start extraction
+          if (video.readyState >= 2) {
+            captureFrame();
+          } else {
+            video.addEventListener('canplay', function() {
+              captureFrame();
+            }, { once: true });
+            video.load();
+          }
+        });
+      }
+
+      // Fetch video as blob first for reliable seeking during extraction
+      function fetchAndExtract(video, canvas, ctx) {
+        var src = video.getAttribute('src');
         return fetch(src)
           .then(function(r) { return r.blob(); })
           .then(function(blob) {
-            return new Promise(function(resolve, reject) {
-              var blobUrl = URL.createObjectURL(blob);
-              video.addEventListener('error', function() { reject(video.error); }, { once: true });
-              video.addEventListener('canplaythrough', function() {
-                // Prime the decoder: must play briefly then pause
-                // so the browser will render frames on seek
+            return new Promise(function(resolve) {
+              video.addEventListener('loadedmetadata', function() {
+                canvas.width = video.videoWidth;
+                canvas.height = video.videoHeight;
+                // Play briefly to prime decoder, then extract
                 video.play().then(function() {
                   video.pause();
                   video.currentTime = 0;
-                  resolve();
+                  // Small delay to let decoder settle
+                  setTimeout(function() {
+                    extractFrames(video, EXTRACT_FPS).then(resolve);
+                  }, 100);
                 }).catch(function() {
-                  // Autoplay blocked — try muted play
-                  video.muted = true;
-                  video.play().then(function() {
-                    video.pause();
-                    video.currentTime = 0;
-                    resolve();
-                  }).catch(function() {
-                    // Last resort: resolve anyway, seeking may still work
-                    resolve();
-                  });
+                  // Autoplay blocked, try extracting anyway
+                  extractFrames(video, EXTRACT_FPS).then(resolve);
                 });
               }, { once: true });
-              video.src = blobUrl;
+              video.src = URL.createObjectURL(blob);
               video.load();
             });
           });
       }
 
-      prepareVideo(heroVideo, heroSrc).then(function() {
+      // Start frame extraction for both videos
+      fetchAndExtract(heroVideo, heroCanvas, heroCtx).then(function(frames) {
+        heroFrames = frames;
         heroReady = true;
+        // Draw first frame immediately
+        if (frames.length > 0) {
+          heroCtx.drawImage(frames[0], 0, 0, heroCanvas.width, heroCanvas.height);
+        }
         startTicking();
       });
-      prepareVideo(infraVideo, infraSrc).then(function() {
+
+      fetchAndExtract(infraVideo, infraCanvas, infraCtx).then(function(frames) {
+        infraFrames = frames;
         infraReady = true;
+        if (frames.length > 0) {
+          infraCtx.drawImage(frames[0], 0, 0, infraCanvas.width, infraCanvas.height);
+        }
         startTicking();
       });
 
@@ -1212,7 +1274,7 @@
       let currentHeroP = 0, targetHeroP = 0;
       let currentInfraP = 0, targetInfraP = 0;
       let ticking = false;
-      let lastHeroTime = -1, lastInfraTime = -1;
+      let lastHeroFrame = -1, lastInfraFrame = -1;
 
       function startTicking() {
         if (!ticking) { ticking = true; requestAnimationFrame(tick); }
@@ -1225,25 +1287,24 @@
         return Math.max(0, Math.min(1, -rect.top / scrollHeight));
       }
 
-      function seekVideo(video, time, lastTime) {
-        // Only seek if time actually changed (avoids redundant seeks)
-        var t = Math.max(0, Math.min(time, video.duration - 0.05));
-        if (Math.abs(t - lastTime) > 0.01) {
-          video.currentTime = t;
-          return t;
+      function drawFrame(ctx, canvas, frames, index) {
+        if (index >= 0 && index < frames.length) {
+          ctx.drawImage(frames[index], 0, 0, canvas.width, canvas.height);
         }
-        return lastTime;
       }
 
       function tick() {
-        // ── Hero video scrub ──
+        // ── Hero canvas scrub ──
         targetHeroP = getSectionProgress(heroSection);
         currentHeroP += (targetHeroP - currentHeroP) * LERP;
         if (Math.abs(targetHeroP - currentHeroP) < 0.0001) currentHeroP = targetHeroP;
 
-        if (heroReady && heroVideo.duration > 0) {
-          var heroTime = currentHeroP * heroVideo.duration;
-          lastHeroTime = seekVideo(heroVideo, heroTime, lastHeroTime);
+        if (heroReady && heroFrames.length > 0) {
+          var fi = Math.round(currentHeroP * (heroFrames.length - 1));
+          if (fi !== lastHeroFrame) {
+            drawFrame(heroCtx, heroCanvas, heroFrames, fi);
+            lastHeroFrame = fi;
+          }
         }
 
         // Hero overlay fade
@@ -1261,16 +1322,19 @@
         heroDecoFrame.classList.toggle('visible', currentHeroP > 0.02 && currentHeroP < 0.92);
         heroProgress.style.width = (currentHeroP * 100) + '%';
 
-        // ── Infographic video scrub ──
+        // ── Infographic canvas scrub ──
         targetInfraP = getSectionProgress(infraSection);
         currentInfraP += (targetInfraP - currentInfraP) * LERP;
         if (Math.abs(targetInfraP - currentInfraP) < 0.0001) currentInfraP = targetInfraP;
 
-        if (infraReady && infraVideo.duration > 0) {
-          // Video completes at 50% scroll, then holds final frame
+        if (infraReady && infraFrames.length > 0) {
+          // Video completes at 50% scroll, holds final frame after
           var videoP = Math.min(1.0, currentInfraP / 0.50);
-          var infraTime = videoP * infraVideo.duration;
-          lastInfraTime = seekVideo(infraVideo, infraTime, lastInfraTime);
+          var fi2 = Math.round(videoP * (infraFrames.length - 1));
+          if (fi2 !== lastInfraFrame) {
+            drawFrame(infraCtx, infraCanvas, infraFrames, fi2);
+            lastInfraFrame = fi2;
+          }
         }
 
         infraLabel.classList.toggle('visible', currentInfraP > 0.15);
@@ -1280,7 +1344,7 @@
         var pageP = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
         scrollProgressBar.style.width = (pageP * 100) + '%';
 
-        // Keep running animation loop while not settled
+        // Keep animating while not settled
         var settled = Math.abs(targetHeroP - currentHeroP) < 0.00005
                    && Math.abs(targetInfraP - currentInfraP) < 0.00005;
         if (!settled) {
