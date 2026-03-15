@@ -1154,11 +1154,17 @@
 
       if (prefersReducedMotion || isMobile) {
         heroOverlay.classList.add('visible');
-        // On mobile/reduced motion, just show first frame as poster
+        // On mobile/reduced motion, show videos with slow autoplay
         heroVideo.style.display = 'block';
         document.getElementById('heroCanvas').style.display = 'none';
         infraVideo.style.display = 'block';
         document.getElementById('infraCanvas').style.display = 'none';
+        heroVideo.loop = true;
+        infraVideo.loop = true;
+        heroVideo.playbackRate = 0.5;
+        infraVideo.playbackRate = 0.5;
+        heroVideo.play().catch(function(){});
+        infraVideo.play().catch(function(){});
         return;
       }
 
