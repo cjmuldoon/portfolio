@@ -545,10 +545,10 @@
 
     /* Mobile overrides */
     @media (max-width: 767px) {
-      .video-scroll-hero { height: auto; }
-      .video-sticky { position: relative; height: 60vh; }
-      .video-infographic-section { height: auto; }
-      .infographic-sticky { position: relative; height: auto; padding: 40px 0; }
+      .video-scroll-hero { height: 250vh; }
+      .video-sticky { height: 100vh; }
+      .video-infographic-section { height: 300vh; }
+      .infographic-sticky { padding-top: 72px; }
       .infographic-video-wrap { width: 95%; }
       .scroll-hint { display: none; }
       .video-deco-frame { display: none; }
@@ -1134,7 +1134,6 @@
     (function() {
       'use strict';
       const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const isMobile = window.innerWidth < 768;
 
       // ── Hero Video (full-screen pan) ──
       const heroVideo = document.getElementById('heroVideo');
@@ -1152,9 +1151,8 @@
       const infraLabel = document.getElementById('infraLabel');
       const infraProgress = document.getElementById('infraProgress');
 
-      if (prefersReducedMotion || isMobile) {
+      if (prefersReducedMotion) {
         heroOverlay.classList.add('visible');
-        // On mobile/reduced motion, show videos with slow autoplay
         heroVideo.style.display = 'block';
         document.getElementById('heroCanvas').style.display = 'none';
         infraVideo.style.display = 'block';
