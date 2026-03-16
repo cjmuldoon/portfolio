@@ -3,71 +3,407 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Saturn Hire — Adelaide's Finest Portable Amenities</title>
+  <title>Saturn Hire — Adelaide Toilet, Shower & Fencing Hire</title>
+  <meta name="description" content="Adelaide owned and operated portable toilet, shower and temporary fencing hire. Clean, serviced, reliable. Call Scott on 0490 792 452.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
   <style>
     :root {
-      --black: #0B0B0B;
-      --gold: #C5A55A;
-      --ivory: #F0EDE8;
+      --space: #0D0D12;
+      --space-light: #14141c;
+      --gold: #D4AF37;
+      --gold-dim: rgba(212, 175, 55, 0.15);
+      --purple: #4A3F6B;
+      --purple-light: #6B5CA5;
+      --warm-white: #EEEAE5;
+      --text-dim: rgba(238, 234, 229, 0.6);
+      --text-muted: rgba(238, 234, 229, 0.35);
+      --border: rgba(212, 175, 55, 0.1);
+      --font-display: 'DM Serif Display', Georgia, serif;
+      --font-body: 'Inter', system-ui, sans-serif;
     }
 
-    *, *::before, *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     html {
       scroll-behavior: smooth;
-    }
-
-    body {
-      background-color: var(--black);
-      color: var(--ivory);
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-weight: 300;
-      line-height: 1.7;
-      overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
 
-    /* Utility */
-    .section-label {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.7rem;
+    body {
+      background: var(--space);
+      color: var(--warm-white);
+      font-family: var(--font-body);
       font-weight: 400;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ══════════════════════════════════════
+       NAVIGATION
+       ══════════════════════════════════════ */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 20px clamp(1.5rem, 5vw, 4rem);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.4s ease, padding 0.4s ease;
+    }
+
+    .nav.scrolled {
+      background: rgba(13, 13, 18, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      padding-top: 14px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      color: var(--gold);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover { color: var(--warm-white); }
+
+    .nav-cta {
+      font-size: 0.72rem !important;
+      font-weight: 600 !important;
+      letter-spacing: 0.12em !important;
+      color: var(--space) !important;
+      background: var(--gold);
+      padding: 10px 24px;
+      border-radius: 4px;
+      transition: background 0.3s ease, transform 0.2s ease !important;
+    }
+
+    .nav-cta:hover {
+      background: #c9a030 !important;
+      color: var(--space) !important;
+      transform: translateY(-1px);
+    }
+
+    .nav-phone {
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--warm-white) !important;
+      letter-spacing: 0.05em !important;
+      text-transform: none !important;
+    }
+
+    .nav-mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    .nav-mobile-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--warm-white);
+      margin: 5px 0;
+      transition: 0.3s;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-mobile-toggle { display: block; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(13, 13, 18, 0.97);
+        backdrop-filter: blur(20px);
+        padding: 24px;
+        gap: 20px;
+        border-bottom: 1px solid var(--border);
+      }
+    }
+
+    /* ══════════════════════════════════════
+       HERO — COSMIC NEBULA
+       ══════════════════════════════════════ */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      padding: clamp(6rem, 12vw, 8rem) clamp(1.5rem, 5vw, 4rem);
+    }
+
+    .hero-nebula {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 55% at 50% 45%, rgba(74, 63, 107, 0.45) 0%, transparent 70%),
+        radial-gradient(ellipse 45% 40% at 25% 65%, rgba(74, 63, 107, 0.3) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 35% at 78% 30%, rgba(107, 92, 165, 0.2) 0%, transparent 60%),
+        radial-gradient(ellipse 30% 25% at 60% 80%, rgba(74, 63, 107, 0.2) 0%, transparent 55%),
+        radial-gradient(ellipse 25% 30% at 10% 25%, rgba(107, 92, 165, 0.12) 0%, transparent 50%),
+        var(--space);
+      z-index: 0;
+    }
+
+    .hero-stars {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+    }
+
+    .star {
+      position: absolute;
+      background: var(--warm-white);
+      border-radius: 50%;
+      animation: twinkle var(--dur, 3s) ease-in-out infinite var(--delay, 0s);
+    }
+
+    .star--gold {
+      background: var(--gold);
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.1; }
+      50% { opacity: 0.85; }
+    }
+
+    @keyframes twinkleBright {
+      0%, 100% { opacity: 0.2; }
+      50% { opacity: 1; box-shadow: 0 0 6px rgba(238, 234, 229, 0.4); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.68rem;
+      font-weight: 600;
       letter-spacing: 0.3em;
       text-transform: uppercase;
       color: var(--gold);
-      margin-bottom: 1.5rem;
+      margin-bottom: 2rem;
+      padding: 8px 20px;
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      border-radius: 40px;
+      background: rgba(212, 175, 55, 0.05);
     }
 
-    .section-heading {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-style: italic;
+    .hero-badge-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 1; box-shadow: 0 0 8px rgba(212, 175, 55, 0.6); }
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
       font-weight: 400;
-      font-size: clamp(1.8rem, 4vw, 3rem);
-      color: var(--ivory);
-      margin-bottom: 2.5rem;
-      line-height: 1.2;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      color: var(--warm-white);
+    }
+
+    .hero h1 span {
+      color: var(--gold);
+    }
+
+    .hero-desc {
+      font-size: clamp(1rem, 1.8vw, 1.2rem);
+      font-weight: 300;
+      color: var(--text-dim);
+      max-width: 580px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.8;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--space);
+      background: var(--gold);
+      padding: 14px 32px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      background: #c9a030;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--warm-white);
+      background: transparent;
+      padding: 14px 32px;
+      border: 1px solid rgba(238, 234, 229, 0.2);
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: border-color 0.3s ease, background 0.3s ease;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--gold);
+      background: rgba(212, 175, 55, 0.05);
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-scroll-text {
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .hero-scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.3; transform: scaleY(0.6); }
+      50% { opacity: 0.8; transform: scaleY(1); }
+    }
+
+    /* ══════════════════════════════════════
+       SHARED SECTION STYLES
+       ══════════════════════════════════════ */
+    .section {
+      padding: clamp(5rem, 12vw, 8rem) clamp(1.5rem, 5vw, 6rem);
+      position: relative;
+    }
+
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 400;
+      color: var(--warm-white);
+      margin-bottom: 1.5rem;
+      line-height: 1.15;
+    }
+
+    .section-desc {
+      font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+      font-weight: 300;
+      color: var(--text-dim);
+      max-width: 560px;
+      line-height: 1.8;
     }
 
     .gold-rule {
-      width: 60px;
-      height: 1px;
-      background-color: var(--gold);
+      width: 50px;
+      height: 2px;
+      background: var(--gold);
       border: none;
-      margin: 0 auto;
+      margin: 2rem 0;
     }
 
     .fade-up {
       opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
+      transform: translateY(36px);
+      transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .fade-up.visible {
@@ -75,614 +411,1027 @@
       transform: translateY(0);
     }
 
-    section {
-      padding: 6rem 1.5rem;
-      text-align: center;
+    /* ══════════════════════════════════════
+       SECTION: ABOUT / INTRO
+       ══════════════════════════════════════ */
+    .about-section {
+      background:
+        radial-gradient(ellipse 45% 40% at 80% 50%, rgba(74, 63, 107, 0.18) 0%, transparent 70%),
+        radial-gradient(1.5px 1.5px at 20% 30%, rgba(238, 234, 229, 0.12), transparent),
+        radial-gradient(1px 1px at 70% 75%, rgba(238, 234, 229, 0.08), transparent),
+        radial-gradient(1px 1px at 45% 15%, rgba(238, 234, 229, 0.1), transparent),
+        var(--space);
+      border-top: 1px solid var(--border);
     }
 
-    /* ================================
-       HERO
-    ================================ */
-    .hero {
-      min-height: 100vh;
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    @media (min-width: 768px) {
+      .about-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 5rem;
+      }
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 2rem;
+    }
+
+    .stat-card {
+      text-align: center;
+      padding: 20px 12px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: rgba(212, 175, 55, 0.02);
+    }
+
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .about-image-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .about-img {
+      aspect-ratio: 1;
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .about-img:first-child {
+      grid-row: span 2;
+      aspect-ratio: auto;
+    }
+
+    .about-img-inner {
+      width: 100%;
+      height: 100%;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      position: relative;
-      padding: 2rem 1.5rem;
-    }
-
-    .hero-title {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-style: italic;
-      font-weight: 400;
-      font-size: clamp(3rem, 8vw, 7rem);
-      line-height: 1.05;
-      background: linear-gradient(
-        120deg,
-        var(--gold) 0%,
-        #e8d8a0 25%,
-        var(--gold) 50%,
-        #a08832 75%,
-        var(--gold) 100%
-      );
-      background-size: 200% 100%;
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: shimmer 4s ease-in-out infinite;
-    }
-
-    @keyframes shimmer {
-      0% { background-position: 100% 50%; }
-      50% { background-position: 0% 50%; }
-      100% { background-position: 100% 50%; }
-    }
-
-    .hero-rule {
-      width: 60px;
-      height: 1px;
-      background-color: var(--gold);
-      border: none;
-      margin: 2rem auto;
-    }
-
-    .hero-subtitle {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-variant: small-caps;
-      font-weight: 400;
-      font-size: clamp(0.9rem, 2vw, 1.2rem);
-      letter-spacing: 0.25em;
-      color: var(--ivory);
-      opacity: 0.85;
-    }
-
-    .scroll-indicator {
-      position: absolute;
-      bottom: 2.5rem;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .scroll-indicator span {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.55rem;
+      font-family: var(--font-body);
+      font-size: 0.6rem;
+      font-weight: 500;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--gold);
-      opacity: 0.6;
+      color: var(--text-muted);
     }
 
-    .scroll-line {
-      width: 1px;
-      height: 40px;
-      background: var(--gold);
+    .about-img-inner--1 {
+      background:
+        radial-gradient(ellipse at 40% 50%, rgba(74, 63, 107, 0.35) 0%, transparent 70%),
+        radial-gradient(1px 1px at 30% 25%, rgba(238, 234, 229, 0.15), transparent),
+        radial-gradient(1px 1px at 65% 70%, rgba(238, 234, 229, 0.1), transparent),
+        linear-gradient(135deg, rgba(74, 63, 107, 0.2), var(--space));
+    }
+
+    .about-img-inner--2 {
+      background:
+        radial-gradient(ellipse at 60% 40%, rgba(212, 175, 55, 0.1) 0%, transparent 65%),
+        linear-gradient(225deg, rgba(74, 63, 107, 0.15), var(--space));
+    }
+
+    .about-img-inner--3 {
+      background:
+        radial-gradient(ellipse at 50% 60%, rgba(74, 63, 107, 0.25) 0%, transparent 65%),
+        linear-gradient(315deg, rgba(74, 63, 107, 0.1), var(--space));
+    }
+
+    /* ══════════════════════════════════════
+       SECTION: SERVICES
+       ══════════════════════════════════════ */
+    .services-section {
+      background:
+        radial-gradient(ellipse 50% 45% at 30% 40%, rgba(74, 63, 107, 0.2) 0%, transparent 70%),
+        radial-gradient(ellipse 35% 30% at 75% 70%, rgba(74, 63, 107, 0.12) 0%, transparent 65%),
+        radial-gradient(1px 1px at 15% 60%, rgba(238, 234, 229, 0.15), transparent),
+        radial-gradient(1px 1px at 55% 20%, rgba(238, 234, 229, 0.1), transparent),
+        radial-gradient(1.5px 1.5px at 85% 45%, rgba(238, 234, 229, 0.12), transparent),
+        radial-gradient(1px 1px at 40% 85%, rgba(238, 234, 229, 0.08), transparent),
+        var(--space);
+      border-top: 1px solid var(--border);
+    }
+
+    .services-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .services-header .section-desc {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .service-card {
+      padding: 32px 28px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: rgba(14, 14, 20, 0.6);
+      backdrop-filter: blur(10px);
+      transition: border-color 0.4s ease, transform 0.3s ease, background 0.4s ease;
       position: relative;
       overflow: hidden;
     }
 
-    .scroll-line::after {
+    .service-card::before {
       content: '';
       position: absolute;
-      top: -100%;
+      top: 0;
       left: 0;
-      width: 100%;
-      height: 100%;
-      background: var(--ivory);
-      animation: scrollDown 2s ease-in-out infinite;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity: 0;
+      transition: opacity 0.4s ease;
     }
 
-    @keyframes scrollDown {
-      0% { top: -100%; }
-      50% { top: 100%; }
-      100% { top: 100%; }
-    }
-
-    /* ================================
-       PHILOSOPHY
-    ================================ */
-    .philosophy {
-      padding-top: 8rem;
-      padding-bottom: 8rem;
-    }
-
-    .philosophy-rule-top,
-    .philosophy-rule-bottom {
-      width: 60px;
-      height: 1px;
-      background-color: var(--gold);
-      border: none;
-      margin: 0 auto;
-    }
-
-    .philosophy-rule-top {
-      margin-bottom: 3rem;
-    }
-
-    .philosophy-rule-bottom {
-      margin-top: 3rem;
-    }
-
-    .philosophy-text {
-      max-width: 680px;
-      margin: 0 auto;
-      font-size: clamp(1.05rem, 2vw, 1.25rem);
-      line-height: 1.9;
-      color: var(--ivory);
-      opacity: 0.9;
-    }
-
-    /* ================================
-       THE COLLECTION
-    ================================ */
-    .collection-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-      max-width: 960px;
-      margin: 0 auto;
-    }
-
-    @media (min-width: 768px) {
-      .collection-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    .product-card {
-      background: var(--black);
-      border: 1px solid rgba(197, 165, 90, 0.2);
-      padding: 2.5rem 2rem;
-      text-align: left;
-      transition: border-color 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
-    }
-
-    .product-card:hover {
-      border-color: var(--gold);
+    .service-card:hover {
+      border-color: rgba(212, 175, 55, 0.25);
       transform: translateY(-4px);
-      box-shadow: 0 8px 30px rgba(197, 165, 90, 0.06);
+      background: rgba(14, 14, 20, 0.8);
     }
 
-    .product-name {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-style: italic;
+    .service-card:hover::before { opacity: 1; }
+
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      background: var(--gold-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .service-icon svg {
+      width: 24px;
+      height: 24px;
+      stroke: var(--gold);
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .service-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
       font-weight: 400;
-      font-size: 1.4rem;
-      color: var(--gold);
-      margin-bottom: 0.3rem;
+      color: var(--warm-white);
+      margin-bottom: 10px;
     }
 
-    .product-type {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--ivory);
-      opacity: 0.45;
-      margin-bottom: 1rem;
-    }
-
-    .product-desc {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-style: italic;
+    .service-card p {
+      font-size: 0.85rem;
       font-weight: 300;
-      font-size: 1.05rem;
-      color: var(--ivory);
-      opacity: 0.75;
-      line-height: 1.6;
+      color: var(--text-dim);
+      line-height: 1.7;
+      margin-bottom: 16px;
     }
 
-    /* ================================
-       TESTIMONIALS
-    ================================ */
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 2rem;
-      max-width: 1060px;
-      margin: 0 auto;
+    .service-features {
+      list-style: none;
+      margin-bottom: 20px;
     }
 
-    @media (min-width: 768px) {
-      .testimonials-grid {
-        grid-template-columns: 1fr 1fr 1fr;
-      }
-    }
-
-    .testimonial-card {
-      background: rgba(197, 165, 90, 0.03);
-      border: 1px solid rgba(197, 165, 90, 0.12);
-      padding: 2.5rem 2rem 2rem;
-      text-align: left;
+    .service-features li {
+      font-size: 0.78rem;
+      font-weight: 400;
+      color: var(--text-dim);
+      padding: 5px 0;
+      padding-left: 16px;
       position: relative;
     }
 
-    .testimonial-quote-mark {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: 4rem;
-      color: var(--gold);
-      opacity: 0.3;
-      line-height: 1;
+    .service-features li::before {
+      content: '';
       position: absolute;
-      top: 1rem;
-      left: 1.5rem;
+      left: 0;
+      top: 12px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--gold);
+      opacity: 0.6;
+    }
+
+    .service-price {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+    }
+
+    .service-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+      transition: gap 0.3s ease;
+    }
+
+    .service-link:hover { gap: 10px; }
+
+    /* ══════════════════════════════════════
+       SECTION: WHY SATURN
+       ══════════════════════════════════════ */
+    .why-section {
+      background:
+        radial-gradient(ellipse 55% 50% at 50% 50%, rgba(74, 63, 107, 0.22) 0%, transparent 70%),
+        radial-gradient(ellipse 30% 25% at 15% 30%, rgba(107, 92, 165, 0.12) 0%, transparent 55%),
+        radial-gradient(1.5px 1.5px at 25% 55%, rgba(238, 234, 229, 0.14), transparent),
+        radial-gradient(1px 1px at 80% 25%, rgba(238, 234, 229, 0.1), transparent),
+        radial-gradient(1px 1px at 60% 80%, rgba(238, 234, 229, 0.08), transparent),
+        var(--space);
+      border-top: 1px solid var(--border);
+    }
+
+    .why-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .why-header .section-desc {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 32px;
+    }
+
+    .why-item {
+      text-align: center;
+      padding: 40px 24px;
+    }
+
+    .why-icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 24px;
+      border-radius: 50%;
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.06) 0%, transparent 70%);
+    }
+
+    .why-icon svg {
+      width: 28px;
+      height: 28px;
+      stroke: var(--gold);
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .why-item h3 {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: var(--warm-white);
+      margin-bottom: 10px;
+    }
+
+    .why-item p {
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: var(--text-dim);
+      line-height: 1.7;
+    }
+
+    /* ══════════════════════════════════════
+       SECTION: TESTIMONIALS
+       ══════════════════════════════════════ */
+    .testimonials-section {
+      background:
+        radial-gradient(ellipse 50% 45% at 70% 40%, rgba(74, 63, 107, 0.18) 0%, transparent 70%),
+        radial-gradient(ellipse 35% 35% at 20% 70%, rgba(74, 63, 107, 0.12) 0%, transparent 65%),
+        radial-gradient(1px 1px at 35% 20%, rgba(238, 234, 229, 0.12), transparent),
+        radial-gradient(1px 1px at 75% 65%, rgba(238, 234, 229, 0.1), transparent),
+        var(--space);
+      border-top: 1px solid var(--border);
+    }
+
+    .testimonials-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .testimonial-card {
+      padding: 32px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: rgba(14, 14, 20, 0.5);
+      position: relative;
     }
 
     .testimonial-stars {
       color: var(--gold);
-      font-size: 0.85rem;
-      letter-spacing: 0.15em;
-      margin-bottom: 1.2rem;
-      margin-top: 1rem;
+      font-size: 0.9rem;
+      letter-spacing: 0.1em;
+      margin-bottom: 16px;
     }
 
     .testimonial-text {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-style: italic;
-      font-weight: 400;
-      font-size: 1.05rem;
-      line-height: 1.7;
-      color: var(--ivory);
-      opacity: 0.9;
-      margin-bottom: 1.5rem;
+      font-size: 0.92rem;
+      font-weight: 300;
+      color: var(--warm-white);
+      line-height: 1.8;
+      margin-bottom: 20px;
     }
 
     .testimonial-author {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.7rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
+      font-size: 0.78rem;
+      font-weight: 600;
       color: var(--gold);
-      opacity: 0.7;
     }
 
-    /* ================================
-       THE EXPERIENCE (Timeline)
-    ================================ */
-    .timeline {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0;
-      max-width: 960px;
-      margin: 0 auto;
-      position: relative;
+    .testimonial-role {
+      font-size: 0.7rem;
+      font-weight: 400;
+      color: var(--text-muted);
+      margin-top: 2px;
     }
 
-    .timeline-step {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    /* ══════════════════════════════════════
+       SECTION: HIRE TYPES
+       ══════════════════════════════════════ */
+    .hire-section {
+      background:
+        radial-gradient(ellipse 45% 40% at 40% 50%, rgba(74, 63, 107, 0.2) 0%, transparent 70%),
+        radial-gradient(1px 1px at 22% 38%, rgba(238, 234, 229, 0.12), transparent),
+        radial-gradient(1px 1px at 68% 72%, rgba(238, 234, 229, 0.08), transparent),
+        radial-gradient(1.5px 1.5px at 90% 15%, rgba(238, 234, 229, 0.1), transparent),
+        var(--space);
+      border-top: 1px solid var(--border);
+    }
+
+    .hire-header {
       text-align: center;
-      position: relative;
-      padding: 2rem 1rem;
-      max-width: 320px;
+      margin-bottom: 4rem;
     }
 
-    .timeline-connector {
-      width: 1px;
-      height: 50px;
-      background: var(--gold);
-      opacity: 0.3;
+    .hire-header .section-desc {
+      margin-left: auto;
+      margin-right: auto;
     }
 
-    .timeline-number {
-      width: 52px;
-      height: 52px;
+    .hire-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .hire-grid { grid-template-columns: 1fr; }
+    }
+
+    .hire-card {
+      text-align: center;
+      padding: 48px 32px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: rgba(14, 14, 20, 0.5);
+      transition: border-color 0.4s ease, transform 0.3s ease;
+    }
+
+    .hire-card:hover {
+      border-color: rgba(212, 175, 55, 0.3);
+      transform: translateY(-4px);
+    }
+
+    .hire-card-icon {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 20px;
       border-radius: 50%;
-      border: 1px solid var(--gold);
+      background: var(--gold-dim);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.75rem;
-      letter-spacing: 0.1em;
-      color: var(--gold);
-      margin-bottom: 1.5rem;
-      flex-shrink: 0;
     }
 
-    .timeline-step-title {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-style: italic;
-      font-weight: 400;
+    .hire-card-icon svg {
+      width: 26px;
+      height: 26px;
+      stroke: var(--gold);
+      fill: none;
+      stroke-width: 1.5;
+    }
+
+    .hire-card h3 {
+      font-family: var(--font-display);
       font-size: 1.3rem;
-      color: var(--gold);
-      margin-bottom: 0.75rem;
-    }
-
-    .timeline-step-text {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-weight: 300;
-      font-size: 1rem;
-      color: var(--ivory);
-      opacity: 0.8;
-      line-height: 1.7;
-    }
-
-    @media (min-width: 768px) {
-      .timeline {
-        flex-direction: row;
-        align-items: flex-start;
-        justify-content: center;
-        gap: 0;
-      }
-
-      .timeline-connector {
-        width: 60px;
-        height: 1px;
-        margin-top: 26px;
-      }
-
-      .timeline-step {
-        flex: 1;
-        max-width: 280px;
-      }
-    }
-
-    /* ================================
-       CONTACT
-    ================================ */
-    .contact {
-      padding-top: 8rem;
-      padding-bottom: 8rem;
-    }
-
-    .contact-phone {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-weight: 300;
-      font-size: clamp(1.6rem, 4vw, 2.4rem);
-      color: var(--ivory);
-      letter-spacing: 0.08em;
-      margin-bottom: 2.5rem;
-    }
-
-    .contact-phone a {
-      color: var(--ivory);
-      text-decoration: none;
-      transition: color 0.4s ease;
-    }
-
-    .contact-phone a:hover {
-      color: var(--gold);
-    }
-
-    .cta-button {
-      display: inline-block;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.7rem;
       font-weight: 400;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--gold);
-      border: 1px solid var(--gold);
-      background: transparent;
-      padding: 1rem 2.8rem;
-      cursor: pointer;
-      text-decoration: none;
-      transition: background-color 0.4s ease, color 0.4s ease;
+      color: var(--warm-white);
+      margin-bottom: 10px;
     }
 
-    .cta-button:hover {
-      background-color: var(--gold);
-      color: var(--black);
-    }
-
-    .contact-tagline {
-      font-family: 'Cormorant Garamond', Georgia, serif;
+    .hire-card p {
+      font-size: 0.85rem;
       font-weight: 300;
-      font-size: 0.95rem;
-      color: var(--ivory);
-      opacity: 0.5;
-      margin-top: 3rem;
+      color: var(--text-dim);
+      line-height: 1.7;
+      margin-bottom: 24px;
     }
 
-    /* ================================
-       FOOTER
-    ================================ */
-    .footer {
-      padding: 3rem 1.5rem 2.5rem;
+    /* ══════════════════════════════════════
+       SECTION: CTA / CONTACT
+       ══════════════════════════════════════ */
+    .cta-section {
+      background:
+        radial-gradient(ellipse 60% 55% at 50% 50%, rgba(74, 63, 107, 0.3) 0%, transparent 70%),
+        radial-gradient(ellipse 30% 25% at 20% 30%, rgba(107, 92, 165, 0.15) 0%, transparent 55%),
+        radial-gradient(ellipse 25% 20% at 80% 75%, rgba(74, 63, 107, 0.12) 0%, transparent 50%),
+        radial-gradient(1.5px 1.5px at 15% 55%, rgba(238, 234, 229, 0.15), transparent),
+        radial-gradient(1px 1px at 45% 20%, rgba(238, 234, 229, 0.1), transparent),
+        radial-gradient(1px 1px at 70% 80%, rgba(238, 234, 229, 0.12), transparent),
+        radial-gradient(1px 1px at 88% 35%, rgba(238, 234, 229, 0.08), transparent),
+        var(--space);
+      border-top: 1px solid var(--border);
       text-align: center;
-      border-top: 1px solid var(--gold);
+    }
+
+    .cta-phone-large {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      color: var(--gold);
+      margin: 2rem 0;
+      text-decoration: none;
+      display: block;
+      transition: opacity 0.3s ease;
+    }
+
+    .cta-phone-large:hover { opacity: 0.8; }
+
+    .cta-email {
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: var(--text-dim);
+    }
+
+    .cta-email a {
+      color: var(--gold);
+      text-decoration: none;
+      transition: opacity 0.3s;
+    }
+
+    .cta-email a:hover { opacity: 0.7; }
+
+    .cta-divider {
+      width: 60px;
+      height: 1px;
+      background: var(--gold);
+      margin: 2rem auto;
+      opacity: 0.4;
+    }
+
+    .cta-features {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .cta-feature {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .cta-feature-dot {
+      width: 5px;
+      height: 5px;
+      background: var(--gold);
+      border-radius: 50%;
+    }
+
+    /* ══════════════════════════════════════
+       FOOTER
+       ══════════════════════════════════════ */
+    .footer {
+      background: var(--space);
+      border-top: 1px solid var(--border);
+      padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 5vw, 6rem);
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 24px;
     }
 
     .footer-brand {
-      font-family: 'Inter', sans-serif;
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      color: var(--gold);
+    }
+
+    .footer-tagline {
+      font-size: 0.72rem;
+      font-weight: 300;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
       font-size: 0.75rem;
       font-weight: 400;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--ivory);
-      margin-bottom: 0.5rem;
+      color: var(--text-dim);
+      text-decoration: none;
+      transition: color 0.3s ease;
     }
 
-    .footer-location {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-weight: 300;
-      font-size: 0.9rem;
-      color: var(--ivory);
-      opacity: 0.4;
-      margin-bottom: 2rem;
-    }
+    .footer-links a:hover { color: var(--gold); }
 
     .footer-copy {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.6rem;
-      letter-spacing: 0.1em;
-      color: var(--ivory);
-      opacity: 0.25;
+      width: 100%;
+      text-align: center;
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
     }
   </style>
 </head>
 <body>
 
-  <!-- HERO -->
-  <section class="hero">
-    <h1 class="hero-title">Saturn Hire</h1>
-    <hr class="hero-rule">
-    <p class="hero-subtitle">Adelaide's Finest Portable Amenities</p>
-    <div class="scroll-indicator">
-      <span>Scroll</span>
-      <div class="scroll-line"></div>
-    </div>
-  </section>
+<!-- ═══════════════════════════════════════
+     NAVIGATION
+     ═══════════════════════════════════════ -->
+<nav class="nav" id="nav">
+  <a href="#" class="nav-logo">Saturn Hire</a>
+  <button class="nav-mobile-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#why">Why Saturn</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="tel:0490792452" class="nav-phone">0490 792 452</a></li>
+    <li><a href="#contact" class="nav-cta">Book Now</a></li>
+  </ul>
+</nav>
 
-  <!-- PHILOSOPHY -->
-  <section class="philosophy">
-    <div class="fade-up">
-      <p class="section-label">Our Philosophy</p>
-      <h2 class="section-heading">Crafted for the Discerning Site</h2>
-      <hr class="philosophy-rule-top">
-      <p class="philosophy-text">
-        In an industry content with the ordinary, Saturn Hire pursues the exceptional. Every unit is inspected, sanitised, and presented to a standard that reflects not merely function, but an unwavering commitment to dignity. Because even on a construction site, standards matter.
-      </p>
-      <hr class="philosophy-rule-bottom">
-    </div>
-  </section>
+<!-- ═══════════════════════════════════════
+     HERO
+     ═══════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-nebula"></div>
+  <div class="hero-stars" id="heroStars"></div>
 
-  <!-- THE COLLECTION -->
-  <section class="collection">
-    <div class="fade-up">
-      <p class="section-label">The Collection</p>
-      <h2 class="section-heading">Our Distinguished Range</h2>
+  <div class="hero-content fade-up">
+    <div class="hero-badge">
+      <span class="hero-badge-dot"></span>
+      Adelaide Owned & Operated
     </div>
-    <div class="collection-grid">
-      <div class="product-card fade-up">
-        <h3 class="product-name">The Sovereign</h3>
-        <p class="product-type">Chemical Toilet</p>
-        <p class="product-desc">Autonomous. Self-contained. Regal in its independence.</p>
-      </div>
-      <div class="product-card fade-up">
-        <h3 class="product-name">The Basin</h3>
-        <p class="product-type">Sewer Connect Toilet</p>
-        <p class="product-desc">Plumbed perfection for the permanent installation.</p>
-      </div>
-      <div class="product-card fade-up">
-        <h3 class="product-name">The Retreat</h3>
-        <p class="product-type">Portable Shower</p>
-        <p class="product-desc">A moment of restoration amidst the dust and endeavour.</p>
-      </div>
-      <div class="product-card fade-up">
-        <h3 class="product-name">The Perimeter</h3>
-        <p class="product-type">Temporary Fencing</p>
-        <p class="product-desc">Defining boundaries with quiet authority.</p>
-      </div>
-      <div class="product-card fade-up">
-        <h3 class="product-name">The Monarch</h3>
-        <p class="product-type">Luxury Event Toilet</p>
-        <p class="product-desc">For occasions that demand nothing less than majesty.</p>
-      </div>
-      <div class="product-card fade-up">
-        <h3 class="product-name">The Citadel</h3>
-        <p class="product-type">Site Compound Package</p>
-        <p class="product-desc">Complete facilities. Uncompromising standards.</p>
-      </div>
+    <h1>Adelaide Toilet Hire<br>& <span>Shower Hire</span></h1>
+    <p class="hero-desc">Clean, serviced, and delivered on time. Portable toilets, showers, and temporary fencing for builders, renovators, and events across greater Adelaide.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Get a Quote</a>
+      <a href="tel:0490792452" class="btn-outline">Call Scott &rarr;</a>
     </div>
-  </section>
+  </div>
 
-  <!-- TESTIMONIALS -->
-  <section class="testimonials">
-    <div class="fade-up">
-      <p class="section-label">Critical Acclaim</p>
-      <h2 class="section-heading">What the Critics Say</h2>
+  <div class="hero-scroll">
+    <span class="hero-scroll-text">Scroll</span>
+    <div class="hero-scroll-line"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     ABOUT
+     ═══════════════════════════════════════ -->
+<section class="section about-section" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="fade-up">
+        <div class="section-label">About Saturn Hire</div>
+        <h2 class="section-title">Committed to Clean & Fresh</h2>
+        <p class="section-desc">At Saturn Hire we are committed to the delivery of clean and fresh portable toilets to the boutique builders of Adelaide, renovators, owner builds, parties and events.</p>
+        <p class="section-desc" style="margin-top: 1rem;">We have a fleet of chemical toilets, sewer connect toilets, showers, and trailer mounted toilets available for hire — plus temporary fencing for construction sites.</p>
+        <div class="about-stats">
+          <div class="stat-card">
+            <div class="stat-num">6+</div>
+            <div class="stat-label">Products</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">5★</div>
+            <div class="stat-label">Rated</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">ADL</div>
+            <div class="stat-label">Local</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-image-grid fade-up">
+        <div class="about-img">
+          <div class="about-img-inner about-img-inner--1">Fleet</div>
+        </div>
+        <div class="about-img">
+          <div class="about-img-inner about-img-inner--2">Delivery</div>
+        </div>
+        <div class="about-img">
+          <div class="about-img-inner about-img-inner--3">Service</div>
+        </div>
+      </div>
     </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SERVICES
+     ═══════════════════════════════════════ -->
+<section class="section services-section" id="services">
+  <div class="section-inner">
+    <div class="services-header fade-up">
+      <div class="section-label">Our Fleet</div>
+      <h2 class="section-title">Products & Services</h2>
+      <p class="section-desc">From standalone chemical toilets to plumbed sewer connects, portable showers, and temporary fencing — everything your site or event needs.</p>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card fade-up">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="9" y1="6" x2="15" y2="6"/><circle cx="12" cy="14" r="3"/></svg>
+        </div>
+        <h3>Chemical Toilets</h3>
+        <p>Steel frame and Colorbond steel construction with heavy-duty reinforced fibreglass tanks and roof.</p>
+        <ul class="service-features">
+          <li>150L freshwater tank</li>
+          <li>350L waste tank</li>
+          <li>Self-contained — no plumbing needed</li>
+        </ul>
+        <a href="#contact" class="service-link">Get a Quote <span>&rarr;</span></a>
+      </div>
+
+      <div class="service-card fade-up">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 13a3 3 0 006 0"/><line x1="9" y1="6" x2="15" y2="6"/><path d="M8 22h8"/></svg>
+        </div>
+        <h3>Sewer Connect Toilets</h3>
+        <p>Internal plumbing with porcelain bowl, dual flush cistern, and Caroma hand basin with running water.</p>
+        <ul class="service-features">
+          <li>Porcelain bowl — like home</li>
+          <li>Dual flush cistern</li>
+          <li>Hand basin with running water</li>
+        </ul>
+        <a href="#contact" class="service-link">Get a Quote <span>&rarr;</span></a>
+      </div>
+
+      <div class="service-card fade-up">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z" fill="none"/><path d="M12 3v3"/><path d="M8 8a4 4 0 018 0"/><path d="M7 8v10h10V8"/><path d="M10 18v3h4v-3"/></svg>
+        </div>
+        <h3>Portable Showers</h3>
+        <p>50L electric hot water service with standard hose connection. Reinforced heavy-duty fibreglass construction.</p>
+        <ul class="service-features">
+          <li>50L electric hot water</li>
+          <li>Standard hose connection</li>
+          <li>Drain to garden or waste</li>
+        </ul>
+        <a href="#contact" class="service-link">Get a Quote <span>&rarr;</span></a>
+      </div>
+
+      <div class="service-card fade-up">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 3h18v18H3z" fill="none"/><line x1="3" y1="3" x2="3" y2="21"/><line x1="7" y1="3" x2="7" y2="21"/><line x1="11" y1="3" x2="11" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/><line x1="19" y1="3" x2="19" y2="21"/><line x1="21" y1="3" x2="21" y2="21"/><line x1="3" y1="12" x2="21" y2="12"/></svg>
+        </div>
+        <h3>Temporary Fencing</h3>
+        <p>Supply and install for construction site security. 2.1m x 2.4m panels with 1.8m high mesh infill.</p>
+        <ul class="service-features">
+          <li>29kg blow-moulded fence feet</li>
+          <li>Optional dog-proofing mesh</li>
+          <li>Shade cloth available — $4/m</li>
+        </ul>
+        <span class="service-price">From $220 for 6 months incl. delivery</span>
+      </div>
+
+      <div class="service-card fade-up">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>
+        </div>
+        <h3>Trailer Mounted Toilet</h3>
+        <p>Standard chemical toilet fixed to a 4x4 trailer. Easy to manoeuvre on site with pickup or delivery options.</p>
+        <ul class="service-features">
+          <li>Self-contained water & waste</li>
+          <li>Easy site repositioning</li>
+          <li>Pickup or delivery available</li>
+        </ul>
+        <a href="#contact" class="service-link">Get a Quote <span>&rarr;</span></a>
+      </div>
+
+      <div class="service-card fade-up">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <h3>Event & Party Hire</h3>
+        <p>Modern portable toilets with quality aesthetics. Foot-operated pumps for flushing and handwashing. Large tanks for all-day events.</p>
+        <ul class="service-features">
+          <li>Quality aesthetics for guests</li>
+          <li>Large freshwater & waste tanks</li>
+          <li>Prompt, courteous service</li>
+        </ul>
+        <a href="#contact" class="service-link">Get a Quote <span>&rarr;</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     HIRE TYPES
+     ═══════════════════════════════════════ -->
+<section class="section hire-section">
+  <div class="section-inner">
+    <div class="hire-header fade-up">
+      <div class="section-label">How It Works</div>
+      <h2 class="section-title">Hire for Every Situation</h2>
+      <p class="section-desc">Whether you're a builder, a renovator, or throwing a party — we've got a hire option that fits.</p>
+    </div>
+
+    <div class="hire-grid">
+      <div class="hire-card fade-up">
+        <div class="hire-card-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <h3>Builders Hire</h3>
+        <p>Portable toilets delivered directly for extended periods. Set and forget — we handle the servicing.</p>
+        <a href="#contact" class="btn-primary" style="font-size:0.7rem;padding:12px 24px;">Book Now</a>
+      </div>
+
+      <div class="hire-card fade-up">
+        <div class="hire-card-icon">
+          <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <h3>General Hire</h3>
+        <p>Building or renovating? We'll deliver toilets and showers to keep your project running smoothly.</p>
+        <a href="#contact" class="btn-primary" style="font-size:0.7rem;padding:12px 24px;">Book Now</a>
+      </div>
+
+      <div class="hire-card fade-up">
+        <div class="hire-card-icon">
+          <svg viewBox="0 0 24 24"><path d="M5 3a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2H5z"/><path d="M12 8v8m-4-4h8"/></svg>
+        </div>
+        <h3>Party Hire</h3>
+        <p>Having extra guests? Keep your house bathroom for you — we'll handle the rest outside.</p>
+        <a href="#contact" class="btn-primary" style="font-size:0.7rem;padding:12px 24px;">Book Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     WHY SATURN
+     ═══════════════════════════════════════ -->
+<section class="section why-section" id="why">
+  <div class="section-inner">
+    <div class="why-header fade-up">
+      <div class="section-label">Why Saturn</div>
+      <h2 class="section-title">Adelaide's Trusted Name</h2>
+    </div>
+
+    <div class="why-grid">
+      <div class="why-item fade-up">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <h3>Adelaide Owned</h3>
+        <p>Born and bred local. We know every suburb, every council, and every site across the metro area.</p>
+      </div>
+
+      <div class="why-item fade-up">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        </div>
+        <h3>One Call to Scott</h3>
+        <p>No call centres, no runaround. Scott handles everything personally — booking, delivery, servicing, collection.</p>
+      </div>
+
+      <div class="why-item fade-up">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Clean, Every Time</h3>
+        <p>Regular servicing you can count on. Every unit arrives spotless and stays that way throughout your hire.</p>
+      </div>
+
+      <div class="why-item fade-up">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h3>On Time, Always</h3>
+        <p>Delivered when we say, collected when you need. Professional, friendly, and no fuss.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     TESTIMONIALS
+     ═══════════════════════════════════════ -->
+<section class="section testimonials-section" id="reviews">
+  <div class="section-inner">
+    <div class="testimonials-header fade-up">
+      <div class="section-label">Reviews</div>
+      <h2 class="section-title">What Our Customers Say</h2>
+    </div>
+
     <div class="testimonials-grid">
       <div class="testimonial-card fade-up">
-        <span class="testimonial-quote-mark">&ldquo;</span>
-        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="testimonial-text">I've worked forty years on sites across Adelaide. Never has a portable amenity moved me to genuine admiration.</p>
-        <p class="testimonial-author">Tony M., Site Foreman</p>
+        <div class="testimonial-stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
+        <p class="testimonial-text">"A single mounted unit for a house party. It was simple to communicate with staff, who were also polite, friendly and more than helpful. Also, their pricing is the BEST in Adelaide. Highly recommend and will use again. 5 thumbs up!"</p>
+        <div class="testimonial-author">Emma Treanga</div>
+        <div class="testimonial-role">Party Hire Customer</div>
       </div>
+
       <div class="testimonial-card fade-up">
-        <span class="testimonial-quote-mark">&ldquo;</span>
-        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="testimonial-text">Arrived precisely on schedule. Left without a trace. This is how every interaction should feel.</p>
-        <p class="testimonial-author">Sarah K., Event Coordinator</p>
+        <div class="testimonial-stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
+        <p class="testimonial-text">"I have been utilising Saturn Hire's portaloos for my events for almost a year now. Their service is always professional, friendly and no fuss. I will be using their service for many events to come. Thanks Scott and team."</p>
+        <div class="testimonial-author">Ben Hockings</div>
+        <div class="testimonial-role">Event Organiser</div>
       </div>
+
       <div class="testimonial-card fade-up">
-        <span class="testimonial-quote-mark">&ldquo;</span>
-        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="testimonial-text">We specified Saturn for our Glenelg development. The subcontractors actually thanked us.</p>
-        <p class="testimonial-author">David R., Project Manager</p>
+        <div class="testimonial-stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
+        <p class="testimonial-text">"Amazing service. Scott is extremely helpful, can't do enough to help. Shower we had was delivered on time, clean and collected when we needed it to be collected. Highly recommended."</p>
+        <div class="testimonial-author">Janyse Moffatt</div>
+        <div class="testimonial-role">Shower Hire Customer</div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- THE EXPERIENCE -->
-  <section class="experience">
+<!-- ═══════════════════════════════════════
+     CTA / CONTACT
+     ═══════════════════════════════════════ -->
+<section class="section cta-section" id="contact">
+  <div class="section-inner">
     <div class="fade-up">
-      <p class="section-label">The Experience</p>
-      <h2 class="section-heading">White-Glove Deployment</h2>
-    </div>
-    <div class="timeline fade-up">
-      <div class="timeline-step">
-        <div class="timeline-number">01</div>
-        <h3 class="timeline-step-title">The Consultation</h3>
-        <p class="timeline-step-text">A considered discussion of your requirements, site conditions, and aesthetic preferences.</p>
+      <div class="section-label">Get in Touch</div>
+      <h2 class="section-title" style="margin-left:auto;margin-right:auto;max-width:500px;">Ready to Book?<br>Let's Talk.</h2>
+      <a href="tel:0490792452" class="cta-phone-large">0490 792 452</a>
+      <p class="cta-email">or email <a href="mailto:sales@saturnhire.com.au">sales@saturnhire.com.au</a></p>
+      <div class="cta-divider"></div>
+      <div class="hero-actions" style="margin-bottom:2rem;">
+        <a href="mailto:sales@saturnhire.com.au" class="btn-primary">Book Online</a>
+        <a href="tel:0490792452" class="btn-outline">Call Now &rarr;</a>
       </div>
-      <div class="timeline-connector"></div>
-      <div class="timeline-step">
-        <div class="timeline-number">02</div>
-        <h3 class="timeline-step-title">The Arrival</h3>
-        <p class="timeline-step-text">Delivered with military precision. Positioned with architectural intent. Immaculate upon arrival.</p>
-      </div>
-      <div class="timeline-connector"></div>
-      <div class="timeline-step">
-        <div class="timeline-number">03</div>
-        <h3 class="timeline-step-title">The Aftercare</h3>
-        <p class="timeline-step-text">Routine servicing so discreet you'll forget we were there. Until you need us again.</p>
+      <div class="cta-features">
+        <span class="cta-feature"><span class="cta-feature-dot"></span>Free Quotes</span>
+        <span class="cta-feature"><span class="cta-feature-dot"></span>Same Week Delivery</span>
+        <span class="cta-feature"><span class="cta-feature-dot"></span>All Adelaide Metro</span>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- CONTACT -->
-  <section class="contact">
-    <div class="fade-up">
-      <p class="section-label">Enquiries</p>
-      <h2 class="section-heading">Request a Private Consultation</h2>
-      <p class="contact-phone"><a href="tel:0882XXXXXX">08 8XXX XXXX</a></p>
-      <a href="#" class="cta-button">Arrange a Viewing</a>
-      <p class="contact-tagline">Saturn Hire &mdash; Serving Greater Adelaide with distinction since 2005</p>
+<!-- ═══════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">Saturn Hire</div>
+      <div class="footer-tagline">Adelaide Owned & Operated</div>
     </div>
-  </section>
+    <div class="footer-links">
+      <a href="tel:0490792452">0490 792 452</a>
+      <a href="mailto:sales@saturnhire.com.au">sales@saturnhire.com.au</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Book Now</a>
+    </div>
+    <div class="footer-copy">&copy; 2026 Saturn Hire. Adelaide, South Australia. All rights reserved.</div>
+  </div>
+</footer>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <p class="footer-brand">Saturn Hire</p>
-    <p class="footer-location">Adelaide, South Australia</p>
-    <p class="footer-copy">&copy; 2026 Saturn Hire. All rights reserved.</p>
-  </footer>
+<script>
+(function() {
+  'use strict';
 
-  <script>
-    (function() {
-      var targets = document.querySelectorAll('.fade-up');
-      if ('IntersectionObserver' in window) {
-        var observer = new IntersectionObserver(function(entries) {
-          entries.forEach(function(entry) {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('visible');
-              observer.unobserve(entry.target);
-            }
-          });
-        }, {
-          threshold: 0.15,
-          rootMargin: '0px 0px -40px 0px'
-        });
-        targets.forEach(function(el) {
-          observer.observe(el);
-        });
-      } else {
-        targets.forEach(function(el) {
-          el.classList.add('visible');
-        });
+  /* ══ STARS ══ */
+  var heroStars = document.getElementById('heroStars');
+  var starCount = 120;
+  for (var i = 0; i < starCount; i++) {
+    var star = document.createElement('div');
+    star.className = 'star' + (Math.random() > 0.85 ? ' star--gold' : '');
+    star.style.left = Math.random() * 100 + '%';
+    star.style.top = Math.random() * 100 + '%';
+    var size = Math.random() > 0.8 ? 3 : Math.random() > 0.5 ? 2 : 1;
+    star.style.width = size + 'px';
+    star.style.height = size + 'px';
+    star.style.setProperty('--dur', (2 + Math.random() * 5).toFixed(1) + 's');
+    star.style.setProperty('--delay', (Math.random() * 6).toFixed(1) + 's');
+    if (size === 3) {
+      star.style.animation = 'twinkleBright var(--dur) ease-in-out infinite var(--delay)';
+    }
+    heroStars.appendChild(star);
+  }
+
+  /* ══ NAV SCROLL ══ */
+  var nav = document.getElementById('nav');
+  window.addEventListener('scroll', function() {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+
+  /* ══ INTERSECTION OBSERVER ══ */
+  var fadeEls = document.querySelectorAll('.fade-up');
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
       }
-    })();
-  </script>
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
 
+  fadeEls.forEach(function(el) { observer.observe(el); });
+
+  /* ══ STAGGER CARDS ══ */
+  var grids = document.querySelectorAll('.services-grid, .testimonials-grid, .hire-grid, .why-grid');
+  grids.forEach(function(grid) {
+    var cards = grid.querySelectorAll('.fade-up');
+    cards.forEach(function(card, idx) {
+      card.style.transitionDelay = (idx * 0.08) + 's';
+    });
+  });
+
+  /* ══ SMOOTH SCROLL ══ */
+  document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      var target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        document.querySelector('.nav-links').classList.remove('open');
+      }
+    });
+  });
+
+})();
+</script>
 </body>
 </html>
