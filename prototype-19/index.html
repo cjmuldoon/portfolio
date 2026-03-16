@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saturn Hire | Bush to Throne — Adelaide Portable Toilet, Shower & Fencing Hire</title>
+  <meta name="description" content="Saturn Hire — Adelaide's trusted portable toilet, shower, and temporary fencing hire. Clean, serviced, dignified. Call Scott.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --warm-white: #F7F4EF;
+      --yellow: #E8A824;
+      --yellow-dark: #c98e1a;
+      --bush-green: #2D5A3D;
+      --bush-green-light: #3a7a52;
+      --dark: #1A1A1A;
+      --dark-light: #2a2a2a;
+      --font-display: 'DM Serif Display', Georgia, serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+      --font-mono: 'Space Mono', monospace;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      color: var(--dark);
+      background: var(--warm-white);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--dark); }
+    ::-webkit-scrollbar-thumb { background: var(--yellow); border-radius: 4px; }
+
+    /* ── Hero Video Section ── */
+    .hero-video-section {
+      height: 300vh;
+      position: relative;
+    }
+    .hero-video-sticky {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow: hidden;
+      background: var(--dark);
+    }
+    #heroCanvas {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .video-overlay {
+      position: absolute;
+      left: 0; right: 0;
+      text-align: center;
+      font-family: var(--font-display);
+      color: #fff;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.6s ease, transform 0.6s ease;
+      transform: translateY(20px);
+      z-index: 5;
+      text-shadow: 0 4px 30px rgba(0,0,0,0.6);
+    }
+    .video-overlay.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    #overlayBush {
+      top: 35%;
+      font-size: clamp(2.5rem, 6vw, 5rem);
+    }
+    #overlayThrone {
+      top: 45%;
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      color: var(--yellow);
+    }
+    .hero-logo {
+      position: absolute;
+      top: 32px;
+      left: 40px;
+      z-index: 10;
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      color: var(--yellow);
+      letter-spacing: 0.04em;
+    }
+    .hero-nav {
+      position: absolute;
+      top: 36px;
+      right: 40px;
+      z-index: 10;
+      display: flex;
+      gap: 28px;
+    }
+    .hero-nav a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+    .hero-nav a:hover { color: var(--yellow); }
+    .scroll-progress {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: rgba(255,255,255,0.1);
+      z-index: 10;
+    }
+    .scroll-progress-bar {
+      height: 100%;
+      width: 0%;
+      background: var(--yellow);
+      transition: width 0.05s linear;
+    }
+
+    /* ── Video Placeholder ── */
+    .video-placeholder {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--bush-green) 0%, var(--dark) 60%, #111 100%);
+      transition: opacity 0.8s ease;
+    }
+    .video-placeholder.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .placeholder-content {
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+    .placeholder-title {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 8vw, 6rem);
+      color: var(--yellow);
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+    .placeholder-tagline {
+      font-family: var(--font-mono);
+      font-size: clamp(1rem, 2.5vw, 1.5rem);
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 40px;
+      letter-spacing: 0.05em;
+    }
+    .placeholder-note {
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.08em;
+    }
+    .placeholder-scene {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      margin: 50px 0 30px;
+    }
+    .placeholder-bush {
+      width: 120px;
+      height: 100px;
+      position: relative;
+    }
+    .placeholder-toilet {
+      width: 80px;
+      height: 110px;
+      position: relative;
+    }
+    .placeholder-arrow {
+      display: flex;
+      align-items: center;
+      width: 100px;
+    }
+    .placeholder-arrow-line {
+      flex: 1;
+      height: 0;
+      border-top: 3px dashed var(--yellow);
+      animation: arrowDash 1.5s linear infinite;
+    }
+    .placeholder-arrow-head {
+      width: 0;
+      height: 0;
+      border-top: 8px solid transparent;
+      border-bottom: 8px solid transparent;
+      border-left: 14px solid var(--yellow);
+    }
+    @keyframes arrowDash {
+      0% { border-color: var(--yellow); opacity: 0.4; }
+      50% { border-color: var(--yellow); opacity: 1; }
+      100% { border-color: var(--yellow); opacity: 0.4; }
+    }
+    .scroll-hint {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      opacity: 0;
+      transition: opacity 0.6s ease 0.5s;
+    }
+    .scroll-hint.visible { opacity: 1; }
+    .scroll-hint span {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+    .scroll-hint-arrow {
+      width: 20px;
+      height: 20px;
+      border-right: 2px solid var(--yellow);
+      border-bottom: 2px solid var(--yellow);
+      transform: rotate(45deg);
+      animation: scrollBounce 2s ease-in-out infinite;
+    }
+    @keyframes scrollBounce {
+      0%, 100% { transform: rotate(45deg) translateY(0); }
+      50% { transform: rotate(45deg) translateY(6px); }
+    }
+
+    /* ── Problem / Solution Split ── */
+    .split-section {
+      display: flex;
+      min-height: 100vh;
+    }
+    .split-left, .split-right {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    .split-left {
+      background: var(--dark);
+      color: #fff;
+    }
+    .split-right {
+      background: var(--warm-white);
+      color: var(--dark);
+    }
+    .split-left .split-label,
+    .split-right .split-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .split-left .split-label { color: var(--yellow); }
+    .split-right .split-label { color: var(--bush-green); }
+    .split-heading {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      line-height: 1.2;
+      text-align: center;
+      max-width: 440px;
+      margin-bottom: 20px;
+    }
+    .split-text {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      line-height: 1.7;
+      text-align: center;
+      max-width: 380px;
+      opacity: 0.7;
+    }
+    .split-icon {
+      width: 120px;
+      height: 120px;
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .split-divider {
+      position: absolute;
+      top: 0;
+      right: -1px;
+      width: 2px;
+      height: 100%;
+      background: var(--yellow);
+      opacity: 0.3;
+    }
+    @media (max-width: 768px) {
+      .split-section { flex-direction: column; }
+      .split-left, .split-right { padding: 60px 24px; min-height: 60vh; }
+      .split-divider { display: none; }
+    }
+
+    /* ── Products Grid ── */
+    .products-section {
+      padding: 100px 24px;
+      background: var(--warm-white);
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--bush-green);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--dark);
+      line-height: 1.15;
+    }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .product-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 36px 28px;
+      border-top: 4px solid var(--yellow);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    }
+    .product-icon {
+      width: 56px;
+      height: 56px;
+      background: rgba(232, 168, 36, 0.1);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .product-icon svg {
+      width: 28px;
+      height: 28px;
+      stroke: var(--yellow);
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .product-name {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      margin-bottom: 8px;
+      color: var(--dark);
+    }
+    .product-desc {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: #666;
+      margin-bottom: 16px;
+    }
+    .product-price {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: var(--bush-green);
+      font-weight: 700;
+    }
+    @media (max-width: 768px) {
+      .products-grid { grid-template-columns: 1fr; gap: 16px; }
+    }
+
+    /* ── Why Saturn ── */
+    .why-section {
+      background: var(--dark);
+      color: #fff;
+      padding: 100px 24px;
+    }
+    .why-section .section-label { color: var(--yellow); }
+    .why-section .section-title { color: #fff; }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .why-col {
+      text-align: center;
+      padding: 20px;
+    }
+    .why-icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 24px;
+      border: 2px solid var(--yellow);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .why-icon svg {
+      width: 28px;
+      height: 28px;
+      stroke: var(--yellow);
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .why-heading {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+      color: var(--yellow);
+    }
+    .why-text {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.65);
+    }
+    @media (max-width: 768px) {
+      .why-grid { grid-template-columns: 1fr; gap: 32px; }
+    }
+
+    /* ── Testimonials ── */
+    .testimonials-section {
+      background: var(--warm-white);
+      padding: 100px 24px;
+    }
+    .testimonials-scroll {
+      display: flex;
+      gap: 24px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding: 20px 0 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .testimonials-scroll::-webkit-scrollbar { height: 6px; }
+    .testimonials-scroll::-webkit-scrollbar-track { background: transparent; }
+    .testimonials-scroll::-webkit-scrollbar-thumb { background: var(--yellow); border-radius: 3px; }
+    .testimonial-card {
+      flex: 0 0 340px;
+      background: #fff;
+      border-radius: 12px;
+      padding: 32px 28px;
+      border-left: 4px solid var(--yellow);
+      box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+      scroll-snap-align: start;
+    }
+    .testimonial-quote {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: #444;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+    .testimonial-author {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--bush-green);
+      font-weight: 700;
+    }
+    .testimonial-role {
+      font-size: 0.75rem;
+      color: #999;
+      margin-top: 2px;
+    }
+    @media (max-width: 768px) {
+      .testimonial-card { flex: 0 0 85vw; }
+    }
+
+    /* ── CTA ── */
+    .cta-section {
+      background: var(--yellow);
+      padding: 100px 24px;
+      text-align: center;
+    }
+    .cta-heading {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      color: var(--dark);
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .cta-phone {
+      font-family: var(--font-mono);
+      font-size: clamp(1.2rem, 3vw, 2rem);
+      color: var(--dark);
+      text-decoration: none;
+      display: inline-block;
+      margin-bottom: 32px;
+      letter-spacing: 0.05em;
+      transition: opacity 0.3s;
+    }
+    .cta-phone:hover { opacity: 0.7; }
+    .cta-btn {
+      display: inline-block;
+      padding: 18px 48px;
+      background: var(--dark);
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .cta-btn:hover {
+      background: var(--bush-green);
+      transform: translateY(-2px);
+    }
+
+    /* ── Footer ── */
+    .footer {
+      background: var(--dark);
+      color: rgba(255,255,255,0.6);
+      padding: 60px 24px 40px;
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px;
+    }
+    .footer-brand {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      color: var(--yellow);
+      margin-bottom: 16px;
+    }
+    .footer-address {
+      font-size: 0.85rem;
+      line-height: 1.8;
+    }
+    .footer-links-title {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 16px;
+    }
+    .footer-links a {
+      display: block;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      font-size: 0.85rem;
+      padding: 4px 0;
+      transition: color 0.3s;
+    }
+    .footer-links a:hover { color: var(--yellow); }
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 40px auto 0;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+    }
+    @media (max-width: 768px) {
+      .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; gap: 8px; }
+      .hero-nav { display: none; }
+      .hero-logo { left: 24px; }
+    }
+
+    /* ── Animations ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .fade-up-delay-1 { transition-delay: 0.1s; }
+    .fade-up-delay-2 { transition-delay: 0.2s; }
+    .fade-up-delay-3 { transition-delay: 0.3s; }
+    .fade-up-delay-4 { transition-delay: 0.4s; }
+    .fade-up-delay-5 { transition-delay: 0.5s; }
+
+    /* Diagonal wipe for split section */
+    .split-left .split-content,
+    .split-right .split-content {
+      opacity: 0;
+      transform: translateX(-40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .split-right .split-content {
+      transform: translateX(40px);
+    }
+    .split-left.revealed .split-content,
+    .split-right.revealed .split-content {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .split-left::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--bush-green);
+      transform: translateX(0);
+      transition: transform 1s cubic-bezier(0.65, 0, 0.35, 1);
+      z-index: 1;
+    }
+    .split-left.revealed::before {
+      transform: translateX(-101%);
+    }
+    .split-left .split-content,
+    .split-right .split-content {
+      position: relative;
+      z-index: 2;
+    }
+    .split-right::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--yellow);
+      transform: translateX(0);
+      transition: transform 1s cubic-bezier(0.65, 0, 0.35, 1) 0.15s;
+      z-index: 1;
+    }
+    .split-right.revealed::before {
+      transform: translateX(101%);
+    }
+
+    /* Stagger product cards */
+    .product-card.fade-up:nth-child(1) { transition-delay: 0s; }
+    .product-card.fade-up:nth-child(2) { transition-delay: 0.1s; }
+    .product-card.fade-up:nth-child(3) { transition-delay: 0.2s; }
+    .product-card.fade-up:nth-child(4) { transition-delay: 0.3s; }
+    .product-card.fade-up:nth-child(5) { transition-delay: 0.4s; }
+    .product-card.fade-up:nth-child(6) { transition-delay: 0.5s; }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- SECTION 1: Hero — Scroll-Driven Video Canvas   -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <section class="hero-video-section" id="heroSection">
+    <div class="hero-video-sticky">
+      <div class="hero-logo">Saturn Hire</div>
+      <nav class="hero-nav">
+        <a href="#products">Products</a>
+        <a href="#why">Why Us</a>
+        <a href="#testimonials">Reviews</a>
+        <a href="#cta">Contact</a>
+      </nav>
+
+      <video id="heroVideo" src="../assets/videos/saturn-bush-animation-2.mp4" muted playsinline preload="auto" style="display:none;"></video>
+      <canvas id="heroCanvas"></canvas>
+
+      <div class="video-overlay" id="overlayBush">From Bush...</div>
+      <div class="video-overlay" id="overlayThrone">...to Throne</div>
+
+      <div class="video-placeholder" id="videoPlaceholder">
+        <!-- Bush silhouette -->
+        <svg class="placeholder-bush" style="position:absolute;left:5%;bottom:15%;opacity:0.25;" width="220" height="180" viewBox="0 0 220 180" fill="none">
+          <ellipse cx="70" cy="120" rx="65" ry="55" fill="#2D5A3D"/>
+          <ellipse cx="120" cy="100" rx="80" ry="70" fill="#2D5A3D"/>
+          <ellipse cx="160" cy="130" rx="55" ry="45" fill="#2D5A3D"/>
+          <ellipse cx="90" cy="90" rx="50" ry="40" fill="#3a7a52"/>
+          <rect x="100" y="155" width="12" height="25" fill="#5a3a20"/>
+        </svg>
+        <!-- Toilet silhouette -->
+        <svg class="placeholder-toilet" style="position:absolute;right:8%;bottom:15%;opacity:0.2;" width="100" height="140" viewBox="0 0 100 140" fill="none">
+          <rect x="15" y="10" width="70" height="90" rx="8" stroke="#E8A824" stroke-width="2"/>
+          <rect x="25" y="100" width="50" height="30" rx="4" stroke="#E8A824" stroke-width="2"/>
+          <circle cx="50" cy="50" r="6" stroke="#E8A824" stroke-width="2"/>
+          <rect x="45" y="0" width="10" height="14" rx="2" fill="#E8A824" opacity="0.5"/>
+        </svg>
+
+        <div class="placeholder-content">
+          <div class="placeholder-title">SATURN HIRE</div>
+          <div class="placeholder-tagline">Bush to Throne</div>
+          <div class="placeholder-scene">
+            <svg width="120" height="100" viewBox="0 0 120 100">
+              <ellipse cx="35" cy="60" rx="32" ry="28" fill="var(--bush-green)" opacity="0.8"/>
+              <ellipse cx="65" cy="50" rx="40" ry="35" fill="var(--bush-green)"/>
+              <ellipse cx="85" cy="65" rx="28" ry="22" fill="var(--bush-green)" opacity="0.8"/>
+              <ellipse cx="55" cy="45" rx="25" ry="20" fill="var(--bush-green-light)" opacity="0.6"/>
+            </svg>
+            <div class="placeholder-arrow">
+              <div class="placeholder-arrow-line"></div>
+              <div class="placeholder-arrow-head"></div>
+            </div>
+            <svg width="80" height="110" viewBox="0 0 80 110">
+              <rect x="10" y="8" width="60" height="72" rx="6" stroke="var(--yellow)" stroke-width="2.5" fill="none"/>
+              <rect x="18" y="80" width="44" height="22" rx="3" stroke="var(--yellow)" stroke-width="2.5" fill="none"/>
+              <circle cx="40" cy="40" r="5" stroke="var(--yellow)" stroke-width="2" fill="none"/>
+              <rect x="35" y="0" width="10" height="12" rx="2" fill="var(--yellow)" opacity="0.6"/>
+            </svg>
+          </div>
+          <div class="placeholder-note">Scroll-driven video &mdash; coming soon</div>
+        </div>
+      </div>
+
+      <div class="scroll-hint" id="scrollHint">
+        <span>Scroll</span>
+        <div class="scroll-hint-arrow"></div>
+      </div>
+
+      <div class="scroll-progress">
+        <div class="scroll-progress-bar" id="heroProgress"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- SECTION 2: Problem / Solution Split-Screen      -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <section class="split-section" id="split">
+    <div class="split-left" id="splitLeft">
+      <div class="split-content">
+        <div class="split-icon">
+          <svg width="100" height="100" viewBox="0 0 100 100" fill="none">
+            <ellipse cx="30" cy="55" rx="25" ry="22" fill="rgba(45,90,61,0.6)"/>
+            <ellipse cx="55" cy="45" rx="35" ry="30" fill="rgba(45,90,61,0.8)"/>
+            <ellipse cx="72" cy="58" rx="20" ry="16" fill="rgba(45,90,61,0.6)"/>
+            <ellipse cx="48" cy="40" rx="18" ry="14" fill="rgba(58,122,82,0.5)"/>
+            <circle cx="42" cy="70" r="8" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" stroke-dasharray="3 3"/>
+            <text x="38" y="74" font-size="10" fill="rgba(255,255,255,0.4)">?</text>
+          </svg>
+        </div>
+        <div class="split-label">The Problem</div>
+        <h2 class="split-heading">Behind every bush is someone who deserves better</h2>
+        <p class="split-text">No one should have to duck behind the scrub on a job site. It's not dignified, it's not comfortable, and it's definitely not legal.</p>
+      </div>
+      <div class="split-divider"></div>
+    </div>
+    <div class="split-right" id="splitRight">
+      <div class="split-content">
+        <div class="split-icon">
+          <svg width="100" height="100" viewBox="0 0 100 100" fill="none">
+            <rect x="20" y="12" width="60" height="56" rx="8" stroke="var(--bush-green)" stroke-width="2.5"/>
+            <rect x="28" y="68" width="44" height="20" rx="4" stroke="var(--bush-green)" stroke-width="2.5"/>
+            <circle cx="50" cy="36" r="6" stroke="var(--yellow)" stroke-width="2"/>
+            <path d="M44 36l4 4 8-8" stroke="var(--yellow)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="30" y1="5" x2="30" y2="12" stroke="var(--yellow)" stroke-width="1.5" opacity="0.5"/>
+            <line x1="50" y1="0" x2="50" y2="10" stroke="var(--yellow)" stroke-width="1.5" opacity="0.5"/>
+            <line x1="70" y1="5" x2="70" y2="12" stroke="var(--yellow)" stroke-width="1.5" opacity="0.5"/>
+          </svg>
+        </div>
+        <div class="split-label">The Solution</div>
+        <h2 class="split-heading">Clean. Serviced. Dignified.</h2>
+        <p class="split-text">Saturn Hire delivers spotless portable toilets, showers, and fencing straight to your site. Regular servicing included.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- SECTION 3: Products Grid                         -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <section class="products-section" id="products">
+    <div class="section-header">
+      <div class="section-label fade-up">What We Bring to Site</div>
+      <h2 class="section-title fade-up fade-up-delay-1">Built for the Job</h2>
+    </div>
+    <div class="products-grid">
+      <div class="product-card fade-up">
+        <div class="product-icon">
+          <svg viewBox="0 0 28 28"><rect x="4" y="4" width="20" height="16" rx="3"/><rect x="8" y="20" width="12" height="5" rx="2"/><circle cx="14" cy="11" r="2.5"/></svg>
+        </div>
+        <h3 class="product-name">Chemical Toilets</h3>
+        <p class="product-desc">The workhorse. Self-contained, no plumbing needed. Perfect for construction sites, events, and anywhere the pipes don't reach.</p>
+        <div class="product-price">From $85/week</div>
+      </div>
+      <div class="product-card fade-up">
+        <div class="product-icon">
+          <svg viewBox="0 0 28 28"><rect x="4" y="4" width="20" height="16" rx="3"/><rect x="8" y="20" width="12" height="5" rx="2"/><path d="M10 11h8M14 8v6"/></svg>
+        </div>
+        <h3 class="product-name">Sewer Connect Toilets</h3>
+        <p class="product-desc">Connects straight to mains sewer. Flush and forget. For longer-term sites where you want the real deal without the building.</p>
+        <div class="product-price">From $120/week</div>
+      </div>
+      <div class="product-card fade-up">
+        <div class="product-icon">
+          <svg viewBox="0 0 28 28"><rect x="6" y="2" width="16" height="24" rx="3"/><circle cx="14" cy="8" r="2.5"/><path d="M10 12c0 0 2 8 4 10 2-2 4-10 4-10"/></svg>
+        </div>
+        <h3 class="product-name">Portable Showers</h3>
+        <p class="product-desc">Hot water, proper drainage, privacy. Because your crew should be able to wash off the day before heading home.</p>
+        <div class="product-price">From $150/week</div>
+      </div>
+      <div class="product-card fade-up">
+        <div class="product-icon">
+          <svg viewBox="0 0 28 28"><line x1="4" y1="4" x2="4" y2="24"/><line x1="24" y1="4" x2="24" y2="24"/><line x1="4" y1="4" x2="24" y2="4"/><line x1="4" y1="14" x2="24" y2="14"/><line x1="14" y1="4" x2="14" y2="14"/><path d="M4 24l3-3M24 24l-3-3"/></svg>
+        </div>
+        <h3 class="product-name">Temporary Fencing</h3>
+        <p class="product-desc">Secure your site, keep the public out, stay compliant. Standard panels, gates, and stays delivered and collected.</p>
+        <div class="product-price">From $8/panel/week</div>
+      </div>
+      <div class="product-card fade-up">
+        <div class="product-icon">
+          <svg viewBox="0 0 28 28"><rect x="4" y="6" width="20" height="14" rx="3"/><rect x="8" y="20" width="12" height="4" rx="2"/><path d="M9 13l3 3 7-7" stroke-width="2"/></svg>
+        </div>
+        <h3 class="product-name">Event Toilets</h3>
+        <p class="product-desc">Cleaner finish for public-facing jobs. Festivals, markets, weddings. Your guests won't be complaining.</p>
+        <div class="product-price">From $110/weekend</div>
+      </div>
+      <div class="product-card fade-up">
+        <div class="product-icon">
+          <svg viewBox="0 0 28 28"><rect x="2" y="6" width="24" height="16" rx="3"/><line x1="10" y1="6" x2="10" y2="22"/><line x1="18" y1="6" x2="18" y2="22"/><circle cx="6" cy="14" r="1.5"/><circle cx="14" cy="14" r="1.5"/><circle cx="22" cy="14" r="1.5"/></svg>
+        </div>
+        <h3 class="product-name">Welfare Units</h3>
+        <p class="product-desc">Toilet, shower, and changing room in one unit. The full package for sites that need proper welfare facilities.</p>
+        <div class="product-price">From $280/week</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- SECTION 4: Why Saturn                            -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <section class="why-section" id="why">
+    <div class="section-header">
+      <div class="section-label fade-up" style="color:var(--yellow);">Why Saturn</div>
+      <h2 class="section-title fade-up fade-up-delay-1" style="color:#fff;">No fuss. No fine print.</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-col fade-up">
+        <div class="why-icon">
+          <svg viewBox="0 0 28 28"><circle cx="14" cy="10" r="5"/><path d="M6 24c0-5 4-8 8-8s8 3 8 8"/><path d="M14 2v3M22 6l-2 2M6 6l2 2"/></svg>
+        </div>
+        <h3 class="why-heading">Adelaide Owned</h3>
+        <p class="why-text">Born and bred. We know every site in the metro area. No call centre, no interstate headquarters. Just local blokes who know the roads.</p>
+      </div>
+      <div class="why-col fade-up fade-up-delay-1">
+        <div class="why-icon">
+          <svg viewBox="0 0 28 28"><rect x="6" y="2" width="16" height="24" rx="3"/><circle cx="14" cy="20" r="2"/><line x1="10" y1="6" x2="18" y2="6"/></svg>
+        </div>
+        <h3 class="why-heading">Scott Handles Everything</h3>
+        <p class="why-text">One call. One bloke. No runaround. Scott will sort your quote, delivery, servicing, and pickup. You won't chase anyone.</p>
+      </div>
+      <div class="why-col fade-up fade-up-delay-2">
+        <div class="why-icon">
+          <svg viewBox="0 0 28 28"><path d="M14 3l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/></svg>
+        </div>
+        <h3 class="why-heading">Clean, Every Time</h3>
+        <p class="why-text">Regular servicing you can set your watch to. We show up, we clean, we restock. Your site stays fresh and compliant, always.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- SECTION 5: Testimonials                          -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <section class="testimonials-section" id="testimonials">
+    <div class="section-header">
+      <div class="section-label fade-up">What the Sites Say</div>
+      <h2 class="section-title fade-up fade-up-delay-1">Don't take our word for it</h2>
+    </div>
+    <div class="testimonials-scroll">
+      <div class="testimonial-card fade-up">
+        <p class="testimonial-quote">"Had three other mob let us down before we found Saturn. Scott had the units on site by 7am the next morning. Haven't looked back since."</p>
+        <div class="testimonial-author">Dave T.</div>
+        <div class="testimonial-role">Site Foreman, Lendlease subcontractor</div>
+      </div>
+      <div class="testimonial-card fade-up fade-up-delay-1">
+        <p class="testimonial-quote">"The blokes actually noticed the toilets were cleaner. That's when you know the service is good — tradies don't compliment dunnies unless they're impressed."</p>
+        <div class="testimonial-author">Mick R.</div>
+        <div class="testimonial-role">Project Manager, residential builds</div>
+      </div>
+      <div class="testimonial-card fade-up fade-up-delay-2">
+        <p class="testimonial-quote">"We run four sites across Adelaide. Scott manages all of them. One phone call, everything sorted. Honestly the easiest supplier relationship we have."</p>
+        <div class="testimonial-author">Sarah K.</div>
+        <div class="testimonial-role">Operations Manager, Hansen Construction</div>
+      </div>
+      <div class="testimonial-card fade-up fade-up-delay-3">
+        <p class="testimonial-quote">"Used them for a community market event. The units were spotless, delivered on time, collected on Sunday arvo. Crowd of 2,000 and not a single complaint."</p>
+        <div class="testimonial-author">Lisa M.</div>
+        <div class="testimonial-role">Event Coordinator, City of Marion</div>
+      </div>
+      <div class="testimonial-card fade-up fade-up-delay-4">
+        <p class="testimonial-quote">"Straight up the most reliable hire company I've used in 15 years of building. If Scott says Tuesday, it's Tuesday. No chasing, no excuses."</p>
+        <div class="testimonial-author">Benny J.</div>
+        <div class="testimonial-role">Owner-Builder, Southern suburbs</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- SECTION 6: CTA                                   -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <section class="cta-section" id="cta">
+    <div class="fade-up">
+      <h2 class="cta-heading">Call Scotty for a Potty.<br>It's that easy.</h2>
+      <a href="tel:0412345678" class="cta-phone">0412 345 678</a>
+      <br>
+      <a href="#cta" class="cta-btn">Get a Quote</a>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- SECTION 7: Footer                                -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">Saturn Hire</div>
+        <div class="footer-address">
+          Portable Toilets, Showers &amp; Fencing<br>
+          Adelaide, South Australia<br><br>
+          <a href="tel:0412345678" style="color:var(--yellow);text-decoration:none;">0412 345 678</a><br>
+          <a href="mailto:scott@saturnhire.com.au" style="color:rgba(255,255,255,0.5);text-decoration:none;">scott@saturnhire.com.au</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-links-title">Products</div>
+        <div class="footer-links">
+          <a href="#products">Chemical Toilets</a>
+          <a href="#products">Sewer Connect</a>
+          <a href="#products">Portable Showers</a>
+          <a href="#products">Temporary Fencing</a>
+          <a href="#products">Event Toilets</a>
+          <a href="#products">Welfare Units</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-links-title">Company</div>
+        <div class="footer-links">
+          <a href="#why">About Us</a>
+          <a href="#testimonials">Reviews</a>
+          <a href="#cta">Get a Quote</a>
+          <a href="#cta">Contact</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Saturn Hire. All rights reserved.</span>
+      <span style="font-family:var(--font-mono);font-size:0.65rem;color:rgba(255,255,255,0.25);">Bush to Throne&trade;</span>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      'use strict';
+
+      // ═══════════════════════════════════════
+      // SCROLL-DRIVEN VIDEO ENGINE
+      // ═══════════════════════════════════════
+
+      var heroSection = document.getElementById('heroSection');
+      var heroCanvas = document.getElementById('heroCanvas');
+      var heroCtx = heroCanvas.getContext('2d');
+      var heroVideo = document.getElementById('heroVideo');
+      var overlayBush = document.getElementById('overlayBush');
+      var overlayThrone = document.getElementById('overlayThrone');
+      var videoPlaceholder = document.getElementById('videoPlaceholder');
+      var heroProgress = document.getElementById('heroProgress');
+      var scrollHint = document.getElementById('scrollHint');
+
+      var EXTRACT_FPS = 24;
+      var LERP = 0.08;
+      var heroFrames = [];
+      var heroReady = false;
+      var currentHeroP = 0;
+      var targetHeroP = 0;
+      var ticking = false;
+      var lastHeroFrame = -1;
+      var videoFailed = false;
+
+      // Size canvas to viewport
+      function sizeCanvas() {
+        heroCanvas.width = window.innerWidth;
+        heroCanvas.height = window.innerHeight;
+        if (heroReady && heroFrames.length > 0) {
+          var idx = Math.min(Math.floor(currentHeroP * (heroFrames.length - 1)), heroFrames.length - 1);
+          if (idx >= 0) drawFrame(idx);
+        }
+      }
+      sizeCanvas();
+      window.addEventListener('resize', sizeCanvas);
+
+      function drawFrame(idx) {
+        if (idx < 0 || idx >= heroFrames.length) return;
+        var frame = heroFrames[idx];
+        var cw = heroCanvas.width;
+        var ch = heroCanvas.height;
+        var fw = frame.width;
+        var fh = frame.height;
+        // Cover mode
+        var scale = Math.max(cw / fw, ch / fh);
+        var dw = fw * scale;
+        var dh = fh * scale;
+        var dx = (cw - dw) / 2;
+        var dy = (ch - dh) / 2;
+        heroCtx.drawImage(frame, dx, dy, dw, dh);
+      }
+
+      // Frame extraction
+      function extractFrames(video, fps) {
+        return new Promise(function(resolve) {
+          var frames = [];
+          var duration = video.duration;
+          var totalFrames = Math.ceil(duration * fps);
+          var frameIndex = 0;
+
+          video.muted = true;
+          video.currentTime = 0;
+
+          function captureFrame() {
+            createImageBitmap(video).then(function(bitmap) {
+              frames.push(bitmap);
+              frameIndex++;
+              if (frameIndex <= totalFrames) {
+                video.currentTime = Math.min(frameIndex / fps, duration - 0.01);
+              } else {
+                resolve(frames);
+              }
+            }).catch(function() {
+              // Skip frame on error, continue
+              frameIndex++;
+              if (frameIndex <= totalFrames) {
+                video.currentTime = Math.min(frameIndex / fps, duration - 0.01);
+              } else {
+                resolve(frames);
+              }
+            });
+          }
+
+          video.addEventListener('seeked', captureFrame);
+
+          if (video.readyState >= 2) {
+            captureFrame();
+          } else {
+            video.addEventListener('canplay', function() {
+              captureFrame();
+            }, { once: true });
+            video.load();
+          }
+        });
+      }
+
+      // Fetch video as blob for reliable seeking
+      function fetchAndExtract(video, canvas, ctx) {
+        var src = video.getAttribute('src');
+        return fetch(src)
+          .then(function(r) {
+            if (!r.ok) throw new Error('Video not found');
+            return r.blob();
+          })
+          .then(function(blob) {
+            return new Promise(function(resolve, reject) {
+              video.addEventListener('loadedmetadata', function() {
+                canvas.width = video.videoWidth || window.innerWidth;
+                canvas.height = video.videoHeight || window.innerHeight;
+                video.play().then(function() {
+                  video.pause();
+                  video.currentTime = 0;
+                  setTimeout(function() {
+                    extractFrames(video, EXTRACT_FPS).then(resolve);
+                  }, 100);
+                }).catch(function() {
+                  extractFrames(video, EXTRACT_FPS).then(resolve);
+                });
+              }, { once: true });
+              video.addEventListener('error', function() {
+                reject(new Error('Video load error'));
+              }, { once: true });
+              video.src = URL.createObjectURL(blob);
+              video.load();
+            });
+          });
+      }
+
+      // Attempt to load and extract video frames
+      fetchAndExtract(heroVideo, heroCanvas, heroCtx).then(function(frames) {
+        if (frames.length === 0) {
+          videoFailed = true;
+          return;
+        }
+        heroFrames = frames;
+        heroReady = true;
+        sizeCanvas();
+        drawFrame(0);
+        videoPlaceholder.classList.add('hidden');
+        startTicking();
+      }).catch(function() {
+        // Video doesn't exist or failed to load — show placeholder gracefully
+        videoFailed = true;
+        videoPlaceholder.classList.remove('hidden');
+      });
+
+      // Show scroll hint
+      setTimeout(function() {
+        scrollHint.classList.add('visible');
+      }, 600);
+
+      function getSectionProgress(section) {
+        var rect = section.getBoundingClientRect();
+        var scrollHeight = section.offsetHeight - window.innerHeight;
+        if (scrollHeight <= 0) return 0;
+        return Math.max(0, Math.min(1, -rect.top / scrollHeight));
+      }
+
+      function startTicking() {
+        if (!ticking) {
+          ticking = true;
+          requestAnimationFrame(tick);
+        }
+      }
+
+      function tick() {
+        targetHeroP = getSectionProgress(heroSection);
+        currentHeroP += (targetHeroP - currentHeroP) * LERP;
+
+        // Update progress bar (works even without video)
+        heroProgress.style.width = (targetHeroP * 100) + '%';
+
+        // Hide scroll hint after scrolling begins
+        if (targetHeroP > 0.02) {
+          scrollHint.classList.remove('visible');
+        }
+
+        // Update overlay visibility
+        if (targetHeroP > 0.35 && targetHeroP < 0.65) {
+          overlayBush.classList.add('visible');
+        } else {
+          overlayBush.classList.remove('visible');
+        }
+        if (targetHeroP > 0.65) {
+          overlayThrone.classList.add('visible');
+        } else {
+          overlayThrone.classList.remove('visible');
+        }
+
+        // Draw video frame
+        if (heroReady && heroFrames.length > 0) {
+          var idx = Math.min(Math.floor(currentHeroP * (heroFrames.length - 1)), heroFrames.length - 1);
+          if (idx !== lastHeroFrame && idx >= 0) {
+            drawFrame(idx);
+            lastHeroFrame = idx;
+          }
+        }
+
+        requestAnimationFrame(tick);
+      }
+
+      // Even without video, run the tick loop for overlays and progress
+      startTicking();
+
+      // ═══════════════════════════════════════
+      // INTERSECTION OBSERVER ANIMATIONS
+      // ═══════════════════════════════════════
+
+      var fadeEls = document.querySelectorAll('.fade-up');
+      var fadeObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+      fadeEls.forEach(function(el) {
+        fadeObserver.observe(el);
+      });
+
+      // Split section diagonal wipe
+      var splitLeft = document.getElementById('splitLeft');
+      var splitRight = document.getElementById('splitRight');
+      var splitObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+          }
+        });
+      }, { threshold: 0.25 });
+
+      splitObserver.observe(splitLeft);
+      splitObserver.observe(splitRight);
+
+    })();
+  </script>
+</body>
+</html>
