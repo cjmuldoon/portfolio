@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saturn Hire — Adelaide Owned and Operated</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --black: #1A1A1A;
+  --yellow: #E8A824;
+  --warm-white: #F7F4EF;
+  --dark-grey: #333333;
+  --orange: #FF6B35;
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  color: var(--dark-grey);
+  background: var(--warm-white);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== NAV ===== */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: var(--black);
+  padding: 0 2rem;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: box-shadow 0.3s;
+}
+.nav.scrolled { box-shadow: 0 4px 20px rgba(0,0,0,0.4); }
+.nav__logo img { height: 40px; width: auto; }
+.nav__links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+.nav__links a {
+  color: var(--warm-white);
+  text-decoration: none;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+.nav__links a:hover { color: var(--yellow); }
+.nav__cta {
+  background: var(--yellow);
+  color: var(--black) !important;
+  padding: 0.6rem 1.4rem;
+  border-radius: 2px;
+  font-weight: 700 !important;
+  transition: background 0.2s, transform 0.2s !important;
+}
+.nav__cta:hover { background: var(--orange); transform: translateY(-1px); }
+
+.nav__hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+.nav__hamburger span {
+  display: block;
+  width: 26px;
+  height: 3px;
+  background: var(--warm-white);
+  border-radius: 2px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+.nav__hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
+.nav__hamburger.open span:nth-child(2) { opacity: 0; }
+.nav__hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  padding-top: 72px;
+}
+.hero__left {
+  flex: 1;
+  background: var(--black);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem 3rem 4rem 4rem;
+  position: relative;
+  z-index: 2;
+}
+.hero__tag {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--yellow);
+  margin-bottom: 1.5rem;
+}
+.hero__headline {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  line-height: 1;
+  color: var(--warm-white);
+  margin-bottom: 1.5rem;
+}
+.hero__headline span { color: var(--yellow); }
+.hero__sub {
+  font-size: 1.15rem;
+  color: #aaa;
+  line-height: 1.6;
+  max-width: 440px;
+  margin-bottom: 2rem;
+}
+.hero__phone {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: var(--warm-white);
+  margin-bottom: 2rem;
+  letter-spacing: 0.03em;
+}
+.hero__phone a { color: var(--warm-white); text-decoration: none; }
+.hero__phone a:hover { color: var(--yellow); }
+.hero__actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn {
+  display: inline-block;
+  padding: 1rem 2.2rem;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s;
+  border-radius: 2px;
+}
+.btn--yellow { background: var(--yellow); color: var(--black); }
+.btn--yellow:hover { background: var(--orange); transform: translateY(-2px); }
+.btn--outline {
+  background: transparent;
+  color: var(--warm-white);
+  border: 2px solid var(--warm-white);
+}
+.btn--outline:hover { border-color: var(--yellow); color: var(--yellow); }
+
+.hero__right {
+  flex: 1;
+  position: relative;
+  clip-path: polygon(12% 0, 100% 0, 100% 100%, 0% 100%);
+}
+.hero__right img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ===== TICKER ===== */
+.ticker {
+  background: var(--yellow);
+  padding: 1rem 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.ticker__track {
+  display: flex;
+  animation: ticker 20s linear infinite;
+}
+.ticker__content {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.ticker__content span {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--black);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0 1.5rem;
+}
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ===== PRODUCTS ===== */
+.products { padding: 0; }
+.product-row {
+  display: flex;
+  min-height: 500px;
+}
+.product-row:nth-child(even) { flex-direction: row-reverse; }
+.product-row__img {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+.product-row__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s;
+}
+.product-row:hover .product-row__img img { transform: scale(1.03); }
+.product-row__img--clip { clip-path: polygon(0 0, 100% 0, 92% 100%, 0% 100%); }
+.product-row:nth-child(even) .product-row__img--clip { clip-path: polygon(8% 0, 100% 0, 100% 100%, 0% 100%); }
+
+.product-row__content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem;
+}
+.product-row__number {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 5rem;
+  color: var(--yellow);
+  opacity: 0.2;
+  line-height: 1;
+  margin-bottom: -0.5rem;
+}
+.product-row__name {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  color: var(--black);
+  margin-bottom: 1rem;
+  line-height: 1.15;
+}
+.product-row__specs {
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  max-width: 450px;
+}
+.product-row__specs strong { color: var(--dark-grey); }
+.btn--dark { background: var(--black); color: var(--warm-white); }
+.btn--dark:hover { background: var(--dark-grey); transform: translateY(-2px); }
+
+/* ===== STATS ===== */
+.stats {
+  background: var(--black);
+  padding: 4rem 2rem;
+}
+.stats__grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  text-align: center;
+}
+.stat__number {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  color: var(--yellow);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+.stat__label {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #888;
+}
+
+/* ===== WHY SATURN ===== */
+.why {
+  padding: 6rem 2rem;
+  background: var(--warm-white);
+}
+.why__header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+.why__header h2 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  color: var(--black);
+}
+.why__grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+}
+.why-card {
+  background: #fff;
+  border: 3px solid transparent;
+  border-top: 4px solid var(--yellow);
+  padding: 2.5rem 2rem;
+  transition: border-color 0.3s, transform 0.3s;
+}
+.why-card:hover { border-color: var(--yellow); transform: translateY(-4px); }
+.why-card__icon {
+  width: 56px;
+  height: 56px;
+  background: var(--yellow);
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+.why-card__icon svg { width: 28px; height: 28px; fill: var(--black); }
+.why-card h3 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: var(--black);
+  margin-bottom: 0.75rem;
+}
+.why-card p { color: #666; line-height: 1.6; font-size: 0.95rem; }
+
+/* ===== TESTIMONIALS ===== */
+.testimonials {
+  background: var(--black);
+  padding: 6rem 2rem;
+}
+.testimonials__header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+.testimonials__header h2 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  color: var(--warm-white);
+}
+.testimonials__stack {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+.testimonial {
+  position: relative;
+  padding-left: 3rem;
+}
+.testimonial__quote {
+  position: absolute;
+  top: -0.5rem;
+  left: 0;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 4rem;
+  color: var(--yellow);
+  line-height: 1;
+}
+.testimonial p {
+  font-size: 1.1rem;
+  color: #ccc;
+  line-height: 1.7;
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+.testimonial__author {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--yellow);
+  letter-spacing: 0.05em;
+}
+
+/* ===== GALLERY ===== */
+.gallery {
+  padding: 6rem 2rem;
+  background: var(--warm-white);
+}
+.gallery__header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.gallery__header h2 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  color: var(--black);
+}
+.gallery__grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 220px;
+  gap: 0.75rem;
+}
+.gallery__item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 2px;
+}
+.gallery__item:nth-child(1) { grid-row: span 2; }
+.gallery__item:nth-child(4) { grid-row: span 2; }
+.gallery__item:nth-child(7) { grid-column: span 2; }
+.gallery__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s;
+}
+.gallery__item:hover img { transform: scale(1.08); }
+.gallery__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(26,26,26,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.gallery__item:hover .gallery__overlay { opacity: 1; }
+.gallery__overlay span {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--yellow);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ===== CTA ===== */
+.cta-section {
+  background: var(--yellow);
+  clip-path: polygon(0 8%, 100% 0, 100% 100%, 0 100%);
+  padding: 8rem 2rem 5rem;
+  text-align: center;
+}
+.cta-section__headline {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(3rem, 7vw, 6rem);
+  color: var(--black);
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+.cta-section__phone {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  color: var(--black);
+  margin-bottom: 0.5rem;
+}
+.cta-section__phone a { color: var(--black); text-decoration: none; }
+.cta-section__phone a:hover { text-decoration: underline; }
+.cta-section__email {
+  font-size: 1.1rem;
+  color: var(--dark-grey);
+  margin-bottom: 2.5rem;
+}
+.cta-section__email a { color: var(--dark-grey); text-decoration: none; }
+.cta-section__email a:hover { text-decoration: underline; }
+.cta-section__actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+/* ===== FOOTER ===== */
+.footer {
+  background: var(--black);
+  padding: 4rem 2rem 2rem;
+}
+.footer__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid #333;
+}
+.footer__brand img { height: 36px; margin-bottom: 1rem; display: block; }
+.footer__brand p { color: #888; font-size: 0.9rem; max-width: 260px; line-height: 1.5; }
+.footer__links h4 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--warm-white);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+.footer__links ul { list-style: none; }
+.footer__links li { margin-bottom: 0.5rem; }
+.footer__links a { color: #888; text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+.footer__links a:hover { color: var(--yellow); }
+.footer__contact p { color: #888; font-size: 0.9rem; margin-bottom: 0.4rem; }
+.footer__contact a { color: #888; text-decoration: none; transition: color 0.2s; }
+.footer__contact a:hover { color: var(--yellow); }
+.footer__bottom {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding-top: 2rem;
+  text-align: center;
+  color: #555;
+  font-size: 0.8rem;
+}
+
+/* ===== ANIMATIONS ===== */
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+  .nav__links {
+    display: none;
+    position: absolute;
+    top: 72px;
+    left: 0;
+    width: 100%;
+    background: var(--black);
+    flex-direction: column;
+    padding: 1.5rem 2rem 2rem;
+    gap: 1.2rem;
+  }
+  .nav__links.open { display: flex; }
+  .nav__hamburger { display: flex; }
+
+  .hero { flex-direction: column; min-height: auto; }
+  .hero__left { padding: 3rem 1.5rem; }
+  .hero__right {
+    clip-path: polygon(0 8%, 100% 0, 100% 100%, 0 100%);
+    min-height: 300px;
+  }
+
+  .product-row,
+  .product-row:nth-child(even) { flex-direction: column; }
+  .product-row__img { min-height: 280px; }
+  .product-row__img--clip,
+  .product-row:nth-child(even) .product-row__img--clip {
+    clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
+  }
+  .product-row__content { padding: 2.5rem 1.5rem; }
+
+  .stats__grid { grid-template-columns: repeat(2, 1fr); }
+
+  .why__grid { grid-template-columns: 1fr; }
+
+  .gallery__grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 180px;
+  }
+  .gallery__item:nth-child(1),
+  .gallery__item:nth-child(4) { grid-row: span 1; }
+  .gallery__item:nth-child(7) { grid-column: span 1; }
+
+  .cta-section { clip-path: polygon(0 4%, 100% 0, 100% 100%, 0 100%); padding-top: 5rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="#" class="nav__logo">
+    <img src="https://saturnhire.com.au/wp-content/uploads/2021/01/Saturn_Hire_Adelaide_Logo-1.svg" alt="Saturn Hire Adelaide">
+  </a>
+  <button class="nav__hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav__links" id="navLinks">
+    <li><a href="#products">Products</a></li>
+    <li><a href="#why">Why Saturn</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="tel:0490792452" class="nav__cta">0490 792 452</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero__left">
+    <p class="hero__tag">Adelaide Owned &amp; Operated</p>
+    <h1 class="hero__headline">HIRE.<br>DELIVER.<br><span>DONE.</span></h1>
+    <p class="hero__sub">Portable toilets, showers, temporary fencing and event hire — delivered fast across Adelaide and South Australia.</p>
+    <p class="hero__phone"><a href="tel:0490792452">0490 792 452</a></p>
+    <div class="hero__actions">
+      <a href="tel:0490792452" class="btn btn--yellow">Call Scott Now</a>
+      <a href="mailto:sales@saturnhire.com.au" class="btn btn--outline">Get a Quote</a>
+    </div>
+  </div>
+  <div class="hero__right">
+    <img src="https://saturnhire.com.au/wp-content/uploads/2021/04/Construction.jpg" alt="Construction site portable toilets">
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker__track">
+    <div class="ticker__content">
+      <span>Chemical Toilets</span><span>&bull;</span>
+      <span>Sewer Connect</span><span>&bull;</span>
+      <span>Portable Showers</span><span>&bull;</span>
+      <span>Temporary Fencing</span><span>&bull;</span>
+      <span>Event Hire</span><span>&bull;</span>
+      <span>Trailer Mounted</span><span>&bull;</span>
+    </div>
+    <div class="ticker__content" aria-hidden="true">
+      <span>Chemical Toilets</span><span>&bull;</span>
+      <span>Sewer Connect</span><span>&bull;</span>
+      <span>Portable Showers</span><span>&bull;</span>
+      <span>Temporary Fencing</span><span>&bull;</span>
+      <span>Event Hire</span><span>&bull;</span>
+      <span>Trailer Mounted</span><span>&bull;</span>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+
+  <!-- 1. Chemical Toilets -->
+  <div class="product-row fade-up">
+    <div class="product-row__img product-row__img--clip">
+      <img src="https://saturnhire.com.au/wp-content/uploads/2021/04/Saturn_4.jpg" alt="Chemical Toilet">
+    </div>
+    <div class="product-row__content">
+      <div class="product-row__number">01</div>
+      <h3 class="product-row__name">Chemical Toilets</h3>
+      <p class="product-row__specs">Built tough with a <strong>steel frame</strong> and <strong>Colorbond steel</strong> body. Features a 150L freshwater tank and 350L waste tank — ready for any construction site or outdoor project.</p>
+      <a href="tel:0490792452" class="btn btn--dark">Get a Quote</a>
+    </div>
+  </div>
+
+  <!-- 2. Sewer Connect Toilets -->
+  <div class="product-row fade-up">
+    <div class="product-row__img product-row__img--clip">
+      <img src="https://saturnhire.com.au/wp-content/uploads/2021/04/Saturn_1.jpg" alt="Sewer Connect Toilet">
+    </div>
+    <div class="product-row__content">
+      <div class="product-row__number">02</div>
+      <h3 class="product-row__name">Sewer Connect Toilets</h3>
+      <p class="product-row__specs">Premium option with a <strong>porcelain bowl</strong>, <strong>dual flush system</strong> and built-in <strong>Caroma hand basin</strong>. Connects directly to mains sewer for long-term site comfort.</p>
+      <a href="tel:0490792452" class="btn btn--dark">Get a Quote</a>
+    </div>
+  </div>
+
+  <!-- 3. Portable Showers -->
+  <div class="product-row fade-up">
+    <div class="product-row__img product-row__img--clip">
+      <img src="https://saturnhire.com.au/wp-content/uploads/2021/04/Saturn_2.jpg" alt="Portable Shower">
+    </div>
+    <div class="product-row__content">
+      <div class="product-row__number">03</div>
+      <h3 class="product-row__name">Portable Showers</h3>
+      <p class="product-row__specs">Equipped with a <strong>50L electric hot water system</strong> and standard hose connection. Durable <strong>fibreglass construction</strong> — ideal for remote sites and renovations.</p>
+      <a href="tel:0490792452" class="btn btn--dark">Get a Quote</a>
+    </div>
+  </div>
+
+  <!-- 4. Temporary Fencing -->
+  <div class="product-row fade-up">
+    <div class="product-row__img product-row__img--clip">
+      <img src="https://saturnhire.com.au/wp-content/uploads/2021/04/Saturn_11.jpg" alt="Temporary Fencing">
+    </div>
+    <div class="product-row__content">
+      <div class="product-row__number">04</div>
+      <h3 class="product-row__name">Temporary Fencing</h3>
+      <p class="product-row__specs">From <strong>$220 for 6 months</strong>. Standard <strong>2.1m x 2.4m panels</strong> with optional <strong>dog-proofing</strong> and <strong>shade cloth at $4/m</strong>. Perfect for construction sites, events and property security.</p>
+      <a href="tel:0490792452" class="btn btn--dark">Get a Quote</a>
+    </div>
+  </div>
+
+  <!-- 5. Trailer Mounted Toilet -->
+  <div class="product-row fade-up">
+    <div class="product-row__img product-row__img--clip">
+      <img src="https://saturnhire.com.au/wp-content/uploads/2021/04/Saturn_10.jpg" alt="Trailer Mounted Toilet">
+    </div>
+    <div class="product-row__content">
+      <div class="product-row__number">05</div>
+      <h3 class="product-row__name">Trailer Mounted Toilet</h3>
+      <p class="product-row__specs">Mounted on a sturdy <strong>4x4 trailer</strong> for maximum flexibility. Choose <strong>pickup or delivery</strong> — go anywhere, any terrain.</p>
+      <a href="tel:0490792452" class="btn btn--dark">Get a Quote</a>
+    </div>
+  </div>
+
+  <!-- 6. Event & Party Hire -->
+  <div class="product-row fade-up">
+    <div class="product-row__img product-row__img--clip">
+      <img src="https://saturnhire.com.au/wp-content/uploads/2021/04/Party.jpg" alt="Event and Party Hire">
+    </div>
+    <div class="product-row__content">
+      <div class="product-row__number">06</div>
+      <h3 class="product-row__name">Event &amp; Party Hire</h3>
+      <p class="product-row__specs"><strong>Modern aesthetics</strong> with hygienic <strong>foot-operated pumps</strong>. Clean, presentable units perfect for weddings, festivals and private events.</p>
+      <a href="tel:0490792452" class="btn btn--dark">Get a Quote</a>
+    </div>
+  </div>
+
+</section>
+
+<!-- STATS BAR -->
+<section class="stats fade-up">
+  <div class="stats__grid">
+    <div class="stat">
+      <div class="stat__number">6+</div>
+      <div class="stat__label">Products</div>
+    </div>
+    <div class="stat">
+      <div class="stat__number">5&#9733;</div>
+      <div class="stat__label">Rated</div>
+    </div>
+    <div class="stat">
+      <div class="stat__number">ADL</div>
+      <div class="stat__label">Local</div>
+    </div>
+    <div class="stat">
+      <div class="stat__number">24hr</div>
+      <div class="stat__label">Delivery</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY SATURN -->
+<section class="why fade-up" id="why">
+  <div class="why__header">
+    <h2>Why Saturn Hire</h2>
+  </div>
+  <div class="why__grid">
+    <div class="why-card">
+      <div class="why-card__icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
+      </div>
+      <h3>Adelaide Owned</h3>
+      <p>Locally owned and operated right here in Adelaide. We know the area, we know the regulations, and we deliver across South Australia.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-card__icon">
+        <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.25 1.02l-2.2 2.19z"/></svg>
+      </div>
+      <h3>One Call to Scott</h3>
+      <p>Deal directly with the owner. One phone call to Scott and your hire is organised — no call centres, no runaround, just results.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-card__icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <h3>Clean Every Time</h3>
+      <p>Every unit is professionally cleaned, serviced and inspected before delivery. We take pride in providing the cleanest hire equipment in Adelaide.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials fade-up" id="testimonials">
+  <div class="testimonials__header">
+    <h2>What Our Customers Say</h2>
+  </div>
+  <div class="testimonials__stack">
+    <div class="testimonial">
+      <span class="testimonial__quote">&ldquo;</span>
+      <p>...pricing is the BEST in Adelaide. Highly recommend and will use again. 5 thumbs up!</p>
+      <div class="testimonial__author">Emma Treanga</div>
+    </div>
+    <div class="testimonial">
+      <span class="testimonial__quote">&ldquo;</span>
+      <p>Their service is always professional, friendly and no fuss.</p>
+      <div class="testimonial__author">Ben Hockings</div>
+    </div>
+    <div class="testimonial">
+      <span class="testimonial__quote">&ldquo;</span>
+      <p>Amazing service. Scott is extremely helpful can&rsquo;t do enough to help.</p>
+      <div class="testimonial__author">Janyse Moffatt</div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery fade-up" id="gallery">
+  <div class="gallery__header">
+    <h2>Our Equipment</h2>
+  </div>
+  <div class="gallery__grid">
+    <div class="gallery__item">
+      <img src="https://saturnhire.com.au/wp-content/uploads/2021/04/Saturn_4.jpg" alt="Saturn Hire equipment">
+      <div class="gallery__overlay"><span>Chemical Toilet</span></div>
+    </div>
+    <div class="gallery__item">
+      <img src="https://saturnhire.com.au/wp-content/uploads/2021/04/Saturn_1.jpg" alt="Saturn Hire equipment">
+      <div class="gallery__overlay"><span>Sewer Connect</span></div>
+    </div>
+    <div class="gallery__item">
+      <img src="https://saturnhire.com.au/wp-content/uploads/2021/04/Saturn_2.jpg" alt="Saturn Hire equipment">
+      <div class="gallery__overlay"><span>Portable Shower</span></div>
+    </div>
+    <div class="gallery__item">
+      <img src="https://saturnhire.com.au/wp-content/uploads/2021/04/Saturn_11.jpg" alt="Saturn Hire equipment">
+      <div class="gallery__overlay"><span>Temp Fencing</span></div>
+    </div>
+    <div class="gallery__item">
+      <img src="https://saturnhire.com.au/wp-content/uploads/2021/04/Saturn_8.jpg" alt="Saturn Hire equipment">
+      <div class="gallery__overlay"><span>Saturn Hire</span></div>
+    </div>
+    <div class="gallery__item">
+      <img src="https://saturnhire.com.au/wp-content/uploads/2021/04/Saturn_9.jpg" alt="Saturn Hire equipment">
+      <div class="gallery__overlay"><span>Saturn Hire</span></div>
+    </div>
+    <div class="gallery__item">
+      <img src="https://saturnhire.com.au/wp-content/uploads/2021/04/Saturn_6.jpg" alt="Saturn Hire equipment">
+      <div class="gallery__overlay"><span>Saturn Hire</span></div>
+    </div>
+    <div class="gallery__item">
+      <img src="https://saturnhire.com.au/wp-content/uploads/2021/04/Saturn_5.jpg" alt="Saturn Hire equipment">
+      <div class="gallery__overlay"><span>Saturn Hire</span></div>
+    </div>
+    <div class="gallery__item">
+      <img src="https://saturnhire.com.au/wp-content/uploads/2021/04/Saturn_3.jpg" alt="Saturn Hire equipment">
+      <div class="gallery__overlay"><span>Saturn Hire</span></div>
+    </div>
+    <div class="gallery__item">
+      <img src="https://saturnhire.com.au/wp-content/uploads/2021/04/Reno.jpg" alt="Saturn Hire renovation">
+      <div class="gallery__overlay"><span>Renovation Hire</span></div>
+    </div>
+    <div class="gallery__item">
+      <img src="https://saturnhire.com.au/wp-content/uploads/2021/04/Saturn_10.jpg" alt="Saturn Hire equipment">
+      <div class="gallery__overlay"><span>Trailer Mounted</span></div>
+    </div>
+    <div class="gallery__item">
+      <img src="https://saturnhire.com.au/wp-content/uploads/2021/04/Party.jpg" alt="Saturn Hire party">
+      <div class="gallery__overlay"><span>Event Hire</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section fade-up">
+  <h2 class="cta-section__headline">CALL SCOTT</h2>
+  <p class="cta-section__phone"><a href="tel:0490792452">0490 792 452</a></p>
+  <p class="cta-section__email"><a href="mailto:sales@saturnhire.com.au">sales@saturnhire.com.au</a></p>
+  <div class="cta-section__actions">
+    <a href="tel:0490792452" class="btn btn--dark">Call Now</a>
+    <a href="mailto:sales@saturnhire.com.au" class="btn btn--dark">Email Quote</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <img src="https://saturnhire.com.au/wp-content/uploads/2021/01/Saturn_Hire_Adelaide_Logo-1.svg" alt="Saturn Hire">
+      <p>Adelaide owned and operated. Portable toilets, showers, fencing and event hire delivered across South Australia.</p>
+    </div>
+    <div class="footer__links">
+      <h4>Products</h4>
+      <ul>
+        <li><a href="#products">Chemical Toilets</a></li>
+        <li><a href="#products">Sewer Connect</a></li>
+        <li><a href="#products">Portable Showers</a></li>
+        <li><a href="#products">Temporary Fencing</a></li>
+        <li><a href="#products">Trailer Mounted</a></li>
+        <li><a href="#products">Event Hire</a></li>
+      </ul>
+    </div>
+    <div class="footer__links">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#why">Why Saturn</a></li>
+        <li><a href="#testimonials">Reviews</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+      </ul>
+    </div>
+    <div class="footer__contact">
+      <h4 style="font-family:var(--font-heading);font-weight:700;color:var(--warm-white);font-size:0.85rem;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:1rem;">Contact</h4>
+      <p><a href="tel:0490792452">0490 792 452</a></p>
+      <p><a href="mailto:sales@saturnhire.com.au">sales@saturnhire.com.au</a></p>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    &copy; 2026 Saturn Hire. Adelaide Owned and Operated. All rights reserved.
+  </div>
+</footer>
+
+<script>
+// Nav scroll shadow
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 20);
+});
+
+// Mobile hamburger
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  navLinks.classList.toggle('open');
+});
+navLinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    hamburger.classList.remove('open');
+    navLinks.classList.remove('open');
+  });
+});
+
+// IntersectionObserver fade-up
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{
+  "prompt": "Wide shot of a dusty Australian construction site in bright midday sun. A construction worker in a high-visibility orange vest, blue work shorts, steel-cap boots, and white hard hat is crouching awkwardly behind a small scraggly Australian bush, clearly trying to relieve himself in desperation. His facial expression shows embarrassment and discomfort. He is partially hidden behind the bush but his hard hat, shoulders, and boots are clearly visible poking out from behind it. The bush is a small dry Australian scrub bush, about waist height, positioned in the centre-right of frame. The ground is dry red-brown Australian dirt and gravel with scattered construction debris — a wheelbarrow in the background, orange traffic cones, a partial chain-link fence, stacked timber pallets. The sky is bright blue with a few wispy clouds. The overall scene is comedic and relatable — every tradie has been in this situation. Shot from approximately 8 metres away at eye level, 35mm lens, f/5.6, deep focus with everything sharp. Natural harsh Australian midday sunlight casting short shadows. Realistic documentary photography style, not staged or polished. Do not beautify. Do not make the scene look glamorous. This should feel like a candid moment caught on a phone camera but shot with cinema-grade clarity. Shot on Canon EOS R5, natural colour science with warm Australian tones.",
+  "negative_prompt": "cartoon, illustration, CGI render, anime, painting, sketch, unrealistic lighting, flat lighting, ugly, deformed, noisy, blurry, oversaturated, text overlay, watermark, stock photo, indoor setting, toilet visible, portable toilet, bathroom, urban city, night time, dark scene, studio lighting, posed model, fashion photography",
+  "image_input": [],
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "png",
+    "aspect_ratio": "16:9"
+  },
+  "settings": {
+    "resolution": "2K",
+    "style": "documentary realism, candid construction site photography",
+    "lighting": "harsh Australian midday sun, natural shadows",
+    "camera_angle": "eye level, 8 metres distance, slightly off-centre",
+    "depth_of_field": "deep focus, f/5.6, everything sharp",
+    "quality": "ultra high detail, photographic realism, Canon cinema camera aesthetic"
+  }
+}

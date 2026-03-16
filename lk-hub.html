@@ -324,6 +324,21 @@ body::before {
 .pv-perfume .p-shapes::before { content:''; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:80px; height:80px; border:1px solid rgba(212,175,55,0.2); border-radius:50%; box-shadow: 0 0 30px rgba(74,63,107,0.15); }
 .pv-perfume .p-shapes::after { content:''; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:120px; height:40px; border:1px solid rgba(212,175,55,0.1); border-radius:50%; }
 
+.pv-clean-trade { background: #FFFFFF; }
+.pv-clean-trade .p-label { color: #1A1A1A; }
+.pv-clean-trade .p-shapes::before { content:''; position:absolute; left:20px; top:20px; bottom:20px; width:3px; background:#E8A824; border-radius:2px; }
+.pv-clean-trade .p-shapes::after { content:''; position:absolute; right:20px; bottom:20px; width:50px; height:50px; border:2px solid rgba(232,168,36,0.15); border-radius:8px; }
+
+.pv-bold-construct { background: #1A1A1A; }
+.pv-bold-construct .p-label { color: #E8A824; font-weight: 800; letter-spacing: 0.05em; }
+.pv-bold-construct .p-shapes::before { content:''; position:absolute; left:0; top:0; bottom:0; width:50%; background:linear-gradient(135deg, rgba(232,168,36,0.1), transparent); clip-path: polygon(0 0, 100% 0, 70% 100%, 0 100%); }
+.pv-bold-construct .p-shapes::after { content:''; position:absolute; right:16px; top:16px; font-size:2.5rem; font-weight:900; color:rgba(232,168,36,0.1); content:'//'; font-family:'Inter',sans-serif; }
+
+.pv-warm-friendly { background: #FBF8F4; }
+.pv-warm-friendly .p-label { color: #2C2416; }
+.pv-warm-friendly .p-shapes::before { content:''; position:absolute; right:24px; bottom:24px; width:50px; height:50px; background:#E8A824; border-radius:50%; opacity:0.15; }
+.pv-warm-friendly .p-shapes::after { content:''; position:absolute; left:20px; top:24px; width:35px; height:35px; border:2px solid rgba(212,74,42,0.15); border-radius:12px; }
+
 .proto-body { padding: 22px; }
 .proto-body h3 { font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 6px; }
 .proto-body .desc { font-size: 0.82rem; color: #666; line-height: 1.5; margin-bottom: 12px; min-height: 2.4em; }
@@ -1079,7 +1094,7 @@ body::before {
     <div class="section-header">
       <h2>Saturn Hire — Prototypes</h2>
       <span class="line"></span>
-      <span class="count">3 concepts</span>
+      <span class="count">6 concepts</span>
     </div>
 
     <div class="proto-grid">
@@ -1120,6 +1135,45 @@ body::before {
           <p class="desc">Cinematic scroll-driven reveal — close-up toilet zoom-out to majestic landscape. Cosmic &ldquo;Saturn&rdquo; brand play, knowingly absurd, shot like Chanel No. 5.</p>
           <div class="price-row"><span class="price">$5,500</span><span class="price-note">Design + Development</span></div>
           <a href="prototype-15/index.html" class="view-btn" target="_blank">View Prototype <span>&rarr;</span></a>
+        </div>
+      </div>
+
+      <div class="proto-card">
+        <div class="proto-preview pv-clean-trade">
+          <div class="p-shapes"></div>
+          <span class="p-label">Clean Trade</span>
+        </div>
+        <div class="proto-body">
+          <h3>Clean Trade</h3>
+          <p class="desc">Professional white-background trade website. No gimmicks — real product photos, real specs, real testimonials. The trustworthy modernisation pitch.</p>
+          <div class="price-row"><span class="price">$3,200</span><span class="price-note">Design + Development</span></div>
+          <a href="prototype-16/index.html" class="view-btn" target="_blank">View Prototype <span>&rarr;</span></a>
+        </div>
+      </div>
+
+      <div class="proto-card">
+        <div class="proto-preview pv-bold-construct">
+          <div class="p-shapes"></div>
+          <span class="p-label">Bold Construction</span>
+        </div>
+        <div class="proto-body">
+          <h3>Bold Construction</h3>
+          <p class="desc">High-energy construction brand with diagonal cuts, scrolling ticker, massive typography, and a masonry photo gallery. Built to make an impression.</p>
+          <div class="price-row"><span class="price">$4,200</span><span class="price-note">Design + Development</span></div>
+          <a href="prototype-17/index.html" class="view-btn" target="_blank">View Prototype <span>&rarr;</span></a>
+        </div>
+      </div>
+
+      <div class="proto-card">
+        <div class="proto-preview pv-warm-friendly">
+          <div class="p-shapes"></div>
+          <span class="p-label">Warm &amp; Friendly</span>
+        </div>
+        <div class="proto-body">
+          <h3>Warm &amp; Friendly</h3>
+          <p class="desc">Approachable, inviting design for party and residential customers. Rounded corners, warm earth tones, conversational copy, and a helpful FAQ section.</p>
+          <div class="price-row"><span class="price">$3,500</span><span class="price-note">Design + Development</span></div>
+          <a href="prototype-18/index.html" class="view-btn" target="_blank">View Prototype <span>&rarr;</span></a>
         </div>
       </div>
 

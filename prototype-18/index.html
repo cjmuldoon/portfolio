@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saturn Hire — Clean Toilets & Showers, Delivered to Your Door | Adelaide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --cream: #FBF8F4;
+  --brown: #2C2416;
+  --gold: #E8A824;
+  --terracotta: #D4652A;
+  --green: #3A7A52;
+  --white: #FFFFFF;
+  --gold-hover: #d49a1e;
+  --terracotta-hover: #c05a24;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-pill: 50px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  color: var(--brown);
+  background: var(--cream);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+button { cursor: pointer; border: none; font-family: inherit; }
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: var(--radius-sm);
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-gold {
+  background: var(--gold);
+  color: var(--brown);
+}
+.btn-gold:hover { background: var(--gold-hover); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(232,168,36,0.3); }
+
+.btn-outline {
+  background: transparent;
+  color: var(--brown);
+  border: 2px solid var(--brown);
+}
+.btn-outline:hover { background: var(--brown); color: var(--cream); }
+
+.btn-white {
+  background: var(--white);
+  color: var(--brown);
+}
+.btn-white:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+
+.btn-terracotta {
+  background: var(--terracotta);
+  color: var(--white);
+}
+.btn-terracotta:hover { background: var(--terracotta-hover); transform: translateY(-1px); }
+
+/* Fade-up animation */
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── NAV ─── */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--cream);
+  transition: box-shadow 0.3s ease;
+  padding: 16px 0;
+}
+.nav.scrolled {
+  box-shadow: 0 2px 20px rgba(44,36,22,0.08);
+}
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.nav-logo img {
+  height: 44px;
+  width: auto;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--white);
+  border-radius: var(--radius-pill);
+  padding: 4px;
+  box-shadow: 0 1px 4px rgba(44,36,22,0.06);
+}
+.nav-links a {
+  padding: 10px 20px;
+  border-radius: var(--radius-pill);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+.nav-links a:hover {
+  background: var(--cream);
+}
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.nav-phone {
+  font-weight: 600;
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+.nav-phone svg { vertical-align: middle; margin-right: 4px; }
+.nav-cta {
+  background: var(--gold);
+  color: var(--brown);
+  padding: 10px 24px;
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+.nav-cta:hover { background: var(--gold-hover); transform: translateY(-1px); }
+
+/* Mobile nav toggle */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  width: 32px;
+  height: 32px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+.nav-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--brown);
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
+
+/* ─── HERO ─── */
+.hero {
+  padding: 80px 0 60px;
+  overflow: hidden;
+}
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+.hero-text h1 {
+  font-size: 3.2rem;
+  margin-bottom: 20px;
+  color: var(--brown);
+}
+.hero-text h1 span { color: var(--gold); }
+.hero-text p {
+  font-size: 1.15rem;
+  color: rgba(44,36,22,0.75);
+  margin-bottom: 32px;
+  max-width: 480px;
+  line-height: 1.7;
+}
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.hero-images {
+  position: relative;
+  height: 460px;
+}
+.hero-images .card-img {
+  position: absolute;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(44,36,22,0.12);
+  transition: transform 0.4s ease;
+}
+.hero-images .card-img:hover { transform: scale(1.02); }
+.hero-images .card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.hero-images .card-img:nth-child(1) {
+  width: 260px; height: 320px;
+  top: 0; left: 0;
+  transform: rotate(-3deg);
+  z-index: 1;
+}
+.hero-images .card-img:nth-child(2) {
+  width: 240px; height: 280px;
+  top: 40px; left: 200px;
+  transform: rotate(2deg);
+  z-index: 2;
+}
+.hero-images .card-img:nth-child(3) {
+  width: 220px; height: 240px;
+  top: 180px; left: 80px;
+  transform: rotate(-1deg);
+  z-index: 3;
+}
+
+/* ─── TRUST STRIP ─── */
+.trust-strip {
+  padding: 32px 0;
+  border-top: 1px solid rgba(44,36,22,0.08);
+  border-bottom: 1px solid rgba(44,36,22,0.08);
+}
+.trust-strip-inner {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+  font-size: 1rem;
+}
+.trust-check {
+  width: 28px;
+  height: 28px;
+  background: rgba(58,122,82,0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--green);
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+/* ─── CATEGORY CARDS ─── */
+.categories {
+  padding: 80px 0;
+}
+.section-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+.section-header h2 {
+  font-size: 2.4rem;
+  margin-bottom: 12px;
+}
+.section-header p {
+  font-size: 1.1rem;
+  color: rgba(44,36,22,0.65);
+  max-width: 520px;
+  margin: 0 auto;
+}
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+.category-card {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--white);
+  box-shadow: 0 2px 12px rgba(44,36,22,0.06);
+  transition: all 0.35s ease;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+.category-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 40px rgba(44,36,22,0.12);
+}
+.category-card-img {
+  height: 260px;
+  overflow: hidden;
+}
+.category-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.category-card:hover .category-card-img img {
+  transform: scale(1.05);
+}
+.category-card-body {
+  padding: 24px;
+  text-align: center;
+}
+.category-card-body h3 {
+  font-size: 1.4rem;
+  margin-bottom: 8px;
+}
+.category-card-body p {
+  font-size: 0.95rem;
+  color: rgba(44,36,22,0.6);
+}
+
+/* ─── PRODUCTS ─── */
+.products {
+  padding: 80px 0;
+  background: var(--white);
+}
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+.product-card {
+  background: var(--cream);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.product-card:hover {
+  box-shadow: 0 8px 32px rgba(44,36,22,0.1);
+}
+.product-card-img {
+  height: 220px;
+  overflow: hidden;
+}
+.product-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.product-card-body {
+  padding: 28px;
+}
+.product-card-body h3 {
+  font-size: 1.35rem;
+  margin-bottom: 16px;
+}
+.product-specs {
+  list-style: none;
+  margin-bottom: 20px;
+}
+.product-specs li {
+  padding: 6px 0;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: rgba(44,36,22,0.8);
+}
+.product-specs li::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background: var(--green);
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 8px;
+}
+.product-price {
+  font-family: 'Fraunces', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--terracotta);
+  margin-bottom: 16px;
+}
+
+/* ─── MEET SCOTT ─── */
+.meet-scott {
+  padding: 80px 0;
+  background: linear-gradient(135deg, rgba(212,101,42,0.06) 0%, rgba(232,168,36,0.06) 100%);
+  position: relative;
+  overflow: hidden;
+}
+.meet-scott::before {
+  content: '';
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: rgba(212,101,42,0.06);
+}
+.scott-inner {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+.scott-avatar {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: var(--terracotta);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 8px 32px rgba(212,101,42,0.2);
+}
+.scott-avatar span {
+  font-family: 'Fraunces', serif;
+  font-size: 4rem;
+  color: var(--white);
+  font-weight: 700;
+}
+.scott-text h2 {
+  font-size: 2rem;
+  margin-bottom: 16px;
+}
+.scott-text p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: rgba(44,36,22,0.8);
+  margin-bottom: 12px;
+  max-width: 560px;
+}
+.scott-text blockquote {
+  font-family: 'Fraunces', serif;
+  font-size: 1.2rem;
+  font-style: italic;
+  color: var(--terracotta);
+  border-left: 3px solid var(--terracotta);
+  padding-left: 20px;
+  margin: 24px 0;
+}
+.scott-contact {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+.scott-contact a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--brown);
+  transition: color 0.2s;
+}
+.scott-contact a:hover { color: var(--terracotta); }
+.scott-contact svg { flex-shrink: 0; }
+
+/* ─── TESTIMONIALS ─── */
+.testimonials {
+  padding: 80px 0;
+  background: var(--white);
+}
+.testimonial-scroll {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding: 12px 4px 24px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--gold) transparent;
+}
+.testimonial-scroll::-webkit-scrollbar { height: 6px; }
+.testimonial-scroll::-webkit-scrollbar-track { background: transparent; }
+.testimonial-scroll::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
+
+.testimonial-card {
+  min-width: 360px;
+  max-width: 400px;
+  background: var(--cream);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  scroll-snap-align: start;
+  flex-shrink: 0;
+}
+.testimonial-stars {
+  color: var(--gold);
+  font-size: 1.1rem;
+  margin-bottom: 16px;
+  letter-spacing: 2px;
+}
+.testimonial-card p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(44,36,22,0.8);
+  margin-bottom: 20px;
+  font-style: italic;
+}
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.testimonial-initial {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--white);
+}
+.testimonial-author span {
+  font-weight: 600;
+}
+
+/* ─── GALLERY ─── */
+.gallery {
+  padding: 80px 0;
+}
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.gallery-item {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  aspect-ratio: 4/3;
+}
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.gallery-item:hover img {
+  transform: scale(1.08);
+}
+
+/* ─── FAQ ─── */
+.faq {
+  padding: 80px 0;
+  background: var(--white);
+}
+.faq-list {
+  max-width: 720px;
+  margin: 0 auto;
+}
+.faq-item {
+  border-bottom: 1px solid rgba(44,36,22,0.1);
+}
+.faq-item:first-child {
+  border-top: 1px solid rgba(44,36,22,0.1);
+}
+.faq-question {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 24px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  text-align: left;
+  font-family: 'Fraunces', serif;
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--brown);
+  gap: 16px;
+}
+.faq-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(232,168,36,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+.faq-icon svg {
+  transition: transform 0.3s ease;
+  color: var(--gold);
+}
+.faq-item.active .faq-icon {
+  background: var(--gold);
+}
+.faq-item.active .faq-icon svg {
+  transform: rotate(45deg);
+  color: var(--brown);
+}
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.3s ease;
+}
+.faq-answer-inner {
+  padding: 0 0 24px;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(44,36,22,0.75);
+}
+
+/* ─── CTA ─── */
+.cta {
+  padding: 80px 0;
+}
+.cta-box {
+  background: linear-gradient(135deg, var(--terracotta) 0%, var(--gold) 100%);
+  border-radius: 24px;
+  padding: 64px;
+  text-align: center;
+  color: var(--white);
+}
+.cta-box h2 {
+  font-size: 2.4rem;
+  margin-bottom: 16px;
+  color: var(--white);
+}
+.cta-box p {
+  font-size: 1.15rem;
+  opacity: 0.92;
+  margin-bottom: 12px;
+}
+.cta-contact-info {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  margin: 24px 0 32px;
+}
+.cta-contact-info a {
+  color: var(--white);
+  font-weight: 600;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: opacity 0.2s;
+}
+.cta-contact-info a:hover { opacity: 0.85; }
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* ─── FOOTER ─── */
+.footer {
+  background: var(--brown);
+  color: rgba(251,248,244,0.8);
+  padding: 64px 0 32px;
+}
+.footer-inner {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 48px;
+}
+.footer-brand img {
+  height: 40px;
+  margin-bottom: 16px;
+  filter: brightness(0) invert(1);
+}
+.footer-brand p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  max-width: 320px;
+}
+.footer h4 {
+  color: var(--cream);
+  font-size: 1rem;
+  margin-bottom: 16px;
+}
+.footer-links {
+  list-style: none;
+}
+.footer-links li { margin-bottom: 10px; }
+.footer-links a {
+  font-size: 0.95rem;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--gold); }
+.footer-contact p {
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.footer-bottom {
+  border-top: 1px solid rgba(251,248,244,0.1);
+  padding-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 0.85rem;
+  opacity: 0.6;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-phone { display: none; }
+  .nav-toggle { display: flex; }
+
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 16px;
+    right: 16px;
+    background: var(--white);
+    border-radius: var(--radius-md);
+    padding: 12px;
+    box-shadow: 0 8px 32px rgba(44,36,22,0.12);
+  }
+
+  .hero { padding: 40px 0; }
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .hero-text h1 { font-size: 2.2rem; }
+  .hero-images {
+    height: 320px;
+    margin: 0 auto;
+    max-width: 400px;
+  }
+  .hero-images .card-img:nth-child(1) { width: 200px; height: 240px; }
+  .hero-images .card-img:nth-child(2) { width: 180px; height: 220px; left: 140px; }
+  .hero-images .card-img:nth-child(3) { width: 170px; height: 190px; top: 130px; left: 50px; }
+
+  .trust-strip-inner { gap: 20px; justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; padding: 0 8px; }
+  .trust-item { white-space: nowrap; font-size: 0.9rem; }
+
+  .category-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+  .product-grid { grid-template-columns: 1fr; }
+
+  .scott-inner { flex-direction: column; text-align: center; gap: 32px; }
+  .scott-text blockquote { text-align: left; }
+  .scott-contact { justify-content: center; }
+  .scott-avatar { width: 140px; height: 140px; }
+  .scott-avatar span { font-size: 3rem; }
+
+  .testimonial-card { min-width: 300px; }
+
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .cta-box { padding: 40px 24px; }
+  .cta-box h2 { font-size: 1.8rem; }
+
+  .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+
+  .section-header h2 { font-size: 1.8rem; }
+}
+
+@media (max-width: 480px) {
+  .hero-buttons { flex-direction: column; }
+  .hero-buttons .btn { width: 100%; justify-content: center; }
+  .cta-buttons { flex-direction: column; align-items: center; }
+  .cta-buttons .btn { width: 100%; justify-content: center; max-width: 280px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="#" class="nav-logo">
+      <img src="https://saturnhire.com.au/wp-content/uploads/2021/01/Saturn_Hire_Adelaide_Logo-1.svg" alt="Saturn Hire Adelaide">
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#products">Products</a>
+      <a href="#about">About</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="nav-right">
+      <a href="tel:0490792452" class="nav-phone">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        0490 792 452
+      </a>
+      <a href="#contact" class="nav-cta">Book Now</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section class="hero">
+  <div class="container hero-inner">
+    <div class="hero-text fade-up">
+      <h1>Clean Toilets & Showers, <span>Delivered to Your Door</span></h1>
+      <p>At Saturn Hire we are committed to the delivery of clean & fresh portable toilets to the boutique builders of Adelaide, renovators, owner builds, parties and events. Adelaide owned and operated — just give Scott a call.</p>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn btn-gold">Get a Quote</a>
+        <a href="tel:0490792452" class="btn btn-outline">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          Call Scott
+        </a>
+      </div>
+    </div>
+    <div class="hero-images fade-up">
+      <div class="card-img">
+        <img src="https://saturnhire.com.au/wp-content/uploads/2021/04/Saturn_9.jpg" alt="Saturn Hire portable toilet" loading="lazy">
+      </div>
+      <div class="card-img">
+        <img src="https://saturnhire.com.au/wp-content/uploads/2021/04/Saturn_5.jpg" alt="Saturn Hire unit on site" loading="lazy">
+      </div>
+      <div class="card-img">
+        <img src="https://saturnhire.com.au/wp-content/uploads/2021/04/Party.jpg" alt="Event and party hire" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TRUST STRIP ─── -->
+<section class="trust-strip fade-up">
+  <div class="container trust-strip-inner">
+    <div class="trust-item">
+      <div class="trust-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      Adelaide Owned
+    </div>
+    <div class="trust-item">
+      <div class="trust-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      5-Star Reviews
+    </div>
+    <div class="trust-item">
+      <div class="trust-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      Same-Week Delivery
+    </div>
+    <div class="trust-item">
+      <div class="trust-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      Regular Servicing
+    </div>
+  </div>
+</section>
+
+<!-- ─── WHAT DO YOU NEED? ─── -->
+<section class="categories" id="categories">
+  <div class="container">
+    <div class="section-header fade-up">
+      <h2>What Do You Need?</h2>
+      <p>Whether it's a building site, a home reno or a weekend party, we've got you covered.</p>
+    </div>
+    <div class="category-grid">
+      <a href="#products" class="category-card fade-up">
+        <div class="category-card-img">
+          <img src="https://saturnhire.com.au/wp-content/uploads/2021/04/Construction.jpg" alt="Construction site toilet hire" loading="lazy">
+        </div>
+        <div class="category-card-body">
+          <h3>I'm Building</h3>
+          <p>Reliable toilets for construction sites and new builds</p>
+        </div>
+      </a>
+      <a href="#products" class="category-card fade-up">
+        <div class="category-card-img">
+          <img src="https://saturnhire.com.au/wp-content/uploads/2021/04/Reno.jpg" alt="Renovation toilet hire" loading="lazy">
+        </div>
+        <div class="category-card-body">
+          <h3>I'm Renovating</h3>
+          <p>Keep things comfortable while the bathroom's out of action</p>
+        </div>
+      </a>
+      <a href="#products" class="category-card fade-up">
+        <div class="category-card-img">
+          <img src="https://saturnhire.com.au/wp-content/uploads/2021/04/Party.jpg" alt="Party and event toilet hire" loading="lazy">
+        </div>
+        <div class="category-card-body">
+          <h3>I'm Having a Party</h3>
+          <p>Clean, modern units your guests won't mind using</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PRODUCTS ─── -->
+<section class="products" id="products">
+  <div class="container">
+    <div class="section-header fade-up">
+      <h2>Our Products</h2>
+      <p>Everything you need, delivered fresh and serviced regularly.</p>
+    </div>
+    <div class="product-grid">
+
+      <div class="product-card fade-up">
+        <div class="product-card-img">
+          <img src="https://saturnhire.com.au/wp-content/uploads/2021/04/Saturn_4.jpg" alt="Chemical toilet hire Adelaide" loading="lazy">
+        </div>
+        <div class="product-card-body">
+          <h3>Chemical Toilets</h3>
+          <ul class="product-specs">
+            <li>Steel frame construction with Colorbond steel</li>
+            <li>150L freshwater tank</li>
+            <li>350L waste holding tank</li>
+            <li>Regular servicing included</li>
+          </ul>
+          <a href="#contact" class="btn btn-gold">Get a Quote</a>
+        </div>
+      </div>
+
+      <div class="product-card fade-up">
+        <div class="product-card-img">
+          <img src="https://saturnhire.com.au/wp-content/uploads/2021/04/Saturn_1.jpg" alt="Sewer connect toilet hire Adelaide" loading="lazy">
+        </div>
+        <div class="product-card-body">
+          <h3>Sewer Connect Toilets</h3>
+          <ul class="product-specs">
+            <li>Porcelain bowl — just like home</li>
+            <li>Dual flush system</li>
+            <li>Caroma hand basin included</li>
+            <li>Connects to your existing sewer</li>
+          </ul>
+          <a href="#contact" class="btn btn-gold">Get a Quote</a>
+        </div>
+      </div>
+
+      <div class="product-card fade-up">
+        <div class="product-card-img">
+          <img src="https://saturnhire.com.au/wp-content/uploads/2021/04/Saturn_2.jpg" alt="Portable shower hire Adelaide" loading="lazy">
+        </div>
+        <div class="product-card-body">
+          <h3>Portable Showers</h3>
+          <ul class="product-specs">
+            <li>50L electric hot water system</li>
+            <li>Simple hose connection</li>
+            <li>Great for renovations and events</li>
+            <li>Delivered clean and ready to go</li>
+          </ul>
+          <a href="#contact" class="btn btn-gold">Get a Quote</a>
+        </div>
+      </div>
+
+      <div class="product-card fade-up">
+        <div class="product-card-img">
+          <img src="https://saturnhire.com.au/wp-content/uploads/2021/04/Saturn_11.jpg" alt="Temporary fencing hire Adelaide" loading="lazy">
+        </div>
+        <div class="product-card-body">
+          <h3>Temporary Fencing</h3>
+          <ul class="product-specs">
+            <li>2.1m x 2.4m galvanised panels</li>
+            <li>Dog-proofing and shade cloth available ($4/m)</li>
+            <li>Quick setup and removal</li>
+          </ul>
+          <div class="product-price">From $220 for 6 months</div>
+          <a href="#contact" class="btn btn-gold">Get a Quote</a>
+        </div>
+      </div>
+
+      <div class="product-card fade-up">
+        <div class="product-card-img">
+          <img src="https://saturnhire.com.au/wp-content/uploads/2021/04/Saturn_10.jpg" alt="Trailer mounted toilet hire Adelaide" loading="lazy">
+        </div>
+        <div class="product-card-body">
+          <h3>Trailer Mounted Toilet</h3>
+          <ul class="product-specs">
+            <li>Self-contained unit on trailer</li>
+            <li>Pick up yourself or we deliver</li>
+            <li>Perfect for remote sites and events</li>
+            <li>Easy to tow and position</li>
+          </ul>
+          <a href="#contact" class="btn btn-gold">Get a Quote</a>
+        </div>
+      </div>
+
+      <div class="product-card fade-up">
+        <div class="product-card-img">
+          <img src="https://saturnhire.com.au/wp-content/uploads/2021/04/Saturn_8.jpg" alt="Event and party toilet hire Adelaide" loading="lazy">
+        </div>
+        <div class="product-card-body">
+          <h3>Event & Party Hire</h3>
+          <ul class="product-specs">
+            <li>Modern aesthetics — clean and presentable</li>
+            <li>Foot-operated flush pumps</li>
+            <li>Suitable for weddings, parties and festivals</li>
+            <li>Short and long-term hire available</li>
+          </ul>
+          <a href="#contact" class="btn btn-gold">Get a Quote</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── MEET SCOTT ─── -->
+<section class="meet-scott" id="about">
+  <div class="container scott-inner fade-up">
+    <div class="scott-avatar">
+      <span>S</span>
+    </div>
+    <div class="scott-text">
+      <h2>Meet Scott</h2>
+      <p>When you call Saturn Hire, you're talking to Scott. He personally handles every booking, every delivery and every service. No call centres, no runaround — just a straight-talking local bloke who takes pride in running a clean, reliable operation.</p>
+      <blockquote>"I treat every job the same — whether it's a single unit for a backyard party or a full site setup for a builder. You'll get clean gear, on time, every time."</blockquote>
+      <div class="scott-contact">
+        <a href="tel:0490792452">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          0490 792 452
+        </a>
+        <a href="mailto:sales@saturnhire.com.au">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          sales@saturnhire.com.au
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TESTIMONIALS ─── -->
+<section class="testimonials" id="testimonials">
+  <div class="container">
+    <div class="section-header fade-up">
+      <h2>What People Say</h2>
+      <p>Don't just take our word for it — here's what our customers think.</p>
+    </div>
+    <div class="testimonial-scroll fade-up">
+
+      <div class="testimonial-card">
+        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"A single mounted unit for a house party. It was simple to communicate with staff, who were also polite, friendly and more than helpful. Also, their pricing is the BEST in Adelaide. Highly recommend and will use again. 5 thumbs up!"</p>
+        <div class="testimonial-author">
+          <div class="testimonial-initial" style="background: var(--terracotta);">E</div>
+          <span>Emma Treanga</span>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"I have been utilising Saturn Hire's portaloos for my events for almost a year now. Their service is always professional, friendly and no fuss. I will be using their service for many events to come. Thanks Scott and team."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-initial" style="background: var(--green);">B</div>
+          <span>Ben Hockings</span>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"Amazing service. Scott is extremely helpful can't do enough to help. Shower we had was delivered on time, clean and collected when we needed it to be collected. Highly recommended"</p>
+        <div class="testimonial-author">
+          <div class="testimonial-initial" style="background: var(--gold);">J</div>
+          <span>Janyse Moffatt</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── GALLERY ─── -->
+<section class="gallery" id="gallery">
+  <div class="container">
+    <div class="section-header fade-up">
+      <h2>Our Gear</h2>
+      <p>Clean, well-maintained and ready for your site or event.</p>
+    </div>
+    <div class="gallery-grid fade-up">
+      <div class="gallery-item"><img src="https://saturnhire.com.au/wp-content/uploads/2021/04/Saturn_1.jpg" alt="Saturn Hire unit" loading="lazy"></div>
+      <div class="gallery-item"><img src="https://saturnhire.com.au/wp-content/uploads/2021/04/Saturn_2.jpg" alt="Saturn Hire unit" loading="lazy"></div>
+      <div class="gallery-item"><img src="https://saturnhire.com.au/wp-content/uploads/2021/04/Saturn_3.jpg" alt="Saturn Hire unit" loading="lazy"></div>
+      <div class="gallery-item"><img src="https://saturnhire.com.au/wp-content/uploads/2021/04/Saturn_4.jpg" alt="Saturn Hire unit" loading="lazy"></div>
+      <div class="gallery-item"><img src="https://saturnhire.com.au/wp-content/uploads/2021/04/Saturn_5.jpg" alt="Saturn Hire unit" loading="lazy"></div>
+      <div class="gallery-item"><img src="https://saturnhire.com.au/wp-content/uploads/2021/04/Saturn_6.jpg" alt="Saturn Hire unit" loading="lazy"></div>
+      <div class="gallery-item"><img src="https://saturnhire.com.au/wp-content/uploads/2021/04/Saturn_8.jpg" alt="Saturn Hire unit" loading="lazy"></div>
+      <div class="gallery-item"><img src="https://saturnhire.com.au/wp-content/uploads/2021/04/Saturn_9.jpg" alt="Saturn Hire unit" loading="lazy"></div>
+      <div class="gallery-item"><img src="https://saturnhire.com.au/wp-content/uploads/2021/04/Saturn_10.jpg" alt="Saturn Hire unit" loading="lazy"></div>
+      <div class="gallery-item"><img src="https://saturnhire.com.au/wp-content/uploads/2021/04/Saturn_11.jpg" alt="Saturn Hire unit" loading="lazy"></div>
+      <div class="gallery-item"><img src="https://saturnhire.com.au/wp-content/uploads/2021/04/Construction.jpg" alt="Construction site" loading="lazy"></div>
+      <div class="gallery-item"><img src="https://saturnhire.com.au/wp-content/uploads/2021/04/Reno.jpg" alt="Renovation site" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FAQ ─── -->
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="section-header fade-up">
+      <h2>Frequently Asked Questions</h2>
+      <p>Got questions? We've got answers.</p>
+    </div>
+    <div class="faq-list fade-up">
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          How does delivery work?
+          <span class="faq-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">We deliver right to your site or property anywhere in the Adelaide metro area. Just let Scott know where you need it and when, and we'll take care of the rest. We use our own truck so we can place units exactly where you want them — no third-party couriers, no guesswork.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          How often is servicing?
+          <span class="faq-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Chemical toilets are serviced weekly as standard, which includes a full pump-out, clean and restock of consumables. If you need more frequent servicing (for example, on a busy building site), we can arrange that too. Sewer connect units don't need pump-outs since they're plumbed in, but we're always available if you need anything.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          What areas do you cover?
+          <span class="faq-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">We service the entire Adelaide metropolitan area and surrounding regions including the Adelaide Hills, Barossa Valley, Fleurieu Peninsula and McLaren Vale. If you're not sure whether we cover your area, just give Scott a call on 0490 792 452 — chances are we can sort you out.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Can I hire for just one day?
+          <span class="faq-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Absolutely! We do single-day hires for parties, events and one-off occasions all the time. We'll deliver it clean and fresh on the morning of your event and pick it up the next day. It's one of the most popular things we do — especially for house parties and backyard weddings. Just get in touch and we'll give you a price.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA ─── -->
+<section class="cta" id="contact">
+  <div class="container">
+    <div class="cta-box fade-up">
+      <h2>Ready to Get Sorted?</h2>
+      <p>Give Scott a call or shoot us an email — we'll get back to you fast.</p>
+      <div class="cta-contact-info">
+        <a href="tel:0490792452">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          0490 792 452
+        </a>
+        <a href="mailto:sales@saturnhire.com.au">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          sales@saturnhire.com.au
+        </a>
+      </div>
+      <div class="cta-buttons">
+        <a href="mailto:sales@saturnhire.com.au" class="btn btn-white">Get a Quote</a>
+        <a href="tel:0490792452" class="btn btn-terracotta" style="border: 2px solid rgba(255,255,255,0.3);">Call Scott Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="https://saturnhire.com.au/wp-content/uploads/2021/01/Saturn_Hire_Adelaide_Logo-1.svg" alt="Saturn Hire Adelaide">
+        <p>Adelaide owned and operated. Clean & fresh portable toilets, showers and fencing for builders, renovators, parties and events.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="#products">Products</a></li>
+          <li><a href="#about">About Scott</a></li>
+          <li><a href="#testimonials">Reviews</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Get a Quote</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4>Get in Touch</h4>
+        <p>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          0490 792 452
+        </p>
+        <p>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          sales@saturnhire.com.au
+        </p>
+        <p>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Adelaide, South Australia
+        </p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>Made with care in Adelaide</span>
+      <span>&copy; 2026 Saturn Hire. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Sticky nav shadow
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 10);
+}, { passive: true });
+
+// Mobile nav toggle
+const navToggle = document.getElementById('navToggle');
+const navLinks = document.getElementById('navLinks');
+navToggle.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+});
+
+// Close mobile nav on link click
+navLinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+  });
+});
+
+// FAQ accordion
+document.querySelectorAll('.faq-question').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.parentElement;
+    const answer = item.querySelector('.faq-answer');
+    const isActive = item.classList.contains('active');
+
+    // Close all
+    document.querySelectorAll('.faq-item').forEach(i => {
+      i.classList.remove('active');
+      i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+      i.querySelector('.faq-answer').style.maxHeight = null;
+    });
+
+    // Open clicked (if it wasn't already open)
+    if (!isActive) {
+      item.classList.add('active');
+      btn.setAttribute('aria-expanded', 'true');
+      answer.style.maxHeight = answer.scrollHeight + 'px';
+    }
+  });
+});
+
+// IntersectionObserver fade-up
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

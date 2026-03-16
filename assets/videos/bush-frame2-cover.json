@@ -1,0 +1,21 @@
+{
+  "prompt": "Identical scene to the reference image — same dusty red-brown Australian construction site, same camera angle, same lighting, same background elements: timber pallets stacked at left, chain-link fence behind, orange traffic cones, wheelbarrow, gravel pile, workers and vehicles in the far background, same blue sky with wispy clouds, same harsh midday Australian sun. CRITICAL CHANGE: the person crouching behind the bush has been completely replaced by a dark blue-grey Colorbond steel portable toilet with 'SATURN' branding on the side panel, identical to the second reference image. The toilet is positioned exactly where the person and bush were — centre-left of frame, sitting on the red dirt. The bush is no longer visible as the toilet is directly in front of it, fully covering where the person was crouching. A small cloud of red-brown dust is settling around the base of the toilet as if it just landed moments ago, with fine particles still suspended in the air near ground level. The toilet door faces camera-right, matching the reference toilet image orientation. Everything else in the scene is EXACTLY the same — same ground texture, same background objects in the same positions, same lighting direction, same sky. The only difference from the reference photo is the person and bush have been replaced by the Saturn portable toilet with settling dust. Shot from the same distance and angle as the reference — approximately 8 metres, eye level, 35mm lens, f/5.6, deep focus. Natural harsh Australian midday sunlight. Canon EOS R5 colour science.",
+  "negative_prompt": "cartoon, illustration, CGI render, anime, painting, sketch, unrealistic lighting, different scene, different background, different camera angle, changed lighting, person visible, human figure, worker visible, multiple toilets, white toilet, different toilet model, door on wrong side, night time, dark scene, studio lighting, indoor setting, urban city, different ground texture, snow, green grass",
+  "image_input": [
+    "https://litter.catbox.moe/a04qrc.png",
+    "https://saturnhire.com.au/wp-content/uploads/2021/04/Saturn_9.jpg"
+  ],
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "png",
+    "aspect_ratio": "16:9"
+  },
+  "settings": {
+    "resolution": "2K",
+    "style": "documentary realism, matching reference photo exactly with single object replacement",
+    "lighting": "harsh Australian midday sun, matching reference frame exactly",
+    "camera_angle": "eye level, same distance and position as reference frame",
+    "depth_of_field": "deep focus, f/5.6, everything sharp",
+    "quality": "ultra high detail, photographic realism, scene continuity critical"
+  }
+}

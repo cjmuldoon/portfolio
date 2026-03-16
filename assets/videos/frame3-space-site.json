@@ -1,0 +1,20 @@
+{
+  "prompt": "Wide cinematic shot of a pristine white portable toilet standing on a construction building site that is floating in outer space. The portable toilet is identical to the reference image — a dark blue-grey Colorbond steel portable toilet with the door slightly ajar showing the golden-lit interior and 'SATURN' branding on the internal panel, same ventilation grille at top, same panel construction and hardware details. The toilet sits on a dusty construction site platform with steel scaffolding, concrete formwork, orange safety barriers, and construction materials — but the entire site is impossibly set against the void of deep space. Behind the construction site, the planet Saturn dominates the background — massive, rings clearly visible at an angle, glowing with warm amber and gold tones, banded atmospheric detail visible. The planet takes up roughly 40% of the background. Stars scattered across the deep black-purple void of space. The toilet is lit by warm golden directional light from camera-left (as if Saturn itself is the light source), creating the same golden highlight on the door edge as the close-up frame. The construction site has realistic Australian construction details — hi-vis orange mesh fencing, a portable generator, scattered timber framing. The ground is red-brown Australian dirt mixed with concrete dust, but the edges of the site dissolve into the void of space. Shot from approximately 15 metres away at slight low angle, 35mm wide-angle lens, f/5.6, deep focus. The composition places the toilet at the right-third with Saturn rising behind it at the upper-left. Cinematic colour grade: deep space blacks with purple-blue nebula tones, warm golden-amber light from Saturn illuminating the construction site. Do not beautify or alter the toilet product. Maintain photographic realism for the toilet and construction elements. The space environment should feel cinematic and grand, not cartoonish. Shot on ARRI Alexa 65 with anamorphic lens, subtle horizontal flare from Saturn's light.",
+  "negative_prompt": "cartoon, illustration, CGI render, plastic look, airbrushed, anime, painting, sketch, unrealistic lighting, flat lighting, ugly, deformed, noisy, blurry, oversaturated, text overlay, watermark, stock photo, bathroom interior, indoor setting, multiple toilets, people, astronauts, silly, comedic, low quality, cheap CGI, video game screenshot",
+  "image_input": [
+    "https://saturnhire.com.au/wp-content/uploads/2021/04/Saturn_9.jpg"
+  ],
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "png",
+    "aspect_ratio": "16:9"
+  },
+  "settings": {
+    "resolution": "2K",
+    "style": "cinematic sci-fi product photography, epic scale",
+    "lighting": "warm golden directional light from Saturn, deep space ambient",
+    "camera_angle": "slight low angle, wide establishing shot",
+    "depth_of_field": "deep focus, f/5.6",
+    "quality": "ultra high detail, ARRI cinema camera aesthetic, anamorphic"
+  }
+}

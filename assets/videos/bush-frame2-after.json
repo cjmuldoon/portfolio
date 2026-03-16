@@ -1,0 +1,20 @@
+{
+  "prompt": "Wide shot of a dusty Australian construction site in bright midday sun — identical location to the previous frame. The same small scraggly Australian bush sits in the centre-right of frame. The construction worker who was crouching behind the bush is now GONE — completely removed from the scene. In his place, a dark blue-grey Colorbond steel portable toilet identical to the reference image has dropped from the sky and landed directly in front of the bush, partially obscuring it. The toilet is viewed from the same camera position — front-facing, door closed, with the 'SATURN' branding visible. A small cloud of red-brown dust is still settling around the base of the toilet from the impact of landing, with tiny particles suspended in the air. The toilet looks pristine and clean against the dusty construction site backdrop — it's a comedic contrast. The ground around the toilet base shows a slight impact impression in the dirt. The same construction site background is visible: wheelbarrow, orange traffic cones, chain-link fence, stacked timber pallets. Bright blue sky with wispy clouds. The comedic implication is clear — the toilet has been delivered from above like divine intervention, replacing the desperate bush situation. Shot from approximately 8 metres away at eye level, 35mm lens, f/5.6, deep focus with everything sharp. Natural harsh Australian midday sunlight casting short shadows. The toilet casts the same quality of shadow as everything else in the scene. Realistic documentary photography style. Do not beautify. Do not alter the toilet design from the reference image. Shot on Canon EOS R5, natural colour science with warm Australian tones.",
+  "negative_prompt": "cartoon, illustration, CGI render, anime, painting, sketch, unrealistic lighting, flat lighting, ugly, deformed, noisy, blurry, oversaturated, text overlay, watermark, stock photo, indoor setting, bathroom interior, urban city, night time, dark scene, studio lighting, person visible, construction worker, human figure, multiple toilets, white toilet, different toilet model, door open",
+  "image_input": [
+    "https://saturnhire.com.au/wp-content/uploads/2021/04/Saturn_9.jpg"
+  ],
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "png",
+    "aspect_ratio": "16:9"
+  },
+  "settings": {
+    "resolution": "2K",
+    "style": "documentary realism, comedic product placement photography",
+    "lighting": "harsh Australian midday sun, natural shadows, matching previous frame",
+    "camera_angle": "eye level, 8 metres distance, same position as before frame",
+    "depth_of_field": "deep focus, f/5.6, everything sharp",
+    "quality": "ultra high detail, photographic realism, Canon cinema camera aesthetic"
+  }
+}

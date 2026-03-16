@@ -1,0 +1,20 @@
+{
+  "prompt": "Wide cinematic shot of a construction building site floating in outer space. At the centre-right of frame stands the exact same portable toilet as the reference image — a dark blue-grey Colorbond steel portable toilet viewed from a three-quarter front-right angle with the door open to the right side, showing the golden-lit interior with 'SATURN' branding on the internal panel. The toilet is viewed from a slight low angle looking upward, exactly matching the close-up reference composition but pulled back to show the full unit and surrounding environment. CRITICAL: the toilet must face the same direction as the reference — the closed panel faces camera-left, the open door swings toward camera-right, the ventilation grille is visible at the top of the front panel, and warm golden light spills from inside the open door. The toilet sits on a dusty construction site platform with steel scaffolding poles, stacked timber, orange hi-vis safety mesh barriers, a portable generator, and scattered construction materials. The entire construction site is set against the void of deep space. The planet Saturn dominates the upper-left background — massive with clearly visible rings at an angle, glowing warm amber-gold, banded atmospheric bands visible. Saturn takes up roughly 35% of the background. Stars and faint purple-blue nebula scattered across the deep black void. The toilet is lit by warm golden directional light from camera-left as if Saturn itself is the light source, creating the same golden highlight on the door edge as in the close-up frame. The ground is red-brown Australian construction dirt with concrete dust, scaffold bases, and cable runs, but the edges of the platform dissolve into the void of space. Shot from approximately 12 metres away at a slight low angle matching the upward perspective of the close-up, 35mm wide-angle lens, f/5.6, deep focus. Do not change the toilet's orientation, colour, or design from the reference image. Do not beautify or alter the toilet. Maintain photographic realism for the toilet and construction elements. The space environment should feel cinematic and grand. ARRI Alexa 65 with anamorphic lens, subtle horizontal flare from Saturn's light.",
+  "negative_prompt": "cartoon, illustration, CGI render, plastic look, airbrushed, anime, painting, sketch, unrealistic lighting, flat lighting, ugly, deformed, noisy, blurry, oversaturated, text overlay, watermark, stock photo, bathroom interior, indoor setting, multiple toilets, people, astronauts, toilet facing wrong direction, door on wrong side, white toilet, clean white toilet, different toilet model",
+  "image_input": [
+    "https://saturnhire.com.au/wp-content/uploads/2021/04/Saturn_9.jpg"
+  ],
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "png",
+    "aspect_ratio": "16:9"
+  },
+  "settings": {
+    "resolution": "2K",
+    "style": "cinematic sci-fi product photography, epic scale",
+    "lighting": "warm golden directional light from Saturn at camera-left, deep space ambient",
+    "camera_angle": "slight low angle matching close-up frame, three-quarter front-right view of toilet",
+    "depth_of_field": "deep focus, f/5.6",
+    "quality": "ultra high detail, ARRI cinema camera aesthetic, anamorphic"
+  }
+}

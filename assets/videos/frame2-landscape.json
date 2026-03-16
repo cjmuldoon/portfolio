@@ -1,0 +1,20 @@
+{
+  "prompt": "Wide cinematic landscape shot of a single pristine white portable toilet standing alone and majestic on a sweeping golden-hour Australian landscape. The toilet is the real product from the reference image — a white Colorbond steel portable toilet unit, small in frame but perfectly sharp and the clear focal point. Rolling Adelaide Hills terrain stretches behind it with dry golden grass, scattered eucalyptus trees, and a dramatic sky filled with warm golden-hour clouds streaked with purple and deep blue. The toilet catches the last golden sunlight on its left face, creating a warm glow against the vast landscape. Shot from approximately 20 metres away at eye level, making the toilet appear like a lone monument in the wilderness. Deep focus, f/8, 35mm wide-angle lens. The composition places the toilet at the right-third intersection point with the landscape sweeping left. The sky takes up the top 60% of frame, creating an epic sense of scale. Colour grade: warm golden foreground light transitioning to cool purple-blue in the sky shadows, cinematic teal-and-orange colour science. Realistic Australian rural landscape with red-brown earth visible in patches. Do not beautify or alter the product. No CGI. Maintain photographic realism. Shot on ARRI Alexa 65, anamorphic lens with subtle horizontal flare.",
+  "negative_prompt": "cartoon, illustration, CGI render, plastic look, airbrushed, anime, painting, sketch, unrealistic lighting, flat lighting, ugly, deformed, noisy, blurry, oversaturated, text overlay, watermark, stock photo, urban setting, city, bathroom, indoor, multiple toilets, crowd, people",
+  "image_input": [
+    "https://saturnhire.com.au/wp-content/uploads/2021/04/Saturn_9.jpg"
+  ],
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "png",
+    "aspect_ratio": "16:9"
+  },
+  "settings": {
+    "resolution": "2K",
+    "style": "cinematic landscape photography, epic wide shot",
+    "lighting": "golden hour, warm directional sunlight with purple sky shadows",
+    "camera_angle": "eye level, wide establishing shot",
+    "depth_of_field": "deep focus, f/8, everything sharp",
+    "quality": "ultra high detail, ARRI cinema camera aesthetic, anamorphic"
+  }
+}

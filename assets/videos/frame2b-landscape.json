@@ -1,0 +1,20 @@
+{
+  "prompt": "Wide cinematic landscape shot of a single portable toilet standing alone and majestic on a sweeping golden-hour Australian landscape. The toilet is identical to the reference image — a dark blue-grey Colorbond steel portable toilet viewed from a three-quarter front-right angle with the door open to the right side, showing the golden-lit interior with 'SATURN' branding on the internal panel. CRITICAL: the toilet must face the same direction as the close-up reference — the closed panel faces camera-left, the open door swings toward camera-right, the ventilation grille is visible at the top of the front panel, and warm golden light spills from inside the open door. The toilet is viewed from a slight low angle looking upward, exactly matching the close-up composition but pulled back to reveal the full unit and surrounding landscape. Rolling Adelaide Hills terrain stretches behind and around it — dry golden grass, scattered eucalyptus trees, gentle undulating hills. A dramatic golden-hour sky fills the top 55% of frame with warm amber clouds streaked with purple and deep blue, the sun low on the horizon at camera-left casting long warm directional light that creates the same golden highlight on the door edge as in the close-up frame. The toilet sits at the right-third intersection point with the landscape sweeping to the left. The ground is dry golden-brown Australian grass with patches of red-brown earth. Shot from approximately 15 metres away at a slight low angle matching the upward perspective of the close-up, 35mm wide-angle lens, f/8, deep focus with everything sharp. Colour grade: warm golden foreground light transitioning to cool purple-blue in the sky shadows, cinematic teal-and-orange colour science. Do not change the toilet's orientation, colour, or design from the reference image. Do not beautify or alter the toilet. Maintain photographic realism. Shot on ARRI Alexa 65 with anamorphic lens, subtle horizontal flare from the setting sun.",
+  "negative_prompt": "cartoon, illustration, CGI render, plastic look, airbrushed, anime, painting, sketch, unrealistic lighting, flat lighting, ugly, deformed, noisy, blurry, oversaturated, text overlay, watermark, stock photo, bathroom interior, indoor setting, multiple toilets, people, toilet facing wrong direction, door on wrong side, white toilet, different toilet model, urban setting, city, buildings",
+  "image_input": [
+    "https://saturnhire.com.au/wp-content/uploads/2021/04/Saturn_9.jpg"
+  ],
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "png",
+    "aspect_ratio": "16:9"
+  },
+  "settings": {
+    "resolution": "2K",
+    "style": "cinematic landscape photography, epic wide shot",
+    "lighting": "golden hour, warm directional sunlight from camera-left matching close-up lighting",
+    "camera_angle": "slight low angle matching close-up frame, three-quarter front-right view of toilet",
+    "depth_of_field": "deep focus, f/8, everything sharp",
+    "quality": "ultra high detail, ARRI cinema camera aesthetic, anamorphic"
+  }
+}

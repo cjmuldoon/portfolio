@@ -1,0 +1,20 @@
+{
+  "prompt": "Extreme close-up dramatic product photography of a pristine white portable toilet cabin, shot like a luxury perfume bottle advertisement. The portable toilet is the real product from the reference image — a white Colorbond steel portable toilet unit with subtle 'Saturn' branding. Studio-quality lighting with soft golden key light from camera-left creating warm highlights on the white panels, and a deep cosmic purple-black background with subtle nebula-like atmospheric haze. The camera is positioned at a slight low angle looking up at the toilet door, making it feel monumental and aspirational. Shallow depth of field, f/2.8, 85mm lens equivalent. The toilet surface shows realistic Colorbond steel texture — not plastic, not CGI — with authentic panel joins, handle hardware, and ventilation details visible. A single dramatic lens flare catches the golden light on the door edge. The overall mood is reverent, premium, cinematic — as if this portable toilet is the most important product ever photographed. Shot on RED V-Raptor, 8K downsampled. Colour grade: deep shadows with lifted blacks into purple-blue tones, warm golden midtones on the product surface. Do not beautify or alter the product. No CGI rendering. No cartoon or illustration style. Maintain photographic realism with physical material properties.",
+  "negative_prompt": "cartoon, illustration, CGI render, plastic look, airbrushed, smooth digital render, anime, watercolor, painting, sketch, unrealistic lighting, flat lighting, ugly, deformed, noisy, blurry, low contrast, oversaturated neon, text overlay, watermark, stock photo look, cheap look, bathroom interior, indoor setting",
+  "image_input": [
+    "https://saturnhire.com.au/wp-content/uploads/2021/04/Saturn_9.jpg"
+  ],
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "png",
+    "aspect_ratio": "16:9"
+  },
+  "settings": {
+    "resolution": "2K",
+    "style": "cinematic product photography, luxury commercial",
+    "lighting": "dramatic golden key light with deep purple atmospheric background",
+    "camera_angle": "slight low angle, hero product shot",
+    "depth_of_field": "shallow, f/2.8",
+    "quality": "ultra high detail, photographic realism, RED cinema camera aesthetic"
+  }
+}
