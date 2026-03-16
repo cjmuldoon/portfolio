@@ -242,6 +242,7 @@
     font-weight: 600;
     color: var(--text);
     display: block;
+    font-variant-numeric: tabular-nums;
   }
   .stat-item .stat-label {
     font-family: var(--mono);
@@ -705,7 +706,7 @@
     </div>
     <div class="hero-stats fade-up">
       <div class="stat-item">
-        <span class="stat-num">14+</span>
+        <span class="stat-num" id="yearCounter">15</span>
         <span class="stat-label">Years in Enterprise</span>
       </div>
       <div class="stat-item">
@@ -729,7 +730,7 @@
   </div>
   <div class="about-grid">
     <div class="about-text fade-up">
-      <p>I build tools that bridge the gap between complex systems and the people who use them. With 14+ years in enterprise operations — from facilities coordination through to business systems leadership at Ventia and Serco — I've seen firsthand how the right automation can transform the way teams work.</p>
+      <p>I build tools that bridge the gap between complex systems and the people who use them. With 15 years in enterprise operations — from facilities coordination through to business systems leadership at Ventia — I've seen firsthand how the right automation can transform the way teams work.</p>
       <p>My projects span full-stack web applications, data pipelines, RPA, Power BI analytics, ML integrations, and AI agent workflows. I'm drawn to problems where automation can eliminate tedious manual processes, and where a well-designed interface can turn raw data into actionable insight.</p>
       <p>When I'm not coding, I'm probably at the gym (where I've automated my booking and workout tracking), or monitoring how much my dog barks while I'm out (also automated — he's a certified good boy).</p>
     </div>
@@ -1176,6 +1177,20 @@ if (window.matchMedia('(pointer: fine)').matches) {
     glow.style.top = e.clientY + 'px';
   });
 }
+
+// ── Enterprise years counter (from Transfield start date) ──
+(function() {
+  var startDate = new Date(2011, 2, 1); // March 2011 — adjust if needed
+  var counterEl = document.getElementById('yearCounter');
+  function update() {
+    var now = new Date();
+    var diff = now - startDate;
+    var years = diff / (1000 * 60 * 60 * 24 * 365.25);
+    counterEl.textContent = years.toFixed(7);
+    requestAnimationFrame(update);
+  }
+  update();
+})();
 
 // ── Intersection Observer for fade-up ──
 var observer = new IntersectionObserver(function(entries) {
