@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Saturn Hire — Adelaide Portable Amenities</title>
+<title>Saturn Hire — Portable Amenities from Another World</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600&family=Italiana&display=swap" rel="stylesheet">
@@ -298,7 +298,12 @@
      ====================================== */
   .fragrance-section {
     background:
-      radial-gradient(ellipse 50% 40% at 20% 60%, rgba(74, 63, 107, 0.2) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 40% at 20% 60%, rgba(74, 63, 107, 0.25) 0%, transparent 70%),
+      radial-gradient(ellipse 30% 30% at 80% 20%, rgba(74, 63, 107, 0.12) 0%, transparent 70%),
+      radial-gradient(1px 1px at 15% 25%, rgba(238, 234, 229, 0.2), transparent),
+      radial-gradient(1px 1px at 45% 75%, rgba(238, 234, 229, 0.15), transparent),
+      radial-gradient(1px 1px at 72% 35%, rgba(238, 234, 229, 0.2), transparent),
+      radial-gradient(1px 1px at 88% 82%, rgba(238, 234, 229, 0.12), transparent),
       var(--space);
     border-top: 1px solid rgba(212, 175, 55, 0.08);
   }
@@ -314,6 +319,18 @@
     font-weight: 400;
     color: var(--warm-white);
     margin-top: 1rem;
+  }
+
+  .fragrance-intro {
+    font-family: var(--font-headline);
+    font-style: italic;
+    font-size: clamp(1rem, 1.6vw, 1.15rem);
+    font-weight: 400;
+    color: rgba(238, 234, 229, 0.5);
+    line-height: 1.9;
+    text-align: center;
+    max-width: 600px;
+    margin: -2rem auto 4rem;
   }
 
   .notes-grid {
@@ -384,7 +401,12 @@
      SECTION 3: THE COLLECTION / LOOKBOOK
      ====================================== */
   .collection-section {
-    background: var(--space);
+    background:
+      radial-gradient(ellipse 40% 35% at 70% 50%, rgba(74, 63, 107, 0.15) 0%, transparent 70%),
+      radial-gradient(1px 1px at 25% 15%, rgba(238, 234, 229, 0.18), transparent),
+      radial-gradient(1px 1px at 60% 88%, rgba(238, 234, 229, 0.12), transparent),
+      radial-gradient(1px 1px at 85% 42%, rgba(238, 234, 229, 0.15), transparent),
+      var(--space);
     border-top: 1px solid rgba(212, 175, 55, 0.08);
   }
 
@@ -515,7 +537,11 @@
      ====================================== */
   .testimonials-section {
     background:
-      radial-gradient(ellipse 60% 50% at 80% 30%, rgba(74, 63, 107, 0.15) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 50% at 80% 30%, rgba(74, 63, 107, 0.2) 0%, transparent 70%),
+      radial-gradient(ellipse 35% 40% at 15% 70%, rgba(74, 63, 107, 0.12) 0%, transparent 70%),
+      radial-gradient(1px 1px at 30% 20%, rgba(238, 234, 229, 0.2), transparent),
+      radial-gradient(1px 1px at 55% 65%, rgba(238, 234, 229, 0.15), transparent),
+      radial-gradient(1px 1px at 78% 90%, rgba(238, 234, 229, 0.12), transparent),
       var(--space);
     border-top: 1px solid rgba(212, 175, 55, 0.08);
   }
@@ -585,7 +611,11 @@
      SECTION 5: MEET SCOTT
      ====================================== */
   .scott-section {
-    background: var(--space);
+    background:
+      radial-gradient(ellipse 45% 40% at 30% 50%, rgba(74, 63, 107, 0.15) 0%, transparent 70%),
+      radial-gradient(1px 1px at 65% 30%, rgba(238, 234, 229, 0.18), transparent),
+      radial-gradient(1px 1px at 80% 70%, rgba(238, 234, 229, 0.12), transparent),
+      var(--space);
     border-top: 1px solid rgba(212, 175, 55, 0.08);
   }
 
@@ -734,10 +764,27 @@
      SECTION 7: FOOTER
      ====================================== */
   .footer {
-    background: var(--space);
+    background:
+      radial-gradient(ellipse 50% 40% at 50% 50%, rgba(74, 63, 107, 0.1) 0%, transparent 70%),
+      var(--space);
     border-top: 1px solid rgba(212, 175, 55, 0.08);
     padding: clamp(4rem, 8vw, 6rem) clamp(1.5rem, 5vw, 6rem);
     text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .footer-orbit {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: min(60vw, 400px);
+    height: min(18vw, 120px);
+    border: 1px solid rgba(212, 175, 55, 0.06);
+    border-radius: 50%;
+    animation: orbitSpin 40s linear infinite;
+    pointer-events: none;
   }
 
   .footer-wordmark {
@@ -803,7 +850,7 @@
       <div class="orbit-ring orbit-ring--3"></div>
       <span class="placeholder-wordmark">SATURN</span>
       <span class="placeholder-hire">HIRE</span>
-      <span class="placeholder-subtitle">Scroll-driven cinematic — coming soon</span>
+      <span class="placeholder-subtitle">A celestial experience — cinematic reveal coming soon</span>
     </div>
 
     <div class="scroll-progress">
@@ -819,34 +866,36 @@
   <div class="section-pad">
     <div class="fragrance-header fade-up">
       <div class="section-label">Eau de Saturn</div>
-      <h2 class="fragrance-title">The Fragrance of Freshness</h2>
+      <h2 class="fragrance-title">The Atmosphere</h2>
     </div>
+
+    <p class="fragrance-intro fade-up">Every celestial body has a signature composition. Saturn's rings are ice and rock. Ours are fresh water and porcelain.</p>
 
     <div class="notes-grid">
       <div class="note-item fade-up">
         <div class="note-icon"><div class="note-icon-dot"></div></div>
         <div>
-          <div class="note-label">Top Note</div>
+          <div class="note-label">Inner Ring</div>
           <div class="note-name">Fresh Water</div>
-          <div class="note-desc">The first impression. Crystal clarity.</div>
+          <div class="note-desc">The first impression upon entry. Crystal clarity, like ice vapour in the upper atmosphere.</div>
         </div>
       </div>
 
       <div class="note-item fade-up">
         <div class="note-icon"><div class="note-icon-dot"></div></div>
         <div>
-          <div class="note-label">Heart Note</div>
+          <div class="note-label">Core</div>
           <div class="note-name">Porcelain</div>
-          <div class="note-desc">The essence. Pristine, enduring, unmistakable.</div>
+          <div class="note-desc">The dense heart of the experience. Pristine, enduring, unmistakable. A surface so clean it reflects the cosmos.</div>
         </div>
       </div>
 
       <div class="note-item fade-up">
         <div class="note-icon"><div class="note-icon-dot"></div></div>
         <div>
-          <div class="note-label">Base Note</div>
+          <div class="note-label">Outer Ring</div>
           <div class="note-name">Dignity</div>
-          <div class="note-desc">The lasting impression. What remains when we depart.</div>
+          <div class="note-desc">The lasting impression. What orbits long after we depart. The gravity of genuine care.</div>
         </div>
       </div>
     </div>
@@ -859,66 +908,66 @@
 <section class="collection-section">
   <div class="section-pad">
     <div class="collection-header fade-up">
-      <div class="section-label">The Collection</div>
-      <h2 class="collection-title">Autumn / Winter 2026</h2>
+      <div class="section-label">The Fleet</div>
+      <h2 class="collection-title">Orbital Class &mdash; 2026</h2>
     </div>
 
-    <!-- Product 1: The Sovereign -->
+    <!-- Product 1: The Titan -->
     <div class="lookbook-row">
       <div class="lookbook-image lookbook-image--1 slide-left">
-        <span class="lookbook-initial">S</span>
-        <span class="lookbook-model">SH-001</span>
+        <span class="lookbook-initial">T</span>
+        <span class="lookbook-model">SAT-I</span>
       </div>
       <div class="lookbook-text slide-right">
         <div class="lookbook-product-type">Chemical Toilet</div>
-        <h3 class="lookbook-product-name">The Sovereign</h3>
+        <h3 class="lookbook-product-name">The Titan</h3>
         <hr class="gold-rule">
-        <p class="lookbook-desc">Untethered. Autonomous. For those who answer to no plumbing.</p>
+        <p class="lookbook-desc">Named for Saturn's largest moon. Untethered. Autonomous. A self-contained world for those who answer to no plumbing.</p>
         <div class="lookbook-accent"></div>
       </div>
     </div>
 
-    <!-- Product 2: The Basin -->
+    <!-- Product 2: The Enceladus -->
     <div class="lookbook-row lookbook-row--reverse">
       <div class="lookbook-image lookbook-image--2 slide-right">
-        <span class="lookbook-initial">B</span>
-        <span class="lookbook-model">SH-002</span>
+        <span class="lookbook-initial">E</span>
+        <span class="lookbook-model">SAT-II</span>
       </div>
       <div class="lookbook-text slide-left">
         <div class="lookbook-product-type">Sewer Connect</div>
-        <h3 class="lookbook-product-name">The Basin</h3>
+        <h3 class="lookbook-product-name">The Enceladus</h3>
         <hr class="gold-rule">
-        <p class="lookbook-desc">Connected, yet independent. The duality of modern sanitation.</p>
+        <p class="lookbook-desc">Like its namesake's subsurface ocean — connected to something deeper. Plumbed perfection in permanent orbit around your site.</p>
         <div class="lookbook-accent"></div>
       </div>
     </div>
 
-    <!-- Product 3: The Retreat -->
+    <!-- Product 3: The Rhea -->
     <div class="lookbook-row">
       <div class="lookbook-image lookbook-image--3 slide-left">
         <span class="lookbook-initial">R</span>
-        <span class="lookbook-model">SH-003</span>
+        <span class="lookbook-model">SAT-III</span>
       </div>
       <div class="lookbook-text slide-right">
         <div class="lookbook-product-type">Portable Shower</div>
-        <h3 class="lookbook-product-name">The Retreat</h3>
+        <h3 class="lookbook-product-name">The Rhea</h3>
         <hr class="gold-rule">
-        <p class="lookbook-desc">Step inside. Leave the world — and the dust — behind.</p>
+        <p class="lookbook-desc">Step through the airlock. Leave the dust of the surface behind. A moment of atmospheric re-entry — warm, cleansing, restorative.</p>
         <div class="lookbook-accent"></div>
       </div>
     </div>
 
-    <!-- Product 4: The Perimeter -->
+    <!-- Product 4: The Ring -->
     <div class="lookbook-row lookbook-row--reverse">
       <div class="lookbook-image lookbook-image--4 slide-right">
-        <span class="lookbook-initial">P</span>
-        <span class="lookbook-model">SH-004</span>
+        <span class="lookbook-initial">R</span>
+        <span class="lookbook-model">SAT-IV</span>
       </div>
       <div class="lookbook-text slide-left">
         <div class="lookbook-product-type">Temporary Fencing</div>
-        <h3 class="lookbook-product-name">The Perimeter</h3>
+        <h3 class="lookbook-product-name">The Ring</h3>
         <hr class="gold-rule">
-        <p class="lookbook-desc">Every great space begins with a boundary.</p>
+        <p class="lookbook-desc">Saturn's rings define its silhouette. Ours define your site. Elegant boundary delineation with quiet gravitational authority.</p>
         <div class="lookbook-accent"></div>
       </div>
     </div>
@@ -931,27 +980,33 @@
 <section class="testimonials-section">
   <div class="section-pad">
     <div class="testimonials-header fade-up">
-      <div class="section-label">Press</div>
-      <h2 class="testimonials-title">What They're Saying</h2>
+      <div class="section-label">Transmissions Received</div>
+      <h2 class="testimonials-title">Signals from the Surface</h2>
     </div>
 
     <div class="quote-block fade-up">
       <span class="quote-mark">&ldquo;</span>
-      <p class="quote-text">Saturn Hire changed our understanding of what a construction site could feel like.</p>
-      <p class="quote-source">— Adelaide Review</p>
+      <p class="quote-text">Saturn Hire changed our understanding of what a construction site could feel like. It was like a mission control upgrade — everything just worked.</p>
+      <p class="quote-source">— Adelaide Review &nbsp;&bull;&nbsp; 5-Star Transmission</p>
       <div class="quote-stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
     </div>
 
     <div class="quote-block fade-up">
       <span class="quote-mark">&ldquo;</span>
-      <p class="quote-text">Functional. Beautiful. Transcendent.</p>
+      <p class="quote-text">Functional. Beautiful. Transcendent. Like discovering a new moon you didn't know existed.</p>
       <p class="quote-source">— SA Builder Monthly</p>
     </div>
 
     <div class="quote-block fade-up">
       <span class="quote-mark">&ldquo;</span>
-      <p class="quote-text">We didn't think we'd use the word 'elegant' on a job site. Then Saturn arrived.</p>
-      <p class="quote-source">— Tony, Foreman</p>
+      <p class="quote-text">We didn't think we'd use the word 'elegant' on a job site. Then Saturn landed.</p>
+      <p class="quote-source">— Tony, Site Foreman &nbsp;&bull;&nbsp; Ground Control</p>
+    </div>
+
+    <div class="quote-block fade-up">
+      <span class="quote-mark">&ldquo;</span>
+      <p class="quote-text">The lads on site now refer to the Saturn as 'The Space Station.' Nobody goes behind the bush anymore. Nobody.</p>
+      <p class="quote-source">— Dave R., Project Manager &nbsp;&bull;&nbsp; Glenelg Development</p>
     </div>
   </div>
 </section>
@@ -961,7 +1016,7 @@
      ========================================= -->
 <section class="scott-section">
   <div class="section-pad">
-    <div class="section-label fade-up" style="text-align:center;margin-bottom:3rem;">The Visionary</div>
+    <div class="section-label fade-up" style="text-align:center;margin-bottom:3rem;">Mission Commander</div>
 
     <div class="scott-layout fade-up">
       <div class="scott-portrait">
@@ -969,12 +1024,13 @@
       </div>
       <div class="scott-text">
         <h2 class="scott-name">Scott</h2>
-        <div class="scott-role">Founder & Director of Portable Excellence</div>
+        <div class="scott-role">Founder & Director of Orbital Operations</div>
         <hr class="gold-rule">
-        <p class="scott-bio">With over two decades in Adelaide's portable amenities landscape, Scott brings an uncompromising eye for cleanliness and an almost spiritual commitment to service logistics.</p>
+        <p class="scott-bio">Every space programme needs a commander. With over two decades navigating Adelaide's portable amenities landscape, Scott has logged more deployments than most astronauts have orbits. An uncompromising eye for cleanliness. An almost gravitational commitment to service logistics. One call, and he personally ensures your site achieves liftoff.</p>
         <div class="scott-contact">
           <a href="mailto:scott@saturnhire.com.au">scott@saturnhire.com.au</a><br>
-          <a href="tel:+61400000000">0400 000 000</a>
+          <a href="tel:+61400000000">0400 000 000</a><br>
+          <span style="font-size:0.65rem;letter-spacing:0.3em;color:rgba(238,234,229,0.25);margin-top:0.5rem;display:inline-block;">ADELAIDE GROUND CONTROL</span>
         </div>
       </div>
     </div>
@@ -986,9 +1042,9 @@
      ========================================= -->
 <section class="cta-section">
   <div class="fade-up">
-    <h2 class="cta-title">Experience Saturn</h2>
-    <p class="cta-subtitle">Begin your journey</p>
-    <a href="mailto:scott@saturnhire.com.au" class="cta-button">Request a Private Viewing</a>
+    <h2 class="cta-title">Request Launch Clearance</h2>
+    <p class="cta-subtitle">Your site deserves its own orbit</p>
+    <a href="mailto:scott@saturnhire.com.au" class="cta-button">Initiate Contact</a>
     <div class="cta-phone">08 8000 0000</div>
   </div>
 </section>
@@ -997,11 +1053,12 @@
      SECTION 7: FOOTER
      ========================================= -->
 <footer class="footer">
+  <div class="footer-orbit"></div>
   <div class="footer-wordmark">SATURN</div>
   <div class="footer-hire">HIRE</div>
   <hr class="footer-rule">
-  <div class="footer-location">Adelaide, South Australia</div>
-  <div class="footer-copy">&copy; 2026 Saturn Hire</div>
+  <div class="footer-location">Adelaide, South Australia &nbsp;&bull;&nbsp; Earth &nbsp;&bull;&nbsp; Sol System</div>
+  <div class="footer-copy">&copy; 2026 Saturn Hire &nbsp;&middot;&nbsp; Portable amenities from another world</div>
 </footer>
 
 <script>
