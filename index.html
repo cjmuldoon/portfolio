@@ -3,1497 +3,1101 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Website Redesign — Prototype & Branding Hub</title>
+<title>Craig Muldoon — Developer Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 <style>
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-:root {
-  --bg: #050505;
-  --card-bg: #0e0e0e;
-  --card-border: #1a1a1a;
-  --text: #c8c8c8;
-  --text-dim: #666;
-  --white: #ffffff;
-  --gold: #C9A96E;
-  --gold-dim: rgba(201,169,110,0.15);
-  --orange: #ec6e00;
-  --radius: 14px;
-}
-
-body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  min-height: 100vh;
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-}
-
-/* Grid background */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
-  background-size: 80px 80px;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.container {
-  position: relative;
-  z-index: 1;
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 48px 28px 24px;
-}
-
-/* ── Header ── */
-.header {
-  text-align: center;
-  margin-bottom: 40px;
-  padding-top: 16px;
-}
-
-.header-badge {
-  display: inline-block;
-  font-size: 0.65rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  color: var(--gold);
-  background: var(--gold-dim);
-  padding: 6px 16px;
-  border-radius: 20px;
-  margin-bottom: 20px;
-}
-
-.header h1 {
-  font-size: clamp(2rem, 5vw, 3.2rem);
-  font-weight: 900;
-  letter-spacing: -0.04em;
-  color: var(--white);
-  margin-bottom: 10px;
-  line-height: 1.05;
-}
-
-.header p {
-  font-size: 1.05rem;
-  color: var(--text-dim);
-  font-weight: 400;
-}
-
-/* ── Navigation Tabs ── */
-.nav-tabs {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 48px;
-  gap: 4px;
-}
-
-.nav-group {
-  display: flex;
-  background: #0c0c0c;
-  border-radius: 50px;
-  padding: 4px;
-  border: 1px solid #1a1a1a;
-  gap: 2px;
-}
-
-.nav-btn {
-  padding: 11px 24px;
-  border: none;
-  border-radius: 46px;
-  font-family: inherit;
-  font-size: 0.82rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
-  background: transparent;
-  color: #555;
-  white-space: nowrap;
-  position: relative;
-}
-
-.nav-btn:hover { color: #999; }
-
-.nav-btn.active {
-  background: var(--white);
-  color: #000;
-  font-weight: 600;
-  box-shadow: 0 2px 16px rgba(255,255,255,0.08);
-}
-
-.nav-btn .dot {
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  margin-right: 6px;
-  vertical-align: middle;
-  position: relative;
-  top: -1px;
-}
-
-/* ── Content Panels ── */
-.panel { display: none; }
-.panel.active { display: block; animation: fadeSlideIn 0.45s cubic-bezier(0.4,0,0.2,1); }
-
-@keyframes fadeSlideIn {
-  from { opacity: 0; transform: translateY(16px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* ── Section Headers ── */
-.section-header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 28px;
-}
-
-.section-header h2 {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--white);
-  letter-spacing: -0.01em;
-}
-
-.section-header .line {
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(90deg, #222, transparent);
-}
-
-.section-header .count {
-  font-size: 0.72rem;
-  color: #444;
-  font-weight: 500;
-  background: #111;
-  padding: 4px 10px;
-  border-radius: 10px;
-  border: 1px solid #1a1a1a;
-}
-
-/* ── Prototype Grid ── */
-.proto-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  margin-bottom: 56px;
-}
-
-/* ── Prototype Card ── */
-.proto-card {
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius);
-  overflow: hidden;
-  transition: transform 0.35s cubic-bezier(0.4,0,0.2,1), box-shadow 0.35s;
-  opacity: 0;
-  animation: cardReveal 0.5s cubic-bezier(0.4,0,0.2,1) forwards;
-}
-
-.proto-card:nth-child(1) { animation-delay: 0.05s; }
-.proto-card:nth-child(2) { animation-delay: 0.1s; }
-.proto-card:nth-child(3) { animation-delay: 0.15s; }
-.proto-card:nth-child(4) { animation-delay: 0.2s; }
-.proto-card:nth-child(5) { animation-delay: 0.25s; }
-.proto-card:nth-child(6) { animation-delay: 0.3s; }
-
-@keyframes cardReveal {
-  from { opacity: 0; transform: translateY(18px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.proto-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 24px 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04);
-}
-
-.proto-preview {
-  height: 190px;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.proto-preview .p-label {
-  font-size: 0.68rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  position: relative;
-  z-index: 2;
-}
-
-.proto-preview .p-shapes {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-}
-
-/* Preview themes */
-.pv-minimal { background: #f5f5f0; }
-.pv-minimal .p-label { color: #333; }
-.pv-minimal .p-shapes::before { content:''; position:absolute; left:20px; top:20px; bottom:20px; width:3px; background:#ec6e00; border-radius:2px; }
-.pv-minimal .p-shapes::after { content:''; position:absolute; right:24px; top:40px; width:70px; height:70px; border:1px solid #ddd; border-radius:50%; }
-
-.pv-industrial { background: #0d1525; }
-.pv-industrial .p-label { color: #ccc; }
-.pv-industrial .p-shapes::before { content:''; position:absolute; right:-20px; bottom:-20px; width:120px; height:120px; border-radius:50%; background:radial-gradient(circle, rgba(236,110,0,0.35), transparent 70%); }
-.pv-industrial .p-shapes::after { content:''; position:absolute; left:20px; top:20px; width:45px; height:2px; background:#ec6e00; }
-
-.pv-organic { background: linear-gradient(135deg, #f0e8dc, #e8dcc8); }
-.pv-organic .p-label { color: #5c4433; }
-.pv-organic .p-shapes::before { content:''; position:absolute; right:28px; bottom:28px; width:55px; height:55px; background:#c4704b; border-radius:50% 50% 50% 10%; opacity:0.65; }
-.pv-organic .p-shapes::after { content:''; position:absolute; left:18px; top:30px; width:35px; height:55px; border:2px solid rgba(92,68,51,0.2); border-radius:0 50px 50px 0; border-left:none; }
-
-.pv-refined { background: #1a1a1a; }
-.pv-refined .p-label { color: var(--gold); }
-.pv-refined .p-shapes::before { content:''; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:90px; height:90px; border:1px solid rgba(201,169,110,0.25); border-radius:50%; }
-.pv-refined .p-shapes::after { content:''; position:absolute; bottom:18px; left:18px; right:18px; height:1px; background:linear-gradient(90deg, transparent, var(--gold), transparent); opacity:0.5; }
-
-.pv-noir { background: #030303; }
-.pv-noir .p-label { color: #d0d0d0; }
-.pv-noir .p-shapes::before { content:''; position:absolute; right:18px; top:18px; width:70px; height:70px; border:1px solid rgba(255,255,255,0.06); transform:rotate(45deg); }
-.pv-noir .p-shapes::after { content:''; position:absolute; left:22px; bottom:22px; width:26px; height:26px; background:rgba(255,255,255,0.04); border-radius:50%; box-shadow:0 0 30px rgba(255,255,255,0.04); }
-
-.pv-coastal { background: linear-gradient(180deg, #f5f0e8, #e4ddd2); }
-.pv-coastal .p-label { color: #2a6b8a; }
-.pv-coastal .p-shapes::before { content:''; position:absolute; bottom:0; left:0; right:0; height:35px; background:linear-gradient(180deg, transparent, rgba(42,107,138,0.1)); }
-.pv-coastal .p-shapes::after { content:''; position:absolute; right:22px; top:22px; width:45px; height:45px; border:2px solid rgba(42,107,138,0.2); border-radius:50%; }
-
-.pv-refined-anim { background: linear-gradient(135deg, #F5F0EB 0%, #e8e0d6 100%); position:relative; overflow:hidden; }
-.pv-refined-anim .p-label { color: #C9A96E; }
-.pv-refined-anim .p-shapes::before { content:''; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:80px; height:80px; border:1px solid rgba(201,169,110,0.3); border-radius:50%; animation: pulseRing 3s ease-in-out infinite; }
-.pv-refined-anim .p-shapes::after { content:''; position:absolute; bottom:18px; left:18px; right:18px; height:1px; background:linear-gradient(90deg, transparent, #C9A96E, transparent); opacity:0.5; }
-@keyframes pulseRing { 0%,100% { transform:translate(-50%,-50%) scale(1); opacity:0.3; } 50% { transform:translate(-50%,-50%) scale(1.15); opacity:0.6; } }
-
-/* New prototype previews */
-.pv-blueprint { background: #1a1e36; }
-.pv-blueprint .p-label { color: #ec6e00; font-family: monospace; }
-.pv-blueprint .p-shapes::before { content:''; position:absolute; inset:16px; border:1px dashed rgba(236,110,0,0.2); }
-.pv-blueprint .p-shapes::after { content:''; position:absolute; left:16px; top:50%; width:40px; height:1px; background:#ec6e00; opacity:0.6; }
-
-.pv-ember { background: linear-gradient(135deg, #F5F0EB, #e8ddd0); }
-.pv-ember .p-label { color: #1a1e36; }
-.pv-ember .p-shapes::before { content:''; position:absolute; right:20px; bottom:20px; width:60px; height:60px; background:radial-gradient(circle, rgba(236,110,0,0.3), transparent 70%); border-radius:50%; }
-.pv-ember .p-shapes::after { content:''; position:absolute; left:20px; top:24px; width:50px; height:3px; background:#9A9590; border-radius:2px; }
-
-.pv-signal { background: #1a1e36; }
-.pv-signal .p-label { color: #ec6e00; font-weight:900; letter-spacing:0.05em; }
-.pv-signal .p-shapes::before { content:''; position:absolute; left:0; top:0; bottom:0; width:50%; background:linear-gradient(135deg, rgba(236,110,0,0.08), transparent); }
-.pv-signal .p-shapes::after { content:''; position:absolute; right:16px; top:16px; font-size:3rem; font-weight:900; color:rgba(236,110,0,0.12); content:'01'; font-family:'Inter',sans-serif; }
-
-.pv-industrial-cad { background: #0a0f1a; background-image: linear-gradient(rgba(201,169,110,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(201,169,110,0.06) 1px, transparent 1px); background-size: 20px 20px; }
-.pv-industrial-cad .p-label { color: #C9A96E; font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; }
-.pv-industrial-cad .p-shapes::before { content:''; position:absolute; inset:12px; border:1px solid rgba(201,169,110,0.15); }
-.pv-industrial-cad .p-shapes::after { content:'DWG'; position:absolute; right:16px; bottom:16px; font-family:'IBM Plex Mono',monospace; font-size:0.6rem; color:rgba(201,169,110,0.25); letter-spacing:0.2em; }
-
-.pv-velvet { background: #1A1A1A; }
-.pv-velvet .p-label { color: #C9A96E; }
-.pv-velvet .p-shapes::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 30% 40%, rgba(201,169,110,0.06), transparent 60%); }
-.pv-velvet .p-shapes::after { content:''; position:absolute; bottom:20px; left:20px; right:20px; height:1px; background:linear-gradient(90deg, transparent, rgba(201,169,110,0.3), transparent); }
-
-.pv-folio { background: #F2F0ED; }
-.pv-folio .p-label { color: #2C2C2C; }
-.pv-folio .p-shapes::before { content:''; position:absolute; left:20px; top:20px; font-size:2.5rem; font-weight:200; color:rgba(201,169,110,0.25); content:'01'; font-family:'Inter',sans-serif; }
-.pv-folio .p-shapes::after { content:''; position:absolute; right:20px; top:20px; bottom:20px; width:1px; background:#C9A96E; opacity:0.3; }
-
-.proto-body { padding: 22px; }
-.proto-body h3 { font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 6px; }
-.proto-body .desc { font-size: 0.82rem; color: #666; line-height: 1.5; margin-bottom: 12px; min-height: 2.4em; }
-.proto-body .price-row { display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; }
-.proto-body .price { font-size: 1.1rem; font-weight: 700; color: var(--gold); }
-.proto-body .price-note { font-size: 0.7rem; color: #555; }
-.branding-price { display:inline-block; background:rgba(201,169,110,0.1); border:1px solid rgba(201,169,110,0.2); border-radius:8px; padding:6px 14px; font-size:0.85rem; font-weight:600; color:var(--gold); margin-top:8px; }
-.branding-price .bp-note { font-weight:400; color:#666; font-size:0.75rem; margin-left:8px; }
-
-.proto-body .view-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: var(--white);
-  text-decoration: none;
-  padding: 9px 18px;
-  background: #181818;
-  border: 1px solid #222;
-  border-radius: 8px;
-  transition: all 0.25s;
-}
-
-.proto-body .view-btn:hover {
-  background: #222;
-  border-color: #333;
-  gap: 10px;
-}
-
-/* ── Divider ── */
-.divider {
-  height: 1px;
-  background: linear-gradient(90deg, transparent, #1a1a1a, transparent);
-  margin: 8px 0 48px;
-}
-
-/* ── Branding Kit ── */
-.branding-intro {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-  margin-bottom: 40px;
-  padding: 28px 32px;
-  background: linear-gradient(135deg, #0e0d0a, #120f0a);
-  border: 1px solid #221e16;
-  border-radius: var(--radius);
-}
-
-.branding-intro .bi-icon {
-  width: 48px;
-  height: 48px;
-  background: var(--gold-dim);
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.branding-intro h3 {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--gold);
-  margin-bottom: 4px;
-}
-
-.branding-intro p { font-size: 0.85rem; color: #777; }
-
-/* Brand assets grid */
-.brand-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 20px;
-  margin-bottom: 48px;
-}
-
-.brand-card {
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius);
-  overflow: hidden;
-  transition: transform 0.3s, box-shadow 0.3s;
-  opacity: 0;
-  animation: cardReveal 0.5s cubic-bezier(0.4,0,0.2,1) forwards;
-}
-
-.brand-card:nth-child(1) { animation-delay: 0.05s; }
-.brand-card:nth-child(2) { animation-delay: 0.1s; }
-.brand-card:nth-child(3) { animation-delay: 0.15s; }
-.brand-card:nth-child(4) { animation-delay: 0.2s; }
-.brand-card:nth-child(5) { animation-delay: 0.25s; }
-
-.brand-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 40px rgba(0,0,0,0.5);
-}
-
-.brand-card-img {
-  width: 100%;
-  aspect-ratio: 1/1;
-  object-fit: cover;
-  display: block;
-  cursor: pointer;
-  transition: transform 0.4s;
-}
-
-.brand-card-img.landscape { aspect-ratio: 16/9; }
-.brand-card-img.portrait { aspect-ratio: 4/3; }
-
-.brand-card:hover .brand-card-img { transform: scale(1.03); }
-
-.brand-card-body {
-  padding: 16px 18px;
-  border-top: 1px solid var(--card-border);
-}
-
-.brand-card-body h4 {
-  font-size: 0.88rem;
-  font-weight: 600;
-  color: var(--white);
-  margin-bottom: 4px;
-}
-
-.brand-card-body p {
-  font-size: 0.75rem;
-  color: #555;
-  line-height: 1.4;
-}
-
-.brand-card-body .badge {
-  display: inline-block;
-  font-size: 0.6rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  padding: 3px 8px;
-  border-radius: 4px;
-  margin-top: 8px;
-}
-
-.badge-logo { background: rgba(201,169,110,0.12); color: var(--gold); }
-.badge-sign { background: rgba(110,160,201,0.12); color: #6ea0c9; }
-.badge-stationery { background: rgba(160,201,110,0.12); color: #8cb86e; }
-
-/* ── Colour Palette Section ── */
-.palette-section {
-  margin-bottom: 48px;
-}
-
-.palette-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: 12px;
-}
-
-.palette-swatch {
-  border-radius: 12px;
-  overflow: hidden;
-  border: 1px solid var(--card-border);
-  background: var(--card-bg);
-}
-
-.swatch-color {
-  height: 80px;
-  position: relative;
-}
-
-.swatch-info {
-  padding: 10px 12px;
-}
-
-.swatch-info .name {
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--white);
-  margin-bottom: 2px;
-}
-
-.swatch-info .hex {
-  font-size: 0.68rem;
-  color: #555;
-  font-family: 'SF Mono', 'Fira Code', monospace;
-}
-
-/* ── Typography Section ── */
-.typo-section {
-  margin-bottom: 48px;
-}
-
-.typo-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
-}
-
-.typo-card {
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius);
-  padding: 28px;
-}
-
-.typo-card .sample {
-  font-size: 2rem;
-  margin-bottom: 12px;
-  line-height: 1.2;
-}
-
-.typo-card .font-name {
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: var(--white);
-  margin-bottom: 4px;
-}
-
-.typo-card .font-desc {
-  font-size: 0.72rem;
-  color: #555;
-}
-
-/* ── Lightbox ── */
-.lightbox {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 1000;
-  background: rgba(0,0,0,0.92);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  animation: lbIn 0.3s ease;
-}
-
-.lightbox.active { display: flex; }
-
-@keyframes lbIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-.lightbox img {
-  max-width: 90vw;
-  max-height: 88vh;
-  object-fit: contain;
-  border-radius: 8px;
-  box-shadow: 0 20px 80px rgba(0,0,0,0.6);
-}
-
-.lightbox .lb-close {
-  position: absolute;
-  top: 24px;
-  right: 28px;
-  width: 40px;
-  height: 40px;
-  border: none;
-  background: rgba(255,255,255,0.08);
-  border-radius: 50%;
-  color: #fff;
-  font-size: 1.2rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.2s;
-}
-
-.lightbox .lb-close:hover { background: rgba(255,255,255,0.15); }
-
-/* ── Concept Selector ── */
-.concept-selector {
-  display: flex;
-  gap: 12px;
-  margin-bottom: 40px;
-  overflow-x: auto;
-  padding-bottom: 8px;
-  -webkit-overflow-scrolling: touch;
-}
-
-.concept-card {
-  flex: 1;
-  min-width: 180px;
-  background: var(--card-bg);
-  border: 2px solid var(--card-border);
-  border-radius: var(--radius);
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
-  overflow: hidden;
-  text-align: center;
-}
-
-.concept-card:hover {
-  border-color: rgba(201,169,110,0.4);
-  transform: translateY(-3px);
-  box-shadow: 0 12px 32px rgba(0,0,0,0.4);
-}
-
-.concept-card.selected {
-  border-color: var(--gold);
-  box-shadow: 0 0 0 1px var(--gold), 0 12px 32px rgba(201,169,110,0.15);
-}
-
-.concept-card-thumb {
-  height: 120px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 16px;
-  background: #080808;
-  overflow: hidden;
-}
-
-.concept-card-thumb img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  transition: transform 0.4s;
-}
-
-.concept-card:hover .concept-card-thumb img {
-  transform: scale(1.05);
-}
-
-.concept-card-info {
-  padding: 12px 14px 16px;
-  border-top: 1px solid var(--card-border);
-}
-
-.concept-card-info h4 {
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: var(--white);
-  margin-bottom: 4px;
-  transition: color 0.3s;
-}
-
-.concept-card.selected .concept-card-info h4 {
-  color: var(--gold);
-}
-
-.concept-card-info p {
-  font-size: 0.65rem;
-  color: #555;
-  line-height: 1.35;
-}
-
-/* Logo Asset Display */
-.logo-asset-display {
-  display: flex;
-  gap: 32px;
-  align-items: flex-start;
-  margin-bottom: 48px;
-  padding: 32px;
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius);
-}
-
-.logo-asset-img-wrap {
-  flex: 0 0 320px;
-  background: #080808;
-  border-radius: 12px;
-  padding: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  overflow: hidden;
-  border: 1px solid #1a1a1a;
-}
-
-.logo-asset-img-wrap img {
-  max-width: 100%;
-  max-height: 260px;
-  object-fit: contain;
-  transition: transform 0.4s;
-}
-
-.logo-asset-img-wrap:hover img {
-  transform: scale(1.04);
-}
-
-.logo-asset-details {
-  flex: 1;
-}
-
-.logo-asset-details h3 {
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: var(--white);
-  margin-bottom: 8px;
-}
-
-.logo-asset-details .concept-detail-text {
-  font-size: 0.88rem;
-  color: #888;
-  line-height: 1.65;
-  margin-bottom: 20px;
-  transition: opacity 0.3s;
-}
-
-.logo-asset-details .asset-note {
-  font-size: 0.78rem;
-  color: #555;
-  line-height: 1.5;
-  padding: 14px 16px;
-  background: rgba(201,169,110,0.06);
-  border: 1px solid rgba(201,169,110,0.12);
-  border-radius: 10px;
-  margin-bottom: 20px;
-}
-
-.download-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--gold);
-  text-decoration: none;
-  padding: 11px 22px;
-  border: 1.5px solid var(--gold);
-  border-radius: 10px;
-  background: transparent;
-  transition: all 0.25s;
-}
-
-.download-btn:hover {
-  background: rgba(201,169,110,0.1);
-  box-shadow: 0 4px 20px rgba(201,169,110,0.12);
-}
-
-.download-btn svg {
-  width: 16px;
-  height: 16px;
-}
-
-/* Applications Grid */
-.app-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  margin-bottom: 48px;
-}
-
-.app-card {
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: var(--radius);
-  overflow: hidden;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.app-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 40px rgba(0,0,0,0.5);
-}
-
-.app-card-img {
-  width: 100%;
-  aspect-ratio: 16/10;
-  object-fit: cover;
-  display: block;
-  cursor: pointer;
-  transition: transform 0.4s;
-}
-
-.app-card:hover .app-card-img {
-  transform: scale(1.03);
-}
-
-.app-card-body {
-  padding: 14px 18px;
-  border-top: 1px solid var(--card-border);
-}
-
-.app-card-body h4 {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--white);
-}
-
-/* Responsive for concept selector */
-@media (max-width: 960px) {
-  .concept-selector { flex-wrap: nowrap; }
-  .concept-card { min-width: 160px; flex: 0 0 160px; }
-  .logo-asset-display { flex-direction: column; }
-  .logo-asset-img-wrap { flex: none; width: 100%; }
-}
-
-@media (max-width: 640px) {
-  .concept-card { min-width: 140px; flex: 0 0 140px; }
-  .concept-card-thumb { height: 90px; padding: 12px; }
-  .app-grid { grid-template-columns: 1fr; }
-  .logo-asset-display { padding: 20px; }
-}
-
-/* ── Footer ── */
-.footer {
-  text-align: center;
-  padding: 36px 24px 28px;
-  border-top: 1px solid #111;
-  margin-top: 16px;
-}
-
-.footer p {
-  font-size: 0.72rem;
-  color: #333;
-  letter-spacing: 0.05em;
-}
-
-/* ── Responsive ── */
-@media (max-width: 960px) {
-  .proto-grid { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media (max-width: 640px) {
-  .container { padding: 32px 16px 16px; }
-  .proto-grid { grid-template-columns: 1fr; gap: 16px; }
-  .brand-grid { grid-template-columns: 1fr; }
-  .palette-grid { grid-template-columns: repeat(3, 1fr); }
-  .typo-grid { grid-template-columns: 1fr; }
-  .nav-btn { padding: 9px 14px; font-size: 0.75rem; }
-  .branding-intro { flex-direction: column; text-align: center; padding: 20px; }
-  .proto-preview { height: 160px; }
-}
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0a0a0f;
+    --bg-card: #12121a;
+    --bg-card-hover: #1a1a28;
+    --surface: #16161f;
+    --border: rgba(255,255,255,0.06);
+    --border-hover: rgba(255,255,255,0.12);
+    --text: #e8e6e3;
+    --text-dim: rgba(232,230,227,0.5);
+    --text-muted: rgba(232,230,227,0.3);
+    --accent: #6c63ff;
+    --accent-glow: rgba(108,99,255,0.15);
+    --accent-2: #00d4aa;
+    --accent-3: #ff6b6b;
+    --accent-4: #ffd93d;
+    --gold: #C9A96E;
+    --mono: 'JetBrains Mono', 'Fira Code', monospace;
+    --sans: 'Inter', -apple-system, sans-serif;
+    --serif: 'Playfair Display', Georgia, serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-weight: 400;
+    line-height: 1.7;
+    font-size: 15px;
+    overflow-x: hidden;
+  }
+
+  ::selection { background: var(--accent); color: #fff; }
+
+  /* ═══════════════════════════════════════ */
+  /* CANVAS BACKGROUND                       */
+  /* ═══════════════════════════════════════ */
+  #bg-canvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* ═══════════════════════════════════════ */
+  /* NAV                                     */
+  /* ═══════════════════════════════════════ */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 0 clamp(24px, 4vw, 60px);
+    height: 64px;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(10,10,15,0.7);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    transition: background 0.3s;
+  }
+  .nav-brand {
+    font-family: var(--mono);
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: var(--accent);
+  }
+  .nav-brand span { color: var(--text-dim); }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: var(--text-dim);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.3s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px; left: 0;
+    width: 0; height: 1px;
+    background: var(--accent);
+    transition: width 0.3s;
+  }
+  .nav-links a:hover { color: var(--text); }
+  .nav-links a:hover::after { width: 100%; }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 8px;
+    z-index: 101;
+  }
+  .hamburger span {
+    width: 22px; height: 1.5px;
+    background: var(--text-dim);
+    transition: all 0.3s;
+  }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .mobile-menu {
+      position: fixed; inset: 0;
+      background: rgba(10,10,15,0.97);
+      backdrop-filter: blur(20px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+      z-index: 99;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    .mobile-menu.active { opacity: 1; pointer-events: all; }
+    .mobile-menu a {
+      font-family: var(--mono);
+      font-size: 14px;
+      letter-spacing: 2px;
+      color: var(--text-dim);
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+    .mobile-menu a:hover { color: var(--accent); }
+  }
+
+  /* ═══════════════════════════════════════ */
+  /* HERO                                    */
+  /* ═══════════════════════════════════════ */
+  .hero {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 120px clamp(24px, 6vw, 120px) 80px;
+  }
+  .hero-content { max-width: 800px; }
+  .hero-label {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .hero-label::before {
+    content: '';
+    width: 40px; height: 1px;
+    background: var(--accent);
+  }
+  .hero-title {
+    font-family: var(--serif);
+    font-size: clamp(42px, 6vw, 80px);
+    font-weight: 400;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    color: var(--text);
+  }
+  .hero-title .accent { color: var(--accent); }
+  .hero-title .line2 {
+    display: block;
+    font-style: italic;
+    color: var(--text-dim);
+    font-size: 0.7em;
+  }
+  .hero-desc {
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--text-dim);
+    max-width: 560px;
+    margin-bottom: 40px;
+  }
+  .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-primary {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 14px 28px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .btn-primary:hover { background: #5a52e0; transform: translateY(-2px); }
+  .btn-ghost {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 14px 28px;
+    background: transparent;
+    color: var(--text-dim);
+    border: 1px solid var(--border);
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+  .hero-stats {
+    display: flex;
+    gap: 48px;
+    margin-top: 60px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+  }
+  .stat-item .stat-num {
+    font-family: var(--mono);
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--text);
+    display: block;
+  }
+  .stat-item .stat-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }
+
+  /* ═══════════════════════════════════════ */
+  /* SECTION SHARED                          */
+  /* ═══════════════════════════════════════ */
+  section {
+    position: relative;
+    z-index: 1;
+    padding: 100px clamp(24px, 6vw, 120px);
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 60px;
+  }
+  .section-num {
+    font-family: var(--mono);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--accent);
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 400;
+  }
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ═══════════════════════════════════════ */
+  /* ABOUT                                   */
+  /* ═══════════════════════════════════════ */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    max-width: 1200px;
+  }
+  .about-text p {
+    color: var(--text-dim);
+    margin-bottom: 20px;
+    font-size: 15px;
+  }
+  .about-text p:first-child {
+    font-size: 17px;
+    color: var(--text);
+  }
+  .tech-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .tech-category h4 {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .tech-category ul {
+    list-style: none;
+  }
+  .tech-category li {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--text-dim);
+    padding: 4px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .tech-category li::before {
+    content: '';
+    width: 4px; height: 4px;
+    background: var(--accent);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 768px) {
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  }
+
+  /* ═══════════════════════════════════════ */
+  /* PROJECTS                                */
+  /* ═══════════════════════════════════════ */
+  .projects-grid {
+    display: grid;
+    gap: 24px;
+    max-width: 1200px;
+  }
+
+  .project-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 0;
+    transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 320px;
+    position: relative;
+  }
+  .project-card:hover {
+    border-color: var(--border-hover);
+    background: var(--bg-card-hover);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 40px var(--accent-glow);
+  }
+  .project-card.placeholder { opacity: 0.6; }
+  .project-card.placeholder:hover { opacity: 0.8; }
+
+  .project-visual {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 280px;
+  }
+  .project-visual-bg {
+    position: absolute;
+    inset: 0;
+    opacity: 0.12;
+    transition: opacity 0.4s;
+  }
+  .project-card:hover .project-visual-bg { opacity: 0.2; }
+
+  .project-icon {
+    position: relative;
+    z-index: 1;
+    width: 80px; height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border);
+    font-family: var(--mono);
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--accent);
+    transition: all 0.4s;
+  }
+  .project-card:hover .project-icon {
+    border-color: var(--accent);
+    box-shadow: 0 0 30px var(--accent-glow);
+  }
+
+  .project-info {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .project-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .project-type {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    padding: 4px 10px;
+    border: 1px solid rgba(108,99,255,0.2);
+    background: rgba(108,99,255,0.05);
+  }
+  .project-year {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+  }
+  .project-name {
+    font-family: var(--serif);
+    font-size: 26px;
+    font-weight: 400;
+    margin-bottom: 12px;
+    transition: color 0.3s;
+  }
+  .project-card:hover .project-name { color: var(--accent); }
+
+  .project-desc {
+    color: var(--text-dim);
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+  .project-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 20px;
+  }
+  .stack-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.5px;
+    padding: 4px 10px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    text-transform: uppercase;
+  }
+  .project-link {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: var(--accent);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: gap 0.3s;
+  }
+  .project-link:hover { gap: 12px; }
+  .project-link .arrow { transition: transform 0.3s; }
+  .project-link:hover .arrow { transform: translateX(4px); }
+
+  .project-status {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border: 1px dashed var(--text-muted);
+    color: var(--text-muted);
+    display: inline-block;
+  }
+
+  /* Featured project (larger) */
+  .project-card.featured {
+    grid-column: 1 / -1;
+  }
+  .project-card.featured .project-visual { min-height: 360px; }
+  .project-card.featured .project-name { font-size: 32px; }
+
+  /* Colour accents per project */
+  .project-card[data-accent="gold"] { --card-accent: #C9A96E; }
+  .project-card[data-accent="green"] { --card-accent: #00d4aa; }
+  .project-card[data-accent="blue"] { --card-accent: #4da6ff; }
+  .project-card[data-accent="red"] { --card-accent: #ff6b6b; }
+  .project-card[data-accent="orange"] { --card-accent: #ff9f43; }
+  .project-card[data-accent="purple"] { --card-accent: #a78bfa; }
+  .project-card[data-accent="yellow"] { --card-accent: #ffd93d; }
+
+  .project-card[data-accent] .project-type {
+    color: var(--card-accent);
+    border-color: color-mix(in srgb, var(--card-accent) 20%, transparent);
+    background: color-mix(in srgb, var(--card-accent) 5%, transparent);
+  }
+  .project-card[data-accent]:hover .project-name { color: var(--card-accent); }
+  .project-card[data-accent] .project-link { color: var(--card-accent); }
+  .project-card[data-accent]:hover .project-icon {
+    border-color: var(--card-accent);
+    box-shadow: 0 0 30px color-mix(in srgb, var(--card-accent) 20%, transparent);
+  }
+  .project-card[data-accent] .project-icon { color: var(--card-accent); }
+  .project-card[data-accent]:hover {
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 40px color-mix(in srgb, var(--card-accent) 15%, transparent);
+  }
+
+  /* Small project cards (2-col for secondary projects) */
+  .projects-secondary {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    max-width: 1200px;
+    margin-top: 24px;
+  }
+  .projects-secondary .project-card {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+  .projects-secondary .project-visual {
+    min-height: 160px;
+  }
+  .projects-secondary .project-info {
+    padding: 28px;
+  }
+  .projects-secondary .project-name {
+    font-size: 20px;
+  }
+
+  @media (max-width: 900px) {
+    .project-card { grid-template-columns: 1fr; }
+    .project-visual { min-height: 200px !important; }
+    .projects-secondary { grid-template-columns: 1fr; }
+  }
+
+  /* ═══════════════════════════════════════ */
+  /* CONTACT / FOOTER                        */
+  /* ═══════════════════════════════════════ */
+  .contact-section {
+    text-align: center;
+    padding: 120px clamp(24px, 6vw, 120px);
+    border-top: 1px solid var(--border);
+  }
+  .contact-title {
+    font-family: var(--serif);
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 400;
+    margin-bottom: 16px;
+  }
+  .contact-desc {
+    color: var(--text-dim);
+    font-size: 16px;
+    max-width: 500px;
+    margin: 0 auto 40px;
+  }
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .contact-link {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: var(--text-dim);
+    text-decoration: none;
+    padding: 12px 24px;
+    border: 1px solid var(--border);
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .contact-link:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: var(--accent-glow);
+  }
+
+  footer {
+    position: relative;
+    z-index: 1;
+    padding: 32px clamp(24px, 6vw, 120px);
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  footer p {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+  }
+
+  /* ═══════════════════════════════════════ */
+  /* ANIMATIONS                              */
+  /* ═══════════════════════════════════════ */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s cubic-bezier(0.25, 0.1, 0.25, 1),
+                transform 0.7s cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Stagger children */
+  .stagger > * { transition-delay: calc(var(--i, 0) * 0.1s); }
+
+  /* Scroll progress bar */
+  .scroll-progress {
+    position: fixed;
+    top: 0; left: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    z-index: 200;
+    width: 0;
+    transition: none;
+  }
+
+  /* Cursor glow (desktop) */
+  .cursor-glow {
+    position: fixed;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(108,99,255,0.06), transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.3s;
+  }
+
+  @media (max-width: 768px) {
+    .cursor-glow { display: none; }
+    .hero-stats { flex-wrap: wrap; gap: 24px; }
+    .hero-stats .stat-item { min-width: 100px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fade-up { opacity: 1; transform: none; transition: none; }
+    .cursor-glow { display: none; }
+    html { scroll-behavior: auto; }
+  }
 </style>
 </head>
 <body>
 
-<div class="container">
+<div class="scroll-progress" id="scrollProgress"></div>
+<div class="cursor-glow" id="cursorGlow"></div>
+<canvas id="bg-canvas"></canvas>
 
-  <!-- Header -->
-  <header class="header">
-    <span class="header-badge">Design Project 2026</span>
-    <h1>Website Redesign Hub</h1>
-    <p>Prototypes, branding kits, and identity concepts — all in one place</p>
-  </header>
-
-  <!-- Navigation -->
-  <nav class="nav-tabs">
-    <div class="nav-group">
-      <button class="nav-btn active" onclick="showPanel('prime-protos')">
-        <span class="dot" style="background:#ec6e00;"></span>Prime Prototypes
-      </button>
-      <button class="nav-btn" onclick="showPanel('lk-protos')">
-        <span class="dot" style="background:#C9A96E;"></span>LK Prototypes
-      </button>
-      <button class="nav-btn" onclick="showPanel('lk-branding')">
-        <span class="dot" style="background:#C9A96E;"></span>LK Branding Kit
-      </button>
-    </div>
-  </nav>
-
-  <!-- ═══════════════════════════════════════ -->
-  <!-- PANEL: Prime Design & Built Prototypes -->
-  <!-- ═══════════════════════════════════════ -->
-  <div class="panel active" id="panel-prime-protos">
-
-    <div class="section-header">
-      <h2>Prime Design & Built — Prototypes</h2>
-      <span class="line"></span>
-      <span class="count">6 concepts</span>
-    </div>
-
-    <div class="proto-grid">
-
-      <div class="proto-card">
-        <div class="proto-preview pv-minimal">
-          <div class="p-shapes"></div>
-          <span class="p-label">Minimal Luxe</span>
-        </div>
-        <div class="proto-body">
-          <h3>Minimal Luxe</h3>
-          <p class="desc">Clean editorial layout. Generous white space with refined typography. The work speaks for itself.</p>
-          <div class="price-row"><span class="price">$3,200</span><span class="price-note">Design + Development</span></div>
-          <a href="prototype-1/index.html" class="view-btn" target="_blank">View Prototype <span>&rarr;</span></a>
-        </div>
-      </div>
-
-      <div class="proto-card">
-        <div class="proto-preview pv-industrial">
-          <div class="p-shapes"></div>
-          <span class="p-label">Bold Industrial</span>
-        </div>
-        <div class="proto-body">
-          <h3>Bold Industrial</h3>
-          <p class="desc">Dark, dramatic aesthetic. High-contrast elements with heavy typography and cinematic composition.</p>
-          <div class="price-row"><span class="price">$3,800</span><span class="price-note">Design + Development</span></div>
-          <a href="prototype-2/index.html" class="view-btn" target="_blank">View Prototype <span>&rarr;</span></a>
-        </div>
-      </div>
-
-      <div class="proto-card">
-        <div class="proto-preview pv-organic">
-          <div class="p-shapes"></div>
-          <span class="p-label">Warm &amp; Organic</span>
-        </div>
-        <div class="proto-body">
-          <h3>Warm &amp; Organic</h3>
-          <p class="desc">Earthy, inviting aesthetic. Scandinavian minimalism with Australian warmth and natural textures.</p>
-          <div class="price-row"><span class="price">$3,200</span><span class="price-note">Design + Development</span></div>
-          <a href="prototype-3/index.html" class="view-btn" target="_blank">View Prototype <span>&rarr;</span></a>
-        </div>
-      </div>
-
-      <div class="proto-card">
-        <div class="proto-preview pv-blueprint">
-          <div class="p-shapes"></div>
-          <span class="p-label">Kinetic Blueprint</span>
-        </div>
-        <div class="proto-body">
-          <h3>Kinetic Blueprint</h3>
-          <p class="desc">Technical precision meets dynamic motion. Monospace type, animated grid lines, construction-in-progress metaphor.</p>
-          <div class="price-row"><span class="price">$4,200</span><span class="price-note">Design + Development</span></div>
-          <a href="prototype-7/index.html" class="view-btn" target="_blank">View Prototype <span>&rarr;</span></a>
-        </div>
-      </div>
-
-      <div class="proto-card">
-        <div class="proto-preview pv-ember">
-          <div class="p-shapes"></div>
-          <span class="p-label">Ember &amp; Stone</span>
-        </div>
-        <div class="proto-body">
-          <h3>Ember &amp; Stone</h3>
-          <p class="desc">Warm materiality with tactile textures. Limestone, concrete, and sandstone tones with golden-hour warmth.</p>
-          <div class="price-row"><span class="price">$3,500</span><span class="price-note">Design + Development</span></div>
-          <a href="prototype-8/index.html" class="view-btn" target="_blank">View Prototype <span>&rarr;</span></a>
-        </div>
-      </div>
-
-      <div class="proto-card">
-        <div class="proto-preview pv-signal">
-          <div class="p-shapes"></div>
-          <span class="p-label">Signal Tower</span>
-        </div>
-        <div class="proto-body">
-          <h3>Signal Tower</h3>
-          <p class="desc">Bold editorial with massive condensed typography. Magazine-style layouts with split-screen hero and scroll-snap.</p>
-          <div class="price-row"><span class="price">$4,500</span><span class="price-note">Design + Development</span></div>
-          <a href="prototype-9/index.html" class="view-btn" target="_blank">View Prototype <span>&rarr;</span></a>
-        </div>
-      </div>
-
-    </div>
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">CM<span>.</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="https://github.com/cjmuldoon" target="_blank">GitHub</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMobile()">
+    <span></span><span></span><span></span>
   </div>
+</nav>
 
-  <!-- ═══════════════════════════════════ -->
-  <!-- PANEL: LK Design and Build Prototypes -->
-  <!-- ═══════════════════════════════════ -->
-  <div class="panel" id="panel-lk-protos">
-
-    <div class="section-header">
-      <h2>LK Design and Build — Prototypes</h2>
-      <span class="line"></span>
-      <span class="count">6 concepts</span>
-    </div>
-
-    <div class="proto-grid">
-
-      <div class="proto-card">
-        <div class="proto-preview pv-refined">
-          <div class="p-shapes"></div>
-          <span class="p-label">Studio Refined</span>
-        </div>
-        <div class="proto-body">
-          <h3>Studio Refined</h3>
-          <p class="desc">Gallery-like aesthetic with gold accents on charcoal. Precision and sophistication in every detail.</p>
-          <div class="price-row"><span class="price">$4,200</span><span class="price-note">Design + Development</span></div>
-          <a href="prototype-4/index.html" class="view-btn" target="_blank">View Prototype <span>&rarr;</span></a>
-        </div>
-      </div>
-
-      <div class="proto-card">
-        <div class="proto-preview pv-refined-anim">
-          <div class="p-shapes"></div>
-          <span class="p-label">Studio Animated</span>
-        </div>
-        <div class="proto-body">
-          <h3>Studio Animated</h3>
-          <p class="desc">Full client website with scroll-driven project showcase and GGB-style technical infographic overlays. Studio Refined variant with animated Semaphore master suite feature.</p>
-          <div class="price-row"><span class="price">$5,500</span><span class="price-note">Design + Development</span></div>
-          <a href="prototype-5/index.html" class="view-btn" target="_blank">View Prototype <span>&rarr;</span></a>
-        </div>
-      </div>
-
-      <div class="proto-card">
-        <div class="proto-preview pv-refined-anim">
-          <div class="p-shapes"></div>
-          <span class="p-label">Studio Motion</span>
-        </div>
-        <div class="proto-body">
-          <h3>Studio Motion</h3>
-          <p class="desc">Scroll-driven video showcase. Cinematic bathroom pan controlled by scroll, followed by infographic reveal video. Studio Refined design language.</p>
-          <div class="price-row"><span class="price">$6,200</span><span class="price-note">Design + Development</span></div>
-          <a href="prototype-6/index.html" class="view-btn" target="_blank">View Prototype <span>&rarr;</span></a>
-        </div>
-      </div>
-
-      <div class="proto-card">
-        <div class="proto-preview pv-industrial-cad">
-          <div class="p-shapes"></div>
-          <span class="p-label">Industrial Blueprint</span>
-        </div>
-        <div class="proto-body">
-          <h3>Industrial Blueprint</h3>
-          <p class="desc">Dark CAD wireframe aesthetic with architectural annotations, scan-line animations, and technical spec cards.</p>
-          <div class="price-row"><span class="price">$5,800</span><span class="price-note">Design + Development</span></div>
-          <a href="prototype-10/index.html" class="view-btn" target="_blank">View Prototype <span>&rarr;</span></a>
-        </div>
-      </div>
-
-      <div class="proto-card">
-        <div class="proto-preview pv-velvet">
-          <div class="p-shapes"></div>
-          <span class="p-label">Velvet Monolith</span>
-        </div>
-        <div class="proto-body">
-          <h3>Velvet Monolith</h3>
-          <p class="desc">Dark, immersive, cinematic. Letterbox project views, gold particles, and curtain-pull reveals.</p>
-          <div class="price-row"><span class="price">$5,500</span><span class="price-note">Design + Development</span></div>
-          <a href="prototype-11/index.html" class="view-btn" target="_blank">View Prototype <span>&rarr;</span></a>
-        </div>
-      </div>
-
-      <div class="proto-card">
-        <div class="proto-preview pv-folio">
-          <div class="p-shapes"></div>
-          <span class="p-label">Architect&rsquo;s Folio</span>
-        </div>
-        <div class="proto-body">
-          <h3>Architect&rsquo;s Folio</h3>
-          <p class="desc">Design journal narrative with chapters, staggered project grids, and a process timeline that draws on scroll.</p>
-          <div class="price-row"><span class="price">$5,200</span><span class="price-note">Design + Development</span></div>
-          <a href="prototype-12/index.html" class="view-btn" target="_blank">View Prototype <span>&rarr;</span></a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- ═══════════════════════════════════ -->
-  <!-- PANEL: LK Branding Kit            -->
-  <!-- ═══════════════════════════════════ -->
-  <div class="panel" id="panel-lk-branding">
-
-    <div class="branding-intro">
-      <div class="bi-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C9A96E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-      </div>
-      <div>
-        <h3>LK Design and Build — Complete Branding Kit</h3>
-        <p>Five distinct logo concepts, each with full application mockups. Select a concept to explore its logo asset, signage, vehicle wrap, business cards, and site hoarding.</p>
-        <div style="margin-top:12px; display:flex; flex-wrap:wrap; gap:12px;">
-          <span class="branding-price">$2,800<span class="bp-note">Logo Design + Brand Guidelines</span></span>
-          <span class="branding-price">$1,200<span class="bp-note">Business Card Design</span></span>
-          <span class="branding-price">$1,800<span class="bp-note">Vehicle Wrap Design</span></span>
-          <span class="branding-price">$1,500<span class="bp-note">Building Signage Design</span></span>
-          <span class="branding-price">$850<span class="bp-note">Door Plaque / A-Frame Signs</span></span>
-          <span class="branding-price">$950<span class="bp-note">Site Hoarding Design</span></span>
-          <span class="branding-price">$650<span class="bp-note">Letterhead Design</span></span>
-          <span class="branding-price" style="background:rgba(201,169,110,0.18); border-color:rgba(201,169,110,0.35);">$8,200<span class="bp-note">Complete Package (save $2,550)</span></span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Logo Concept Selector -->
-    <div class="section-header">
-      <h2>Logo Concepts</h2>
-      <span class="line"></span>
-      <span class="count">5 concepts</span>
-    </div>
-
-    <div class="concept-selector" id="concept-selector">
-      <!-- Populated by JS -->
-    </div>
-
-    <!-- Logo Asset Display -->
-    <div class="section-header">
-      <h2>Logo Asset</h2>
-      <span class="line"></span>
-    </div>
-
-    <div class="logo-asset-display">
-      <div class="logo-asset-img-wrap" onclick="openLightbox(document.getElementById('logo-asset-img').src)">
-        <img id="logo-asset-img" src="" alt="Selected logo concept">
-      </div>
-      <div class="logo-asset-details">
-        <h3 id="logo-asset-name"></h3>
-        <p class="concept-detail-text" id="logo-asset-detail"></p>
-        <div class="asset-note">High-resolution PNG suitable for print and digital use. Download and provide to your designer or printer for final production artwork, signage fabrication, or vehicle wrap templates.</div>
-        <a id="logo-download-link" href="" download class="download-btn">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          Download Logo Asset
-        </a>
-      </div>
-    </div>
-
-    <div class="divider"></div>
-
-    <!-- Applications Gallery -->
-    <div class="section-header">
-      <h2>Applications</h2>
-      <span class="line"></span>
-      <span class="count">6 mockups</span>
-    </div>
-
-    <div class="app-grid" id="app-grid">
-      <div class="app-card">
-        <img id="app-signage" src="" alt="Building Signage" class="app-card-img" onclick="openLightbox(this.src)">
-        <div class="app-card-body"><h4>Building Signage</h4></div>
-      </div>
-      <div class="app-card">
-        <img id="app-small-sign" src="" alt="Door Plaque / A-Frame" class="app-card-img" onclick="openLightbox(this.src)">
-        <div class="app-card-body"><h4>Door Plaque / A-Frame</h4></div>
-      </div>
-      <div class="app-card">
-        <img id="app-vehicle" src="" alt="Vehicle Wrap" class="app-card-img" onclick="openLightbox(this.src)">
-        <div class="app-card-body"><h4>Vehicle Wrap</h4></div>
-      </div>
-      <div class="app-card">
-        <img id="app-cards" src="" alt="Business Cards" class="app-card-img" onclick="openLightbox(this.src)">
-        <div class="app-card-body"><h4>Business Cards</h4></div>
-      </div>
-      <div class="app-card">
-        <img id="app-hoarding" src="" alt="Site Hoarding" class="app-card-img" onclick="openLightbox(this.src)">
-        <div class="app-card-body"><h4>Site Hoarding</h4></div>
-      </div>
-      <div class="app-card">
-        <img id="app-letterhead" src="" alt="Letterhead" class="app-card-img" onclick="openLightbox(this.src)">
-        <div class="app-card-body"><h4>Letterhead</h4></div>
-      </div>
-    </div>
-
-    <!-- Business Card Options -->
-    <div id="card-options-section">
-      <div class="section-header" style="margin-top:32px;">
-        <h2>Business Card Options</h2>
-        <span class="line"></span>
-        <span class="count">4 styles</span>
-      </div>
-      <div class="app-grid">
-        <div class="app-card">
-          <img id="app-cards-square" src="" alt="Square Format Cards" class="app-card-img" onclick="openLightbox(this.src)">
-          <div class="app-card-body"><h4>Square Format</h4><p style="font-size:0.7rem;color:rgba(245,240,235,0.5);margin:4px 0 0;">Rounded corners, matches existing card shape</p></div>
-        </div>
-        <div class="app-card">
-          <img id="app-cards-rectangular" src="" alt="Rectangular Minimal Cards" class="app-card-img" onclick="openLightbox(this.src)">
-          <div class="app-card-body"><h4>Rectangular Minimal</h4><p style="font-size:0.7rem;color:rgba(245,240,235,0.5);margin:4px 0 0;">Standard 90x55mm, clean editorial layout</p></div>
-        </div>
-        <div class="app-card">
-          <img id="app-cards-blueprint" src="" alt="Blueprint Texture Cards" class="app-card-img" onclick="openLightbox(this.src)">
-          <div class="app-card-body"><h4>Textured Surface</h4><p style="font-size:0.7rem;color:rgba(245,240,235,0.5);margin:4px 0 0;">Embossed pattern across card surface</p></div>
-        </div>
-        <div class="app-card">
-          <img id="app-cards-gold-edge" src="" alt="Gold Edge Cards" class="app-card-img" onclick="openLightbox(this.src)">
-          <div class="app-card-body"><h4>Gold Edge</h4><p style="font-size:0.7rem;color:rgba(245,240,235,0.5);margin:4px 0 0;">Triplex stock with gold painted edges</p></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Brand Guidelines Link -->
-    <!-- Documents & Downloads -->
-    <div class="section-header" style="margin-top:32px;">
-      <h2>Documents & Downloads</h2>
-      <span class="line"></span>
-      <span class="count">6 files</span>
-    </div>
-
-    <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap:14px; margin-bottom:24px;">
-      <a id="guidelines-link" href="" target="_blank" style="display:flex; align-items:center; gap:10px; font-size:0.82rem; font-weight:600; color:var(--gold); text-decoration:none; padding:14px 18px; background:rgba(201,169,110,0.06); border:1px solid rgba(201,169,110,0.15); border-radius:10px; transition:all 0.25s;">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-        Brand Guidelines
-      </a>
-      <a id="letterhead-link" href="" download style="display:flex; align-items:center; gap:10px; font-size:0.82rem; font-weight:600; color:var(--gold); text-decoration:none; padding:14px 18px; background:rgba(201,169,110,0.06); border:1px solid rgba(201,169,110,0.15); border-radius:10px; transition:all 0.25s;">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Letterhead — Text
-      </a>
-      <a id="letterhead-logo-link" href="" download style="display:flex; align-items:center; gap:10px; font-size:0.82rem; font-weight:600; color:var(--gold); text-decoration:none; padding:14px 18px; background:rgba(201,169,110,0.06); border:1px solid rgba(201,169,110,0.15); border-radius:10px; transition:all 0.25s;">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Letterhead — Logo
-      </a>
-      <a id="quote-link" href="" download style="display:flex; align-items:center; gap:10px; font-size:0.82rem; font-weight:600; color:var(--gold); text-decoration:none; padding:14px 18px; background:rgba(201,169,110,0.06); border:1px solid rgba(201,169,110,0.15); border-radius:10px; transition:all 0.25s;">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Quote — Text
-      </a>
-      <a id="quote-logo-link" href="" download style="display:flex; align-items:center; gap:10px; font-size:0.82rem; font-weight:600; color:var(--gold); text-decoration:none; padding:14px 18px; background:rgba(201,169,110,0.06); border:1px solid rgba(201,169,110,0.15); border-radius:10px; transition:all 0.25s;">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Quote — Logo
-      </a>
-      <a id="signature-link" href="" target="_blank" style="display:flex; align-items:center; gap:10px; font-size:0.82rem; font-weight:600; color:var(--gold); text-decoration:none; padding:14px 18px; background:rgba(201,169,110,0.06); border:1px solid rgba(201,169,110,0.15); border-radius:10px; transition:all 0.25s;">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7"/></svg>
-        Email Signature
-      </a>
-    </div>
-
-    <div class="divider"></div>
-
-    <!-- Colour Palette (static) -->
-    <div class="palette-section">
-      <div class="section-header">
-        <h2>Colour Palette</h2>
-        <span class="line"></span>
-        <span class="count">6 colours</span>
-      </div>
-
-      <div class="palette-grid">
-        <div class="palette-swatch">
-          <div class="swatch-color" style="background:#2C2C2C;"></div>
-          <div class="swatch-info"><div class="name">Charcoal</div><div class="hex">#2C2C2C</div></div>
-        </div>
-        <div class="palette-swatch">
-          <div class="swatch-color" style="background:#C9A96E;"></div>
-          <div class="swatch-info"><div class="name">Gold</div><div class="hex">#C9A96E</div></div>
-        </div>
-        <div class="palette-swatch">
-          <div class="swatch-color" style="background:#F5F0EB;"></div>
-          <div class="swatch-info"><div class="name">Cream</div><div class="hex">#F5F0EB</div></div>
-        </div>
-        <div class="palette-swatch">
-          <div class="swatch-color" style="background:#FFFFFF; border-bottom: 1px solid #222;"></div>
-          <div class="swatch-info"><div class="name">White</div><div class="hex">#FFFFFF</div></div>
-        </div>
-        <div class="palette-swatch">
-          <div class="swatch-color" style="background:#1a1a1a;"></div>
-          <div class="swatch-info"><div class="name">Deep Black</div><div class="hex">#1A1A1A</div></div>
-        </div>
-        <div class="palette-swatch">
-          <div class="swatch-color" style="background:#8C7B5E;"></div>
-          <div class="swatch-info"><div class="name">Warm Bronze</div><div class="hex">#8C7B5E</div></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="divider"></div>
-
-    <!-- Typography (static) -->
-    <div class="typo-section">
-      <div class="section-header">
-        <h2>Typography</h2>
-        <span class="line"></span>
-        <span class="count">2 fonts</span>
-      </div>
-
-      <div class="typo-grid">
-        <div class="typo-card">
-          <div class="sample" style="font-family:'Cormorant Garamond',serif; color: var(--white);">Crafting exceptional spaces</div>
-          <div class="font-name">Cormorant Garamond</div>
-          <div class="font-desc">Headings & display — Elegant serif with refined character. Used for headlines, hero text, and brand statements.</div>
-        </div>
-        <div class="typo-card">
-          <div class="sample" style="font-family:'Inter',sans-serif; font-weight:400; font-size:1.4rem; color: var(--white);">Beautiful homes, beautifully built.</div>
-          <div class="font-name">Inter</div>
-          <div class="font-desc">Body & UI — Clean, highly legible sans-serif. Used for body copy, navigation, buttons, and interface elements.</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="divider"></div>
-
-    <!-- Brand Guidelines Summary (static) -->
-    <div class="section-header">
-      <h2>Brand Guidelines Summary</h2>
-      <span class="line"></span>
-    </div>
-
-    <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap:20px; margin-bottom:48px;">
-      <div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:var(--radius); padding:24px;">
-        <h4 style="color:var(--gold); font-size:0.78rem; text-transform:uppercase; letter-spacing:0.12em; margin-bottom:12px;">Brand Voice</h4>
-        <p style="font-size:0.82rem; color:#888; line-height:1.6;">Premium but approachable. Confident without arrogance. We speak to homeowners who value quality craftsmanship and thoughtful design. Warm, knowledgeable, trustworthy.</p>
-      </div>
-      <div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:var(--radius); padding:24px;">
-        <h4 style="color:var(--gold); font-size:0.78rem; text-transform:uppercase; letter-spacing:0.12em; margin-bottom:12px;">Logo Usage</h4>
-        <p style="font-size:0.82rem; color:#888; line-height:1.6;">Minimum clear space: 1x the height of the LK monogram on all sides. Never stretch, rotate, or recolour the logo outside the approved palette. Use icon mark below 40px.</p>
-      </div>
-      <div style="background:var(--card-bg); border:1px solid var(--card-border); border-radius:var(--radius); padding:24px;">
-        <h4 style="color:var(--gold); font-size:0.78rem; text-transform:uppercase; letter-spacing:0.12em; margin-bottom:12px;">Photography</h4>
-        <p style="font-size:0.82rem; color:#888; line-height:1.6;">Warm natural lighting. Show spaces in use — lived-in, not sterile. Emphasise materials, textures, and craftsmanship details. Avoid heavy filters or oversaturation.</p>
-      </div>
-    </div>
-
-  </div>
-
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMobile()">About</a>
+  <a href="#projects" onclick="closeMobile()">Projects</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+  <a href="https://github.com/cjmuldoon" target="_blank" onclick="closeMobile()">GitHub</a>
 </div>
 
-<!-- Lightbox -->
-<div class="lightbox" id="lightbox" onclick="closeLightbox()">
-  <button class="lb-close" onclick="closeLightbox()">&times;</button>
-  <img id="lightbox-img" src="" alt="Full size preview">
-</div>
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-content">
+    <div class="hero-label fade-up">Portfolio</div>
+    <h1 class="hero-title fade-up">
+      Building things<br>
+      <span class="line2">that solve real problems.</span>
+    </h1>
+    <p class="hero-desc fade-up">
+      Full-stack developer with a focus on automation, AI integration, and tools that make complex workflows feel effortless. Based in Adelaide.
+    </p>
+    <div class="hero-ctas fade-up">
+      <a href="#projects" class="btn-primary">View Projects <span>&darr;</span></a>
+      <a href="https://github.com/cjmuldoon" target="_blank" class="btn-ghost">GitHub <span>&nearr;</span></a>
+    </div>
+    <div class="hero-stats fade-up">
+      <div class="stat-item">
+        <span class="stat-num" id="statProjects">7</span>
+        <span class="stat-label">Projects</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">5+</span>
+        <span class="stat-label">Languages</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">AI</span>
+        <span class="stat-label">Integrated</span>
+      </div>
+    </div>
+  </div>
+</section>
 
-<!-- Footer -->
-<footer class="footer">
-  <p>Prime Design & Built / LK Design and Build — Website Redesign Project 2026</p>
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-header fade-up">
+    <span class="section-num">01</span>
+    <h2 class="section-title">About</h2>
+    <span class="section-line"></span>
+  </div>
+  <div class="about-grid">
+    <div class="about-text fade-up">
+      <p>I build tools that bridge the gap between complex systems and the people who use them. From AI-powered classification engines to automated scheduling bots, my work centres on making technology invisible — so users can focus on what matters.</p>
+      <p>My projects span full-stack web applications, data pipelines, ML integrations, and creative front-end experiences. I'm drawn to problems where automation can eliminate tedious manual processes, and where a well-designed interface can turn raw data into actionable insight.</p>
+      <p>When I'm not coding, I'm probably at the gym (where I've automated my booking and workout tracking), or investigating which neighbour's dog is barking (also automated).</p>
+    </div>
+    <div class="tech-grid fade-up">
+      <div class="tech-category">
+        <h4>Languages</h4>
+        <ul>
+          <li>Python</li>
+          <li>JavaScript / HTML / CSS</li>
+          <li>SQL / DAX</li>
+          <li>Shell / Bash</li>
+        </ul>
+      </div>
+      <div class="tech-category">
+        <h4>Frameworks</h4>
+        <ul>
+          <li>Flask</li>
+          <li>FastAPI</li>
+          <li>Vue.js</li>
+          <li>Tailwind CSS</li>
+        </ul>
+      </div>
+      <div class="tech-category">
+        <h4>AI / Data</h4>
+        <ul>
+          <li>Claude API</li>
+          <li>Google Cloud ML</li>
+          <li>Pandas / SQLAlchemy</li>
+          <li>Databricks</li>
+        </ul>
+      </div>
+      <div class="tech-category">
+        <h4>Infrastructure</h4>
+        <ul>
+          <li>Docker</li>
+          <li>GitHub Actions</li>
+          <li>Azure Pipelines</li>
+          <li>Caddy / Nginx</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-header fade-up">
+    <span class="section-num">02</span>
+    <h2 class="section-title">Projects</h2>
+    <span class="section-line"></span>
+  </div>
+
+  <!-- Featured: LK Design & Build -->
+  <div class="projects-grid">
+    <div class="project-card featured fade-up" data-accent="gold">
+      <div class="project-visual" style="background: linear-gradient(135deg, #1a1510, #0f0f18);">
+        <div class="project-visual-bg" style="background: repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(201,169,110,0.03) 40px, rgba(201,169,110,0.03) 41px), repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(201,169,110,0.03) 40px, rgba(201,169,110,0.03) 41px);"></div>
+        <div class="project-icon" style="border-color: rgba(201,169,110,0.3);">LK</div>
+      </div>
+      <div class="project-info">
+        <div class="project-meta">
+          <span class="project-type">Client Project</span>
+          <span class="project-year">2024 — Present</span>
+        </div>
+        <h3 class="project-name">LK Design & Build</h3>
+        <p class="project-desc">Complete digital presence for an Adelaide design & construction studio. Six interactive website prototypes exploring different design languages — from scroll-driven video showcases with canvas frame extraction to animated infographic overlays. Includes a full branding kit with five logo concepts, business card mockups, vehicle wraps, signage, and brand guidelines.</p>
+        <div class="project-stack">
+          <span class="stack-tag">HTML / CSS / JS</span>
+          <span class="stack-tag">Canvas API</span>
+          <span class="stack-tag">Scroll Animations</span>
+          <span class="stack-tag">SVG Infographics</span>
+          <span class="stack-tag">AI Image Gen</span>
+          <span class="stack-tag">GitHub Pages</span>
+        </div>
+        <a href="lk-hub.html" class="project-link">View Project <span class="arrow">&rarr;</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Primary projects (full-width) -->
+  <div class="projects-grid" style="margin-top: 24px;">
+
+    <!-- WOTCE -->
+    <div class="project-card fade-up" data-accent="green">
+      <div class="project-visual" style="background: linear-gradient(135deg, #0a1a15, #0f0f18);">
+        <div class="project-visual-bg" style="background: radial-gradient(circle at 30% 50%, rgba(0,212,170,0.08), transparent 60%);"></div>
+        <div class="project-icon" style="border-color: rgba(0,212,170,0.3);">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 14l2 2 4-4"/></svg>
+        </div>
+      </div>
+      <div class="project-info">
+        <div class="project-meta">
+          <span class="project-type">Enterprise Tool</span>
+          <span class="project-year">2024 — Present</span>
+        </div>
+        <h3 class="project-name">Triage Classification Engine</h3>
+        <p class="project-desc">AI-powered work order triage system that classifies incoming service requests using Claude API integration, configurable rules engines, and context-aware questioning. Features an active learning system that improves classification accuracy over time, multi-contract support, and a business continuity fallback mode. Handles complex facility-type routing across healthcare, education, justice, and housing environments.</p>
+        <div class="project-stack">
+          <span class="stack-tag">Python / Flask</span>
+          <span class="stack-tag">Claude API</span>
+          <span class="stack-tag">SQLite</span>
+          <span class="stack-tag">Databricks</span>
+          <span class="stack-tag">Docker</span>
+          <span class="stack-tag">Azure CI/CD</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- DD&A Dashboard -->
+    <div class="project-card fade-up" data-accent="blue">
+      <div class="project-visual" style="background: linear-gradient(135deg, #0a1220, #0f0f18);">
+        <div class="project-visual-bg" style="background: radial-gradient(circle at 70% 40%, rgba(77,166,255,0.08), transparent 60%);"></div>
+        <div class="project-icon" style="border-color: rgba(77,166,255,0.3);">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><path d="M6 8h2v5H6z" opacity="0.5"/><path d="M10 7h2v6h-2z" opacity="0.7"/><path d="M14 9h2v4h-2z" opacity="0.5"/></svg>
+        </div>
+      </div>
+      <div class="project-info">
+        <div class="project-meta">
+          <span class="project-type">Real-time Dashboard</span>
+          <span class="project-year">2024 — Present</span>
+        </div>
+        <h3 class="project-name">Operations Dashboard</h3>
+        <p class="project-desc">Wall-mounted rotating display that federates data from multiple sources — SQL Server, AWS Athena, Jira, and Power BI semantic models. Auto-rotates between KPI pages with configurable refresh intervals and caching. Features encrypted credential management, custom DAX queries, and can be bundled as a standalone executable for deployment on dedicated display hardware.</p>
+        <div class="project-stack">
+          <span class="stack-tag">Python / Flask</span>
+          <span class="stack-tag">Chart.js</span>
+          <span class="stack-tag">SQL Server</span>
+          <span class="stack-tag">AWS Athena</span>
+          <span class="stack-tag">Power BI API</span>
+          <span class="stack-tag">PyInstaller</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Secondary projects (2-col) -->
+  <div class="projects-secondary">
+
+    <!-- Bark Up -->
+    <div class="project-card fade-up" data-accent="red">
+      <div class="project-visual" style="background: linear-gradient(135deg, #1a0a0a, #0f0f18);">
+        <div class="project-visual-bg" style="background: radial-gradient(circle at 50% 50%, rgba(255,107,107,0.08), transparent 60%);"></div>
+        <div class="project-icon" style="border-color: rgba(255,107,107,0.3);">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 18c-4 0-7-2-7-5s3-8 7-8 7 5 7 8-3 5-7 5z"/><circle cx="9" cy="10" r="1" fill="currentColor"/><circle cx="15" cy="10" r="1" fill="currentColor"/><path d="M9 14c1.5 1 4.5 1 6 0"/><path d="M5 5L3 2"/><path d="M19 5l2-3"/></svg>
+        </div>
+      </div>
+      <div class="project-info">
+        <div class="project-meta">
+          <span class="project-type">IoT / ML</span>
+          <span class="project-year">2025</span>
+        </div>
+        <h3 class="project-name">Bark Up</h3>
+        <p class="project-desc">AI-powered dog bark tracking using YAMNet ML classification and Nest Cam integration. Captures forensic evidence (audio/video clips with confidence scoring), logs episodes to a Notion database, and sends Telegram alerts with false positive filtering. Includes iOS Shortcut and Siri integration for on-demand reports.</p>
+        <div class="project-stack">
+          <span class="stack-tag">Python</span>
+          <span class="stack-tag">YAMNet ML</span>
+          <span class="stack-tag">Google Cloud</span>
+          <span class="stack-tag">Notion API</span>
+          <span class="stack-tag">Telegram</span>
+          <span class="stack-tag">Docker</span>
+        </div>
+        <a href="https://github.com/cjmuldoon/barkup" target="_blank" class="project-link">View on GitHub <span class="arrow">&rarr;</span></a>
+      </div>
+    </div>
+
+    <!-- Wodify LazyMode -->
+    <div class="project-card fade-up" data-accent="orange">
+      <div class="project-visual" style="background: linear-gradient(135deg, #1a140a, #0f0f18);">
+        <div class="project-visual-bg" style="background: radial-gradient(circle at 50% 50%, rgba(255,159,67,0.08), transparent 60%);"></div>
+        <div class="project-icon" style="border-color: rgba(255,159,67,0.3);">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M6 8H5a4 4 0 000 8h1"/><line x1="6" y1="12" x2="18" y2="12"/><line x1="9" y1="8" x2="9" y2="16"/><line x1="15" y1="8" x2="15" y2="16"/></svg>
+        </div>
+      </div>
+      <div class="project-info">
+        <div class="project-meta">
+          <span class="project-type">Automation</span>
+          <span class="project-year">2025</span>
+        </div>
+        <h3 class="project-name">Workout Intelligence</h3>
+        <p class="project-desc">Scrapes gym programming nightly via GitHub Actions (zero-cost infrastructure), generates hypertrophy accessory suggestions using Claude Haiku, and delivers personalised workout plans via Telegram and Siri. Runs for approximately $0.003/week in API costs.</p>
+        <div class="project-stack">
+          <span class="stack-tag">Python</span>
+          <span class="stack-tag">Claude API</span>
+          <span class="stack-tag">GitHub Actions</span>
+          <span class="stack-tag">Telegram</span>
+          <span class="stack-tag">Siri Shortcuts</span>
+        </div>
+        <a href="https://github.com/cjmuldoon/wodify_lazymode" target="_blank" class="project-link">View on GitHub <span class="arrow">&rarr;</span></a>
+      </div>
+    </div>
+
+    <!-- LazyWOD -->
+    <div class="project-card fade-up" data-accent="purple">
+      <div class="project-visual" style="background: linear-gradient(135deg, #150a1a, #0f0f18);">
+        <div class="project-visual-bg" style="background: radial-gradient(circle at 50% 50%, rgba(167,139,250,0.08), transparent 60%);"></div>
+        <div class="project-icon" style="border-color: rgba(167,139,250,0.3);">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/></svg>
+        </div>
+      </div>
+      <div class="project-info">
+        <div class="project-meta">
+          <span class="project-type">Automation</span>
+          <span class="project-year">2025</span>
+        </div>
+        <h3 class="project-name">Session Auto-Booker</h3>
+        <p class="project-desc">Automatically rebooks preferred gym sessions each week. Web UI for selecting preferred time slots, background scheduler triggers every Sunday at 8 PM, with encrypted credential storage. Notifications via Telegram and Siri integration for booking confirmations.</p>
+        <div class="project-stack">
+          <span class="stack-tag">Python / Flask</span>
+          <span class="stack-tag">Scheduler</span>
+          <span class="stack-tag">Encryption</span>
+          <span class="stack-tag">Docker</span>
+          <span class="stack-tag">Caddy HTTPS</span>
+          <span class="stack-tag">Telegram</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Saturn Hire (Placeholder) -->
+    <div class="project-card placeholder fade-up" data-accent="yellow">
+      <div class="project-visual" style="background: linear-gradient(135deg, #1a1a0a, #0f0f18);">
+        <div class="project-visual-bg" style="background: radial-gradient(circle at 50% 50%, rgba(255,217,61,0.06), transparent 60%);"></div>
+        <div class="project-icon" style="border-color: rgba(255,217,61,0.2); border-style: dashed;">SH</div>
+      </div>
+      <div class="project-info">
+        <div class="project-meta">
+          <span class="project-type">Upcoming</span>
+          <span class="project-year">2026</span>
+        </div>
+        <h3 class="project-name">Saturn Hire</h3>
+        <p class="project-desc">Website redesign for an Adelaide portable facilities hire company — toilets, showers, and temporary fencing for construction and events. Interactive prototypes with a playful, approachable design language that balances trade credibility with customer-friendly booking flows.</p>
+        <div class="project-stack">
+          <span class="stack-tag">HTML / CSS / JS</span>
+          <span class="stack-tag">Scroll Animations</span>
+          <span class="stack-tag">Booking UX</span>
+          <span class="stack-tag">GitHub Pages</span>
+        </div>
+        <span class="project-status">Coming Soon</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="section-num fade-up" style="margin-bottom: 20px;">03</div>
+  <h2 class="contact-title fade-up">Get in Touch</h2>
+  <p class="contact-desc fade-up">Interested in working together or want to discuss a project? Reach out.</p>
+  <div class="contact-links fade-up">
+    <a href="https://github.com/cjmuldoon" target="_blank" class="contact-link">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+      GitHub
+    </a>
+    <a href="mailto:cjmuldoon@gmail.com" class="contact-link">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>
+      Email
+    </a>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2026 Craig Muldoon</p>
+  <p>Adelaide, Australia</p>
 </footer>
 
 <script>
-function showPanel(id) {
-  // Update nav buttons
-  document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
-  event.currentTarget.classList.add('active');
-
-  // Switch panels
-  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-  const target = document.getElementById('panel-' + id);
-  target.classList.add('active');
-
-  // Re-trigger animations
-  target.querySelectorAll('.proto-card, .brand-card').forEach(card => {
-    card.style.animation = 'none';
-    card.offsetHeight;
-    card.style.animation = '';
-  });
-
-  // Scroll to top of content
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+// ── Mobile menu ──
+function toggleMobile() {
+  document.getElementById('mobileMenu').classList.toggle('active');
+}
+function closeMobile() {
+  document.getElementById('mobileMenu').classList.remove('active');
 }
 
-function openLightbox(src) {
-  const lb = document.getElementById('lightbox');
-  const img = document.getElementById('lightbox-img');
-  img.src = src;
-  lb.classList.add('active');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeLightbox() {
-  document.getElementById('lightbox').classList.remove('active');
-  document.body.style.overflow = '';
-}
-
-// Close lightbox on Escape
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') closeLightbox();
+// ── Scroll progress ──
+window.addEventListener('scroll', function() {
+  var h = document.documentElement;
+  var progress = (h.scrollTop) / (h.scrollHeight - h.clientHeight);
+  document.getElementById('scrollProgress').style.width = (progress * 100) + '%';
 });
 
-// ── Logo Concept Selector ──
-const concepts = [
-  {
-    id: 'concept-1-blueprint',
-    name: 'Blueprint Grid',
-    desc: 'Technical drawing grid with dimension lines',
-    detail: 'The LK letters sit within a precise square frame with a fine grid pattern and dimension arrows — as if drawn on an architectural blueprint. Communicates meticulous planning and technical expertise.',
-    dir: 'concept-1-blueprint',
-    logoExt: 'svg'
-  },
-  {
-    id: 'concept-2-drawingblock',
-    name: 'Drawing Block',
-    desc: 'Architectural title block with double-line rectangular frame',
-    detail: 'Inspired by the title block on architectural drawings — a precise rectangular frame with double-line border, corner registration marks, and technical annotations. LK in IBM Plex Mono above a divider with DESIGN AND BUILD below. Structured, precise, unmistakably architectural.',
-    dir: 'concept-2-drawingblock',
-    logoExt: 'svg'
-  },
-  {
-    id: 'concept-3-cornerstone',
-    name: 'Cornerstone',
-    desc: 'Solid chamfered block with carved LK monogram',
-    detail: 'A solid charcoal parallelogram — a stylised cornerstone — with the LK letters carved into its surface. The chamfered corner and gold underline add architectural detail. Conveys foundation, permanence, and quality craftsmanship.',
-    dir: 'concept-3-cornerstone',
-    logoExt: 'svg'
-  },
-  {
-    id: 'concept-4-elevation',
-    name: 'Elevation Lines',
-    desc: 'Architectural elevation with horizontal datum lines',
-    detail: 'LK set between two horizontal lines — ground line and datum — resembling a front elevation drawing. Tick marks at endpoints and a dashed centreline complete the technical aesthetic. The wide landscape format is distinctive and versatile.',
-    dir: 'concept-4-elevation',
-    logoExt: 'svg'
-  },
-  {
-    id: 'concept-5-crosshair',
-    name: 'Technical Crosshair',
-    desc: 'Engineering precision with crosshair registration marks',
-    detail: 'A technical drawing-inspired mark with LK centered inside a precision crosshair circle with registration marks and dashed outer ring. Monospace typography reinforces the architectural and engineering precision of the brand. Born from the Industrial Blueprint website concept.',
-    dir: 'concept-5-crosshair',
-    logoExt: 'svg'
+// ── Cursor glow ──
+var glow = document.getElementById('cursorGlow');
+if (window.matchMedia('(pointer: fine)').matches) {
+  document.addEventListener('mousemove', function(e) {
+    glow.style.left = e.clientX + 'px';
+    glow.style.top = e.clientY + 'px';
+  });
+}
+
+// ── Intersection Observer for fade-up ──
+var observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.fade-up').forEach(function(el) {
+  observer.observe(el);
+});
+
+// ── Background canvas: subtle dot grid ──
+(function() {
+  var canvas = document.getElementById('bg-canvas');
+  var ctx = canvas.getContext('2d');
+  var w, h, dots = [];
+  var mouse = { x: -1000, y: -1000 };
+
+  function resize() {
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = window.innerHeight;
+    initDots();
   }
-];
 
-let selectedConceptIndex = 0;
-
-function buildConceptSelector() {
-  const container = document.getElementById('concept-selector');
-  container.innerHTML = concepts.map((c, i) => `
-    <div class="concept-card ${i === 0 ? 'selected' : ''}" data-index="${i}" onclick="selectConcept(${i})">
-      <div class="concept-card-thumb">
-        <img src="assets/branding/concepts/${c.dir}/logo-asset.${c.logoExt || 'png'}" alt="${c.name}">
-      </div>
-      <div class="concept-card-info">
-        <h4>${c.name}</h4>
-        <p>${c.desc}</p>
-      </div>
-    </div>
-  `).join('');
-}
-
-function selectConcept(index) {
-  selectedConceptIndex = index;
-  const c = concepts[index];
-  const baseDir = 'assets/branding/concepts/' + c.dir;
-
-  // Update selector cards
-  document.querySelectorAll('.concept-card').forEach((card, i) => {
-    card.classList.toggle('selected', i === index);
-  });
-
-  // Update logo asset display
-  const logoImg = document.getElementById('logo-asset-img');
-  const logoName = document.getElementById('logo-asset-name');
-  const logoDetail = document.getElementById('logo-asset-detail');
-  const downloadLink = document.getElementById('logo-download-link');
-
-  logoImg.style.opacity = '0';
-  setTimeout(() => {
-    const ext = c.logoExt || 'png';
-    logoImg.src = baseDir + '/logo-asset.' + ext;
-    logoImg.style.opacity = '1';
-  }, 150);
-
-  logoName.textContent = c.name;
-  logoDetail.textContent = c.detail;
-  downloadLink.href = baseDir + '/logo-asset.' + (c.logoExt || 'png');
-
-  // Update application mockups with transition
-  const appImages = {
-    'app-signage': baseDir + '/signage.jpg',
-    'app-small-sign': baseDir + '/small-sign.jpg',
-    'app-vehicle': baseDir + '/vehicle.jpg',
-    'app-cards': baseDir + '/cards.jpg',
-    'app-hoarding': baseDir + '/hoarding.jpg',
-    'app-letterhead': baseDir + '/letterhead.jpg'
-  };
-
-  Object.entries(appImages).forEach(([id, src]) => {
-    const img = document.getElementById(id);
-    img.style.opacity = '0';
-    setTimeout(() => {
-      img.src = src;
-      img.style.opacity = '1';
-    }, 150);
-  });
-
-  // Update business card option images
-  const cardOptionImages = {
-    'app-cards-square': baseDir + '/cards-square.jpg',
-    'app-cards-rectangular': baseDir + '/cards-rectangular.jpg',
-    'app-cards-blueprint': baseDir + '/cards-blueprint-texture.jpg',
-    'app-cards-gold-edge': baseDir + '/cards-gold-edge.jpg'
-  };
-  Object.entries(cardOptionImages).forEach(([id, src]) => {
-    const img = document.getElementById(id);
-    if (img) {
-      img.style.opacity = '0';
-      setTimeout(() => {
-        img.src = src;
-        img.style.opacity = '1';
-      }, 150);
+  function initDots() {
+    dots = [];
+    var spacing = 60;
+    for (var x = spacing; x < w; x += spacing) {
+      for (var y = spacing; y < h; y += spacing) {
+        dots.push({ x: x, y: y, ox: x, oy: y });
+      }
     }
+  }
+
+  document.addEventListener('mousemove', function(e) {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
   });
 
-  // Update document links
-  document.getElementById('guidelines-link').href = baseDir + '/guidelines.html';
-  document.getElementById('letterhead-link').href = baseDir + '/letterhead.docx';
-  document.getElementById('letterhead-logo-link').href = baseDir + '/letterhead-logo.docx';
-  document.getElementById('quote-link').href = baseDir + '/quote-template.docx';
-  document.getElementById('quote-logo-link').href = baseDir + '/quote-template-logo.docx';
-  document.getElementById('signature-link').href = baseDir + '/email-signature.html';
-}
+  function draw() {
+    ctx.clearRect(0, 0, w, h);
+    for (var i = 0; i < dots.length; i++) {
+      var d = dots[i];
+      var dx = mouse.x - d.ox;
+      var dy = mouse.y - d.oy;
+      var dist = Math.sqrt(dx * dx + dy * dy);
+      var maxDist = 150;
+      var alpha = 0.08;
+      var radius = 1;
 
-// Add transition styles for smooth image swaps
-document.addEventListener('DOMContentLoaded', () => {
-  const style = document.createElement('style');
-  style.textContent = `
-    #logo-asset-img, .app-card-img {
-      transition: opacity 0.25s ease;
+      if (dist < maxDist) {
+        var force = (1 - dist / maxDist);
+        alpha = 0.08 + force * 0.25;
+        radius = 1 + force * 2;
+        d.x = d.ox + dx * force * 0.1;
+        d.y = d.oy + dy * force * 0.1;
+      } else {
+        d.x += (d.ox - d.x) * 0.1;
+        d.y += (d.oy - d.y) * 0.1;
+      }
+
+      ctx.beginPath();
+      ctx.arc(d.x, d.y, radius, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(108, 99, 255, ' + alpha + ')';
+      ctx.fill();
     }
-  `;
-  document.head.appendChild(style);
+    requestAnimationFrame(draw);
+  }
 
-  buildConceptSelector();
-  selectConcept(0);
-});
+  window.addEventListener('resize', resize);
+  resize();
+
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    draw();
+  }
+})();
 </script>
 
 </body>
