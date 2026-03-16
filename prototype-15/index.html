@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saturn Hire — Adelaide Portable Amenities</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600&family=Italiana&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --space: #0D0D12;
+    --gold: #D4AF37;
+    --gold-dark: #B8941E;
+    --purple: #4A3F6B;
+    --warm-white: #EEEAE5;
+    --font-headline: 'Bodoni Moda', serif;
+    --font-body: 'Inter', sans-serif;
+    --font-display: 'Italiana', serif;
+  }
+
+  *, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background: var(--space);
+    color: var(--warm-white);
+    font-family: var(--font-body);
+    font-weight: 300;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ======================================
+     HERO VIDEO SECTION
+     ====================================== */
+  .hero-video-section {
+    height: 350vh;
+    position: relative;
+  }
+
+  .hero-video-sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--space);
+  }
+
+  #heroCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+  }
+
+  .video-overlay {
+    position: absolute;
+    z-index: 10;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    pointer-events: none;
+    text-align: center;
+    width: 100%;
+  }
+
+  #overlayIntro {
+    font-family: var(--font-headline);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(1.4rem, 4vw, 3rem);
+    color: var(--warm-white);
+    letter-spacing: 0.15em;
+    top: 38%;
+    text-shadow: 0 0 40px rgba(13, 13, 18, 0.8);
+  }
+
+  #overlaySaturn {
+    font-family: var(--font-display);
+    font-size: clamp(4rem, 14vw, 12rem);
+    color: var(--gold);
+    top: 50%;
+    transform: translateY(-50%);
+    text-shadow: 0 0 60px rgba(212, 175, 55, 0.4);
+    letter-spacing: 0.08em;
+  }
+
+  #overlayHire {
+    font-family: var(--font-body);
+    font-size: clamp(0.9rem, 2vw, 1.4rem);
+    font-weight: 500;
+    color: var(--warm-white);
+    letter-spacing: 0.55em;
+    text-transform: uppercase;
+    top: 64%;
+    text-shadow: 0 0 30px rgba(13, 13, 18, 0.8);
+  }
+
+  /* Scroll progress bar */
+  .scroll-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: rgba(238, 234, 229, 0.08);
+    z-index: 20;
+  }
+
+  .scroll-progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--gold), var(--warm-white));
+    transition: width 0.05s linear;
+  }
+
+  /* ---- Placeholder (shown when video missing) ---- */
+  .video-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+    background:
+      radial-gradient(ellipse 60% 50% at 50% 50%, rgba(74, 63, 107, 0.35) 0%, transparent 70%),
+      var(--space);
+    overflow: hidden;
+  }
+
+  .video-placeholder.hidden {
+    display: none;
+  }
+
+  /* Stars */
+  .star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: var(--warm-white);
+    border-radius: 50%;
+    animation: twinkle var(--dur, 3s) ease-in-out infinite var(--delay, 0s);
+  }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.15; }
+    50% { opacity: 0.9; }
+  }
+
+  .placeholder-wordmark {
+    font-family: var(--font-display);
+    font-size: clamp(5rem, 18vw, 14rem);
+    color: var(--gold);
+    line-height: 1;
+    text-shadow:
+      0 0 40px rgba(212, 175, 55, 0.3),
+      0 0 80px rgba(212, 175, 55, 0.15);
+    animation: glowPulse 4s ease-in-out infinite;
+    position: relative;
+    z-index: 2;
+  }
+
+  @keyframes glowPulse {
+    0%, 100% { text-shadow: 0 0 40px rgba(212,175,55,0.3), 0 0 80px rgba(212,175,55,0.15); }
+    50% { text-shadow: 0 0 60px rgba(212,175,55,0.5), 0 0 120px rgba(212,175,55,0.25); }
+  }
+
+  .placeholder-hire {
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: clamp(0.8rem, 1.8vw, 1.3rem);
+    letter-spacing: 0.6em;
+    color: var(--warm-white);
+    margin-top: 0.5rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .placeholder-subtitle {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 300;
+    color: rgba(238, 234, 229, 0.4);
+    letter-spacing: 0.15em;
+    margin-top: 2rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Saturn rings orbit */
+  .orbit-ring {
+    position: absolute;
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    border-radius: 50%;
+    animation: orbitSpin 30s linear infinite;
+    z-index: 1;
+  }
+
+  .orbit-ring--1 {
+    width: min(70vw, 500px);
+    height: min(22vw, 160px);
+    border-color: rgba(212, 175, 55, 0.12);
+    animation-duration: 25s;
+  }
+
+  .orbit-ring--2 {
+    width: min(85vw, 620px);
+    height: min(28vw, 200px);
+    border-color: rgba(212, 175, 55, 0.08);
+    animation-duration: 35s;
+    animation-direction: reverse;
+  }
+
+  .orbit-ring--3 {
+    width: min(100vw, 740px);
+    height: min(34vw, 240px);
+    border-color: rgba(212, 175, 55, 0.05);
+    animation-duration: 45s;
+  }
+
+  @keyframes orbitSpin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  /* ======================================
+     SECTION SHARED STYLES
+     ====================================== */
+  .section-pad {
+    padding: clamp(4rem, 10vw, 8rem) clamp(1.5rem, 5vw, 6rem);
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .fade-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .slide-left {
+    opacity: 0;
+    transform: translateX(-60px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .slide-right {
+    opacity: 0;
+    transform: translateX(60px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .slide-left.visible, .slide-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .section-label {
+    font-family: var(--font-display);
+    font-size: clamp(0.7rem, 1.2vw, 0.85rem);
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 3rem;
+  }
+
+  .gold-rule {
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+    border: none;
+    margin: 2rem 0;
+  }
+
+  /* ======================================
+     SECTION 2: FRAGRANCE NOTES
+     ====================================== */
+  .fragrance-section {
+    background:
+      radial-gradient(ellipse 50% 40% at 20% 60%, rgba(74, 63, 107, 0.2) 0%, transparent 70%),
+      var(--space);
+    border-top: 1px solid rgba(212, 175, 55, 0.08);
+  }
+
+  .fragrance-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .fragrance-title {
+    font-family: var(--font-headline);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 400;
+    color: var(--warm-white);
+    margin-top: 1rem;
+  }
+
+  .notes-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .note-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+  }
+
+  .note-item:last-child {
+    border-bottom: none;
+  }
+
+  .note-icon {
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, transparent 70%);
+  }
+
+  .note-icon-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+  }
+
+  .note-label {
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.3rem;
+  }
+
+  .note-name {
+    font-family: var(--font-headline);
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 400;
+    color: var(--warm-white);
+    margin-bottom: 0.5rem;
+  }
+
+  .note-desc {
+    font-family: var(--font-headline);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+    color: rgba(238, 234, 229, 0.55);
+    line-height: 1.7;
+  }
+
+  /* ======================================
+     SECTION 3: THE COLLECTION / LOOKBOOK
+     ====================================== */
+  .collection-section {
+    background: var(--space);
+    border-top: 1px solid rgba(212, 175, 55, 0.08);
+  }
+
+  .collection-header {
+    text-align: center;
+    margin-bottom: 5rem;
+  }
+
+  .collection-title {
+    font-family: var(--font-headline);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 400;
+    color: var(--warm-white);
+    margin-top: 1rem;
+  }
+
+  .lookbook-row {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 5rem;
+    align-items: center;
+  }
+
+  .lookbook-row:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (min-width: 768px) {
+    .lookbook-row {
+      flex-direction: row;
+      gap: 4rem;
+    }
+
+    .lookbook-row--reverse {
+      flex-direction: row-reverse;
+    }
+  }
+
+  .lookbook-image {
+    flex: 1;
+    aspect-ratio: 4 / 5;
+    max-width: 400px;
+    width: 100%;
+    border-radius: 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .lookbook-image--1 {
+    background: linear-gradient(135deg, rgba(74, 63, 107, 0.5) 0%, rgba(13, 13, 18, 0.9) 100%);
+  }
+
+  .lookbook-image--2 {
+    background: linear-gradient(225deg, rgba(74, 63, 107, 0.4) 0%, rgba(13, 13, 18, 0.95) 100%);
+  }
+
+  .lookbook-image--3 {
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(13, 13, 18, 0.95) 100%);
+  }
+
+  .lookbook-image--4 {
+    background: linear-gradient(315deg, rgba(74, 63, 107, 0.35) 0%, rgba(13, 13, 18, 0.9) 100%);
+  }
+
+  .lookbook-initial {
+    font-family: var(--font-display);
+    font-size: clamp(5rem, 12vw, 8rem);
+    color: rgba(212, 175, 55, 0.15);
+    line-height: 1;
+  }
+
+  .lookbook-model {
+    position: absolute;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    font-family: var(--font-body);
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    color: rgba(238, 234, 229, 0.25);
+  }
+
+  .lookbook-text {
+    flex: 1;
+    max-width: 500px;
+  }
+
+  .lookbook-product-name {
+    font-family: var(--font-headline);
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 400;
+    color: var(--warm-white);
+    margin-bottom: 0.3rem;
+  }
+
+  .lookbook-product-type {
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+  }
+
+  .lookbook-desc {
+    font-family: var(--font-headline);
+    font-style: italic;
+    font-size: clamp(1.05rem, 1.8vw, 1.3rem);
+    color: rgba(238, 234, 229, 0.6);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
+
+  .lookbook-accent {
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  /* ======================================
+     SECTION 4: TESTIMONIALS
+     ====================================== */
+  .testimonials-section {
+    background:
+      radial-gradient(ellipse 60% 50% at 80% 30%, rgba(74, 63, 107, 0.15) 0%, transparent 70%),
+      var(--space);
+    border-top: 1px solid rgba(212, 175, 55, 0.08);
+  }
+
+  .testimonials-header {
+    text-align: center;
+    margin-bottom: 5rem;
+  }
+
+  .testimonials-title {
+    font-family: var(--font-headline);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 400;
+    color: var(--warm-white);
+    margin-top: 1rem;
+  }
+
+  .quote-block {
+    text-align: center;
+    margin-bottom: 5rem;
+    position: relative;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .quote-block:last-child {
+    margin-bottom: 0;
+  }
+
+  .quote-mark {
+    font-family: var(--font-headline);
+    font-size: clamp(4rem, 10vw, 8rem);
+    color: var(--gold);
+    opacity: 0.25;
+    line-height: 0.5;
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .quote-text {
+    font-family: var(--font-headline);
+    font-style: italic;
+    font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+    font-weight: 400;
+    color: var(--warm-white);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .quote-source {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    color: rgba(238, 234, 229, 0.45);
+  }
+
+  .quote-stars {
+    color: var(--gold);
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    margin-top: 0.5rem;
+  }
+
+  /* ======================================
+     SECTION 5: MEET SCOTT
+     ====================================== */
+  .scott-section {
+    background: var(--space);
+    border-top: 1px solid rgba(212, 175, 55, 0.08);
+  }
+
+  .scott-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    text-align: center;
+  }
+
+  @media (min-width: 768px) {
+    .scott-layout {
+      flex-direction: row;
+      text-align: left;
+      gap: 5rem;
+    }
+  }
+
+  .scott-portrait {
+    flex-shrink: 0;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.06) 0%, transparent 70%);
+  }
+
+  .scott-monogram {
+    font-family: var(--font-display);
+    font-size: 4.5rem;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .scott-text {
+    flex: 1;
+    max-width: 600px;
+  }
+
+  .scott-name {
+    font-family: var(--font-headline);
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 400;
+    color: var(--warm-white);
+    margin-bottom: 0.3rem;
+  }
+
+  .scott-role {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 2rem;
+  }
+
+  .scott-bio {
+    font-family: var(--font-headline);
+    font-style: italic;
+    font-size: clamp(1rem, 1.6vw, 1.15rem);
+    font-weight: 400;
+    color: rgba(238, 234, 229, 0.6);
+    line-height: 1.9;
+    margin-bottom: 2rem;
+  }
+
+  .scott-contact {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: rgba(238, 234, 229, 0.4);
+    line-height: 2;
+  }
+
+  .scott-contact a {
+    color: var(--gold);
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .scott-contact a:hover {
+    opacity: 0.7;
+  }
+
+  /* ======================================
+     SECTION 6: ENQUIRE CTA
+     ====================================== */
+  .cta-section {
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+    padding: clamp(5rem, 12vw, 9rem) clamp(1.5rem, 5vw, 6rem);
+    text-align: center;
+  }
+
+  .cta-title {
+    font-family: var(--font-headline);
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 400;
+    color: var(--space);
+    margin-bottom: 0.5rem;
+  }
+
+  .cta-subtitle {
+    font-family: var(--font-headline);
+    font-style: italic;
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    font-weight: 400;
+    color: rgba(13, 13, 18, 0.55);
+    margin-bottom: 3rem;
+  }
+
+  .cta-button {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    background: var(--space);
+    border: none;
+    padding: 1.2rem 3rem;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    text-decoration: none;
+  }
+
+  .cta-button:hover {
+    background: #1a1a24;
+    transform: translateY(-2px);
+  }
+
+  .cta-phone {
+    font-family: var(--font-display);
+    font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+    color: var(--space);
+    margin-top: 2rem;
+    letter-spacing: 0.1em;
+  }
+
+  /* ======================================
+     SECTION 7: FOOTER
+     ====================================== */
+  .footer {
+    background: var(--space);
+    border-top: 1px solid rgba(212, 175, 55, 0.08);
+    padding: clamp(4rem, 8vw, 6rem) clamp(1.5rem, 5vw, 6rem);
+    text-align: center;
+  }
+
+  .footer-wordmark {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 8vw, 5rem);
+    color: var(--gold);
+    line-height: 1;
+    text-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+  }
+
+  .footer-hire {
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.6em;
+    color: var(--warm-white);
+    margin-top: 0.3rem;
+    margin-bottom: 2rem;
+  }
+
+  .footer-rule {
+    width: 80px;
+    height: 1px;
+    background: var(--gold);
+    border: none;
+    margin: 0 auto 2rem;
+  }
+
+  .footer-location {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 300;
+    color: rgba(238, 234, 229, 0.35);
+    letter-spacing: 0.15em;
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-copy {
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    font-weight: 300;
+    color: rgba(238, 234, 229, 0.2);
+    letter-spacing: 0.1em;
+  }
+</style>
+</head>
+<body>
+
+<!-- =========================================
+     SECTION 1: HERO — SCROLL-DRIVEN VIDEO
+     ========================================= -->
+<section class="hero-video-section">
+  <div class="hero-video-sticky">
+    <canvas id="heroCanvas"></canvas>
+
+    <div class="video-overlay" id="overlayIntro">Introducing...</div>
+    <div class="video-overlay" id="overlaySaturn">Saturn</div>
+    <div class="video-overlay" id="overlayHire">HIRE</div>
+
+    <div class="video-placeholder" id="videoPlaceholder">
+      <div class="orbit-ring orbit-ring--1"></div>
+      <div class="orbit-ring orbit-ring--2"></div>
+      <div class="orbit-ring orbit-ring--3"></div>
+      <span class="placeholder-wordmark">SATURN</span>
+      <span class="placeholder-hire">HIRE</span>
+      <span class="placeholder-subtitle">Scroll-driven cinematic — coming soon</span>
+    </div>
+
+    <div class="scroll-progress">
+      <div class="scroll-progress-bar" id="heroProgress"></div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================
+     SECTION 2: THE FRAGRANCE OF FRESHNESS
+     ========================================= -->
+<section class="fragrance-section">
+  <div class="section-pad">
+    <div class="fragrance-header fade-up">
+      <div class="section-label">Eau de Saturn</div>
+      <h2 class="fragrance-title">The Fragrance of Freshness</h2>
+    </div>
+
+    <div class="notes-grid">
+      <div class="note-item fade-up">
+        <div class="note-icon"><div class="note-icon-dot"></div></div>
+        <div>
+          <div class="note-label">Top Note</div>
+          <div class="note-name">Fresh Water</div>
+          <div class="note-desc">The first impression. Crystal clarity.</div>
+        </div>
+      </div>
+
+      <div class="note-item fade-up">
+        <div class="note-icon"><div class="note-icon-dot"></div></div>
+        <div>
+          <div class="note-label">Heart Note</div>
+          <div class="note-name">Porcelain</div>
+          <div class="note-desc">The essence. Pristine, enduring, unmistakable.</div>
+        </div>
+      </div>
+
+      <div class="note-item fade-up">
+        <div class="note-icon"><div class="note-icon-dot"></div></div>
+        <div>
+          <div class="note-label">Base Note</div>
+          <div class="note-name">Dignity</div>
+          <div class="note-desc">The lasting impression. What remains when we depart.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================
+     SECTION 3: THE COLLECTION
+     ========================================= -->
+<section class="collection-section">
+  <div class="section-pad">
+    <div class="collection-header fade-up">
+      <div class="section-label">The Collection</div>
+      <h2 class="collection-title">Autumn / Winter 2026</h2>
+    </div>
+
+    <!-- Product 1: The Sovereign -->
+    <div class="lookbook-row">
+      <div class="lookbook-image lookbook-image--1 slide-left">
+        <span class="lookbook-initial">S</span>
+        <span class="lookbook-model">SH-001</span>
+      </div>
+      <div class="lookbook-text slide-right">
+        <div class="lookbook-product-type">Chemical Toilet</div>
+        <h3 class="lookbook-product-name">The Sovereign</h3>
+        <hr class="gold-rule">
+        <p class="lookbook-desc">Untethered. Autonomous. For those who answer to no plumbing.</p>
+        <div class="lookbook-accent"></div>
+      </div>
+    </div>
+
+    <!-- Product 2: The Basin -->
+    <div class="lookbook-row lookbook-row--reverse">
+      <div class="lookbook-image lookbook-image--2 slide-right">
+        <span class="lookbook-initial">B</span>
+        <span class="lookbook-model">SH-002</span>
+      </div>
+      <div class="lookbook-text slide-left">
+        <div class="lookbook-product-type">Sewer Connect</div>
+        <h3 class="lookbook-product-name">The Basin</h3>
+        <hr class="gold-rule">
+        <p class="lookbook-desc">Connected, yet independent. The duality of modern sanitation.</p>
+        <div class="lookbook-accent"></div>
+      </div>
+    </div>
+
+    <!-- Product 3: The Retreat -->
+    <div class="lookbook-row">
+      <div class="lookbook-image lookbook-image--3 slide-left">
+        <span class="lookbook-initial">R</span>
+        <span class="lookbook-model">SH-003</span>
+      </div>
+      <div class="lookbook-text slide-right">
+        <div class="lookbook-product-type">Portable Shower</div>
+        <h3 class="lookbook-product-name">The Retreat</h3>
+        <hr class="gold-rule">
+        <p class="lookbook-desc">Step inside. Leave the world — and the dust — behind.</p>
+        <div class="lookbook-accent"></div>
+      </div>
+    </div>
+
+    <!-- Product 4: The Perimeter -->
+    <div class="lookbook-row lookbook-row--reverse">
+      <div class="lookbook-image lookbook-image--4 slide-right">
+        <span class="lookbook-initial">P</span>
+        <span class="lookbook-model">SH-004</span>
+      </div>
+      <div class="lookbook-text slide-left">
+        <div class="lookbook-product-type">Temporary Fencing</div>
+        <h3 class="lookbook-product-name">The Perimeter</h3>
+        <hr class="gold-rule">
+        <p class="lookbook-desc">Every great space begins with a boundary.</p>
+        <div class="lookbook-accent"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================
+     SECTION 4: TESTIMONIALS
+     ========================================= -->
+<section class="testimonials-section">
+  <div class="section-pad">
+    <div class="testimonials-header fade-up">
+      <div class="section-label">Press</div>
+      <h2 class="testimonials-title">What They're Saying</h2>
+    </div>
+
+    <div class="quote-block fade-up">
+      <span class="quote-mark">&ldquo;</span>
+      <p class="quote-text">Saturn Hire changed our understanding of what a construction site could feel like.</p>
+      <p class="quote-source">— Adelaide Review</p>
+      <div class="quote-stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
+    </div>
+
+    <div class="quote-block fade-up">
+      <span class="quote-mark">&ldquo;</span>
+      <p class="quote-text">Functional. Beautiful. Transcendent.</p>
+      <p class="quote-source">— SA Builder Monthly</p>
+    </div>
+
+    <div class="quote-block fade-up">
+      <span class="quote-mark">&ldquo;</span>
+      <p class="quote-text">We didn't think we'd use the word 'elegant' on a job site. Then Saturn arrived.</p>
+      <p class="quote-source">— Tony, Foreman</p>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================
+     SECTION 5: MEET SCOTT
+     ========================================= -->
+<section class="scott-section">
+  <div class="section-pad">
+    <div class="section-label fade-up" style="text-align:center;margin-bottom:3rem;">The Visionary</div>
+
+    <div class="scott-layout fade-up">
+      <div class="scott-portrait">
+        <span class="scott-monogram">S</span>
+      </div>
+      <div class="scott-text">
+        <h2 class="scott-name">Scott</h2>
+        <div class="scott-role">Founder & Director of Portable Excellence</div>
+        <hr class="gold-rule">
+        <p class="scott-bio">With over two decades in Adelaide's portable amenities landscape, Scott brings an uncompromising eye for cleanliness and an almost spiritual commitment to service logistics.</p>
+        <div class="scott-contact">
+          <a href="mailto:scott@saturnhire.com.au">scott@saturnhire.com.au</a><br>
+          <a href="tel:+61400000000">0400 000 000</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================
+     SECTION 6: ENQUIRE CTA
+     ========================================= -->
+<section class="cta-section">
+  <div class="fade-up">
+    <h2 class="cta-title">Experience Saturn</h2>
+    <p class="cta-subtitle">Begin your journey</p>
+    <a href="mailto:scott@saturnhire.com.au" class="cta-button">Request a Private Viewing</a>
+    <div class="cta-phone">08 8000 0000</div>
+  </div>
+</section>
+
+<!-- =========================================
+     SECTION 7: FOOTER
+     ========================================= -->
+<footer class="footer">
+  <div class="footer-wordmark">SATURN</div>
+  <div class="footer-hire">HIRE</div>
+  <hr class="footer-rule">
+  <div class="footer-location">Adelaide, South Australia</div>
+  <div class="footer-copy">&copy; 2026 Saturn Hire</div>
+</footer>
+
+<script>
+(function() {
+  'use strict';
+
+  /* ==========================================
+     STARS — generate in placeholder
+     ========================================== */
+  const placeholder = document.getElementById('videoPlaceholder');
+  const STAR_COUNT = 80;
+  for (let i = 0; i < STAR_COUNT; i++) {
+    const star = document.createElement('div');
+    star.className = 'star';
+    star.style.left = Math.random() * 100 + '%';
+    star.style.top = Math.random() * 100 + '%';
+    star.style.setProperty('--dur', (2 + Math.random() * 4).toFixed(1) + 's');
+    star.style.setProperty('--delay', (Math.random() * 5).toFixed(1) + 's');
+    if (Math.random() > 0.7) {
+      star.style.width = '3px';
+      star.style.height = '3px';
+    }
+    placeholder.appendChild(star);
+  }
+
+  /* ==========================================
+     SCROLL-DRIVEN VIDEO ENGINE
+     ========================================== */
+  const EXTRACT_FPS = 24;
+  const LERP = 0.08;
+  const VIDEO_SRC = '../assets/videos/saturn-perfume.mp4';
+
+  const canvas = document.getElementById('heroCanvas');
+  const ctx = canvas.getContext('2d');
+  const heroSection = document.querySelector('.hero-video-section');
+  const progressBar = document.getElementById('heroProgress');
+  const overlayIntro = document.getElementById('overlayIntro');
+  const overlaySaturn = document.getElementById('overlaySaturn');
+  const overlayHire = document.getElementById('overlayHire');
+
+  let frames = [];
+  let videoLoaded = false;
+  let currentFrame = 0;
+  let targetFrame = 0;
+
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+
+  function extractFrames(video, fps) {
+    return new Promise(function(resolve) {
+      var duration = video.duration;
+      var totalFrames = Math.floor(duration * fps);
+      var extracted = new Array(totalFrames);
+      var count = 0;
+
+      function seekNext(index) {
+        if (index >= totalFrames) {
+          resolve(extracted);
+          return;
+        }
+        video.currentTime = index / fps;
+      }
+
+      video.onseeked = function() {
+        var idx = Math.round(video.currentTime * fps);
+        if (idx >= totalFrames) idx = totalFrames - 1;
+        createImageBitmap(video).then(function(bmp) {
+          extracted[idx] = bmp;
+          count++;
+          seekNext(count);
+        });
+      };
+
+      seekNext(0);
+    });
+  }
+
+  function fetchAndExtract() {
+    fetch(VIDEO_SRC, { method: 'HEAD' })
+      .then(function(res) {
+        if (!res.ok) throw new Error('Video not found');
+        return fetch(VIDEO_SRC);
+      })
+      .then(function(res) { return res.blob(); })
+      .then(function(blob) {
+        var url = URL.createObjectURL(blob);
+        var video = document.createElement('video');
+        video.muted = true;
+        video.playsInline = true;
+        video.preload = 'auto';
+        video.src = url;
+
+        video.onloadedmetadata = function() {
+          resizeCanvas();
+          extractFrames(video, EXTRACT_FPS).then(function(result) {
+            frames = result.filter(Boolean);
+            if (frames.length > 0) {
+              videoLoaded = true;
+              canvas.style.display = 'block';
+              placeholder.classList.add('hidden');
+              drawFrame(0);
+            }
+            URL.revokeObjectURL(url);
+          });
+        };
+
+        video.onerror = function() {
+          /* Video failed to load — placeholder remains */
+        };
+      })
+      .catch(function() {
+        /* Video not available — placeholder stays visible */
+      });
+  }
+
+  function drawFrame(index) {
+    if (!frames[index]) return;
+    var bmp = frames[index];
+    var scale = Math.max(canvas.width / bmp.width, canvas.height / bmp.height);
+    var w = bmp.width * scale;
+    var h = bmp.height * scale;
+    var x = (canvas.width - w) / 2;
+    var y = (canvas.height - h) / 2;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(bmp, x, y, w, h);
+  }
+
+  /* Overlay logic */
+  function updateOverlays(progress) {
+    /* "Introducing..." fades in at 15-25% */
+    if (progress >= 0.12 && progress <= 0.30) {
+      var t = progress < 0.20 ? (progress - 0.12) / 0.08 : 1 - (progress - 0.25) / 0.05;
+      overlayIntro.style.opacity = Math.max(0, Math.min(1, t));
+    } else {
+      overlayIntro.style.opacity = 0;
+    }
+
+    /* "Saturn" massive at 40-65% */
+    if (progress >= 0.35 && progress <= 0.70) {
+      var t2 = progress < 0.50 ? (progress - 0.35) / 0.15 : 1 - (progress - 0.60) / 0.10;
+      overlaySaturn.style.opacity = Math.max(0, Math.min(1, t2));
+    } else {
+      overlaySaturn.style.opacity = 0;
+    }
+
+    /* "HIRE" tracked at 55-75% */
+    if (progress >= 0.50 && progress <= 0.80) {
+      var t3 = progress < 0.60 ? (progress - 0.50) / 0.10 : 1 - (progress - 0.70) / 0.10;
+      overlayHire.style.opacity = Math.max(0, Math.min(1, t3));
+    } else {
+      overlayHire.style.opacity = 0;
+    }
+  }
+
+  /* LERP animation loop */
+  function tick() {
+    if (videoLoaded && frames.length > 0) {
+      currentFrame += (targetFrame - currentFrame) * LERP;
+      var idx = Math.round(currentFrame);
+      idx = Math.max(0, Math.min(frames.length - 1, idx));
+      drawFrame(idx);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  /* Scroll handler */
+  function onScroll() {
+    var rect = heroSection.getBoundingClientRect();
+    var sectionHeight = heroSection.offsetHeight - window.innerHeight;
+    var scrolled = -rect.top;
+    var progress = Math.max(0, Math.min(1, scrolled / sectionHeight));
+
+    progressBar.style.width = (progress * 100) + '%';
+
+    if (videoLoaded && frames.length > 0) {
+      targetFrame = progress * (frames.length - 1);
+    }
+
+    updateOverlays(progress);
+  }
+
+  /* Init */
+  window.addEventListener('resize', resizeCanvas);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  resizeCanvas();
+  requestAnimationFrame(tick);
+  fetchAndExtract();
+
+  /* ==========================================
+     INTERSECTION OBSERVER — fade/slide
+     ========================================== */
+  var animEls = document.querySelectorAll('.fade-up, .slide-left, .slide-right');
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+  animEls.forEach(function(el) {
+    observer.observe(el);
+  });
+
+  /* ==========================================
+     PARALLAX on decorative elements
+     ========================================== */
+  var orbits = document.querySelectorAll('.orbit-ring');
+  window.addEventListener('scroll', function() {
+    var st = window.pageYOffset;
+    if (st < window.innerHeight * 3.5) {
+      var offset = st * 0.02;
+      orbits.forEach(function(ring, i) {
+        ring.style.transform = 'rotate(' + (offset * (i + 1) * 0.5) + 'deg)';
+      });
+    }
+  }, { passive: true });
+
+})();
+</script>
+</body>
+</html>

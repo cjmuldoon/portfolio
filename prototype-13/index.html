@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saturn Hire — Adelaide's Finest Portable Amenities</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black: #0B0B0B;
+      --gold: #C5A55A;
+      --ivory: #F0EDE8;
+    }
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--black);
+      color: var(--ivory);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Utility */
+    .section-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+
+    .section-heading {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      color: var(--ivory);
+      margin-bottom: 2.5rem;
+      line-height: 1.2;
+    }
+
+    .gold-rule {
+      width: 60px;
+      height: 1px;
+      background-color: var(--gold);
+      border: none;
+      margin: 0 auto;
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    section {
+      padding: 6rem 1.5rem;
+      text-align: center;
+    }
+
+    /* ================================
+       HERO
+    ================================ */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      padding: 2rem 1.5rem;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(3rem, 8vw, 7rem);
+      line-height: 1.05;
+      background: linear-gradient(
+        120deg,
+        var(--gold) 0%,
+        #e8d8a0 25%,
+        var(--gold) 50%,
+        #a08832 75%,
+        var(--gold) 100%
+      );
+      background-size: 200% 100%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shimmer 4s ease-in-out infinite;
+    }
+
+    @keyframes shimmer {
+      0% { background-position: 100% 50%; }
+      50% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+
+    .hero-rule {
+      width: 60px;
+      height: 1px;
+      background-color: var(--gold);
+      border: none;
+      margin: 2rem auto;
+    }
+
+    .hero-subtitle {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-variant: small-caps;
+      font-weight: 400;
+      font-size: clamp(0.9rem, 2vw, 1.2rem);
+      letter-spacing: 0.25em;
+      color: var(--ivory);
+      opacity: 0.85;
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .scroll-indicator span {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.55rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.6;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: var(--gold);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .scroll-line::after {
+      content: '';
+      position: absolute;
+      top: -100%;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--ivory);
+      animation: scrollDown 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollDown {
+      0% { top: -100%; }
+      50% { top: 100%; }
+      100% { top: 100%; }
+    }
+
+    /* ================================
+       PHILOSOPHY
+    ================================ */
+    .philosophy {
+      padding-top: 8rem;
+      padding-bottom: 8rem;
+    }
+
+    .philosophy-rule-top,
+    .philosophy-rule-bottom {
+      width: 60px;
+      height: 1px;
+      background-color: var(--gold);
+      border: none;
+      margin: 0 auto;
+    }
+
+    .philosophy-rule-top {
+      margin-bottom: 3rem;
+    }
+
+    .philosophy-rule-bottom {
+      margin-top: 3rem;
+    }
+
+    .philosophy-text {
+      max-width: 680px;
+      margin: 0 auto;
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      line-height: 1.9;
+      color: var(--ivory);
+      opacity: 0.9;
+    }
+
+    /* ================================
+       THE COLLECTION
+    ================================ */
+    .collection-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    @media (min-width: 768px) {
+      .collection-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .product-card {
+      background: var(--black);
+      border: 1px solid rgba(197, 165, 90, 0.2);
+      padding: 2.5rem 2rem;
+      text-align: left;
+      transition: border-color 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .product-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(197, 165, 90, 0.06);
+    }
+
+    .product-name {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 1.4rem;
+      color: var(--gold);
+      margin-bottom: 0.3rem;
+    }
+
+    .product-type {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ivory);
+      opacity: 0.45;
+      margin-bottom: 1rem;
+    }
+
+    .product-desc {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: 1.05rem;
+      color: var(--ivory);
+      opacity: 0.75;
+      line-height: 1.6;
+    }
+
+    /* ================================
+       TESTIMONIALS
+    ================================ */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      max-width: 1060px;
+      margin: 0 auto;
+    }
+
+    @media (min-width: 768px) {
+      .testimonials-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+    }
+
+    .testimonial-card {
+      background: rgba(197, 165, 90, 0.03);
+      border: 1px solid rgba(197, 165, 90, 0.12);
+      padding: 2.5rem 2rem 2rem;
+      text-align: left;
+      position: relative;
+    }
+
+    .testimonial-quote-mark {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 4rem;
+      color: var(--gold);
+      opacity: 0.3;
+      line-height: 1;
+      position: absolute;
+      top: 1rem;
+      left: 1.5rem;
+    }
+
+    .testimonial-stars {
+      color: var(--gold);
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      margin-bottom: 1.2rem;
+      margin-top: 1rem;
+    }
+
+    .testimonial-text {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--ivory);
+      opacity: 0.9;
+      margin-bottom: 1.5rem;
+    }
+
+    .testimonial-author {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.7;
+    }
+
+    /* ================================
+       THE EXPERIENCE (Timeline)
+    ================================ */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      max-width: 960px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .timeline-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      padding: 2rem 1rem;
+      max-width: 320px;
+    }
+
+    .timeline-connector {
+      width: 1px;
+      height: 50px;
+      background: var(--gold);
+      opacity: 0.3;
+    }
+
+    .timeline-number {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      border: 1px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .timeline-step-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 1.3rem;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .timeline-step-text {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 300;
+      font-size: 1rem;
+      color: var(--ivory);
+      opacity: 0.8;
+      line-height: 1.7;
+    }
+
+    @media (min-width: 768px) {
+      .timeline {
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 0;
+      }
+
+      .timeline-connector {
+        width: 60px;
+        height: 1px;
+        margin-top: 26px;
+      }
+
+      .timeline-step {
+        flex: 1;
+        max-width: 280px;
+      }
+    }
+
+    /* ================================
+       CONTACT
+    ================================ */
+    .contact {
+      padding-top: 8rem;
+      padding-bottom: 8rem;
+    }
+
+    .contact-phone {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 300;
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      color: var(--ivory);
+      letter-spacing: 0.08em;
+      margin-bottom: 2.5rem;
+    }
+
+    .contact-phone a {
+      color: var(--ivory);
+      text-decoration: none;
+      transition: color 0.4s ease;
+    }
+
+    .contact-phone a:hover {
+      color: var(--gold);
+    }
+
+    .cta-button {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--gold);
+      background: transparent;
+      padding: 1rem 2.8rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.4s ease, color 0.4s ease;
+    }
+
+    .cta-button:hover {
+      background-color: var(--gold);
+      color: var(--black);
+    }
+
+    .contact-tagline {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 300;
+      font-size: 0.95rem;
+      color: var(--ivory);
+      opacity: 0.5;
+      margin-top: 3rem;
+    }
+
+    /* ================================
+       FOOTER
+    ================================ */
+    .footer {
+      padding: 3rem 1.5rem 2.5rem;
+      text-align: center;
+      border-top: 1px solid var(--gold);
+    }
+
+    .footer-brand {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--ivory);
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-location {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 300;
+      font-size: 0.9rem;
+      color: var(--ivory);
+      opacity: 0.4;
+      margin-bottom: 2rem;
+    }
+
+    .footer-copy {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      color: var(--ivory);
+      opacity: 0.25;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1 class="hero-title">Saturn Hire</h1>
+    <hr class="hero-rule">
+    <p class="hero-subtitle">Adelaide's Finest Portable Amenities</p>
+    <div class="scroll-indicator">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- PHILOSOPHY -->
+  <section class="philosophy">
+    <div class="fade-up">
+      <p class="section-label">Our Philosophy</p>
+      <h2 class="section-heading">Crafted for the Discerning Site</h2>
+      <hr class="philosophy-rule-top">
+      <p class="philosophy-text">
+        In an industry content with the ordinary, Saturn Hire pursues the exceptional. Every unit is inspected, sanitised, and presented to a standard that reflects not merely function, but an unwavering commitment to dignity. Because even on a construction site, standards matter.
+      </p>
+      <hr class="philosophy-rule-bottom">
+    </div>
+  </section>
+
+  <!-- THE COLLECTION -->
+  <section class="collection">
+    <div class="fade-up">
+      <p class="section-label">The Collection</p>
+      <h2 class="section-heading">Our Distinguished Range</h2>
+    </div>
+    <div class="collection-grid">
+      <div class="product-card fade-up">
+        <h3 class="product-name">The Sovereign</h3>
+        <p class="product-type">Chemical Toilet</p>
+        <p class="product-desc">Autonomous. Self-contained. Regal in its independence.</p>
+      </div>
+      <div class="product-card fade-up">
+        <h3 class="product-name">The Basin</h3>
+        <p class="product-type">Sewer Connect Toilet</p>
+        <p class="product-desc">Plumbed perfection for the permanent installation.</p>
+      </div>
+      <div class="product-card fade-up">
+        <h3 class="product-name">The Retreat</h3>
+        <p class="product-type">Portable Shower</p>
+        <p class="product-desc">A moment of restoration amidst the dust and endeavour.</p>
+      </div>
+      <div class="product-card fade-up">
+        <h3 class="product-name">The Perimeter</h3>
+        <p class="product-type">Temporary Fencing</p>
+        <p class="product-desc">Defining boundaries with quiet authority.</p>
+      </div>
+      <div class="product-card fade-up">
+        <h3 class="product-name">The Monarch</h3>
+        <p class="product-type">Luxury Event Toilet</p>
+        <p class="product-desc">For occasions that demand nothing less than majesty.</p>
+      </div>
+      <div class="product-card fade-up">
+        <h3 class="product-name">The Citadel</h3>
+        <p class="product-type">Site Compound Package</p>
+        <p class="product-desc">Complete facilities. Uncompromising standards.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="fade-up">
+      <p class="section-label">Critical Acclaim</p>
+      <h2 class="section-heading">What the Critics Say</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card fade-up">
+        <span class="testimonial-quote-mark">&ldquo;</span>
+        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="testimonial-text">I've worked forty years on sites across Adelaide. Never has a portable amenity moved me to genuine admiration.</p>
+        <p class="testimonial-author">Tony M., Site Foreman</p>
+      </div>
+      <div class="testimonial-card fade-up">
+        <span class="testimonial-quote-mark">&ldquo;</span>
+        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="testimonial-text">Arrived precisely on schedule. Left without a trace. This is how every interaction should feel.</p>
+        <p class="testimonial-author">Sarah K., Event Coordinator</p>
+      </div>
+      <div class="testimonial-card fade-up">
+        <span class="testimonial-quote-mark">&ldquo;</span>
+        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="testimonial-text">We specified Saturn for our Glenelg development. The subcontractors actually thanked us.</p>
+        <p class="testimonial-author">David R., Project Manager</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE EXPERIENCE -->
+  <section class="experience">
+    <div class="fade-up">
+      <p class="section-label">The Experience</p>
+      <h2 class="section-heading">White-Glove Deployment</h2>
+    </div>
+    <div class="timeline fade-up">
+      <div class="timeline-step">
+        <div class="timeline-number">01</div>
+        <h3 class="timeline-step-title">The Consultation</h3>
+        <p class="timeline-step-text">A considered discussion of your requirements, site conditions, and aesthetic preferences.</p>
+      </div>
+      <div class="timeline-connector"></div>
+      <div class="timeline-step">
+        <div class="timeline-number">02</div>
+        <h3 class="timeline-step-title">The Arrival</h3>
+        <p class="timeline-step-text">Delivered with military precision. Positioned with architectural intent. Immaculate upon arrival.</p>
+      </div>
+      <div class="timeline-connector"></div>
+      <div class="timeline-step">
+        <div class="timeline-number">03</div>
+        <h3 class="timeline-step-title">The Aftercare</h3>
+        <p class="timeline-step-text">Routine servicing so discreet you'll forget we were there. Until you need us again.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact">
+    <div class="fade-up">
+      <p class="section-label">Enquiries</p>
+      <h2 class="section-heading">Request a Private Consultation</h2>
+      <p class="contact-phone"><a href="tel:0882XXXXXX">08 8XXX XXXX</a></p>
+      <a href="#" class="cta-button">Arrange a Viewing</a>
+      <p class="contact-tagline">Saturn Hire &mdash; Serving Greater Adelaide with distinction since 2005</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p class="footer-brand">Saturn Hire</p>
+    <p class="footer-location">Adelaide, South Australia</p>
+    <p class="footer-copy">&copy; 2026 Saturn Hire. All rights reserved.</p>
+  </footer>
+
+  <script>
+    (function() {
+      var targets = document.querySelectorAll('.fade-up');
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.15,
+          rootMargin: '0px 0px -40px 0px'
+        });
+        targets.forEach(function(el) {
+          observer.observe(el);
+        });
+      } else {
+        targets.forEach(function(el) {
+          el.classList.add('visible');
+        });
+      }
+    })();
+  </script>
+
+</body>
+</html>
