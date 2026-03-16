@@ -369,6 +369,20 @@ body::before {
   gap: 10px;
 }
 
+.proto-body .btn-group {
+  display: flex;
+  gap: 8px;
+}
+
+.proto-body .view-btn--alt {
+  background: transparent;
+  border-color: #333;
+}
+
+.proto-body .view-btn--alt:hover {
+  background: #181818;
+}
+
 /* ── Divider ── */
 .divider {
   height: 1px;
@@ -1094,75 +1108,10 @@ body::before {
     <div class="section-header">
       <h2>Saturn Hire — Prototypes</h2>
       <span class="line"></span>
-      <span class="count">7 concepts</span>
+      <span class="count">6 concepts</span>
     </div>
 
     <div class="proto-grid">
-
-      <div class="proto-card">
-        <div class="proto-preview pv-elegant">
-          <div class="p-shapes"></div>
-          <span class="p-label">Cosmic Modern</span>
-        </div>
-        <div class="proto-body">
-          <h3>Cosmic Modern</h3>
-          <p class="desc">Modern redesign pitch with cosmic nebula hero. Real Saturn Hire content, services, and testimonials in a clean dark-mode layout with purple nebula gradients and star fields.</p>
-          <div class="price-row"><span class="price">$3,800</span><span class="price-note">Design + Development</span></div>
-          <a href="prototype-13/index.html" class="view-btn" target="_blank">View Prototype <span>&rarr;</span></a>
-        </div>
-      </div>
-
-      <div class="proto-card">
-        <div class="proto-preview pv-bush">
-          <div class="p-shapes"></div>
-          <span class="p-label">Bush to Throne</span>
-        </div>
-        <div class="proto-body">
-          <h3>Bush to Throne</h3>
-          <p class="desc">Scroll-driven video reveal — construction worker behind a bush to a Saturn Hire toilet. Confident, cheeky tone with a before/after upgrade theme.</p>
-          <div class="price-row"><span class="price">$5,200</span><span class="price-note">Design + Development</span></div>
-          <a href="prototype-14/index.html" class="view-btn" target="_blank">View Prototype <span>&rarr;</span></a>
-        </div>
-      </div>
-
-      <div class="proto-card">
-        <div class="proto-preview pv-bush">
-          <div class="p-shapes"></div>
-          <span class="p-label">Bush to Throne II</span>
-        </div>
-        <div class="proto-body">
-          <h3>Bush to Throne II</h3>
-          <p class="desc">Alternate scroll-driven video — same cheeky concept, different animation. A Saturn toilet drops from the sky to save the day on an Aussie construction site.</p>
-          <div class="price-row"><span class="price">$5,200</span><span class="price-note">Design + Development</span></div>
-          <a href="prototype-19/index.html" class="view-btn" target="_blank">View Prototype <span>&rarr;</span></a>
-        </div>
-      </div>
-
-      <div class="proto-card">
-        <div class="proto-preview pv-perfume">
-          <div class="p-shapes"></div>
-          <span class="p-label">Deep Space</span>
-        </div>
-        <div class="proto-body">
-          <h3>Deep Space</h3>
-          <p class="desc">Cinematic scroll-driven reveal — close-up toilet zoom-out to majestic landscape. Cosmic &ldquo;Saturn&rdquo; brand play with orbital product naming, knowingly absurd.</p>
-          <div class="price-row"><span class="price">$5,500</span><span class="price-note">Design + Development</span></div>
-          <a href="prototype-15/index.html" class="view-btn" target="_blank">View Prototype <span>&rarr;</span></a>
-        </div>
-      </div>
-
-      <div class="proto-card">
-        <div class="proto-preview pv-clean-trade">
-          <div class="p-shapes"></div>
-          <span class="p-label">Clean Trade</span>
-        </div>
-        <div class="proto-body">
-          <h3>Clean Trade</h3>
-          <p class="desc">Professional white-background trade website. No gimmicks — real product photos, real specs, real testimonials. The trustworthy modernisation pitch.</p>
-          <div class="price-row"><span class="price">$3,200</span><span class="price-note">Design + Development</span></div>
-          <a href="prototype-16/index.html" class="view-btn" target="_blank">View Prototype <span>&rarr;</span></a>
-        </div>
-      </div>
 
       <div class="proto-card">
         <div class="proto-preview pv-bold-construct">
@@ -1187,6 +1136,61 @@ body::before {
           <p class="desc">Approachable, inviting design for party and residential customers. Rounded corners, warm earth tones, conversational copy, and a helpful FAQ section.</p>
           <div class="price-row"><span class="price">$3,500</span><span class="price-note">Design + Development</span></div>
           <a href="prototype-18/index.html" class="view-btn" target="_blank">View Prototype <span>&rarr;</span></a>
+        </div>
+      </div>
+
+      <div class="proto-card">
+        <div class="proto-preview pv-clean-trade">
+          <div class="p-shapes"></div>
+          <span class="p-label">Clean Trade</span>
+        </div>
+        <div class="proto-body">
+          <h3>Clean Trade</h3>
+          <p class="desc">Professional white-background trade website. No gimmicks — real product photos, real specs, real testimonials. The trustworthy modernisation pitch.</p>
+          <div class="price-row"><span class="price">$3,200</span><span class="price-note">Design + Development</span></div>
+          <a href="prototype-16/index.html" class="view-btn" target="_blank">View Prototype <span>&rarr;</span></a>
+        </div>
+      </div>
+
+      <div class="proto-card">
+        <div class="proto-preview pv-elegant">
+          <div class="p-shapes"></div>
+          <span class="p-label">Cosmic Modern</span>
+        </div>
+        <div class="proto-body">
+          <h3>Cosmic Modern</h3>
+          <p class="desc">Modern redesign pitch with cosmic nebula hero. Real Saturn Hire content, services, and testimonials in a clean dark-mode layout with purple nebula gradients and star fields.</p>
+          <div class="price-row"><span class="price">$3,800</span><span class="price-note">Design + Development</span></div>
+          <a href="prototype-13/index.html" class="view-btn" target="_blank">View Prototype <span>&rarr;</span></a>
+        </div>
+      </div>
+
+      <div class="proto-card">
+        <div class="proto-preview pv-perfume">
+          <div class="p-shapes"></div>
+          <span class="p-label">Deep Space</span>
+        </div>
+        <div class="proto-body">
+          <h3>Deep Space</h3>
+          <p class="desc">Cinematic scroll-driven reveal — close-up toilet zoom-out to majestic landscape. Cosmic &ldquo;Saturn&rdquo; brand play with orbital product naming, knowingly absurd.</p>
+          <div class="price-row"><span class="price">$5,500</span><span class="price-note">Design + Development</span></div>
+          <a href="prototype-15/index.html" class="view-btn" target="_blank">View Prototype <span>&rarr;</span></a>
+        </div>
+      </div>
+
+      <div class="proto-card">
+        <div class="proto-preview pv-bush">
+          <div class="p-shapes"></div>
+          <span class="p-label">Bush to Throne</span>
+        </div>
+        <div class="proto-body">
+          <h3>Bush to Throne</h3>
+          <p class="desc">Scroll-driven video reveal — construction worker behind a bush to a Saturn Hire toilet. Confident, cheeky tone with a before/after upgrade theme. Two animation options.</p>
+          <div class="price-row"><span class="price">$5,200</span><span class="price-note">Design + Development</span></div>
+          <div class="btn-group">
+            <a href="prototype-14/index.html" class="view-btn" target="_blank">Animation A <span>&rarr;</span></a>
+            <a href="prototype-19/index.html" class="view-btn view-btn--alt" target="_blank">Animation B <span>&rarr;</span></a>
+          </div>
         </div>
       </div>
 
