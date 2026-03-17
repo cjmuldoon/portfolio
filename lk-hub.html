@@ -2050,9 +2050,22 @@ body::before {
     </div>
     <div class="cart-line total">
       <span class="cart-line-label">Your Total</span>
-      <span class="cart-line-value">$0</span>
+      <span class="cart-line-value" id="cart-total-value">$0</span>
     </div>
     <div class="cart-note">We build these for you — no cost for selected items from our design portfolio.</div>
+
+    <!-- Domain add-on -->
+    <div style="margin: 12px 0; padding: 10px 12px; background: rgba(108,99,255,0.08); border: 1px solid rgba(108,99,255,0.2); border-radius: 10px;">
+      <label style="display: flex; align-items: flex-start; gap: 8px; cursor: pointer;">
+        <input type="checkbox" id="domain-addon" onchange="updateDomainAddon()" style="margin-top: 3px; accent-color: #6c63ff;">
+        <div>
+          <div style="font-size: 12px; font-weight: 600; color: #fff;">New domain name</div>
+          <div style="font-size: 10px; color: #8b8fa3; margin-top: 2px;">We'll register a custom .com.au or .com domain for your site. Includes DNS setup and SSL.</div>
+          <div style="font-size: 11px; color: #C9A96E; font-weight: 600; margin-top: 4px;">+$25/year <span style="font-weight: 400; color: #8b8fa3; font-size: 10px;">(not included in discount)</span></div>
+        </div>
+      </label>
+    </div>
+
     <textarea class="cart-comments" id="cart-comments" placeholder="Any comments, preferences, or specific requirements..."></textarea>
     <button class="cart-submit" id="cart-submit-btn" onclick="generatePackageEmail()" disabled>I Want These</button>
   </div>
@@ -2486,10 +2499,23 @@ function closeCart() {
 
 var packageSummaryText = '';
 
+function updateDomainAddon() {
+  var checked = document.getElementById('domain-addon').checked;
+  var totalEl = document.getElementById('cart-total-value');
+  if (checked) {
+    totalEl.textContent = '$25/yr';
+    totalEl.style.color = '#C9A96E';
+  } else {
+    totalEl.textContent = '$0';
+    totalEl.style.color = '';
+  }
+}
+
 function generatePackageEmail() {
   if (cart.length === 0) return;
 
   var comments = document.getElementById('cart-comments').value.trim();
+  var wantsDomain = document.getElementById('domain-addon').checked;
   var subtotal = 0;
   for (var i = 0; i < cart.length; i++) subtotal += cart[i].price;
 
@@ -2511,8 +2537,21 @@ function generatePackageEmail() {
   lines.push('-'.repeat(40));
   lines.push('Subtotal:           $' + subtotal.toLocaleString());
   lines.push('Portfolio Discount:  -$' + subtotal.toLocaleString() + ' (100%)');
-  lines.push('Your Total:          $0');
+
+  if (wantsDomain) {
+    lines.push('Domain Registration:  $25/year');
+    lines.push('Your Total:          $25/yr');
+  } else {
+    lines.push('Your Total:          $0');
+  }
   lines.push('');
+
+  if (wantsDomain) {
+    lines.push('** Domain name requested — $25/year for');
+    lines.push('   .com.au or .com registration, DNS setup');
+    lines.push('   and SSL certificate.');
+    lines.push('');
+  }
 
   if (comments) {
     lines.push('Comments / Preferences:');
@@ -2520,9 +2559,9 @@ function generatePackageEmail() {
     lines.push('');
   }
 
-  lines.push('Note: These designs are from our portfolio');
-  lines.push('and are provided at no cost as part of our');
-  lines.push('design showcase.');
+  lines.push('Note: Design and development from our portfolio');
+  lines.push('are provided at no cost. Domain registration is');
+  lines.push('the only paid component if selected.');
 
   packageSummaryText = lines.join('\n');
 
