@@ -621,6 +621,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      position: relative;
+      overflow: hidden;
       font-family: var(--font-body);
       font-size: 0.6rem;
       font-weight: 500;
@@ -1189,7 +1191,7 @@
       <span class="hero-badge-dot"></span>
       Adelaide Owned & Operated
     </div>
-    <h1>Adelaide Toilet Hire<br>& <span>Shower Hire</span></h1>
+    <h1>Adelaide Toilet, Shower<br>& <span>Fencing Hire</span></h1>
     <p class="hero-desc">Clean, serviced, and delivered on time. Portable toilets, showers, and temporary fencing for builders, renovators, and events across greater Adelaide.</p>
     <div class="hero-actions">
       <a href="#contact" class="btn-primary">Get a Quote</a>
@@ -1231,13 +1233,22 @@
       </div>
       <div class="about-image-grid fade-up">
         <div class="about-img">
-          <div class="about-img-inner about-img-inner--1">Fleet</div>
+          <div class="about-img-inner about-img-inner--1">
+            <img src="https://saturnhire.com.au/wp-content/uploads/2021/04/Saturn_9.jpg" alt="Saturn Hire Fleet" style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit; position: absolute; top: 0; left: 0;">
+            <span style="position: relative; z-index: 1; text-shadow: 0 2px 8px rgba(0,0,0,0.7);">Fleet</span>
+          </div>
         </div>
         <div class="about-img">
-          <div class="about-img-inner about-img-inner--2">Delivery</div>
+          <div class="about-img-inner about-img-inner--2">
+            <img src="https://saturnhire.com.au/wp-content/uploads/2021/04/Saturn_5.jpg" alt="Saturn Hire Delivery" style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit; position: absolute; top: 0; left: 0;">
+            <span style="position: relative; z-index: 1; text-shadow: 0 2px 8px rgba(0,0,0,0.7);">Delivery</span>
+          </div>
         </div>
         <div class="about-img">
-          <div class="about-img-inner about-img-inner--3">Service</div>
+          <div class="about-img-inner about-img-inner--3">
+            <img src="https://saturnhire.com.au/wp-content/uploads/2021/04/Saturn_4.jpg" alt="Saturn Hire Service" style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit; position: absolute; top: 0; left: 0;">
+            <span style="position: relative; z-index: 1; text-shadow: 0 2px 8px rgba(0,0,0,0.7);">Service</span>
+          </div>
         </div>
       </div>
     </div>
@@ -1257,8 +1268,11 @@
 
     <div class="services-grid">
       <div class="service-card fade-up">
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="9" y1="6" x2="15" y2="6"/><circle cx="12" cy="14" r="3"/></svg>
+        <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 8px;">
+          <div class="service-icon" style="margin-bottom: 0; flex-shrink: 0;">
+            <svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="9" y1="6" x2="15" y2="6"/><circle cx="12" cy="14" r="3"/></svg>
+          </div>
+          <img src="https://saturnhire.com.au/wp-content/uploads/2021/04/Saturn_1.jpg" alt="Chemical Toilet" style="width: 64px; height: 64px; object-fit: cover; border-radius: 8px; border: 1px solid rgba(212, 175, 55, 0.2); flex-shrink: 0;">
         </div>
         <h3>Chemical Toilets</h3>
         <p>Steel frame and Colorbond steel construction with heavy-duty reinforced fibreglass tanks and roof.</p>
@@ -1271,8 +1285,11 @@
       </div>
 
       <div class="service-card fade-up">
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 13a3 3 0 006 0"/><line x1="9" y1="6" x2="15" y2="6"/><path d="M8 22h8"/></svg>
+        <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 8px;">
+          <div class="service-icon" style="margin-bottom: 0; flex-shrink: 0;">
+            <svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 13a3 3 0 006 0"/><line x1="9" y1="6" x2="15" y2="6"/><path d="M8 22h8"/></svg>
+          </div>
+          <img src="https://saturnhire.com.au/wp-content/uploads/2021/04/Saturn_2.jpg" alt="Sewer Connect Toilet" style="width: 64px; height: 64px; object-fit: cover; border-radius: 8px; border: 1px solid rgba(212, 175, 55, 0.2); flex-shrink: 0;">
         </div>
         <h3>Sewer Connect Toilets</h3>
         <p>Internal plumbing with porcelain bowl, dual flush cistern, and Caroma hand basin with running water.</p>
@@ -1285,8 +1302,11 @@
       </div>
 
       <div class="service-card fade-up">
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z" fill="none"/><path d="M12 3v3"/><path d="M8 8a4 4 0 018 0"/><path d="M7 8v10h10V8"/><path d="M10 18v3h4v-3"/></svg>
+        <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 8px;">
+          <div class="service-icon" style="margin-bottom: 0; flex-shrink: 0;">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z" fill="none"/><path d="M12 3v3"/><path d="M8 8a4 4 0 018 0"/><path d="M7 8v10h10V8"/><path d="M10 18v3h4v-3"/></svg>
+          </div>
+          <img src="https://saturnhire.com.au/wp-content/uploads/2021/04/Saturn_3.jpg" alt="Portable Shower" style="width: 64px; height: 64px; object-fit: cover; border-radius: 8px; border: 1px solid rgba(212, 175, 55, 0.2); flex-shrink: 0;">
         </div>
         <h3>Portable Showers</h3>
         <p>50L electric hot water service with standard hose connection. Reinforced heavy-duty fibreglass construction.</p>
@@ -1299,8 +1319,11 @@
       </div>
 
       <div class="service-card fade-up">
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24"><path d="M3 3h18v18H3z" fill="none"/><line x1="3" y1="3" x2="3" y2="21"/><line x1="7" y1="3" x2="7" y2="21"/><line x1="11" y1="3" x2="11" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/><line x1="19" y1="3" x2="19" y2="21"/><line x1="21" y1="3" x2="21" y2="21"/><line x1="3" y1="12" x2="21" y2="12"/></svg>
+        <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 8px;">
+          <div class="service-icon" style="margin-bottom: 0; flex-shrink: 0;">
+            <svg viewBox="0 0 24 24"><path d="M3 3h18v18H3z" fill="none"/><line x1="3" y1="3" x2="3" y2="21"/><line x1="7" y1="3" x2="7" y2="21"/><line x1="11" y1="3" x2="11" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/><line x1="19" y1="3" x2="19" y2="21"/><line x1="21" y1="3" x2="21" y2="21"/><line x1="3" y1="12" x2="21" y2="12"/></svg>
+          </div>
+          <img src="https://saturnhire.com.au/wp-content/uploads/2021/04/Saturn_6.jpg" alt="Temporary Fencing" style="width: 64px; height: 64px; object-fit: cover; border-radius: 8px; border: 1px solid rgba(212, 175, 55, 0.2); flex-shrink: 0;">
         </div>
         <h3>Temporary Fencing</h3>
         <p>Supply and install for construction site security. 2.1m x 2.4m panels with 1.8m high mesh infill.</p>
@@ -1313,8 +1336,11 @@
       </div>
 
       <div class="service-card fade-up">
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>
+        <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 8px;">
+          <div class="service-icon" style="margin-bottom: 0; flex-shrink: 0;">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>
+          </div>
+          <img src="https://saturnhire.com.au/wp-content/uploads/2021/04/Saturn_8.jpg" alt="Trailer Mounted Toilet" style="width: 64px; height: 64px; object-fit: cover; border-radius: 8px; border: 1px solid rgba(212, 175, 55, 0.2); flex-shrink: 0;">
         </div>
         <h3>Trailer Mounted Toilet</h3>
         <p>Standard chemical toilet fixed to a 4x4 trailer. Easy to manoeuvre on site with pickup or delivery options.</p>
@@ -1327,8 +1353,11 @@
       </div>
 
       <div class="service-card fade-up">
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 8px;">
+          <div class="service-icon" style="margin-bottom: 0; flex-shrink: 0;">
+            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <img src="https://saturnhire.com.au/wp-content/uploads/2021/04/Saturn_10.jpg" alt="Event and Party Hire" style="width: 64px; height: 64px; object-fit: cover; border-radius: 8px; border: 1px solid rgba(212, 175, 55, 0.2); flex-shrink: 0;">
         </div>
         <h3>Event & Party Hire</h3>
         <p>Modern portable toilets with quality aesthetics. Foot-operated pumps for flushing and handwashing. Large tanks for all-day events.</p>
@@ -1355,31 +1384,40 @@
     </div>
 
     <div class="hire-grid">
-      <div class="hire-card fade-up">
-        <div class="hire-card-icon">
-          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <div class="hire-card fade-up" style="position: relative; overflow: hidden;">
+        <img src="https://saturnhire.com.au/wp-content/uploads/2021/04/Construction.jpg" alt="Builders Hire" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.25; z-index: 0;">
+        <div style="position: relative; z-index: 1;">
+          <div class="hire-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <h3>Builders Hire</h3>
+          <p>Portable toilets delivered directly for extended periods. Set and forget — we handle the servicing.</p>
+          <a href="#contact" class="btn-primary" style="font-size:0.7rem;padding:12px 24px;">Book Now</a>
         </div>
-        <h3>Builders Hire</h3>
-        <p>Portable toilets delivered directly for extended periods. Set and forget — we handle the servicing.</p>
-        <a href="#contact" class="btn-primary" style="font-size:0.7rem;padding:12px 24px;">Book Now</a>
       </div>
 
-      <div class="hire-card fade-up">
-        <div class="hire-card-icon">
-          <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+      <div class="hire-card fade-up" style="position: relative; overflow: hidden;">
+        <img src="https://saturnhire.com.au/wp-content/uploads/2021/04/Reno.jpg" alt="General Hire" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.25; z-index: 0;">
+        <div style="position: relative; z-index: 1;">
+          <div class="hire-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+          </div>
+          <h3>General Hire</h3>
+          <p>Building or renovating? We'll deliver toilets and showers to keep your project running smoothly.</p>
+          <a href="#contact" class="btn-primary" style="font-size:0.7rem;padding:12px 24px;">Book Now</a>
         </div>
-        <h3>General Hire</h3>
-        <p>Building or renovating? We'll deliver toilets and showers to keep your project running smoothly.</p>
-        <a href="#contact" class="btn-primary" style="font-size:0.7rem;padding:12px 24px;">Book Now</a>
       </div>
 
-      <div class="hire-card fade-up">
-        <div class="hire-card-icon">
-          <svg viewBox="0 0 24 24"><path d="M5 3a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2H5z"/><path d="M12 8v8m-4-4h8"/></svg>
+      <div class="hire-card fade-up" style="position: relative; overflow: hidden;">
+        <img src="https://saturnhire.com.au/wp-content/uploads/2021/04/Party.jpg" alt="Party Hire" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.25; z-index: 0;">
+        <div style="position: relative; z-index: 1;">
+          <div class="hire-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M5 3a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2H5z"/><path d="M12 8v8m-4-4h8"/></svg>
+          </div>
+          <h3>Party Hire</h3>
+          <p>Having extra guests? Keep your house bathroom for you — we'll handle the rest outside.</p>
+          <a href="#contact" class="btn-primary" style="font-size:0.7rem;padding:12px 24px;">Book Now</a>
         </div>
-        <h3>Party Hire</h3>
-        <p>Having extra guests? Keep your house bathroom for you — we'll handle the rest outside.</p>
-        <a href="#contact" class="btn-primary" style="font-size:0.7rem;padding:12px 24px;">Book Now</a>
       </div>
     </div>
   </div>
