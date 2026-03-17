@@ -881,6 +881,563 @@ body::before {
   .branding-intro { flex-direction: column; text-align: center; padding: 20px; }
   .proto-preview { height: 160px; }
 }
+
+/* ── Cart System ── */
+.add-to-cart-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: inherit;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #666;
+  background: transparent;
+  border: 1px solid #222;
+  border-radius: 8px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+  margin-top: 10px;
+  width: 100%;
+  justify-content: center;
+}
+
+.add-to-cart-btn:hover {
+  color: var(--gold);
+  border-color: rgba(201,169,110,0.4);
+  box-shadow: 0 0 16px rgba(201,169,110,0.08);
+}
+
+.add-to-cart-btn.added {
+  background: rgba(76,175,80,0.15);
+  border-color: rgba(76,175,80,0.4);
+  color: #4CAF50;
+}
+
+.add-to-cart-btn.added:hover {
+  background: rgba(244,67,54,0.12);
+  border-color: rgba(244,67,54,0.4);
+  color: #f44336;
+}
+
+.add-to-cart-btn .cart-icon {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* Card gold glow when in cart */
+.proto-card.in-cart,
+.concept-card.in-cart {
+  box-shadow: 0 0 0 1px rgba(201,169,110,0.35), 0 0 24px rgba(201,169,110,0.08);
+}
+
+/* Cart FAB */
+.cart-fab {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--gold);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 24px rgba(201,169,110,0.35), 0 0 0 0 rgba(201,169,110,0);
+  z-index: 900;
+  transition: transform 0.3s cubic-bezier(0.4,0,0.2,1), box-shadow 0.3s;
+}
+
+.cart-fab:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 32px rgba(201,169,110,0.45), 0 0 0 4px rgba(201,169,110,0.1);
+}
+
+.cart-fab svg {
+  width: 26px;
+  height: 26px;
+  color: #0a0b10;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 6px;
+  border-radius: 11px;
+  background: #e53935;
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', sans-serif;
+  box-shadow: 0 2px 8px rgba(229,57,53,0.4);
+}
+
+@keyframes fabPulse {
+  0% { box-shadow: 0 4px 24px rgba(201,169,110,0.35), 0 0 0 0 rgba(201,169,110,0.4); }
+  70% { box-shadow: 0 4px 24px rgba(201,169,110,0.35), 0 0 0 12px rgba(201,169,110,0); }
+  100% { box-shadow: 0 4px 24px rgba(201,169,110,0.35), 0 0 0 0 rgba(201,169,110,0); }
+}
+
+.cart-fab.pulse {
+  animation: fabPulse 0.6s ease;
+}
+
+/* Cart Overlay */
+.cart-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 950;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.cart-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Cart Panel */
+.cart-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 400px;
+  max-width: 92vw;
+  background: #0e0f14;
+  border-left: 1px solid #1a1a1a;
+  z-index: 960;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+  box-shadow: -8px 0 40px rgba(0,0,0,0.5);
+}
+
+.cart-panel.open {
+  transform: translateX(0);
+}
+
+.cart-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 24px 24px 20px;
+  border-bottom: 1px solid #1a1a1a;
+  flex-shrink: 0;
+}
+
+.cart-header h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--white);
+  flex: 1;
+}
+
+.cart-header .cart-count-label {
+  font-size: 0.72rem;
+  color: #555;
+  font-weight: 500;
+  background: #111;
+  padding: 4px 10px;
+  border-radius: 10px;
+  border: 1px solid #1a1a1a;
+}
+
+.cart-header .cart-close-btn {
+  width: 36px;
+  height: 36px;
+  border: 1px solid #222;
+  background: transparent;
+  border-radius: 50%;
+  color: #666;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.cart-header .cart-close-btn:hover {
+  color: var(--white);
+  border-color: #444;
+  background: #181818;
+}
+
+/* Cart Items */
+.cart-items {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px 24px;
+}
+
+.cart-items::-webkit-scrollbar { width: 4px; }
+.cart-items::-webkit-scrollbar-track { background: transparent; }
+.cart-items::-webkit-scrollbar-thumb { background: #222; border-radius: 2px; }
+
+.cart-empty {
+  text-align: center;
+  padding: 48px 16px;
+  color: #444;
+  font-size: 0.85rem;
+}
+
+.cart-empty svg {
+  width: 48px;
+  height: 48px;
+  color: #222;
+  margin-bottom: 16px;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid #141414;
+  animation: fadeSlideIn 0.3s ease;
+}
+
+.cart-item-preview {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  overflow: hidden;
+  position: relative;
+}
+
+.cart-item-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.cart-item-name {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--white);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cart-item-category {
+  font-size: 0.68rem;
+  color: #555;
+  margin-top: 2px;
+}
+
+.cart-item-price {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+
+.cart-item-remove {
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: transparent;
+  color: #444;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.cart-item-remove:hover {
+  background: rgba(244,67,54,0.12);
+  color: #f44336;
+}
+
+/* Cart Footer */
+.cart-footer {
+  padding: 20px 24px 24px;
+  border-top: 1px solid #1a1a1a;
+  flex-shrink: 0;
+}
+
+.cart-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.82rem;
+  margin-bottom: 8px;
+}
+
+.cart-line-label { color: #666; }
+.cart-line-value { color: var(--white); font-weight: 600; }
+
+.cart-line.discount .cart-line-label { color: #4CAF50; }
+.cart-line.discount .cart-line-value { color: #4CAF50; }
+
+.cart-line.total {
+  padding-top: 12px;
+  border-top: 1px solid #1a1a1a;
+  margin-top: 4px;
+  margin-bottom: 12px;
+}
+
+.cart-line.total .cart-line-label {
+  font-weight: 700;
+  color: var(--white);
+  font-size: 0.9rem;
+}
+
+.cart-line.total .cart-line-value {
+  font-size: 1.1rem;
+  color: var(--gold);
+  font-weight: 800;
+}
+
+.cart-note {
+  font-size: 0.72rem;
+  color: #555;
+  line-height: 1.5;
+  padding: 10px 14px;
+  background: rgba(76,175,80,0.06);
+  border: 1px solid rgba(76,175,80,0.12);
+  border-radius: 8px;
+  margin-bottom: 14px;
+}
+
+.cart-comments {
+  width: 100%;
+  padding: 10px 14px;
+  background: #0a0b10;
+  border: 1px solid #1a1a1a;
+  border-radius: 8px;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.8rem;
+  resize: vertical;
+  min-height: 60px;
+  margin-bottom: 14px;
+  transition: border-color 0.2s;
+}
+
+.cart-comments:focus {
+  outline: none;
+  border-color: rgba(201,169,110,0.4);
+}
+
+.cart-comments::placeholder { color: #444; }
+
+.cart-submit {
+  width: 100%;
+  padding: 14px 24px;
+  background: var(--gold);
+  color: #0a0b10;
+  border: none;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+  letter-spacing: 0.02em;
+}
+
+.cart-submit:hover {
+  background: #d4b578;
+  box-shadow: 0 4px 20px rgba(201,169,110,0.25);
+}
+
+.cart-submit:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Package Summary Modal */
+.package-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  animation: lbIn 0.3s ease;
+}
+
+.package-modal-content {
+  background: #12131a;
+  border: 1px solid #1a1a1a;
+  border-radius: 16px;
+  padding: 32px;
+  max-width: 560px;
+  width: 90vw;
+  max-height: 85vh;
+  overflow-y: auto;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.6);
+}
+
+.package-modal-content::-webkit-scrollbar { width: 4px; }
+.package-modal-content::-webkit-scrollbar-thumb { background: #222; border-radius: 2px; }
+
+.package-modal-content h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 20px;
+}
+
+.package-summary {
+  background: #0a0b10;
+  border: 1px solid #1a1a1a;
+  border-radius: 10px;
+  padding: 20px;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 0.78rem;
+  color: var(--text);
+  line-height: 1.7;
+  margin-bottom: 20px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.package-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.package-actions button {
+  flex: 1;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+
+.package-actions .pkg-copy {
+  background: var(--gold);
+  color: #0a0b10;
+  border: none;
+}
+
+.package-actions .pkg-copy:hover {
+  background: #d4b578;
+  box-shadow: 0 4px 16px rgba(201,169,110,0.2);
+}
+
+.package-actions .pkg-email {
+  background: transparent;
+  color: var(--gold);
+  border: 1px solid rgba(201,169,110,0.35);
+}
+
+.package-actions .pkg-email:hover {
+  background: rgba(201,169,110,0.08);
+}
+
+.package-actions .pkg-close {
+  background: transparent;
+  color: #666;
+  border: 1px solid #222;
+  flex: 0.5;
+}
+
+.package-actions .pkg-close:hover {
+  color: var(--white);
+  border-color: #444;
+}
+
+.copied-toast {
+  position: fixed;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: #4CAF50;
+  color: #fff;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  z-index: 1200;
+  opacity: 0;
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.copied-toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Branding concept add-to-cart button */
+.concept-card .concept-cart-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  font-family: inherit;
+  font-size: 0.65rem;
+  font-weight: 500;
+  color: #555;
+  background: transparent;
+  border: 1px solid #1a1a1a;
+  border-top: none;
+  padding: 8px 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+  width: 100%;
+}
+
+.concept-card .concept-cart-btn:hover {
+  color: var(--gold);
+  background: rgba(201,169,110,0.04);
+}
+
+.concept-card .concept-cart-btn.added {
+  background: rgba(76,175,80,0.1);
+  color: #4CAF50;
+}
+
+.concept-card .concept-cart-btn.added:hover {
+  background: rgba(244,67,54,0.08);
+  color: #f44336;
+}
+
+@media (max-width: 640px) {
+  .cart-fab { bottom: 20px; right: 20px; width: 52px; height: 52px; }
+  .cart-fab svg { width: 22px; height: 22px; }
+  .cart-panel { width: 100%; }
+  .package-modal-content { padding: 24px 20px; }
+  .package-actions { flex-wrap: wrap; }
+  .package-actions button { flex: 1 1 45%; }
+  .package-actions .pkg-close { flex: 1 1 100%; }
+}
 </style>
 </head>
 <body>
@@ -925,7 +1482,7 @@ body::before {
 
     <div class="proto-grid">
 
-      <div class="proto-card">
+      <div class="proto-card" data-item-id="prime-minimal-luxe" data-item-name="Minimal Luxe" data-item-price="3200" data-item-category="Prime" data-item-preview="pv-minimal">
         <div class="proto-preview pv-minimal">
           <div class="p-shapes"></div>
           <span class="p-label">Minimal Luxe</span>
@@ -935,10 +1492,11 @@ body::before {
           <p class="desc">Clean editorial layout. Generous white space with refined typography. The work speaks for itself.</p>
           <div class="price-row"><span class="price">$3,200</span><span class="price-note">Design + Development</span></div>
           <a href="prototype-1/index.html" class="view-btn" target="_blank">View Prototype <span>&rarr;</span></a>
+          <button class="add-to-cart-btn" onclick="toggleCartItem(this)"><span class="cart-icon">+</span> Add to Package</button>
         </div>
       </div>
 
-      <div class="proto-card">
+      <div class="proto-card" data-item-id="prime-bold-industrial" data-item-name="Bold Industrial" data-item-price="3800" data-item-category="Prime" data-item-preview="pv-industrial">
         <div class="proto-preview pv-industrial">
           <div class="p-shapes"></div>
           <span class="p-label">Bold Industrial</span>
@@ -948,10 +1506,11 @@ body::before {
           <p class="desc">Dark, dramatic aesthetic. High-contrast elements with heavy typography and cinematic composition.</p>
           <div class="price-row"><span class="price">$3,800</span><span class="price-note">Design + Development</span></div>
           <a href="prototype-2/index.html" class="view-btn" target="_blank">View Prototype <span>&rarr;</span></a>
+          <button class="add-to-cart-btn" onclick="toggleCartItem(this)"><span class="cart-icon">+</span> Add to Package</button>
         </div>
       </div>
 
-      <div class="proto-card">
+      <div class="proto-card" data-item-id="prime-warm-organic" data-item-name="Warm &amp; Organic" data-item-price="3200" data-item-category="Prime" data-item-preview="pv-organic">
         <div class="proto-preview pv-organic">
           <div class="p-shapes"></div>
           <span class="p-label">Warm &amp; Organic</span>
@@ -961,10 +1520,11 @@ body::before {
           <p class="desc">Earthy, inviting aesthetic. Scandinavian minimalism with Australian warmth and natural textures.</p>
           <div class="price-row"><span class="price">$3,200</span><span class="price-note">Design + Development</span></div>
           <a href="prototype-3/index.html" class="view-btn" target="_blank">View Prototype <span>&rarr;</span></a>
+          <button class="add-to-cart-btn" onclick="toggleCartItem(this)"><span class="cart-icon">+</span> Add to Package</button>
         </div>
       </div>
 
-      <div class="proto-card">
+      <div class="proto-card" data-item-id="prime-kinetic-blueprint" data-item-name="Kinetic Blueprint" data-item-price="4200" data-item-category="Prime" data-item-preview="pv-blueprint">
         <div class="proto-preview pv-blueprint">
           <div class="p-shapes"></div>
           <span class="p-label">Kinetic Blueprint</span>
@@ -974,10 +1534,11 @@ body::before {
           <p class="desc">Technical precision meets dynamic motion. Monospace type, animated grid lines, construction-in-progress metaphor.</p>
           <div class="price-row"><span class="price">$4,200</span><span class="price-note">Design + Development</span></div>
           <a href="prototype-7/index.html" class="view-btn" target="_blank">View Prototype <span>&rarr;</span></a>
+          <button class="add-to-cart-btn" onclick="toggleCartItem(this)"><span class="cart-icon">+</span> Add to Package</button>
         </div>
       </div>
 
-      <div class="proto-card">
+      <div class="proto-card" data-item-id="prime-ember-stone" data-item-name="Ember &amp; Stone" data-item-price="3500" data-item-category="Prime" data-item-preview="pv-ember">
         <div class="proto-preview pv-ember">
           <div class="p-shapes"></div>
           <span class="p-label">Ember &amp; Stone</span>
@@ -987,10 +1548,11 @@ body::before {
           <p class="desc">Warm materiality with tactile textures. Limestone, concrete, and sandstone tones with golden-hour warmth.</p>
           <div class="price-row"><span class="price">$3,500</span><span class="price-note">Design + Development</span></div>
           <a href="prototype-8/index.html" class="view-btn" target="_blank">View Prototype <span>&rarr;</span></a>
+          <button class="add-to-cart-btn" onclick="toggleCartItem(this)"><span class="cart-icon">+</span> Add to Package</button>
         </div>
       </div>
 
-      <div class="proto-card">
+      <div class="proto-card" data-item-id="prime-signal-tower" data-item-name="Signal Tower" data-item-price="4500" data-item-category="Prime" data-item-preview="pv-signal">
         <div class="proto-preview pv-signal">
           <div class="p-shapes"></div>
           <span class="p-label">Signal Tower</span>
@@ -1000,6 +1562,7 @@ body::before {
           <p class="desc">Bold editorial with massive condensed typography. Magazine-style layouts with split-screen hero and scroll-snap.</p>
           <div class="price-row"><span class="price">$4,500</span><span class="price-note">Design + Development</span></div>
           <a href="prototype-9/index.html" class="view-btn" target="_blank">View Prototype <span>&rarr;</span></a>
+          <button class="add-to-cart-btn" onclick="toggleCartItem(this)"><span class="cart-icon">+</span> Add to Package</button>
         </div>
       </div>
 
@@ -1019,7 +1582,7 @@ body::before {
 
     <div class="proto-grid">
 
-      <div class="proto-card">
+      <div class="proto-card" data-item-id="lk-studio-refined" data-item-name="Studio Refined" data-item-price="4200" data-item-category="LK" data-item-preview="pv-refined">
         <div class="proto-preview pv-refined">
           <div class="p-shapes"></div>
           <span class="p-label">Studio Refined</span>
@@ -1029,10 +1592,11 @@ body::before {
           <p class="desc">Gallery-like aesthetic with gold accents on charcoal. Precision and sophistication in every detail.</p>
           <div class="price-row"><span class="price">$4,200</span><span class="price-note">Design + Development</span></div>
           <a href="prototype-4/index.html" class="view-btn" target="_blank">View Prototype <span>&rarr;</span></a>
+          <button class="add-to-cart-btn" onclick="toggleCartItem(this)"><span class="cart-icon">+</span> Add to Package</button>
         </div>
       </div>
 
-      <div class="proto-card">
+      <div class="proto-card" data-item-id="lk-studio-animated" data-item-name="Studio Animated" data-item-price="5500" data-item-category="LK" data-item-preview="pv-refined-anim">
         <div class="proto-preview pv-refined-anim">
           <div class="p-shapes"></div>
           <span class="p-label">Studio Animated</span>
@@ -1042,10 +1606,11 @@ body::before {
           <p class="desc">Full client website with scroll-driven project showcase and GGB-style technical infographic overlays. Studio Refined variant with animated Semaphore master suite feature.</p>
           <div class="price-row"><span class="price">$5,500</span><span class="price-note">Design + Development</span></div>
           <a href="prototype-5/index.html" class="view-btn" target="_blank">View Prototype <span>&rarr;</span></a>
+          <button class="add-to-cart-btn" onclick="toggleCartItem(this)"><span class="cart-icon">+</span> Add to Package</button>
         </div>
       </div>
 
-      <div class="proto-card">
+      <div class="proto-card" data-item-id="lk-studio-motion" data-item-name="Studio Motion" data-item-price="6200" data-item-category="LK" data-item-preview="pv-refined-anim">
         <div class="proto-preview pv-refined-anim">
           <div class="p-shapes"></div>
           <span class="p-label">Studio Motion</span>
@@ -1055,10 +1620,11 @@ body::before {
           <p class="desc">Scroll-driven video showcase. Cinematic bathroom pan controlled by scroll, followed by infographic reveal video. Studio Refined design language.</p>
           <div class="price-row"><span class="price">$6,200</span><span class="price-note">Design + Development</span></div>
           <a href="prototype-6/index.html" class="view-btn" target="_blank">View Prototype <span>&rarr;</span></a>
+          <button class="add-to-cart-btn" onclick="toggleCartItem(this)"><span class="cart-icon">+</span> Add to Package</button>
         </div>
       </div>
 
-      <div class="proto-card">
+      <div class="proto-card" data-item-id="lk-industrial-blueprint" data-item-name="Industrial Blueprint" data-item-price="5800" data-item-category="LK" data-item-preview="pv-industrial-cad">
         <div class="proto-preview pv-industrial-cad">
           <div class="p-shapes"></div>
           <span class="p-label">Industrial Blueprint</span>
@@ -1068,10 +1634,11 @@ body::before {
           <p class="desc">Dark CAD wireframe aesthetic with architectural annotations, scan-line animations, and technical spec cards.</p>
           <div class="price-row"><span class="price">$5,800</span><span class="price-note">Design + Development</span></div>
           <a href="prototype-10/index.html" class="view-btn" target="_blank">View Prototype <span>&rarr;</span></a>
+          <button class="add-to-cart-btn" onclick="toggleCartItem(this)"><span class="cart-icon">+</span> Add to Package</button>
         </div>
       </div>
 
-      <div class="proto-card">
+      <div class="proto-card" data-item-id="lk-velvet-monolith" data-item-name="Velvet Monolith" data-item-price="5500" data-item-category="LK" data-item-preview="pv-velvet">
         <div class="proto-preview pv-velvet">
           <div class="p-shapes"></div>
           <span class="p-label">Velvet Monolith</span>
@@ -1081,10 +1648,11 @@ body::before {
           <p class="desc">Dark, immersive, cinematic. Letterbox project views, gold particles, and curtain-pull reveals.</p>
           <div class="price-row"><span class="price">$5,500</span><span class="price-note">Design + Development</span></div>
           <a href="prototype-11/index.html" class="view-btn" target="_blank">View Prototype <span>&rarr;</span></a>
+          <button class="add-to-cart-btn" onclick="toggleCartItem(this)"><span class="cart-icon">+</span> Add to Package</button>
         </div>
       </div>
 
-      <div class="proto-card">
+      <div class="proto-card" data-item-id="lk-architects-folio" data-item-name="Architect's Folio" data-item-price="5200" data-item-category="LK" data-item-preview="pv-folio">
         <div class="proto-preview pv-folio">
           <div class="p-shapes"></div>
           <span class="p-label">Architect&rsquo;s Folio</span>
@@ -1094,6 +1662,7 @@ body::before {
           <p class="desc">Design journal narrative with chapters, staggered project grids, and a process timeline that draws on scroll.</p>
           <div class="price-row"><span class="price">$5,200</span><span class="price-note">Design + Development</span></div>
           <a href="prototype-12/index.html" class="view-btn" target="_blank">View Prototype <span>&rarr;</span></a>
+          <button class="add-to-cart-btn" onclick="toggleCartItem(this)"><span class="cart-icon">+</span> Add to Package</button>
         </div>
       </div>
 
@@ -1113,7 +1682,7 @@ body::before {
 
     <div class="proto-grid">
 
-      <div class="proto-card">
+      <div class="proto-card" data-item-id="saturn-bold-construction" data-item-name="Bold Construction" data-item-price="4200" data-item-category="Saturn" data-item-preview="pv-bold-construct">
         <div class="proto-preview pv-bold-construct">
           <div class="p-shapes"></div>
           <span class="p-label">Bold Construction</span>
@@ -1123,10 +1692,11 @@ body::before {
           <p class="desc">High-energy construction brand with diagonal cuts, scrolling ticker, massive typography, and a masonry photo gallery. Built to make an impression.</p>
           <div class="price-row"><span class="price">$4,200</span><span class="price-note">Design + Development</span></div>
           <a href="prototype-17/index.html" class="view-btn" target="_blank">View Prototype <span>&rarr;</span></a>
+          <button class="add-to-cart-btn" onclick="toggleCartItem(this)"><span class="cart-icon">+</span> Add to Package</button>
         </div>
       </div>
 
-      <div class="proto-card">
+      <div class="proto-card" data-item-id="saturn-warm-friendly" data-item-name="Warm &amp; Friendly" data-item-price="3500" data-item-category="Saturn" data-item-preview="pv-warm-friendly">
         <div class="proto-preview pv-warm-friendly">
           <div class="p-shapes"></div>
           <span class="p-label">Warm &amp; Friendly</span>
@@ -1136,10 +1706,11 @@ body::before {
           <p class="desc">Approachable, inviting design for party and residential customers. Rounded corners, warm earth tones, conversational copy, and a helpful FAQ section.</p>
           <div class="price-row"><span class="price">$3,500</span><span class="price-note">Design + Development</span></div>
           <a href="prototype-18/index.html" class="view-btn" target="_blank">View Prototype <span>&rarr;</span></a>
+          <button class="add-to-cart-btn" onclick="toggleCartItem(this)"><span class="cart-icon">+</span> Add to Package</button>
         </div>
       </div>
 
-      <div class="proto-card">
+      <div class="proto-card" data-item-id="saturn-clean-trade" data-item-name="Clean Trade" data-item-price="3200" data-item-category="Saturn" data-item-preview="pv-clean-trade">
         <div class="proto-preview pv-clean-trade">
           <div class="p-shapes"></div>
           <span class="p-label">Clean Trade</span>
@@ -1149,10 +1720,11 @@ body::before {
           <p class="desc">Professional white-background trade website. No gimmicks — real product photos, real specs, real testimonials. The trustworthy modernisation pitch.</p>
           <div class="price-row"><span class="price">$3,200</span><span class="price-note">Design + Development</span></div>
           <a href="prototype-16/index.html" class="view-btn" target="_blank">View Prototype <span>&rarr;</span></a>
+          <button class="add-to-cart-btn" onclick="toggleCartItem(this)"><span class="cart-icon">+</span> Add to Package</button>
         </div>
       </div>
 
-      <div class="proto-card">
+      <div class="proto-card" data-item-id="saturn-cosmic-modern" data-item-name="Cosmic Modern" data-item-price="3800" data-item-category="Saturn" data-item-preview="pv-elegant">
         <div class="proto-preview pv-elegant">
           <div class="p-shapes"></div>
           <span class="p-label">Cosmic Modern</span>
@@ -1162,10 +1734,11 @@ body::before {
           <p class="desc">Modern redesign pitch with cosmic nebula hero. Real Saturn Hire content, services, and testimonials in a clean dark-mode layout with purple nebula gradients and star fields.</p>
           <div class="price-row"><span class="price">$3,800</span><span class="price-note">Design + Development</span></div>
           <a href="prototype-13/index.html" class="view-btn" target="_blank">View Prototype <span>&rarr;</span></a>
+          <button class="add-to-cart-btn" onclick="toggleCartItem(this)"><span class="cart-icon">+</span> Add to Package</button>
         </div>
       </div>
 
-      <div class="proto-card">
+      <div class="proto-card" data-item-id="saturn-deep-space" data-item-name="Deep Space" data-item-price="5500" data-item-category="Saturn" data-item-preview="pv-perfume">
         <div class="proto-preview pv-perfume">
           <div class="p-shapes"></div>
           <span class="p-label">Deep Space</span>
@@ -1175,10 +1748,11 @@ body::before {
           <p class="desc">Cinematic scroll-driven reveal — close-up toilet zoom-out to majestic landscape. Cosmic &ldquo;Saturn&rdquo; brand play with orbital product naming, knowingly absurd.</p>
           <div class="price-row"><span class="price">$5,500</span><span class="price-note">Design + Development</span></div>
           <a href="prototype-15/index.html" class="view-btn" target="_blank">View Prototype <span>&rarr;</span></a>
+          <button class="add-to-cart-btn" onclick="toggleCartItem(this)"><span class="cart-icon">+</span> Add to Package</button>
         </div>
       </div>
 
-      <div class="proto-card">
+      <div class="proto-card" data-item-id="saturn-bush-to-throne" data-item-name="Bush to Throne" data-item-price="5200" data-item-category="Saturn" data-item-preview="pv-bush">
         <div class="proto-preview pv-bush">
           <div class="p-shapes"></div>
           <span class="p-label">Bush to Throne</span>
@@ -1191,6 +1765,7 @@ body::before {
             <a href="prototype-14/index.html" class="view-btn" target="_blank">Animation A <span>&rarr;</span></a>
             <a href="prototype-19/index.html" class="view-btn view-btn--alt" target="_blank">Animation B <span>&rarr;</span></a>
           </div>
+          <button class="add-to-cart-btn" onclick="toggleCartItem(this)"><span class="cart-icon">+</span> Add to Package</button>
         </div>
       </div>
 
@@ -1447,6 +2022,58 @@ body::before {
   <img id="lightbox-img" src="" alt="Full size preview">
 </div>
 
+<!-- Cart FAB -->
+<div class="cart-fab" id="cart-fab" onclick="openCart()" style="display:none">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+  <span class="cart-badge" id="cart-badge">0</span>
+</div>
+
+<!-- Cart Overlay -->
+<div class="cart-overlay" id="cart-overlay" onclick="closeCart()"></div>
+
+<!-- Cart Panel -->
+<div class="cart-panel" id="cart-panel">
+  <div class="cart-header">
+    <h3>Your Package</h3>
+    <span class="cart-count-label" id="cart-count">0 items</span>
+    <button class="cart-close-btn" onclick="closeCart()">&times;</button>
+  </div>
+  <div class="cart-items" id="cart-items"></div>
+  <div class="cart-footer">
+    <div class="cart-line subtotal">
+      <span class="cart-line-label">Subtotal</span>
+      <span class="cart-line-value" id="cart-subtotal">$0</span>
+    </div>
+    <div class="cart-line discount">
+      <span class="cart-line-label">Portfolio Discount</span>
+      <span class="cart-line-value" id="cart-discount">-$0</span>
+    </div>
+    <div class="cart-line total">
+      <span class="cart-line-label">Your Total</span>
+      <span class="cart-line-value">$0</span>
+    </div>
+    <div class="cart-note">We build these for you — no cost for selected items from our design portfolio.</div>
+    <textarea class="cart-comments" id="cart-comments" placeholder="Any comments, preferences, or specific requirements..."></textarea>
+    <button class="cart-submit" id="cart-submit-btn" onclick="generatePackageEmail()" disabled>I Want These</button>
+  </div>
+</div>
+
+<!-- Package Summary Modal -->
+<div class="package-modal" id="package-modal" style="display:none">
+  <div class="package-modal-content">
+    <h3>Your Package Summary</h3>
+    <div class="package-summary" id="package-summary"></div>
+    <div class="package-actions">
+      <button class="pkg-copy" onclick="copyPackageSummary()">Copy to Clipboard</button>
+      <button class="pkg-email" onclick="sendViaEmail()">Send via Email</button>
+      <button class="pkg-close" onclick="closePackageModal()">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- Copied Toast -->
+<div class="copied-toast" id="copied-toast">Copied to clipboard</div>
+
 <!-- Footer -->
 <footer class="footer">
   <p>Prime Design & Built / LK Design and Build / Saturn Hire — Website Redesign Project 2026</p>
@@ -1501,11 +2128,15 @@ function closeLightbox() {
 
 // Close lightbox on Escape
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'Escape') {
+    closeLightbox();
+    closeCart();
+    closePackageModal();
+  }
 });
 
 // ── Logo Concept Selector ──
-const concepts = [
+var concepts = [
   {
     id: 'concept-1-blueprint',
     name: 'Blueprint Grid',
@@ -1548,42 +2179,46 @@ const concepts = [
   }
 ];
 
-let selectedConceptIndex = 0;
+var selectedConceptIndex = 0;
 
 function buildConceptSelector() {
-  const container = document.getElementById('concept-selector');
-  container.innerHTML = concepts.map((c, i) => `
-    <div class="concept-card ${i === 0 ? 'selected' : ''}" data-index="${i}" onclick="selectConcept(${i})">
-      <div class="concept-card-thumb">
-        <img src="assets/branding/concepts/${c.dir}/logo-asset.${c.logoExt || 'png'}" alt="${c.name}">
-      </div>
-      <div class="concept-card-info">
-        <h4>${c.name}</h4>
-        <p>${c.desc}</p>
-      </div>
-    </div>
-  `).join('');
+  var container = document.getElementById('concept-selector');
+  container.innerHTML = concepts.map(function(c, i) {
+    var inCart = cart.some(function(item) { return item.id === 'branding-' + c.id; });
+    return '<div class="concept-card ' + (i === 0 ? 'selected' : '') + (inCart ? ' in-cart' : '') + '" data-index="' + i + '" data-item-id="branding-' + c.id + '" data-item-name="' + c.name + ' Branding Kit" data-item-price="1200" data-item-category="Branding" data-item-preview="pv-refined" onclick="selectConcept(' + i + ')">' +
+      '<div class="concept-card-thumb">' +
+        '<img src="assets/branding/concepts/' + c.dir + '/logo-asset.' + (c.logoExt || 'png') + '" alt="' + c.name + '">' +
+      '</div>' +
+      '<div class="concept-card-info">' +
+        '<h4>' + c.name + '</h4>' +
+        '<p>' + c.desc + '</p>' +
+      '</div>' +
+      '<button class="concept-cart-btn' + (inCart ? ' added' : '') + '" onclick="event.stopPropagation(); toggleBrandingCartItem(this)">' +
+        '<span class="cart-icon">' + (inCart ? '\u2713' : '+') + '</span> ' + (inCart ? 'In Package' : 'Add to Package') +
+      '</button>' +
+    '</div>';
+  }).join('');
 }
 
 function selectConcept(index) {
   selectedConceptIndex = index;
-  const c = concepts[index];
-  const baseDir = 'assets/branding/concepts/' + c.dir;
+  var c = concepts[index];
+  var baseDir = 'assets/branding/concepts/' + c.dir;
 
   // Update selector cards
-  document.querySelectorAll('.concept-card').forEach((card, i) => {
+  document.querySelectorAll('.concept-card').forEach(function(card, i) {
     card.classList.toggle('selected', i === index);
   });
 
   // Update logo asset display
-  const logoImg = document.getElementById('logo-asset-img');
-  const logoName = document.getElementById('logo-asset-name');
-  const logoDetail = document.getElementById('logo-asset-detail');
-  const downloadLink = document.getElementById('logo-download-link');
+  var logoImg = document.getElementById('logo-asset-img');
+  var logoName = document.getElementById('logo-asset-name');
+  var logoDetail = document.getElementById('logo-asset-detail');
+  var downloadLink = document.getElementById('logo-download-link');
 
   logoImg.style.opacity = '0';
-  setTimeout(() => {
-    const ext = c.logoExt || 'png';
+  setTimeout(function() {
+    var ext = c.logoExt || 'png';
     logoImg.src = baseDir + '/logo-asset.' + ext;
     logoImg.style.opacity = '1';
   }, 150);
@@ -1593,7 +2228,7 @@ function selectConcept(index) {
   downloadLink.href = baseDir + '/logo-asset.' + (c.logoExt || 'png');
 
   // Update application mockups with transition
-  const appImages = {
+  var appImages = {
     'app-signage': baseDir + '/signage.jpg',
     'app-small-sign': baseDir + '/small-sign.jpg',
     'app-vehicle': baseDir + '/vehicle.jpg',
@@ -1602,27 +2237,29 @@ function selectConcept(index) {
     'app-letterhead': baseDir + '/letterhead.jpg'
   };
 
-  Object.entries(appImages).forEach(([id, src]) => {
-    const img = document.getElementById(id);
+  Object.entries(appImages).forEach(function(entry) {
+    var id = entry[0], src = entry[1];
+    var img = document.getElementById(id);
     img.style.opacity = '0';
-    setTimeout(() => {
+    setTimeout(function() {
       img.src = src;
       img.style.opacity = '1';
     }, 150);
   });
 
   // Update business card option images
-  const cardOptionImages = {
+  var cardOptionImages = {
     'app-cards-square': baseDir + '/cards-square.jpg',
     'app-cards-rectangular': baseDir + '/cards-rectangular.jpg',
     'app-cards-blueprint': baseDir + '/cards-blueprint-texture.jpg',
     'app-cards-gold-edge': baseDir + '/cards-gold-edge.jpg'
   };
-  Object.entries(cardOptionImages).forEach(([id, src]) => {
-    const img = document.getElementById(id);
+  Object.entries(cardOptionImages).forEach(function(entry) {
+    var id = entry[0], src = entry[1];
+    var img = document.getElementById(id);
     if (img) {
       img.style.opacity = '0';
-      setTimeout(() => {
+      setTimeout(function() {
         img.src = src;
         img.style.opacity = '1';
       }, 150);
@@ -1638,18 +2275,301 @@ function selectConcept(index) {
   document.getElementById('signature-link').href = baseDir + '/email-signature.html';
 }
 
-// Add transition styles for smooth image swaps
-document.addEventListener('DOMContentLoaded', () => {
-  const style = document.createElement('style');
-  style.textContent = `
-    #logo-asset-img, .app-card-img {
-      transition: opacity 0.25s ease;
+// ══════════════════════════════════════
+// ── Cart System ──
+// ══════════════════════════════════════
+
+var cart = JSON.parse(localStorage.getItem('primedesign_cart') || '[]');
+
+// Preview theme colour map for cart item thumbnails
+var previewColors = {
+  'pv-minimal': { bg: '#f5f5f0', fg: '#333' },
+  'pv-industrial': { bg: '#0d1525', fg: '#ccc' },
+  'pv-organic': { bg: '#e8dcc8', fg: '#5c4433' },
+  'pv-refined': { bg: '#1a1a1a', fg: '#C9A96E' },
+  'pv-refined-anim': { bg: '#F5F0EB', fg: '#C9A96E' },
+  'pv-noir': { bg: '#030303', fg: '#d0d0d0' },
+  'pv-coastal': { bg: '#e4ddd2', fg: '#2a6b8a' },
+  'pv-blueprint': { bg: '#1a1e36', fg: '#ec6e00' },
+  'pv-ember': { bg: '#e8ddd0', fg: '#1a1e36' },
+  'pv-signal': { bg: '#1a1e36', fg: '#ec6e00' },
+  'pv-industrial-cad': { bg: '#0a0f1a', fg: '#C9A96E' },
+  'pv-velvet': { bg: '#1A1A1A', fg: '#C9A96E' },
+  'pv-folio': { bg: '#F2F0ED', fg: '#2C2C2C' },
+  'pv-elegant': { bg: '#0D0D12', fg: '#D4AF37' },
+  'pv-bush': { bg: '#2D5A3D', fg: '#E8A824' },
+  'pv-perfume': { bg: '#0D0D12', fg: '#D4AF37' },
+  'pv-clean-trade': { bg: '#FFFFFF', fg: '#1A1A1A' },
+  'pv-bold-construct': { bg: '#1A1A1A', fg: '#E8A824' },
+  'pv-warm-friendly': { bg: '#FBF8F4', fg: '#2C2416' }
+};
+
+function saveCart() {
+  localStorage.setItem('primedesign_cart', JSON.stringify(cart));
+}
+
+function toggleCartItem(btn) {
+  var card = btn.closest('.proto-card');
+  if (!card) return;
+
+  var itemId = card.getAttribute('data-item-id');
+  var existingIndex = -1;
+  for (var i = 0; i < cart.length; i++) {
+    if (cart[i].id === itemId) { existingIndex = i; break; }
+  }
+
+  if (existingIndex > -1) {
+    // Remove from cart
+    cart.splice(existingIndex, 1);
+  } else {
+    // Add to cart
+    cart.push({
+      id: itemId,
+      name: card.getAttribute('data-item-name'),
+      price: parseFloat(card.getAttribute('data-item-price')),
+      category: card.getAttribute('data-item-category'),
+      preview: card.getAttribute('data-item-preview')
+    });
+    pulseFab();
+  }
+
+  saveCart();
+  updateCartUI();
+}
+
+function toggleBrandingCartItem(btn) {
+  var card = btn.closest('.concept-card');
+  if (!card) return;
+
+  var itemId = card.getAttribute('data-item-id');
+  var existingIndex = -1;
+  for (var i = 0; i < cart.length; i++) {
+    if (cart[i].id === itemId) { existingIndex = i; break; }
+  }
+
+  if (existingIndex > -1) {
+    cart.splice(existingIndex, 1);
+  } else {
+    cart.push({
+      id: itemId,
+      name: card.getAttribute('data-item-name'),
+      price: parseFloat(card.getAttribute('data-item-price')),
+      category: card.getAttribute('data-item-category'),
+      preview: card.getAttribute('data-item-preview')
+    });
+    pulseFab();
+  }
+
+  saveCart();
+  updateCartUI();
+}
+
+function pulseFab() {
+  var fab = document.getElementById('cart-fab');
+  fab.classList.remove('pulse');
+  void fab.offsetWidth;
+  fab.classList.add('pulse');
+}
+
+function updateCartUI() {
+  var fab = document.getElementById('cart-fab');
+  var badge = document.getElementById('cart-badge');
+  var countLabel = document.getElementById('cart-count');
+  var itemsContainer = document.getElementById('cart-items');
+  var subtotalEl = document.getElementById('cart-subtotal');
+  var discountEl = document.getElementById('cart-discount');
+  var submitBtn = document.getElementById('cart-submit-btn');
+
+  // FAB visibility and badge
+  if (cart.length > 0) {
+    fab.style.display = 'flex';
+    badge.textContent = cart.length;
+  } else {
+    fab.style.display = 'none';
+  }
+
+  // Count label
+  countLabel.textContent = cart.length + ' item' + (cart.length !== 1 ? 's' : '');
+
+  // Submit button state
+  submitBtn.disabled = cart.length === 0;
+
+  // Calculate subtotal
+  var subtotal = 0;
+  for (var i = 0; i < cart.length; i++) {
+    subtotal += cart[i].price;
+  }
+  subtotalEl.textContent = '$' + subtotal.toLocaleString();
+  discountEl.textContent = '-$' + subtotal.toLocaleString();
+
+  // Sync all proto-card button states
+  document.querySelectorAll('.proto-card[data-item-id]').forEach(function(card) {
+    var itemId = card.getAttribute('data-item-id');
+    var inCart = cart.some(function(item) { return item.id === itemId; });
+    var btn = card.querySelector('.add-to-cart-btn');
+    if (btn) {
+      if (inCart) {
+        btn.classList.add('added');
+        btn.innerHTML = '<span class="cart-icon">\u2713</span> In Package';
+        card.classList.add('in-cart');
+      } else {
+        btn.classList.remove('added');
+        btn.innerHTML = '<span class="cart-icon">+</span> Add to Package';
+        card.classList.remove('in-cart');
+      }
     }
-  `;
+  });
+
+  // Sync branding concept card button states
+  document.querySelectorAll('.concept-card[data-item-id]').forEach(function(card) {
+    var itemId = card.getAttribute('data-item-id');
+    var inCart = cart.some(function(item) { return item.id === itemId; });
+    var btn = card.querySelector('.concept-cart-btn');
+    if (btn) {
+      if (inCart) {
+        btn.classList.add('added');
+        btn.innerHTML = '<span class="cart-icon">\u2713</span> In Package';
+        card.classList.add('in-cart');
+      } else {
+        btn.classList.remove('added');
+        btn.innerHTML = '<span class="cart-icon">+</span> Add to Package';
+        card.classList.remove('in-cart');
+      }
+    }
+  });
+
+  // Render cart items
+  if (cart.length === 0) {
+    itemsContainer.innerHTML = '<div class="cart-empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg><br>No items selected yet.<br>Browse the prototypes and add your favourites.</div>';
+  } else {
+    var html = '';
+    for (var j = 0; j < cart.length; j++) {
+      var item = cart[j];
+      var colors = previewColors[item.preview] || { bg: '#1a1a1a', fg: '#C9A96E' };
+      var initials = item.name.split(' ').map(function(w) { return w[0]; }).join('').substring(0, 2).toUpperCase();
+      html += '<div class="cart-item">' +
+        '<div class="cart-item-preview" style="background:' + colors.bg + ';color:' + colors.fg + ';">' + initials + '</div>' +
+        '<div class="cart-item-info">' +
+          '<div class="cart-item-name">' + item.name + '</div>' +
+          '<div class="cart-item-category">' + item.category + '</div>' +
+        '</div>' +
+        '<div class="cart-item-price">$' + item.price.toLocaleString() + '</div>' +
+        '<button class="cart-item-remove" onclick="removeFromCart(\'' + item.id + '\')">&times;</button>' +
+      '</div>';
+    }
+    itemsContainer.innerHTML = html;
+  }
+}
+
+function removeFromCart(itemId) {
+  for (var i = 0; i < cart.length; i++) {
+    if (cart[i].id === itemId) {
+      cart.splice(i, 1);
+      break;
+    }
+  }
+  saveCart();
+  updateCartUI();
+}
+
+function openCart() {
+  document.getElementById('cart-overlay').classList.add('open');
+  document.getElementById('cart-panel').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeCart() {
+  document.getElementById('cart-overlay').classList.remove('open');
+  document.getElementById('cart-panel').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+var packageSummaryText = '';
+
+function generatePackageEmail() {
+  if (cart.length === 0) return;
+
+  var comments = document.getElementById('cart-comments').value.trim();
+  var subtotal = 0;
+  for (var i = 0; i < cart.length; i++) subtotal += cart[i].price;
+
+  var lines = [];
+  lines.push('DESIGN PACKAGE REQUEST');
+  lines.push('='.repeat(40));
+  lines.push('');
+  lines.push('Selected Items:');
+  lines.push('-'.repeat(40));
+
+  for (var j = 0; j < cart.length; j++) {
+    var item = cart[j];
+    lines.push((j + 1) + '. ' + item.name);
+    lines.push('   Category: ' + item.category);
+    lines.push('   Listed Price: $' + item.price.toLocaleString());
+    lines.push('');
+  }
+
+  lines.push('-'.repeat(40));
+  lines.push('Subtotal:           $' + subtotal.toLocaleString());
+  lines.push('Portfolio Discount:  -$' + subtotal.toLocaleString() + ' (100%)');
+  lines.push('Your Total:          $0');
+  lines.push('');
+
+  if (comments) {
+    lines.push('Comments / Preferences:');
+    lines.push(comments);
+    lines.push('');
+  }
+
+  lines.push('Note: These designs are from our portfolio');
+  lines.push('and are provided at no cost as part of our');
+  lines.push('design showcase.');
+
+  packageSummaryText = lines.join('\n');
+
+  document.getElementById('package-summary').textContent = packageSummaryText;
+  document.getElementById('package-modal').style.display = 'flex';
+}
+
+function copyPackageSummary() {
+  navigator.clipboard.writeText(packageSummaryText).then(function() {
+    var toast = document.getElementById('copied-toast');
+    toast.classList.add('show');
+    setTimeout(function() { toast.classList.remove('show'); }, 2000);
+  }).catch(function() {
+    // Fallback for older browsers
+    var ta = document.createElement('textarea');
+    ta.value = packageSummaryText;
+    ta.style.position = 'fixed';
+    ta.style.left = '-9999px';
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    var toast = document.getElementById('copied-toast');
+    toast.classList.add('show');
+    setTimeout(function() { toast.classList.remove('show'); }, 2000);
+  });
+}
+
+function sendViaEmail() {
+  var subject = encodeURIComponent('Design Package Request');
+  var body = encodeURIComponent(packageSummaryText);
+  window.open('mailto:craig@assetarc.io?subject=' + subject + '&body=' + body, '_self');
+}
+
+function closePackageModal() {
+  document.getElementById('package-modal').style.display = 'none';
+}
+
+// Add transition styles for smooth image swaps
+document.addEventListener('DOMContentLoaded', function() {
+  var style = document.createElement('style');
+  style.textContent = '#logo-asset-img, .app-card-img { transition: opacity 0.25s ease; }';
   document.head.appendChild(style);
 
   buildConceptSelector();
   selectConcept(0);
+  updateCartUI();
 });
 </script>
 
