@@ -864,8 +864,8 @@
     <div class="project-card featured fade-up" data-accent="purple">
       <div class="project-visual" style="background: linear-gradient(135deg, #150a1a, #0f0f18);">
         <div class="project-visual-bg" style="background: radial-gradient(circle at 40% 50%, rgba(167,139,250,0.08), transparent 60%);"></div>
-        <div class="project-icon" style="border-color: rgba(167,139,250,0.3);">
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/><path d="M13 13h4"/><path d="M13 17h4"/></svg>
+        <div class="project-icon" style="border-color: rgba(167,139,250,0.3); overflow: hidden; padding: 0;">
+          <img src="assets/images/planningportal-logo.png" alt="PlanningPortal" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
       </div>
       <div class="project-info">
@@ -874,19 +874,20 @@
           <span class="project-year">2026 — Present</span>
         </div>
         <h3 class="project-name">PlanningPortal.app</h3>
-        <p class="project-desc">Facilities management planning platform covering the full lifecycle from work order intake through classification, scoping, quoting, and scheduling. Three-path classification engine with service master lookup, keyword matching, and LLM fallback. Scope builder with templates, labour rate databases across five countries, and maintenance standards by discipline. Multi-vendor quoting with side-by-side comparison, ERP integrations (SAP, Salesforce, Maximo), AI-powered video analysis for time-motion studies, and a companion delivery portal for subcontractor field access. Multi-tenant with white-label branding, Stripe tiered billing, and a REST API.</p>
+        <p class="project-desc">FM planning SaaS covering the full work lifecycle — 29 modules across work order intake, scoping, quoting, scheduling, and subcontractor delivery. Three-path classification engine: service master lookup at 95% confidence, 860+ weighted keyword patterns across 20 disciplines, and Claude LLM fallback (opt-in per company). Dynamic form builder with conditional visibility and field inheritance, output builder supporting 11 payload types with expression-based field resolution. ERP connectors for SAP, Maximo, and Salesforce. Subcontractor service portal with JWT auth for field team access. Vendor and service master databases, industry norms and standards, notification system, knowledge base, and project gallery. Multi-tenant with role-based module access, TOTP 2FA, Stripe tiered billing (Free/Starter/Pro/Enterprise), and OpenAPI-documented REST API.</p>
         <div class="project-stack">
           <span class="stack-tag">Python / Flask</span>
           <span class="stack-tag">PostgreSQL</span>
           <span class="stack-tag">HTMX / Alpine.js</span>
-          <span class="stack-tag">Classification Engine</span>
-          <span class="stack-tag">Video Analysis</span>
-          <span class="stack-tag">ERP Integrations</span>
+          <span class="stack-tag">3-Path Classification</span>
+          <span class="stack-tag">Claude LLM</span>
+          <span class="stack-tag">SAP / Maximo / Salesforce</span>
           <span class="stack-tag">Form Builder</span>
-          <span class="stack-tag">REST API</span>
+          <span class="stack-tag">Output Builder</span>
+          <span class="stack-tag">Subcontractor Portal</span>
+          <span class="stack-tag">REST API / OpenAPI</span>
           <span class="stack-tag">Stripe</span>
-          <span class="stack-tag">Multi-Tenant</span>
-          <span class="stack-tag">Multi-Country</span>
+          <span class="stack-tag">Multi-Tenant / RBAC</span>
         </div>
         <a href="https://planningportal.app" target="_blank" rel="noopener noreferrer" class="project-link">Visit PlanningPortal.app <span class="arrow">&rarr;</span></a>
       </div>
