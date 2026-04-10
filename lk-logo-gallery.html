@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LK Design & Build — Logo Refinement Gallery</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #0A0A0A;
+  --card-bg: #111111;
+  --card-border: #1a1a1a;
+  --warm-white: #F0EAE0;
+  --warm-dim: rgba(240,234,224,0.4);
+  --warm-faint: rgba(240,234,224,0.08);
+  --gold: #C9A96E;
+}
+
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--warm-white);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Subtle grid background */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(240,234,224,0.012) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(240,234,224,0.012) 1px, transparent 1px);
+  background-size: 76px 76px;
+  pointer-events: none;
+}
+
+.container {
+  position: relative;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 60px 32px 80px;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.header-label {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--warm-dim);
+  border: 1px solid rgba(240,234,224,0.12);
+  padding: 6px 18px;
+  border-radius: 20px;
+  margin-bottom: 24px;
+}
+
+.header h1 {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  color: var(--warm-white);
+  margin-bottom: 12px;
+}
+
+.header p {
+  font-size: 0.95rem;
+  color: var(--warm-dim);
+  font-weight: 300;
+  max-width: 640px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Brief summary */
+.brief {
+  max-width: 720px;
+  margin: 0 auto 56px;
+  padding: 24px 28px;
+  background: rgba(240,234,224,0.03);
+  border: 1px solid rgba(240,234,224,0.06);
+  border-radius: 12px;
+  font-size: 0.85rem;
+  color: var(--warm-dim);
+  line-height: 1.7;
+}
+
+.brief strong {
+  color: var(--warm-white);
+  font-weight: 500;
+}
+
+/* Gallery grid */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+  gap: 32px;
+  margin-bottom: 64px;
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.card:hover {
+  border-color: rgba(240,234,224,0.15);
+  transform: translateY(-2px);
+}
+
+.card-preview {
+  width: 100%;
+  aspect-ratio: 4/3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  position: relative;
+}
+
+.card-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.card-info {
+  padding: 20px 24px 24px;
+  border-top: 1px solid var(--card-border);
+}
+
+.card-info h3 {
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: var(--warm-white);
+}
+
+.card-info p {
+  font-size: 0.8rem;
+  color: var(--warm-dim);
+  line-height: 1.55;
+  font-weight: 300;
+}
+
+.card-tags {
+  display: flex;
+  gap: 6px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  font-size: 0.65rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 4px 10px;
+  border-radius: 4px;
+  background: var(--warm-faint);
+  color: var(--warm-dim);
+}
+
+/* Original comparison */
+.comparison-section {
+  margin-top: 48px;
+  text-align: center;
+}
+
+.comparison-section h2 {
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: var(--warm-dim);
+  margin-bottom: 24px;
+  letter-spacing: 0.05em;
+}
+
+.comparison-row {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: wrap;
+}
+
+.comparison-card {
+  flex: 1;
+  min-width: 340px;
+  max-width: 500px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.comparison-card .card-preview {
+  background: #050505;
+}
+
+.comparison-card.original {
+  opacity: 0.5;
+}
+
+.comparison-label {
+  padding: 14px 20px;
+  border-top: 1px solid var(--card-border);
+  font-size: 0.75rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--warm-dim);
+  text-align: center;
+}
+
+/* Site prototype link */
+.site-link-section {
+  text-align: center;
+  margin-top: 64px;
+  padding: 48px 32px;
+  background: rgba(240,234,224,0.02);
+  border: 1px solid rgba(240,234,224,0.06);
+  border-radius: 16px;
+}
+
+.site-link-section h2 {
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: var(--warm-dim);
+  margin-bottom: 8px;
+  letter-spacing: 0.05em;
+}
+
+.site-link-section p {
+  font-size: 0.8rem;
+  color: var(--warm-dim);
+  font-weight: 300;
+  margin-bottom: 24px;
+}
+
+.site-link-btn {
+  display: inline-block;
+  padding: 14px 40px;
+  border: 1px solid var(--gold);
+  color: var(--warm-white);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.4s ease;
+}
+
+.site-link-btn:hover {
+  background: var(--gold);
+  color: #0A0A0A;
+}
+
+/* Fade-in animations */
+.fade-in {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.7s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger delays for gallery cards */
+.gallery .card:nth-child(1) { transition-delay: 0s; }
+.gallery .card:nth-child(2) { transition-delay: 0.1s; }
+.gallery .card:nth-child(3) { transition-delay: 0.2s; }
+.gallery .card:nth-child(4) { transition-delay: 0.3s; }
+.gallery .card:nth-child(5) { transition-delay: 0.4s; }
+.gallery .card:nth-child(6) { transition-delay: 0.5s; }
+
+/* Footer */
+.footer {
+  text-align: center;
+  margin-top: 80px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(240,234,224,0.06);
+}
+
+.footer p {
+  font-size: 0.75rem;
+  color: rgba(240,234,224,0.25);
+  font-weight: 300;
+  letter-spacing: 0.05em;
+}
+
+@media (max-width: 900px) {
+  .gallery { grid-template-columns: 1fr; }
+  .container { padding: 40px 20px 60px; }
+  .comparison-card { min-width: 280px; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="header fade-in">
+    <div class="header-label">Logo Refinement</div>
+    <h1>LK Design & Build</h1>
+    <p>Blueprint grid concept evolved. Warm off-white on black, refined sans-serif tagline, no box or dimension lines.</p>
+  </div>
+
+  <div class="brief fade-in">
+    <strong>Design direction:</strong> Keep the LK letterforms and blueprint grid — remove the containing box and all dimension lines/arrows.
+    Tagline set in <strong>Inter</strong> (refined sans-serif) with increased letter spacing.
+    Colour shifted from cold gold to <strong>warm off-white on black</strong>.
+    Six variations explore weight, grid density, spacing, and tone.
+  </div>
+
+  <!-- Gallery -->
+  <div class="gallery">
+
+    <!-- A -->
+    <div class="card fade-in">
+      <div class="card-preview" style="background:#0A0A0A;">
+        <img src="assets/branding/concepts/concept-1-blueprint/logo-v2-a.svg" alt="Version A">
+      </div>
+      <div class="card-info">
+        <h3>A — Clean Grid</h3>
+        <p>Full 5x5 grid visible behind LK. Inter Light at 0.45em spacing. Warm off-white #F0EAE0 on near-black. Direct, readable, balanced.</p>
+        <div class="card-tags">
+          <span class="tag">Full grid</span>
+          <span class="tag">Light 300</span>
+          <span class="tag">#F0EAE0</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- B -->
+    <div class="card fade-in">
+      <div class="card-preview" style="background:#080808;">
+        <img src="assets/branding/concepts/concept-1-blueprint/logo-v2-b.svg" alt="Version B">
+      </div>
+      <div class="card-info">
+        <h3>B — Separator Line</h3>
+        <p>Full grid with a subtle horizontal separator between LK and tagline. Tagline smaller (16px) with wider 0.55em spacing and reduced opacity. Slightly warmer #EDE6D8.</p>
+        <div class="card-tags">
+          <span class="tag">Separator</span>
+          <span class="tag">Wide spacing</span>
+          <span class="tag">#EDE6D8</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- C -->
+    <div class="card fade-in">
+      <div class="card-preview" style="background:#000000;">
+        <img src="assets/branding/concepts/concept-1-blueprint/logo-v2-c.svg" alt="Version C">
+      </div>
+      <div class="card-info">
+        <h3>C — Ultra Light</h3>
+        <p>Extra Light weight (200) on both LK and tagline. Larger 180px letters. Ghost-like grid at 5% opacity. True black background. Most minimal and premium feeling.</p>
+        <div class="card-tags">
+          <span class="tag">Extra Light 200</span>
+          <span class="tag">True black</span>
+          <span class="tag">#F5EFE3</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- D -->
+    <div class="card fade-in">
+      <div class="card-preview" style="background:#0A0A0A;">
+        <img src="assets/branding/concepts/concept-1-blueprint/logo-v2-d.svg" alt="Version D">
+      </div>
+      <div class="card-info">
+        <h3>D — Major/Minor Grid</h3>
+        <p>Centre cross uses slightly heavier stroke (major grid) while other lines are minor. Accent underline beneath LK. Adds subtle architectural hierarchy to the grid.</p>
+        <div class="card-tags">
+          <span class="tag">Grid hierarchy</span>
+          <span class="tag">Accent line</span>
+          <span class="tag">#E8E0D0</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- E -->
+    <div class="card fade-in">
+      <div class="card-preview" style="background:#050505;">
+        <img src="assets/branding/concepts/concept-1-blueprint/logo-v2-e.svg" alt="Version E">
+      </div>
+      <div class="card-info">
+        <h3>E — Ghost Grid</h3>
+        <p>Barely-there grid at 4% opacity. Tagline at 15px with 0.6em spacing and 65% opacity — very understated. Lightest warm white #FAF6F0 for maximum contrast on deep black.</p>
+        <div class="card-tags">
+          <span class="tag">Ghost grid</span>
+          <span class="tag">Max spacing</span>
+          <span class="tag">#FAF6F0</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- F -->
+    <div class="card fade-in">
+      <div class="card-preview" style="background:#0A0A0A;">
+        <img src="assets/branding/concepts/concept-1-blueprint/logo-v2-f.svg" alt="Version F">
+      </div>
+      <div class="card-info">
+        <h3>F — Double-Density Grid</h3>
+        <p>Primary grid plus finer sub-grid between lines — richer blueprint texture. Extended grid span beyond the letters. Tagline at 60% opacity for a layered depth effect.</p>
+        <div class="card-tags">
+          <span class="tag">Sub-grid</span>
+          <span class="tag">Extended span</span>
+          <span class="tag">#F0EAE0</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Comparison with original -->
+  <div class="comparison-section fade-in">
+    <h2>Compared to Original</h2>
+    <div class="comparison-row">
+      <div class="comparison-card original">
+        <div class="card-preview" style="background:#050505;">
+          <img src="assets/branding/concepts/concept-1-blueprint/logo-asset.svg" alt="Original Blueprint">
+        </div>
+        <div class="comparison-label">Original — Gold, box, dimension lines</div>
+      </div>
+      <div class="comparison-card">
+        <div class="card-preview" style="background:#0A0A0A;">
+          <img src="assets/branding/concepts/concept-1-blueprint/logo-v2-a.svg" alt="Version A">
+        </div>
+        <div class="comparison-label">Refined — Warm off-white, no box, sans-serif tagline</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Link to Studio Motion prototype -->
+  <div class="site-link-section fade-in">
+    <h2>Website Prototype</h2>
+    <p>Studio Motion — scroll-driven video showcase with the refined logo applied</p>
+    <a href="prototype-6/index-v2.html" class="site-link-btn">View Studio Motion Site</a>
+  </div>
+
+  <div class="footer fade-in">
+    <p>LK Design & Build — Logo Refinement Round 2 — Prime Design Studio</p>
+  </div>
+
+</div>
+
+<script>
+  // Scroll-triggered fade-in animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

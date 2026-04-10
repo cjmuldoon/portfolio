@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LK Design and Build | Crafting Exceptional Spaces | Adelaide</title>
+  <meta name="description" content="LK Design and Build - Premium home renovation, interior design and building company in Adelaide. Video-driven animated showcase of the Semaphore master suite.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=IBM+Plex+Mono:wght@300&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            charcoal: '#2C2C2C',
+            gold: '#C9A96E',
+            cream: '#F5F0EB',
+            'gold-light': '#D4BA85',
+            'charcoal-light': '#3A3A3A',
+          },
+          fontFamily: {
+            serif: ['Cormorant Garamond', 'Georgia', 'serif'],
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    /* Base */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { font-size: 16px; }
+    body { font-family: 'Inter', sans-serif; color: #2C2C2C; background: #F5F0EB; overflow-x: hidden; }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #F5F0EB; }
+    ::-webkit-scrollbar-thumb { background: #C9A96E; border-radius: 4px; }
+
+    /* Typography */
+    .heading-serif { font-family: 'Cormorant Garamond', serif; font-weight: 400; letter-spacing: 0.02em; line-height: 1.15; }
+    .heading-serif-light { font-family: 'Cormorant Garamond', serif; font-weight: 300; letter-spacing: 0.03em; line-height: 1.15; }
+    .small-caps { font-variant: small-caps; letter-spacing: 0.15em; }
+    .tracking-wide-custom { letter-spacing: 0.2em; }
+
+    /* Gold rule */
+    .gold-rule { height: 1px; background: #C9A96E; width: 60px; }
+    .gold-rule-wide { height: 1px; background: #C9A96E; width: 100%; opacity: 0.3; }
+
+    /* Navigation */
+    .nav-link { position: relative; }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: #C9A96E;
+      transition: width 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+    .nav-link:hover::after { width: 100%; }
+
+    /* Buttons */
+    .btn-primary {
+      display: inline-block;
+      padding: 14px 40px;
+      border: 1px solid #C9A96E;
+      color: #2C2C2C;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      text-decoration: none;
+    }
+    .btn-primary:hover { background: #C9A96E; color: #fff; }
+    .btn-primary-filled {
+      display: inline-block;
+      padding: 14px 40px;
+      border: 1px solid #C9A96E;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      background: #C9A96E;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      text-decoration: none;
+    }
+    .btn-primary-filled:hover { background: #b8944f; border-color: #b8944f; }
+    .btn-dark {
+      display: inline-block;
+      padding: 14px 40px;
+      border: 1px solid #C9A96E;
+      color: #F5F0EB;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      background: #2C2C2C;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      text-decoration: none;
+    }
+    .btn-dark:hover { background: #C9A96E; color: #fff; border-color: #C9A96E; }
+
+    /* Hero */
+    .hero-frame {
+      position: absolute;
+      top: 40px; left: 40px; right: 40px; bottom: 40px;
+      border: 1px solid rgba(201, 169, 110, 0.4);
+      border-top: none;
+      pointer-events: none;
+      z-index: 2;
+    }
+    .hero-frame::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg,
+        rgba(201,169,110,0.4) 0%,
+        rgba(201,169,110,0.4) 5%,
+        rgba(201,169,110,0) 12%,
+        rgba(201,169,110,0) 88%,
+        rgba(201,169,110,0.4) 95%,
+        rgba(201,169,110,0.4) 100%
+      );
+    }
+    @media (max-width: 768px) {
+      .hero-frame { top: 20px; left: 20px; right: 20px; bottom: 20px; }
+    }
+
+    /* Portfolio */
+    .portfolio-item { position: relative; overflow: hidden; }
+    .portfolio-item img { transition: transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1); }
+    .portfolio-item:hover img { transform: scale(1.05); }
+    .portfolio-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(201, 169, 110, 0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.5s ease;
+    }
+    .portfolio-item:hover .portfolio-overlay { background: rgba(201, 169, 110, 0.25); }
+    .portfolio-overlay-content {
+      opacity: 0;
+      transform: translateY(15px);
+      transition: all 0.4s ease 0.1s;
+      text-align: center;
+    }
+    .portfolio-item:hover .portfolio-overlay-content { opacity: 1; transform: translateY(0); }
+
+    /* Lightbox */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: rgba(0, 0, 0, 0.92);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+    .lightbox.active { opacity: 1; pointer-events: all; }
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 85vh;
+      object-fit: contain;
+      border: 1px solid rgba(201, 169, 110, 0.3);
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 30px;
+      right: 40px;
+      color: #C9A96E;
+      font-size: 1.5rem;
+      cursor: pointer;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(201, 169, 110, 0.3);
+      transition: background 0.3s ease;
+      background: transparent;
+    }
+    .lightbox-close:hover { background: rgba(201, 169, 110, 0.15); }
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #C9A96E;
+      font-size: 2rem;
+      cursor: pointer;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(201, 169, 110, 0.3);
+      transition: background 0.3s ease;
+      background: transparent;
+    }
+    .lightbox-nav:hover { background: rgba(201, 169, 110, 0.15); }
+    .lightbox-prev { left: 30px; }
+    .lightbox-next { right: 30px; }
+    .lightbox-caption {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #F5F0EB;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      letter-spacing: 0.1em;
+    }
+
+    /* Animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .fade-in-left {
+      opacity: 0;
+      transform: translateX(-40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .fade-in-left.visible { opacity: 1; transform: translateX(0); }
+    .fade-in-right {
+      opacity: 0;
+      transform: translateX(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .fade-in-right.visible { opacity: 1; transform: translateX(0); }
+
+    /* Process timeline */
+    .timeline-line {
+      position: absolute;
+      left: 24px;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: #C9A96E;
+      opacity: 0.3;
+    }
+    @media (min-width: 768px) {
+      .timeline-line { left: 50%; transform: translateX(-50%); }
+    }
+    .timeline-dot {
+      width: 12px;
+      height: 12px;
+      background: #C9A96E;
+      border-radius: 50%;
+      position: absolute;
+      left: 19px;
+      top: 4px;
+    }
+    @media (min-width: 768px) {
+      .timeline-dot { left: 50%; transform: translateX(-50%); }
+    }
+
+    /* Mobile menu */
+    .mobile-menu {
+      position: fixed;
+      inset: 0;
+      background: #2C2C2C;
+      z-index: 90;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+    .mobile-menu.active { opacity: 1; pointer-events: all; }
+    .mobile-menu a {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      color: #F5F0EB;
+      text-decoration: none;
+      padding: 12px 0;
+      transition: color 0.3s ease;
+    }
+    .mobile-menu a:hover { color: #C9A96E; }
+
+    /* Hamburger */
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: #F5F0EB;
+      margin: 6px 0;
+      transition: all 0.3s ease;
+    }
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    /* Nav scroll */
+    .nav-scrolled { background: rgba(44, 44, 44, 0.97) !important; backdrop-filter: blur(10px); }
+    .nav-scrolled .nav-link { color: #F5F0EB !important; }
+    .nav-scrolled .nav-link:hover { color: #C9A96E !important; }
+    .nav-scrolled .btn-primary { color: #F5F0EB !important; border-color: #C9A96E !important; }
+    .nav-scrolled .btn-primary:hover { background: #C9A96E !important; color: #fff !important; }
+    .nav-scrolled .hamburger span { background: #F5F0EB !important; }
+
+    /* Form */
+    .form-input {
+      width: 100%;
+      padding: 14px 0;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid rgba(201, 169, 110, 0.3);
+      color: #2C2C2C;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875rem;
+      letter-spacing: 0.05em;
+      outline: none;
+      transition: border-color 0.3s ease;
+    }
+    .form-input:focus { border-bottom-color: #C9A96E; }
+    .form-input::placeholder { color: #999; }
+    .form-input-dark { color: #F5F0EB; border-bottom-color: rgba(201, 169, 110, 0.2); }
+    .form-input-dark:focus { border-bottom-color: #C9A96E; }
+    .form-input-dark::placeholder { color: rgba(245, 240, 235, 0.4); }
+    textarea.form-input { resize: vertical; min-height: 100px; }
+
+    /* Service card */
+    .service-card {
+      padding: 48px 36px;
+      border: 1px solid rgba(201, 169, 110, 0.15);
+      transition: all 0.5s ease;
+      background: transparent;
+    }
+    .service-card:hover {
+      border-color: rgba(201, 169, 110, 0.5);
+      background: rgba(201, 169, 110, 0.03);
+    }
+
+    /* Section padding */
+    .section-padding { padding: 120px 0; }
+    @media (max-width: 768px) { .section-padding { padding: 80px 0; } }
+
+    /* Stagger children */
+    .stagger-children > *:nth-child(1) { transition-delay: 0s; }
+    .stagger-children > *:nth-child(2) { transition-delay: 0.15s; }
+    .stagger-children > *:nth-child(3) { transition-delay: 0.3s; }
+    .stagger-children > *:nth-child(4) { transition-delay: 0.45s; }
+
+    /* ═══════════════════════════════════════ */
+    /* VIDEO SCROLL SECTIONS                  */
+    /* ═══════════════════════════════════════ */
+
+    /* Hero video — full viewport scroll-scrub */
+    .video-scroll-hero {
+      height: 350vh;
+      position: relative;
+    }
+    .video-sticky {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .video-sticky video,
+    .video-sticky canvas {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .video-overlay-text {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 3;
+      text-align: center;
+      color: #fff;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+    }
+    .video-overlay-text.visible { opacity: 1; }
+    .video-overlay-text .v-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      letter-spacing: 0.06em;
+      text-shadow: 0 2px 30px rgba(0,0,0,0.4);
+    }
+    .video-overlay-text .v-subtitle {
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      font-size: clamp(0.7rem, 1.2vw, 0.9rem);
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      margin-top: 16px;
+      text-shadow: 0 1px 15px rgba(0,0,0,0.4);
+    }
+    .video-overlay-text .v-rule {
+      width: 60px;
+      height: 1px;
+      background: #C9A96E;
+      margin-top: 24px;
+    }
+
+    /* Deco frame */
+    .video-deco-frame {
+      position: absolute;
+      top: 30px; left: 30px;
+      right: 30px; bottom: 30px;
+      border: 1px solid rgba(201,169,110,0.25);
+      pointer-events: none;
+      z-index: 4;
+      opacity: 0;
+      transition: opacity 0.8s;
+    }
+    .video-deco-frame.visible { opacity: 1; }
+
+    /* Scroll hint */
+    .scroll-hint {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      opacity: 0;
+      transition: opacity 0.6s 0.8s;
+      pointer-events: none;
+    }
+    .scroll-hint.visible { opacity: 0.7; }
+    .scroll-hint span {
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #fff;
+      text-shadow: 0 1px 8px rgba(0,0,0,0.5);
+    }
+    .scroll-hint .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: rgba(201,169,110,0.6);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+    @keyframes scrollPulse {
+      0%, 100% { transform: scaleY(1); opacity: 0.6; }
+      50% { transform: scaleY(0.5); opacity: 1; }
+    }
+
+    /* Infographic video section — smaller, within content flow */
+    .video-infographic-section {
+      height: 400vh;
+      position: relative;
+    }
+    .infographic-sticky {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding-top: 96px;
+      padding-bottom: 30px;
+      background: #2C2C2C;
+    }
+    .infographic-video-wrap {
+      position: relative;
+      width: 85%;
+      max-width: 1200px;
+      flex: 1;
+      min-height: 0;
+      overflow: hidden;
+      border: 1px solid rgba(201,169,110,0.25);
+    }
+    .infographic-video-wrap video,
+    .infographic-video-wrap canvas {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .infographic-label {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 24px 32px;
+      background: linear-gradient(to top, rgba(44,44,44,0.9), transparent);
+      z-index: 2;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .infographic-label.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Progress indicator for video sections */
+    .video-progress {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 2px;
+      background: #C9A96E;
+      z-index: 5;
+      width: 0;
+    }
+
+    /* Scroll progress bar */
+    .scroll-progress {
+      position: fixed;
+      top: 0; left: 0;
+      height: 2px;
+      background: #C9A96E;
+      z-index: 9999;
+      width: 0;
+      transition: none;
+    }
+
+    /* Mobile overrides */
+    @media (max-width: 767px) {
+      .video-scroll-hero { height: 250vh; }
+      .video-sticky { height: 100vh; }
+      .video-infographic-section { height: 300vh; }
+      .infographic-sticky { padding-top: 96px; }
+      .infographic-video-wrap { width: 100%; border: none; }
+      .infographic-video-wrap canvas { object-fit: contain; }
+      .scroll-hint { display: none; }
+      .video-deco-frame { display: none; }
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .video-scroll-hero { height: auto; }
+      .video-sticky { position: relative; height: 60vh; }
+      .video-infographic-section { height: auto; }
+      .infographic-sticky { position: relative; }
+      .scroll-hint { display: none; }
+      .fade-in, .fade-in-left, .fade-in-right { opacity: 1; transform: none; transition: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500" style="background: transparent;">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+      <div class="flex items-center justify-between h-20 lg:h-24">
+        <a href="#hero" class="relative z-50">
+          <img src="../assets/branding/concepts/concept-1-blueprint/logo-nav.svg" alt="LK Design and Build" style="height: 56px; width: auto;">
+        </a>
+        <div class="hidden lg:flex items-center space-x-10">
+          <a href="#about" class="nav-link text-cream text-xs font-sans font-medium tracking-wide-custom uppercase">About</a>
+          <a href="#services" class="nav-link text-cream text-xs font-sans font-medium tracking-wide-custom uppercase">Services</a>
+          <a href="#showcase" class="nav-link text-cream text-xs font-sans font-medium tracking-wide-custom uppercase">Showcase</a>
+          <a href="#portfolio" class="nav-link text-cream text-xs font-sans font-medium tracking-wide-custom uppercase">Portfolio</a>
+          <a href="#process" class="nav-link text-cream text-xs font-sans font-medium tracking-wide-custom uppercase">Process</a>
+          <a href="#contact" class="nav-link text-cream text-xs font-sans font-medium tracking-wide-custom uppercase">Contact</a>
+          <a href="#contact" class="btn-primary" style="padding: 10px 28px; border-color: rgba(201,169,110,0.6); color: #F5F0EB;">Book Consultation</a>
+        </div>
+        <button id="hamburger-btn" class="hamburger lg:hidden relative z-50 p-2" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="mobile-menu">
+    <a href="#about" class="mobile-nav-link">About</a>
+    <a href="#services" class="mobile-nav-link">Services</a>
+    <a href="#showcase" class="mobile-nav-link">Showcase</a>
+    <a href="#portfolio" class="mobile-nav-link">Portfolio</a>
+    <a href="#process" class="mobile-nav-link">Process</a>
+    <a href="#contact" class="mobile-nav-link">Contact</a>
+    <div class="mt-8">
+      <a href="#contact" class="btn-primary mobile-nav-link" style="color: #F5F0EB;">Book Consultation</a>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- HERO: Video 1 — Bathroom Pan           -->
+  <!-- ═══════════════════════════════════════ -->
+  <section id="hero" class="video-scroll-hero">
+    <div class="video-sticky" id="heroSticky">
+      <canvas id="heroCanvas"></canvas>
+      <video id="heroVideo" src="../assets/images/semaphore-animation01.mp4" muted playsinline preload="auto" style="display:none;"></video>
+      <div class="absolute inset-0 bg-charcoal/30 pointer-events-none" id="heroDim"></div>
+      <div class="hero-frame"></div>
+      <div class="video-deco-frame" id="heroDecoFrame"></div>
+
+      <div class="video-overlay-text" id="heroOverlay">
+        <div class="v-title">Semaphore</div>
+        <div class="v-subtitle">Master Suite Renovation</div>
+        <div class="v-rule"></div>
+      </div>
+
+      <div class="scroll-hint" id="scrollHint">
+        <span>Scroll to explore</span>
+        <div class="scroll-line"></div>
+      </div>
+
+      <div class="video-progress" id="heroProgress"></div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="section-padding bg-cream">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+      <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+        <div class="fade-in-left">
+          <p class="text-gold text-xs font-sans font-medium tracking-wide-custom uppercase mb-4">About Us</p>
+          <h2 class="heading-serif text-4xl md:text-5xl lg:text-6xl text-charcoal mb-8">
+            Where Vision<br>Meets Craft
+          </h2>
+          <div class="gold-rule mb-8"></div>
+          <p class="text-charcoal/70 font-sans text-sm leading-[1.9] mb-6">
+            LK Design and Build is an Adelaide-based design and construction studio led by Lyda, specialising in creating spaces that balance beauty with everyday functionality. We bring a considered, detail-driven approach to every project.
+          </p>
+          <p class="text-charcoal/70 font-sans text-sm leading-[1.9] mb-10">
+            From complete home renovations and additions to interior styling and bespoke new builds, we partner with our clients from initial concept through to final handover, ensuring every decision reflects your lifestyle and aspirations.
+          </p>
+          <a href="#contact" class="btn-primary">Start Your Project</a>
+        </div>
+        <div class="fade-in-right">
+          <div class="relative">
+            <img src="../assets/images/hero-2.jpg" alt="LK Design and Build interior" class="w-full aspect-[4/5] object-cover">
+            <div class="absolute -bottom-6 -left-6 w-48 h-48 border border-gold/20 -z-10"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Divider -->
+  <div class="bg-cream px-6 lg:px-12"><div class="max-w-7xl mx-auto"><div class="gold-rule-wide"></div></div></div>
+
+  <!-- Services -->
+  <section id="services" class="section-padding bg-cream">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+      <div class="text-center mb-20 fade-in">
+        <p class="text-gold text-xs font-sans font-medium tracking-wide-custom uppercase mb-4">What We Do</p>
+        <h2 class="heading-serif text-4xl md:text-5xl lg:text-6xl text-charcoal mb-6">Our Services</h2>
+        <div class="gold-rule mx-auto"></div>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 stagger-children">
+        <div class="service-card text-center fade-in">
+          <div class="mb-6">
+            <svg class="w-10 h-10 mx-auto text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1">
+              <path d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/>
+            </svg>
+          </div>
+          <h3 class="heading-serif text-2xl text-charcoal mb-4">Interior Design</h3>
+          <p class="text-charcoal/60 font-sans text-sm leading-relaxed">Thoughtful spatial planning, material selection, and styling that bring cohesion and character to every room.</p>
+        </div>
+        <div class="service-card text-center fade-in">
+          <div class="mb-6">
+            <svg class="w-10 h-10 mx-auto text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1">
+              <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0h4"/>
+            </svg>
+          </div>
+          <h3 class="heading-serif text-2xl text-charcoal mb-4">Renovations</h3>
+          <p class="text-charcoal/60 font-sans text-sm leading-relaxed">Transforming existing homes with precision and care, enhancing both functionality and aesthetic appeal.</p>
+        </div>
+        <div class="service-card text-center fade-in">
+          <div class="mb-6">
+            <svg class="w-10 h-10 mx-auto text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1">
+              <path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+            </svg>
+          </div>
+          <h3 class="heading-serif text-2xl text-charcoal mb-4">New Builds</h3>
+          <p class="text-charcoal/60 font-sans text-sm leading-relaxed">Bespoke homes designed and built from the ground up, tailored to your vision and lifestyle needs.</p>
+        </div>
+        <div class="service-card text-center fade-in">
+          <div class="mb-6">
+            <svg class="w-10 h-10 mx-auto text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1">
+              <path d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"/>
+            </svg>
+          </div>
+          <h3 class="heading-serif text-2xl text-charcoal mb-4">Project Management</h3>
+          <p class="text-charcoal/60 font-sans text-sm leading-relaxed">End-to-end coordination of trades, timelines, and budgets, ensuring a seamless build experience.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Divider -->
+  <div class="bg-cream px-6 lg:px-12"><div class="max-w-7xl mx-auto"><div class="gold-rule-wide"></div></div></div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- FEATURED PROJECT: Video 2 — Infographic -->
+  <!-- ═══════════════════════════════════════ -->
+  <section id="showcase" class="video-infographic-section">
+    <div class="infographic-sticky" id="infraSticky">
+      <!-- Section heading above the video -->
+      <div class="z-10 pb-6 text-center flex-shrink-0" id="infraHeading">
+        <p class="text-gold text-xs font-sans font-medium tracking-wide-custom uppercase mb-3">Featured Project</p>
+        <h2 class="heading-serif text-3xl md:text-4xl text-cream mb-4">The Details</h2>
+        <div class="gold-rule mx-auto mb-3"></div>
+        <p class="text-cream/50 font-sans text-xs tracking-wide-custom uppercase">Scroll to reveal specifications</p>
+      </div>
+
+      <div class="infographic-video-wrap" id="infraWrap">
+        <canvas id="infraCanvas"></canvas>
+        <video id="infraVideo" src="../assets/images/semaphore-animation02.mp4" muted playsinline preload="auto" style="display:none;"></video>
+
+        <div class="infographic-label" id="infraLabel">
+          <p class="text-gold text-xs font-sans font-medium tracking-wide-custom uppercase mb-1">Semaphore Ensuite</p>
+          <p class="text-cream/60 font-sans text-xs leading-relaxed">Every finish, fixture, and material — chosen with intention.</p>
+        </div>
+
+        <div class="video-progress" id="infraProgress"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Project details after showcase -->
+  <section class="bg-charcoal py-20">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+      <div class="grid lg:grid-cols-2 gap-16 items-start">
+        <div class="fade-in">
+          <p class="text-gold text-xs font-sans font-medium tracking-wide-custom uppercase mb-4">Project Details</p>
+          <h3 class="heading-serif text-3xl md:text-4xl text-cream mb-6">Semaphore<br>Master Suite</h3>
+          <div class="gold-rule mb-6"></div>
+          <p class="text-cream/60 font-sans text-sm leading-[1.9]">
+            A complete transformation of the master bedroom and ensuite bathroom in this
+            coastal Semaphore home. The design balances warmth and sophistication — floating
+            timber vanities, brushed brass fixtures, and a curated material palette that
+            honours the home's beachside character while delivering contemporary luxury.
+          </p>
+        </div>
+        <div class="fade-in" style="transition-delay: 0.15s;">
+          <div style="border: 1px solid rgba(201,169,110,0.2); padding: 40px;">
+            <p class="text-gold text-xs font-sans font-medium tracking-wide-custom uppercase mb-6">Specifications</p>
+            <div class="space-y-5">
+              <div style="border-bottom: 1px solid rgba(201,169,110,0.12); padding-bottom: 14px;">
+                <p class="text-cream/40 text-xs font-sans tracking-wide-custom uppercase mb-1">Location</p>
+                <p class="text-cream font-sans text-sm">Semaphore, South Australia</p>
+              </div>
+              <div style="border-bottom: 1px solid rgba(201,169,110,0.12); padding-bottom: 14px;">
+                <p class="text-cream/40 text-xs font-sans tracking-wide-custom uppercase mb-1">Scope</p>
+                <p class="text-cream font-sans text-sm">Master Bedroom + Ensuite Bathroom</p>
+              </div>
+              <div style="border-bottom: 1px solid rgba(201,169,110,0.12); padding-bottom: 14px;">
+                <p class="text-cream/40 text-xs font-sans tracking-wide-custom uppercase mb-1">Style</p>
+                <p class="text-cream font-sans text-sm">Coastal Contemporary</p>
+              </div>
+              <div style="border-bottom: 1px solid rgba(201,169,110,0.12); padding-bottom: 14px;">
+                <p class="text-cream/40 text-xs font-sans tracking-wide-custom uppercase mb-1">Key Materials</p>
+                <p class="text-cream font-sans text-sm">Solid Oak, Brushed Brass, Honed Concrete</p>
+              </div>
+              <div>
+                <p class="text-cream/40 text-xs font-sans tracking-wide-custom uppercase mb-1">Duration</p>
+                <p class="text-cream font-sans text-sm">12 Weeks</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio -->
+  <section id="portfolio" class="section-padding bg-charcoal">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+      <div class="text-center mb-20 fade-in">
+        <p class="text-gold text-xs font-sans font-medium tracking-wide-custom uppercase mb-4">Selected Work</p>
+        <h2 class="heading-serif text-4xl md:text-5xl lg:text-6xl text-cream mb-6">Our Portfolio</h2>
+        <div class="gold-rule mx-auto"></div>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6 lg:gap-8 stagger-children">
+        <div class="portfolio-item cursor-pointer fade-in" onclick="openLightbox(0)">
+          <img src="../assets/images/project-broadview.jpg" alt="Broadview Renovation" class="w-full aspect-[4/3] object-cover">
+          <div class="portfolio-overlay"><div class="portfolio-overlay-content">
+            <p class="text-white text-xs font-sans tracking-wide-custom uppercase mb-2">Renovation</p>
+            <h3 class="heading-serif text-3xl text-white">Broadview</h3>
+          </div></div>
+        </div>
+        <div class="portfolio-item cursor-pointer fade-in" onclick="openLightbox(1)">
+          <img src="../assets/images/project-semaphore.jpg" alt="Semaphore Project" class="w-full aspect-[4/3] object-cover">
+          <div class="portfolio-overlay"><div class="portfolio-overlay-content">
+            <p class="text-white text-xs font-sans tracking-wide-custom uppercase mb-2">Design &amp; Build</p>
+            <h3 class="heading-serif text-3xl text-white">Semaphore</h3>
+          </div></div>
+        </div>
+        <div class="portfolio-item cursor-pointer fade-in" onclick="openLightbox(2)">
+          <img src="../assets/images/project-osr.jpg" alt="OSR Fit Out" class="w-full aspect-[4/3] object-cover">
+          <div class="portfolio-overlay"><div class="portfolio-overlay-content">
+            <p class="text-white text-xs font-sans tracking-wide-custom uppercase mb-2">Commercial Fit Out</p>
+            <h3 class="heading-serif text-3xl text-white">OSR Fit Out</h3>
+          </div></div>
+        </div>
+        <div class="portfolio-item cursor-pointer fade-in" onclick="openLightbox(3)">
+          <img src="../assets/images/project-unley.jpg" alt="Unley Renovation" class="w-full aspect-[4/3] object-cover">
+          <div class="portfolio-overlay"><div class="portfolio-overlay-content">
+            <p class="text-white text-xs font-sans tracking-wide-custom uppercase mb-2">Renovation</p>
+            <h3 class="heading-serif text-3xl text-white">Unley</h3>
+          </div></div>
+        </div>
+        <div class="portfolio-item cursor-pointer fade-in" onclick="openLightbox(4)">
+          <img src="../assets/images/project-semaphore2.jpg" alt="Semaphore Interior" class="w-full aspect-[4/3] object-cover">
+          <div class="portfolio-overlay"><div class="portfolio-overlay-content">
+            <p class="text-white text-xs font-sans tracking-wide-custom uppercase mb-2">Interior Design</p>
+            <h3 class="heading-serif text-3xl text-white">Semaphore II</h3>
+          </div></div>
+        </div>
+        <div class="portfolio-item cursor-pointer fade-in" onclick="openLightbox(5)">
+          <img src="../assets/images/project-semaphore3.jpg" alt="Semaphore Details" class="w-full aspect-[4/3] object-cover">
+          <div class="portfolio-overlay"><div class="portfolio-overlay-content">
+            <p class="text-white text-xs font-sans tracking-wide-custom uppercase mb-2">Interior Styling</p>
+            <h3 class="heading-serif text-3xl text-white">Semaphore III</h3>
+          </div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+    <button class="lightbox-close" onclick="closeLightbox(event)">&times;</button>
+    <button class="lightbox-nav lightbox-prev" onclick="prevImage(event)">&#8249;</button>
+    <img id="lightbox-img" src="" alt="">
+    <button class="lightbox-nav lightbox-next" onclick="nextImage(event)">&#8250;</button>
+    <p class="lightbox-caption" id="lightbox-caption"></p>
+  </div>
+
+  <!-- Divider -->
+  <div class="bg-cream px-6 lg:px-12"><div class="max-w-7xl mx-auto"><div class="gold-rule-wide"></div></div></div>
+
+  <!-- Process -->
+  <section id="process" class="section-padding bg-cream">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+      <div class="text-center mb-20 fade-in">
+        <p class="text-gold text-xs font-sans font-medium tracking-wide-custom uppercase mb-4">How We Work</p>
+        <h2 class="heading-serif text-4xl md:text-5xl lg:text-6xl text-charcoal mb-6">Our Process</h2>
+        <div class="gold-rule mx-auto"></div>
+      </div>
+      <div class="relative max-w-3xl mx-auto">
+        <div class="timeline-line"></div>
+        <div class="space-y-16">
+          <div class="relative pl-14 md:pl-0 md:grid md:grid-cols-2 md:gap-12 fade-in">
+            <div class="timeline-dot"></div>
+            <div class="md:text-right md:pr-12">
+              <p class="text-gold text-xs font-sans font-medium tracking-wide-custom uppercase mb-2">Step One</p>
+              <h3 class="heading-serif text-2xl text-charcoal mb-3">Consultation</h3>
+              <p class="text-charcoal/60 font-sans text-sm leading-relaxed">We begin with a conversation about your vision, lifestyle, and goals for the space. This shapes everything that follows.</p>
+            </div>
+          </div>
+          <div class="relative pl-14 md:pl-0 md:grid md:grid-cols-2 md:gap-12 fade-in">
+            <div class="timeline-dot"></div>
+            <div class="md:col-start-2 md:pl-12">
+              <p class="text-gold text-xs font-sans font-medium tracking-wide-custom uppercase mb-2">Step Two</p>
+              <h3 class="heading-serif text-2xl text-charcoal mb-3">Design</h3>
+              <p class="text-charcoal/60 font-sans text-sm leading-relaxed">We develop detailed design concepts including layouts, materials, finishes, and 3D visualisations for your approval.</p>
+            </div>
+          </div>
+          <div class="relative pl-14 md:pl-0 md:grid md:grid-cols-2 md:gap-12 fade-in">
+            <div class="timeline-dot"></div>
+            <div class="md:text-right md:pr-12">
+              <p class="text-gold text-xs font-sans font-medium tracking-wide-custom uppercase mb-2">Step Three</p>
+              <h3 class="heading-serif text-2xl text-charcoal mb-3">Build</h3>
+              <p class="text-charcoal/60 font-sans text-sm leading-relaxed">Our trusted team of tradespeople bring the design to life with meticulous attention to quality and detail.</p>
+            </div>
+          </div>
+          <div class="relative pl-14 md:pl-0 md:grid md:grid-cols-2 md:gap-12 fade-in">
+            <div class="timeline-dot"></div>
+            <div class="md:col-start-2 md:pl-12">
+              <p class="text-gold text-xs font-sans font-medium tracking-wide-custom uppercase mb-2">Step Four</p>
+              <h3 class="heading-serif text-2xl text-charcoal mb-3">Handover</h3>
+              <p class="text-charcoal/60 font-sans text-sm leading-relaxed">We walk through every detail with you, ensuring everything meets your expectations before you enjoy your new space.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="relative py-24 overflow-hidden">
+    <div class="absolute inset-0">
+      <img src="../assets/images/hero-1.jpg" alt="" class="w-full h-full object-cover">
+      <div class="absolute inset-0 bg-charcoal/75"></div>
+    </div>
+    <div class="relative z-10 text-center px-6">
+      <h2 class="heading-serif-light text-4xl md:text-5xl lg:text-6xl text-white mb-6 fade-in">Ready to Transform<br>Your Space?</h2>
+      <div class="gold-rule mx-auto mb-8 fade-in" style="transition-delay: 0.15s;"></div>
+      <p class="text-cream/70 font-sans text-sm max-w-lg mx-auto mb-10 leading-relaxed fade-in" style="transition-delay: 0.25s;">
+        Let's discuss your project. Whether it's a renovation, new build, or interior design consultation, we'd love to hear from you.
+      </p>
+      <div class="fade-in" style="transition-delay: 0.35s;">
+        <a href="#contact" class="btn-primary" style="color: #F5F0EB; border-color: rgba(201,169,110,0.6);">Get In Touch</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section-padding bg-charcoal">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+      <div class="grid lg:grid-cols-2 gap-16 lg:gap-24">
+        <div class="fade-in-left">
+          <p class="text-gold text-xs font-sans font-medium tracking-wide-custom uppercase mb-4">Get In Touch</p>
+          <h2 class="heading-serif text-4xl md:text-5xl text-cream mb-8">Start Your<br>Project</h2>
+          <div class="gold-rule mb-8"></div>
+          <p class="text-cream/60 font-sans text-sm leading-[1.9] mb-10">
+            Every great space begins with a conversation. Tell us about your vision and we'll guide you through every step.
+          </p>
+          <div class="space-y-6">
+            <div>
+              <p class="text-cream/40 text-xs font-sans tracking-wide-custom uppercase mb-2">Phone</p>
+              <a href="tel:0481742026" class="text-cream font-sans text-sm hover:text-gold transition-colors">0481 742 026</a>
+            </div>
+            <div>
+              <p class="text-cream/40 text-xs font-sans tracking-wide-custom uppercase mb-2">Email</p>
+              <a href="mailto:hello@lkdesignandbuild.com.au" class="text-cream font-sans text-sm hover:text-gold transition-colors">hello@lkdesignandbuild.com.au</a>
+            </div>
+            <div>
+              <p class="text-cream/40 text-xs font-sans tracking-wide-custom uppercase mb-2">Location</p>
+              <p class="text-cream font-sans text-sm">Adelaide, South Australia</p>
+            </div>
+          </div>
+        </div>
+        <div class="fade-in-right">
+          <form onsubmit="handleSubmit(event)" class="space-y-8">
+            <input type="text" placeholder="Your Name" class="form-input form-input-dark" required>
+            <input type="email" placeholder="Email Address" class="form-input form-input-dark" required>
+            <input type="tel" placeholder="Phone Number" class="form-input form-input-dark">
+            <select class="form-input form-input-dark" style="appearance: none;">
+              <option value="" disabled selected style="color: rgba(245,240,235,0.4);">Project Type</option>
+              <option>Interior Design</option>
+              <option>Renovation</option>
+              <option>New Build</option>
+              <option>Addition</option>
+              <option>Commercial Fit Out</option>
+              <option>Other</option>
+            </select>
+            <textarea placeholder="Tell us about your project..." class="form-input form-input-dark" rows="4"></textarea>
+            <button type="submit" class="btn-primary-filled w-full text-center">Send Enquiry</button>
+          </form>
+          <div id="form-success" class="hidden mt-6 p-6 border border-gold/30 text-center">
+            <p class="text-gold text-sm font-sans">Thank you for your enquiry. We'll be in touch soon.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-charcoal border-t border-gold/10 py-16">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+      <div class="grid md:grid-cols-3 gap-12">
+        <div>
+          <img src="../assets/branding/concepts/concept-1-blueprint/logo-nav.svg" alt="LK Design and Build" style="height: 44px; width: auto;">
+          <p class="text-cream/40 font-sans text-sm mt-4 leading-relaxed">Crafting exceptional spaces in Adelaide since 2024.</p>
+        </div>
+        <div>
+          <p class="text-cream/40 text-xs font-sans tracking-wide-custom uppercase mb-6">Quick Links</p>
+          <div class="space-y-3">
+            <a href="#about" class="block text-cream/70 font-sans text-sm hover:text-gold transition-colors">About</a>
+            <a href="#services" class="block text-cream/70 font-sans text-sm hover:text-gold transition-colors">Services</a>
+            <a href="#portfolio" class="block text-cream/70 font-sans text-sm hover:text-gold transition-colors">Portfolio</a>
+            <a href="#process" class="block text-cream/70 font-sans text-sm hover:text-gold transition-colors">Process</a>
+            <a href="#contact" class="block text-cream/70 font-sans text-sm hover:text-gold transition-colors">Contact</a>
+          </div>
+        </div>
+        <div>
+          <p class="text-cream/40 text-xs font-sans tracking-wide-custom uppercase mb-6">Contact</p>
+          <div class="space-y-3">
+            <a href="tel:0481742026" class="block text-cream/70 font-sans text-sm hover:text-gold transition-colors">0481 742 026</a>
+            <a href="mailto:hello@lkdesignandbuild.com.au" class="block text-cream/70 font-sans text-sm hover:text-gold transition-colors">hello@lkdesignandbuild.com.au</a>
+            <p class="text-cream/70 font-sans text-sm">Adelaide, South Australia</p>
+            <a href="https://www.instagram.com/primedesignbuilt/" target="_blank" rel="noopener" class="inline-flex items-center space-x-2 text-cream/70 hover:text-gold transition-colors mt-2">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+              <span class="text-xs font-sans">Instagram</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="gold-rule-wide mt-12 mb-8"></div>
+      <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+        <p class="text-cream/30 font-sans text-xs">&copy; 2026 LK Design and Build. All rights reserved.</p>
+        <p class="text-cream/30 font-sans text-xs">ABN: Coming Soon</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <script>
+    // ── Lightbox ──
+    const galleryImages = [
+      { src: '../assets/images/project-broadview.jpg', caption: 'Broadview' },
+      { src: '../assets/images/project-semaphore.jpg', caption: 'Semaphore' },
+      { src: '../assets/images/project-osr.jpg', caption: 'OSR Fit Out' },
+      { src: '../assets/images/project-unley.jpg', caption: 'Unley' },
+      { src: '../assets/images/project-semaphore2.jpg', caption: 'Semaphore II' },
+      { src: '../assets/images/project-semaphore3.jpg', caption: 'Semaphore III' },
+    ];
+    let currentImageIndex = 0;
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+
+    function openLightbox(index) {
+      currentImageIndex = index;
+      lightboxImg.src = galleryImages[index].src;
+      lightboxCaption.textContent = galleryImages[index].caption;
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox(e) {
+      if (e.target === lightbox || e.target.closest('.lightbox-close')) {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+    function nextImage(e) {
+      e.stopPropagation();
+      currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+      lightboxImg.src = galleryImages[currentImageIndex].src;
+      lightboxCaption.textContent = galleryImages[currentImageIndex].caption;
+    }
+    function prevImage(e) {
+      e.stopPropagation();
+      currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
+      lightboxImg.src = galleryImages[currentImageIndex].src;
+      lightboxCaption.textContent = galleryImages[currentImageIndex].caption;
+    }
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('active')) return;
+      if (e.key === 'Escape') { lightbox.classList.remove('active'); document.body.style.overflow = ''; }
+      if (e.key === 'ArrowRight') nextImage(e);
+      if (e.key === 'ArrowLeft') prevImage(e);
+    });
+
+    // ── Mobile Menu ──
+    const hamburger = document.getElementById('hamburger-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+      document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+    });
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // ── Navbar scroll ──
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 80) navbar.classList.add('nav-scrolled');
+      else navbar.classList.remove('nav-scrolled');
+    }, { passive: true });
+
+    // ── Intersection Observer ──
+    const observerOptions = { threshold: 0.12, rootMargin: '0px 0px -40px 0px' };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+    document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right').forEach(el => observer.observe(el));
+
+    // ── Form ──
+    function handleSubmit(e) {
+      e.preventDefault();
+      const form = e.target;
+      form.style.opacity = '0.5';
+      form.style.pointerEvents = 'none';
+      setTimeout(() => {
+        document.getElementById('form-success').classList.remove('hidden');
+        form.reset();
+        form.style.opacity = '1';
+        form.style.pointerEvents = 'auto';
+      }, 800);
+    }
+
+    // ── Smooth scroll ──
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          const top = target.getBoundingClientRect().top + window.scrollY - 80;
+          const distance = Math.abs(top - window.scrollY);
+          window.scrollTo({ top, behavior: distance > window.innerHeight * 2 ? 'instant' : 'smooth' });
+        }
+      });
+    });
+
+    // ═══════════════════════════════════════
+    // SCROLL-SCRUB VIDEO ENGINE
+    // ═══════════════════════════════════════
+    (function() {
+      'use strict';
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // ── Hero Video (full-screen pan) ──
+      const heroVideo = document.getElementById('heroVideo');
+      const heroSection = document.getElementById('hero');
+      const heroOverlay = document.getElementById('heroOverlay');
+      const heroDecoFrame = document.getElementById('heroDecoFrame');
+      const scrollHint = document.getElementById('scrollHint');
+      const heroProgress = document.getElementById('heroProgress');
+      const heroDim = document.getElementById('heroDim');
+      const scrollProgressBar = document.getElementById('scrollProgress');
+
+      // ── Infographic Video (featured project) ──
+      const infraVideo = document.getElementById('infraVideo');
+      const infraSection = document.querySelector('.video-infographic-section');
+      const infraLabel = document.getElementById('infraLabel');
+      const infraProgress = document.getElementById('infraProgress');
+
+      if (prefersReducedMotion) {
+        heroOverlay.classList.add('visible');
+        heroVideo.style.display = 'block';
+        document.getElementById('heroCanvas').style.display = 'none';
+        infraVideo.style.display = 'block';
+        document.getElementById('infraCanvas').style.display = 'none';
+        heroVideo.loop = true;
+        infraVideo.loop = true;
+        heroVideo.playbackRate = 0.5;
+        infraVideo.playbackRate = 0.5;
+        heroVideo.play().catch(function(){});
+        infraVideo.play().catch(function(){});
+        return;
+      }
+
+      // ═══════════════════════════════════════
+      // CANVAS FRAME EXTRACTION ENGINE
+      // Extract every frame from each video upfront,
+      // store as ImageBitmap array, draw to canvas on scroll.
+      // This gives perfectly smooth scrubbing with no keyframe jumps.
+      // ═══════════════════════════════════════
+
+      const heroCanvas = document.getElementById('heroCanvas');
+      const heroCtx = heroCanvas.getContext('2d');
+      const infraCanvas = document.getElementById('infraCanvas');
+      const infraCtx = infraCanvas.getContext('2d');
+
+      const EXTRACT_FPS = 24;
+      let heroFrames = [], infraFrames = [];
+      let heroReady = false, infraReady = false;
+
+      function extractFrames(video, fps) {
+        return new Promise(function(resolve) {
+          var frames = [];
+          var duration = video.duration;
+          var totalFrames = Math.ceil(duration * fps);
+          var frameIndex = 0;
+
+          // Prime decoder
+          video.muted = true;
+          video.currentTime = 0;
+
+          function captureFrame() {
+            createImageBitmap(video).then(function(bitmap) {
+              frames.push(bitmap);
+              frameIndex++;
+              if (frameIndex <= totalFrames) {
+                video.currentTime = Math.min(frameIndex / fps, duration - 0.01);
+              } else {
+                resolve(frames);
+              }
+            });
+          }
+
+          video.addEventListener('seeked', captureFrame);
+
+          // Wait for video to be ready, then start extraction
+          if (video.readyState >= 2) {
+            captureFrame();
+          } else {
+            video.addEventListener('canplay', function() {
+              captureFrame();
+            }, { once: true });
+            video.load();
+          }
+        });
+      }
+
+      // Fetch video as blob first for reliable seeking during extraction
+      function fetchAndExtract(video, canvas, ctx) {
+        var src = video.getAttribute('src');
+        return fetch(src)
+          .then(function(r) { return r.blob(); })
+          .then(function(blob) {
+            return new Promise(function(resolve) {
+              video.addEventListener('loadedmetadata', function() {
+                canvas.width = video.videoWidth;
+                canvas.height = video.videoHeight;
+                // Play briefly to prime decoder, then extract
+                video.play().then(function() {
+                  video.pause();
+                  video.currentTime = 0;
+                  // Small delay to let decoder settle
+                  setTimeout(function() {
+                    extractFrames(video, EXTRACT_FPS).then(resolve);
+                  }, 100);
+                }).catch(function() {
+                  // Autoplay blocked, try extracting anyway
+                  extractFrames(video, EXTRACT_FPS).then(resolve);
+                });
+              }, { once: true });
+              video.src = URL.createObjectURL(blob);
+              video.load();
+            });
+          });
+      }
+
+      // Start frame extraction for both videos
+      fetchAndExtract(heroVideo, heroCanvas, heroCtx).then(function(frames) {
+        heroFrames = frames;
+        heroReady = true;
+        // Draw first frame immediately
+        if (frames.length > 0) {
+          heroCtx.drawImage(frames[0], 0, 0, heroCanvas.width, heroCanvas.height);
+        }
+        startTicking();
+      });
+
+      fetchAndExtract(infraVideo, infraCanvas, infraCtx).then(function(frames) {
+        infraFrames = frames;
+        infraReady = true;
+        if (frames.length > 0) {
+          infraCtx.drawImage(frames[0], 0, 0, infraCanvas.width, infraCanvas.height);
+        }
+        startTicking();
+      });
+
+      // Show title overlay immediately
+      setTimeout(function() {
+        heroOverlay.classList.add('visible');
+        scrollHint.classList.add('visible');
+      }, 300);
+
+      const LERP = 0.08;
+      let currentHeroP = 0, targetHeroP = 0;
+      let currentInfraP = 0, targetInfraP = 0;
+      let ticking = false;
+      let lastHeroFrame = -1, lastInfraFrame = -1;
+
+      function startTicking() {
+        if (!ticking) { ticking = true; requestAnimationFrame(tick); }
+      }
+
+      function getSectionProgress(section) {
+        var rect = section.getBoundingClientRect();
+        var scrollHeight = section.offsetHeight - window.innerHeight;
+        if (scrollHeight <= 0) return 0;
+        return Math.max(0, Math.min(1, -rect.top / scrollHeight));
+      }
+
+      function drawFrame(ctx, canvas, frames, index) {
+        if (index >= 0 && index < frames.length) {
+          ctx.drawImage(frames[index], 0, 0, canvas.width, canvas.height);
+        }
+      }
+
+      function tick() {
+        // ── Hero canvas scrub ──
+        targetHeroP = getSectionProgress(heroSection);
+        currentHeroP += (targetHeroP - currentHeroP) * LERP;
+        if (Math.abs(targetHeroP - currentHeroP) < 0.0001) currentHeroP = targetHeroP;
+
+        if (heroReady && heroFrames.length > 0) {
+          var fi = Math.round(currentHeroP * (heroFrames.length - 1));
+          if (fi !== lastHeroFrame) {
+            drawFrame(heroCtx, heroCanvas, heroFrames, fi);
+            lastHeroFrame = fi;
+          }
+        }
+
+        // Hero overlay fade
+        if (currentHeroP < 0.05) {
+          heroOverlay.style.opacity = '';
+        } else if (currentHeroP < 0.25) {
+          heroOverlay.style.opacity = Math.max(0, 1 - ((currentHeroP - 0.05) / 0.2));
+          scrollHint.style.opacity = Math.max(0, 0.7 - (currentHeroP / 0.15));
+        } else {
+          heroOverlay.style.opacity = 0;
+          scrollHint.style.opacity = 0;
+        }
+
+        heroDim.style.opacity = Math.max(0, 0.3 - currentHeroP * 0.4);
+        heroDecoFrame.classList.toggle('visible', currentHeroP > 0.02 && currentHeroP < 0.92);
+        heroProgress.style.width = (currentHeroP * 100) + '%';
+
+        // ── Infographic canvas scrub ──
+        targetInfraP = getSectionProgress(infraSection);
+        currentInfraP += (targetInfraP - currentInfraP) * LERP;
+        if (Math.abs(targetInfraP - currentInfraP) < 0.0001) currentInfraP = targetInfraP;
+
+        if (infraReady && infraFrames.length > 0) {
+          // Video plays across 80% of scroll, holds final frame for last 20%
+          var videoP = Math.min(1.0, currentInfraP / 0.80);
+          var fi2 = Math.round(videoP * (infraFrames.length - 1));
+          if (fi2 !== lastInfraFrame) {
+            drawFrame(infraCtx, infraCanvas, infraFrames, fi2);
+            lastInfraFrame = fi2;
+          }
+        }
+
+        infraLabel.classList.toggle('visible', currentInfraP > 0.15);
+        infraProgress.style.width = (currentInfraP * 100) + '%';
+
+        // Page-level progress
+        var pageP = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+        scrollProgressBar.style.width = (pageP * 100) + '%';
+
+        // Keep animating while not settled
+        var settled = Math.abs(targetHeroP - currentHeroP) < 0.00005
+                   && Math.abs(targetInfraP - currentInfraP) < 0.00005;
+        if (!settled) {
+          requestAnimationFrame(tick);
+        } else {
+          ticking = false;
+        }
+      }
+
+      window.addEventListener('scroll', startTicking, { passive: true });
+
+      // Initial render
+      requestAnimationFrame(function() {
+        currentHeroP = getSectionProgress(heroSection);
+        currentInfraP = getSectionProgress(infraSection);
+        tick();
+      });
+    })();
+  </script>
+</body>
+</html>

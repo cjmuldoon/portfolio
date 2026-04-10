@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 56" width="150" height="56">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300&amp;family=Inter:wght@300&amp;display=swap');
+    </style>
+  </defs>
+
+  <!-- Blueprint grid — same proportional density and opacity as standalone -->
+  <!-- Vertical -->
+  <line x1="30" y1="0" x2="30" y2="40" stroke="#F0EAE0" stroke-width="0.4" opacity="0.08"/>
+  <line x1="52" y1="0" x2="52" y2="40" stroke="#F0EAE0" stroke-width="0.4" opacity="0.08"/>
+  <line x1="75" y1="0" x2="75" y2="40" stroke="#F0EAE0" stroke-width="0.4" opacity="0.08"/>
+  <line x1="98" y1="0" x2="98" y2="40" stroke="#F0EAE0" stroke-width="0.4" opacity="0.08"/>
+  <line x1="120" y1="0" x2="120" y2="40" stroke="#F0EAE0" stroke-width="0.4" opacity="0.08"/>
+  <!-- Horizontal -->
+  <line x1="20" y1="2" x2="130" y2="2" stroke="#F0EAE0" stroke-width="0.4" opacity="0.08"/>
+  <line x1="20" y1="13" x2="130" y2="13" stroke="#F0EAE0" stroke-width="0.4" opacity="0.08"/>
+  <line x1="20" y1="24" x2="130" y2="24" stroke="#F0EAE0" stroke-width="0.4" opacity="0.08"/>
+  <line x1="20" y1="35" x2="130" y2="35" stroke="#F0EAE0" stroke-width="0.4" opacity="0.08"/>
+
+  <!-- LK — IBM Plex Mono Light, centred -->
+  <text x="75" y="34" text-anchor="middle" font-family="'IBM Plex Mono', 'Courier New', monospace" font-size="38" font-weight="300" fill="#F0EAE0">LK</text>
+
+  <!-- DESIGN AND BUILD — Inter Light, readable at nav scale -->
+  <text x="75" y="52" text-anchor="middle" font-family="'Inter', 'Helvetica Neue', sans-serif" font-size="7.5" font-weight="300" fill="#F0EAE0" letter-spacing="3.4">DESIGN AND BUILD</text>
+</svg>

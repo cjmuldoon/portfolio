@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300&amp;family=Inter:wght@300&amp;display=swap');
+      .letter { font-family: 'IBM Plex Mono', 'Courier New', monospace; font-weight: 300; font-size: 168px; fill: #E8E0D0; }
+      .tagline { font-family: 'Inter', 'Helvetica Neue', sans-serif; font-weight: 300; font-size: 18px; fill: #E8E0D0; letter-spacing: 0.45em; }
+      .grid-line { stroke: #E8E0D0; stroke-width: 0.4; opacity: 0.07; }
+      .grid-line-major { stroke: #E8E0D0; stroke-width: 0.6; opacity: 0.1; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="600" fill="#0A0A0A"/>
+
+  <!-- Major grid — centre cross, slightly more visible -->
+  <line x1="400" y1="60" x2="400" y2="460" class="grid-line-major"/>
+  <line x1="200" y1="260" x2="600" y2="260" class="grid-line-major"/>
+
+  <!-- Minor grid -->
+  <line x1="248" y1="60" x2="248" y2="460" class="grid-line"/>
+  <line x1="324" y1="60" x2="324" y2="460" class="grid-line"/>
+  <line x1="476" y1="60" x2="476" y2="460" class="grid-line"/>
+  <line x1="552" y1="60" x2="552" y2="460" class="grid-line"/>
+  <line x1="200" y1="108" x2="600" y2="108" class="grid-line"/>
+  <line x1="200" y1="184" x2="600" y2="184" class="grid-line"/>
+  <line x1="200" y1="336" x2="600" y2="336" class="grid-line"/>
+  <line x1="200" y1="412" x2="600" y2="412" class="grid-line"/>
+
+  <!-- LK letterforms -->
+  <text x="400" y="310" text-anchor="middle" class="letter">LK</text>
+
+  <!-- Accent line under LK — warm off-white -->
+  <line x1="340" y1="340" x2="460" y2="340" stroke="#E8E0D0" stroke-width="1" opacity="0.25"/>
+
+  <!-- DESIGN AND BUILD -->
+  <text x="400" y="475" text-anchor="middle" class="tagline">DESIGN AND BUILD</text>
+</svg>
