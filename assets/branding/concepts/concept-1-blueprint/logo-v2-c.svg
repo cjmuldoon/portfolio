@@ -6,12 +6,7 @@
       .tagline { font-family: 'Inter', 'Helvetica Neue', sans-serif; font-weight: 200; font-size: 17px; fill: #F5EFE3; letter-spacing: 0.5em; opacity: 0.7; }
     </style>
   </defs>
-
   <rect width="800" height="600" fill="#000000"/>
-
-  <!-- LK — left-aligned, extra light, larger -->
   <text x="190" y="325" class="letter">LK</text>
-
-  <!-- DESIGN AND BUILD — left-aligned, tighter -->
-  <text x="194" y="395" class="tagline">DESIGN AND BUILD</text>
+  <text x="194" y="373" class="tagline">DESIGN AND BUILD</text>
 </svg>

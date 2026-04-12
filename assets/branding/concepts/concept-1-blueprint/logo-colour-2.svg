@@ -6,5 +6,5 @@
   </defs>
   <rect width="800" height="600" fill="#0A0A0A"/>
   <text x="400" y="320" text-anchor="middle" font-family="'IBM Plex Mono', 'Courier New', monospace" font-size="168" font-weight="300" fill="#EDE4D4">LK</text>
-  <text x="400" y="390" text-anchor="middle" font-family="'Inter', 'Helvetica Neue', sans-serif" font-size="18" font-weight="300" fill="#EDE4D4" letter-spacing="8">DESIGN AND BUILD</text>
+  <text x="400" y="368" text-anchor="middle" font-family="'Inter', 'Helvetica Neue', sans-serif" font-size="18" font-weight="300" fill="#EDE4D4" letter-spacing="8">DESIGN AND BUILD</text>
 </svg>

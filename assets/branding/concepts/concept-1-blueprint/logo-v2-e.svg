@@ -6,12 +6,7 @@
       .tagline { font-family: 'Inter', 'Helvetica Neue', sans-serif; font-weight: 300; font-size: 15px; fill: #FAF6F0; letter-spacing: 0.6em; opacity: 0.65; }
     </style>
   </defs>
-
   <rect width="800" height="600" fill="#050505"/>
-
-  <!-- LK — centred -->
   <text x="400" y="320" text-anchor="middle" class="letter">LK</text>
-
-  <!-- DESIGN AND BUILD — centred, understated, tighter -->
-  <text x="400" y="392" text-anchor="middle" class="tagline">DESIGN AND BUILD</text>
+  <text x="400" y="368" text-anchor="middle" class="tagline">DESIGN AND BUILD</text>
 </svg>

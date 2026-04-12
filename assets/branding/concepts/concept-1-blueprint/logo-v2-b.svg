@@ -6,15 +6,8 @@
       .tagline { font-family: 'Inter', 'Helvetica Neue', sans-serif; font-weight: 300; font-size: 16px; fill: #EDE6D8; letter-spacing: 0.55em; opacity: 0.75; }
     </style>
   </defs>
-
   <rect width="800" height="600" fill="#080808"/>
-
-  <!-- LK — left-aligned -->
   <text x="200" y="320" class="letter">LK</text>
-
-  <!-- Thin separator -->
-  <line x1="200" y1="350" x2="340" y2="350" stroke="#EDE6D8" stroke-width="0.5" opacity="0.2"/>
-
-  <!-- DESIGN AND BUILD — left-aligned, tighter -->
-  <text x="200" y="388" class="tagline">DESIGN AND BUILD</text>
+  <line x1="200" y1="345" x2="340" y2="345" stroke="#EDE6D8" stroke-width="0.5" opacity="0.2"/>
+  <text x="200" y="375" class="tagline">DESIGN AND BUILD</text>
 </svg>
