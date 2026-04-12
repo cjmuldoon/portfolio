@@ -28,18 +28,6 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Subtle grid background */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(240,234,224,0.012) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(240,234,224,0.012) 1px, transparent 1px);
-  background-size: 76px 76px;
-  pointer-events: none;
-}
-
 .container {
   position: relative;
   max-width: 1400px;
@@ -226,7 +214,7 @@ body::before {
   text-align: center;
 }
 
-/* Site prototype link */
+/* Site prototype section */
 .site-link-section {
   text-align: center;
   margin-top: 64px;
@@ -270,6 +258,59 @@ body::before {
   color: #0A0A0A;
 }
 
+/* Logo switcher */
+.logo-switcher {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.logo-switcher button {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--card-border);
+  background: var(--card-bg);
+  color: var(--warm-dim);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.logo-switcher button:hover {
+  border-color: rgba(240,234,224,0.25);
+  color: var(--warm-white);
+}
+
+.logo-switcher button.active {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: rgba(201,169,110,0.1);
+}
+
+.site-preview {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 0 auto 24px;
+  max-width: 480px;
+  aspect-ratio: 4/3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.site-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
 /* Fade-in animations */
 .fade-in {
   opacity: 0;
@@ -282,7 +323,6 @@ body::before {
   transform: translateY(0);
 }
 
-/* Stagger delays for gallery cards */
 .gallery .card:nth-child(1) { transition-delay: 0s; }
 .gallery .card:nth-child(2) { transition-delay: 0.1s; }
 .gallery .card:nth-child(3) { transition-delay: 0.2s; }
@@ -319,14 +359,13 @@ body::before {
   <div class="header fade-in">
     <div class="header-label">Logo Refinement</div>
     <h1>LK Design & Build</h1>
-    <p>Blueprint grid concept evolved. Warm off-white on black, refined sans-serif tagline, no box or dimension lines.</p>
+    <p>Clean type on black. No grid, no box, no dimension lines. Warm off-white with a refined sans-serif tagline pulled tighter beneath the mark.</p>
   </div>
 
   <div class="brief fade-in">
-    <strong>Design direction:</strong> Keep the LK letterforms and blueprint grid — remove the containing box and all dimension lines/arrows.
-    Tagline set in <strong>Inter</strong> (refined sans-serif) with increased letter spacing.
+    <strong>Design direction:</strong> LK in IBM Plex Mono Light, tagline in Inter Light with increased letter spacing.
     Colour shifted from cold gold to <strong>warm off-white on black</strong>.
-    Six variations explore weight, grid density, spacing, and tone.
+    Tagline pulled closer to the letterforms. A–C are <strong>left-aligned</strong>, D–F are <strong>centred</strong>.
   </div>
 
   <!-- Gallery -->
@@ -338,10 +377,10 @@ body::before {
         <img src="assets/branding/concepts/concept-1-blueprint/logo-v2-a.svg" alt="Version A">
       </div>
       <div class="card-info">
-        <h3>A — Clean Grid</h3>
-        <p>Full 5x5 grid visible behind LK. Inter Light at 0.45em spacing. Warm off-white #F0EAE0 on near-black. Direct, readable, balanced.</p>
+        <h3>A — Clean, Left-Aligned</h3>
+        <p>IBM Plex Mono Light 300 with Inter Light tagline at 0.45em spacing. Warm off-white #F0EAE0 on near-black. Direct and balanced.</p>
         <div class="card-tags">
-          <span class="tag">Full grid</span>
+          <span class="tag">Left-aligned</span>
           <span class="tag">Light 300</span>
           <span class="tag">#F0EAE0</span>
         </div>
@@ -354,11 +393,11 @@ body::before {
         <img src="assets/branding/concepts/concept-1-blueprint/logo-v2-b.svg" alt="Version B">
       </div>
       <div class="card-info">
-        <h3>B — Separator Line</h3>
-        <p>Full grid with a subtle horizontal separator between LK and tagline. Tagline smaller (16px) with wider 0.55em spacing and reduced opacity. Slightly warmer #EDE6D8.</p>
+        <h3>B — Separator, Left-Aligned</h3>
+        <p>Subtle horizontal separator between LK and tagline. Tagline smaller (16px) with wider 0.55em spacing and reduced opacity. Warmer #EDE6D8.</p>
         <div class="card-tags">
+          <span class="tag">Left-aligned</span>
           <span class="tag">Separator</span>
-          <span class="tag">Wide spacing</span>
           <span class="tag">#EDE6D8</span>
         </div>
       </div>
@@ -370,11 +409,11 @@ body::before {
         <img src="assets/branding/concepts/concept-1-blueprint/logo-v2-c.svg" alt="Version C">
       </div>
       <div class="card-info">
-        <h3>C — Ultra Light</h3>
-        <p>Extra Light weight (200) on both LK and tagline. Larger 180px letters. Ghost-like grid at 5% opacity. True black background. Most minimal and premium feeling.</p>
+        <h3>C — Ultra Light, Left-Aligned</h3>
+        <p>Extra Light weight (200) on both LK and tagline. Larger 180px letters on true black. Most minimal and premium feeling.</p>
         <div class="card-tags">
+          <span class="tag">Left-aligned</span>
           <span class="tag">Extra Light 200</span>
-          <span class="tag">True black</span>
           <span class="tag">#F5EFE3</span>
         </div>
       </div>
@@ -386,10 +425,10 @@ body::before {
         <img src="assets/branding/concepts/concept-1-blueprint/logo-v2-d.svg" alt="Version D">
       </div>
       <div class="card-info">
-        <h3>D — Major/Minor Grid</h3>
-        <p>Centre cross uses slightly heavier stroke (major grid) while other lines are minor. Accent underline beneath LK. Adds subtle architectural hierarchy to the grid.</p>
+        <h3>D — Accent Line, Centred</h3>
+        <p>Centred layout with a subtle accent underline beneath LK. Adds a touch of architectural detail without a full grid. Warmer #E8E0D0.</p>
         <div class="card-tags">
-          <span class="tag">Grid hierarchy</span>
+          <span class="tag">Centred</span>
           <span class="tag">Accent line</span>
           <span class="tag">#E8E0D0</span>
         </div>
@@ -402,10 +441,10 @@ body::before {
         <img src="assets/branding/concepts/concept-1-blueprint/logo-v2-e.svg" alt="Version E">
       </div>
       <div class="card-info">
-        <h3>E — Ghost Grid</h3>
-        <p>Barely-there grid at 4% opacity. Tagline at 15px with 0.6em spacing and 65% opacity — very understated. Lightest warm white #FAF6F0 for maximum contrast on deep black.</p>
+        <h3>E — Understated, Centred</h3>
+        <p>Tagline at 15px with 0.6em spacing and 65% opacity — very quiet. Lightest warm white #FAF6F0 for maximum contrast on deep black.</p>
         <div class="card-tags">
-          <span class="tag">Ghost grid</span>
+          <span class="tag">Centred</span>
           <span class="tag">Max spacing</span>
           <span class="tag">#FAF6F0</span>
         </div>
@@ -418,11 +457,11 @@ body::before {
         <img src="assets/branding/concepts/concept-1-blueprint/logo-v2-f.svg" alt="Version F">
       </div>
       <div class="card-info">
-        <h3>F — Double-Density Grid</h3>
-        <p>Primary grid plus finer sub-grid between lines — richer blueprint texture. Extended grid span beyond the letters. Tagline at 60% opacity for a layered depth effect.</p>
+        <h3>F — Regular Weight, Centred</h3>
+        <p>Inter Regular (400) tagline at 60% opacity for a slightly bolder sub-line. Same warm off-white #F0EAE0. Clean and grounded.</p>
         <div class="card-tags">
-          <span class="tag">Sub-grid</span>
-          <span class="tag">Extended span</span>
+          <span class="tag">Centred</span>
+          <span class="tag">Regular 400</span>
           <span class="tag">#F0EAE0</span>
         </div>
       </div>
@@ -438,24 +477,38 @@ body::before {
         <div class="card-preview" style="background:#050505;">
           <img src="assets/branding/concepts/concept-1-blueprint/logo-asset.svg" alt="Original Blueprint">
         </div>
-        <div class="comparison-label">Original — Gold, box, dimension lines</div>
+        <div class="comparison-label">Original — Gold, box, dimension lines, grid</div>
       </div>
       <div class="comparison-card">
         <div class="card-preview" style="background:#0A0A0A;">
           <img src="assets/branding/concepts/concept-1-blueprint/logo-v2-a.svg" alt="Version A">
         </div>
-        <div class="comparison-label">Refined — Warm off-white, no box, sans-serif tagline</div>
+        <div class="comparison-label">Refined — Warm off-white, no grid, tighter tagline</div>
       </div>
     </div>
   </div>
 
-  <!-- Links to website prototypes -->
+  <!-- Logo preview + switcher + site links -->
   <div class="site-link-section fade-in">
-    <h2>Website Prototypes</h2>
-    <p>The refined logo applied to two site designs</p>
+    <h2>Preview on Site</h2>
+    <p>Switch between logo versions, then open in either prototype</p>
+
+    <div class="logo-switcher" id="logoSwitcher">
+      <button class="active" data-logo="a">A</button>
+      <button data-logo="b">B</button>
+      <button data-logo="c">C</button>
+      <button data-logo="d">D</button>
+      <button data-logo="e">E</button>
+      <button data-logo="f">F</button>
+    </div>
+
+    <div class="site-preview">
+      <img id="logoPreview" src="assets/branding/concepts/concept-1-blueprint/logo-v2-a.svg" alt="Logo preview">
+    </div>
+
     <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-      <a href="prototype-4/index-v2.html" class="site-link-btn">View Studio Refined</a>
-      <a href="prototype-6/index-v2.html" class="site-link-btn">View Studio Motion</a>
+      <a href="prototype-4/index-v2.html?logo=a" id="linkRefined" class="site-link-btn">View Studio Refined</a>
+      <a href="prototype-6/index-v2.html?logo=a" id="linkMotion" class="site-link-btn">View Studio Motion</a>
     </div>
   </div>
 
@@ -475,8 +528,25 @@ body::before {
       }
     });
   }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Logo switcher
+  const basePath = 'assets/branding/concepts/concept-1-blueprint/logo-v2-';
+  const preview = document.getElementById('logoPreview');
+  const linkRefined = document.getElementById('linkRefined');
+  const linkMotion = document.getElementById('linkMotion');
+  const buttons = document.querySelectorAll('#logoSwitcher button');
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const logo = btn.dataset.logo;
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      preview.src = basePath + logo + '.svg';
+      linkRefined.href = 'prototype-4/index-v2.html?logo=' + logo;
+      linkMotion.href = 'prototype-6/index-v2.html?logo=' + logo;
+    });
+  });
 </script>
 
 </body>

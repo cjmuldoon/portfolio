@@ -1118,6 +1118,56 @@
     });
 
     // ═══════════════════════════════════════
+    // LOGO SWITCHER — reads ?logo=a-f, adds floating toolbar
+    // ═══════════════════════════════════════
+    (function() {
+      var logos = document.querySelectorAll('img[src*="logo-nav"]');
+      var basePath = '../assets/branding/concepts/concept-1-blueprint/logo-v2-';
+      var navPath = '../assets/branding/concepts/concept-1-blueprint/logo-nav.svg';
+      var params = new URLSearchParams(window.location.search);
+      var current = params.get('logo') || '';
+
+      function setLogo(letter) {
+        logos.forEach(function(img) { img.src = basePath + letter + '.svg'; });
+        document.querySelectorAll('.logo-sw-btn').forEach(function(b) {
+          b.classList.toggle('active', b.dataset.logo === letter);
+        });
+        current = letter;
+        var url = new URL(window.location);
+        url.searchParams.set('logo', letter);
+        history.replaceState(null, '', url);
+      }
+
+      // Floating toolbar
+      var bar = document.createElement('div');
+      bar.style.cssText = 'position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:9999;display:flex;gap:6px;background:rgba(15,15,15,0.95);border:1px solid rgba(240,234,224,0.12);border-radius:10px;padding:6px 10px;backdrop-filter:blur(10px);';
+      var label = document.createElement('span');
+      label.textContent = 'Logo';
+      label.style.cssText = 'font-family:Inter,sans-serif;font-size:10px;color:rgba(240,234,224,0.35);text-transform:uppercase;letter-spacing:0.15em;display:flex;align-items:center;margin-right:4px;';
+      bar.appendChild(label);
+      ['a','b','c','d','e','f'].forEach(function(l) {
+        var btn = document.createElement('button');
+        btn.className = 'logo-sw-btn';
+        btn.dataset.logo = l;
+        btn.textContent = l.toUpperCase();
+        btn.style.cssText = 'width:32px;height:32px;border:1px solid rgba(240,234,224,0.1);background:transparent;color:rgba(240,234,224,0.4);font-family:Inter,sans-serif;font-size:11px;font-weight:500;border-radius:6px;cursor:pointer;transition:all 0.2s;';
+        btn.addEventListener('mouseenter', function() { if (!this.classList.contains('active')) { this.style.borderColor='rgba(240,234,224,0.25)'; this.style.color='rgba(240,234,224,0.7)'; }});
+        btn.addEventListener('mouseleave', function() { if (!this.classList.contains('active')) { this.style.borderColor='rgba(240,234,224,0.1)'; this.style.color='rgba(240,234,224,0.4)'; }});
+        btn.addEventListener('click', function() { setLogo(l); });
+        bar.appendChild(btn);
+      });
+      document.body.appendChild(bar);
+
+      // Style active state
+      var style = document.createElement('style');
+      style.textContent = '.logo-sw-btn.active{border-color:#C9A96E!important;color:#C9A96E!important;background:rgba(201,169,110,0.1)!important;}';
+      document.head.appendChild(style);
+
+      // Apply from URL param
+      if (current && current.match(/^[a-f]$/)) { setLogo(current); }
+    })();
+
+    // ═══════════════════════════════════════
     // SCROLL-SCRUB VIDEO ENGINE
     // Direct currentTime scrub — no canvas, no frame extraction
     // ═══════════════════════════════════════
