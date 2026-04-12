@@ -1118,53 +1118,113 @@
     });
 
     // ═══════════════════════════════════════
-    // LOGO SWITCHER — reads ?logo=a-f, adds floating toolbar
+    // LOGO + COLOUR SWITCHER
     // ═══════════════════════════════════════
     (function() {
       var logos = document.querySelectorAll('img[src*="logo-nav"]');
-      var basePath = '../assets/branding/concepts/concept-1-blueprint/logo-v2-';
-      var navPath = '../assets/branding/concepts/concept-1-blueprint/logo-nav.svg';
+      var navBase = '../assets/branding/concepts/concept-1-blueprint/logo-nav-';
+      var defaultNav = '../assets/branding/concepts/concept-1-blueprint/logo-nav.svg';
       var params = new URLSearchParams(window.location.search);
-      var current = params.get('logo') || '';
+      var currentLogo = params.get('logo') || '';
+      var currentColour = '';
+
+      // Colour palette — name, hex, fill for SVG text
+      var colours = [
+        { id:'warm-cream', hex:'#F5EDE0', label:'Warm Cream' },
+        { id:'parchment', hex:'#EDE4D4', label:'Parchment' },
+        { id:'sand', hex:'#E8DFD0', label:'Sand' },
+        { id:'blush', hex:'#F0E6E2', label:'Blush' },
+        { id:'stone', hex:'#E6E2DC', label:'Stone' },
+        { id:'linen', hex:'#F8F4EE', label:'Linen' },
+        { id:'bone', hex:'#DDD6C8', label:'Bone' },
+        { id:'oyster', hex:'#ECE6DE', label:'Oyster' },
+        { id:'rich-cream', hex:'#FAF0DC', label:'Rich Cream' },
+        { id:'buttercream', hex:'#F5E8CC', label:'Buttercream' }
+      ];
 
       function setLogo(letter) {
-        logos.forEach(function(img) { img.src = basePath + letter + '.svg'; });
-        document.querySelectorAll('.logo-sw-btn').forEach(function(b) {
+        logos.forEach(function(img) { img.src = navBase + letter + '.svg'; });
+        document.querySelectorAll('.sw-logo').forEach(function(b) {
           b.classList.toggle('active', b.dataset.logo === letter);
         });
-        current = letter;
+        currentLogo = letter;
+        updateURL();
+      }
+
+      function setColour(hex) {
+        // Recolour all text/line elements in nav logo SVGs via CSS filter trick
+        // Since we can't style external SVG via CSS, swap fill in the SVG inline
+        logos.forEach(function(img) {
+          // Re-fetch and recolour the SVG
+          fetch(img.src).then(function(r){return r.text();}).then(function(svgText) {
+            var recoloured = svgText.replace(/fill="[^"]*"/g, 'fill="'+hex+'"')
+                                     .replace(/stroke="[^"]*"(?!-width)/g, 'stroke="'+hex+'"');
+            var blob = new Blob([recoloured], {type:'image/svg+xml'});
+            img.src = URL.createObjectURL(blob);
+          });
+        });
+        document.querySelectorAll('.sw-colour').forEach(function(b) {
+          b.style.outline = 'none';
+          if (b.dataset.hex === hex) b.style.outline = '2px solid #C9A96E';
+        });
+        currentColour = hex;
+      }
+
+      function updateURL() {
         var url = new URL(window.location);
-        url.searchParams.set('logo', letter);
+        if (currentLogo) url.searchParams.set('logo', currentLogo);
         history.replaceState(null, '', url);
       }
 
-      // Floating toolbar
+      // Build toolbar
       var bar = document.createElement('div');
-      bar.style.cssText = 'position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:9999;display:flex;gap:6px;background:rgba(15,15,15,0.95);border:1px solid rgba(240,234,224,0.12);border-radius:10px;padding:6px 10px;backdrop-filter:blur(10px);';
-      var label = document.createElement('span');
-      label.textContent = 'Logo';
-      label.style.cssText = 'font-family:Inter,sans-serif;font-size:10px;color:rgba(240,234,224,0.35);text-transform:uppercase;letter-spacing:0.15em;display:flex;align-items:center;margin-right:4px;';
-      bar.appendChild(label);
+      bar.style.cssText = 'position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:9999;display:flex;flex-direction:column;gap:6px;background:rgba(15,15,15,0.95);border:1px solid rgba(240,234,224,0.12);border-radius:10px;padding:10px 12px;backdrop-filter:blur(10px);align-items:center;';
+
+      // Logo row
+      var logoRow = document.createElement('div');
+      logoRow.style.cssText = 'display:flex;gap:6px;align-items:center;';
+      var logoLabel = document.createElement('span');
+      logoLabel.textContent = 'Logo';
+      logoLabel.style.cssText = 'font-family:Inter,sans-serif;font-size:9px;color:rgba(240,234,224,0.35);text-transform:uppercase;letter-spacing:0.15em;margin-right:4px;width:42px;';
+      logoRow.appendChild(logoLabel);
       ['a','b','c','d','e','f'].forEach(function(l) {
         var btn = document.createElement('button');
-        btn.className = 'logo-sw-btn';
+        btn.className = 'sw-logo';
         btn.dataset.logo = l;
         btn.textContent = l.toUpperCase();
-        btn.style.cssText = 'width:32px;height:32px;border:1px solid rgba(240,234,224,0.1);background:transparent;color:rgba(240,234,224,0.4);font-family:Inter,sans-serif;font-size:11px;font-weight:500;border-radius:6px;cursor:pointer;transition:all 0.2s;';
-        btn.addEventListener('mouseenter', function() { if (!this.classList.contains('active')) { this.style.borderColor='rgba(240,234,224,0.25)'; this.style.color='rgba(240,234,224,0.7)'; }});
-        btn.addEventListener('mouseleave', function() { if (!this.classList.contains('active')) { this.style.borderColor='rgba(240,234,224,0.1)'; this.style.color='rgba(240,234,224,0.4)'; }});
+        btn.style.cssText = 'width:30px;height:30px;border:1px solid rgba(240,234,224,0.1);background:transparent;color:rgba(240,234,224,0.4);font-family:Inter,sans-serif;font-size:10px;font-weight:500;border-radius:6px;cursor:pointer;transition:all 0.2s;';
         btn.addEventListener('click', function() { setLogo(l); });
-        bar.appendChild(btn);
+        logoRow.appendChild(btn);
       });
+      bar.appendChild(logoRow);
+
+      // Colour row
+      var colourRow = document.createElement('div');
+      colourRow.style.cssText = 'display:flex;gap:5px;align-items:center;';
+      var colourLabel = document.createElement('span');
+      colourLabel.textContent = 'Colour';
+      colourLabel.style.cssText = 'font-family:Inter,sans-serif;font-size:9px;color:rgba(240,234,224,0.35);text-transform:uppercase;letter-spacing:0.15em;margin-right:2px;width:42px;';
+      colourRow.appendChild(colourLabel);
+      colours.forEach(function(c) {
+        var swatch = document.createElement('button');
+        swatch.className = 'sw-colour';
+        swatch.dataset.hex = c.hex;
+        swatch.title = c.label + ' ' + c.hex;
+        swatch.style.cssText = 'width:20px;height:20px;border:none;border-radius:4px;cursor:pointer;transition:outline 0.2s;outline:none;outline-offset:2px;background:'+c.hex+';';
+        swatch.addEventListener('click', function() { setColour(c.hex); });
+        colourRow.appendChild(swatch);
+      });
+      bar.appendChild(colourRow);
+
       document.body.appendChild(bar);
 
-      // Style active state
+      // Active styles
       var style = document.createElement('style');
-      style.textContent = '.logo-sw-btn.active{border-color:#C9A96E!important;color:#C9A96E!important;background:rgba(201,169,110,0.1)!important;}';
+      style.textContent = '.sw-logo.active{border-color:#C9A96E!important;color:#C9A96E!important;background:rgba(201,169,110,0.1)!important;} .sw-logo:hover{border-color:rgba(240,234,224,0.25)!important;color:rgba(240,234,224,0.7)!important;}';
       document.head.appendChild(style);
 
       // Apply from URL param
-      if (current && current.match(/^[a-f]$/)) { setLogo(current); }
+      if (currentLogo && currentLogo.match(/^[a-f]$/)) { setLogo(currentLogo); }
     })();
 
     // ═══════════════════════════════════════

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 55" width="150" height="55">
+  <defs><style>@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300&amp;family=Inter:wght@300&amp;display=swap');</style></defs>
+  <text x="4" y="32" font-family="'IBM Plex Mono', 'Courier New', monospace" font-size="38" font-weight="300" fill="#EDE6D8">LK</text>
+  <line x1="4" y1="40" x2="50" y2="40" stroke="#EDE6D8" stroke-width="0.5" opacity="0.2"/>
+  <text x="4" y="52" font-family="'Inter', 'Helvetica Neue', sans-serif" font-size="7" font-weight="300" fill="#EDE6D8" letter-spacing="3.4" opacity="0.75">DESIGN AND BUILD</text>
+</svg>
