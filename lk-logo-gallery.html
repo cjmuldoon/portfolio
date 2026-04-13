@@ -311,6 +311,44 @@ body {
   object-fit: contain;
 }
 
+/* Collapsible sections */
+.collapse-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+  margin-bottom: 24px;
+}
+
+.collapse-toggle h2 {
+  margin-bottom: 0;
+}
+
+.collapse-arrow {
+  display: inline-block;
+  font-size: 0.7rem;
+  color: var(--warm-dim);
+  transition: transform 0.3s ease;
+}
+
+.collapse-toggle.collapsed .collapse-arrow {
+  transform: rotate(-90deg);
+}
+
+.collapse-body {
+  overflow: hidden;
+  max-height: 4000px;
+  transition: max-height 0.5s ease, opacity 0.4s ease;
+  opacity: 1;
+}
+
+.collapse-body.collapsed {
+  max-height: 0;
+  opacity: 0;
+}
+
 /* Fade-in animations */
 .fade-in {
   opacity: 0;
@@ -368,7 +406,12 @@ body {
     Tagline pulled closer to the letterforms. A–C are <strong>left-aligned</strong>, D–F are <strong>centred</strong>.
   </div>
 
-  <!-- Gallery -->
+  <!-- Gallery — collapsible -->
+  <div class="collapse-toggle collapsed fade-in" onclick="this.classList.toggle('collapsed'); this.nextElementSibling.classList.toggle('collapsed');">
+    <h2 style="font-size: 1.1rem; font-weight: 300; color: var(--warm-dim); letter-spacing: 0.05em;">Layout Variations (A–F)</h2>
+    <span class="collapse-arrow">&#9660;</span>
+  </div>
+  <div class="collapse-body collapsed">
   <div class="gallery">
 
     <!-- A -->
@@ -468,6 +511,7 @@ body {
     </div>
 
   </div>
+  </div><!-- /collapse-body -->
 
   <!-- Comparison with original -->
   <div class="comparison-section fade-in">
@@ -571,10 +615,13 @@ body {
   });
   </script>
 
-  <!-- Colour Variations -->
-  <div class="comparison-section fade-in" style="margin-top: 72px;">
-    <h2>Off-White Colour Variations</h2>
-    <p style="font-size: 0.8rem; color: var(--warm-dim); font-weight: 300; max-width: 560px; margin: 0 auto 32px; line-height: 1.6;">Same logo form, eight different off-white tones — from warm cream through to cool stone. Each shifts the feel without changing the structure.</p>
+  <!-- Colour Variations — collapsible -->
+  <div class="collapse-toggle collapsed fade-in" style="margin-top: 72px;" onclick="this.classList.toggle('collapsed'); this.nextElementSibling.classList.toggle('collapsed');">
+    <h2 style="font-size: 1.1rem; font-weight: 300; color: var(--warm-dim); letter-spacing: 0.05em;">Off-White Colour Variations</h2>
+    <span class="collapse-arrow">&#9660;</span>
+  </div>
+  <div class="collapse-body collapsed">
+  <p style="font-size: 0.8rem; color: var(--warm-dim); font-weight: 300; max-width: 560px; margin: 0 auto 32px; line-height: 1.6; text-align:center;">Same logo form, different off-white tones — from warm cream through to cool stone.</p>
   </div>
 
   <div class="gallery" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
@@ -690,6 +737,7 @@ body {
     </div>
 
   </div>
+  </div><!-- /collapse-body colours -->
 
   <!-- Logo preview + switcher + site links -->
   <div class="site-link-section fade-in">
