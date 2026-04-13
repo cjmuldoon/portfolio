@@ -1,0 +1,9 @@
+{
+  "prompt": "Dramatic abstract architectural photograph. A study of light and shadow on raw building materials — a cast concrete wall with subtle formwork impressions, intersected by a shaft of warm golden-hour sunlight entering from the right. The light casts long geometric shadows across the textured surface, creating an interplay of warm champagne highlights and deep charcoal shadows. A single vertical timber batten is visible at the left edge, catching the light along its grain. Shot with a 50mm prime lens, f/4, ISO 100. Moody, contemplative atmosphere. The image evokes design intention and spatial awareness without showing any specific room or completed building. Do not include any text, logos, people, or furniture. No retouching. Raw concrete texture with air bubbles, pour lines, and natural colour variation visible.",
+  "negative_prompt": "text, logos, words, typography, people, hands, faces, completed rooms, kitchens, bathrooms, furniture, appliances, CGI, 3D render, plastic, airbrushed, illustration, cartoon, anime, stock photo, oversaturated, neon, digital art, smooth surfaces",
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "jpg",
+    "aspect_ratio": "16:9"
+  }
+}

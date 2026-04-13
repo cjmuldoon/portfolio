@@ -1,0 +1,9 @@
+{
+  "prompt": "Minimalist architectural detail photograph. An abstract corner where a smooth white rendered wall meets a natural timber ceiling, with a narrow vertical window slot between them letting in a blade of soft morning light. The light creates a luminous champagne glow on the white wall surface. The timber ceiling shows parallel battens with warm honey tones and visible grain. The composition is tightly cropped — just the junction of wall, timber, and light — creating a geometric abstract that speaks to considered design and craftsmanship. Shot on medium format camera, 80mm lens, f/5.6, ISO 100. Clean, architectural, serene. No furniture, no people, no decoration visible. Do not include text or logos. The surfaces show realistic construction texture — the render has a slight orange-peel finish, the timber has natural knots and grain variation.",
+  "negative_prompt": "text, logos, words, typography, people, hands, faces, completed rooms, kitchens, bathrooms, furniture, appliances, decorations, plants, CGI, 3D render, plastic, airbrushed, illustration, cartoon, anime, stock photo, oversaturated, neon, digital art",
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "jpg",
+    "aspect_ratio": "16:9"
+  }
+}

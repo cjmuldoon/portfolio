@@ -1,0 +1,9 @@
+{
+  "prompt": "Abstract architectural still life composition. A close-up arrangement of premium interior design materials on a dark charcoal surface: a slab of honed white marble with grey veining, a piece of solid oak timber with visible grain, a small square of brushed brass, and a sprig of dried eucalyptus. Soft directional light from the left creating gentle shadows. Shallow depth of field, 85mm lens, f/2.8, ISO 200. Warm champagne colour temperature. The composition is elegant, minimal, and tactile — suggesting interior design and craftsmanship without depicting any specific room or building. Do not include any text, logos, or human figures. Do not beautify or over-smooth. Realistic material textures with visible surface detail — the marble has natural pitting, the oak has subtle tool marks, the brass shows micro-scratches.",
+  "negative_prompt": "text, logos, words, typography, people, hands, faces, completed rooms, kitchens, bathrooms, furniture, appliances, CGI, 3D render, plastic look, skin smoothing, airbrushed, illustration, cartoon, anime, sketch, painting, watercolour, stock photo watermark, oversaturated, neon colours",
+  "api_parameters": {
+    "resolution": "2K",
+    "output_format": "jpg",
+    "aspect_ratio": "16:9"
+  }
+}
