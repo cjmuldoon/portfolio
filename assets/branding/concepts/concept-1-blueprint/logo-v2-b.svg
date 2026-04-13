@@ -1,13 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
   <defs>
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300&amp;family=Inter:wght@300;400&amp;display=swap');
-      .letter { font-family: 'IBM Plex Mono', 'Courier New', monospace; font-weight: 300; font-size: 168px; fill: #EDE6D8; }
-      .tagline { font-family: 'Inter', 'Helvetica Neue', sans-serif; font-weight: 300; font-size: 16px; fill: #EDE6D8; letter-spacing: 0.55em; opacity: 0.75; }
+      @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&amp;family=Inter:wght@200&amp;display=swap');
+      .letter { font-family: 'IBM Plex Mono', 'Courier New', monospace; font-weight: 400; font-size: 168px; fill: #F2E6D0; letter-spacing: -0.02em; }
+      .tagline { font-family: 'Inter', 'Helvetica Neue', sans-serif; font-weight: 200; font-size: 15px; fill: #F2E6D0; letter-spacing: 0.55em; opacity: 0.75; }
     </style>
   </defs>
   <rect width="800" height="600" fill="#080808"/>
   <text x="200" y="320" class="letter">LK</text>
-  <line x1="200" y1="345" x2="340" y2="345" stroke="#EDE6D8" stroke-width="0.5" opacity="0.2"/>
-  <text x="200" y="375" class="tagline">DESIGN AND BUILD</text>
+  <line x1="200" y1="345" x2="340" y2="345" stroke="#F2E6D0" stroke-width="0.5" opacity="0.2"/>
+  <text x="200" y="373" class="tagline">DESIGN AND BUILD</text>
 </svg>
