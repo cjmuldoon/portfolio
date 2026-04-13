@@ -414,7 +414,7 @@
   <!-- Hero — AI-generated abstract materials image -->
   <section id="hero" class="relative h-screen flex items-center justify-center overflow-hidden">
     <div class="absolute inset-0">
-      <img src="../assets/images/hero-abstract-1.jpg" alt="Interior design materials — marble, oak, brass" class="w-full h-full object-cover">
+      <img id="heroImg" src="../assets/images/hero-abstract-1.jpg" alt="Interior design materials — marble, oak, brass" class="w-full h-full object-cover">
       <div class="absolute inset-0 bg-charcoal/60"></div>
     </div>
     <div class="hero-frame"></div>
@@ -1035,6 +1035,35 @@
         colourRow.appendChild(swatch);
       });
       bar.appendChild(colourRow);
+
+      // Hero image row
+      var heroRow = document.createElement('div');
+      heroRow.style.cssText = 'display:flex;gap:6px;align-items:center;';
+      var heroLabel = document.createElement('span');
+      heroLabel.textContent = 'Hero';
+      heroLabel.style.cssText = 'font-family:Inter,sans-serif;font-size:9px;color:rgba(240,234,224,0.35);text-transform:uppercase;letter-spacing:0.15em;margin-right:4px;width:42px;';
+      heroRow.appendChild(heroLabel);
+      var heroImages = [
+        { id:'1', label:'Materials' },
+        { id:'2', label:'Concrete' },
+        { id:'3', label:'Corner' }
+      ];
+      var heroImg = document.getElementById('heroImg');
+      heroImages.forEach(function(h, i) {
+        var btn = document.createElement('button');
+        btn.className = 'sw-hero';
+        btn.textContent = h.label;
+        btn.title = h.label;
+        btn.style.cssText = 'height:30px;padding:0 12px;border:1px solid rgba(240,234,224,0.1);background:transparent;color:rgba(240,234,224,0.4);font-family:Inter,sans-serif;font-size:9px;font-weight:500;border-radius:6px;cursor:pointer;transition:all 0.2s;';
+        if (i === 0) { btn.style.borderColor='#C9A96E'; btn.style.color='#C9A96E'; btn.style.background='rgba(201,169,110,0.1)'; }
+        btn.addEventListener('click', function() {
+          if (heroImg) heroImg.src = '../assets/images/hero-abstract-' + h.id + '.jpg';
+          document.querySelectorAll('.sw-hero').forEach(function(b) { b.style.borderColor='rgba(240,234,224,0.1)'; b.style.color='rgba(240,234,224,0.4)'; b.style.background='transparent'; });
+          btn.style.borderColor='#C9A96E'; btn.style.color='#C9A96E'; btn.style.background='rgba(201,169,110,0.1)';
+        });
+        heroRow.appendChild(btn);
+      });
+      bar.appendChild(heroRow);
 
       document.body.appendChild(bar);
 
