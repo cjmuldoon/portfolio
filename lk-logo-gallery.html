@@ -496,10 +496,11 @@ body {
 
   <div class="gallery" style="grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 24px;">
 
-    <!-- Current IBM Plex Mono (via object so font loads) -->
+    <!-- Current IBM Plex Mono -->
     <div class="card fade-in">
-      <div class="card-preview" style="background:#0A0A0A; padding:0;">
-        <object type="image/svg+xml" data="assets/branding/concepts/concept-1-blueprint/logo-v2-a.svg" style="width:100%;height:100%;"></object>
+      <div class="card-preview" style="background:#0A0A0A; display:flex; flex-direction:column; align-items:flex-start; justify-content:center; padding: 40px 50px;">
+        <div style="font-family:'IBM Plex Mono',monospace; font-size: 120px; font-weight:400; color:#F2E6D0; letter-spacing:-0.02em; line-height:1;">LK</div>
+        <div style="font-family:'Inter',sans-serif; font-size:10px; font-weight:200; color:#F2E6D0; letter-spacing:0.45em; margin-top:16px;">DESIGN AND BUILD</div>
       </div>
       <div class="card-info">
         <h3>Current — IBM Plex Mono 400</h3>
@@ -510,8 +511,11 @@ body {
 
     <!-- Bridge — L uptick merges into K -->
     <div class="card fade-in">
-      <div class="card-preview" style="background:#0A0A0A; padding:0;">
-        <object type="image/svg+xml" data="assets/branding/concepts/concept-1-blueprint/logo-v2-bridge.svg" style="width:100%;height:100%;"></object>
+      <div class="card-preview" style="background:#0A0A0A; display:flex; flex-direction:column; align-items:flex-start; justify-content:center; padding: 40px 50px; position:relative;">
+        <div style="font-family:'IBM Plex Mono',monospace; font-size: 120px; font-weight:400; color:#F2E6D0; letter-spacing:-0.02em; line-height:1;">LK</div>
+        <!-- Bridge bar connecting L foot to K at baseline -->
+        <div style="position:absolute; bottom:auto; left:50px; background:#F2E6D0; height:5px; width:0;" id="bridgeBar"></div>
+        <div style="font-family:'Inter',sans-serif; font-size:10px; font-weight:200; color:#F2E6D0; letter-spacing:0.45em; margin-top:16px;">DESIGN AND BUILD</div>
       </div>
       <div class="card-info">
         <h3>IBM Plex Mono 400 — L Merged into K</h3>
@@ -522,8 +526,9 @@ body {
 
     <!-- Archivo — clean alternative -->
     <div class="card fade-in">
-      <div class="card-preview" style="background:#0A0A0A; padding:0;">
-        <object type="image/svg+xml" data="assets/branding/concepts/concept-1-blueprint/logo-v2-archivo.svg" style="width:100%;height:100%;"></object>
+      <div class="card-preview" style="background:#0A0A0A; display:flex; flex-direction:column; align-items:flex-start; justify-content:center; padding: 40px 50px;">
+        <div style="font-family:'Archivo',sans-serif; font-size: 120px; font-weight:500; color:#F2E6D0; letter-spacing:-0.02em; line-height:1;">LK</div>
+        <div style="font-family:'Inter',sans-serif; font-size:10px; font-weight:200; color:#F2E6D0; letter-spacing:0.45em; margin-top:16px;">DESIGN AND BUILD</div>
       </div>
       <div class="card-info">
         <h3>Archivo 500</h3>
@@ -533,6 +538,38 @@ body {
     </div>
 
   </div>
+
+  <script>
+  // Position the bridge bar dynamically after fonts load
+  document.fonts.ready.then(function() {
+    var cards = document.querySelectorAll('.card-preview');
+    // The bridge card is the second one in this section
+    var bridgeCard = cards[cards.length - 8]; // rough index — find by ID instead
+    var bar = document.getElementById('bridgeBar');
+    if (!bar) return;
+    var parent = bar.closest('.card-preview');
+    var lkDiv = parent.querySelector('div');
+    // Measure the L foot end and K stem start using a temporary span
+    var measure = document.createElement('span');
+    measure.style.cssText = 'font-family:IBM Plex Mono,monospace;font-size:120px;font-weight:400;letter-spacing:-0.02em;visibility:hidden;position:absolute;';
+    measure.textContent = 'L';
+    document.body.appendChild(measure);
+    var lWidth = measure.offsetWidth;
+    measure.textContent = 'LK';
+    var lkWidth = measure.offsetWidth;
+    document.body.removeChild(measure);
+    // Position bridge from end of L to start of K stem area
+    var rect = lkDiv.getBoundingClientRect();
+    var parentRect = parent.getBoundingClientRect();
+    var lkTop = rect.top - parentRect.top;
+    var lkBottom = lkTop + rect.height;
+    // The bridge sits at the baseline of the text
+    bar.style.top = (lkBottom - 8) + 'px';
+    bar.style.left = (50 + lWidth * 0.72) + 'px';
+    bar.style.width = (lWidth * 0.45) + 'px';
+    bar.style.height = '5px';
+  });
+  </script>
 
   <!-- Colour Variations -->
   <div class="comparison-section fade-in" style="margin-top: 72px;">
