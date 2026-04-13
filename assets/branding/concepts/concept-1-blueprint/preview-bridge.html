@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Inter:wght@200&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; }
+body { background:#0A0A0A; display:flex; flex-direction:column; align-items:flex-start; justify-content:center; height:100vh; padding:0 12%; overflow:hidden; }
+.lk-wrap { position:relative; }
+.lk { font-family:'IBM Plex Mono', monospace; font-size:min(22vw, 160px); font-weight:400; color:#F2E6D0; letter-spacing:-0.02em; line-height:1; }
+.bridge { position:absolute; bottom:0; background:#F2E6D0; height:0.065em; font-size:inherit; }
+.tag { font-family:'Inter', sans-serif; font-size:min(2.2vw, 14px); font-weight:200; color:#F2E6D0; letter-spacing:0.45em; margin-top:3%; }
+</style>
+</head><body>
+<div class="lk-wrap">
+  <div class="lk" id="lk">LK</div>
+  <div class="bridge" id="bridge"></div>
+</div>
+<div class="tag">DESIGN AND BUILD</div>
+<script>
+document.fonts.ready.then(function() {
+  var el = document.getElementById('lk');
+  var style = getComputedStyle(el);
+  var fontSize = parseFloat(style.fontSize);
+  // Measure L width
+  var canvas = document.createElement('canvas');
+  var ctx = canvas.getContext('2d');
+  ctx.font = style.fontWeight + ' ' + fontSize + 'px ' + style.fontFamily;
+  var lWidth = ctx.measureText('L').width;
+  var lkWidth = ctx.measureText('LK').width;
+  var kStart = lWidth + (fontSize * -0.02); // adjust for letter-spacing
+  var kStemX = kStart;
+  var bridge = document.getElementById('bridge');
+  // Bridge from ~70% of L width to K stem start
+  bridge.style.left = (lWidth * 0.62) + 'px';
+  bridge.style.width = (kStemX - lWidth * 0.62 + fontSize * 0.1) + 'px';
+  bridge.style.fontSize = fontSize + 'px';
+});
+</script>
+</body></html>
