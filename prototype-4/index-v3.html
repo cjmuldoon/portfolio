@@ -415,7 +415,7 @@
   <section id="hero" class="relative h-screen flex items-center justify-center overflow-hidden">
     <div class="absolute inset-0">
       <img id="heroImg" src="../assets/images/hero-abstract-1.jpg" alt="Interior design materials — marble, oak, brass" class="w-full h-full object-cover">
-      <div class="absolute inset-0 bg-charcoal/60"></div>
+      <div id="heroOverlay" class="absolute inset-0 bg-charcoal/65"></div>
     </div>
     <div class="hero-frame"></div>
     <div class="relative z-10 text-center px-6 max-w-4xl">
@@ -1044,11 +1044,12 @@
       heroLabel.style.cssText = 'font-family:Inter,sans-serif;font-size:9px;color:rgba(240,234,224,0.35);text-transform:uppercase;letter-spacing:0.15em;margin-right:4px;width:42px;';
       heroRow.appendChild(heroLabel);
       var heroImages = [
-        { id:'1', label:'Materials' },
-        { id:'2', label:'Concrete' },
-        { id:'3', label:'Corner' }
+        { id:'1', label:'Materials', overlay:'0.65' },
+        { id:'2', label:'Concrete', overlay:'0.6' },
+        { id:'3', label:'Corner', overlay:'0.75' }
       ];
       var heroImg = document.getElementById('heroImg');
+      var heroOverlay = document.getElementById('heroOverlay');
       heroImages.forEach(function(h, i) {
         var btn = document.createElement('button');
         btn.className = 'sw-hero';
@@ -1058,6 +1059,7 @@
         if (i === 0) { btn.style.borderColor='#C9A96E'; btn.style.color='#C9A96E'; btn.style.background='rgba(201,169,110,0.1)'; }
         btn.addEventListener('click', function() {
           if (heroImg) heroImg.src = '../assets/images/hero-abstract-' + h.id + '.jpg';
+          if (heroOverlay) heroOverlay.style.opacity = h.overlay;
           document.querySelectorAll('.sw-hero').forEach(function(b) { b.style.borderColor='rgba(240,234,224,0.1)'; b.style.color='rgba(240,234,224,0.4)'; b.style.background='transparent'; });
           btn.style.borderColor='#C9A96E'; btn.style.color='#C9A96E'; btn.style.background='rgba(201,169,110,0.1)';
         });

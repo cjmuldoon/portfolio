@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300&amp;family=Inter:wght@200&amp;display=swap');
+    </style>
+  </defs>
+  <rect width="800" height="600" fill="#0A0A0A"/>
+  <!-- IBM Plex Mono Light — serifs present but thinner, less prominent uptick -->
+  <text x="200" y="320" font-family="'IBM Plex Mono', monospace" font-size="168" font-weight="300" fill="#F2E6D0" letter-spacing="-0.03em">LK</text>
+  <text x="204" y="366" font-family="'Inter', sans-serif" font-size="16" font-weight="200" fill="#F2E6D0" letter-spacing="8">DESIGN AND BUILD</text>
+</svg>
