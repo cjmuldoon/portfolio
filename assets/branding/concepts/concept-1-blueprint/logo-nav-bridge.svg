@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 52" width="150" height="52">
+  <defs><style>@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&amp;family=Inter:wght@200&amp;display=swap');</style></defs>
+  <text x="4" y="32" font-family="'IBM Plex Mono', 'Courier New', monospace" font-size="38" font-weight="400" fill="#F2E6D0" letter-spacing="-0.02em">LK</text>
+  <!-- Bridge connecting L foot to K stem -->
+  <rect x="25" y="30" width="14" height="2" fill="#F2E6D0"/>
+  <text x="5" y="46" font-family="'Inter', sans-serif" font-size="7" font-weight="200" fill="#F2E6D0" letter-spacing="3.4">DESIGN AND BUILD</text>
+</svg>

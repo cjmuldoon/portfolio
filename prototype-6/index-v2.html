@@ -1187,13 +1187,14 @@
       logoLabel.textContent = 'Logo';
       logoLabel.style.cssText = 'font-family:Inter,sans-serif;font-size:9px;color:rgba(240,234,224,0.35);text-transform:uppercase;letter-spacing:0.15em;margin-right:4px;width:42px;';
       logoRow.appendChild(logoLabel);
-      ['a','b','c','d','e','f'].forEach(function(l) {
+      [{id:'a',label:'A'},{id:'b',label:'B'},{id:'c',label:'C'},{id:'d',label:'D'},{id:'e',label:'E'},{id:'f',label:'F'},{id:'bridge',label:'LK'},{id:'archivo',label:'Arc'}].forEach(function(item) {
         var btn = document.createElement('button');
         btn.className = 'sw-logo';
-        btn.dataset.logo = l;
-        btn.textContent = l.toUpperCase();
-        btn.style.cssText = 'width:30px;height:30px;border:1px solid rgba(240,234,224,0.1);background:transparent;color:rgba(240,234,224,0.4);font-family:Inter,sans-serif;font-size:10px;font-weight:500;border-radius:6px;cursor:pointer;transition:all 0.2s;';
-        btn.addEventListener('click', function() { setLogo(l); });
+        btn.dataset.logo = item.id;
+        btn.textContent = item.label;
+        var w = item.label.length > 1 ? 'auto;padding:0 8px' : '30px';
+        btn.style.cssText = 'width:'+w+';height:30px;border:1px solid rgba(240,234,224,0.1);background:transparent;color:rgba(240,234,224,0.4);font-family:Inter,sans-serif;font-size:10px;font-weight:500;border-radius:6px;cursor:pointer;transition:all 0.2s;';
+        btn.addEventListener('click', function() { setLogo(item.id); });
         logoRow.appendChild(btn);
       });
       bar.appendChild(logoRow);
