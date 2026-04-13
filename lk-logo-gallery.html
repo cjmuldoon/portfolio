@@ -627,8 +627,9 @@ body {
     </div>
 
     <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-      <a href="prototype-4/index-v2.html?logo=a" id="linkRefined" class="site-link-btn">View Studio Refined</a>
-      <a href="prototype-6/index-v2.html?logo=a" id="linkMotion" class="site-link-btn">View Studio Motion</a>
+      <a href="prototype-4/index-v3.html?logo=a" id="linkNoImages" class="site-link-btn">Studio Refined (No Images)</a>
+      <a href="prototype-4/index-v2.html?logo=a" id="linkRefined" class="site-link-btn">Studio Refined</a>
+      <a href="prototype-6/index-v2.html?logo=a" id="linkMotion" class="site-link-btn">Studio Motion</a>
     </div>
   </div>
 
@@ -653,6 +654,7 @@ body {
   // Logo switcher
   const basePath = 'assets/branding/concepts/concept-1-blueprint/logo-v2-';
   const preview = document.getElementById('logoPreview');
+  const linkNoImages = document.getElementById('linkNoImages');
   const linkRefined = document.getElementById('linkRefined');
   const linkMotion = document.getElementById('linkMotion');
   const buttons = document.querySelectorAll('#logoSwitcher button');
@@ -663,6 +665,7 @@ body {
       buttons.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       preview.src = basePath + logo + '.svg';
+      linkNoImages.href = 'prototype-4/index-v3.html?logo=' + logo;
       linkRefined.href = 'prototype-4/index-v2.html?logo=' + logo;
       linkMotion.href = 'prototype-6/index-v2.html?logo=' + logo;
     });
