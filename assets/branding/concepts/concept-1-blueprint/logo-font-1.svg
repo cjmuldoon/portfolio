@@ -1,8 +1,37 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
   <defs>
-    <style>@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&amp;family=Inter:wght@200&amp;display=swap');</style>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&amp;display=swap');</style>
   </defs>
   <rect width="800" height="600" fill="#0A0A0A"/>
-  <text x="200" y="320" font-family="'IBM Plex Mono', monospace" font-size="168" font-weight="400" fill="#F2E6D0" letter-spacing="-0.02em">LK</text>
+
+  <!-- L — IBM Plex Mono style with full slab serif (current) -->
+  <g fill="#F2E6D0" transform="translate(200,160)">
+    <!-- L vertical stem -->
+    <rect x="0" y="0" width="22" height="155"/>
+    <!-- L horizontal foot -->
+    <rect x="0" y="140" width="90" height="15"/>
+    <!-- L bottom-left serif (the uptick) -->
+    <rect x="-8" y="140" width="8" height="15"/>
+    <!-- L top-left serif -->
+    <rect x="-8" y="0" width="30" height="8" rx="0"/>
+    <!-- L foot-right serif -->
+    <rect x="90" y="140" width="8" height="15"/>
+    <!-- K vertical stem -->
+    <rect x="115" y="0" width="22" height="155"/>
+    <!-- K top-left serif -->
+    <rect x="107" y="0" width="30" height="8"/>
+    <!-- K bottom-left serif -->
+    <rect x="107" y="147" width="30" height="8"/>
+    <!-- K upper diagonal arm -->
+    <polygon points="137,72 137,83 210,8 210,0 198,0"/>
+    <!-- K upper arm top serif -->
+    <rect x="198" y="0" width="20" height="8"/>
+    <!-- K lower diagonal arm -->
+    <polygon points="137,83 137,93 205,155 218,155 218,147"/>
+    <!-- K lower arm bottom serif -->
+    <rect x="205" y="147" width="20" height="8"/>
+  </g>
+
+  <!-- DESIGN AND BUILD tagline -->
   <text x="204" y="366" font-family="'Inter', sans-serif" font-size="16" font-weight="200" fill="#F2E6D0" letter-spacing="8">DESIGN AND BUILD</text>
 </svg>

@@ -1,8 +1,22 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
   <defs>
-    <style>@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&amp;family=Inter:wght@200&amp;display=swap');</style>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200&amp;display=swap');</style>
   </defs>
   <rect width="800" height="600" fill="#0A0A0A"/>
-  <text x="200" y="320" font-family="'Space Grotesk', sans-serif" font-size="168" font-weight="500" fill="#F2E6D0" letter-spacing="-0.02em">LK</text>
+
+  <!-- L — ALL serifs removed (clean sans-serif, same proportions) -->
+  <g fill="#F2E6D0" transform="translate(200,160)">
+    <!-- L vertical stem -->
+    <rect x="0" y="0" width="22" height="155"/>
+    <!-- L horizontal foot — flush, no serifs -->
+    <rect x="0" y="140" width="90" height="15"/>
+    <!-- K vertical stem -->
+    <rect x="115" y="0" width="22" height="155"/>
+    <!-- K upper diagonal arm -->
+    <polygon points="137,72 137,83 210,8 210,0 198,0"/>
+    <!-- K lower diagonal arm -->
+    <polygon points="137,83 137,93 205,155 218,155 218,147"/>
+  </g>
+
   <text x="204" y="366" font-family="'Inter', sans-serif" font-size="16" font-weight="200" fill="#F2E6D0" letter-spacing="8">DESIGN AND BUILD</text>
 </svg>
