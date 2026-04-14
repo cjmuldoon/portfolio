@@ -787,8 +787,17 @@ body {
   }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-  // Logo switcher — A/B/C/D mapped to nav SVGs
+  // Logo switcher — A–F mapped to nav SVGs or generated PNGs
   const navBase = 'assets/branding/concepts/concept-1-blueprint/logo-nav-';
+  const genBase = 'assets/branding/generated/';
+  const logoSources = {
+    original: navBase + 'original.svg',
+    bridge:   navBase + 'bridge.svg',
+    slab:     navBase + 'slab.svg',
+    archivo:  navBase + 'archivo.svg',
+    aihalf:   genBase + 'lk_v2_half_uptick_transparent.png',
+    aicustom: genBase + 'lk_v3_custom_slab_transparent.png',
+  };
   const preview = document.getElementById('logoPreview');
   const linkNoImages = document.getElementById('linkNoImages');
   const linkRefined = document.getElementById('linkRefined');
@@ -800,7 +809,7 @@ body {
       const logo = btn.dataset.logo;
       buttons.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      preview.src = navBase + logo + '.svg';
+      preview.src = logoSources[logo];
       linkNoImages.href = 'prototype-4/index-v3.html?logo=' + logo;
       linkRefined.href = 'prototype-4/index-v2.html?logo=' + logo;
       linkMotion.href = 'prototype-6/index-v2.html?logo=' + logo;
