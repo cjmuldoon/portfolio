@@ -1,12 +1,23 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
   <defs>
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&amp;family=Inter:wght@200&amp;display=swap');
-      .letter { font-family: 'IBM Plex Mono', 'Courier New', monospace; font-weight: 500; font-size: 168px; fill: #F2E6D0; letter-spacing: -0.02em; }
-      .tagline { font-family: 'Inter', 'Helvetica Neue', sans-serif; font-weight: 200; font-size: 16px; fill: #F2E6D0; letter-spacing: 0.45em; }
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&amp;display=swap');
     </style>
   </defs>
   <rect width="800" height="600" fill="#0A0A0A"/>
-  <text x="200" y="320" class="letter">LK</text>
-  <text x="204" y="366" class="tagline">DESIGN AND BUILD</text>
+
+  <!-- Custom LK: IBM Plex Mono 500 outlines + slab serifs, left-aligned -->
+  <g fill="#F2E6D0" transform="translate(150,120) scale(0.5,-0.5) translate(0,-698)">
+    <path d="M78 0 V94 H108 V670 H78 V698 H250 V670 H220 V94 H538 V28 H566 V0 Z"/>
+    <g transform="translate(600,0)">
+      <path d="M274 321 L190 216 V0 H78 V698 H190 V364 H195 L280 480 L451 698 H580 L350 404 L589 0 H461 Z"/>
+      <rect x="48" y="670" width="172" height="28"/>
+      <rect x="48" y="0" width="172" height="28"/>
+      <rect x="550" y="670" width="58" height="28"/>
+      <rect x="560" y="0" width="58" height="28"/>
+    </g>
+  </g>
+
+  <!-- Tagline -->
+  <text x="150" y="500" font-family="'Inter', 'Helvetica Neue', sans-serif" font-size="16" font-weight="300" fill="#F2E6D0" letter-spacing="8">DESIGN AND BUILD</text>
 </svg>
