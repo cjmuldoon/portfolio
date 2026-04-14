@@ -1,42 +1,26 @@
 <!DOCTYPE html>
 <html><head>
 <meta charset="UTF-8">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap" rel="stylesheet">
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
 body { background:#0A0A0A; display:flex; flex-direction:column; align-items:flex-start; justify-content:center; height:100vh; padding:0 10%; overflow:hidden; }
 .logo-wrap { width: min(55vw, 420px); }
-.logo-wrap svg { width:100%; height:auto; display:block; }
+.lk { font-family:'Courier New', Courier, monospace; font-size:min(22vw, 160px); font-weight:bold; color:#F2E6D0; letter-spacing:-0.12em; line-height:1; }
 .tag {
-  font-family:'Inter', sans-serif;
-  font-weight:300;
+  font-family:'Courier New', Courier, monospace;
+  font-weight:normal;
   color:#F2E6D0;
   margin-top:2%;
   width:100%;
   text-align:justify;
   text-align-last:justify;
   font-size:min(2.8vw, 18px);
+  letter-spacing:0.3em;
 }
 </style>
 </head><body>
 <div class="logo-wrap">
-  <!-- Same custom slab serif LK but with bridge connecting L foot to K stem -->
-  <svg viewBox="78 0 1140 698" fill="#F2E6D0">
-    <g transform="scale(1,-1) translate(0,-698)">
-      <!-- L with serifs -->
-      <path d="M78 0 V94 H108 V670 H78 V698 H250 V670 H220 V94 H538 V28 H566 V0 Z"/>
-      <!-- Bridge: connects L foot to K stem at baseline -->
-      <rect x="538" y="0" width="140" height="28"/>
-      <!-- K with serifs -->
-      <g transform="translate(600,0)">
-        <path d="M274 321 L190 216 V0 H78 V698 H190 V364 H195 L280 480 L451 698 H580 L350 404 L589 0 H461 Z"/>
-        <rect x="48" y="670" width="172" height="28"/>
-        <rect x="48" y="0" width="172" height="28"/>
-        <rect x="550" y="670" width="58" height="28"/>
-        <rect x="560" y="0" width="58" height="28"/>
-      </g>
-    </g>
-  </svg>
-  <div class="tag">D E S I G N &nbsp; A N D &nbsp; B U I L D</div>
+  <div class="lk">LK</div>
+  <div class="tag">DESIGN AND BUILD</div>
 </div>
 </body></html>
