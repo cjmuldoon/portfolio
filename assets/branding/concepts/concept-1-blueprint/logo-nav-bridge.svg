@@ -1,9 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 62" width="200" height="62">
-  <defs><style>@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&amp;display=swap');</style></defs>
-  <!-- Courier New LK -->
-  <text x="0" y="34" font-family="'Courier New', Courier, monospace" font-size="38" font-weight="normal" fill="#F2E6D0" letter-spacing="-0.02em">LK</text>
-  <!-- Mask: covers bottom half of L's left uptick -->
-  <rect x="-1" y="30.5" width="4" height="2.5" fill="#0A0A0A"/>
-  <!-- Tagline -->
-  <text x="0" y="54" font-family="'Inter', sans-serif" font-size="8" font-weight="300" fill="#F2E6D0" letter-spacing="3.2">DESIGN AND BUILD</text>
+  <defs>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&amp;display=swap');</style>
+    <mask id="halfUptickNav" maskUnits="userSpaceOnUse" x="0" y="0" width="200" height="62">
+      <rect width="200" height="62" fill="white"/>
+      <!-- Erase outer/lower half of L's bottom-left uptick serif -->
+      <rect x="-1" y="32" width="4" height="3" fill="black"/>
+    </mask>
+  </defs>
+  <text x="0" y="34" font-family="'Courier New', Courier, monospace" font-size="38" font-weight="normal" fill="#F2E6D0" letter-spacing="-0.02em" mask="url(#halfUptickNav)">LK</text>
+  <text x="0" y="48" font-family="'Inter', sans-serif" font-size="8" font-weight="300" fill="#F2E6D0" letter-spacing="3.2">DESIGN AND BUILD</text>
 </svg>
