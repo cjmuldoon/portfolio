@@ -975,6 +975,15 @@
     (function() {
       var logos = document.querySelectorAll('img[src*="logo-nav"]');
       var navBase = '../assets/branding/concepts/concept-1-blueprint/logo-nav-';
+      var genBase = '../assets/branding/generated/';
+      var logoSources = {
+        original: navBase + 'original.svg',
+        bridge:   navBase + 'bridge.svg',
+        slab:     navBase + 'slab.svg',
+        archivo:  navBase + 'archivo.svg',
+        aihalf:   genBase + 'lk_v2_half_uptick_transparent.png',
+        aicustom: genBase + 'lk_v3_custom_slab_transparent.png'
+      };
       var params = new URLSearchParams(window.location.search);
       var currentLogo = params.get('logo') || '';
       var currentColour = '';
@@ -993,7 +1002,7 @@
       ];
 
       function setLogo(letter) {
-        logos.forEach(function(img) { img.src = navBase + letter + '.svg'; });
+        logos.forEach(function(img) { img.src = logoSources[letter] || (navBase + letter + '.svg'); });
         document.querySelectorAll('.sw-logo').forEach(function(b) {
           b.classList.toggle('active', b.dataset.logo === letter);
         });
@@ -1005,6 +1014,7 @@
 
       function setColour(hex) {
         logos.forEach(function(img) {
+          if (/\.png(\?|$)/i.test(img.src)) return; // skip PNG assets
           fetch(img.src).then(function(r){return r.text();}).then(function(svgText) {
             var recoloured = svgText.replace(/fill="[^"]*"/g, 'fill="'+hex+'"')
                                      .replace(/stroke="[^"]*"(?!-width)/g, 'stroke="'+hex+'"');
@@ -1028,7 +1038,7 @@
       logoLabel.textContent = 'Logo';
       logoLabel.style.cssText = 'font-family:Inter,sans-serif;font-size:9px;color:rgba(240,234,224,0.35);text-transform:uppercase;letter-spacing:0.15em;margin-right:4px;width:42px;';
       logoRow.appendChild(logoLabel);
-      [{id:'original',label:'1'},{id:'bridge',label:'2'},{id:'slab',label:'3'},{id:'archivo',label:'4'}].forEach(function(item) {
+      [{id:'original',label:'1'},{id:'bridge',label:'2'},{id:'slab',label:'3'},{id:'archivo',label:'4'},{id:'aihalf',label:'5'},{id:'aicustom',label:'6'}].forEach(function(item) {
         var btn = document.createElement('button');
         btn.className = 'sw-logo';
         btn.dataset.logo = item.id;
@@ -1063,7 +1073,7 @@
       style.textContent = '.sw-logo.active{border-color:#C9A96E!important;color:#C9A96E!important;background:rgba(201,169,110,0.1)!important;} .sw-logo:hover{border-color:rgba(240,234,224,0.25)!important;color:rgba(240,234,224,0.7)!important;}';
       document.head.appendChild(style);
 
-      if (currentLogo && currentLogo.match(/^[a-f]$/)) { setLogo(currentLogo); }
+      if (currentLogo && logoSources[currentLogo]) { setLogo(currentLogo); }
     })();
   </script>
 </body>
