@@ -553,28 +553,19 @@ body {
       </div>
     </div>
 
-    <!-- Option 2: Courier New with shortened L uptick (SVG paths) -->
+    <!-- Option 2: Courier New with L uptick halved via mask -->
     <div class="card fade-in">
-      <div class="card-preview" style="background:#0A0A0A; display:flex; align-items:flex-end; padding: 30px 36px 28px;">
-        <svg viewBox="0 0 1200 760" fill="#F2E6D0" style="width:clamp(200px,22vw,320px); height:auto;">
-          <g transform="scale(1,-1) translate(0,-698)">
-            <!-- L with HALF uptick: foot extends left only 15u instead of 30u -->
-            <path d="M93 0 V94 H108 V670 H78 V698 H250 V670 H220 V94 H538 V28 H566 V0 Z"/>
-            <!-- K with serifs -->
-            <g transform="translate(600,0)">
-              <path d="M274 321 L190 216 V0 H78 V698 H190 V364 H195 L280 480 L451 698 H580 L350 404 L589 0 H461 Z"/>
-              <rect x="48" y="670" width="172" height="28"/>
-              <rect x="48" y="0" width="172" height="28"/>
-              <rect x="550" y="670" width="58" height="28"/>
-              <rect x="560" y="0" width="58" height="28"/>
-            </g>
-          </g>
-          <text x="78" y="755" font-family="'Inter','Helvetica Neue',sans-serif" font-size="68" font-weight="300" fill="#F2E6D0" letter-spacing="0.42em">DESIGN AND BUILD</text>
-        </svg>
+      <div class="card-preview" style="background:#0A0A0A; display:flex; flex-direction:column; align-items:flex-start; justify-content:flex-end; padding: 30px 36px 28px; position:relative;">
+        <div style="position:relative; display:inline-block;">
+          <div style="font-family:'Courier New',Courier,monospace; font-size:clamp(120px,18vw,200px); font-weight:normal; color:#F2E6D0; letter-spacing:-0.02em; line-height:0.85; -webkit-text-stroke:0.5px #F2E6D0;">LK</div>
+          <!-- Mask: covers the bottom half of the L's left uptick -->
+          <div style="position:absolute; bottom:0; left:-2px; width:0.06em; height:0.12em; background:#0A0A0A;"></div>
+        </div>
+        <div style="font-family:'Inter',sans-serif; font-size:11px; font-weight:300; color:#F2E6D0; letter-spacing:0.5em; margin-top:4px;">DESIGN AND BUILD</div>
       </div>
       <div class="card-info">
         <h3>Option 2 — Shortened Uptick</h3>
-        <p>Same custom slab serif but the L's bottom-left uptick is halved. Subtler foot, less visual weight at the base. All other serifs unchanged.</p>
+        <p>Same Courier New slab serif but the L's bottom-left uptick is halved. Subtler foot, all other serifs unchanged.</p>
         <div class="card-tags"><span class="tag">Half uptick</span><span class="tag">Subtle</span></div>
       </div>
     </div>
