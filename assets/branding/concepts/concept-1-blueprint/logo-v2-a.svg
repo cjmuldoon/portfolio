@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
   <defs>
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&amp;family=Inter:wght@200&amp;display=swap');
-      .letter { font-family: 'IBM Plex Mono', 'Courier New', monospace; font-weight: 400; font-size: 168px; fill: #F2E6D0; letter-spacing: -0.02em; }
+      @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&amp;family=Inter:wght@200&amp;display=swap');
+      .letter { font-family: 'IBM Plex Mono', 'Courier New', monospace; font-weight: 500; font-size: 168px; fill: #F2E6D0; letter-spacing: -0.02em; }
       .tagline { font-family: 'Inter', 'Helvetica Neue', sans-serif; font-weight: 200; font-size: 16px; fill: #F2E6D0; letter-spacing: 0.45em; }
     </style>
   </defs>
