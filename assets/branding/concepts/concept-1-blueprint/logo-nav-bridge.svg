@@ -3,7 +3,7 @@
   <!-- Courier New LK -->
   <text x="0" y="34" font-family="'Courier New', Courier, monospace" font-size="38" font-weight="normal" fill="#F2E6D0" letter-spacing="-0.02em">LK</text>
   <!-- Mask: covers bottom half of L's left uptick -->
-  <rect x="-1" y="28" width="5" height="7" fill="#0A0A0A"/>
+  <rect x="-1" y="30.5" width="4" height="2.5" fill="#0A0A0A"/>
   <!-- Tagline -->
   <text x="0" y="54" font-family="'Inter', sans-serif" font-size="8" font-weight="300" fill="#F2E6D0" letter-spacing="3.2">DESIGN AND BUILD</text>
 </svg>
