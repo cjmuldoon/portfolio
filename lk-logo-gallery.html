@@ -555,19 +555,22 @@ body {
       </div>
     </div>
 
-    <!-- Option 2: Courier New with L uptick halved via SVG mask -->
+    <!-- Option 2: Custom slab paths with explicit half-height inside uptick -->
     <div class="card fade-in">
-      <div class="card-preview" style="background:#0A0A0A; display:flex; flex-direction:column; align-items:flex-start; justify-content:flex-end; padding: 30px 36px 28px; position:relative;">
-        <svg viewBox="0 0 300 230" style="width:clamp(160px,22vw,260px); height:auto; display:block;">
-          <defs>
-            <mask id="halfUptickB" maskUnits="userSpaceOnUse">
-              <rect width="300" height="230" fill="white"/>
-              <!-- Cover top half of L's bottom-left serif (uptick) -->
-              <rect x="30" y="138" width="14" height="12" fill="black"/>
-            </mask>
-          </defs>
-          <text x="0" y="170" font-family="'Courier New',Courier,monospace" font-size="200" font-weight="normal" fill="#F2E6D0" letter-spacing="-4" mask="url(#halfUptickB)">LK</text>
-          <text x="0" y="205" font-family="'Inter',sans-serif" font-size="14" font-weight="300" fill="#F2E6D0" letter-spacing="4.6" textLength="220" lengthAdjust="spacing">DESIGN AND BUILD</text>
+      <div class="card-preview" style="background:#0A0A0A; display:flex; align-items:flex-end; padding: 30px 36px 28px;">
+        <svg viewBox="78 -60 1280 880" fill="#F2E6D0" style="width:clamp(160px,17vw,250px); height:auto;">
+          <g transform="scale(1,-1) translate(0,-698)">
+            <!-- L with half-height uptick rising from top of bottom stroke just right of stem -->
+            <path d="M78 0 V94 H108 V670 H78 V698 H250 V670 H220 V137 H250 V94 H538 V28 H566 V0 Z"/>
+            <g transform="translate(600,0)">
+              <path d="M274 321 L190 216 V0 H78 V698 H190 V364 H195 L280 480 L451 698 H580 L350 404 L589 0 H461 Z"/>
+              <rect x="48" y="670" width="172" height="28"/>
+              <rect x="48" y="0" width="172" height="28"/>
+              <rect x="550" y="670" width="58" height="28"/>
+              <rect x="560" y="0" width="58" height="28"/>
+            </g>
+          </g>
+          <text x="78" y="790" font-family="'Inter','Helvetica Neue',sans-serif" font-size="82" font-weight="300" fill="#F2E6D0" textLength="1111" lengthAdjust="spacing">DESIGN AND BUILD</text>
         </svg>
       </div>
       <div class="card-info">
