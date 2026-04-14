@@ -545,7 +545,7 @@ body {
       <div class="card-preview" style="background:#0A0A0A; display:flex; flex-direction:column; align-items:flex-start; justify-content:flex-end; padding: 30px 36px 28px;">
         <div style="display:inline-flex; flex-direction:column;">
           <div style="font-family:'Courier New',Courier,monospace; font-size:clamp(120px,18vw,200px); font-weight:normal; color:#F2E6D0; letter-spacing:-0.02em; line-height:0.85; -webkit-text-stroke:0.5px #F2E6D0;">LK</div>
-          <div style="font-family:'Inter',sans-serif; font-size:14px; font-weight:300; color:#F2E6D0; letter-spacing:0.3em; margin-top:2px; text-align:justify; text-align-last:justify;">D E S I G N &nbsp; A N D &nbsp; B U I L D</div>
+          <div style="font-family:'Inter',sans-serif; font-size:14px; font-weight:300; color:#F2E6D0; letter-spacing:0.3em; margin-top:-6px; text-align:justify; text-align-last:justify;">D E S I G N &nbsp; A N D &nbsp; B U I L D</div>
         </div>
       </div>
       <div class="card-info">
@@ -562,7 +562,7 @@ body {
           <div style="font-family:'Courier New',Courier,monospace; font-size:clamp(120px,18vw,200px); font-weight:normal; color:#F2E6D0; letter-spacing:-0.02em; line-height:0.85; -webkit-text-stroke:0.5px #F2E6D0;">LK</div>
           <!-- Mask: covers the bottom half of the L's left uptick -->
           <div style="position:absolute; bottom:0; left:-2px; width:0.06em; height:0.12em; background:#0A0A0A;"></div>
-          <div style="font-family:'Inter',sans-serif; font-size:14px; font-weight:300; color:#F2E6D0; letter-spacing:0.3em; margin-top:2px; text-align:justify; text-align-last:justify;">D E S I G N &nbsp; A N D &nbsp; B U I L D</div>
+          <div style="font-family:'Inter',sans-serif; font-size:14px; font-weight:300; color:#F2E6D0; letter-spacing:0.3em; margin-top:-6px; text-align:justify; text-align-last:justify;">D E S I G N &nbsp; A N D &nbsp; B U I L D</div>
         </div>
       </div>
       <div class="card-info">
@@ -575,7 +575,7 @@ body {
     <!-- Option 3: Custom slab serif (SVG paths + tagline inside SVG) -->
     <div class="card fade-in">
       <div class="card-preview" style="background:#0A0A0A; display:flex; align-items:flex-end; padding: 30px 36px 28px;">
-        <svg viewBox="78 -60 1140 860" fill="#F2E6D0" style="width:clamp(180px,19vw,280px); height:auto;">
+        <svg viewBox="78 -60 1140 880" fill="#F2E6D0" style="width:clamp(160px,17vw,250px); height:auto;">
           <g transform="scale(1,-1) translate(0,-698)">
             <path d="M78 0 V94 H108 V670 H78 V698 H250 V670 H220 V94 H538 V28 H566 V0 Z"/>
             <g transform="translate(600,0)">
@@ -587,7 +587,7 @@ body {
             </g>
           </g>
           <!-- Tagline: more gap from LK, spans full width -->
-          <text x="78" y="790" font-family="'Inter','Helvetica Neue',sans-serif" font-size="68" font-weight="300" fill="#F2E6D0" letter-spacing="0.42em">DESIGN AND BUILD</text>
+          <text x="78" y="800" font-family="'Inter','Helvetica Neue',sans-serif" font-size="78" font-weight="300" fill="#F2E6D0" letter-spacing="0.36em">DESIGN AND BUILD</text>
         </svg>
       </div>
       <div class="card-info">
@@ -743,16 +743,14 @@ body {
     <p>Switch between logo versions, then open in either prototype</p>
 
     <div class="logo-switcher" id="logoSwitcher">
-      <button class="active" data-logo="a">A</button>
-      <button data-logo="b">B</button>
-      <button data-logo="c">C</button>
-      <button data-logo="d">D</button>
-      <button data-logo="e">E</button>
-      <button data-logo="f">F</button>
+      <button class="active" data-logo="original">A</button>
+      <button data-logo="bridge">B</button>
+      <button data-logo="slab">C</button>
+      <button data-logo="archivo">D</button>
     </div>
 
     <div class="site-preview">
-      <img id="logoPreview" src="assets/branding/concepts/concept-1-blueprint/logo-v2-a.svg" alt="Logo preview">
+      <img id="logoPreview" src="assets/branding/concepts/concept-1-blueprint/logo-nav-original.svg" alt="Logo preview">
     </div>
 
     <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
@@ -780,8 +778,8 @@ body {
   }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-  // Logo switcher
-  const basePath = 'assets/branding/concepts/concept-1-blueprint/logo-v2-';
+  // Logo switcher — A/B/C/D mapped to nav SVGs
+  const navBase = 'assets/branding/concepts/concept-1-blueprint/logo-nav-';
   const preview = document.getElementById('logoPreview');
   const linkNoImages = document.getElementById('linkNoImages');
   const linkRefined = document.getElementById('linkRefined');
@@ -793,7 +791,7 @@ body {
       const logo = btn.dataset.logo;
       buttons.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      preview.src = basePath + logo + '.svg';
+      preview.src = navBase + logo + '.svg';
       linkNoImages.href = 'prototype-4/index-v3.html?logo=' + logo;
       linkRefined.href = 'prototype-4/index-v2.html?logo=' + logo;
       linkMotion.href = 'prototype-6/index-v2.html?logo=' + logo;
