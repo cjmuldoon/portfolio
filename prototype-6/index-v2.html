@@ -1126,13 +1126,23 @@
       var defaultNav = '../assets/branding/concepts/concept-1-blueprint/logo-nav.svg';
       var genBase = '../assets/branding/generated/';
       var logoSources = {
-        original: navBase + 'original.svg',
-        bridge:   genBase + 'lk_v2_half_uptick_transparent.png',
-        slab:     navBase + 'slab.svg',
-        archivo:  navBase + 'archivo.svg',
-        aihalf:   genBase + 'lk_v2_half_uptick_transparent.png',
-        aicustom: genBase + 'lk_v3_custom_slab_transparent.png'
+        original: { svg: navBase + 'original.svg', isPng: false },
+        soft1:    { png: genBase + 'lk_soft_01_humanist_rounded', isPng: true },
+        slab:     { svg: navBase + 'slab.svg', isPng: false },
+        archivo:  { svg: navBase + 'archivo.svg', isPng: false },
+        aicustom: { png: genBase + 'lk_v3_custom_slab', isPng: true },
+        serif:    { png: genBase + 'lk_text_01_display_serif', isPng: true },
+        soft2:    { png: genBase + 'lk_soft_02_rounded_serif', isPng: true },
+        monogram: { png: genBase + 'lk_mark_01_monogram', isPng: true },
+        soft3:    { png: genBase + 'lk_soft_03_rounded_geometric', isPng: true },
+        soft4:    { png: genBase + 'lk_soft_04_elegant_ligature', isPng: true }
       };
+      var matteMode = false;
+      function logoSrc(id) {
+        var s = logoSources[id]; if (!s) return '';
+        if (s.isPng) return s.png + (matteMode ? '_transparent_black.png' : '_transparent.png');
+        return s.svg;
+      }
       var params = new URLSearchParams(window.location.search);
       var currentLogo = params.get('logo') || '';
       var currentColour = '';
@@ -1152,7 +1162,7 @@
       ];
 
       function setLogo(letter) {
-        logos.forEach(function(img) { img.src = logoSources[letter] || (navBase + letter + '.svg'); });
+        logos.forEach(function(img) { img.src = logoSrc(letter) || (navBase + letter + '.svg'); });
         document.querySelectorAll('.sw-logo').forEach(function(b) {
           b.classList.toggle('active', b.dataset.logo === letter);
         });
@@ -1197,7 +1207,7 @@
       logoLabel.textContent = 'Logo';
       logoLabel.style.cssText = 'font-family:Inter,sans-serif;font-size:9px;color:rgba(240,234,224,0.35);text-transform:uppercase;letter-spacing:0.15em;margin-right:4px;width:42px;';
       logoRow.appendChild(logoLabel);
-      [{id:'original',label:'1'},{id:'bridge',label:'2'},{id:'slab',label:'3'},{id:'archivo',label:'4'},{id:'aihalf',label:'5'},{id:'aicustom',label:'6'}].forEach(function(item) {
+      [{id:'original',label:'1'},{id:'soft1',label:'2'},{id:'slab',label:'3'},{id:'archivo',label:'4'},{id:'aicustom',label:'5'},{id:'serif',label:'6'},{id:'soft2',label:'7'},{id:'monogram',label:'8'},{id:'soft3',label:'9'},{id:'soft4',label:'10'}].forEach(function(item) {
         var btn = document.createElement('button');
         btn.className = 'sw-logo';
         btn.dataset.logo = item.id;
@@ -1235,6 +1245,17 @@
       document.head.appendChild(style);
 
       // Apply from URL param
+      var matteBtn = document.createElement('button');
+      matteBtn.textContent = 'Matte Black';
+      matteBtn.style.cssText = 'padding:0 10px;height:24px;margin-left:6px;border:1px solid rgba(240,234,224,0.12);background:transparent;color:rgba(240,234,224,0.5);font-family:Inter,sans-serif;font-size:9px;text-transform:uppercase;letter-spacing:0.12em;border-radius:4px;cursor:pointer;';
+      matteBtn.addEventListener('click', function() {
+        matteMode = !matteMode;
+        matteBtn.style.background = matteMode ? 'rgba(201,169,110,0.15)' : 'transparent';
+        matteBtn.style.color = matteMode ? '#C9A96E' : 'rgba(240,234,224,0.5)';
+        if (currentLogo) setLogo(currentLogo);
+      });
+      logoRow.appendChild(matteBtn);
+
       if (currentLogo && logoSources[currentLogo]) { setLogo(currentLogo); }
     })();
 
