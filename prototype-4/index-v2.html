@@ -1023,7 +1023,7 @@
         var isPng = !!(logoSources[letter] && logoSources[letter].isPng);
         document.querySelectorAll('.brand-tagline').forEach(function(t) {
           t.style.display = isPng ? 'block' : 'none';
-          t.style.color = matteMode ? '#1A1A1A' : '#F2E6D0';
+          t.style.color = matteMode ? '#111111' : '#F2E6D0';
         });
         document.querySelectorAll('.sw-logo').forEach(function(b) {
           b.classList.toggle('active', b.dataset.logo === letter);

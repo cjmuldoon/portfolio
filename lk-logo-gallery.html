@@ -911,7 +911,7 @@ body {
     if (currentColour === 'matte' && !logoSources[currentLogo].isPng) {
       // Recolour SVG inline for matte
       fetch(svgSrc).then(r => r.text()).then(svg => {
-        const recol = svg.replace(/fill="[^"]*"/g, 'fill="#1A1A1A"').replace(/stroke="[^"]*"(?!-width)/g, 'stroke="#1A1A1A"');
+        const recol = svg.replace(/fill="[^"]*"/g, 'fill="#111111"').replace(/stroke="[^"]*"(?!-width)/g, 'stroke="#111111"');
         preview.src = URL.createObjectURL(new Blob([recol], {type:'image/svg+xml'}));
       });
     } else {
