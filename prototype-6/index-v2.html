@@ -571,7 +571,10 @@
     <div class="max-w-7xl mx-auto px-6 lg:px-12">
       <div class="flex items-center justify-between h-20 lg:h-24">
         <a href="#hero" class="relative z-50">
-          <img src="../assets/branding/concepts/concept-1-blueprint/logo-nav.svg" alt="LK Design and Build" style="height: 80px; width: auto;">
+          <div class="brand-lockup" style="display:inline-flex; flex-direction:column; align-items:stretch;">
+            <img src="../assets/branding/concepts/concept-1-blueprint/logo-nav.svg" alt="LK Design and Build" style="height: 62px; width: auto; display:block;">
+            <div class="brand-tagline" style="font-family:'Inter',sans-serif; font-size:11px; font-weight:500; color:#F2E6D0; letter-spacing:0.24em; margin-top:4px; padding:0 4%; text-align:justify; text-align-last:justify; display:none;">D E S I G N &nbsp; A N D &nbsp; B U I L D</div>
+          </div>
         </a>
         <div class="hidden lg:flex items-center space-x-10">
           <a href="#about" class="nav-link text-cream text-xs font-sans font-medium tracking-wide-custom uppercase">About</a>
@@ -971,7 +974,10 @@
     <div class="max-w-7xl mx-auto px-6 lg:px-12">
       <div class="grid md:grid-cols-3 gap-12">
         <div>
-          <img src="../assets/branding/concepts/concept-1-blueprint/logo-nav.svg" alt="LK Design and Build" style="height: 44px; width: auto;">
+          <div class="brand-lockup" style="display:inline-flex; flex-direction:column; align-items:stretch;">
+            <img src="../assets/branding/concepts/concept-1-blueprint/logo-nav.svg" alt="LK Design and Build" style="height: 48px; width: auto; display:block;">
+            <div class="brand-tagline" style="font-family:'Inter',sans-serif; font-size:9px; font-weight:500; color:#F2E6D0; letter-spacing:0.22em; margin-top:3px; padding:0 4%; text-align:justify; text-align-last:justify; display:none;">D E S I G N &nbsp; A N D &nbsp; B U I L D</div>
+          </div>
           <p class="text-cream/40 font-sans text-sm mt-4 leading-relaxed">Crafting exceptional spaces in Adelaide since 2024.</p>
         </div>
         <div>
@@ -1162,7 +1168,13 @@
       ];
 
       function setLogo(letter) {
-        logos.forEach(function(img) { img.src = logoSrc(letter) || (navBase + letter + '.svg'); });
+        var src = logoSrc(letter) || (navBase + letter + '.svg');
+        logos.forEach(function(img) { img.src = src; });
+        var isPng = !!(logoSources[letter] && logoSources[letter].isPng);
+        document.querySelectorAll('.brand-tagline').forEach(function(t) {
+          t.style.display = isPng ? 'block' : 'none';
+          t.style.color = matteMode ? '#1A1A1A' : '#F2E6D0';
+        });
         document.querySelectorAll('.sw-logo').forEach(function(b) {
           b.classList.toggle('active', b.dataset.logo === letter);
         });
