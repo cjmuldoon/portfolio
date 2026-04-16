@@ -2099,11 +2099,6 @@ function showPanel(id, skipScroll) {
   const params = new URLSearchParams(window.location.search);
   const tab = params.get('tab');
   if (tab) showPanel(tab, true);
-  const optionId = params.get('option');
-  if (optionId && typeof concepts !== 'undefined') {
-    var idx = concepts.findIndex(function(c){return c.id === optionId;});
-    if (idx >= 0) setTimeout(function(){ selectConcept(idx); }, 50);
-  }
 })();
 
 function openLightbox(src) {
@@ -2578,6 +2573,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
   buildConceptSelector();
   selectConcept(0);
+  // URL param ?option={id} pre-selects a logo option (runs after default select)
+  var params = new URLSearchParams(window.location.search);
+  var optionId = params.get('option');
+  if (optionId) {
+    var idx = concepts.findIndex(function(c){return c.id === optionId;});
+    if (idx >= 0) selectConcept(idx);
+  }
   updateCartUI();
 });
 </script>
