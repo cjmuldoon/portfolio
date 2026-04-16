@@ -368,7 +368,12 @@
     .stagger-children > *:nth-child(4) { transition-delay: 0.45s; }
     .stagger-children > *:nth-child(5) { transition-delay: 0.6s; }
     .stagger-children > *:nth-child(6) { transition-delay: 0.75s; }
-  </style>
+  
+    body.light-logo-theme #navbar { background: #F2E6D0 !important; }
+    body.light-logo-theme #navbar .nav-link,
+    body.light-logo-theme #navbar a:not(.btn-primary) { color: #111111 !important; }
+    body.light-logo-theme #navbar .btn-primary { color: #111111 !important; border-color: rgba(17,17,17,0.4) !important; }
+</style>
 </head>
 <body>
 
@@ -1000,8 +1005,9 @@
         var showTagline = !!(s && !s.hasTagline);
         document.querySelectorAll('.brand-tagline').forEach(function(t) {
           t.style.display = showTagline ? 'block' : 'none';
-          t.style.color = darkMode ? '#111111' : '#F2E6D0';
+          t.style.color = (darkMode || darkAlt) ? '#111111' : '#F2E6D0';
         });
+        document.body.classList.toggle('light-logo-theme', darkMode || darkAlt);
         document.querySelectorAll('.sw-logo').forEach(function(b) {
           b.classList.toggle('active', b.dataset.logo === letter);
         });
