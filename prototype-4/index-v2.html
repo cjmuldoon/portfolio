@@ -1063,6 +1063,7 @@
       darkBtn.style.cssText = 'padding:0 10px;height:24px;margin-left:6px;border:1px solid rgba(240,234,224,0.12);background:transparent;color:rgba(240,234,224,0.5);font-family:Inter,sans-serif;font-size:9px;text-transform:uppercase;letter-spacing:0.12em;border-radius:4px;cursor:pointer;';
       darkBtn.addEventListener('click', function() {
         darkMode = !darkMode;
+        if (darkMode) { darkAlt = false; altBtn.style.background = 'transparent'; altBtn.style.color = 'rgba(240,234,224,0.5)'; }
         darkBtn.style.background = darkMode ? 'rgba(201,169,110,0.15)' : 'transparent';
         darkBtn.style.color = darkMode ? '#C9A96E' : 'rgba(240,234,224,0.5)';
         if (currentLogo) setLogo(currentLogo);
@@ -1074,6 +1075,7 @@
       altBtn.style.cssText = 'padding:0 10px;height:24px;margin-left:6px;border:1px solid rgba(240,234,224,0.12);background:transparent;color:rgba(240,234,224,0.5);font-family:Inter,sans-serif;font-size:9px;text-transform:uppercase;letter-spacing:0.12em;border-radius:4px;cursor:pointer;';
       altBtn.addEventListener('click', function() {
         darkAlt = !darkAlt;
+        if (darkAlt) { darkMode = false; darkBtn.style.background = 'transparent'; darkBtn.style.color = 'rgba(240,234,224,0.5)'; }
         altBtn.style.background = darkAlt ? 'rgba(201,169,110,0.15)' : 'transparent';
         altBtn.style.color = darkAlt ? '#C9A96E' : 'rgba(240,234,224,0.5)';
         if (currentLogo) setLogo(currentLogo);
