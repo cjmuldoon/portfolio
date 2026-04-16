@@ -822,7 +822,7 @@
       <div class="grid md:grid-cols-3 gap-12 items-start">
         <!-- Logo -->
         <div>
-          <div class="brand-lockup mb-6" style="display:inline-flex; flex-direction:column; align-items:flex-start;">
+          <div class="brand-lockup brand-lockup-footer mb-6" style="display:inline-flex; flex-direction:column; align-items:flex-start;">
             <img src="../assets/branding/concepts/concept-1-blueprint/logo-nav.svg" alt="LK Design and Build" style="height: 48px; width: auto; display:block;">
             <div class="brand-tagline" style="font-family:'Inter',sans-serif; font-size:9px; font-weight:500; color:#F2E6D0; letter-spacing:0.22em; margin-top:3px; white-space:nowrap; text-align:left; display:none;">DESIGN AND BUILD</div>
           </div>
@@ -1012,19 +1012,29 @@
       function setLogo(letter) {
         var s = logoSources[letter];
         var src = logoSrc(letter) || (navBase + letter + '.svg');
+        // Footer logos always use the light-champagne asset (dark footer bg)
+        var lightSrc = (s && s.isPng) ? (s.png + '_transparent.png') : (s && s.svg) || src;
+        var footerLogos = [];
+        var otherLogos = [];
+        logos.forEach(function(img){
+          if (img.closest('.brand-lockup-footer')) footerLogos.push(img);
+          else otherLogos.push(img);
+        });
+        footerLogos.forEach(function(img){ img.src = lightSrc; });
         if (darkMode && !darkAlt && s && !s.isPng) {
           fetch(src).then(function(r){return r.text();}).then(function(svg) {
             var recol = svg.replace(/fill="[^"]*"/g,'fill="#111111"').replace(/stroke="[^"]*"(?!-width)/g,'stroke="#111111"');
             var blob = URL.createObjectURL(new Blob([recol],{type:'image/svg+xml'}));
-            logos.forEach(function(img){img.src=blob;});
+            otherLogos.forEach(function(img){img.src=blob;});
           });
         } else {
-          logos.forEach(function(img) { img.src = src; });
+          otherLogos.forEach(function(img) { img.src = src; });
         }
         var showTagline = !!(s && !s.hasTagline);
         document.querySelectorAll('.brand-tagline').forEach(function(t) {
           t.style.display = showTagline ? 'block' : 'none';
-          t.style.color = (darkMode || darkAlt) ? '#111111' : '#F2E6D0';
+          var inFooter = !!t.closest('.brand-lockup-footer');
+          t.style.color = (inFooter ? false : (darkMode || darkAlt)) ? '#111111' : '#F2E6D0';
         });
         document.body.classList.toggle('light-logo-theme', darkMode || darkAlt);
         document.querySelectorAll('.sw-logo').forEach(function(b) {
