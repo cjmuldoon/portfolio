@@ -1851,18 +1851,11 @@ body::before {
 
     <div class="divider"></div>
 
-    <!-- Stationery (per-option letterhead photo + docx + email signature) -->
+    <!-- Stationery & Documents -->
     <div class="section-header">
       <h2>Stationery &amp; Documents</h2>
       <span class="line"></span>
-      <span class="count">4 assets</span>
-    </div>
-
-    <div class="app-grid" style="margin-bottom:18px;">
-      <div class="app-card">
-        <img id="app-letterhead" src="" alt="Letterhead photograph" class="app-card-img" onclick="openLightbox(this.src)">
-        <div class="app-card-body"><h4>Letterhead</h4><p style="font-size:0.7rem;color:rgba(245,240,235,0.5);margin:4px 0 0;">A4 stationery styled with the selected logo</p></div>
-      </div>
+      <span class="count">4 files</span>
     </div>
 
     <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap:14px; margin-bottom:32px;">
@@ -1877,6 +1870,10 @@ body::before {
       <a id="dl-signature" href="" target="_blank" style="display:flex; align-items:center; gap:10px; font-size:0.82rem; font-weight:600; color:var(--gold); text-decoration:none; padding:14px 18px; background:rgba(201,169,110,0.06); border:1px solid rgba(201,169,110,0.15); border-radius:10px; transition:all 0.25s;">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7"/></svg>
         Email Signature
+      </a>
+      <a id="dl-drawing" href="" download style="display:flex; align-items:center; gap:10px; font-size:0.82rem; font-weight:600; color:var(--gold); text-decoration:none; padding:14px 18px; background:rgba(201,169,110,0.06); border:1px solid rgba(201,169,110,0.15); border-radius:10px; transition:all 0.25s;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg>
+        Sample Drawing (.pdf)
       </a>
     </div>
 
@@ -2238,7 +2235,7 @@ function selectConcept(index) {
   downloadLink.href = c.logo;
 
   var optDir = 'assets/branding/options/' + c.id;
-  [['app-card-square', c.cardSquare], ['app-card-textured', c.cardTextured], ['app-letterhead', optDir + '/letterhead.jpg']].forEach(function(entry) {
+  [['app-card-square', c.cardSquare], ['app-card-textured', c.cardTextured]].forEach(function(entry) {
     var img = document.getElementById(entry[0]);
     if (!img) return;
     img.style.opacity = '0';
@@ -2248,6 +2245,7 @@ function selectConcept(index) {
   document.getElementById('dl-letterhead').href = optDir + '/letterhead.docx';
   document.getElementById('dl-quote').href      = optDir + '/quote-template.docx';
   document.getElementById('dl-signature').href  = optDir + '/email-signature.html';
+  document.getElementById('dl-drawing').href    = 'assets/branding/documents/drawing-options-' + c.id + '.pdf';
 
   var qs = '?logo=' + c.id;
   document.getElementById('prev-link-no-images').href = 'prototype-4/index-v3.html' + qs;
