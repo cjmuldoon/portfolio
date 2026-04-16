@@ -1851,37 +1851,30 @@ body::before {
 
     <div class="divider"></div>
 
-    <!-- Documents & Downloads (shared — pre-shortlist versions) -->
+    <!-- Stationery (per-option letterhead photo + docx + email signature) -->
     <div class="section-header">
-      <h2>Documents &amp; Downloads</h2>
+      <h2>Stationery &amp; Documents</h2>
       <span class="line"></span>
-      <span class="count">6 files</span>
+      <span class="count">4 assets</span>
     </div>
 
-    <p style="font-size:0.8rem; color:#777; margin-bottom:14px;">Shared stationery assets carried over from the original Blueprint concept. These are not yet re-generated per logo option — they still reference the pre-shortlist mark. If you pick a final logo we can re-produce letterhead, quote templates, and email signature to match.</p>
+    <div class="app-grid" style="margin-bottom:18px;">
+      <div class="app-card">
+        <img id="app-letterhead" src="" alt="Letterhead photograph" class="app-card-img" onclick="openLightbox(this.src)">
+        <div class="app-card-body"><h4>Letterhead</h4><p style="font-size:0.7rem;color:rgba(245,240,235,0.5);margin:4px 0 0;">A4 stationery styled with the selected logo</p></div>
+      </div>
+    </div>
 
     <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap:14px; margin-bottom:32px;">
-      <a href="assets/branding/concepts/concept-1-blueprint/guidelines.html" target="_blank" style="display:flex; align-items:center; gap:10px; font-size:0.82rem; font-weight:600; color:var(--gold); text-decoration:none; padding:14px 18px; background:rgba(201,169,110,0.06); border:1px solid rgba(201,169,110,0.15); border-radius:10px; transition:all 0.25s;">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-        Brand Guidelines
-      </a>
-      <a href="assets/branding/concepts/concept-1-blueprint/letterhead.docx" download style="display:flex; align-items:center; gap:10px; font-size:0.82rem; font-weight:600; color:var(--gold); text-decoration:none; padding:14px 18px; background:rgba(201,169,110,0.06); border:1px solid rgba(201,169,110,0.15); border-radius:10px; transition:all 0.25s;">
+      <a id="dl-letterhead" href="" download style="display:flex; align-items:center; gap:10px; font-size:0.82rem; font-weight:600; color:var(--gold); text-decoration:none; padding:14px 18px; background:rgba(201,169,110,0.06); border:1px solid rgba(201,169,110,0.15); border-radius:10px; transition:all 0.25s;">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Letterhead — Text
+        Letterhead (.docx)
       </a>
-      <a href="assets/branding/concepts/concept-1-blueprint/letterhead-logo.docx" download style="display:flex; align-items:center; gap:10px; font-size:0.82rem; font-weight:600; color:var(--gold); text-decoration:none; padding:14px 18px; background:rgba(201,169,110,0.06); border:1px solid rgba(201,169,110,0.15); border-radius:10px; transition:all 0.25s;">
+      <a id="dl-quote" href="" download style="display:flex; align-items:center; gap:10px; font-size:0.82rem; font-weight:600; color:var(--gold); text-decoration:none; padding:14px 18px; background:rgba(201,169,110,0.06); border:1px solid rgba(201,169,110,0.15); border-radius:10px; transition:all 0.25s;">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Letterhead — Logo
+        Quote Template (.docx)
       </a>
-      <a href="assets/branding/concepts/concept-1-blueprint/quote-template.docx" download style="display:flex; align-items:center; gap:10px; font-size:0.82rem; font-weight:600; color:var(--gold); text-decoration:none; padding:14px 18px; background:rgba(201,169,110,0.06); border:1px solid rgba(201,169,110,0.15); border-radius:10px; transition:all 0.25s;">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Quote — Text
-      </a>
-      <a href="assets/branding/concepts/concept-1-blueprint/quote-template-logo.docx" download style="display:flex; align-items:center; gap:10px; font-size:0.82rem; font-weight:600; color:var(--gold); text-decoration:none; padding:14px 18px; background:rgba(201,169,110,0.06); border:1px solid rgba(201,169,110,0.15); border-radius:10px; transition:all 0.25s;">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Quote — Logo
-      </a>
-      <a href="assets/branding/concepts/concept-1-blueprint/email-signature.html" target="_blank" style="display:flex; align-items:center; gap:10px; font-size:0.82rem; font-weight:600; color:var(--gold); text-decoration:none; padding:14px 18px; background:rgba(201,169,110,0.06); border:1px solid rgba(201,169,110,0.15); border-radius:10px; transition:all 0.25s;">
+      <a id="dl-signature" href="" target="_blank" style="display:flex; align-items:center; gap:10px; font-size:0.82rem; font-weight:600; color:var(--gold); text-decoration:none; padding:14px 18px; background:rgba(201,169,110,0.06); border:1px solid rgba(201,169,110,0.15); border-radius:10px; transition:all 0.25s;">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7"/></svg>
         Email Signature
       </a>
@@ -2244,12 +2237,17 @@ function selectConcept(index) {
   logoDetail.textContent = c.detail;
   downloadLink.href = c.logo;
 
-  [['app-card-square', c.cardSquare], ['app-card-textured', c.cardTextured]].forEach(function(entry) {
+  var optDir = 'assets/branding/options/' + c.id;
+  [['app-card-square', c.cardSquare], ['app-card-textured', c.cardTextured], ['app-letterhead', optDir + '/letterhead.jpg']].forEach(function(entry) {
     var img = document.getElementById(entry[0]);
     if (!img) return;
     img.style.opacity = '0';
     setTimeout(function() { img.src = entry[1]; img.style.opacity = '1'; }, 150);
   });
+
+  document.getElementById('dl-letterhead').href = optDir + '/letterhead.docx';
+  document.getElementById('dl-quote').href      = optDir + '/quote-template.docx';
+  document.getElementById('dl-signature').href  = optDir + '/email-signature.html';
 
   var qs = '?logo=' + c.id;
   document.getElementById('prev-link-no-images').href = 'prototype-4/index-v3.html' + qs;
