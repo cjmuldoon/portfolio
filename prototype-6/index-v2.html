@@ -1152,9 +1152,18 @@
       var params = new URLSearchParams(window.location.search);
       var currentLogo = params.get('logo') || '';
       function setLogo(letter) {
+        var s = logoSources[letter];
         var src = logoSrc(letter) || (navBase + letter + '.svg');
-        logos.forEach(function(img) { img.src = src; });
-        var showTagline = !!(logoSources[letter] && !logoSources[letter].hasTagline);
+        if (darkMode && s && !s.isPng) {
+          fetch(src).then(function(r){return r.text();}).then(function(svg) {
+            var recol = svg.replace(/fill="[^"]*"/g,'fill="#111111"').replace(/stroke="[^"]*"(?!-width)/g,'stroke="#111111"');
+            var blob = URL.createObjectURL(new Blob([recol],{type:'image/svg+xml'}));
+            logos.forEach(function(img){img.src=blob;});
+          });
+        } else {
+          logos.forEach(function(img) { img.src = src; });
+        }
+        var showTagline = !!(s && !s.hasTagline);
         document.querySelectorAll('.brand-tagline').forEach(function(t) {
           t.style.display = showTagline ? 'block' : 'none';
           t.style.color = darkMode ? '#111111' : '#F2E6D0';
