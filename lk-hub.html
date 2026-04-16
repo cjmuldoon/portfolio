@@ -2094,11 +2094,16 @@ function showPanel(id, skipScroll) {
   if (!skipScroll) window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// URL param tab selection: ?tab=saturn-protos
+// URL param tab selection: ?tab=lk-branding&option=monogram
 (function() {
   const params = new URLSearchParams(window.location.search);
   const tab = params.get('tab');
   if (tab) showPanel(tab, true);
+  const optionId = params.get('option');
+  if (optionId && typeof concepts !== 'undefined') {
+    var idx = concepts.findIndex(function(c){return c.id === optionId;});
+    if (idx >= 0) setTimeout(function(){ selectConcept(idx); }, 50);
+  }
 })();
 
 function openLightbox(src) {
