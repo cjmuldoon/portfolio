@@ -994,10 +994,10 @@
         soft3:    { png: genBase + 'lk_soft_03_rounded_geometric', isPng: true },
         soft4:    { png: genBase + 'lk_soft_04_elegant_ligature', isPng: true }
       };
-      var matteMode = false;
+      var darkMode = false;
       function logoSrc(id) {
         var s = logoSources[id]; if (!s) return '';
-        if (s.isPng) return s.png + (matteMode ? '_transparent_black.png' : '_transparent.png');
+        if (s.isPng) return s.png + (darkMode ? '_transparent_black.png' : '_transparent.png');
         return s.svg;
       }
       var params = new URLSearchParams(window.location.search);
@@ -1023,7 +1023,7 @@
         var isPng = !!(logoSources[letter] && logoSources[letter].isPng);
         document.querySelectorAll('.brand-tagline').forEach(function(t) {
           t.style.display = isPng ? 'block' : 'none';
-          t.style.color = matteMode ? '#111111' : '#F2E6D0';
+          t.style.color = darkMode ? '#111111' : '#F2E6D0';
         });
         document.querySelectorAll('.sw-logo').forEach(function(b) {
           b.classList.toggle('active', b.dataset.logo === letter);
@@ -1096,16 +1096,16 @@
       document.head.appendChild(style);
 
       // Matte/champagne toggle button inserted before the swatch row
-      var matteBtn = document.createElement('button');
-      matteBtn.textContent = 'Matte Black';
-      matteBtn.style.cssText = 'padding:0 10px;height:24px;margin-left:6px;border:1px solid rgba(240,234,224,0.12);background:transparent;color:rgba(240,234,224,0.5);font-family:Inter,sans-serif;font-size:9px;text-transform:uppercase;letter-spacing:0.12em;border-radius:4px;cursor:pointer;';
-      matteBtn.addEventListener('click', function() {
-        matteMode = !matteMode;
-        matteBtn.style.background = matteMode ? 'rgba(201,169,110,0.15)' : 'transparent';
-        matteBtn.style.color = matteMode ? '#C9A96E' : 'rgba(240,234,224,0.5)';
+      var darkBtn = document.createElement('button');
+      darkBtn.textContent = 'Dark';
+      darkBtn.style.cssText = 'padding:0 10px;height:24px;margin-left:6px;border:1px solid rgba(240,234,224,0.12);background:transparent;color:rgba(240,234,224,0.5);font-family:Inter,sans-serif;font-size:9px;text-transform:uppercase;letter-spacing:0.12em;border-radius:4px;cursor:pointer;';
+      darkBtn.addEventListener('click', function() {
+        darkMode = !darkMode;
+        darkBtn.style.background = darkMode ? 'rgba(201,169,110,0.15)' : 'transparent';
+        darkBtn.style.color = darkMode ? '#C9A96E' : 'rgba(240,234,224,0.5)';
         if (currentLogo) setLogo(currentLogo);
       });
-      logoRow.appendChild(matteBtn);
+      logoRow.appendChild(darkBtn);
 
       if (currentLogo && logoSources[currentLogo]) { setLogo(currentLogo); }
     })();

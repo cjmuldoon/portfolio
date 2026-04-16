@@ -845,8 +845,8 @@ body {
       <button data-logo="soft4">J</button>
     </div>
     <div class="logo-switcher" id="colourSwitcher" style="margin-top:10px;">
-      <button class="active" data-colour="champagne" style="padding:0 14px;">Champagne</button>
-      <button data-colour="matte" style="padding:0 14px;">Matte Black</button>
+      <button class="active" data-colour="light" style="padding:0 14px;">Light</button>
+      <button data-colour="dark" style="padding:0 14px;">Dark</button>
     </div>
 
     <div class="site-preview">
@@ -881,7 +881,7 @@ body {
   }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-  // Logo switcher — A–J across 10 options, plus champagne/matte colour toggle
+  // Logo switcher — A–J across 10 options, plus light/dark colour toggle
   const navBase = 'assets/branding/concepts/concept-1-blueprint/logo-nav-';
   const genBase = 'assets/branding/generated/';
   const logoSources = {
@@ -903,13 +903,13 @@ body {
   const logoBtns = document.querySelectorAll('#logoSwitcher button');
   const colourBtns = document.querySelectorAll('#colourSwitcher button');
   let currentLogo = 'original';
-  let currentColour = 'champagne';
+  let currentColour = 'light';
 
   function resolveSrc(logo, colour) {
     const src = logoSources[logo];
     if (!src) return '';
     if (src.isPng) {
-      return src.png + (colour === 'matte' ? '_transparent_black.png' : '_transparent.png');
+      return src.png + (colour === 'dark' ? '_transparent_black.png' : '_transparent.png');
     }
     return src[colour] || src.champagne;
   }
@@ -917,8 +917,8 @@ body {
   const previewTagline = document.getElementById('previewTagline');
   function apply() {
     const isPng = logoSources[currentLogo].isPng;
-    if (currentColour === 'matte' && !isPng) {
-      const svgSrc = resolveSrc(currentLogo, 'champagne');
+    if (currentColour === 'dark' && !isPng) {
+      const svgSrc = resolveSrc(currentLogo, 'light');
       fetch(svgSrc).then(r => r.text()).then(svg => {
         const recol = svg.replace(/fill="[^"]*"/g, 'fill="#111111"').replace(/stroke="[^"]*"(?!-width)/g, 'stroke="#111111"');
         preview.src = URL.createObjectURL(new Blob([recol], {type:'image/svg+xml'}));
@@ -928,7 +928,7 @@ body {
     }
     // Show tagline alongside preview ONLY for PNG (SVGs have embedded tagline)
     previewTagline.style.display = isPng ? 'block' : 'none';
-    previewTagline.style.color = currentColour === 'matte' ? '#111111' : '#F2E6D0';
+    previewTagline.style.color = currentColour === 'dark' ? '#111111' : '#F2E6D0';
     const qs = '?logo=' + currentLogo + '&colour=' + currentColour;
     linkNoImages.href = 'prototype-4/index-v3.html' + qs;
     linkRefined.href  = 'prototype-4/index-v2.html' + qs;
