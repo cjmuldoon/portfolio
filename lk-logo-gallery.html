@@ -847,6 +847,7 @@ body {
     <div class="logo-switcher" id="colourSwitcher" style="margin-top:10px;">
       <button class="active" data-colour="light" style="padding:0 14px;">Light</button>
       <button data-colour="dark" style="padding:0 14px;">Dark</button>
+      <button data-colour="dark-alt" style="padding:0 14px;">Dark Alt</button>
     </div>
 
     <div class="site-preview">
@@ -917,18 +918,23 @@ body {
   const previewTagline = document.getElementById('previewTagline');
   function apply() {
     const isPng = logoSources[currentLogo].isPng;
-    if (currentColour === 'dark' && !isPng) {
+    if (currentLogo === 'monogram' && currentColour === 'dark-alt') {
+      preview.src = genBase + 'lk_mark_01_monogram_transparent_dark_alt.png';
+    } else if ((currentColour === 'dark' || currentColour === 'dark-alt') && !isPng) {
       const svgSrc = resolveSrc(currentLogo, 'light');
       fetch(svgSrc).then(r => r.text()).then(svg => {
         const recol = svg.replace(/fill="[^"]*"/g, 'fill="#111111"').replace(/stroke="[^"]*"(?!-width)/g, 'stroke="#111111"');
         preview.src = URL.createObjectURL(new Blob([recol], {type:'image/svg+xml'}));
       });
+    } else if (currentColour === 'dark-alt') {
+      // Non-monogram PNG with dark-alt selected — fall back to dark behaviour
+      preview.src = resolveSrc(currentLogo, 'dark');
     } else {
       preview.src = resolveSrc(currentLogo, currentColour);
     }
     // Show tagline alongside preview ONLY for PNG (SVGs have embedded tagline)
     previewTagline.style.display = isPng ? 'block' : 'none';
-    previewTagline.style.color = currentColour === 'dark' ? '#111111' : '#F2E6D0';
+    previewTagline.style.color = (currentColour === 'dark' || currentColour === 'dark-alt') ? '#111111' : '#F2E6D0';
     const qs = '?logo=' + currentLogo + '&colour=' + currentColour;
     linkNoImages.href = 'prototype-4/index-v3.html' + qs;
     linkRefined.href  = 'prototype-4/index-v2.html' + qs;
