@@ -560,21 +560,6 @@ body {
       </div>
     </div>
 
-    <!-- Option 2: Soft humanist rounded sans -->
-    <div class="card fade-in">
-      <div class="card-preview" style="background:#0A0A0A; display:flex; flex-direction:column; align-items:center; justify-content:center; padding: 28px;">
-        <div style="display:inline-flex; flex-direction:column; max-width:78%;">
-          <img src="assets/branding/generated/lk_soft_01_humanist_rounded_transparent.png" alt="LK humanist rounded" style="display:block; width:100%; height:auto;">
-          <div style="font-family:'Inter',sans-serif; font-size:11px; font-weight:500; color:#F2E6D0; letter-spacing:0.28em; margin-top:10px; padding:0 5%; text-align:justify; text-align-last:justify;">D E S I G N   A N D   B U I L D</div>
-        </div>
-      </div>
-      <div class="card-info">
-        <h3>Option 2 — Humanist Rounded</h3>
-        <p>Soft humanist rounded sans — fully rounded terminals, gentle curves on K's joins. Friendly, approachable, warm. Champagne #F2E6D0.</p>
-        <div class="card-tags"><span class="tag">Soft</span><span class="tag">Rounded</span><span class="tag">Humanist</span></div>
-      </div>
-    </div>
-
     <!-- Option 3: Custom slab serif (SVG paths + tagline inside SVG) -->
     <div class="card fade-in">
       <div class="card-preview" style="background:#0A0A0A; display:flex; align-items:flex-end; padding: 30px 36px 28px;">
@@ -627,21 +612,6 @@ body {
       </div>
     </div>
 
-    <!-- Option 6: Plain text LK — display serif, tagline layered -->
-    <div class="card fade-in">
-      <div class="card-preview" style="background:#0A0A0A; display:flex; flex-direction:column; align-items:center; justify-content:center; padding: 28px;">
-        <div style="display:inline-flex; flex-direction:column; max-width:100%;">
-          <img src="assets/branding/generated/lk_text_01_display_serif_transparent.png" alt="LK display serif" style="display:block; width:100%; height:auto;">
-          <div style="font-family:'Inter',sans-serif; font-size:11px; font-weight:500; color:#F2E6D0; letter-spacing:0.28em; margin-top:10px; padding:0 5%; text-align:justify; text-align-last:justify;">D E S I G N   A N D   B U I L D</div>
-        </div>
-      </div>
-      <div class="card-info">
-        <h3>Option 6 — Display Serif</h3>
-        <p>LK wordmark in a modern display serif with the DESIGN AND BUILD tagline layered beneath, letter-spaced to match logo width.</p>
-        <div class="card-tags"><span class="tag">AI</span><span class="tag">Serif</span><span class="tag">Display</span></div>
-      </div>
-    </div>
-
     <!-- Option 7: Soft rounded serif -->
     <div class="card fade-in">
       <div class="card-preview" style="background:#0A0A0A; display:flex; flex-direction:column; align-items:center; justify-content:center; padding: 28px;">
@@ -669,21 +639,6 @@ body {
         <h3>Option 8 — Interlocking Monogram</h3>
         <p>Custom LK monogram with merged vertical stroke, DESIGN AND BUILD tagline spaced across the monogram width.</p>
         <div class="card-tags"><span class="tag">AI</span><span class="tag">Monogram</span><span class="tag">Mark</span></div>
-      </div>
-    </div>
-
-    <!-- Option 9: Soft rounded geometric -->
-    <div class="card fade-in">
-      <div class="card-preview" style="background:#0A0A0A; display:flex; flex-direction:column; align-items:center; justify-content:center; padding: 28px;">
-        <div style="display:inline-flex; flex-direction:column; max-width:100%;">
-          <img src="assets/branding/generated/lk_soft_03_rounded_geometric_transparent.png" alt="LK rounded geometric" style="display:block; width:100%; height:auto;">
-          <div style="font-family:'Inter',sans-serif; font-size:11px; font-weight:500; color:#F2E6D0; letter-spacing:0.28em; margin-top:10px; padding:0 5%; text-align:justify; text-align-last:justify;">D E S I G N   A N D   B U I L D</div>
-        </div>
-      </div>
-      <div class="card-info">
-        <h3>Option 9 — Rounded Geometric</h3>
-        <p>Soft rounded geometric sans — circular terminals, monoline weight, rounded joins on K. Modern and friendly. Champagne #F2E6D0.</p>
-        <div class="card-tags"><span class="tag">Soft</span><span class="tag">Geometric</span><span class="tag">Rounded</span></div>
       </div>
     </div>
 
@@ -834,14 +789,11 @@ body {
 
     <div class="logo-switcher" id="logoSwitcher">
       <button class="active" data-logo="original">A</button>
-      <button data-logo="soft1">B</button>
       <button data-logo="slab">C</button>
       <button data-logo="archivo">D</button>
       <button data-logo="aicustom">E</button>
-      <button data-logo="serif">F</button>
       <button data-logo="soft2">G</button>
       <button data-logo="monogram">H</button>
-      <button data-logo="soft3">I</button>
       <button data-logo="soft4">J</button>
     </div>
     <div class="logo-switcher" id="colourSwitcher" style="margin-top:10px;">
@@ -887,14 +839,11 @@ body {
   const genBase = 'assets/branding/generated/';
   const logoSources = {
     original: { champagne: navBase + 'original.svg', isPng: false },
-    soft1:    { png: genBase + 'lk_soft_01_humanist_rounded', isPng: true },
     slab:     { champagne: navBase + 'slab.svg', isPng: false },
     archivo:  { champagne: navBase + 'archivo.svg', isPng: false },
     aicustom: { png: genBase + 'lk_v3_custom_slab', isPng: true },
-    serif:    { png: genBase + 'lk_text_01_display_serif', isPng: true },
     soft2:    { png: genBase + 'lk_soft_02_rounded_serif', isPng: true },
     monogram: { png: genBase + 'lk_mark_01_monogram', isPng: true },
-    soft3:    { png: genBase + 'lk_soft_03_rounded_geometric', isPng: true },
     soft4:    { png: genBase + 'lk_soft_04_elegant_ligature', isPng: true },
   };
   const preview = document.getElementById('logoPreview');

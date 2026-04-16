@@ -1133,14 +1133,11 @@
       var genBase = '../assets/branding/generated/';
       var logoSources = {
         original: { svg: navBase + 'original.svg', isPng: false, hasTagline: true },
-        soft1:    { png: genBase + 'lk_soft_01_humanist_rounded', isPng: true, hasTagline: false },
         slab:     { svg: navBase + 'slab.svg', isPng: false, hasTagline: true },
         archivo:  { svg: navBase + 'archivo.svg', isPng: false, hasTagline: true },
         aicustom: { png: genBase + 'lk_v3_custom_slab', isPng: true, hasTagline: true },
-        serif:    { png: genBase + 'lk_text_01_display_serif', isPng: true, hasTagline: false },
         soft2:    { png: genBase + 'lk_soft_02_rounded_serif', isPng: true, hasTagline: false },
         monogram: { png: genBase + 'lk_mark_01_monogram', isPng: true, hasTagline: false },
-        soft3:    { png: genBase + 'lk_soft_03_rounded_geometric', isPng: true, hasTagline: false },
         soft4:    { png: genBase + 'lk_soft_04_elegant_ligature', isPng: true, hasTagline: false }
       };
       var darkMode = false;
@@ -1194,7 +1191,7 @@
       logoLabel.textContent = 'Logo';
       logoLabel.style.cssText = 'font-family:Inter,sans-serif;font-size:9px;color:rgba(240,234,224,0.35);text-transform:uppercase;letter-spacing:0.15em;margin-right:4px;width:42px;';
       logoRow.appendChild(logoLabel);
-      [{id:'original',label:'1'},{id:'soft1',label:'2'},{id:'slab',label:'3'},{id:'archivo',label:'4'},{id:'aicustom',label:'5'},{id:'serif',label:'6'},{id:'soft2',label:'7'},{id:'monogram',label:'8'},{id:'soft3',label:'9'},{id:'soft4',label:'10'}].forEach(function(item) {
+      [{id:'original',label:'1'},{id:'slab',label:'3'},{id:'archivo',label:'4'},{id:'aicustom',label:'5'},{id:'soft2',label:'7'},{id:'monogram',label:'8'},{id:'soft4',label:'10'}].forEach(function(item) {
         var btn = document.createElement('button');
         btn.className = 'sw-logo';
         btn.dataset.logo = item.id;
