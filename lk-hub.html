@@ -1783,7 +1783,7 @@ body::before {
       </div>
       <div>
         <h3>LK Design and Build — Complete Branding Kit</h3>
-        <p>Five distinct logo concepts, each with full application mockups. Select a concept to explore its logo asset, signage, vehicle wrap, business cards, and site hoarding.</p>
+        <p>Seven final logo options in the shortlist. Select one to see its champagne asset, square and textured business cards, and launch it in any of the three prototype websites.</p>
         <div style="margin-top:12px; display:flex; flex-wrap:wrap; gap:12px;">
           <span class="branding-price">$2,800<span class="bp-note">Logo Design + Brand Guidelines</span></span>
           <span class="branding-price">$1,200<span class="bp-note">Business Card Design</span></span>
@@ -1797,11 +1797,11 @@ body::before {
       </div>
     </div>
 
-    <!-- Logo Concept Selector -->
+    <!-- Logo Option Selector -->
     <div class="section-header">
-      <h2>Logo Concepts</h2>
+      <h2>Logo Options</h2>
       <span class="line"></span>
-      <span class="count">5 concepts</span>
+      <span class="count">7 options</span>
     </div>
 
     <div class="concept-selector" id="concept-selector">
@@ -1815,13 +1815,13 @@ body::before {
     </div>
 
     <div class="logo-asset-display">
-      <div class="logo-asset-img-wrap" onclick="openLightbox(document.getElementById('logo-asset-img').src)">
-        <img id="logo-asset-img" src="" alt="Selected logo concept">
+      <div class="logo-asset-img-wrap" onclick="openLightbox(document.getElementById('logo-asset-img').src)" style="background:#0A0A0A;">
+        <img id="logo-asset-img" src="" alt="Selected logo option">
       </div>
       <div class="logo-asset-details">
         <h3 id="logo-asset-name"></h3>
         <p class="concept-detail-text" id="logo-asset-detail"></p>
-        <div class="asset-note">High-resolution PNG suitable for print and digital use. Download and provide to your designer or printer for final production artwork, signage fabrication, or vehicle wrap templates.</div>
+        <div class="asset-note">Champagne (#F2E6D0) asset on transparent background. A dark (#111111) variant is available via the site switcher for use on light templates. Options 8 and 3 additionally have a two-tone Dark Alt variant.</div>
         <a id="logo-download-link" href="" download class="download-btn">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           Download Logo Asset
@@ -1831,99 +1831,46 @@ body::before {
 
     <div class="divider"></div>
 
-    <!-- Applications Gallery -->
+    <!-- Business Cards -->
     <div class="section-header">
-      <h2>Applications</h2>
+      <h2>Business Cards</h2>
       <span class="line"></span>
-      <span class="count">6 mockups</span>
+      <span class="count">2 formats</span>
     </div>
 
-    <div class="app-grid" id="app-grid">
+    <div class="app-grid">
       <div class="app-card">
-        <img id="app-signage" src="" alt="Building Signage" class="app-card-img" onclick="openLightbox(this.src)">
-        <div class="app-card-body"><h4>Building Signage</h4></div>
+        <img id="app-card-square" src="" alt="Square business card" class="app-card-img" onclick="openLightbox(this.src)">
+        <div class="app-card-body"><h4>Square Format</h4><p style="font-size:0.7rem;color:rgba(245,240,235,0.5);margin:4px 0 0;">Matte black card, champagne logo &amp; text</p></div>
       </div>
       <div class="app-card">
-        <img id="app-small-sign" src="" alt="Door Plaque / A-Frame" class="app-card-img" onclick="openLightbox(this.src)">
-        <div class="app-card-body"><h4>Door Plaque / A-Frame</h4></div>
-      </div>
-      <div class="app-card">
-        <img id="app-vehicle" src="" alt="Vehicle Wrap" class="app-card-img" onclick="openLightbox(this.src)">
-        <div class="app-card-body"><h4>Vehicle Wrap</h4></div>
-      </div>
-      <div class="app-card">
-        <img id="app-cards" src="" alt="Business Cards" class="app-card-img" onclick="openLightbox(this.src)">
-        <div class="app-card-body"><h4>Business Cards</h4></div>
-      </div>
-      <div class="app-card">
-        <img id="app-hoarding" src="" alt="Site Hoarding" class="app-card-img" onclick="openLightbox(this.src)">
-        <div class="app-card-body"><h4>Site Hoarding</h4></div>
-      </div>
-      <div class="app-card">
-        <img id="app-letterhead" src="" alt="Letterhead" class="app-card-img" onclick="openLightbox(this.src)">
-        <div class="app-card-body"><h4>Letterhead</h4></div>
+        <img id="app-card-textured" src="" alt="Business card on textured surface" class="app-card-img" onclick="openLightbox(this.src)">
+        <div class="app-card-body"><h4>Textured Surface</h4><p style="font-size:0.7rem;color:rgba(245,240,235,0.5);margin:4px 0 0;">Concrete / travertine / linen styling</p></div>
       </div>
     </div>
 
-    <!-- Business Card Options -->
-    <div id="card-options-section">
-      <div class="section-header" style="margin-top:32px;">
-        <h2>Business Card Options</h2>
-        <span class="line"></span>
-        <span class="count">4 styles</span>
-      </div>
-      <div class="app-grid">
-        <div class="app-card">
-          <img id="app-cards-square" src="" alt="Square Format Cards" class="app-card-img" onclick="openLightbox(this.src)">
-          <div class="app-card-body"><h4>Square Format</h4><p style="font-size:0.7rem;color:rgba(245,240,235,0.5);margin:4px 0 0;">Rounded corners, matches existing card shape</p></div>
-        </div>
-        <div class="app-card">
-          <img id="app-cards-rectangular" src="" alt="Rectangular Minimal Cards" class="app-card-img" onclick="openLightbox(this.src)">
-          <div class="app-card-body"><h4>Rectangular Minimal</h4><p style="font-size:0.7rem;color:rgba(245,240,235,0.5);margin:4px 0 0;">Standard 90x55mm, clean editorial layout</p></div>
-        </div>
-        <div class="app-card">
-          <img id="app-cards-blueprint" src="" alt="Blueprint Texture Cards" class="app-card-img" onclick="openLightbox(this.src)">
-          <div class="app-card-body"><h4>Textured Surface</h4><p style="font-size:0.7rem;color:rgba(245,240,235,0.5);margin:4px 0 0;">Embossed pattern across card surface</p></div>
-        </div>
-        <div class="app-card">
-          <img id="app-cards-gold-edge" src="" alt="Gold Edge Cards" class="app-card-img" onclick="openLightbox(this.src)">
-          <div class="app-card-body"><h4>Gold Edge</h4><p style="font-size:0.7rem;color:rgba(245,240,235,0.5);margin:4px 0 0;">Triplex stock with gold painted edges</p></div>
-        </div>
-      </div>
-    </div>
+    <div class="divider"></div>
 
-    <!-- Brand Guidelines Link -->
-    <!-- Documents & Downloads -->
-    <div class="section-header" style="margin-top:32px;">
-      <h2>Documents & Downloads</h2>
+    <!-- Preview on Site -->
+    <div class="section-header">
+      <h2>Preview on Site</h2>
       <span class="line"></span>
-      <span class="count">6 files</span>
     </div>
 
-    <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap:14px; margin-bottom:24px;">
-      <a id="guidelines-link" href="" target="_blank" style="display:flex; align-items:center; gap:10px; font-size:0.82rem; font-weight:600; color:var(--gold); text-decoration:none; padding:14px 18px; background:rgba(201,169,110,0.06); border:1px solid rgba(201,169,110,0.15); border-radius:10px; transition:all 0.25s;">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-        Brand Guidelines
+    <p style="font-size:0.85rem; color:#888; margin-bottom:18px;">Open the selected logo in one of the three prototype websites. Use the in-page Light / Dark / Dark Alt toggle in the prototype to preview colour variants.</p>
+
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:14px; margin-bottom:32px;">
+      <a id="prev-link-no-images" href="" target="_blank" style="display:flex; align-items:center; gap:10px; font-size:0.82rem; font-weight:600; color:var(--gold); text-decoration:none; padding:14px 18px; background:rgba(201,169,110,0.06); border:1px solid rgba(201,169,110,0.15); border-radius:10px; transition:all 0.25s;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg>
+        Studio Refined (No Images)
       </a>
-      <a id="letterhead-link" href="" download style="display:flex; align-items:center; gap:10px; font-size:0.82rem; font-weight:600; color:var(--gold); text-decoration:none; padding:14px 18px; background:rgba(201,169,110,0.06); border:1px solid rgba(201,169,110,0.15); border-radius:10px; transition:all 0.25s;">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Letterhead — Text
+      <a id="prev-link-refined" href="" target="_blank" style="display:flex; align-items:center; gap:10px; font-size:0.82rem; font-weight:600; color:var(--gold); text-decoration:none; padding:14px 18px; background:rgba(201,169,110,0.06); border:1px solid rgba(201,169,110,0.15); border-radius:10px; transition:all 0.25s;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg>
+        Studio Refined
       </a>
-      <a id="letterhead-logo-link" href="" download style="display:flex; align-items:center; gap:10px; font-size:0.82rem; font-weight:600; color:var(--gold); text-decoration:none; padding:14px 18px; background:rgba(201,169,110,0.06); border:1px solid rgba(201,169,110,0.15); border-radius:10px; transition:all 0.25s;">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Letterhead — Logo
-      </a>
-      <a id="quote-link" href="" download style="display:flex; align-items:center; gap:10px; font-size:0.82rem; font-weight:600; color:var(--gold); text-decoration:none; padding:14px 18px; background:rgba(201,169,110,0.06); border:1px solid rgba(201,169,110,0.15); border-radius:10px; transition:all 0.25s;">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Quote — Text
-      </a>
-      <a id="quote-logo-link" href="" download style="display:flex; align-items:center; gap:10px; font-size:0.82rem; font-weight:600; color:var(--gold); text-decoration:none; padding:14px 18px; background:rgba(201,169,110,0.06); border:1px solid rgba(201,169,110,0.15); border-radius:10px; transition:all 0.25s;">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Quote — Logo
-      </a>
-      <a id="signature-link" href="" target="_blank" style="display:flex; align-items:center; gap:10px; font-size:0.82rem; font-weight:600; color:var(--gold); text-decoration:none; padding:14px 18px; background:rgba(201,169,110,0.06); border:1px solid rgba(201,169,110,0.15); border-radius:10px; transition:all 0.25s;">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7"/></svg>
-        Email Signature
+      <a id="prev-link-motion" href="" target="_blank" style="display:flex; align-items:center; gap:10px; font-size:0.82rem; font-weight:600; color:var(--gold); text-decoration:none; padding:14px 18px; background:rgba(201,169,110,0.06); border:1px solid rgba(201,169,110,0.15); border-radius:10px; transition:all 0.25s;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        Studio Motion
       </a>
     </div>
 
@@ -2148,47 +2095,70 @@ document.addEventListener('keydown', e => {
   }
 });
 
-// ── Logo Concept Selector ──
+// ── Logo Option Selector (final 7 options) ──
 var concepts = [
   {
-    id: 'concept-1-blueprint',
-    name: 'Blueprint Grid',
-    desc: 'Technical drawing grid with dimension lines',
-    detail: 'The LK letters sit within a precise square frame with a fine grid pattern and dimension arrows — as if drawn on an architectural blueprint. Communicates meticulous planning and technical expertise.',
-    dir: 'concept-1-blueprint',
-    logoExt: 'svg'
+    id: 'original', label: '1',
+    name: 'Courier Slab',
+    desc: 'Courier monospace slab serif with visible upticks',
+    detail: 'The baseline LK mark: Courier New slab serif with distinctive upticks on the L foot and K arms. The inside uptick on the L gives the mark its signature texture. Thin tracked DESIGN AND BUILD tagline sits beneath.',
+    logo: 'assets/branding/generated/lk_for_ref_original.png',
+    cardSquare: 'assets/branding/cards/card_1_original_square.jpg',
+    cardTextured: 'assets/branding/cards/card_1_original_textured.jpg'
   },
   {
-    id: 'concept-2-drawingblock',
-    name: 'Drawing Block',
-    desc: 'Architectural title block with double-line rectangular frame',
-    detail: 'Inspired by the title block on architectural drawings — a precise rectangular frame with double-line border, corner registration marks, and technical annotations. LK in IBM Plex Mono above a divider with DESIGN AND BUILD below. Structured, precise, unmistakably architectural.',
-    dir: 'concept-2-drawingblock',
-    logoExt: 'svg'
+    id: 'slab', label: '3',
+    name: 'Custom Slab Serif',
+    desc: 'Hand-drawn slab serif, bolder and refined',
+    detail: 'Custom-drawn letterforms with refined slab serifs. Bolder strokes and tighter proportions than Courier. More architectural feel. Tagline letter-spaced to match the logo width.',
+    logo: 'assets/branding/generated/lk_for_ref_slab.png',
+    cardSquare: 'assets/branding/cards/card_3_slab_square.jpg',
+    cardTextured: 'assets/branding/cards/card_3_slab_textured.jpg'
   },
   {
-    id: 'concept-3-cornerstone',
-    name: 'Cornerstone',
-    desc: 'Solid chamfered block with carved LK monogram',
-    detail: 'A solid charcoal parallelogram — a stylised cornerstone — with the LK letters carved into its surface. The chamfered corner and gold underline add architectural detail. Conveys foundation, permanence, and quality craftsmanship.',
-    dir: 'concept-3-cornerstone',
-    logoExt: 'svg'
+    id: 'archivo', label: '4',
+    name: 'Archivo Grotesque',
+    desc: 'Squared sans-serif, no serifs or upticks',
+    detail: 'Archivo 500 — a squared geometric grotesque sans-serif. No serifs, no upticks. Angular and modern. Works well on large signage and screens.',
+    logo: 'assets/branding/generated/lk_for_ref_archivo.png',
+    cardSquare: 'assets/branding/cards/card_4_archivo_square.jpg',
+    cardTextured: 'assets/branding/cards/card_4_archivo_textured.jpg'
   },
   {
-    id: 'concept-4-elevation',
-    name: 'Elevation Lines',
-    desc: 'Architectural elevation with horizontal datum lines',
-    detail: 'LK set between two horizontal lines — ground line and datum — resembling a front elevation drawing. Tick marks at endpoints and a dashed centreline complete the technical aesthetic. The wide landscape format is distinctive and versatile.',
-    dir: 'concept-4-elevation',
-    logoExt: 'svg'
+    id: 'aicustom', label: '5',
+    name: 'AI Custom Slab',
+    desc: 'AI-rendered refined slab variant',
+    detail: 'AI-rendered slab serif with tighter proportions and cleaner inside corner. Similar architectural feel to Option 3 but rendered as a final asset with embedded tagline.',
+    logo: 'assets/branding/generated/lk_v3_custom_slab_transparent.png',
+    cardSquare: 'assets/branding/cards/card_5_aicustom_square.jpg',
+    cardTextured: 'assets/branding/cards/card_5_aicustom_textured.jpg'
   },
   {
-    id: 'concept-5-crosshair',
-    name: 'Technical Crosshair',
-    desc: 'Engineering precision with crosshair registration marks',
-    detail: 'A technical drawing-inspired mark with LK centered inside a precision crosshair circle with registration marks and dashed outer ring. Monospace typography reinforces the architectural and engineering precision of the brand. Born from the Industrial Blueprint website concept.',
-    dir: 'concept-5-crosshair',
-    logoExt: 'svg'
+    id: 'soft2', label: '7',
+    name: 'Rounded Serif',
+    desc: 'Soft rounded serif with bracketed terminals',
+    detail: 'Soft rounded serif — bracketed serifs with rounded tips, gentle organic curves. Warm and editorial. Feels approachable without losing premium restraint.',
+    logo: 'assets/branding/generated/lk_soft_02_rounded_serif_transparent.png',
+    cardSquare: 'assets/branding/cards/card_7_softserif_square.jpg',
+    cardTextured: 'assets/branding/cards/card_7_softserif_textured.jpg'
+  },
+  {
+    id: 'monogram', label: '8',
+    name: 'Interlocking Monogram',
+    desc: 'Custom LK monogram with shared vertical stem',
+    detail: 'Custom LK monogram where L and K share a merged vertical stroke — a single unified mark. Works especially well at small sizes and as an app icon. A two-tone Dark Alt variant places L in #111111 and K in warm brass.',
+    logo: 'assets/branding/generated/lk_mark_01_monogram_transparent.png',
+    cardSquare: 'assets/branding/cards/card_8_monogram_square.jpg',
+    cardTextured: 'assets/branding/cards/card_8_monogram_textured.jpg'
+  },
+  {
+    id: 'soft4', label: '10',
+    name: 'Elegant Soft Contrast',
+    desc: 'Flowing soft-contrast letterforms',
+    detail: 'Subtle thick-to-thin contrast on stems with softly rounded terminals. Elegant and warm. The most editorial of the set — leans display-serif.',
+    logo: 'assets/branding/generated/lk_soft_04_elegant_ligature_transparent.png',
+    cardSquare: 'assets/branding/cards/card_10_soft4_square.jpg',
+    cardTextured: 'assets/branding/cards/card_10_soft4_textured.jpg'
   }
 ];
 
@@ -2198,12 +2168,12 @@ function buildConceptSelector() {
   var container = document.getElementById('concept-selector');
   container.innerHTML = concepts.map(function(c, i) {
     var inCart = cart.some(function(item) { return item.id === 'branding-' + c.id; });
-    return '<div class="concept-card ' + (i === 0 ? 'selected' : '') + (inCart ? ' in-cart' : '') + '" data-index="' + i + '" data-item-id="branding-' + c.id + '" data-item-name="' + c.name + ' Branding Kit" data-item-price="1200" data-item-category="Branding" data-item-preview="pv-refined" onclick="selectConcept(' + i + ')">' +
-      '<div class="concept-card-thumb">' +
-        '<img src="assets/branding/concepts/' + c.dir + '/logo-asset.' + (c.logoExt || 'png') + '" alt="' + c.name + '">' +
+    return '<div class="concept-card ' + (i === 0 ? 'selected' : '') + (inCart ? ' in-cart' : '') + '" data-index="' + i + '" data-item-id="branding-' + c.id + '" data-item-name="Option ' + c.label + ' — ' + c.name + '" data-item-price="1200" data-item-category="Branding" data-item-preview="pv-refined" onclick="selectConcept(' + i + ')">' +
+      '<div class="concept-card-thumb" style="background:#0A0A0A;">' +
+        '<img src="' + c.logo + '" alt="' + c.name + '" style="max-width:70%; max-height:70%; object-fit:contain;">' +
       '</div>' +
       '<div class="concept-card-info">' +
-        '<h4>' + c.name + '</h4>' +
+        '<h4>' + c.label + ' — ' + c.name + '</h4>' +
         '<p>' + c.desc + '</p>' +
       '</div>' +
       '<button class="concept-cart-btn' + (inCart ? ' added' : '') + '" onclick="event.stopPropagation(); toggleBrandingCartItem(this)">' +
@@ -2216,14 +2186,11 @@ function buildConceptSelector() {
 function selectConcept(index) {
   selectedConceptIndex = index;
   var c = concepts[index];
-  var baseDir = 'assets/branding/concepts/' + c.dir;
 
-  // Update selector cards
   document.querySelectorAll('.concept-card').forEach(function(card, i) {
     card.classList.toggle('selected', i === index);
   });
 
-  // Update logo asset display
   var logoImg = document.getElementById('logo-asset-img');
   var logoName = document.getElementById('logo-asset-name');
   var logoDetail = document.getElementById('logo-asset-detail');
@@ -2231,61 +2198,25 @@ function selectConcept(index) {
 
   logoImg.style.opacity = '0';
   setTimeout(function() {
-    var ext = c.logoExt || 'png';
-    logoImg.src = baseDir + '/logo-asset.' + ext;
+    logoImg.src = c.logo;
     logoImg.style.opacity = '1';
   }, 150);
 
-  logoName.textContent = c.name;
+  logoName.textContent = 'Option ' + c.label + ' — ' + c.name;
   logoDetail.textContent = c.detail;
-  downloadLink.href = baseDir + '/logo-asset.' + (c.logoExt || 'png');
+  downloadLink.href = c.logo;
 
-  // Update application mockups with transition
-  var appImages = {
-    'app-signage': baseDir + '/signage.jpg',
-    'app-small-sign': baseDir + '/small-sign.jpg',
-    'app-vehicle': baseDir + '/vehicle.jpg',
-    'app-cards': baseDir + '/cards.jpg',
-    'app-hoarding': baseDir + '/hoarding.jpg',
-    'app-letterhead': baseDir + '/letterhead.jpg'
-  };
-
-  Object.entries(appImages).forEach(function(entry) {
-    var id = entry[0], src = entry[1];
-    var img = document.getElementById(id);
+  [['app-card-square', c.cardSquare], ['app-card-textured', c.cardTextured]].forEach(function(entry) {
+    var img = document.getElementById(entry[0]);
+    if (!img) return;
     img.style.opacity = '0';
-    setTimeout(function() {
-      img.src = src;
-      img.style.opacity = '1';
-    }, 150);
+    setTimeout(function() { img.src = entry[1]; img.style.opacity = '1'; }, 150);
   });
 
-  // Update business card option images
-  var cardOptionImages = {
-    'app-cards-square': baseDir + '/cards-square.jpg',
-    'app-cards-rectangular': baseDir + '/cards-rectangular.jpg',
-    'app-cards-blueprint': baseDir + '/cards-blueprint-texture.jpg',
-    'app-cards-gold-edge': baseDir + '/cards-gold-edge.jpg'
-  };
-  Object.entries(cardOptionImages).forEach(function(entry) {
-    var id = entry[0], src = entry[1];
-    var img = document.getElementById(id);
-    if (img) {
-      img.style.opacity = '0';
-      setTimeout(function() {
-        img.src = src;
-        img.style.opacity = '1';
-      }, 150);
-    }
-  });
-
-  // Update document links
-  document.getElementById('guidelines-link').href = baseDir + '/guidelines.html';
-  document.getElementById('letterhead-link').href = baseDir + '/letterhead.docx';
-  document.getElementById('letterhead-logo-link').href = baseDir + '/letterhead-logo.docx';
-  document.getElementById('quote-link').href = baseDir + '/quote-template.docx';
-  document.getElementById('quote-logo-link').href = baseDir + '/quote-template-logo.docx';
-  document.getElementById('signature-link').href = baseDir + '/email-signature.html';
+  var qs = '?logo=' + c.id;
+  document.getElementById('prev-link-no-images').href = 'prototype-4/index-v3.html' + qs;
+  document.getElementById('prev-link-refined').href   = 'prototype-4/index-v2.html' + qs;
+  document.getElementById('prev-link-motion').href    = 'prototype-6/index-v2.html' + qs;
 }
 
 // ══════════════════════════════════════
