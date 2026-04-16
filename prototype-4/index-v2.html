@@ -983,16 +983,16 @@
       var navBase = '../assets/branding/concepts/concept-1-blueprint/logo-nav-';
       var genBase = '../assets/branding/generated/';
       var logoSources = {
-        original: { svg: navBase + 'original.svg', isPng: false },
-        soft1:    { png: genBase + 'lk_soft_01_humanist_rounded', isPng: true },
-        slab:     { svg: navBase + 'slab.svg', isPng: false },
-        archivo:  { svg: navBase + 'archivo.svg', isPng: false },
-        aicustom: { png: genBase + 'lk_v3_custom_slab', isPng: true },
-        serif:    { png: genBase + 'lk_text_01_display_serif', isPng: true },
-        soft2:    { png: genBase + 'lk_soft_02_rounded_serif', isPng: true },
-        monogram: { png: genBase + 'lk_mark_01_monogram', isPng: true },
-        soft3:    { png: genBase + 'lk_soft_03_rounded_geometric', isPng: true },
-        soft4:    { png: genBase + 'lk_soft_04_elegant_ligature', isPng: true }
+        original: { svg: navBase + 'original.svg', isPng: false, hasTagline: true },
+        soft1:    { png: genBase + 'lk_soft_01_humanist_rounded', isPng: true, hasTagline: false },
+        slab:     { svg: navBase + 'slab.svg', isPng: false, hasTagline: true },
+        archivo:  { svg: navBase + 'archivo.svg', isPng: false, hasTagline: true },
+        aicustom: { png: genBase + 'lk_v3_custom_slab', isPng: true, hasTagline: true },
+        serif:    { png: genBase + 'lk_text_01_display_serif', isPng: true, hasTagline: false },
+        soft2:    { png: genBase + 'lk_soft_02_rounded_serif', isPng: true, hasTagline: false },
+        monogram: { png: genBase + 'lk_mark_01_monogram', isPng: true, hasTagline: false },
+        soft3:    { png: genBase + 'lk_soft_03_rounded_geometric', isPng: true, hasTagline: false },
+        soft4:    { png: genBase + 'lk_soft_04_elegant_ligature', isPng: true, hasTagline: false }
       };
       var darkMode = false;
       function logoSrc(id) {
@@ -1004,25 +1004,12 @@
       var currentLogo = params.get('logo') || '';
       var currentColour = '';
 
-      var colours = [
-        { id:'warm-cream', hex:'#F5EDE0', label:'Warm Cream' },
-        { id:'parchment', hex:'#EDE4D4', label:'Parchment' },
-        { id:'sand', hex:'#E8DFD0', label:'Sand' },
-        { id:'blush', hex:'#F0E6E2', label:'Blush' },
-        { id:'stone', hex:'#E6E2DC', label:'Stone' },
-        { id:'linen', hex:'#F8F4EE', label:'Linen' },
-        { id:'bone', hex:'#DDD6C8', label:'Bone' },
-        { id:'oyster', hex:'#ECE6DE', label:'Oyster' },
-        { id:'rich-cream', hex:'#FAF0DC', label:'Rich Cream' },
-        { id:'buttercream', hex:'#F5E8CC', label:'Buttercream' }
-      ];
-
       function setLogo(letter) {
         var src = logoSrc(letter) || (navBase + letter + '.svg');
         logos.forEach(function(img) { img.src = src; });
-        var isPng = !!(logoSources[letter] && logoSources[letter].isPng);
+        var showTagline = !!(logoSources[letter] && !logoSources[letter].hasTagline);
         document.querySelectorAll('.brand-tagline').forEach(function(t) {
-          t.style.display = isPng ? 'block' : 'none';
+          t.style.display = showTagline ? 'block' : 'none';
           t.style.color = darkMode ? '#111111' : '#F2E6D0';
         });
         document.querySelectorAll('.sw-logo').forEach(function(b) {
@@ -1032,23 +1019,6 @@
         var url = new URL(window.location);
         if (currentLogo) url.searchParams.set('logo', currentLogo);
         history.replaceState(null, '', url);
-      }
-
-      function setColour(hex) {
-        logos.forEach(function(img) {
-          if (/\.png(\?|$)/i.test(img.src)) return; // skip PNG assets
-          fetch(img.src).then(function(r){return r.text();}).then(function(svgText) {
-            var recoloured = svgText.replace(/fill="[^"]*"/g, 'fill="'+hex+'"')
-                                     .replace(/stroke="[^"]*"(?!-width)/g, 'stroke="'+hex+'"');
-            var blob = new Blob([recoloured], {type:'image/svg+xml'});
-            img.src = URL.createObjectURL(blob);
-          });
-        });
-        document.querySelectorAll('.sw-colour').forEach(function(b) {
-          b.style.outline = 'none';
-          if (b.dataset.hex === hex) b.style.outline = '2px solid #C9A96E';
-        });
-        currentColour = hex;
       }
 
       var bar = document.createElement('div');
@@ -1072,23 +1042,6 @@
       });
       bar.appendChild(logoRow);
 
-      var colourRow = document.createElement('div');
-      colourRow.style.cssText = 'display:flex;gap:5px;align-items:center;';
-      var colourLabel = document.createElement('span');
-      colourLabel.textContent = 'Colour';
-      colourLabel.style.cssText = 'font-family:Inter,sans-serif;font-size:9px;color:rgba(240,234,224,0.35);text-transform:uppercase;letter-spacing:0.15em;margin-right:2px;width:42px;';
-      colourRow.appendChild(colourLabel);
-      colours.forEach(function(c) {
-        var swatch = document.createElement('button');
-        swatch.className = 'sw-colour';
-        swatch.dataset.hex = c.hex;
-        swatch.title = c.label + ' ' + c.hex;
-        swatch.style.cssText = 'width:20px;height:20px;border:none;border-radius:4px;cursor:pointer;transition:outline 0.2s;outline:none;outline-offset:2px;background:'+c.hex+';';
-        swatch.addEventListener('click', function() { setColour(c.hex); });
-        colourRow.appendChild(swatch);
-      });
-      bar.appendChild(colourRow);
-
       document.body.appendChild(bar);
 
       var style = document.createElement('style');
@@ -1107,7 +1060,7 @@
       });
       logoRow.appendChild(darkBtn);
 
-      if (currentLogo && logoSources[currentLogo]) { setLogo(currentLogo); }
+      if (currentLogo && logoSources[currentLogo]) { setLogo(currentLogo); } else { setLogo('original'); }
     })();
   </script>
 </body>
