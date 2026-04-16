@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 62" width="200" height="62">
+  <defs>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&amp;display=swap');</style>
+  </defs>
+  <g transform="translate(0,0) scale(0.0544)">
+    <g transform="scale(1,-1) translate(0,-698)">
+      <!-- L in dark grey -->
+      <path fill="#111111" d="M78 0 V94 H108 V670 H78 V698 H250 V670 H220 V94 H538 V28 H566 V0 Z"/>
+      <!-- K in dark champagne -->
+      <g fill="#915902" transform="translate(600,0)">
+        <path d="M274 321 L190 216 V0 H78 V698 H190 V364 H195 L280 480 L451 698 H580 L350 404 L589 0 H461 Z"/>
+        <rect x="48" y="670" width="172" height="28"/>
+        <rect x="48" y="0" width="172" height="28"/>
+        <rect x="550" y="670" width="58" height="28"/>
+        <rect x="560" y="0" width="58" height="28"/>
+      </g>
+    </g>
+  </g>
+  <text x="0" y="56" font-family="'Inter', 'Helvetica Neue', sans-serif" font-size="8.5" font-weight="300" fill="#111111" letter-spacing="3.2">DESIGN AND BUILD</text>
+</svg>

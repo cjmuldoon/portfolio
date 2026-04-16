@@ -838,13 +838,13 @@ body {
   const navBase = 'assets/branding/concepts/concept-1-blueprint/logo-nav-';
   const genBase = 'assets/branding/generated/';
   const logoSources = {
-    original: { champagne: navBase + 'original.svg', isPng: false },
-    slab:     { champagne: navBase + 'slab.svg', isPng: false },
-    archivo:  { champagne: navBase + 'archivo.svg', isPng: false },
-    aicustom: { png: genBase + 'lk_v3_custom_slab', isPng: true },
-    soft2:    { png: genBase + 'lk_soft_02_rounded_serif', isPng: true },
-    monogram: { png: genBase + 'lk_mark_01_monogram', isPng: true },
-    soft4:    { png: genBase + 'lk_soft_04_elegant_ligature', isPng: true },
+    original: { champagne: navBase + 'original.svg', darkAltSvg: navBase + 'original-dark-alt.svg', isPng: false },
+    slab:     { champagne: navBase + 'slab.svg', darkAltSvg: navBase + 'slab-dark-alt.svg', isPng: false },
+    archivo:  { champagne: navBase + 'archivo.svg', darkAltSvg: navBase + 'archivo-dark-alt.svg', isPng: false },
+    aicustom: { png: genBase + 'lk_v3_custom_slab', isPng: true, darkAltPng: true },
+    soft2:    { png: genBase + 'lk_soft_02_rounded_serif', isPng: true, darkAltPng: true },
+    monogram: { png: genBase + 'lk_mark_01_monogram', isPng: true, darkAltPng: true },
+    soft4:    { png: genBase + 'lk_soft_04_elegant_ligature', isPng: true, darkAltPng: true },
   };
   const preview = document.getElementById('logoPreview');
   const linkNoImages = document.getElementById('linkNoImages');
@@ -866,17 +866,20 @@ body {
 
   const previewTagline = document.getElementById('previewTagline');
   function apply() {
-    const isPng = logoSources[currentLogo].isPng;
-    if (currentLogo === 'monogram' && currentColour === 'dark-alt') {
-      preview.src = genBase + 'lk_mark_01_monogram_transparent_dark_alt.png';
-    } else if ((currentColour === 'dark' || currentColour === 'dark-alt') && !isPng) {
+    const src = logoSources[currentLogo];
+    const isPng = src.isPng;
+    if (currentColour === 'dark-alt' && isPng && src.darkAltPng) {
+      preview.src = src.png + '_transparent_dark_alt.png';
+    } else if (currentColour === 'dark-alt' && !isPng && src.darkAltSvg) {
+      preview.src = src.darkAltSvg;
+    } else if (currentColour === 'dark' && !isPng) {
       const svgSrc = resolveSrc(currentLogo, 'light');
       fetch(svgSrc).then(r => r.text()).then(svg => {
         const recol = svg.replace(/fill="[^"]*"/g, 'fill="#111111"').replace(/stroke="[^"]*"(?!-width)/g, 'stroke="#111111"');
         preview.src = URL.createObjectURL(new Blob([recol], {type:'image/svg+xml'}));
       });
     } else if (currentColour === 'dark-alt') {
-      // Non-monogram PNG with dark-alt selected — fall back to dark behaviour
+      // Fallback: dark-alt selected but no dark-alt asset — fall back to dark behaviour
       preview.src = resolveSrc(currentLogo, 'dark');
     } else {
       preview.src = resolveSrc(currentLogo, currentColour);

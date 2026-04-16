@@ -1132,19 +1132,20 @@
       var defaultNav = '../assets/branding/concepts/concept-1-blueprint/logo-nav.svg';
       var genBase = '../assets/branding/generated/';
       var logoSources = {
-        original: { svg: navBase + 'original.svg', isPng: false, hasTagline: true },
-        slab:     { svg: navBase + 'slab.svg', isPng: false, hasTagline: true },
-        archivo:  { svg: navBase + 'archivo.svg', isPng: false, hasTagline: true },
-        aicustom: { png: genBase + 'lk_v3_custom_slab', isPng: true, hasTagline: true },
-        soft2:    { png: genBase + 'lk_soft_02_rounded_serif', isPng: true, hasTagline: false },
-        monogram: { png: genBase + 'lk_mark_01_monogram', isPng: true, hasTagline: false },
-        soft4:    { png: genBase + 'lk_soft_04_elegant_ligature', isPng: true, hasTagline: false }
+        original: { svg: navBase + 'original.svg', darkAltSvg: navBase + 'original-dark-alt.svg', isPng: false, hasTagline: true },
+        slab:     { svg: navBase + 'slab.svg', darkAltSvg: navBase + 'slab-dark-alt.svg', isPng: false, hasTagline: true },
+        archivo:  { svg: navBase + 'archivo.svg', darkAltSvg: navBase + 'archivo-dark-alt.svg', isPng: false, hasTagline: true },
+        aicustom: { png: genBase + 'lk_v3_custom_slab', isPng: true, hasTagline: true, darkAltPng: true },
+        soft2:    { png: genBase + 'lk_soft_02_rounded_serif', isPng: true, hasTagline: false, darkAltPng: true },
+        monogram: { png: genBase + 'lk_mark_01_monogram', isPng: true, hasTagline: false, darkAltPng: true },
+        soft4:    { png: genBase + 'lk_soft_04_elegant_ligature', isPng: true, hasTagline: false, darkAltPng: true }
       };
       var darkMode = false;
       var darkAlt = false;
       function logoSrc(id) {
         var s = logoSources[id]; if (!s) return '';
-        if (id === 'monogram' && darkAlt) return genBase + 'lk_mark_01_monogram_transparent_dark_alt.png';
+        if (darkAlt && s.isPng && s.darkAltPng) return s.png + '_transparent_dark_alt.png';
+        if (darkAlt && !s.isPng && s.darkAltSvg) return s.darkAltSvg;
         if (s.isPng) return s.png + (darkMode ? '_transparent_black.png' : '_transparent.png');
         return s.svg;
       }
@@ -1153,7 +1154,7 @@
       function setLogo(letter) {
         var s = logoSources[letter];
         var src = logoSrc(letter) || (navBase + letter + '.svg');
-        if (darkMode && s && !s.isPng) {
+        if (darkMode && !darkAlt && s && !s.isPng) {
           fetch(src).then(function(r){return r.text();}).then(function(svg) {
             var recol = svg.replace(/fill="[^"]*"/g,'fill="#111111"').replace(/stroke="[^"]*"(?!-width)/g,'stroke="#111111"');
             var blob = URL.createObjectURL(new Blob([recol],{type:'image/svg+xml'}));
