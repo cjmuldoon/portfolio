@@ -384,7 +384,7 @@
         <!-- Logo -->
         <a href="#hero" class="relative z-50">
           <div class="brand-lockup" style="display:inline-flex; flex-direction:column; align-items:flex-start;">
-            <img src="../assets/branding/concepts/concept-1-blueprint/logo-nav.svg" alt="LK Design and Build" style="height: 62px; width: auto; display:block;">
+            <img src="../assets/branding/final/lk-logo-horizontal-champagne.svg" alt="LK Design and Build" style="height: 62px; width: auto; display:block;">
             <div class="brand-tagline" style="font-family:'Inter',sans-serif; font-size:11px; font-weight:500; color:#F2E6D0; letter-spacing:0.24em; margin-top:4px; white-space:nowrap; text-align:left; display:none;">DESIGN AND BUILD</div>
           </div>
         </a>
@@ -823,7 +823,7 @@
         <!-- Logo -->
         <div>
           <div class="brand-lockup brand-lockup-footer mb-6" style="display:inline-flex; flex-direction:column; align-items:flex-start;">
-            <img src="../assets/branding/concepts/concept-1-blueprint/logo-nav.svg" alt="LK Design and Build" style="height: 48px; width: auto; display:block;">
+            <img src="../assets/branding/final/lk-logo-horizontal-champagne.svg" alt="LK Design and Build" style="height: 48px; width: auto; display:block;">
             <div class="brand-tagline" style="font-family:'Inter',sans-serif; font-size:9px; font-weight:500; color:#F2E6D0; letter-spacing:0.22em; margin-top:3px; white-space:nowrap; text-align:left; display:none;">DESIGN AND BUILD</div>
           </div>
           <p class="text-cream/40 font-sans text-xs leading-relaxed max-w-xs">
@@ -981,124 +981,59 @@
       });
     });
     // ═══════════════════════════════════════
-    // LOGO + COLOUR SWITCHER
+    // LOGO COLOUR VARIANT SWITCHER (final Courier Slab + colour)
     // ═══════════════════════════════════════
     (function() {
-      var logos = document.querySelectorAll('img[src*="logo-nav"]');
-      var navBase = '../assets/branding/concepts/concept-1-blueprint/logo-nav-';
-      var genBase = '../assets/branding/generated/';
-      var logoSources = {
-        original: { svg: navBase + 'original.svg', darkAltSvg: navBase + 'original-dark-alt.svg', isPng: false, hasTagline: true },
-        slab:     { svg: navBase + 'slab.svg', darkAltSvg: navBase + 'slab-dark-alt.svg', isPng: false, hasTagline: true },
-        archivo:  { svg: navBase + 'archivo.svg', darkAltSvg: navBase + 'archivo-dark-alt.svg', isPng: false, hasTagline: true },
-        aicustom: { png: genBase + 'lk_v3_custom_slab', isPng: true, hasTagline: true, darkAltPng: true },
-        soft2:    { png: genBase + 'lk_soft_02_rounded_serif', isPng: true, hasTagline: false, darkAltPng: true },
-        monogram: { png: genBase + 'lk_mark_01_monogram', isPng: true, hasTagline: false, darkAltPng: true },
-        soft4:    { png: genBase + 'lk_soft_04_elegant_ligature', isPng: true, hasTagline: false, darkAltPng: true }
+      var finalBase = '../assets/branding/final/';
+      var variants = {
+        champagne:  { src: finalBase + 'lk-logo-horizontal-champagne.svg',  lightTheme: false, label: 'Champagne' },
+        charcoal:   { src: finalBase + 'lk-logo-horizontal-charcoal.svg',   lightTheme: true,  label: 'Charcoal' },
+        'two-tone': { src: finalBase + 'lk-logo-horizontal-two-tone.svg',   lightTheme: true,  label: 'Two-Tone' }
       };
-      var darkMode = false;
-      var darkAlt = false;
-      function logoSrc(id) {
-        var s = logoSources[id]; if (!s) return '';
-        if (darkAlt && s.isPng && s.darkAltPng) return s.png + '_transparent_dark_alt.png';
-        if (darkAlt && !s.isPng && s.darkAltSvg) return s.darkAltSvg;
-        if (s.isPng) return s.png + (darkMode ? '_transparent_black.png' : '_transparent.png');
-        return s.svg;
-      }
+      var logos = document.querySelectorAll('img[src*="lk-logo-horizontal"]');
       var params = new URLSearchParams(window.location.search);
-      var currentLogo = params.get('logo') || '';
-      var currentColour = '';
+      var current = params.get('logo');
+      if (!variants[current]) current = 'champagne';
 
-      function setLogo(letter) {
-        var s = logoSources[letter];
-        var src = logoSrc(letter) || (navBase + letter + '.svg');
-        // Footer logos always use the light-champagne asset (dark footer bg)
-        var lightSrc = (s && s.isPng) ? (s.png + '_transparent.png') : (s && s.svg) || src;
-        var footerLogos = [];
-        var otherLogos = [];
-        logos.forEach(function(img){
-          if (img.closest('.brand-lockup-footer')) footerLogos.push(img);
-          else otherLogos.push(img);
+      function apply(key) {
+        var v = variants[key]; if (!v) return;
+        // Footer always uses the champagne (dark BG) asset regardless of page theme.
+        logos.forEach(function(img) {
+          var footerSrc = finalBase + 'lk-logo-horizontal-champagne.svg';
+          img.src = img.closest('.brand-lockup-footer') ? footerSrc : v.src;
         });
-        footerLogos.forEach(function(img){ img.src = lightSrc; });
-        if (darkMode && !darkAlt && s && !s.isPng) {
-          fetch(src).then(function(r){return r.text();}).then(function(svg) {
-            var recol = svg.replace(/fill="[^"]*"/g,'fill="#111111"').replace(/stroke="[^"]*"(?!-width)/g,'stroke="#111111"');
-            var blob = URL.createObjectURL(new Blob([recol],{type:'image/svg+xml'}));
-            otherLogos.forEach(function(img){img.src=blob;});
-          });
-        } else {
-          otherLogos.forEach(function(img) { img.src = src; });
-        }
-        var showTagline = !!(s && !s.hasTagline);
-        document.querySelectorAll('.brand-tagline').forEach(function(t) {
-          t.style.display = showTagline ? 'block' : 'none';
-          var inFooter = !!t.closest('.brand-lockup-footer');
-          t.style.color = (inFooter ? false : (darkMode || darkAlt)) ? '#111111' : '#F2E6D0';
-        });
-        document.body.classList.toggle('light-logo-theme', darkMode || darkAlt);
+        document.body.classList.toggle('light-logo-theme', v.lightTheme);
+        // Taglines live inside the horizontal SVG; hide the separate CSS tagline.
+        document.querySelectorAll('.brand-tagline').forEach(function(t) { t.style.display = 'none'; });
         document.querySelectorAll('.sw-logo').forEach(function(b) {
-          b.classList.toggle('active', b.dataset.logo === letter);
+          b.classList.toggle('active', b.dataset.variant === key);
         });
-        currentLogo = letter;
+        current = key;
         var url = new URL(window.location);
-        if (currentLogo) url.searchParams.set('logo', currentLogo);
+        url.searchParams.set('logo', key);
         history.replaceState(null, '', url);
       }
 
       var bar = document.createElement('div');
-      bar.style.cssText = 'position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:9999;display:flex;flex-direction:column;gap:6px;background:rgba(15,15,15,0.95);border:1px solid rgba(240,234,224,0.12);border-radius:10px;padding:10px 12px;backdrop-filter:blur(10px);align-items:center;';
-
-      var logoRow = document.createElement('div');
-      logoRow.style.cssText = 'display:flex;gap:6px;align-items:center;';
-      var logoLabel = document.createElement('span');
-      logoLabel.textContent = 'Logo';
-      logoLabel.style.cssText = 'font-family:Inter,sans-serif;font-size:9px;color:rgba(240,234,224,0.35);text-transform:uppercase;letter-spacing:0.15em;margin-right:4px;width:42px;';
-      logoRow.appendChild(logoLabel);
-      [{id:'original',label:'1'},{id:'slab',label:'3'},{id:'archivo',label:'4'},{id:'aicustom',label:'5'},{id:'soft2',label:'7'},{id:'monogram',label:'8'},{id:'soft4',label:'10'}].forEach(function(item) {
+      bar.style.cssText = 'position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:9999;display:flex;gap:6px;align-items:center;background:rgba(15,15,15,0.95);border:1px solid rgba(240,234,224,0.12);border-radius:10px;padding:10px 12px;backdrop-filter:blur(10px);';
+      var label = document.createElement('span');
+      label.textContent = 'Logo';
+      label.style.cssText = 'font-family:Inter,sans-serif;font-size:9px;color:rgba(240,234,224,0.35);text-transform:uppercase;letter-spacing:0.15em;margin-right:4px;';
+      bar.appendChild(label);
+      Object.keys(variants).forEach(function(key) {
         var btn = document.createElement('button');
         btn.className = 'sw-logo';
-        btn.dataset.logo = item.id;
-        btn.textContent = item.label;
-        var w = item.label.length > 1 ? 'auto;padding:0 8px' : '30px';
-        btn.style.cssText = 'width:'+w+';height:30px;border:1px solid rgba(240,234,224,0.1);background:transparent;color:rgba(240,234,224,0.4);font-family:Inter,sans-serif;font-size:10px;font-weight:500;border-radius:6px;cursor:pointer;transition:all 0.2s;';
-        btn.addEventListener('click', function() { setLogo(item.id); });
-        logoRow.appendChild(btn);
+        btn.dataset.variant = key;
+        btn.textContent = variants[key].label;
+        btn.style.cssText = 'padding:0 12px;height:30px;border:1px solid rgba(240,234,224,0.1);background:transparent;color:rgba(240,234,224,0.4);font-family:Inter,sans-serif;font-size:10px;font-weight:500;border-radius:6px;cursor:pointer;transition:all 0.2s;';
+        btn.addEventListener('click', function() { apply(key); });
+        bar.appendChild(btn);
       });
-      bar.appendChild(logoRow);
-
       document.body.appendChild(bar);
-
       var style = document.createElement('style');
       style.textContent = '.sw-logo.active{border-color:#C9A96E!important;color:#C9A96E!important;background:rgba(201,169,110,0.1)!important;} .sw-logo:hover{border-color:rgba(240,234,224,0.25)!important;color:rgba(240,234,224,0.7)!important;}';
       document.head.appendChild(style);
-
-      // Matte/champagne toggle button inserted before the swatch row
-      var darkBtn = document.createElement('button');
-      darkBtn.textContent = 'Dark';
-      darkBtn.style.cssText = 'padding:0 10px;height:24px;margin-left:6px;border:1px solid rgba(240,234,224,0.12);background:transparent;color:rgba(240,234,224,0.5);font-family:Inter,sans-serif;font-size:9px;text-transform:uppercase;letter-spacing:0.12em;border-radius:4px;cursor:pointer;';
-      darkBtn.addEventListener('click', function() {
-        darkMode = !darkMode;
-        if (darkMode) { darkAlt = false; altBtn.style.background = 'transparent'; altBtn.style.color = 'rgba(240,234,224,0.5)'; }
-        darkBtn.style.background = darkMode ? 'rgba(201,169,110,0.15)' : 'transparent';
-        darkBtn.style.color = darkMode ? '#C9A96E' : 'rgba(240,234,224,0.5)';
-        if (currentLogo) setLogo(currentLogo);
-      });
-      logoRow.appendChild(darkBtn);
-
-      var altBtn = document.createElement('button');
-      altBtn.textContent = 'Dark Alt';
-      altBtn.style.cssText = 'padding:0 10px;height:24px;margin-left:6px;border:1px solid rgba(240,234,224,0.12);background:transparent;color:rgba(240,234,224,0.5);font-family:Inter,sans-serif;font-size:9px;text-transform:uppercase;letter-spacing:0.12em;border-radius:4px;cursor:pointer;';
-      altBtn.addEventListener('click', function() {
-        darkAlt = !darkAlt;
-        if (darkAlt) { darkMode = false; darkBtn.style.background = 'transparent'; darkBtn.style.color = 'rgba(240,234,224,0.5)'; }
-        altBtn.style.background = darkAlt ? 'rgba(201,169,110,0.15)' : 'transparent';
-        altBtn.style.color = darkAlt ? '#C9A96E' : 'rgba(240,234,224,0.5)';
-        if (currentLogo) setLogo(currentLogo);
-      });
-      logoRow.appendChild(altBtn);
-
-      if (currentLogo && logoSources[currentLogo]) { setLogo(currentLogo); } else { setLogo('original'); }
+      apply(current);
     })();
   </script>
 </body>
