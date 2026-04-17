@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <!-- Letterhead variant — CHAMPAGNE on transparent. Tagline larger (readable at print size) while still left-aligned with L's visible vertical stroke. -->
+  <text x="200" y="350" font-family="'Courier New', Courier, monospace" font-size="240" font-weight="normal" fill="#F2E6D0" letter-spacing="-0.02em">LK</text>
+  <text x="218" y="400" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="28" font-weight="300" fill="#F2E6D0" fill-opacity="0.75" letter-spacing="7.2" textLength="267" lengthAdjust="spacing">DESIGN AND BUILD</text>
+</svg>

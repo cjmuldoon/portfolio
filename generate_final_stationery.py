@@ -41,7 +41,7 @@ NEAR_BLACK = RGBColor(0x0A, 0x0A, 0x0A)
 CONTACT = {
     "name": "Lyda",
     "phone": "0481 742 026",
-    "email": "hello@lkdesignandbuild.com.au",
+    "email": "lyda@lkdesignandbuild.com.au",
     "website": "www.lkdesignandbuild.com.au",
     "address": "Adelaide, South Australia",
     "abn": "XX XXX XXX XXX",
@@ -123,19 +123,29 @@ VARIANTS = [
 
 
 def rasterize_logos():
-    """Convert each variant's SVG logo to high-DPI PNG for DOCX embedding."""
+    """Convert each variant's SVG logo to high-DPI PNG for DOCX embedding.
+
+    For letterheads and quotes we want the *letterhead* variant (LK +
+    readable tagline beneath). For email signatures the compact horizontal
+    nav variant is better because it fits next to the contact block.
+    """
     os.makedirs(PNG_DIR, exist_ok=True)
     for v in VARIANTS:
-        svg_path = f"{SVG_DIR}/{v['logo_svg']}"
-        # Use horizontal variant for DOCX header (wider aspect suits letterhead)
-        horiz_svg = svg_path.replace("lk-logo-", "lk-logo-horizontal-")
-        # Two-tone and mono may not have distinct horizontal files — fall back to primary.
+        # Letterhead variant (large LK + readable tagline, left-aligned)
+        letterhead_svg = f"{SVG_DIR}/lk-logo-letterhead-{v['key']}.svg"
+        letterhead_png = f"{PNG_DIR}/{v['key']}-letterhead.png"
+        cairosvg.svg2png(url=letterhead_svg, write_to=letterhead_png, output_width=1400)
+        v["logo_letterhead_png"] = letterhead_png
+        print(f"  rasterized {os.path.basename(letterhead_svg)} → {letterhead_png}")
+
+        # Horizontal variant (for email signature / nav)
+        horiz_svg = f"{SVG_DIR}/{v['logo_svg']}".replace("lk-logo-", "lk-logo-horizontal-")
         if not os.path.exists(horiz_svg):
-            horiz_svg = svg_path
-        out = f"{PNG_DIR}/{v['key']}.png"
-        cairosvg.svg2png(url=horiz_svg, write_to=out, output_width=1800)
-        print(f"  rasterized {os.path.basename(horiz_svg)} → {out}")
-        v["logo_png"] = out
+            horiz_svg = f"{SVG_DIR}/{v['logo_svg']}"
+        horiz_png = f"{PNG_DIR}/{v['key']}.png"
+        cairosvg.svg2png(url=horiz_svg, write_to=horiz_png, output_width=1800)
+        v["logo_png"] = horiz_png
+        print(f"  rasterized {os.path.basename(horiz_svg)} → {horiz_png}")
 
 
 def set_page_shading(doc, hex_color):
@@ -177,7 +187,8 @@ def add_logo_header(doc, v):
     p.alignment = WD_ALIGN_PARAGRAPH.LEFT
     p.paragraph_format.space_after = Pt(4)
     run = p.add_run()
-    run.add_picture(v["logo_png"], height=Cm(1.6))
+    # Letterhead variant: LK + readable tagline beneath, left-aligned.
+    run.add_picture(v["logo_letterhead_png"], height=Cm(2.6))
     rule(doc, v["rule_hex"])
     p = doc.add_paragraph()
     p.paragraph_format.space_before = Pt(4)
