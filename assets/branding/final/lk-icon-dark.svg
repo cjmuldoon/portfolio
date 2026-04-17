@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <!-- Icon-only — just LK, for favicons / app icons / avatars -->
+  <rect width="400" height="400" fill="#0A0A0A"/>
+  <text x="200" y="275" text-anchor="middle" font-family="'Courier New', Courier, monospace" font-size="260" font-weight="normal" fill="#F2E6D0" letter-spacing="-0.02em">LK</text>
+</svg>
