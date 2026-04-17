@@ -950,6 +950,9 @@ body {
     // Show tagline alongside preview ONLY for PNG (SVGs have embedded tagline)
     previewTagline.style.display = isPng ? 'block' : 'none';
     previewTagline.style.color = (currentColour === 'dark' || currentColour === 'dark-alt') ? '#111111' : '#F2E6D0';
+    // Flip preview background so dark/dark-alt logos are visible on light BG
+    const previewBox = document.querySelector('.site-preview');
+    if (previewBox) previewBox.style.background = (currentColour === 'dark' || currentColour === 'dark-alt') ? '#F5F0EB' : '';
     const qs = '?logo=' + currentLogo + '&colour=' + currentColour;
     linkNoImages.href = 'prototype-4/index-v3.html' + qs;
     linkRefined.href  = 'prototype-4/index-v2.html' + qs;
