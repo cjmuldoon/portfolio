@@ -439,12 +439,13 @@ body {
     <p>Courier Slab — slab serif LK with a refined Inter tagline. Champagne on black, charcoal on white. Approved direction.</p>
   </div>
 
-  <!-- Final Logo — hero presentation -->
+  <!-- Final Logo — hero presentation (inline SVG for precise tagline alignment under L) -->
   <div class="fade-in" style="max-width:900px; margin: 0 auto 40px; background:#0A0A0A; border:1px solid rgba(201,169,110,0.2); border-radius:16px; padding: 80px 60px; text-align:left;">
-    <div style="display:inline-flex; flex-direction:column; align-items:flex-start;">
-      <div style="font-family:'Courier New',Courier,monospace; font-size:clamp(140px,22vw,240px); font-weight:normal; color:#F2E6D0; letter-spacing:-0.02em; line-height:0.85;">LK</div>
-      <div style="align-self:stretch; font-family:'Inter',sans-serif; font-size:clamp(14px,1.6vw,18px); font-weight:300; color:#F2E6D0; opacity:0.75; letter-spacing:0.28em; margin-top:-14px; text-align:justify; text-align-last:justify;">DESIGN AND BUILD</div>
-    </div>
+    <svg viewBox="0 0 500 420" xmlns="http://www.w3.org/2000/svg" style="display:block; width:min(440px,80%); height:auto;">
+      <!-- L's left side-bearing in Courier New ≈ 16% of em. At font-size 280, visible L starts at ~45 from text x. So tagline x = LK_x + 45 to align with L's visible left edge. -->
+      <text x="0" y="280" font-family="'Courier New', Courier, monospace" font-size="280" font-weight="normal" fill="#F2E6D0" letter-spacing="-0.02em">LK</text>
+      <text x="45" y="345" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="22" font-weight="300" fill="#F2E6D0" fill-opacity="0.65" letter-spacing="4.2">DESIGN AND BUILD</text>
+    </svg>
   </div>
 
   <!-- Download assets -->
@@ -864,12 +865,6 @@ body {
 
     <div class="logo-switcher" id="logoSwitcher">
       <button class="active" data-logo="original">A</button>
-      <button data-logo="slab">C</button>
-      <button data-logo="archivo">D</button>
-      <button data-logo="aicustom">E</button>
-      <button data-logo="soft2">G</button>
-      <button data-logo="monogram">H</button>
-      <button data-logo="soft4">J</button>
     </div>
     <div class="logo-switcher" id="colourSwitcher" style="margin-top:10px;">
       <button class="active" data-colour="light" style="padding:0 14px;">Light</button>
@@ -909,17 +904,10 @@ body {
   }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-  // Logo switcher — A–J across 10 options, plus light/dark colour toggle
+  // Logo switcher — only option A (approved Courier Slab) remains, plus light/dark colour toggle
   const navBase = 'assets/branding/concepts/concept-1-blueprint/logo-nav-';
-  const genBase = 'assets/branding/generated/';
   const logoSources = {
     original: { champagne: navBase + 'original.svg', darkAltSvg: navBase + 'original-dark-alt.svg', isPng: false },
-    slab:     { champagne: navBase + 'slab.svg', darkAltSvg: navBase + 'slab-dark-alt.svg', isPng: false },
-    archivo:  { champagne: navBase + 'archivo.svg', darkAltSvg: navBase + 'archivo-dark-alt.svg', isPng: false },
-    aicustom: { png: genBase + 'lk_v3_custom_slab', isPng: true, darkAltPng: true },
-    soft2:    { png: genBase + 'lk_soft_02_rounded_serif', isPng: true, darkAltPng: true },
-    monogram: { png: genBase + 'lk_mark_01_monogram', isPng: true, darkAltPng: true },
-    soft4:    { png: genBase + 'lk_soft_04_elegant_ligature', isPng: true, darkAltPng: true },
   };
   const preview = document.getElementById('logoPreview');
   const linkNoImages = document.getElementById('linkNoImages');
