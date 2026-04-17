@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 280" width="1200" height="280">
+  <!-- Horizontal / nav-bar layout — TWO-TONE on transparent -->
+  <!-- Champagne LK + charcoal tagline. Use on mid-tone or warm-neutral backgrounds. -->
+  <text x="40" y="170" font-family="'Courier New', Courier, monospace" font-size="140" font-weight="normal" fill="#F2E6D0" letter-spacing="-0.02em">LK</text>
+  <text x="51" y="210" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="13" font-weight="300" fill="#2C2C2C" fill-opacity="0.75" letter-spacing="2.8" textLength="156" lengthAdjust="spacing">DESIGN AND BUILD</text>
+</svg>
