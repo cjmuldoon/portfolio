@@ -172,8 +172,8 @@ body {
   transform: translateY(-1px);
 }
 .dl-swatch {
-  width: 46px;
-  height: 46px;
+  width: 68px;
+  height: 52px;
   flex-shrink: 0;
   display: flex;
   align-items: center;
@@ -182,6 +182,9 @@ body {
   font-size: 22px;
   font-weight: 400;
   border-radius: 6px;
+  overflow: hidden;
+}
+.dl-swatch img { max-width: 84%; max-height: 84%; object-fit: contain; display:block; }
 }
 .dl-meta {
   color: var(--warm-dim);
@@ -441,10 +444,10 @@ body {
 
   <!-- Final Logo — hero presentation (inline SVG for precise tagline alignment under L) -->
   <div class="fade-in" style="max-width:900px; margin: 0 auto 40px; background:#0A0A0A; border:1px solid rgba(201,169,110,0.2); border-radius:16px; padding: 80px 60px; text-align:left;">
-    <svg viewBox="0 0 500 420" xmlns="http://www.w3.org/2000/svg" style="display:block; width:min(440px,80%); height:auto;">
-      <!-- Offset x aligns D's visible left edge with the L's visible vertical stroke (Courier L has ~7% left side-bearing beyond Inter's). -->
+    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" style="display:block; width:min(440px,80%); height:auto;">
+      <!-- Tagline x-offset aligns D visible-left with L's visible-left; textLength stretches tagline to match LK's visible width. -->
       <text x="0" y="280" font-family="'Courier New', Courier, monospace" font-size="280" font-weight="normal" fill="#F2E6D0" letter-spacing="-0.02em">LK</text>
-      <text x="18" y="345" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="22" font-weight="300" fill="#F2E6D0" fill-opacity="0.65" letter-spacing="4.2">DESIGN AND BUILD</text>
+      <text x="21" y="345" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="22" font-weight="300" fill="#F2E6D0" fill-opacity="0.65" letter-spacing="4.2" textLength="311" lengthAdjust="spacing">DESIGN AND BUILD</text>
     </svg>
   </div>
 
@@ -456,21 +459,21 @@ body {
     <!-- Transparent variants (recommended) -->
     <h3 style="font-size:0.72rem; font-weight:500; text-transform:uppercase; letter-spacing:0.2em; color:var(--warm-dim); margin:24px 0 10px;">Transparent Background</h3>
     <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:12px;">
-      <a href="assets/branding/final/lk-logo-champagne.svg" download class="dl-card"><span class="dl-swatch" style="background:repeating-conic-gradient(#1a1a1a 0 25%, #0a0a0a 0 50%) 50%/10px 10px; color:#F2E6D0;">LK</span><span><strong>Primary — Champagne</strong><br><span class="dl-meta">Transparent · for dark BG</span></span></a>
-      <a href="assets/branding/final/lk-logo-charcoal.svg" download class="dl-card"><span class="dl-swatch" style="background:repeating-conic-gradient(#1a1a1a 0 25%, #0a0a0a 0 50%) 50%/10px 10px; color:#fff;">LK</span><span><strong>Primary — Charcoal</strong><br><span class="dl-meta">Transparent · for light BG</span></span></a>
-      <a href="assets/branding/final/lk-logo-horizontal-champagne.svg" download class="dl-card"><span class="dl-swatch" style="background:repeating-conic-gradient(#1a1a1a 0 25%, #0a0a0a 0 50%) 50%/10px 10px; color:#F2E6D0;">L</span><span><strong>Horizontal — Champagne</strong><br><span class="dl-meta">Transparent · nav / header</span></span></a>
-      <a href="assets/branding/final/lk-logo-horizontal-charcoal.svg" download class="dl-card"><span class="dl-swatch" style="background:repeating-conic-gradient(#1a1a1a 0 25%, #0a0a0a 0 50%) 50%/10px 10px; color:#fff;">L</span><span><strong>Horizontal — Charcoal</strong><br><span class="dl-meta">Transparent · nav / header</span></span></a>
-      <a href="assets/branding/final/lk-icon-champagne.svg" download class="dl-card"><span class="dl-swatch" style="background:repeating-conic-gradient(#1a1a1a 0 25%, #0a0a0a 0 50%) 50%/10px 10px; color:#F2E6D0;">LK</span><span><strong>Icon — Champagne</strong><br><span class="dl-meta">Transparent · favicon / avatar</span></span></a>
-      <a href="assets/branding/final/lk-icon-charcoal.svg" download class="dl-card"><span class="dl-swatch" style="background:repeating-conic-gradient(#1a1a1a 0 25%, #0a0a0a 0 50%) 50%/10px 10px; color:#fff;">LK</span><span><strong>Icon — Charcoal</strong><br><span class="dl-meta">Transparent · favicon / avatar</span></span></a>
+      <a href="assets/branding/final/lk-logo-champagne.svg" download class="dl-card"><span class="dl-swatch" style="background:repeating-conic-gradient(#1a1a1a 0 25%, #0a0a0a 0 50%) 50%/10px 10px;"><img src="assets/branding/final/lk-logo-champagne.svg" alt=""></span><span><strong>Primary — Champagne</strong><br><span class="dl-meta">Transparent · for dark BG</span></span></a>
+      <a href="assets/branding/final/lk-logo-charcoal.svg" download class="dl-card"><span class="dl-swatch" style="background:#F5F0EB;"><img src="assets/branding/final/lk-logo-charcoal.svg" alt=""></span><span><strong>Primary — Charcoal</strong><br><span class="dl-meta">Transparent · for light BG</span></span></a>
+      <a href="assets/branding/final/lk-logo-horizontal-champagne.svg" download class="dl-card"><span class="dl-swatch" style="background:repeating-conic-gradient(#1a1a1a 0 25%, #0a0a0a 0 50%) 50%/10px 10px;"><img src="assets/branding/final/lk-logo-horizontal-champagne.svg" alt=""></span><span><strong>Horizontal — Champagne</strong><br><span class="dl-meta">Transparent · nav / header</span></span></a>
+      <a href="assets/branding/final/lk-logo-horizontal-charcoal.svg" download class="dl-card"><span class="dl-swatch" style="background:#F5F0EB;"><img src="assets/branding/final/lk-logo-horizontal-charcoal.svg" alt=""></span><span><strong>Horizontal — Charcoal</strong><br><span class="dl-meta">Transparent · nav / header</span></span></a>
+      <a href="assets/branding/final/lk-icon-champagne.svg" download class="dl-card"><span class="dl-swatch" style="background:repeating-conic-gradient(#1a1a1a 0 25%, #0a0a0a 0 50%) 50%/10px 10px;"><img src="assets/branding/final/lk-icon-champagne.svg" alt=""></span><span><strong>Icon — Champagne</strong><br><span class="dl-meta">Transparent · favicon / avatar</span></span></a>
+      <a href="assets/branding/final/lk-icon-charcoal.svg" download class="dl-card"><span class="dl-swatch" style="background:#F5F0EB;"><img src="assets/branding/final/lk-icon-charcoal.svg" alt=""></span><span><strong>Icon — Charcoal</strong><br><span class="dl-meta">Transparent · favicon / avatar</span></span></a>
     </div>
 
     <!-- Solid background variants -->
     <h3 style="font-size:0.72rem; font-weight:500; text-transform:uppercase; letter-spacing:0.2em; color:var(--warm-dim); margin:32px 0 10px;">Solid Background</h3>
     <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:12px;">
-      <a href="assets/branding/final/lk-logo-dark.svg" download class="dl-card"><span class="dl-swatch" style="background:#0A0A0A; color:#F2E6D0;">LK</span><span><strong>Primary — Dark</strong><br><span class="dl-meta">Champagne on black</span></span></a>
-      <a href="assets/branding/final/lk-logo-light.svg" download class="dl-card"><span class="dl-swatch" style="background:#FAFAFA; color:#2C2C2C; border:1px solid rgba(0,0,0,0.08);">LK</span><span><strong>Primary — Light</strong><br><span class="dl-meta">Charcoal on white</span></span></a>
-      <a href="assets/branding/final/lk-logo-mono-dark.svg" download class="dl-card"><span class="dl-swatch" style="background:#000; color:#fff;">LK</span><span><strong>Mono — Dark</strong><br><span class="dl-meta">Pure white on black</span></span></a>
-      <a href="assets/branding/final/lk-logo-mono-light.svg" download class="dl-card"><span class="dl-swatch" style="background:#fff; color:#000; border:1px solid rgba(0,0,0,0.12);">LK</span><span><strong>Mono — Light</strong><br><span class="dl-meta">Pure black on white</span></span></a>
+      <a href="assets/branding/final/lk-logo-dark.svg" download class="dl-card"><span class="dl-swatch"><img src="assets/branding/final/lk-logo-dark.svg" alt=""></span><span><strong>Primary — Dark</strong><br><span class="dl-meta">Champagne on black</span></span></a>
+      <a href="assets/branding/final/lk-logo-light.svg" download class="dl-card"><span class="dl-swatch" style="border:1px solid rgba(0,0,0,0.08);"><img src="assets/branding/final/lk-logo-light.svg" alt=""></span><span><strong>Primary — Light</strong><br><span class="dl-meta">Charcoal on white</span></span></a>
+      <a href="assets/branding/final/lk-logo-mono-dark.svg" download class="dl-card"><span class="dl-swatch"><img src="assets/branding/final/lk-logo-mono-dark.svg" alt=""></span><span><strong>Mono — Dark</strong><br><span class="dl-meta">Pure white on black</span></span></a>
+      <a href="assets/branding/final/lk-logo-mono-light.svg" download class="dl-card"><span class="dl-swatch" style="border:1px solid rgba(0,0,0,0.12);"><img src="assets/branding/final/lk-logo-mono-light.svg" alt=""></span><span><strong>Mono — Light</strong><br><span class="dl-meta">Pure black on white</span></span></a>
     </div>
   </div>
 

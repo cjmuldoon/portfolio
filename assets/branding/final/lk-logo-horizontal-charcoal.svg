@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 280" width="1200" height="280">
   <!-- Horizontal layout — CHARCOAL on transparent -->
   <text x="40" y="170" font-family="'Courier New', Courier, monospace" font-size="140" font-weight="normal" fill="#2C2C2C" letter-spacing="-0.02em">LK</text>
-  <text x="40" y="220" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="22" font-weight="300" fill="#2C2C2C" fill-opacity="0.7" letter-spacing="6.4">DESIGN AND BUILD</text>
+  <text x="51" y="210" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="13" font-weight="300" fill="#2C2C2C" fill-opacity="0.65" letter-spacing="2.8" textLength="156" lengthAdjust="spacing">DESIGN AND BUILD</text>
 </svg>

@@ -2,5 +2,5 @@
   <!-- LK Design and Build — Courier Slab, CHARCOAL on transparent -->
   <!-- Use on any light background -->
   <text x="200" y="350" font-family="'Courier New', Courier, monospace" font-size="240" font-weight="normal" fill="#2C2C2C" letter-spacing="-0.02em">LK</text>
-  <text x="200" y="390" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="18" font-weight="300" fill="#2C2C2C" fill-opacity="0.75" letter-spacing="5.2" textLength="340" lengthAdjust="spacing">DESIGN AND BUILD</text>
+  <text x="218" y="390" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="18" font-weight="300" fill="#2C2C2C" fill-opacity="0.65" letter-spacing="4.2" textLength="267" lengthAdjust="spacing">DESIGN AND BUILD</text>
 </svg>
