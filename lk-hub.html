@@ -826,6 +826,47 @@ body::before {
   transform: scale(1.03);
 }
 
+.stationery-variant {
+  display: flex; flex-direction: column;
+  border-radius: 12px; overflow: hidden;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.stationery-variant:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.25);
+}
+.stationery-variant .sv-preview {
+  padding: 22px 20px; display: flex; align-items: center; justify-content: center;
+  min-height: 92px;
+}
+.stationery-variant .sv-preview img {
+  max-width: 80%; max-height: 60px; object-fit: contain; display: block;
+}
+.stationery-variant .sv-head {
+  padding: 12px 18px 4px;
+  border-top: 1px solid rgba(128,128,128,0.15);
+}
+.stationery-variant .sv-head h4 {
+  margin: 0 0 2px; font-size: 0.9rem; font-weight: 600; letter-spacing: 0.01em;
+}
+.stationery-variant .sv-head p {
+  margin: 0; font-size: 0.72rem; font-weight: 300;
+}
+.stationery-variant .sv-links {
+  padding: 10px 14px 16px; display: flex; flex-direction: column; gap: 6px;
+}
+.stationery-variant .sv-links a {
+  font-size: 0.78rem; font-weight: 500; text-decoration: none;
+  color: inherit; padding: 7px 10px; border-radius: 6px;
+  background: rgba(201,169,110,0.1);
+  border: 1px solid rgba(201,169,110,0.25);
+  transition: background 0.2s, border-color 0.2s;
+}
+.stationery-variant .sv-links a:hover {
+  background: rgba(201,169,110,0.22);
+  border-color: rgba(201,169,110,0.5);
+}
+
 .app-card-body {
   padding: 14px 18px;
   border-top: 1px solid var(--card-border);
@@ -1855,26 +1896,72 @@ body::before {
     <div class="section-header">
       <h2>Stationery &amp; Documents</h2>
       <span class="line"></span>
-      <span class="count">4 files</span>
+      <span class="count">4 variants × 4 docs</span>
     </div>
 
-    <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap:14px; margin-bottom:32px;">
-      <a id="dl-letterhead" href="" download style="display:flex; align-items:center; gap:10px; font-size:0.82rem; font-weight:600; color:var(--gold); text-decoration:none; padding:14px 18px; background:rgba(201,169,110,0.06); border:1px solid rgba(201,169,110,0.15); border-radius:10px; transition:all 0.25s;">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Letterhead (.docx)
-      </a>
-      <a id="dl-quote" href="" download style="display:flex; align-items:center; gap:10px; font-size:0.82rem; font-weight:600; color:var(--gold); text-decoration:none; padding:14px 18px; background:rgba(201,169,110,0.06); border:1px solid rgba(201,169,110,0.15); border-radius:10px; transition:all 0.25s;">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Quote Template (.docx)
-      </a>
-      <a id="dl-signature" href="" target="_blank" style="display:flex; align-items:center; gap:10px; font-size:0.82rem; font-weight:600; color:var(--gold); text-decoration:none; padding:14px 18px; background:rgba(201,169,110,0.06); border:1px solid rgba(201,169,110,0.15); border-radius:10px; transition:all 0.25s;">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7"/></svg>
-        Email Signature
-      </a>
-      <a id="dl-drawing" href="" download style="display:flex; align-items:center; gap:10px; font-size:0.82rem; font-weight:600; color:var(--gold); text-decoration:none; padding:14px 18px; background:rgba(201,169,110,0.06); border:1px solid rgba(201,169,110,0.15); border-radius:10px; transition:all 0.25s;">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg>
-        Sample Drawing (.pdf)
-      </a>
+    <p style="font-size:0.82rem; color:rgba(245,240,235,0.55); margin:-4px 0 18px; line-height:1.55;">Letterhead, quote template, email signature and a sample drawing — each rendered in four colour variants of the approved Courier Slab mark. Pick the variant that matches the medium: charcoal for standard correspondence, champagne for dark proposal covers, mono for copier-safe output, two-tone for branded marketing stock.</p>
+
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:14px; margin-bottom:32px;">
+
+      <!-- Charcoal -->
+      <div class="stationery-variant" style="background:#FFFFFF; color:#2C2C2C; border:1px solid rgba(0,0,0,0.1);">
+        <div class="sv-preview" style="background:#FFFFFF;"><img src="assets/branding/final/png/charcoal.png" alt="Charcoal logo preview"></div>
+        <div class="sv-head">
+          <h4 style="color:#2C2C2C;">Charcoal — Standard</h4>
+          <p style="color:#666;">White paper. Standard correspondence.</p>
+        </div>
+        <div class="sv-links">
+          <a href="assets/branding/final/stationery/charcoal/letterhead.docx" download>Letterhead (.docx)</a>
+          <a href="assets/branding/final/stationery/charcoal/quote.docx" download>Quote Template (.docx)</a>
+          <a href="assets/branding/final/stationery/charcoal/email-signature.html" target="_blank">Email Signature</a>
+          <a href="assets/branding/final/drawings/drawing-charcoal.pdf" download>Sample Drawing (.pdf)</a>
+        </div>
+      </div>
+
+      <!-- Champagne -->
+      <div class="stationery-variant" style="background:#0A0A0A; color:#F2E6D0; border:1px solid rgba(201,169,110,0.3);">
+        <div class="sv-preview" style="background:#0A0A0A;"><img src="assets/branding/final/png/champagne.png" alt="Champagne logo preview"></div>
+        <div class="sv-head">
+          <h4 style="color:#F2E6D0;">Champagne — Dark Premium</h4>
+          <p style="color:rgba(242,230,208,0.55);">Proposal covers, dark presentations.</p>
+        </div>
+        <div class="sv-links">
+          <a href="assets/branding/final/stationery/champagne/letterhead.docx" download>Letterhead (.docx)</a>
+          <a href="assets/branding/final/stationery/champagne/quote.docx" download>Quote Template (.docx)</a>
+          <a href="assets/branding/final/stationery/champagne/email-signature.html" target="_blank">Email Signature</a>
+          <a href="assets/branding/final/drawings/drawing-champagne.pdf" download>Sample Drawing (.pdf)</a>
+        </div>
+      </div>
+
+      <!-- Mono -->
+      <div class="stationery-variant" style="background:#FFFFFF; color:#000; border:1px solid rgba(0,0,0,0.2);">
+        <div class="sv-preview" style="background:#FFFFFF;"><img src="assets/branding/final/png/mono.png" alt="Mono logo preview"></div>
+        <div class="sv-head">
+          <h4 style="color:#000;">Mono — Black &amp; White</h4>
+          <p style="color:#444;">Copier-safe, pure B&amp;W print.</p>
+        </div>
+        <div class="sv-links">
+          <a href="assets/branding/final/stationery/mono/letterhead.docx" download>Letterhead (.docx)</a>
+          <a href="assets/branding/final/stationery/mono/quote.docx" download>Quote Template (.docx)</a>
+          <a href="assets/branding/final/stationery/mono/email-signature.html" target="_blank">Email Signature</a>
+          <a href="assets/branding/final/drawings/drawing-mono.pdf" download>Sample Drawing (.pdf)</a>
+        </div>
+      </div>
+
+      <!-- Two-tone -->
+      <div class="stationery-variant" style="background:#F5F0EB; color:#2C2C2C; border:1px solid rgba(201,169,110,0.3);">
+        <div class="sv-preview" style="background:#F5F0EB;"><img src="assets/branding/final/png/two-tone.png" alt="Two-tone logo preview"></div>
+        <div class="sv-head">
+          <h4 style="color:#2C2C2C;">Two-Tone — Warm Neutral</h4>
+          <p style="color:#666;">Branded marketing stock, warm stationery.</p>
+        </div>
+        <div class="sv-links">
+          <a href="assets/branding/final/stationery/two-tone/letterhead.docx" download>Letterhead (.docx)</a>
+          <a href="assets/branding/final/stationery/two-tone/quote.docx" download>Quote Template (.docx)</a>
+          <a href="assets/branding/final/stationery/two-tone/email-signature.html" target="_blank">Email Signature</a>
+          <a href="assets/branding/final/drawings/drawing-two-tone.pdf" download>Sample Drawing (.pdf)</a>
+        </div>
+      </div>
     </div>
 
     <div class="divider"></div>
@@ -2180,18 +2267,12 @@ function selectConcept(index) {
   logoDetail.textContent = c.detail;
   downloadLink.href = c.logo;
 
-  var optDir = 'assets/branding/options/' + c.id;
   [['app-card-square', c.cardSquare], ['app-card-textured', c.cardTextured]].forEach(function(entry) {
     var img = document.getElementById(entry[0]);
     if (!img) return;
     img.style.opacity = '0';
     setTimeout(function() { img.src = entry[1]; img.style.opacity = '1'; }, 150);
   });
-
-  document.getElementById('dl-letterhead').href = optDir + '/letterhead.docx';
-  document.getElementById('dl-quote').href      = optDir + '/quote-template.docx';
-  document.getElementById('dl-signature').href  = optDir + '/email-signature.html';
-  document.getElementById('dl-drawing').href    = 'assets/branding/documents/drawing-options-' + c.id + '.pdf';
 
   var qs = '?logo=' + c.id;
   document.getElementById('prev-link-no-images').href = 'prototype-4/index-v3.html' + qs;
