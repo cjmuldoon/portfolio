@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <!-- Open Graph / social share image for lkdesignandbuild.com.au — 1.91:1, safe centre 600×600 -->
+  <rect width="1200" height="630" fill="#0A0A0A"/>
+
+  <!-- Subtle warm radial glow behind the mark -->
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="52%" r="45%">
+      <stop offset="0%" stop-color="#F2E6D0" stop-opacity="0.07"/>
+      <stop offset="60%" stop-color="#C9A96E" stop-opacity="0.025"/>
+      <stop offset="100%" stop-color="#0A0A0A" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+
+  <!-- Top-left wordmark / nav style (small) -->
+  <text x="70" y="72" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="14" font-weight="500"
+        fill="#F2E6D0" fill-opacity="0.55" letter-spacing="4">LK · DESIGN AND BUILD</text>
+
+  <!-- Horizontal rule under wordmark -->
+  <line x1="70" y1="96" x2="220" y2="96" stroke="#C9A96E" stroke-opacity="0.55" stroke-width="1"/>
+
+  <!-- Centred LK mark -->
+  <text x="600" y="385" text-anchor="middle"
+        font-family="'Courier New', Courier, monospace" font-size="280" font-weight="normal"
+        fill="#F2E6D0" letter-spacing="-0.02em">LK</text>
+
+  <!-- Tagline under LK, stretched to LK visible width (readable at thumbnail size) -->
+  <text x="600" y="445" text-anchor="middle"
+        font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="26" font-weight="300"
+        fill="#F2E6D0" fill-opacity="0.75" letter-spacing="6" textLength="315" lengthAdjust="spacing">DESIGN AND BUILD</text>
+
+  <!-- Divider -->
+  <line x1="480" y1="495" x2="720" y2="495" stroke="#C9A96E" stroke-opacity="0.4" stroke-width="1"/>
+
+  <!-- Slogan -->
+  <text x="600" y="535" text-anchor="middle"
+        font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="20" font-weight="300" font-style="italic"
+        fill="#F2E6D0" fill-opacity="0.65">Considered design. Precision build.</text>
+
+  <!-- Bottom-left: service area -->
+  <text x="70" y="575" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="14" font-weight="300"
+        fill="#F2E6D0" fill-opacity="0.45" letter-spacing="2">ADELAIDE · SOUTH AUSTRALIA</text>
+
+  <!-- Bottom-right: URL -->
+  <text x="1130" y="575" text-anchor="end" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="14"
+        font-weight="500" fill="#C9A96E" letter-spacing="1">lkdesignandbuild.com.au</text>
+</svg>
