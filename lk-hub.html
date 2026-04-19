@@ -2283,6 +2283,7 @@ var selectedConceptIndex = 0;
 
 function buildConceptSelector() {
   var container = document.getElementById('concept-selector');
+  if (!container) return; // concept selector was removed — Logo Asset section handles this now
   container.innerHTML = concepts.map(function(c, i) {
     var inCart = cart.some(function(item) { return item.id === 'branding-' + c.id; });
     return '<div class="concept-card ' + (i === 0 ? 'selected' : '') + (inCart ? ' in-cart' : '') + '" data-index="' + i + '" data-item-id="branding-' + c.id + '" data-item-name="Option ' + c.label + ' — ' + c.name + '" data-item-price="1200" data-item-category="Branding" data-item-preview="pv-refined" onclick="selectConcept(' + i + ')">' +
