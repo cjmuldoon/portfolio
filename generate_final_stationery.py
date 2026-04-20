@@ -198,12 +198,16 @@ def render_letterhead_png(v, out_path):
     ls_lk = -0.02 * 240 * F  # -4.8 vb → px
     _draw_letter_spaced(draw, "LK", lk_font, (lk_x, lk_y), ink_rgba, ls_lk)
 
-    # Tagline
+    # Tagline — Inter Thin. Calibrated against the actual Courier LK render:
+    # measured LK visible left = 214.95 vb, right = 477.03 vb (width 262.08).
+    # Inter-Thin D lsb = 3.17 vb, rsb = 2.15 vb, advance sum = 258.6 vb.
+    #   draw x = 214.95 − 3.17 = 211.78
+    #   letter-spacing = (262.08 − (258.6 − 3.17 − 2.15)) / 15 = 0.587 vb/gap
     tag_font = ImageFont.truetype(INTER_THIN_TTF, int(round(28 * F)))
     tag_rgba = _hex_to_rgba(v["tag_hex"], int(255 * 0.55))  # fainter opacity
-    tg_x = (213 - 210) * F
+    tg_x = (211.78 - 210) * F
     tg_y = (400 - 210) * F
-    ls_tg = 0.1 * F
+    ls_tg = 0.587 * F
     _draw_letter_spaced(draw, "DESIGN AND BUILD", tag_font, (tg_x, tg_y), tag_rgba, ls_tg)
 
     img.save(out_path, 'PNG', optimize=True)
