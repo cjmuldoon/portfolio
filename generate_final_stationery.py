@@ -44,9 +44,11 @@ NEAR_BLACK = RGBColor(0x0A, 0x0A, 0x0A)
 
 CONTACT = {
     "name": "Lyda",
+    "title": "Interior Designer | Project Manager",
     "phone": "0401 061 246",
     "email": "lyda@lkdesignandbuild.com.au",
     "website": "www.lkdesignandbuild.com.au",
+    # TODO: swap to real PO Box string when Lyda has one.
     "address": "Adelaide, South Australia",
     "abn": "XX XXX XXX XXX",
 }
@@ -518,11 +520,10 @@ EMAIL_TEMPLATE = """<!DOCTYPE html>
   </td>
   <td style="vertical-align:top;padding-left:18px;">
     <div style="font-size:15px;font-weight:bold;color:{ink};margin-bottom:1px;">Lyda</div>
-    <div style="font-size:10px;color:{accent};font-weight:600;letter-spacing:1.4px;margin-bottom:10px;">DIRECTOR</div>
+    <div style="font-size:10px;color:{accent};font-weight:600;letter-spacing:1.2px;margin-bottom:10px;">{title}</div>
     <div style="font-size:11px;color:{ink};line-height:1.7;opacity:0.85;">
       <span>M:</span> {phone}<br>
       <span>E:</span> <a href="mailto:{email}" style="color:{accent};text-decoration:none;">{email}</a><br>
-      <span>W:</span> <a href="https://{website}" style="color:{accent};text-decoration:none;">{website}</a><br>
       <span>A:</span> {address}
     </div>
     <div style="margin-top:8px;padding-top:8px;border-top:1px solid {accent};font-size:9px;color:{ink};opacity:0.6;font-style:italic;">
@@ -591,7 +592,8 @@ def build_email_signature(v):
     html = EMAIL_TEMPLATE.format(
         label=v["label"], key=v["key"],
         bg=v["email_bg"], ink=v["email_ink"], accent=v["email_accent"],
-        phone=CONTACT["phone"], email=CONTACT["email"], website=CONTACT["website"],
+        title=CONTACT["title"],
+        phone=CONTACT["phone"], email=CONTACT["email"],
         address=CONTACT["address"], tagline=TAGLINE,
     )
     out = f"{STAT_DIR}/{v['key']}/email-signature.html"
