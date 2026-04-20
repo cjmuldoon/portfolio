@@ -21,7 +21,11 @@ from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.enum.table import WD_TABLE_ALIGNMENT
 from docx.oxml.ns import nsdecls
 from docx.oxml import parse_xml
+from PIL import Image, ImageDraw, ImageFont
 import fitz  # PyMuPDF
+
+COURIER_TTF = "/System/Library/Fonts/Supplemental/Courier New.ttf"
+INTER_THIN_TTF = "/Users/dunderdoon/Library/Fonts/Inter-Thin.ttf"
 
 ROOT = "/Users/dunderdoon/Projects_Local/primedesign"
 FINAL = f"{ROOT}/assets/branding/final"
@@ -56,6 +60,7 @@ VARIANTS = [
         "label": "Charcoal — Standard",
         "desc": "Charcoal LK on white. Standard business correspondence.",
         "logo_svg": "lk-logo-charcoal.svg",            # transparent
+        "ink_hex": "#2C2C2C", "tag_hex": "#2C2C2C",
         "page_bg_hex": "FFFFFF",
         "page_bg_rgb": WHITE,
         "ink": CHARCOAL,
@@ -73,6 +78,7 @@ VARIANTS = [
         "label": "Champagne — Dark Premium",
         "desc": "Champagne LK on near-black. For proposal covers or dark-theme letterhead.",
         "logo_svg": "lk-logo-champagne.svg",
+        "ink_hex": "#F2E6D0", "tag_hex": "#F2E6D0",
         "page_bg_hex": "0A0A0A",
         "page_bg_rgb": NEAR_BLACK,
         "ink": CHAMPAGNE,
@@ -90,6 +96,7 @@ VARIANTS = [
         "label": "Mono — Black & White",
         "desc": "Pure black on white. Copier/fax safe, monochrome print.",
         "logo_svg": "lk-logo-mono-light.svg",          # has white BG rect
+        "ink_hex": "#000000", "tag_hex": "#000000",
         "page_bg_hex": "FFFFFF",
         "page_bg_rgb": WHITE,
         "ink": RGBColor(0x00, 0x00, 0x00),
@@ -107,6 +114,7 @@ VARIANTS = [
         "label": "Two-Tone — Warm Neutral",
         "desc": "Champagne LK + charcoal tagline on warm mid-tone. Branded marketing & stationery.",
         "logo_svg": "lk-logo-two-tone.svg",
+        "ink_hex": "#F2E6D0", "tag_hex": "#2C2C2C",
         "page_bg_hex": "F5F0EB",                       # warm cream
         "page_bg_rgb": RGBColor(0xF5, 0xF0, 0xEB),
         "ink": CHARCOAL,
@@ -150,24 +158,71 @@ def rasterize_download_pngs():
         print(f"  rasterized {name} → {os.path.basename(out)}")
 
 
-def rasterize_logos():
-    """Convert each variant's SVG logo to high-DPI PNG for DOCX embedding.
+# Hex → 4-tuple helper for PIL
+def _hex_to_rgba(hex_color, alpha=255):
+    h = hex_color.lstrip('#')
+    r, g, b = int(h[0:2], 16), int(h[2:4], 16), int(h[4:6], 16)
+    return (r, g, b, alpha)
 
-    For letterheads and quotes we want the *letterhead* variant (LK +
-    readable tagline beneath). For email signatures the compact horizontal
-    nav variant is better because it fits next to the contact block.
+
+def _draw_letter_spaced(draw, text, font, xy, fill, letter_spacing_px):
+    """Draw text left-to-right applying letter-spacing after each glyph.
+    xy is (x, y) anchor='ls' (left-baseline). Returns the ending x."""
+    x, y = xy
+    for ch in text:
+        draw.text((x, y), ch, font=font, fill=fill, anchor="ls")
+        x += font.getlength(ch) + letter_spacing_px
+    return x
+
+
+def render_letterhead_png(v, out_path):
+    """Build the letterhead logo PNG directly in PIL so we can use the actual
+    Inter Thin TTF for the tagline (cairosvg ignores font-weight and has no
+    reliable path to select a specific face on macOS).
+
+    viewBox "210 210 280 194" → canvas 3000×2079 px (scale F ≈ 10.71 px/vb).
+    LK uses Courier New at fs=240 (vb), letter-spacing −0.02em, baseline y=350.
+    Tagline uses Inter Thin at fs=28 (vb), letter-spacing 0.1, baseline y=400.
     """
+    W, H = 3000, 2079
+    F = W / 280.0  # px per viewBox unit
+
+    img = Image.new('RGBA', (W, H), (0, 0, 0, 0))
+    draw = ImageDraw.Draw(img)
+
+    # LK
+    lk_font = ImageFont.truetype(COURIER_TTF, int(round(240 * F)))
+    ink_rgba = _hex_to_rgba(v["ink_hex"])
+    lk_x = (200 - 210) * F  # text anchor x, in PNG coords
+    lk_y = (350 - 210) * F  # baseline
+    ls_lk = -0.02 * 240 * F  # -4.8 vb → px
+    _draw_letter_spaced(draw, "LK", lk_font, (lk_x, lk_y), ink_rgba, ls_lk)
+
+    # Tagline
+    tag_font = ImageFont.truetype(INTER_THIN_TTF, int(round(28 * F)))
+    tag_rgba = _hex_to_rgba(v["tag_hex"], int(255 * 0.55))  # fainter opacity
+    tg_x = (213 - 210) * F
+    tg_y = (400 - 210) * F
+    ls_tg = 0.1 * F
+    _draw_letter_spaced(draw, "DESIGN AND BUILD", tag_font, (tg_x, tg_y), tag_rgba, ls_tg)
+
+    img.save(out_path, 'PNG', optimize=True)
+
+
+def rasterize_logos():
+    """Build each variant's letterhead PNG via PIL (Inter Thin) and the
+    horizontal nav PNG via cairosvg."""
     os.makedirs(PNG_DIR, exist_ok=True)
     for v in VARIANTS:
-        # Letterhead variant (large LK + readable tagline, left-aligned). Tight
-        # viewBox + high-DPI raster so it stays crisp at DOCX print resolution.
-        letterhead_svg = f"{SVG_DIR}/lk-logo-letterhead-{v['key']}.svg"
+        # Letterhead: PIL rendering with real Inter Thin.
         letterhead_png = f"{PNG_DIR}/{v['key']}-letterhead.png"
-        cairosvg.svg2png(url=letterhead_svg, write_to=letterhead_png, output_width=3000)
+        render_letterhead_png(v, letterhead_png)
         v["logo_letterhead_png"] = letterhead_png
-        print(f"  rasterized {os.path.basename(letterhead_svg)} → {letterhead_png}")
+        print(f"  PIL-rendered letterhead → {letterhead_png}")
 
-        # Horizontal variant (for email signature / nav)
+        # Horizontal variant (email signature / nav) — cairosvg is fine, only
+        # LK is Courier New which renders correctly, and the horizontal tagline
+        # is tiny enough that the weight doesn't matter visually.
         horiz_svg = f"{SVG_DIR}/{v['logo_svg']}".replace("lk-logo-", "lk-logo-horizontal-")
         if not os.path.exists(horiz_svg):
             horiz_svg = f"{SVG_DIR}/{v['logo_svg']}"
@@ -200,9 +255,9 @@ def style_run(run, font_name, size, color, bold=False, italic=False):
     run.italic = italic
 
 
-def rule(doc, hex_color):
+def rule(doc, hex_color, tight=False):
     p = doc.add_paragraph()
-    p.paragraph_format.space_before = Pt(2)
+    p.paragraph_format.space_before = Pt(0 if tight else 2)
     p.paragraph_format.space_after = Pt(2)
     pPr = p._p.get_or_add_pPr()
     pBdr = parse_xml(
@@ -214,11 +269,12 @@ def rule(doc, hex_color):
 def add_logo_header(doc, v):
     p = doc.add_paragraph()
     p.alignment = WD_ALIGN_PARAGRAPH.LEFT
-    p.paragraph_format.space_after = Pt(4)
+    p.paragraph_format.space_after = Pt(0)
+    p.paragraph_format.line_spacing = 1.0
     run = p.add_run()
     # Letterhead variant: LK + readable tagline beneath, left-aligned.
     run.add_picture(v["logo_letterhead_png"], height=Cm(2.6))
-    rule(doc, v["rule_hex"])
+    rule(doc, v["rule_hex"], tight=True)
     p = doc.add_paragraph()
     p.paragraph_format.space_before = Pt(4)
     p.paragraph_format.space_after = Pt(2)
