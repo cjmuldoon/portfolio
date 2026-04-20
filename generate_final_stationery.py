@@ -611,13 +611,27 @@ EMAIL_TEMPLATE = """<!DOCTYPE html>
 </div>
 
 <script>
+// Gold logo as base64 PNG — swapped into the signature HTML at copy time so
+// the clipboard carries the image data itself. Mobile Outlook / Gmail
+// signature editors strip remote <img src="https://…"> references.
+const LOGO_DATA_URI = "{logo_data_uri}";
+
+function signatureHtmlWithInlineLogo(which) {{
+  var sig = document.getElementById('signature-' + which);
+  // Replace any lk-logo-horizontal-gold.png URL with the embedded data URI.
+  return sig.innerHTML.replace(
+    /src="[^"]*lk-logo-horizontal-gold\\.png"/g,
+    'src="' + LOGO_DATA_URI + '"'
+  );
+}}
+
 async function copySignature(which) {{
   var sig = document.getElementById('signature-' + which);
   var btn = document.getElementById('copy-btn-' + which);
   var label = document.getElementById('copy-btn-label-' + which);
   var original = label.textContent;
 
-  var html = sig.innerHTML;
+  var html = signatureHtmlWithInlineLogo(which);
   var text = sig.innerText;
   var ok = false;
 
@@ -632,15 +646,23 @@ async function copySignature(which) {{
     }}
   }} catch (e) {{ /* fall through */ }}
 
+  // Fallback: temporarily inject a hidden clone with the inline logo, then
+  // select + execCommand('copy') so the copied HTML carries the data URI.
   if (!ok) {{
     try {{
+      var clone = document.createElement('div');
+      clone.style.position = 'fixed';
+      clone.style.left = '-99999px';
+      clone.innerHTML = html;
+      document.body.appendChild(clone);
       var range = document.createRange();
-      range.selectNodeContents(sig);
+      range.selectNodeContents(clone);
       var sel = window.getSelection();
       sel.removeAllRanges();
       sel.addRange(range);
       ok = document.execCommand('copy');
       sel.removeAllRanges();
+      document.body.removeChild(clone);
     }} catch (e) {{ ok = false; }}
   }}
 
@@ -656,6 +678,22 @@ async function copySignature(which) {{
 """
 
 
+def _signature_logo_data_uri():
+    """Rasterize the gold horizontal SVG to a small PNG and return a base64
+    data URI. Used as an <img src="..."> replacement at copy time so the
+    clipboard payload carries the image data itself — mobile Outlook /
+    Gmail signature editors strip remote <img> URLs, which is why a URL-
+    based signature drops the logo on paste."""
+    import base64, io
+    svg = f"{SVG_DIR}/lk-logo-horizontal-gold.svg"
+    # 640px wide is plenty for a 160px retina display (4×). Keeps the data
+    # URI under ~20 KB — well inside Outlook's signature size limits.
+    buf = io.BytesIO()
+    cairosvg.svg2png(url=svg, write_to=buf, output_width=640)
+    b64 = base64.b64encode(buf.getvalue()).decode("ascii")
+    return f"data:image/png;base64,{b64}"
+
+
 def build_email_signature(v):
     # Theme-agnostic signature. Both layouts identical palette; only the
     # left/right arrangement of logo + contact block differs.
@@ -669,10 +707,13 @@ def build_email_signature(v):
     card_a = _copy_card("A", "Logo left · content right", sig_a)
     card_b = _copy_card("B", "Content left · logo right", sig_b)
 
+    logo_data_uri = _signature_logo_data_uri()
+
     html = EMAIL_TEMPLATE.format(
         card_a=card_a, card_b=card_b,
         sig_a_light=sig_a, sig_a_dark=sig_a,
         sig_b_light=sig_b, sig_b_dark=sig_b,
+        logo_data_uri=logo_data_uri,
     )
     out = f"{STAT_DIR}/{v['key']}/email-signature.html"
     with open(out, "w") as f:
