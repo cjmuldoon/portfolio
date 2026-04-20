@@ -50,7 +50,7 @@ CONTACT = {
     "website": "www.lkdesignandbuild.com.au",
     # TODO: swap to real PO Box string when Lyda has one.
     "address": "Adelaide, South Australia",
-    "abn": "XX XXX XXX XXX",
+    "abn": "17 697 207 391",
 }
 
 TAGLINE = "Considered design. Precision build."
