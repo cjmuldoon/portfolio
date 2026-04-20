@@ -131,10 +131,11 @@ def rasterize_logos():
     """
     os.makedirs(PNG_DIR, exist_ok=True)
     for v in VARIANTS:
-        # Letterhead variant (large LK + readable tagline, left-aligned)
+        # Letterhead variant (large LK + readable tagline, left-aligned). Tight
+        # viewBox + high-DPI raster so it stays crisp at DOCX print resolution.
         letterhead_svg = f"{SVG_DIR}/lk-logo-letterhead-{v['key']}.svg"
         letterhead_png = f"{PNG_DIR}/{v['key']}-letterhead.png"
-        cairosvg.svg2png(url=letterhead_svg, write_to=letterhead_png, output_width=1400)
+        cairosvg.svg2png(url=letterhead_svg, write_to=letterhead_png, output_width=3000)
         v["logo_letterhead_png"] = letterhead_png
         print(f"  rasterized {os.path.basename(letterhead_svg)} → {letterhead_png}")
 
