@@ -15,7 +15,7 @@ Every rule here is load-bearing for organic traffic, Google Business Profile ran
 | Business name | LK Design and Build |
 | Principal | Lyda |
 | Email | `lyda@lkdesignandbuild.com.au` |
-| Phone | `+61 481 742 026` |
+| Phone | `+61 401 061 246` |
 | Location | Adelaide, South Australia |
 | Service area | Adelaide metro + Adelaide Hills |
 | Segment | Premium home renovations, additions, custom new builds |
@@ -150,7 +150,7 @@ Inject on every page in `<head>`. At minimum, Organization sitewide + LocalBusin
   "url": "https://lkdesignandbuild.com.au",
   "logo": "https://lkdesignandbuild.com.au/assets/branding/final/lk-logo-champagne.svg",
   "image": "https://lkdesignandbuild.com.au/assets/branding/final/og-image.jpg",
-  "telephone": "+61481742026",
+  "telephone": "+61401061246",
   "email": "lyda@lkdesignandbuild.com.au",
   "priceRange": "$$$",
   "slogan": "Considered design. Precision build.",
@@ -313,7 +313,7 @@ Name, Address, Phone must be **identical** across the website, Google Business P
 
 - Name → `LK Design and Build` (no "Pty Ltd", no "& Build", no "and Build Pty Ltd" — just this)
 - Address → `Adelaide, South Australia` (or the full PO Box if you have one — just pick one and stick)
-- Phone → `0481 742 026` (domestic format) / `+61 481 742 026` (international schema)
+- Phone → `0401 061 246` (domestic format) / `+61 401 061 246` (international schema)
 - Email → `lyda@lkdesignandbuild.com.au`
 
 ### 7.3 Priority directories (AU-specific)

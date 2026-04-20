@@ -40,7 +40,7 @@ NEAR_BLACK = RGBColor(0x0A, 0x0A, 0x0A)
 
 CONTACT = {
     "name": "Lyda",
-    "phone": "0481 742 026",
+    "phone": "0401 061 246",
     "email": "lyda@lkdesignandbuild.com.au",
     "website": "www.lkdesignandbuild.com.au",
     "address": "Adelaide, South Australia",

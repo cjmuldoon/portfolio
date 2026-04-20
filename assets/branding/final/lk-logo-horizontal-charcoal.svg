@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="40 60 180 165" width="720" height="660">
-  <!-- Horizontal layout — CHARCOAL on transparent -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="45 87 160 126" width="640" height="504">
+  <!-- Horizontal nav layout — CHARCOAL. Cropped tight. -->
   <text x="40" y="170" font-family="'Courier New', Courier, monospace" font-size="140" font-weight="normal" fill="#2C2C2C" letter-spacing="-0.02em">LK</text>
-  <text x="51" y="210" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="13" font-weight="300" fill="#2C2C2C" fill-opacity="0.65" letter-spacing="2.8" textLength="156" lengthAdjust="spacing">DESIGN AND BUILD</text>
+  <text x="47" y="210" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="13" font-weight="300" fill="#2C2C2C" fill-opacity="0.65" letter-spacing="2.1">DESIGN AND BUILD</text>
 </svg>

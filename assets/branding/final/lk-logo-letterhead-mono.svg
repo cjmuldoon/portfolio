@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="210 155 280 265" width="560" height="530">
-  <!-- Letterhead variant — MONO pure black on transparent. Tight viewBox fits LK + readable tagline with small padding. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="210 210 280 194" width="560" height="388">
+  <!-- Letterhead — MONO. Cropped tight; tagline width matched to LK via letter-spacing; fainter opacity. -->
   <text x="200" y="350" font-family="'Courier New', Courier, monospace" font-size="240" font-weight="normal" fill="#000000" letter-spacing="-0.02em">LK</text>
-  <text x="218" y="400" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="28" font-weight="300" fill="#000000" fill-opacity="0.75" letter-spacing="7.2" textLength="267" lengthAdjust="spacing">DESIGN AND BUILD</text>
+  <text x="213" y="400" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="28" font-weight="300" fill="#000000" fill-opacity="0.55" letter-spacing="0.1">DESIGN AND BUILD</text>
 </svg>

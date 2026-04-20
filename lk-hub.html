@@ -1904,11 +1904,17 @@ body::before {
       <div class="logo-asset-details">
         <h3 id="logo-asset-name"></h3>
         <p class="concept-detail-text" id="logo-asset-detail"></p>
-        <div class="asset-note">Champagne (#F2E6D0) for dark backgrounds, charcoal (#2C2C2C) for light. Transparent and solid variants, plus horizontal nav layout and icon-only, available below.</div>
-        <a id="logo-download-link" href="" download class="download-btn">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          Download Primary (Champagne)
-        </a>
+        <div class="asset-note">Champagne (#F2E6D0) for dark backgrounds, charcoal (#2C2C2C) for light. Transparent and solid variants, plus horizontal nav layout and icon-only, available below. All assets are cropped to the mark — add padding at the placement target.</div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <a href="assets/branding/final/lk-logo-champagne.svg" download class="download-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Primary (Champagne) — SVG
+          </a>
+          <a href="assets/branding/final/png/lk-logo-champagne.png" download class="download-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Primary (Champagne) — PNG
+          </a>
+        </div>
       </div>
     </div>
 
@@ -2309,7 +2315,7 @@ var concepts = [
     name: 'Courier Slab — APPROVED',
     desc: 'Client-approved direction. Final asset suite available.',
     detail: 'The approved LK mark: Courier slab serif with distinctive upticks on the L foot and K arms. Champagne (#F2E6D0) on near-black, charcoal (#2C2C2C) on white. Refined Inter tagline with tightened letter-spacing and 65% opacity for subtlety. Master SVG assets in /assets/branding/final/.',
-    logo: 'assets/branding/final/lk-logo-dark.svg',
+    logo: 'assets/branding/final/lk-logo-champagne.svg',
     cardSquare: 'assets/branding/cards/card_1_original_square.jpg',
     cardTextured: 'assets/branding/cards/card_1_original_textured.jpg'
   }
@@ -2348,7 +2354,6 @@ function selectConcept(index) {
   var logoImg = document.getElementById('logo-asset-img');
   var logoName = document.getElementById('logo-asset-name');
   var logoDetail = document.getElementById('logo-asset-detail');
-  var downloadLink = document.getElementById('logo-download-link');
 
   logoImg.style.opacity = '0';
   setTimeout(function() {
@@ -2358,7 +2363,6 @@ function selectConcept(index) {
 
   logoName.textContent = 'Option ' + c.label + ' — ' + c.name;
   logoDetail.textContent = c.detail;
-  downloadLink.href = c.logo;
 
   [['app-card-square', c.cardSquare], ['app-card-textured', c.cardTextured]].forEach(function(entry) {
     var img = document.getElementById(entry[0]);

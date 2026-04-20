@@ -1,7 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="150 100 400 370" width="800" height="740">
-  <!-- LK Design and Build — Courier Slab on dark background -->
-  <!-- Primary logo, champagne on near-black, card with balanced padding around content -->
-  <rect x="150" y="100" width="400" height="370" fill="#0A0A0A"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="210 210 280 186" width="560" height="372">
+  <!-- LK Design and Build — Courier Slab, DARK. Cropped tight card with matching BG rect. -->
+  <rect x="210" y="210" width="280" height="186" fill="#0A0A0A"/>
   <text x="200" y="350" font-family="'Courier New', Courier, monospace" font-size="240" font-weight="normal" fill="#F2E6D0" letter-spacing="-0.02em">LK</text>
-  <text x="218" y="390" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="18" font-weight="300" fill="#F2E6D0" fill-opacity="0.65" letter-spacing="4.2" textLength="267" lengthAdjust="spacing">DESIGN AND BUILD</text>
+  <text x="213" y="390" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="18" font-weight="300" fill="#F2E6D0" fill-opacity="0.65" letter-spacing="6.3">DESIGN AND BUILD</text>
 </svg>
