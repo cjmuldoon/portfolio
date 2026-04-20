@@ -1,24 +1,28 @@
 <!DOCTYPE html>
 <html><head><meta charset="UTF-8"><title>Email Signature — LK Design and Build</title></head>
 <body style="margin:0;padding:20px;background:#f5f5f5;font-family:Arial,sans-serif;">
-<!-- Top card: instructions + copy button + actual copy-able signature -->
-<div style="max-width:640px;margin:0 auto;background:#fff;padding:30px;border-radius:8px;">
-<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;flex-wrap:wrap;">
-  <p style="font-size:12px;color:#666;margin:0;flex:1;min-width:260px;line-height:1.55;">Click <strong>Copy signature</strong>, then paste into Gmail (Settings → Signature) or Outlook (File → Options → Mail → Signatures). Copies as rich HTML — logo, link colours and layout are preserved.</p>
-  <button id="copy-btn" type="button" onclick="copySignature()" style="font-family:Inter,Arial,sans-serif;font-size:12px;font-weight:600;letter-spacing:0.04em;padding:9px 16px;background:#C9A96E;color:#fff;border:none;border-radius:6px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:background 0.2s;">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-    <span id="copy-btn-label">Copy signature</span>
-  </button>
+
+<!-- Header strip -->
+<div style="max-width:720px;margin:0 auto 14px;background:#fff;padding:22px 30px;border-radius:8px;">
+  <p style="font-size:13px;color:#444;margin:0 0 10px;line-height:1.55;"><strong>Pick a layout, click Copy signature, then paste into Gmail</strong> (Settings → Signature) or Outlook (File → Options → Mail → Signatures). Each button copies rich HTML — logo, link colours and layout preserved.</p>
+  <div style="font-size:11px;color:#888;background:#fafaf7;border:1px solid #eee3d0;border-radius:6px;padding:10px 14px;line-height:1.55;">
+    <strong style="color:#6b5a3a;">Theme-agnostic.</strong> No background colour is copied. Mark + text use gold (<code>#C9A96E</code>) and medium grey (<code>#6A6A6A</code>) — both read on light-mode and dark-mode email clients.
+  </div>
 </div>
 
-<div style="font-size:11px;color:#888;background:#fafaf7;border:1px solid #eee3d0;border-radius:6px;padding:10px 14px;margin-bottom:18px;line-height:1.55;">
-  <strong style="color:#6b5a3a;">Theme-agnostic design.</strong> No background colour is copied, and the mark + text use gold (<code>#C9A96E</code>) and medium grey (<code>#6A6A6A</code>) — both read on light-mode and dark-mode email clients.
-</div>
-
-<hr style="border:1px dashed #ccc;margin:0 0 12px;">
-
-<!-- ====== EMAIL SIGNATURE START — this is what gets copied ====== -->
-<div id="signature">
+<div style="max-width:720px;margin:0 auto 18px;background:#fff;padding:26px 30px;border-radius:8px;">
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;flex-wrap:wrap;">
+    <div>
+      <div style="font-size:10px;color:#C9A96E;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:2px;">Layout A</div>
+      <div style="font-size:14px;font-weight:600;color:#2C2C2C;">Logo left · content right</div>
+    </div>
+    <button id="copy-btn-A" type="button" onclick="copySignature('A')" style="font-family:Inter,Arial,sans-serif;font-size:12px;font-weight:600;letter-spacing:0.04em;padding:9px 16px;background:#C9A96E;color:#fff;border:none;border-radius:6px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:background 0.2s;">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+      <span id="copy-btn-label-A">Copy signature</span>
+    </button>
+  </div>
+  <hr style="border:1px dashed #ccc;margin:0 0 16px;">
+  <div id="signature-A">
 <table cellpadding="0" cellspacing="0" border="0" style="font-family:Calibri,Arial,sans-serif;color:#6A6A6A;">
 <tr>
   <td style="vertical-align:top;padding:0 18px 0 0;border-right:1px solid #C9A96E;">
@@ -38,20 +42,54 @@
   </td>
 </tr>
 </table>
-</div>
-<!-- ====== EMAIL SIGNATURE END ====== -->
+  </div>
 </div>
 
-<!-- Standalone, wider preview so both light + dark render side-by-side without clipping -->
-<div style="max-width:1040px;margin:24px auto 0;padding:0 10px;">
-  <div style="font-size:10px;color:#999;text-align:center;text-transform:uppercase;letter-spacing:0.15em;margin-bottom:10px;">How it looks on both themes</div>
-  <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(440px, 1fr));gap:12px;">
-    <div style="background:#FFFFFF;padding:18px 22px;border-radius:8px;border:1px solid #eee;">
-      <div style="font-size:9px;color:#999;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:10px;">Light mode</div>
+<div style="max-width:720px;margin:0 auto 18px;background:#fff;padding:26px 30px;border-radius:8px;">
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;flex-wrap:wrap;">
+    <div>
+      <div style="font-size:10px;color:#C9A96E;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:2px;">Layout B</div>
+      <div style="font-size:14px;font-weight:600;color:#2C2C2C;">Content left · logo right</div>
+    </div>
+    <button id="copy-btn-B" type="button" onclick="copySignature('B')" style="font-family:Inter,Arial,sans-serif;font-size:12px;font-weight:600;letter-spacing:0.04em;padding:9px 16px;background:#C9A96E;color:#fff;border:none;border-radius:6px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:background 0.2s;">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+      <span id="copy-btn-label-B">Copy signature</span>
+    </button>
+  </div>
+  <hr style="border:1px dashed #ccc;margin:0 0 16px;">
+  <div id="signature-B">
 <table cellpadding="0" cellspacing="0" border="0" style="font-family:Calibri,Arial,sans-serif;color:#6A6A6A;">
 <tr>
   <td style="vertical-align:top;padding:0 18px 0 0;border-right:1px solid #C9A96E;">
-    <img src="https://dunderdoon.com/assets/branding/final/png/lk-logo-horizontal-gold.png" alt="" style="width:160px;height:auto;display:block;">
+    <div style="font-size:15px;font-weight:bold;color:#6A6A6A;margin-bottom:1px;">Lyda</div>
+    <div style="font-size:10px;color:#C9A96E;font-weight:600;letter-spacing:1.2px;margin-bottom:10px;">Interior Designer | Project Manager</div>
+    <div style="font-size:11px;color:#6A6A6A;line-height:1.7;">
+      <span>M:</span> 0401 061 246<br>
+      <span>E:</span> <a href="mailto:lyda@lkdesignandbuild.com.au" style="color:#C9A96E;text-decoration:none;">lyda@lkdesignandbuild.com.au</a><br>
+      <span>A:</span> Adelaide, South Australia
+    </div>
+    <div style="margin-top:8px;padding-top:8px;border-top:1px solid #C9A96E;font-size:9px;color:#9A9A9A;font-style:italic;">
+      Considered design. Precision build.<br><span style="font-style:normal;letter-spacing:0.5px;color:#9A9A9A;">ABN 17 697 207 391</span>
+    </div>
+  </td>
+  <td style="vertical-align:top;padding:0 0 0 18px;">
+    <img src="https://dunderdoon.com/assets/branding/final/png/lk-logo-horizontal-gold.png" alt="LK Design and Build" style="width:160px;height:auto;display:block;">
+  </td>
+</tr>
+</table>
+  </div>
+</div>
+
+<!-- Standalone, wider preview — same signature on both light and dark BGs -->
+<div style="max-width:1040px;margin:24px auto 0;padding:0 10px;">
+  <div style="font-size:10px;color:#999;text-align:center;text-transform:uppercase;letter-spacing:0.15em;margin-bottom:10px;">How each layout reads on both themes</div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(440px, 1fr));gap:12px;margin-bottom:10px;">
+    <div style="background:#FFFFFF;padding:18px 22px;border-radius:8px;border:1px solid #eee;">
+      <div style="font-size:9px;color:#999;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:10px;">Layout A · Light mode</div>
+<table cellpadding="0" cellspacing="0" border="0" style="font-family:Calibri,Arial,sans-serif;color:#6A6A6A;">
+<tr>
+  <td style="vertical-align:top;padding:0 18px 0 0;border-right:1px solid #C9A96E;">
+    <img src="https://dunderdoon.com/assets/branding/final/png/lk-logo-horizontal-gold.png" alt="LK Design and Build" style="width:160px;height:auto;display:block;">
   </td>
   <td style="vertical-align:top;padding:0 0 0 18px;">
     <div style="font-size:15px;font-weight:bold;color:#6A6A6A;margin-bottom:1px;">Lyda</div>
@@ -69,11 +107,11 @@
 </table>
     </div>
     <div style="background:#1B1B1B;padding:18px 22px;border-radius:8px;">
-      <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:10px;">Dark mode</div>
+      <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:10px;">Layout A · Dark mode</div>
 <table cellpadding="0" cellspacing="0" border="0" style="font-family:Calibri,Arial,sans-serif;color:#6A6A6A;">
 <tr>
   <td style="vertical-align:top;padding:0 18px 0 0;border-right:1px solid #C9A96E;">
-    <img src="https://dunderdoon.com/assets/branding/final/png/lk-logo-horizontal-gold.png" alt="" style="width:160px;height:auto;display:block;">
+    <img src="https://dunderdoon.com/assets/branding/final/png/lk-logo-horizontal-gold.png" alt="LK Design and Build" style="width:160px;height:auto;display:block;">
   </td>
   <td style="vertical-align:top;padding:0 0 0 18px;">
     <div style="font-size:15px;font-weight:bold;color:#6A6A6A;margin-bottom:1px;">Lyda</div>
@@ -90,15 +128,59 @@
 </tr>
 </table>
     </div>
+    <div style="background:#FFFFFF;padding:18px 22px;border-radius:8px;border:1px solid #eee;">
+      <div style="font-size:9px;color:#999;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:10px;">Layout B · Light mode</div>
+<table cellpadding="0" cellspacing="0" border="0" style="font-family:Calibri,Arial,sans-serif;color:#6A6A6A;">
+<tr>
+  <td style="vertical-align:top;padding:0 18px 0 0;border-right:1px solid #C9A96E;">
+    <div style="font-size:15px;font-weight:bold;color:#6A6A6A;margin-bottom:1px;">Lyda</div>
+    <div style="font-size:10px;color:#C9A96E;font-weight:600;letter-spacing:1.2px;margin-bottom:10px;">Interior Designer | Project Manager</div>
+    <div style="font-size:11px;color:#6A6A6A;line-height:1.7;">
+      <span>M:</span> 0401 061 246<br>
+      <span>E:</span> <a href="mailto:lyda@lkdesignandbuild.com.au" style="color:#C9A96E;text-decoration:none;">lyda@lkdesignandbuild.com.au</a><br>
+      <span>A:</span> Adelaide, South Australia
+    </div>
+    <div style="margin-top:8px;padding-top:8px;border-top:1px solid #C9A96E;font-size:9px;color:#9A9A9A;font-style:italic;">
+      Considered design. Precision build.<br><span style="font-style:normal;letter-spacing:0.5px;color:#9A9A9A;">ABN 17 697 207 391</span>
+    </div>
+  </td>
+  <td style="vertical-align:top;padding:0 0 0 18px;">
+    <img src="https://dunderdoon.com/assets/branding/final/png/lk-logo-horizontal-gold.png" alt="LK Design and Build" style="width:160px;height:auto;display:block;">
+  </td>
+</tr>
+</table>
+    </div>
+    <div style="background:#1B1B1B;padding:18px 22px;border-radius:8px;">
+      <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:10px;">Layout B · Dark mode</div>
+<table cellpadding="0" cellspacing="0" border="0" style="font-family:Calibri,Arial,sans-serif;color:#6A6A6A;">
+<tr>
+  <td style="vertical-align:top;padding:0 18px 0 0;border-right:1px solid #C9A96E;">
+    <div style="font-size:15px;font-weight:bold;color:#6A6A6A;margin-bottom:1px;">Lyda</div>
+    <div style="font-size:10px;color:#C9A96E;font-weight:600;letter-spacing:1.2px;margin-bottom:10px;">Interior Designer | Project Manager</div>
+    <div style="font-size:11px;color:#6A6A6A;line-height:1.7;">
+      <span>M:</span> 0401 061 246<br>
+      <span>E:</span> <a href="mailto:lyda@lkdesignandbuild.com.au" style="color:#C9A96E;text-decoration:none;">lyda@lkdesignandbuild.com.au</a><br>
+      <span>A:</span> Adelaide, South Australia
+    </div>
+    <div style="margin-top:8px;padding-top:8px;border-top:1px solid #C9A96E;font-size:9px;color:#9A9A9A;font-style:italic;">
+      Considered design. Precision build.<br><span style="font-style:normal;letter-spacing:0.5px;color:#9A9A9A;">ABN 17 697 207 391</span>
+    </div>
+  </td>
+  <td style="vertical-align:top;padding:0 0 0 18px;">
+    <img src="https://dunderdoon.com/assets/branding/final/png/lk-logo-horizontal-gold.png" alt="LK Design and Build" style="width:160px;height:auto;display:block;">
+  </td>
+</tr>
+</table>
+    </div>
   </div>
-  <p style="font-size:10px;color:#aaa;margin:8px 0 0;text-align:center;">Identical signature on both backgrounds — the Copy button above copies this exact markup (no background of its own).</p>
+  <p style="font-size:10px;color:#aaa;margin:8px 0 0;text-align:center;">Each Copy button above copies the matching layout (no background of its own).</p>
 </div>
 
 <script>
-async function copySignature() {
-  var sig = document.getElementById('signature');
-  var btn = document.getElementById('copy-btn');
-  var label = document.getElementById('copy-btn-label');
+async function copySignature(which) {
+  var sig = document.getElementById('signature-' + which);
+  var btn = document.getElementById('copy-btn-' + which);
+  var label = document.getElementById('copy-btn-label-' + which);
   var original = label.textContent;
 
   var html = sig.innerHTML;

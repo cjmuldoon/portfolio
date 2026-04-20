@@ -501,33 +501,15 @@ def _items_borders(table, hex_color):
     tblPr.append(borders)
 
 
-EMAIL_TEMPLATE = """<!DOCTYPE html>
-<html><head><meta charset="UTF-8"><title>Email Signature — LK Design and Build</title></head>
-<body style="margin:0;padding:20px;background:#f5f5f5;font-family:Arial,sans-serif;">
-<!-- Top card: instructions + copy button + actual copy-able signature -->
-<div style="max-width:640px;margin:0 auto;background:#fff;padding:30px;border-radius:8px;">
-<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;flex-wrap:wrap;">
-  <p style="font-size:12px;color:#666;margin:0;flex:1;min-width:260px;line-height:1.55;">Click <strong>Copy signature</strong>, then paste into Gmail (Settings → Signature) or Outlook (File → Options → Mail → Signatures). Copies as rich HTML — logo, link colours and layout are preserved.</p>
-  <button id="copy-btn" type="button" onclick="copySignature()" style="font-family:Inter,Arial,sans-serif;font-size:12px;font-weight:600;letter-spacing:0.04em;padding:9px 16px;background:#C9A96E;color:#fff;border:none;border-radius:6px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:background 0.2s;">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-    <span id="copy-btn-label">Copy signature</span>
-  </button>
-</div>
-
-<div style="font-size:11px;color:#888;background:#fafaf7;border:1px solid #eee3d0;border-radius:6px;padding:10px 14px;margin-bottom:18px;line-height:1.55;">
-  <strong style="color:#6b5a3a;">Theme-agnostic design.</strong> No background colour is copied, and the mark + text use gold (<code>#C9A96E</code>) and medium grey (<code>#6A6A6A</code>) — both read on light-mode and dark-mode email clients.
-</div>
-
-<hr style="border:1px dashed #ccc;margin:0 0 12px;">
-
-<!-- ====== EMAIL SIGNATURE START — this is what gets copied ====== -->
-<div id="signature">
-<table cellpadding="0" cellspacing="0" border="0" style="font-family:Calibri,Arial,sans-serif;color:#6A6A6A;">
-<tr>
-  <td style="vertical-align:top;padding:0 18px 0 0;border-right:1px solid #C9A96E;">
+SIG_LOGO_CELL = """<td style="vertical-align:top;padding:0 18px 0 0;border-right:1px solid #C9A96E;">
     <img src="https://dunderdoon.com/assets/branding/final/png/lk-logo-horizontal-gold.png" alt="LK Design and Build" style="width:160px;height:auto;display:block;">
-  </td>
-  <td style="vertical-align:top;padding:0 0 0 18px;">
+  </td>"""
+
+SIG_LOGO_CELL_RIGHT = """<td style="vertical-align:top;padding:0 0 0 18px;">
+    <img src="https://dunderdoon.com/assets/branding/final/png/lk-logo-horizontal-gold.png" alt="LK Design and Build" style="width:160px;height:auto;display:block;">
+  </td>"""
+
+SIG_CONTENT_CELL = """<td style="vertical-align:top;padding:0 0 0 18px;">
     <div style="font-size:15px;font-weight:bold;color:#6A6A6A;margin-bottom:1px;">Lyda</div>
     <div style="font-size:10px;color:#C9A96E;font-weight:600;letter-spacing:1.2px;margin-bottom:10px;">{title}</div>
     <div style="font-size:11px;color:#6A6A6A;line-height:1.7;">
@@ -538,34 +520,101 @@ EMAIL_TEMPLATE = """<!DOCTYPE html>
     <div style="margin-top:8px;padding-top:8px;border-top:1px solid #C9A96E;font-size:9px;color:#9A9A9A;font-style:italic;">
       {tagline}<br><span style="font-style:normal;letter-spacing:0.5px;color:#9A9A9A;">ABN {abn}</span>
     </div>
-  </td>
+  </td>"""
+
+SIG_CONTENT_CELL_LEFT = """<td style="vertical-align:top;padding:0 18px 0 0;border-right:1px solid #C9A96E;">
+    <div style="font-size:15px;font-weight:bold;color:#6A6A6A;margin-bottom:1px;">Lyda</div>
+    <div style="font-size:10px;color:#C9A96E;font-weight:600;letter-spacing:1.2px;margin-bottom:10px;">{title}</div>
+    <div style="font-size:11px;color:#6A6A6A;line-height:1.7;">
+      <span>M:</span> {phone}<br>
+      <span>E:</span> <a href="mailto:{email}" style="color:#C9A96E;text-decoration:none;">{email}</a><br>
+      <span>A:</span> {address}
+    </div>
+    <div style="margin-top:8px;padding-top:8px;border-top:1px solid #C9A96E;font-size:9px;color:#9A9A9A;font-style:italic;">
+      {tagline}<br><span style="font-style:normal;letter-spacing:0.5px;color:#9A9A9A;">ABN {abn}</span>
+    </div>
+  </td>"""
+
+SIG_TABLE_A = """<table cellpadding="0" cellspacing="0" border="0" style="font-family:Calibri,Arial,sans-serif;color:#6A6A6A;">
+<tr>
+  """ + SIG_LOGO_CELL + """
+  """ + SIG_CONTENT_CELL + """
 </tr>
-</table>
-</div>
-<!-- ====== EMAIL SIGNATURE END ====== -->
+</table>"""
+
+SIG_TABLE_B = """<table cellpadding="0" cellspacing="0" border="0" style="font-family:Calibri,Arial,sans-serif;color:#6A6A6A;">
+<tr>
+  """ + SIG_CONTENT_CELL_LEFT + """
+  """ + SIG_LOGO_CELL_RIGHT + """
+</tr>
+</table>"""
+
+
+def _copy_card(letter, title_str, sig_html):
+    """One 'Layout X — Copy signature' card: heading, copy button, signature."""
+    return f"""<div style="max-width:720px;margin:0 auto 18px;background:#fff;padding:26px 30px;border-radius:8px;">
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;flex-wrap:wrap;">
+    <div>
+      <div style="font-size:10px;color:#C9A96E;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:2px;">Layout {letter}</div>
+      <div style="font-size:14px;font-weight:600;color:#2C2C2C;">{title_str}</div>
+    </div>
+    <button id="copy-btn-{letter}" type="button" onclick="copySignature('{letter}')" style="font-family:Inter,Arial,sans-serif;font-size:12px;font-weight:600;letter-spacing:0.04em;padding:9px 16px;background:#C9A96E;color:#fff;border:none;border-radius:6px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:background 0.2s;">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+      <span id="copy-btn-label-{letter}">Copy signature</span>
+    </button>
+  </div>
+  <hr style="border:1px dashed #ccc;margin:0 0 16px;">
+  <div id="signature-{letter}">
+{sig_html}
+  </div>
+</div>"""
+
+
+EMAIL_TEMPLATE = """<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><title>Email Signature — LK Design and Build</title></head>
+<body style="margin:0;padding:20px;background:#f5f5f5;font-family:Arial,sans-serif;">
+
+<!-- Header strip -->
+<div style="max-width:720px;margin:0 auto 14px;background:#fff;padding:22px 30px;border-radius:8px;">
+  <p style="font-size:13px;color:#444;margin:0 0 10px;line-height:1.55;"><strong>Pick a layout, click Copy signature, then paste into Gmail</strong> (Settings → Signature) or Outlook (File → Options → Mail → Signatures). Each button copies rich HTML — logo, link colours and layout preserved.</p>
+  <div style="font-size:11px;color:#888;background:#fafaf7;border:1px solid #eee3d0;border-radius:6px;padding:10px 14px;line-height:1.55;">
+    <strong style="color:#6b5a3a;">Theme-agnostic.</strong> No background colour is copied. Mark + text use gold (<code>#C9A96E</code>) and medium grey (<code>#6A6A6A</code>) — both read on light-mode and dark-mode email clients.
+  </div>
 </div>
 
-<!-- Standalone, wider preview so both light + dark render side-by-side without clipping -->
+{card_a}
+
+{card_b}
+
+<!-- Standalone, wider preview — same signature on both light and dark BGs -->
 <div style="max-width:1040px;margin:24px auto 0;padding:0 10px;">
-  <div style="font-size:10px;color:#999;text-align:center;text-transform:uppercase;letter-spacing:0.15em;margin-bottom:10px;">How it looks on both themes</div>
-  <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(440px, 1fr));gap:12px;">
+  <div style="font-size:10px;color:#999;text-align:center;text-transform:uppercase;letter-spacing:0.15em;margin-bottom:10px;">How each layout reads on both themes</div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(440px, 1fr));gap:12px;margin-bottom:10px;">
     <div style="background:#FFFFFF;padding:18px 22px;border-radius:8px;border:1px solid #eee;">
-      <div style="font-size:9px;color:#999;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:10px;">Light mode</div>
-{sig_light}
+      <div style="font-size:9px;color:#999;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:10px;">Layout A · Light mode</div>
+{sig_a_light}
     </div>
     <div style="background:#1B1B1B;padding:18px 22px;border-radius:8px;">
-      <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:10px;">Dark mode</div>
-{sig_dark}
+      <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:10px;">Layout A · Dark mode</div>
+{sig_a_dark}
+    </div>
+    <div style="background:#FFFFFF;padding:18px 22px;border-radius:8px;border:1px solid #eee;">
+      <div style="font-size:9px;color:#999;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:10px;">Layout B · Light mode</div>
+{sig_b_light}
+    </div>
+    <div style="background:#1B1B1B;padding:18px 22px;border-radius:8px;">
+      <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:10px;">Layout B · Dark mode</div>
+{sig_b_dark}
     </div>
   </div>
-  <p style="font-size:10px;color:#aaa;margin:8px 0 0;text-align:center;">Identical signature on both backgrounds — the Copy button above copies this exact markup (no background of its own).</p>
+  <p style="font-size:10px;color:#aaa;margin:8px 0 0;text-align:center;">Each Copy button above copies the matching layout (no background of its own).</p>
 </div>
 
 <script>
-async function copySignature() {{
-  var sig = document.getElementById('signature');
-  var btn = document.getElementById('copy-btn');
-  var label = document.getElementById('copy-btn-label');
+async function copySignature(which) {{
+  var sig = document.getElementById('signature-' + which);
+  var btn = document.getElementById('copy-btn-' + which);
+  var label = document.getElementById('copy-btn-label-' + which);
   var original = label.textContent;
 
   var html = sig.innerHTML;
@@ -606,38 +655,25 @@ async function copySignature() {{
 </body></html>
 """
 
-SIG_SAMPLE = """<table cellpadding="0" cellspacing="0" border="0" style="font-family:Calibri,Arial,sans-serif;color:#6A6A6A;">
-<tr>
-  <td style="vertical-align:top;padding:0 18px 0 0;border-right:1px solid #C9A96E;">
-    <img src="https://dunderdoon.com/assets/branding/final/png/lk-logo-horizontal-gold.png" alt="" style="width:160px;height:auto;display:block;">
-  </td>
-  <td style="vertical-align:top;padding:0 0 0 18px;">
-    <div style="font-size:15px;font-weight:bold;color:#6A6A6A;margin-bottom:1px;">Lyda</div>
-    <div style="font-size:10px;color:#C9A96E;font-weight:600;letter-spacing:1.2px;margin-bottom:10px;">{title}</div>
-    <div style="font-size:11px;color:#6A6A6A;line-height:1.7;">
-      <span>M:</span> {phone}<br>
-      <span>E:</span> <a href="mailto:{email}" style="color:#C9A96E;text-decoration:none;">{email}</a><br>
-      <span>A:</span> {address}
-    </div>
-    <div style="margin-top:8px;padding-top:8px;border-top:1px solid #C9A96E;font-size:9px;color:#9A9A9A;font-style:italic;">
-      {tagline}<br><span style="font-style:normal;letter-spacing:0.5px;color:#9A9A9A;">ABN {abn}</span>
-    </div>
-  </td>
-</tr>
-</table>"""
-
 
 def build_email_signature(v):
-    # Theme-agnostic signature — identical output regardless of variant.
-    # Both previews use the same colours as what actually gets copied, so
-    # Lyda sees the honest result on both light and dark backgrounds.
+    # Theme-agnostic signature. Both layouts identical palette; only the
+    # left/right arrangement of logo + contact block differs.
     fields = dict(
         title=CONTACT["title"], phone=CONTACT["phone"], email=CONTACT["email"],
         address=CONTACT["address"], abn=CONTACT["abn"], tagline=TAGLINE,
     )
-    sig_light = SIG_SAMPLE.format(**fields)
-    sig_dark  = SIG_SAMPLE.format(**fields)
-    html = EMAIL_TEMPLATE.format(sig_light=sig_light, sig_dark=sig_dark, **fields)
+    sig_a = SIG_TABLE_A.format(**fields)  # logo left
+    sig_b = SIG_TABLE_B.format(**fields)  # logo right
+
+    card_a = _copy_card("A", "Logo left · content right", sig_a)
+    card_b = _copy_card("B", "Content left · logo right", sig_b)
+
+    html = EMAIL_TEMPLATE.format(
+        card_a=card_a, card_b=card_b,
+        sig_a_light=sig_a, sig_a_dark=sig_a,
+        sig_b_light=sig_b, sig_b_dark=sig_b,
+    )
     out = f"{STAT_DIR}/{v['key']}/email-signature.html"
     with open(out, "w") as f:
         f.write(html)
