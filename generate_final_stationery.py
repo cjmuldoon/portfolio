@@ -26,6 +26,10 @@ import fitz  # PyMuPDF
 
 COURIER_TTF = "/System/Library/Fonts/Supplemental/Courier New.ttf"
 INTER_THIN_TTF = "/Users/dunderdoon/Library/Fonts/Inter-Thin.ttf"
+INTER_REGULAR_TTF = "/Users/dunderdoon/Library/Fonts/Inter-Regular.ttf"
+INTER_BOLD_TTF = "/Users/dunderdoon/Library/Fonts/Inter-Bold.ttf"
+INTER_SEMIBOLD_TTF = "/Users/dunderdoon/Library/Fonts/Inter-SemiBold.ttf"
+INTER_ITALIC_TTF = "/Users/dunderdoon/Library/Fonts/Inter-Italic.ttf"
 
 ROOT = "/Users/dunderdoon/Projects_Local/primedesign"
 FINAL = f"{ROOT}/assets/branding/final"
@@ -550,18 +554,29 @@ SIG_TABLE_B = """<table cellpadding="0" cellspacing="0" border="0" style="font-f
 </table>"""
 
 
-def _copy_card(letter, title_str, sig_html):
-    """One 'Layout X — Copy signature' card: heading, copy button, signature."""
-    return f"""<div style="max-width:720px;margin:0 auto 18px;background:#fff;padding:26px 30px;border-radius:8px;">
+def _copy_card(letter, title_str, sig_html, image_filename):
+    """One 'Layout X' card: heading, Copy-rich / Copy-HTML / Download-image
+    buttons, then the rendered signature."""
+    return f"""<div style="max-width:760px;margin:0 auto 18px;background:#fff;padding:26px 30px;border-radius:8px;">
   <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;flex-wrap:wrap;">
     <div>
       <div style="font-size:10px;color:#C9A96E;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:2px;">Layout {letter}</div>
       <div style="font-size:14px;font-weight:600;color:#2C2C2C;">{title_str}</div>
     </div>
-    <button id="copy-btn-{letter}" type="button" onclick="copySignature('{letter}')" style="font-family:Inter,Arial,sans-serif;font-size:12px;font-weight:600;letter-spacing:0.04em;padding:9px 16px;background:#C9A96E;color:#fff;border:none;border-radius:6px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:background 0.2s;">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
-      <span id="copy-btn-label-{letter}">Copy signature</span>
-    </button>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;">
+      <button id="copy-btn-{letter}" type="button" onclick="copySignature('{letter}')" style="font-family:Inter,Arial,sans-serif;font-size:12px;font-weight:600;letter-spacing:0.04em;padding:9px 16px;background:#C9A96E;color:#fff;border:none;border-radius:6px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:background 0.2s;" title="Copy rich HTML — best for Gmail web, Outlook desktop.">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+        <span id="copy-btn-label-{letter}">Copy signature</span>
+      </button>
+      <button id="copy-src-{letter}" type="button" onclick="copySource('{letter}')" style="font-family:Inter,Arial,sans-serif;font-size:12px;font-weight:600;letter-spacing:0.04em;padding:9px 14px;background:#fff;color:#6B5A3A;border:1px solid #C9A96E;border-radius:6px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:background 0.2s;" title="Copy the raw HTML — paste into your signature editor's HTML/source view.">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        <span id="copy-src-label-{letter}">Copy HTML source</span>
+      </button>
+      <a href="{image_filename}" download style="font-family:Inter,Arial,sans-serif;font-size:12px;font-weight:600;letter-spacing:0.04em;padding:9px 14px;background:#fff;color:#6B5A3A;border:1px solid #C9A96E;border-radius:6px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:background 0.2s;text-decoration:none;" title="Download the whole signature as a single PNG — insert via your client's 'Insert Image' button when paste strips the logo.">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        <span>Download .png</span>
+      </a>
+    </div>
   </div>
   <hr style="border:1px dashed #ccc;margin:0 0 16px;">
   <div id="signature-{letter}">
@@ -575,10 +590,15 @@ EMAIL_TEMPLATE = """<!DOCTYPE html>
 <body style="margin:0;padding:20px;background:#f5f5f5;font-family:Arial,sans-serif;">
 
 <!-- Header strip -->
-<div style="max-width:720px;margin:0 auto 14px;background:#fff;padding:22px 30px;border-radius:8px;">
-  <p style="font-size:13px;color:#444;margin:0 0 10px;line-height:1.55;"><strong>Pick a layout, click Copy signature, then paste into Gmail</strong> (Settings → Signature) or Outlook (File → Options → Mail → Signatures). Each button copies rich HTML — logo, link colours and layout preserved.</p>
+<div style="max-width:760px;margin:0 auto 14px;background:#fff;padding:22px 30px;border-radius:8px;">
+  <p style="font-size:13px;color:#444;margin:0 0 12px;line-height:1.55;"><strong>Three ways to use each signature, in order of convenience:</strong></p>
+  <ol style="font-size:12px;color:#555;line-height:1.6;margin:0 0 12px;padding-left:22px;">
+    <li><strong>Copy signature</strong> → paste into Gmail (Settings → Signature) or desktop Outlook. Works everywhere except mobile / new Outlook, which strip embedded images.</li>
+    <li><strong>Copy HTML source</strong> → in your signature editor tap the <code style="background:#f4ece0;padding:1px 4px;border-radius:3px;">HTML</code> / source-code button, then paste. The source view skips the HTML sanitizer that drops the logo.</li>
+    <li><strong>Download .png</strong> → a flat image of the whole signature. Use your editor's <em>Insert image</em> button if the copy-paste routes both fail.</li>
+  </ol>
   <div style="font-size:11px;color:#888;background:#fafaf7;border:1px solid #eee3d0;border-radius:6px;padding:10px 14px;line-height:1.55;">
-    <strong style="color:#6b5a3a;">Theme-agnostic.</strong> No background colour is copied. Mark + text use gold (<code>#C9A96E</code>) and medium grey (<code>#6A6A6A</code>) — both read on light-mode and dark-mode email clients.
+    <strong style="color:#6b5a3a;">Theme-agnostic.</strong> No background is copied. The mark + text use gold (<code>#C9A96E</code>) and medium grey (<code>#6A6A6A</code>) — both read on light and dark email clients.
   </div>
 </div>
 
@@ -623,6 +643,40 @@ function signatureHtmlWithInlineLogo(which) {{
     /src="[^"]*lk-logo-horizontal-gold\\.png"/g,
     'src="' + LOGO_DATA_URI + '"'
   );
+}}
+
+async function copySource(which) {{
+  // Raw HTML (inline logo included) as plain text, for pasting into a
+  // signature editor's HTML / source view.
+  var html = signatureHtmlWithInlineLogo(which);
+  var btn = document.getElementById('copy-src-' + which);
+  var label = document.getElementById('copy-src-label-' + which);
+  var original = label.textContent;
+  var ok = false;
+  try {{
+    if (navigator.clipboard && navigator.clipboard.writeText) {{
+      await navigator.clipboard.writeText(html);
+      ok = true;
+    }}
+  }} catch (e) {{ /* fall through */ }}
+  if (!ok) {{
+    try {{
+      var ta = document.createElement('textarea');
+      ta.value = html;
+      ta.style.position = 'fixed';
+      ta.style.left = '-99999px';
+      document.body.appendChild(ta);
+      ta.select();
+      ok = document.execCommand('copy');
+      document.body.removeChild(ta);
+    }} catch (e) {{ ok = false; }}
+  }}
+  label.textContent = ok ? 'Copied HTML ✓' : 'Copy failed';
+  btn.style.background = ok ? '#F4ECE0' : '#F5E1E1';
+  setTimeout(function() {{
+    label.textContent = original;
+    btn.style.background = '#fff';
+  }}, 2200);
 }}
 
 async function copySignature(which) {{
@@ -678,6 +732,99 @@ async function copySignature(which) {{
 """
 
 
+def render_signature_image(out_path, layout="A"):
+    """Render the whole signature (logo + text block) as a single flat PNG.
+    Used as a fallback for email clients that strip <img> tags from pasted
+    signature HTML — the user downloads this and inserts it via their
+    client's own 'Insert Image' button.
+
+    layout='A' → logo left, content right. layout='B' → content left, logo right.
+    """
+    from PIL import Image, ImageDraw, ImageFont
+    gold = (0xC9, 0xA9, 0x6E, 255)
+    body = (0x6A, 0x6A, 0x6A, 255)
+    muted = (0x9A, 0x9A, 0x9A, 255)
+
+    # Scale factor — render at 2× intended display size for retina sharpness.
+    S = 2
+    LOGO_W, LOGO_H = 320 * S, 252 * S    # matches gold SVG aspect
+    GUTTER = 18 * S
+    PAD = 4 * S
+    TEXT_W = 360 * S                       # enough room for long email
+    TOTAL_W = LOGO_W + GUTTER * 2 + 1 + TEXT_W
+    TOTAL_H = max(LOGO_H, 170 * S) + PAD * 2
+
+    img = Image.new("RGBA", (TOTAL_W, TOTAL_H), (255, 255, 255, 0))
+    draw = ImageDraw.Draw(img)
+
+    # Rasterize gold logo directly into this image's logo region.
+    import io
+    buf = io.BytesIO()
+    cairosvg.svg2png(url=f"{SVG_DIR}/lk-logo-horizontal-gold.svg",
+                     write_to=buf, output_width=LOGO_W)
+    logo = Image.open(buf).convert("RGBA")
+    if layout == "A":
+        logo_x = 0
+        text_x_start = LOGO_W + GUTTER + 1 + GUTTER
+        rule_x = LOGO_W + GUTTER
+    else:
+        text_x_start = 0
+        logo_x = TEXT_W + GUTTER + 1 + GUTTER
+        rule_x = TEXT_W + GUTTER
+    # Vertically centre the logo on the text block.
+    logo_y = (TOTAL_H - LOGO_H) // 2
+    img.paste(logo, (logo_x, logo_y), logo)
+
+    # Vertical gold rule between the two columns.
+    rule_top = PAD
+    rule_bot = TOTAL_H - PAD
+    draw.line([(rule_x, rule_top), (rule_x, rule_bot)], fill=gold, width=S)
+
+    # Text block — match the HTML spec: Lyda / title / M E A / tagline + ABN.
+    name_font = ImageFont.truetype(INTER_BOLD_TTF, 15 * S)
+    title_font = ImageFont.truetype(INTER_SEMIBOLD_TTF, 10 * S)
+    body_font = ImageFont.truetype(INTER_REGULAR_TTF, 11 * S)
+    small_font = ImageFont.truetype(INTER_REGULAR_TTF, 9 * S)
+    small_italic = ImageFont.truetype(INTER_ITALIC_TTF, 9 * S)
+
+    x = text_x_start
+    y = PAD + 4 * S  # mirror the CSS visual baseline
+    draw.text((x, y), CONTACT["name"], font=name_font, fill=body, anchor="la")
+    y += 15 * S + 6 * S
+
+    # Title with gold colour + letter-spacing
+    title = CONTACT["title"].upper()
+    # Manually letter-space for a bit of visual extra spacing (CSS had 1.2px)
+    tx = x
+    for ch in title:
+        draw.text((tx, y), ch, font=title_font, fill=gold, anchor="la")
+        tx += title_font.getlength(ch) + int(1.4 * S)
+    y += 10 * S + 14 * S
+
+    # Body lines
+    for prefix, value, link_color in [
+        ("M: ", CONTACT["phone"], None),
+        ("E: ", CONTACT["email"], gold),
+        ("A: ", CONTACT["address"], None),
+    ]:
+        draw.text((x, y), prefix, font=body_font, fill=body, anchor="la")
+        off = body_font.getlength(prefix)
+        draw.text((x + off, y), value, font=body_font,
+                  fill=(link_color or body), anchor="la")
+        y += 11 * S + 7 * S
+
+    # Gold rule above tagline
+    y += 4 * S
+    draw.line([(x, y), (x + TEXT_W - GUTTER, y)], fill=gold, width=max(1, S // 2))
+    y += 6 * S
+
+    draw.text((x, y), TAGLINE, font=small_italic, fill=muted, anchor="la")
+    y += 9 * S + 3 * S
+    draw.text((x, y), f"ABN {CONTACT['abn']}", font=small_font, fill=muted, anchor="la")
+
+    img.save(out_path, "PNG", optimize=True)
+
+
 def _signature_logo_data_uri():
     """Rasterize the gold horizontal SVG to a small PNG and return a base64
     data URI. Used as an <img src="..."> replacement at copy time so the
@@ -704,8 +851,13 @@ def build_email_signature(v):
     sig_a = SIG_TABLE_A.format(**fields)  # logo left
     sig_b = SIG_TABLE_B.format(**fields)  # logo right
 
-    card_a = _copy_card("A", "Logo left · content right", sig_a)
-    card_b = _copy_card("B", "Content left · logo right", sig_b)
+    # Render flat PNGs of each layout (for clients that strip HTML images).
+    variant_dir = f"{STAT_DIR}/{v['key']}"
+    render_signature_image(f"{variant_dir}/signature-a.png", layout="A")
+    render_signature_image(f"{variant_dir}/signature-b.png", layout="B")
+
+    card_a = _copy_card("A", "Logo left · content right", sig_a, "signature-a.png")
+    card_b = _copy_card("B", "Content left · logo right", sig_b, "signature-b.png")
 
     logo_data_uri = _signature_logo_data_uri()
 
