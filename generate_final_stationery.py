@@ -747,22 +747,39 @@ def render_signature_image(out_path, layout="A"):
 
     # Scale factor — render at 2× intended display size for retina sharpness.
     S = 2
-    LOGO_W, LOGO_H = 320 * S, 252 * S    # matches gold SVG aspect
-    GUTTER = 18 * S
     PAD = 4 * S
+    GUTTER = 18 * S
     TEXT_W = 360 * S                       # enough room for long email
-    TOTAL_W = LOGO_W + GUTTER * 2 + 1 + TEXT_W
-    TOTAL_H = max(LOGO_H, 170 * S) + PAD * 2
+
+    # Text column height, summed from the exact layout below.
+    #   name (15) + 6 gap + title (10) + 14 gap
+    #   + 3 body lines × (11 + 7 gap)
+    #   + 4 pre-rule + 6 post-rule
+    #   + tagline (9 + 3 gap) + abn (9)
+    TEXT_H = (15 + 6 + 10 + 14 + 3 * (11 + 7) + 4 + 6 + 9 + 3 + 9) * S
+
+    # Logo sized to match the text column height so it never towers over
+    # the content. Aspect ratio 160:126 comes from the gold SVG viewBox.
+    LOGO_H = TEXT_H
+    LOGO_W = int(round(LOGO_H * 160 / 126))
+
+    TOTAL_W = LOGO_W + GUTTER + 1 + GUTTER + TEXT_W
+    TOTAL_H = TEXT_H + PAD * 2
 
     img = Image.new("RGBA", (TOTAL_W, TOTAL_H), (255, 255, 255, 0))
     draw = ImageDraw.Draw(img)
 
-    # Rasterize gold logo directly into this image's logo region.
+    # Rasterize gold logo at the exact target width into the logo region.
     import io
     buf = io.BytesIO()
     cairosvg.svg2png(url=f"{SVG_DIR}/lk-logo-horizontal-gold.svg",
                      write_to=buf, output_width=LOGO_W)
     logo = Image.open(buf).convert("RGBA")
+    # cairosvg rounds the auto-height; resize if it came back off by 1px so
+    # the logo exactly fits TEXT_H and the vertical rule lines up cleanly.
+    if logo.size[1] != LOGO_H:
+        logo = logo.resize((LOGO_W, LOGO_H), Image.LANCZOS)
+
     if layout == "A":
         logo_x = 0
         text_x_start = LOGO_W + GUTTER + 1 + GUTTER
@@ -771,7 +788,8 @@ def render_signature_image(out_path, layout="A"):
         text_x_start = 0
         logo_x = TEXT_W + GUTTER + 1 + GUTTER
         rule_x = TEXT_W + GUTTER
-    # Vertically centre the logo on the text block.
+    # Vertically centre the logo on the text block (trivially here since
+    # LOGO_H == TEXT_H + the tiny PAD).
     logo_y = (TOTAL_H - LOGO_H) // 2
     img.paste(logo, (logo_x, logo_y), logo)
 
