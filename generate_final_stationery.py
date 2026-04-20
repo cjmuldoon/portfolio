@@ -527,7 +527,7 @@ EMAIL_TEMPLATE = """<!DOCTYPE html>
       <span>A:</span> {address}
     </div>
     <div style="margin-top:8px;padding-top:8px;border-top:1px solid {accent};font-size:9px;color:{ink};opacity:0.6;font-style:italic;">
-      {tagline}
+      {tagline}<br><span style="font-style:normal;letter-spacing:0.5px;">ABN {abn}</span>
     </div>
   </td>
 </tr>
@@ -594,7 +594,7 @@ def build_email_signature(v):
         bg=v["email_bg"], ink=v["email_ink"], accent=v["email_accent"],
         title=CONTACT["title"],
         phone=CONTACT["phone"], email=CONTACT["email"],
-        address=CONTACT["address"], tagline=TAGLINE,
+        address=CONTACT["address"], abn=CONTACT["abn"], tagline=TAGLINE,
     )
     out = f"{STAT_DIR}/{v['key']}/email-signature.html"
     with open(out, "w") as f:
