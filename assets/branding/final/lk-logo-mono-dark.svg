@@ -1,7 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="150 100 400 370" width="800" height="740">
   <!-- LK Design and Build — Courier Slab, pure white on black (monochrome) -->
-  <!-- Use for print / embossing / single-colour applications -->
-  <rect width="800" height="600" fill="#000000"/>
+  <!-- Print / embossing / single-colour applications; card with balanced padding -->
+  <rect x="150" y="100" width="400" height="370" fill="#000000"/>
   <text x="200" y="350" font-family="'Courier New', Courier, monospace" font-size="240" font-weight="normal" fill="#FFFFFF" letter-spacing="-0.02em">LK</text>
   <text x="218" y="390" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="18" font-weight="300" fill="#FFFFFF" fill-opacity="0.65" letter-spacing="4.2" textLength="267" lengthAdjust="spacing">DESIGN AND BUILD</text>
 </svg>

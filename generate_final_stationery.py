@@ -122,6 +122,34 @@ VARIANTS = [
 ]
 
 
+def rasterize_download_pngs():
+    """Export a PNG alongside every downloadable SVG in /final so the hub can
+    offer both formats from each logo tile. Written to /final/png/ with the
+    same basename as the source SVG."""
+    os.makedirs(PNG_DIR, exist_ok=True)
+    # Every downloadable mark on the hub (Transparent / Solid / Favicon rows).
+    exports = [
+        # Transparent
+        "lk-logo-champagne.svg", "lk-logo-charcoal.svg", "lk-logo-two-tone.svg",
+        "lk-logo-horizontal-champagne.svg", "lk-logo-horizontal-charcoal.svg", "lk-logo-horizontal-two-tone.svg",
+        # Solid
+        "lk-logo-dark.svg", "lk-logo-light.svg",
+        "lk-logo-mono-dark.svg", "lk-logo-mono-light.svg",
+        # Favicon
+        "lk-icon-champagne.svg", "lk-icon-charcoal.svg", "lk-icon-two-tone.svg",
+    ]
+    for name in exports:
+        src = f"{SVG_DIR}/{name}"
+        if not os.path.exists(src):
+            print(f"  skipped (missing): {src}")
+            continue
+        out = f"{PNG_DIR}/{name[:-4]}.png"
+        # 2400px wide is a sensible ceiling: crisp at any retina screen, still
+        # < ~200 KB for text-based SVGs, and downscales cleanly to favicons.
+        cairosvg.svg2png(url=src, write_to=out, output_width=2400)
+        print(f"  rasterized {name} → {os.path.basename(out)}")
+
+
 def rasterize_logos():
     """Convert each variant's SVG logo to high-DPI PNG for DOCX embedding.
 
@@ -499,6 +527,7 @@ def build_drawing(v):
 
 
 def main():
+    rasterize_download_pngs()
     rasterize_logos()
     for v in VARIANTS:
         os.makedirs(f"{STAT_DIR}/{v['key']}", exist_ok=True)
