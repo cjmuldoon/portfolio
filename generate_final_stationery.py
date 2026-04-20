@@ -137,7 +137,8 @@ def rasterize_download_pngs():
     offer both formats from each logo tile. Written to /final/png/ with the
     same basename as the source SVG."""
     os.makedirs(PNG_DIR, exist_ok=True)
-    # Every downloadable mark on the hub (Transparent / Solid / Favicon rows).
+    # Every downloadable mark on the hub (Transparent / Solid / Favicon rows)
+    # plus the gold horizontal used by the universal email signature.
     exports = [
         # Transparent
         "lk-logo-champagne.svg", "lk-logo-charcoal.svg", "lk-logo-two-tone.svg",
@@ -147,6 +148,8 @@ def rasterize_download_pngs():
         "lk-logo-mono-dark.svg", "lk-logo-mono-light.svg",
         # Favicon
         "lk-icon-champagne.svg", "lk-icon-charcoal.svg", "lk-icon-two-tone.svg",
+        # Signature-only (theme-agnostic accent gold)
+        "lk-logo-horizontal-gold.svg",
     ]
     for name in exports:
         src = f"{SVG_DIR}/{name}"
@@ -499,44 +502,59 @@ def _items_borders(table, hex_color):
 
 
 EMAIL_TEMPLATE = """<!DOCTYPE html>
-<html><head><meta charset="UTF-8"><title>Email Signature — LK Design and Build — {label}</title></head>
+<html><head><meta charset="UTF-8"><title>Email Signature — LK Design and Build</title></head>
 <body style="margin:0;padding:20px;background:#f5f5f5;font-family:Arial,sans-serif;">
-<div style="max-width:560px;margin:0 auto;background:#fff;padding:30px;border-radius:8px;">
-<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px;flex-wrap:wrap;">
-  <p style="font-size:12px;color:#888;margin:0;flex:1;min-width:220px;">Click the button to copy, then paste into Gmail (Settings → Signature) or Outlook (File → Options → Mail → Signatures).</p>
+<div style="max-width:620px;margin:0 auto;background:#fff;padding:30px;border-radius:8px;">
+<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;flex-wrap:wrap;">
+  <p style="font-size:12px;color:#666;margin:0;flex:1;min-width:260px;line-height:1.55;">Click <strong>Copy signature</strong>, then paste into Gmail (Settings → Signature) or Outlook (File → Options → Mail → Signatures). Copies as rich HTML — logo, link colours and layout are preserved.</p>
   <button id="copy-btn" type="button" onclick="copySignature()" style="font-family:Inter,Arial,sans-serif;font-size:12px;font-weight:600;letter-spacing:0.04em;padding:9px 16px;background:#C9A96E;color:#fff;border:none;border-radius:6px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:background 0.2s;">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
     <span id="copy-btn-label">Copy signature</span>
   </button>
 </div>
-<hr style="border:1px dashed #ccc;margin-bottom:20px;">
 
-<!-- ====== EMAIL SIGNATURE START ====== -->
+<div style="font-size:11px;color:#888;background:#fafaf7;border:1px solid #eee3d0;border-radius:6px;padding:10px 14px;margin-bottom:18px;line-height:1.55;">
+  <strong style="color:#6b5a3a;">Theme-agnostic design.</strong> No background colour is copied, and the mark + text use gold (<code>#C9A96E</code>) and medium charcoal (<code>#4A4A4A</code>) — both read on light-mode and dark-mode email clients. Preview below is on white to match the default Gmail / Outlook compose view.
+</div>
+
+<!-- Sample swatch so Lyda can see how it looks on both themes -->
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:0;border-radius:6px;overflow:hidden;border:1px solid #eee;margin-bottom:6px;">
+  <div style="background:#FFFFFF;padding:10px 14px 6px;">
+    <div style="font-size:9px;color:#999;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:6px;">Light mode preview</div>
+{sig_light}
+  </div>
+  <div style="background:#1B1B1B;padding:10px 14px 6px;">
+    <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:6px;">Dark mode preview</div>
+{sig_dark}
+  </div>
+</div>
+<p style="font-size:10px;color:#aaa;margin:4px 0 18px;text-align:center;">Identical signature rendered on both backgrounds — the Copy button below copies this exact markup (no background).</p>
+
+<hr style="border:1px dashed #ccc;margin:0 0 12px;">
+
+<!-- ====== EMAIL SIGNATURE START — this is what gets copied ====== -->
 <div id="signature">
-<table cellpadding="0" cellspacing="0" border="0" style="font-family:Calibri,Arial,sans-serif;color:{ink};background:{bg};padding:14px 18px;border-radius:6px;">
+<table cellpadding="0" cellspacing="0" border="0" style="font-family:Calibri,Arial,sans-serif;color:#6A6A6A;">
 <tr>
-  <td style="vertical-align:top;padding-right:18px;border-right:1px solid {accent};">
-    <img src="https://dunderdoon.com/assets/branding/final/png/{key}.png" alt="LK Design and Build" style="width:150px;height:auto;display:block;">
+  <td style="vertical-align:top;padding:0 18px 0 0;border-right:1px solid #C9A96E;">
+    <img src="https://dunderdoon.com/assets/branding/final/png/lk-logo-horizontal-gold.png" alt="LK Design and Build" style="width:160px;height:auto;display:block;">
   </td>
-  <td style="vertical-align:top;padding-left:18px;">
-    <div style="font-size:15px;font-weight:bold;color:{ink};margin-bottom:1px;">Lyda</div>
-    <div style="font-size:10px;color:{accent};font-weight:600;letter-spacing:1.2px;margin-bottom:10px;">{title}</div>
-    <div style="font-size:11px;color:{ink};line-height:1.7;opacity:0.85;">
+  <td style="vertical-align:top;padding:0 0 0 18px;">
+    <div style="font-size:15px;font-weight:bold;color:#6A6A6A;margin-bottom:1px;">Lyda</div>
+    <div style="font-size:10px;color:#C9A96E;font-weight:600;letter-spacing:1.2px;margin-bottom:10px;">{title}</div>
+    <div style="font-size:11px;color:#6A6A6A;line-height:1.7;">
       <span>M:</span> {phone}<br>
-      <span>E:</span> <a href="mailto:{email}" style="color:{accent};text-decoration:none;">{email}</a><br>
+      <span>E:</span> <a href="mailto:{email}" style="color:#C9A96E;text-decoration:none;">{email}</a><br>
       <span>A:</span> {address}
     </div>
-    <div style="margin-top:8px;padding-top:8px;border-top:1px solid {accent};font-size:9px;color:{ink};opacity:0.6;font-style:italic;">
-      {tagline}<br><span style="font-style:normal;letter-spacing:0.5px;">ABN {abn}</span>
+    <div style="margin-top:8px;padding-top:8px;border-top:1px solid #C9A96E;font-size:9px;color:#9A9A9A;font-style:italic;">
+      {tagline}<br><span style="font-style:normal;letter-spacing:0.5px;color:#9A9A9A;">ABN {abn}</span>
     </div>
   </td>
 </tr>
 </table>
 </div>
 <!-- ====== EMAIL SIGNATURE END ====== -->
-
-<hr style="border:1px dashed #ccc;margin-top:20px;">
-<p style="font-size:11px;color:#999;margin-top:10px;">Variant: <strong>{label}</strong></p>
 </div>
 
 <script>
@@ -550,8 +568,6 @@ async function copySignature() {{
   var text = sig.innerText;
   var ok = false;
 
-  // Preferred: modern Clipboard API with rich-text (HTML + plain) so paste
-  // into Gmail/Outlook keeps formatting and the logo image.
   try {{
     if (navigator.clipboard && window.ClipboardItem) {{
       var item = new ClipboardItem({{
@@ -563,7 +579,6 @@ async function copySignature() {{
     }}
   }} catch (e) {{ /* fall through */ }}
 
-  // Fallback: select the rendered signature node + execCommand('copy').
   if (!ok) {{
     try {{
       var range = document.createRange();
@@ -587,15 +602,38 @@ async function copySignature() {{
 </body></html>
 """
 
+SIG_SAMPLE = """<table cellpadding="0" cellspacing="0" border="0" style="font-family:Calibri,Arial,sans-serif;color:#6A6A6A;">
+<tr>
+  <td style="vertical-align:top;padding:0 14px 0 0;border-right:1px solid #C9A96E;">
+    <img src="https://dunderdoon.com/assets/branding/final/png/lk-logo-horizontal-gold.png" alt="" style="width:130px;height:auto;display:block;">
+  </td>
+  <td style="vertical-align:top;padding:0 0 0 14px;">
+    <div style="font-size:13px;font-weight:bold;color:#6A6A6A;margin-bottom:1px;">Lyda</div>
+    <div style="font-size:9px;color:#C9A96E;font-weight:600;letter-spacing:1.2px;margin-bottom:8px;">{title}</div>
+    <div style="font-size:10px;color:#6A6A6A;line-height:1.6;">
+      <span>M:</span> {phone}<br>
+      <span>E:</span> <a href="mailto:{email}" style="color:#C9A96E;text-decoration:none;">{email}</a><br>
+      <span>A:</span> {address}
+    </div>
+    <div style="margin-top:6px;padding-top:6px;border-top:1px solid #C9A96E;font-size:8px;color:#9A9A9A;font-style:italic;">
+      {tagline}<br><span style="font-style:normal;letter-spacing:0.4px;color:#9A9A9A;">ABN {abn}</span>
+    </div>
+  </td>
+</tr>
+</table>"""
+
 
 def build_email_signature(v):
-    html = EMAIL_TEMPLATE.format(
-        label=v["label"], key=v["key"],
-        bg=v["email_bg"], ink=v["email_ink"], accent=v["email_accent"],
-        title=CONTACT["title"],
-        phone=CONTACT["phone"], email=CONTACT["email"],
+    # Theme-agnostic signature — identical output regardless of variant.
+    # Both previews use the same colours as what actually gets copied, so
+    # Lyda sees the honest result on both light and dark backgrounds.
+    fields = dict(
+        title=CONTACT["title"], phone=CONTACT["phone"], email=CONTACT["email"],
         address=CONTACT["address"], abn=CONTACT["abn"], tagline=TAGLINE,
     )
+    sig_light = SIG_SAMPLE.format(**fields)
+    sig_dark  = SIG_SAMPLE.format(**fields)
+    html = EMAIL_TEMPLATE.format(sig_light=sig_light, sig_dark=sig_dark, **fields)
     out = f"{STAT_DIR}/{v['key']}/email-signature.html"
     with open(out, "w") as f:
         f.write(html)
