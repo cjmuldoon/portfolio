@@ -505,15 +505,40 @@ def _items_borders(table, hex_color):
     tblPr.append(borders)
 
 
-SIG_LOGO_CELL = """<td style="vertical-align:top;padding:0 18px 0 0;border-right:1px solid #C9A96E;">
-    <img src="https://dunderdoon.com/assets/branding/final/png/lk-logo-horizontal-gold.png" alt="LK Design and Build" style="width:160px;height:auto;display:block;">
-  </td>"""
+# ─── Fixed signature dimensions ─────────────────────────────────────────
+# Every value here is set as both an HTML attribute and a CSS rule so the
+# layout survives any sanitizer that strips one or the other. When the
+# recipient's email client blocks the image (default behaviour for new
+# senders), the broken-image placeholder stays inside these dimensions
+# instead of collapsing the table or pushing content sideways.
+SIG_TABLE_WIDTH = 520            # total signature width (px)
+SIG_LOGO_CELL_W = 180            # 160 image + 18 padding + 2 wiggle room
+SIG_CONTENT_CELL_W = 340         # 18 padding + 322 content area
+SIG_LOGO_W = 160                 # rendered image display width
+SIG_LOGO_H = 126                 # rendered image display height (160:126 aspect)
 
-SIG_LOGO_CELL_RIGHT = """<td style="vertical-align:top;padding:0 0 0 18px;">
-    <img src="https://dunderdoon.com/assets/branding/final/png/lk-logo-horizontal-gold.png" alt="LK Design and Build" style="width:160px;height:auto;display:block;">
-  </td>"""
+SIG_LOGO_IMG = (
+    f'<img src="https://dunderdoon.com/assets/branding/final/png/lk-logo-horizontal-gold.png" '
+    f'alt="LK Design and Build" width="{SIG_LOGO_W}" height="{SIG_LOGO_H}" '
+    f'style="width:{SIG_LOGO_W}px;height:{SIG_LOGO_H}px;max-width:{SIG_LOGO_W}px;display:block;border:0;outline:0;">'
+)
 
-SIG_CONTENT_CELL = """<td style="vertical-align:top;padding:0 0 0 18px;">
+SIG_LOGO_CELL = (
+    f'<td width="{SIG_LOGO_CELL_W}" valign="top" '
+    f'style="width:{SIG_LOGO_CELL_W}px;vertical-align:top;padding:0 18px 0 0;border-right:1px solid #C9A96E;">'
+    f'\n    {SIG_LOGO_IMG}\n  </td>'
+)
+
+SIG_LOGO_CELL_RIGHT = (
+    f'<td width="{SIG_LOGO_CELL_W}" valign="top" '
+    f'style="width:{SIG_LOGO_CELL_W}px;vertical-align:top;padding:0 0 0 18px;">'
+    f'\n    {SIG_LOGO_IMG}\n  </td>'
+)
+
+SIG_CONTENT_CELL = (
+    f'<td width="{SIG_CONTENT_CELL_W}" valign="top" '
+    f'style="width:{SIG_CONTENT_CELL_W}px;vertical-align:top;padding:0 0 0 18px;">'
+    """
     <div style="font-size:15px;font-weight:bold;color:#6A6A6A;margin-bottom:1px;">Lyda</div>
     <div style="font-size:10px;color:#C9A96E;font-weight:600;letter-spacing:1.2px;margin-bottom:10px;">{title}</div>
     <div style="font-size:11px;color:#6A6A6A;line-height:1.7;">
@@ -525,8 +550,12 @@ SIG_CONTENT_CELL = """<td style="vertical-align:top;padding:0 0 0 18px;">
       {tagline}<br><span style="font-style:normal;letter-spacing:0.5px;color:#9A9A9A;">ABN {abn}</span>
     </div>
   </td>"""
+)
 
-SIG_CONTENT_CELL_LEFT = """<td style="vertical-align:top;padding:0 18px 0 0;border-right:1px solid #C9A96E;">
+SIG_CONTENT_CELL_LEFT = (
+    f'<td width="{SIG_CONTENT_CELL_W}" valign="top" '
+    f'style="width:{SIG_CONTENT_CELL_W}px;vertical-align:top;padding:0 18px 0 0;border-right:1px solid #C9A96E;">'
+    """
     <div style="font-size:15px;font-weight:bold;color:#6A6A6A;margin-bottom:1px;">Lyda</div>
     <div style="font-size:10px;color:#C9A96E;font-weight:600;letter-spacing:1.2px;margin-bottom:10px;">{title}</div>
     <div style="font-size:11px;color:#6A6A6A;line-height:1.7;">
@@ -538,20 +567,16 @@ SIG_CONTENT_CELL_LEFT = """<td style="vertical-align:top;padding:0 18px 0 0;bord
       {tagline}<br><span style="font-style:normal;letter-spacing:0.5px;color:#9A9A9A;">ABN {abn}</span>
     </div>
   </td>"""
+)
 
-SIG_TABLE_A = """<table cellpadding="0" cellspacing="0" border="0" style="font-family:Calibri,Arial,sans-serif;color:#6A6A6A;">
-<tr>
-  """ + SIG_LOGO_CELL + """
-  """ + SIG_CONTENT_CELL + """
-</tr>
-</table>"""
+_TABLE_OPEN = (
+    f'<table cellpadding="0" cellspacing="0" border="0" width="{SIG_TABLE_WIDTH}" '
+    f'style="font-family:Calibri,Arial,sans-serif;color:#6A6A6A;width:{SIG_TABLE_WIDTH}px;'
+    f'max-width:{SIG_TABLE_WIDTH}px;table-layout:fixed;border-collapse:collapse;">'
+)
 
-SIG_TABLE_B = """<table cellpadding="0" cellspacing="0" border="0" style="font-family:Calibri,Arial,sans-serif;color:#6A6A6A;">
-<tr>
-  """ + SIG_CONTENT_CELL_LEFT + """
-  """ + SIG_LOGO_CELL_RIGHT + """
-</tr>
-</table>"""
+SIG_TABLE_A = _TABLE_OPEN + "\n<tr>\n  " + SIG_LOGO_CELL + "\n  " + SIG_CONTENT_CELL + "\n</tr>\n</table>"
+SIG_TABLE_B = _TABLE_OPEN + "\n<tr>\n  " + SIG_CONTENT_CELL_LEFT + "\n  " + SIG_LOGO_CELL_RIGHT + "\n</tr>\n</table>"
 
 
 def _copy_card(letter, title_str, sig_html, image_filename):
