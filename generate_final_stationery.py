@@ -192,8 +192,10 @@ def render_letterhead_png(v, out_path):
     LK uses Courier New at fs=240 (vb), letter-spacing −0.02em, baseline y=350.
     Tagline uses Inter Thin at fs=28 (vb), letter-spacing 0.1, baseline y=400.
     """
-    W, H = 3000, 2079
+    # Canvas sized to match the new tight letterhead viewBox 280×179.
+    W = 3000
     F = W / 280.0  # px per viewBox unit
+    H = int(round(179 * F))  # ≈ 1918
 
     img = Image.new('RGBA', (W, H), (0, 0, 0, 0))
     draw = ImageDraw.Draw(img)
@@ -214,7 +216,7 @@ def render_letterhead_png(v, out_path):
     tag_font = ImageFont.truetype(INTER_THIN_TTF, int(round(28 * F)))
     tag_rgba = _hex_to_rgba(v["tag_hex"], int(255 * 0.55))  # fainter opacity
     tg_x = (211.78 - 210) * F
-    tg_y = (400 - 210) * F
+    tg_y = (385 - 210) * F
     ls_tg = 0.587 * F
     _draw_letter_spaced(draw, "DESIGN AND BUILD", tag_font, (tg_x, tg_y), tag_rgba, ls_tg)
 
