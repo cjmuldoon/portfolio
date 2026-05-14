@@ -545,7 +545,8 @@ SIG_CONTENT_CELL = (
       <span>E:</span> <a href="mailto:{email}" style="color:#C9A96E;text-decoration:none;">{email}</a><br>
       <span>A:</span> {address}
     </div>
-    <div style="margin-top:8px;padding-top:8px;border-top:1px solid #C9A96E;font-size:9px;color:#9A9A9A;font-style:italic;">
+    <div style="margin-top:8px;background:#C9A96E;width:85%;max-width:85%;height:1px;font-size:1px;line-height:1px;">&#160;</div>
+    <div style="margin-top:7px;font-size:9px;color:#9A9A9A;font-style:italic;">
       {tagline}<br><span style="font-style:normal;letter-spacing:0.5px;color:#9A9A9A;">ABN {abn}</span>
     </div>
   </td>"""
@@ -562,7 +563,8 @@ SIG_CONTENT_CELL_LEFT = (
       <span>E:</span> <a href="mailto:{email}" style="color:#C9A96E;text-decoration:none;">{email}</a><br>
       <span>A:</span> {address}
     </div>
-    <div style="margin-top:8px;padding-top:8px;border-top:1px solid #C9A96E;font-size:9px;color:#9A9A9A;font-style:italic;">
+    <div style="margin-top:8px;background:#C9A96E;width:85%;max-width:85%;height:1px;font-size:1px;line-height:1px;">&#160;</div>
+    <div style="margin-top:7px;font-size:9px;color:#9A9A9A;font-style:italic;">
       {tagline}<br><span style="font-style:normal;letter-spacing:0.5px;color:#9A9A9A;">ABN {abn}</span>
     </div>
   </td>"""
@@ -855,9 +857,10 @@ def render_signature_image(out_path, layout="A"):
                   fill=(link_color or body), anchor="la")
         y += 11 * S + 7 * S
 
-    # Gold rule above tagline
+    # Gold rule above tagline — 85% of the text column width.
     y += 4 * S
-    draw.line([(x, y), (x + TEXT_W - GUTTER, y)], fill=gold, width=max(1, S // 2))
+    rule_w = int((TEXT_W - GUTTER) * 0.85)
+    draw.line([(x, y), (x + rule_w, y)], fill=gold, width=max(1, S // 2))
     y += 6 * S
 
     draw.text((x, y), TAGLINE, font=small_italic, fill=muted, anchor="la")
