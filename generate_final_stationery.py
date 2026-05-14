@@ -516,7 +516,7 @@ SIG_TABLE_WIDTH = 520            # total signature width (px)
 SIG_LOGO_CELL_W = 180            # 160 image + 18 padding + 2 wiggle room
 SIG_CONTENT_CELL_W = 340         # 18 padding + 322 content area
 SIG_LOGO_W = 160                 # rendered image display width
-SIG_LOGO_H = 126                 # rendered image display height (160:126 aspect)
+SIG_LOGO_H = 111                 # rendered image display height (gold SVG viewBox 160:111)
 
 SIG_LOGO_IMG = (
     f'<img src="https://dunderdoon.com/assets/branding/final/png/lk-logo-horizontal-gold.png" '
@@ -787,9 +787,9 @@ def render_signature_image(out_path, layout="A"):
     TEXT_H = (15 + 6 + 10 + 14 + 3 * (11 + 7) + 4 + 6 + 9 + 3 + 9) * S
 
     # Logo sized to match the text column height so it never towers over
-    # the content. Aspect ratio 160:126 comes from the gold SVG viewBox.
+    # the content. Aspect ratio 160:111 comes from the gold SVG viewBox.
     LOGO_H = TEXT_H
-    LOGO_W = int(round(LOGO_H * 160 / 126))
+    LOGO_W = int(round(LOGO_H * 160 / 111))
 
     TOTAL_W = LOGO_W + GUTTER + 1 + GUTTER + TEXT_W
     TOTAL_H = TEXT_H + PAD * 2
