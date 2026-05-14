@@ -52,8 +52,7 @@ CONTACT = {
     "phone": "0401 061 246",
     "email": "lyda@lkdesignandbuild.com.au",
     "website": "www.lkdesignandbuild.com.au",
-    # TODO: swap to real PO Box string when Lyda has one.
-    "address": "Adelaide, South Australia",
+    "address": "PO Box 867 Prospect East SA 5082",
     "abn": "17 697 207 391",
 }
 
