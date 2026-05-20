@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="210 210 288 171" width="576" height="342">
-  <!-- Letterhead — MONO. Tagline tightened, nudged right. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="210 210 280 171" width="560" height="342">
+  <!-- Letterhead — MONO. Tagline tightened, slight right nudge. -->
   <text x="200" y="350" font-family="'Courier New', Courier, monospace" font-size="240" font-weight="normal" fill="#000000" letter-spacing="-0.02em">LK</text>
-  <text x="221" y="377" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="28" font-weight="300" fill="#000000" fill-opacity="0.55" letter-spacing="0.1">DESIGN AND BUILD</text>
+  <text x="216" y="377" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="28" font-weight="300" fill="#000000" fill-opacity="0.55" letter-spacing="0.1">DESIGN AND BUILD</text>
 </svg>

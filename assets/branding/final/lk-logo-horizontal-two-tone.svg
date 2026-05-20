@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="45 87 165 103" width="660" height="412">
-  <!-- Horizontal nav layout — TWO-TONE. Tagline tightened, nudged right, brand-gold. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="45 87 160 103" width="640" height="412">
+  <!-- Horizontal nav layout — TWO-TONE. Tagline tightened, slight right nudge, brand-gold. -->
   <text x="40" y="170" font-family="'Courier New', Courier, monospace" font-size="140" font-weight="normal" fill="#F2E6D0" letter-spacing="-0.02em">LK</text>
-  <text x="52" y="188" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="13" font-weight="300" fill="#2C2C2C" fill-opacity="0.75" letter-spacing="2.1">DESIGN AND BUILD</text>
+  <text x="49" y="188" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="13" font-weight="300" fill="#2C2C2C" fill-opacity="0.75" letter-spacing="2.1">DESIGN AND BUILD</text>
 </svg>
