@@ -153,6 +153,8 @@ def rasterize_download_pngs():
         "lk-icon-champagne.svg", "lk-icon-charcoal.svg", "lk-icon-two-tone.svg",
         # Signature-only (theme-agnostic accent gold)
         "lk-logo-horizontal-gold.svg",
+        # K-accent variation (L champagne, K gold)
+        "lk-logo-horizontal-k-gold.svg",
     ]
     for name in exports:
         src = f"{SVG_DIR}/{name}"
@@ -188,14 +190,14 @@ def render_letterhead_png(v, out_path):
     Inter Thin TTF for the tagline (cairosvg ignores font-weight and has no
     reliable path to select a specific face on macOS).
 
-    viewBox "210 210 280 194" → canvas 3000×2079 px (scale F ≈ 10.71 px/vb).
+    Letterhead SVG viewBox is "210 210 288 171"; this canvas mirrors it.
     LK uses Courier New at fs=240 (vb), letter-spacing −0.02em, baseline y=350.
-    Tagline uses Inter Thin at fs=28 (vb), letter-spacing 0.1, baseline y=400.
+    Tagline uses Inter Thin at fs=28 (vb), baseline y=377, nudged right.
     """
-    # Canvas sized to match the new tight letterhead viewBox 280×179.
+    # Canvas sized to match the letterhead viewBox 288×171.
     W = 3000
-    F = W / 280.0  # px per viewBox unit
-    H = int(round(179 * F))  # ≈ 1918
+    F = W / 288.0  # px per viewBox unit
+    H = int(round(171 * F))  # ≈ 1781
 
     img = Image.new('RGBA', (W, H), (0, 0, 0, 0))
     draw = ImageDraw.Draw(img)
@@ -210,13 +212,17 @@ def render_letterhead_png(v, out_path):
 
     # Tagline — Inter Thin. Calibrated against the actual Courier LK render:
     # measured LK visible left = 214.95 vb, right = 477.03 vb (width 262.08).
-    # Inter-Thin D lsb = 3.17 vb, rsb = 2.15 vb, advance sum = 258.6 vb.
-    #   draw x = 214.95 − 3.17 = 211.78
-    #   letter-spacing = (262.08 − (258.6 − 3.17 − 2.15)) / 15 = 0.587 vb/gap
+    # Inter-Thin D lsb = 3.17 vb, advance sum = 258.6 vb.
+    #   base draw x = 214.95 − 3.17 = 211.78, nudged right +8 → 219.78
+    #   letter-spacing = 0.587 vb/gap (keeps tagline width matched to LK)
+    # Tagline colour: brand gold for colour variants, kept ink for mono.
     tag_font = ImageFont.truetype(INTER_THIN_TTF, int(round(28 * F)))
-    tag_rgba = _hex_to_rgba(v["tag_hex"], int(255 * 0.55))  # fainter opacity
-    tg_x = (211.78 - 210) * F
-    tg_y = (385 - 210) * F
+    tag_hex = "#000000" if v["key"] == "mono" else (
+        "#2C2C2C" if v["key"] == "two-tone" else "#C9A96E")
+    tag_opacity = 0.55 if v["key"] in ("mono", "two-tone") else 0.85
+    tag_rgba = _hex_to_rgba(tag_hex, int(255 * tag_opacity))
+    tg_x = (219.78 - 210) * F
+    tg_y = (377 - 210) * F
     ls_tg = 0.587 * F
     _draw_letter_spaced(draw, "DESIGN AND BUILD", tag_font, (tg_x, tg_y), tag_rgba, ls_tg)
 
@@ -516,7 +522,7 @@ SIG_TABLE_WIDTH = 520            # total signature width (px)
 SIG_LOGO_CELL_W = 180            # 160 image + 18 padding + 2 wiggle room
 SIG_CONTENT_CELL_W = 340         # 18 padding + 322 content area
 SIG_LOGO_W = 160                 # rendered image display width
-SIG_LOGO_H = 111                 # rendered image display height (gold SVG viewBox 160:111)
+SIG_LOGO_H = 100                 # rendered image display height (gold SVG viewBox 165:103)
 
 SIG_LOGO_IMG = (
     f'<img src="https://dunderdoon.com/assets/branding/final/png/lk-logo-horizontal-gold.png" '
@@ -787,9 +793,9 @@ def render_signature_image(out_path, layout="A"):
     TEXT_H = (15 + 6 + 10 + 14 + 3 * (11 + 7) + 4 + 6 + 9 + 3 + 9) * S
 
     # Logo sized to match the text column height so it never towers over
-    # the content. Aspect ratio 160:111 comes from the gold SVG viewBox.
+    # the content. Aspect ratio 165:103 comes from the gold SVG viewBox.
     LOGO_H = TEXT_H
-    LOGO_W = int(round(LOGO_H * 160 / 111))
+    LOGO_W = int(round(LOGO_H * 165 / 103))
 
     TOTAL_W = LOGO_W + GUTTER + 1 + GUTTER + TEXT_W
     TOTAL_H = TEXT_H + PAD * 2
