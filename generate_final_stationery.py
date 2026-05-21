@@ -155,6 +155,8 @@ def rasterize_download_pngs():
         "lk-logo-horizontal-gold.svg",
         # K-accent variation (L champagne, K gold)
         "lk-logo-horizontal-k-gold.svg",
+        # Website-specific (bolder tagline for on-screen legibility)
+        "lk-logo-hero-champagne.svg", "lk-logo-nav-champagne.svg",
     ]
     for name in exports:
         src = f"{SVG_DIR}/{name}"
