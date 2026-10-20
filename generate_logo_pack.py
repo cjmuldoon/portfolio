@@ -203,7 +203,11 @@ def write_thumb(name, svg_path, svg_text, folder="thumbs"):
 # ---------------------------------------------------------------- index page ----
 
 GROUPS = [
-    ("Print, drawings and signage", "pdf",
+    ("CAD and drawing sets", "dxf",
+     "Native DXF for AutoCAD and anything that opens DWG. Real geometry on "
+     "layers by brand colour, drawn 100 mm wide in millimetres. Freeze the "
+     "-FILL layers for a line-only logo."),
+    ("Print and signage", "pdf",
      "Vector. Sharp at any size, from a business card to a billboard. This is "
      "what printers, signwriters and embroiderers want."),
     ("Shirts and workwear", "apparel",
@@ -239,13 +243,16 @@ def build_index(thumb_bg):
         seen = set()
         for f in sorted(os.listdir(os.path.join(OUT, folder))):
             stem, ext = os.path.splitext(f)
-            if ext not in (".pdf", ".png", ".svg") or stem in seen:
+            if ext not in (".pdf", ".png", ".svg", ".dxf") or stem in seen:
                 continue
             if folder == "apparel" and ext != ".pdf":
                 continue
+            if folder == "dxf" and ext != ".dxf":
+                continue
             seen.add(stem)
-            thumb = f"thumbs/{stem}.png" if folder != "apparel" else f"thumbs/apparel-{stem}.png"
-            bg = thumb_bg.get(stem if folder != "apparel" else f"apparel-{stem}", "#F5F0EB")
+            key = f"apparel-{stem}" if folder == "apparel" else stem
+            thumb = f"thumbs/{key}.png"
+            bg = thumb_bg.get(key, "#F5F0EB")
             items.append(
                 f'<li><a href="{folder}/{f}" download>'
                 f'<span class="tile" style="background:{bg}">'
@@ -301,6 +308,16 @@ def main():
         thumb_bg[f"apparel-{out_name}"] = write_thumb(
             f"apparel-{out_name}", svg_path, svg)
         print(f"  ✓ {out_name}")
+
+    # USAGE.md is a build input, not something hand-edited inside the output
+    # folder: it lived in there once and a rebuild deleted it.
+    import shutil
+    shutil.copy(os.path.join(HERE, "logo_pack_usage.md"),
+                os.path.join(OUT, "USAGE.md"))
+
+    import generate_logo_dxf          # late: it imports from this module
+    print("\ndxf for CAD:")
+    generate_logo_dxf.main()
 
     with open(os.path.join(HERE, "logo_pack_index_template.html")) as fh:
         template = fh.read()
