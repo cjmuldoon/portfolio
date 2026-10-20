@@ -4,3 +4,7 @@
 generate_docs.py
 generate_logo_docs.py
 __pycache__/
+
+# Signage print rasters: 28 MB of regenerable 300 dpi fallbacks.
+# Re-create with: python3 generate_site_sign.py
+assets/branding/final/signage/print-png/
